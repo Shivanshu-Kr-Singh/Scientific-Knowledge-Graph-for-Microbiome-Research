@@ -186,7 +186,6 @@ Each collected paper is a `PaperRecord`:
 Google Scholar has no official API and actively blocks automated access. Key points:
 
 - **Free mode (scholarly)**: works for development and small runs (<100 papers/session). Add `SCRAPER_API_KEY` for more reliable collection (5000 free req/month at scraperapi.com).
-- **Paid mode (SerpAPI)**: reliable for production scheduled runs. ~$50/month.
 - **Hard cap at 200 results**: pushing for more in one session triggers blocking.
 - **No DOIs from scholarly**: DOIs are filled in by cross-referencing with PubMed during deduplication.
 

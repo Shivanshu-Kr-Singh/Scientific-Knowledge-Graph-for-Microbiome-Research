@@ -1,0 +1,6 @@
+from collectors.pubmed_collector import PubMedCollector
+from collectors.europepmc_collector import EuropePMCCollector
+from collectors.semantic_scholar_collector import SemanticScholarCollector
+from collectors.biorxiv_collector import BioRxivCollector
+from collectors.google_scholar_collector import GoogleScholarCollector
+from collectors.orchestrator import CollectionOrchestrator

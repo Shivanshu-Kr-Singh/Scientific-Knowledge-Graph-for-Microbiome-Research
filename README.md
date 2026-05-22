@@ -41,7 +41,6 @@ microbiome_miner/
 │   ├── europepmc_collector.py       # Europe PMC REST API (full-text access)
 │   ├── semantic_scholar_collector.py # Semantic Scholar (citation graphs)
 │   ├── biorxiv_collector.py         # bioRxiv + medRxiv preprints
-│   ├── google_scholar_collector.py  # Google Scholar (scholarly + SerpAPI modes)
 │   └── orchestrator.py             # Merges all sources, deduplicates
 │
 ├── nlp/                             # Layer 2: NLP pipeline (coming)
@@ -118,7 +117,6 @@ Output is saved to `data/processed/collected_YYYYMMDD_HHMMSS.json`.
 | Europe PMC | Official API | up to 500 | Full text for open-access papers |
 | Semantic Scholar | Official API | up to 500 | Citation counts, cross-links |
 | bioRxiv / medRxiv | Official API | up to 500 | Preprints, cutting-edge work |
-| Google Scholar | Scraping | up to 200 | Conference papers, theses, grey literature |
 
 All sources are deduplicated by DOI → PMID → normalized title. Metadata is merged (e.g. MeSH terms from PubMed + citation count from Semantic Scholar → one record).
 
@@ -181,16 +179,6 @@ Each collected paper is a `PaperRecord`:
 
 ---
 
-## Google Scholar — known limitations
-
-Google Scholar has no official API and actively blocks automated access. Key points:
-
-- **Free mode (scholarly)**: works for development and small runs (<100 papers/session). Add `SCRAPER_API_KEY` for more reliable collection (5000 free req/month at scraperapi.com).
-- **Hard cap at 200 results**: pushing for more in one session triggers blocking.
-- **No DOIs from scholarly**: DOIs are filled in by cross-referencing with PubMed during deduplication.
-
----
-
 ## Roadmap
 
 - [x] Layer 1 — Multi-source data collection (PubMed, Europe PMC, Semantic Scholar, bioRxiv, Google Scholar)
@@ -210,8 +198,6 @@ Google Scholar has no official API and actively blocks automated access. Key poi
 |---|---|
 | `biopython` | PubMed Entrez / E-utilities |
 | `requests` + `tenacity` | HTTP with retry |
-| `scholarly` | Google Scholar scraping (free mode) |
-| `google-search-results` | SerpAPI client (paid mode) |
 | `pydantic` | Data validation and schema |
 | `loguru` | Structured logging |
 | `transformers` | BioBERT NER (Layer 2) |

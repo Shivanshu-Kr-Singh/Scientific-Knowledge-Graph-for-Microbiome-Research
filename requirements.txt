@@ -9,8 +9,6 @@ scrapy==2.11.0              # Structured web crawling
 playwright==1.43.0          # JS-rendered journal pages
 pdfminer.six==20221105      # PDF text extraction
 pymupdf==1.24.0             # Faster PDF parsing (PyMuPDF)
-scholarly==1.7.11           # Google Scholar scraper (free mode)
-google-search-results==2.4.2  # SerpAPI client (paid mode)
 
 # ── Layer 3: NLP Processing ───────────────────────────────────────────────────
 transformers==4.40.0        # BioBERT / PubMedBERT for NER

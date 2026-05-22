@@ -36,7 +36,6 @@ from collectors.pubmed_collector import PubMedCollector
 from collectors.europepmc_collector import EuropePMCCollector
 from collectors.semantic_scholar_collector import SemanticScholarCollector
 from collectors.biorxiv_collector import BioRxivCollector
-from collectors.google_scholar_collector import GoogleScholarCollector
 
 
 class CollectionOrchestrator:
@@ -45,16 +44,11 @@ class CollectionOrchestrator:
     """
 
     def __init__(self):
-        # Instantiate all collectors.
-        # Each can be disabled by commenting it out here.
-        # Google Scholar is last — it's capped at 200 results and contributes
-        # papers that the other four sources miss (conference papers, theses, etc.)
         self.collectors = [
             PubMedCollector(),
             EuropePMCCollector(),
             SemanticScholarCollector(),
             BioRxivCollector(),
-            GoogleScholarCollector(),     # Added: covers papers other sources miss
         ]
         logger.info(f"Orchestrator ready with {len(self.collectors)} collectors")
 

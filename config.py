@@ -62,14 +62,8 @@ MAX_RESULTS_PER_SOURCE = 500
 # Never hardcode secrets in source code. They come from the .env file.
 
 NCBI_EMAIL    = os.getenv("NCBI_EMAIL", "your_email@example.com")
-NCBI_API_KEY  = os.getenv("NCBI_API_KEY", "")    # Free at NCBI; gives 10 req/sec vs 3
+NCBI_API_KEY  = os.getenv("NCBI_API_KEY", "")
 SEMANTIC_SCHOLAR_API_KEY = os.getenv("SEMANTIC_SCHOLAR_API_KEY", "")
-
-# Google Scholar — choose one mode:
-#   "scholarly" (free, may get blocked) or "serpapi" (paid, reliable)
-GOOGLE_SCHOLAR_MODE = os.getenv("GOOGLE_SCHOLAR_MODE", "scholarly")
-SERPAPI_KEY         = os.getenv("SERPAPI_KEY", "")        # https://serpapi.com/
-SCRAPER_API_KEY     = os.getenv("SCRAPER_API_KEY", "")    # https://www.scraperapi.com/ (proxy for scholarly mode)
 
 # Google Scholar — no official API. Two backend options:
 #   Option A (free):  scholarly library with rotating free proxies
@@ -107,9 +101,6 @@ RATE_LIMITS = {
     "europepmc":        0.5,   # 2 req/sec
     "semantic_scholar": 1.0,   # 1 req/sec (conservative)
     "biorxiv":          0.5,   # 2 req/sec
-    "google_scholar":   8.0,   # 8 sec between requests — Scholar blocks aggressively
-                               # With free proxies: rotate every 5 requests
-                               # With ScraperAPI: can go faster (their problem to handle)
 }
 
 # How many times to retry a failed request before giving up

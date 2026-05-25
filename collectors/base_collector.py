@@ -1,23 +1,18 @@
 """
-collectors/base_collector.py
------------------------------
 Abstract base class for all data source collectors.
-
 WHY INHERITANCE HERE?
-  Every collector (PubMed, Europe PMC, etc.) needs the same core behaviours:
-    - Rate limiting (respect API limits)
-    - Retry on failure (network glitches happen)
-    - Content hash checking (don't reprocess unchanged papers)
-    - Logging
-    - Saving raw responses to disk
+Every collector (PubMed, Europe PMC, etc.) needs the same core behaviours:
+- Rate limiting (respect API limits)
+- Retry on failure (network glitches happen)
+- Content hash checking (don't reprocess unchanged papers)
+- Logging
+- Saving raw responses to disk
 
-  Instead of copy-pasting this into every collector, we write it ONCE here.
-  Each specific collector then only needs to implement:
-    - build_query()    → how to form the search query for that source
-    - fetch_batch()    → how to fetch a page of results
-    - parse_record()   → how to convert raw JSON → PaperRecord
-
-  This pattern is called the Template Method pattern.
+Instead of copy-pasting this into every collector, we write it ONCE here.
+Each specific collector then only needs to implement:
+- build_query()→ how to form the search query for that source
+- fetch_batch()→ how to fetch a page of results
+- parse_record()→ how to convert raw JSON → PaperRecord
 """
 
 import hashlib
@@ -35,13 +30,8 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from config import MAX_RETRIES, RETRY_BACKOFF_BASE, RATE_LIMITS, RAW_DIR
 from models import PaperRecord
 
-
 class BaseCollector(ABC):
-    """
-    All source collectors inherit from this.
-    Subclasses must implement: source_name, build_query, fetch_page, parse_record.
-    """
-
+    """All source collectors inherit from this. Subclasses must implement: source_name, build_query, fetch_page, parse_record."""
     # Each subclass sets this — used for rate limiting and file naming
     source_name: str = "base"
 
@@ -61,12 +51,11 @@ class BaseCollector(ABC):
 
         logger.info(f"[{self.source_name}] Collector initialized")
 
-    # ─── Rate Limiting ─────────────────────────────────────────────────────────
 
+    # ─── Rate Limiting ─────────────────────────────────────────────────────────
     def _wait_for_rate_limit(self):
         """
         Enforces a minimum gap between requests so we don't get rate-limited.
-
         HOW IT WORKS:
           We record when the last request was made. Before each new request,
           we check how much time has passed. If it's less than the minimum
@@ -79,8 +68,8 @@ class BaseCollector(ABC):
             time.sleep(wait)
         self._last_request_time = time.time()
 
-    # ─── HTTP with Retry ───────────────────────────────────────────────────────
 
+    # ─── HTTP with Retry ───────────────────────────────────────────────────────
     @retry(
         stop=stop_after_attempt(MAX_RETRIES),
         wait=wait_exponential(multiplier=RETRY_BACKOFF_BASE, min=2, max=30),
@@ -89,7 +78,6 @@ class BaseCollector(ABC):
     def _get(self, url: str, params: dict = None, **kwargs) -> requests.Response:
         """
         Makes an HTTP GET request with automatic rate limiting and retry.
-
         The @retry decorator from tenacity handles:
           - Retrying up to MAX_RETRIES times
           - Waiting 2s → 4s → 8s between retries (exponential backoff)
@@ -188,8 +176,8 @@ class BaseCollector(ABC):
         """
         ...
 
-    # ─── Main Collection Loop (same for all sources) ──────────────────────────
 
+    # ─── Main Collection Loop (same for all sources) ──────────────────────────
     def collect(
         self,
         query: str,

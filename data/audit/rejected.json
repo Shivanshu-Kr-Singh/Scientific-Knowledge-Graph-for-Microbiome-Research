@@ -1,0 +1,209 @@
+[
+  {
+    "title": "[Functional and Structural Features of RecA and RAD51 Recombinases in the Contexts of Antibiotic Resistance of Pathogenic Bacteria and Therapy of Cancer].",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Construction and immunogenicity evaluation of a tuberculosis subunit vaccine based on fusion protein AP2 and novel adjuvant ASM.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "A critical review on antibacterial mechanisms of carbon dots: a comprehensive approach to combating multidrug resistance.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Overcoming LPS-mediated resistance in gram-negative pathogens: a review of LL-37 analogs and computational design strategies.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Combination strategies targeting multiple ETC subunits as a rational approach for drug-resistant TB therapy.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "The ppsA-ppsE gene cluster in Mycobacterium bovis: structure, function, and role in virulence.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Synergistic strategies to rescue the last-resort antibiotic colistin.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "A synopsis of competence-regulated virulence in Streptococcus pneumoniae.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Activation of AMPK/SIRT1/PGC-1\u03b1 Signaling Pathway by Casticin Protects Against S. aureus-Induced Endometritis.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Septicaemic erysipeloid infection complicated by hepatic injury: the first demonstration of pathogen clearance dynamics via longitudinal PCR profiling.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Invasive group A Streptococcal infections in Franche-Comt\u00e9, France (2022-2023).",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Mycobacterium abscessus bacteremia complicated by sepsis and septic shock in a patient with multiple comorbidities: a case report.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Correlation between Staphylococcus aureus colonization and disease severity in atopic dermatitis: a systematic review and meta-analysis of randomized controlled trials.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Humoral immune response to polyvalent pneumococcal vaccine in healthy participants receiving efgartigimod: a randomized, open-label, placebo-controlled, parallel-group phase 1 trial.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Porphyromonas gingivalis outer membrane vesicles prevent the induction of tolerogenic dendritic cells by first trimester trophoblast cells.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage1_mesh",
+    "score": 0.1,
+    "reason": "no_microbiome_mesh"
+  },
+  {
+    "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage4_llm (cached)",
+    "score": 0.85,
+    "reason": "llm:Paper focuses on the human gut microbiome, its links to diet, and human hepatic health, strongly ali"
+  },
+  {
+    "title": "Breaking the culture habit: Complementing culture-based veterinary diagnostics with metagenomic data -A case study of feline and canine skin infections",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Dietary and gut microbial variation among urban and rural populations of house mice (Mus musculus domesticus)",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.133,
+    "reason": "pos:[gut] neg:[]"
+  },
+  {
+    "title": "Metagenomic insights into urolithin formation from rambutan rind extract by rat faecal-derived microbiome",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Culturomics unveils species and expands bacterial and fungal diversity in Inuit oropharyngeal microbiota",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Precision Genome Editing Unveils a Breakthrough in Reversing Antibiotic Resistance: CRISPR/Cas9 Targeting of Multi-Drug Resistance Genes in Methicillin-Resistant Staphylococcus aureus",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.167,
+    "reason": "pos:[clinical] neg:[]"
+  },
+  {
+    "title": "Straightforward semi-quantitative MALDI-TOF MS based screening approach for selection of recombinant protein producing E. Coli",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  }
+]

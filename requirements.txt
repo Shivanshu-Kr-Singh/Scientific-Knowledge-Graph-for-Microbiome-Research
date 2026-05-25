@@ -27,15 +27,8 @@ elasticsearch==8.13.0       # Full-text search index
 apscheduler==3.10.4         # Job scheduler (daily/weekly runs)
 redis==5.0.4                # Optional: Celery task broker
 
-# ── Google Scholar ────────────────────────────────────────────────────────────
-scholarly==1.7.11           # Scrapes Google Scholar (no official API exists)
-fp-free-proxy==1.0.3        # Free rotating proxy list (avoids Scholar blocks)
-# serpapi==0.1.5            # Optional paid backend — more reliable than scraping
-#   → Sign up: https://serpapi.com/ (100 free searches/month)
-
 # ── Utilities ────────────────────────────────────────────────────────────────
 python-dotenv==1.0.1        # Load secrets from .env file
 loguru==0.7.2               # Structured logging
 pydantic==2.7.1             # Data validation / schemas
 tqdm==4.66.4                # Progress bars for batch jobs
-hashlib                     # Built-in: content hashing (no install needed)

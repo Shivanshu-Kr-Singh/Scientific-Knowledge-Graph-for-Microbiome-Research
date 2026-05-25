@@ -31,31 +31,54 @@ class EuropePMCCollector(BaseCollector):
 
     def build_query(self, query: str, date_from: str, date_to: str) -> dict:
         """
-        Europe PMC uses a Lucene-style query syntax.
+        TWO-LAYER FILTER STRATEGY:
 
-        KEY FIELDS:
-          TITLE       → paper title
-          ABSTRACT    → abstract text
-          MH          → MeSH heading
-          PUB_YEAR    → publication year
-          ORGANISM    → species filter
-          HAS_FT      → has full text (y/n)
-          OPEN_ACCESS → is open access (y/n)
+        Layer A — Positive: require human context explicitly.
+          Require "human" or human-specific terms in title/abstract,
+          OR use human-specific MeSH terms.
+          Also catches papers that study humans without saying "human"
+          in the title (e.g. "Gut microbiota diversity in IBD patients").
 
-        We query for microbiome terms AND restrict to human studies.
-        The (ORGANISM:"Homo sapiens") filter maps to the same concept as
-        [Humans] in PubMed.
+        Layer B — Negative: exclude known non-human study types.
+          Zebrafish, mouse, rat, soil, plant, marine, food fermentation
+          all use "microbiome" but are never about humans. NOT filters
+          remove these cleanly.
+
+        WHY BOTH LAYERS:
+          Positive-only: misses papers that don't say "human" explicitly.
+          Negative-only: misses papers where exclusion terms aren't in title.
+          Together: high precision AND recall for human microbiome papers.
         """
-        year_from = date_from[:4]   # "2024/01/01" → "2024"
-        year_to   = date_to[:4]     # "2026/12/31" → "2026"
+        year_from = date_from[:4]
+        year_to   = date_to[:4]
 
-        q = (
-            f'(TITLE:"microbiome" OR TITLE:"metagenomics" OR TITLE:"microbiota" '
-            f'OR ABSTRACT:"human microbiome" OR MH:"Microbiota") '
-            f'AND (PUB_YEAR:[{year_from} TO {year_to}]) '
-            f'AND (ORGANISM:"Homo sapiens" OR SRC:MED OR SRC:PMC)'
+        positive = (
+            f'(TITLE:"human microbiome" OR TITLE:"human microbiota" '
+            f'OR TITLE:"human gut" OR TITLE:"gut microbiome" '
+            f'OR TITLE:"gut microbiota" OR TITLE:"intestinal microbiome" '
+            f'OR TITLE:"intestinal microbiota" OR TITLE:"oral microbiome" '
+            f'OR TITLE:"skin microbiome" OR TITLE:"vaginal microbiome" '
+            f'OR TITLE:"lung microbiome" OR TITLE:"metagenomics" '
+            f'OR MH:"Gastrointestinal Microbiome" OR MH:"Microbiota" '
+            f'OR (ABSTRACT:"human" AND ABSTRACT:"microbiome") '
+            f'OR (ABSTRACT:"patients" AND ABSTRACT:"microbiota") '
+            f'OR (ABSTRACT:"participants" AND ABSTRACT:"microbiome"))' 
         )
 
+        negative = (
+            f'NOT TITLE:"zebrafish" NOT TITLE:"murine" '
+            f'NOT TITLE:"mouse model" NOT TITLE:"rat model" '
+            f'NOT TITLE:"porcine" NOT TITLE:"bovine" NOT TITLE:"poultry" '
+            f'NOT TITLE:"soil microbiome" NOT TITLE:"soil microbiota" '
+            f'NOT TITLE:"plant microbiome" NOT TITLE:"rhizosphere" '
+            f'NOT TITLE:"marine microbiome" NOT TITLE:"aquatic microbiome" '
+            f'NOT TITLE:"fermented food" NOT TITLE:"fermented beverage" '
+            f'NOT TITLE:"kombucha" NOT TITLE:"tepache" NOT TITLE:"kefir" '
+            f'NOT TITLE:"tortoise" NOT TITLE:"frog" NOT TITLE:"zebrafish" '
+            f'NOT TITLE:"insect" NOT TITLE:"honey bee" NOT TITLE:"coral"'
+        )
+
+        q = f'{positive} AND (PUB_YEAR:[{year_from} TO {year_to}]) {negative}'
         logger.debug(f"[europepmc] Query: {q}")
         return {"q": q, "year_from": year_from, "year_to": year_to}
 
@@ -157,7 +180,11 @@ class EuropePMCCollector(BaseCollector):
             ]
 
             # ── Keywords ──────────────────────────────────────────────────────
-            keywords = raw.get("keywordList", {}).get("keyword", [])
+            keywords = [
+                str(k)
+                for k in raw.get("keywordList",{}).get("keyword",[])
+                if k is not None]
+            
             if isinstance(keywords, str):
                 keywords = [keywords]
 

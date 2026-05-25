@@ -1,23 +1,16 @@
 """
 config.py
----------
-Single source of truth for all project settings.
-
 WHY A SEPARATE CONFIG?
-  Every other file imports from here. If you ever need to change an API key,
-  a rate limit, or a date range, you change it in ONE place, not scattered
-  across 10 files. This is standard production practice.
+Every other file imports from here. If you ever need to change an API key,
+a rate limit, or a date range, you change it in ONE place, not scattered
+across 10 files. This is standard production practice.
 
-HOW TO USE:
-  Copy .env.example → .env and fill in your actual keys.
-  Then anywhere in the project: from config import settings
 """
 
 import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env file if it exists (won't override real environment variables)
 load_dotenv()
 
 # ─── Project Paths ────────────────────────────────────────────────────────────
@@ -65,15 +58,6 @@ NCBI_EMAIL    = os.getenv("NCBI_EMAIL", "your_email@example.com")
 NCBI_API_KEY  = os.getenv("NCBI_API_KEY", "")
 SEMANTIC_SCHOLAR_API_KEY = os.getenv("SEMANTIC_SCHOLAR_API_KEY", "")
 
-# Google Scholar — no official API. Two backend options:
-#   Option A (free):  scholarly library with rotating free proxies
-#   Option B (paid):  SerpAPI — $50/month, much more reliable
-#   If SERPAPI_KEY is set, Option B is used automatically.
-SERPAPI_KEY = os.getenv("SERPAPI_KEY", "")
-
-# ScraperAPI proxy service — works well with scholarly (free tier: 5000 req/month)
-# Sign up: https://www.scraperapi.com/
-SCRAPERAPI_KEY = os.getenv("SCRAPERAPI_KEY", "")
 
 # Neo4j connection (Layer 4)
 NEO4J_URI      = os.getenv("NEO4J_URI", "bolt://localhost:7687")

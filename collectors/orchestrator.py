@@ -1,13 +1,10 @@
 """
-collectors/orchestrator.py
----------------------------
 Runs all collectors in sequence, merges results, and deduplicates.
-
 WHY AN ORCHESTRATOR?
-  Without this, you'd have to manually run each collector and figure out
-  how to merge them. The orchestrator is the single entry point for Layer 1:
-  call collect_all() and get back one clean, deduplicated list of PaperRecord
-  objects — ready to feed into the NLP pipeline.
+Without this, you'd have to manually run each collector and figure out
+how to merge them. The orchestrator is the single entry point for Layer 1:
+call collect_all() and get back one clean, deduplicated list of PaperRecord
+objects — ready to feed into the NLP pipeline.
 
 DEDUPLICATION STRATEGY:
   The same paper often appears in multiple sources:
@@ -33,6 +30,7 @@ from config import (
 )
 from models import PaperRecord
 from collectors.pubmed_collector import PubMedCollector
+from collectors.relevance_filter import RelevanceFilter
 from collectors.europepmc_collector import EuropePMCCollector
 from collectors.semantic_scholar_collector import SemanticScholarCollector
 from collectors.biorxiv_collector import BioRxivCollector
@@ -101,6 +99,19 @@ class CollectionOrchestrator:
         merged = self._deduplicate_and_merge(all_records)
 
         logger.success(f"After deduplication: {len(merged)} unique papers")
+
+        # ── Step 3: Post-collection relevance filter (3-stage) ───────────────
+        # Stage 1: MeSH metadata filter (PubMed papers)
+        # Stage 2: Weighted rule scorer (all sources, from organisms.yaml)
+        # Stage 3: ML classifier (if trained model exists)
+        # + Metagenomics gate (project-specific requirement)
+        rel_filter = RelevanceFilter()
+        merged, removed, review_queue = rel_filter.filter(merged)
+        logger.info(
+            f"Relevance filter: kept {len(merged)}, "
+            f"removed {len(removed)}, "
+            f"flagged for review: {len(review_queue)}"
+        )
 
         # ── Step 4: Save to disk ───────────────────────────────────────────────
         output_path = self._save_merged(merged)

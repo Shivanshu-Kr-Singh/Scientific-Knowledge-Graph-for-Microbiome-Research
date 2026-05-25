@@ -1,0 +1,160 @@
+# config/organisms.yaml
+# External taxonomy and term configuration for the relevance filter.
+# Update terms here without touching any Python code.
+
+mesh_keep:
+  - "Gastrointestinal Microbiome"
+  - "Microbiota"
+  - "Metagenomics"
+  - "Fecal Microbiota Transplantation"
+  - "Dysbiosis"
+  - "Probiotics"
+  - "Prebiotics"
+  - "RNA, Ribosomal, 16S"
+  - "Metagenome"
+
+mesh_human_signal:
+  - "Humans"
+  - "Adult"
+  - "Aged"
+  - "Child"
+  - "Infant"
+  - "Adolescent"
+  - "Female"
+  - "Male"
+
+mesh_animal_only:
+  - "Animals"
+  - "Mice"
+  - "Rats"
+  - "Zebrafish"
+  - "Swine"
+  - "Cattle"
+  - "Dogs"
+  - "Cats"
+  - "Rabbits"
+  - "Guinea Pigs"
+
+positive_terms:
+  "human": 0.40
+  "patient": 0.30
+  "patients": 0.30
+  "cohort": 0.25
+  "clinical": 0.25
+  "participant": 0.25
+  "participants": 0.25
+  "volunteer": 0.20
+  "fecal": 0.25
+  "stool": 0.25
+  "gut microbiome": 0.50
+  "gut microbiota": 0.50
+  "intestinal microbiome": 0.50
+  "human microbiome": 0.60
+  "human microbiota": 0.60
+  "shotgun sequencing": 0.40
+  "shotgun metagenomics": 0.40
+  "16s rrna": 0.35
+  "16s sequencing": 0.35
+  "whole genome sequencing": 0.30
+  "metagenomics": 0.30
+  "metatranscriptomics": 0.30
+  "amplicon sequencing": 0.30
+  "prjna": 0.50
+  "srp": 0.40
+  "srr": 0.40
+  "gse": 0.40
+  "ena": 0.30
+  "mgnify": 0.30
+  "gut": 0.20
+  "intestinal": 0.20
+  "colorectal": 0.25
+  "oral cavity": 0.20
+  "vaginal": 0.20
+  "ibd": 0.35
+  "crohn": 0.35
+  "ulcerative colitis": 0.35
+  "irritable bowel": 0.35
+  "colorectal cancer": 0.35
+  "type 2 diabetes": 0.30
+  "obesity": 0.20
+  "sepsis": 0.25
+  "randomized controlled": 0.35
+  "clinical trial": 0.35
+
+negative_terms:
+  "zebrafish": -0.80
+  "danio rerio": -0.90
+  "murine": -0.70
+  "mouse model": -0.70
+  "germ-free mice": -0.85
+  "gnotobiotic": -0.80
+  "knockout mice": -0.80
+  "rat model": -0.60
+  "sprague-dawley": -0.70
+  "porcine": -0.70
+  "swine": -0.65
+  "bovine": -0.65
+  "poultry": -0.70
+  "broiler": -0.70
+  "salmon": -0.65
+  "tilapia": -0.65
+  "shrimp": -0.65
+  "coral": -0.65
+  "oyster": -0.60
+  "tortoise": -0.80
+  "turtle": -0.75
+  "frog": -0.75
+  "amphibian": -0.70
+  "lizard": -0.70
+  "honey bee": -0.75
+  "termite": -0.70
+  "drosophila": -0.70
+  "cockroach": -0.65
+  "soil microbiome": -0.80
+  "soil microbiota": -0.80
+  "rhizosphere": -0.90
+  "plant microbiome": -0.80
+  "phyllosphere": -0.85
+  "marine microbiome": -0.80
+  "ocean microbiome": -0.80
+  "aquatic microbiome": -0.75
+  "sediment": -0.60
+  "wastewater": -0.70
+  "compost": -0.65
+  "fermented beverage": -0.75
+  "fermented food": -0.75
+  "kombucha": -0.80
+  "tepache": -0.90
+  "kefir microbiome": -0.75
+  "cheese microbiome": -0.75
+  "wine microbiome": -0.75
+  "kimchi": -0.70
+  "canine gut": -0.60
+  "feline gut": -0.60
+  "dog gut": -0.60
+  "equine gut": -0.60
+
+thresholds:
+  keep: 0.70
+  review: 0.40
+  reject: 0.40
+
+metagenomics_gate:
+  enabled: true
+  terms:
+    - "metagenom"
+    - "shotgun"
+    - "16s"
+    - "amplicon"
+    - "sequencing"
+    - "prjna"
+    - "srp"
+    - "srr"
+    - "gse"
+    - "ena"
+    - "mgnify"
+    - "metatranscriptom"
+    - "whole genome"
+    - "wgs"
+    - "microbiome"
+    - "microbiota"

@@ -1,32 +1,21 @@
 """
-collectors/biorxiv_collector.py
----------------------------------
 Fetches preprints from bioRxiv and medRxiv.
-
 WHY PREPRINTS?
-  In fast-moving fields like microbiome research, important work appears
-  on bioRxiv months or years before journal publication. Tracking preprints
-  lets you:
-    - Catch cutting-edge work early
-    - Track which preprints eventually get published (and link them)
-    - See how conclusions change between preprint and final version
+In fast-moving fields like microbiome research, important work appears
+on bioRxiv months or years before journal publication. Tracking preprints lets you:-
+- Catch cutting-edge work early
+- Track which preprints eventually get published (and link them)
+- See how conclusions change between preprint and final version
 
-HOW THE API WORKS:
-  bioRxiv has a simple REST API that returns paper metadata in date ranges.
-  No API key required. Returns JSON.
-
-API DOCS: https://api.biorxiv.org/
+Returns JSON.
 """
 
-from typing import Optional
+from typing import Optional 
 from loguru import logger
-
 from models import PaperRecord
 from collectors.base_collector import BaseCollector
 
-
 BIORXIV_BASE = "https://api.biorxiv.org"
-
 
 class BioRxivCollector(BaseCollector):
     """Fetches preprints from bioRxiv and medRxiv."""
@@ -73,7 +62,7 @@ class BioRxivCollector(BaseCollector):
                 f"{BIORXIV_BASE}/details/{server}/"
                 f"{query_params['date_from']}/"
                 f"{query_params['date_to']}/"
-                f"{page * page_size}/json"
+                f"{page * 100}/json"
             )
 
             try:
@@ -84,11 +73,9 @@ class BioRxivCollector(BaseCollector):
                 # Client-side keyword filtering:
                 # bioRxiv API returns ALL papers in a date range regardless of topic.
                 # We only keep papers mentioning microbiome-related terms.
-                MICROBIOME_KEYWORDS = {
-                    "microbiome", "microbiota", "metagenom", "16s rrna",
-                    "gut bacteria", "intestinal flora", "microbial communit",
-                    "dysbiosis", "probiotics", "gut microb"
-                }
+                MICROBIOME_KEYWORDS = {"microbiome", "microbiota", "metagenom", "16s", "microbial",
+    "dysbiosis", "probiotics", "gut bacteria", "microorganism",
+    "bacteriome", "virome", "mycobiome"}
 
                 filtered = [
                     item for item in collection

@@ -1,23 +1,5 @@
 [
   {
-    "title": "Correlation between Staphylococcus aureus colonization and disease severity in atopic dermatitis: a systematic review and meta-analysis of randomized controlled trials.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "review",
-    "stage": "gate_metagenomics",
-    "score": 0.35,
-    "reason": "no_sequencing_terms (prev_score=0.7)"
-  },
-  {
-    "title": "Humoral immune response to polyvalent pneumococcal vaccine in healthy participants receiving efgartigimod: a randomized, open-label, placebo-controlled, parallel-group phase 1 trial.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "review",
-    "stage": "gate_metagenomics",
-    "score": 0.5,
-    "reason": "no_sequencing_terms (prev_score=1.0)"
-  },
-  {
     "title": "Selenium: From Redox Signaling to Interactions with the Gut Microbiome",
     "source": "semantic_scholar",
     "year": 2026,

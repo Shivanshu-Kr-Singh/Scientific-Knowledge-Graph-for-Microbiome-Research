@@ -24,20 +24,12 @@
     "cached": true
   },
   {
-    "title": "Mycobacterium abscessus bacteremia complicated by sepsis and septic shock in a patient with multiple comorbidities: a case report.",
-    "source": "pubmed",
-    "keep": false,
-    "confidence": 0.98,
-    "reason": "Pure pathogen/infectious disease case report focusing on Mycobacterium abscessus bacteremia, with no",
-    "cached": false
-  },
-  {
     "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
     "source": "semantic_scholar",
     "keep": false,
     "confidence": 0.95,
     "reason": "Human infant respiratory microbiome study focusing on bacterial diversity and strain dynamics.",
-    "cached": false
+    "cached": true
   },
   {
     "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
@@ -53,7 +45,7 @@
     "keep": false,
     "confidence": 0.99,
     "reason": "Primary focus is an animal model (DSS-induced colitis in Sdc1 knockout mice) despite human disease c",
-    "cached": false
+    "cached": true
   },
   {
     "title": "Selenium: From Redox Signaling to Interactions with the Gut Microbiome",

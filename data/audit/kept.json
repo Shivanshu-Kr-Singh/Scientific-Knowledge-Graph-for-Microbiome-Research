@@ -1,5 +1,68 @@
 [
   {
+    "title": "The \"oral-gut axis\" transmission of microorganisms in colorectal cancer: Insights from Peptostreptococcus' perspective.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.7,
+    "reason": "human+microbiome+animal_mesh:human_wins"
+  },
+  {
+    "title": "Spices for Targeting the Gut Microbiome to Improve Cardiometabolic Health.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.9,
+    "reason": "human+microbiome_mesh:humans,gastrointestinal microbiome"
+  },
+  {
+    "title": "Spices Beyond Antioxidants: From the Gut to the Brain.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.9,
+    "reason": "human+microbiome_mesh:humans,gastrointestinal microbiome"
+  },
+  {
+    "title": "Cardiometabolic and Microbiome Effects of Spices and Herbs.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.9,
+    "reason": "human+microbiome_mesh:humans,gastrointestinal microbiome"
+  },
+  {
+    "title": "Bayesian Sparse Regression for Microbiome-Metabolite Data Integration.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.9,
+    "reason": "human+microbiome_mesh:humans,gastrointestinal microbiome"
+  },
+  {
+    "title": "Cefiderocol activity against multidrug-resistant isolates from the PERSEUS study: relationship between cefiderocol minimum inhibitory concentration and clinical outcomes.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 0.833,
+    "reason": "pos:[patients,clinical,patient] neg:[]"
+  },
+  {
+    "title": "Ketogenic diet as a therapeutic strategy for neurodegenerative diseases: from mechanisms to translational challenges.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.7,
+    "reason": "human+microbiome+animal_mesh:human_wins"
+  },
+  {
     "title": "Bacterial specificity of the gut microbiome predicts bone density in primary hyperparathyroidism.",
     "source": "pubmed",
     "year": 2026,
@@ -25,24 +88,6 @@
     "stage": "stage1_metadata",
     "score": 0.9,
     "reason": "human+microbiome_mesh:humans,gastrointestinal microbiome"
-  },
-  {
-    "title": "Paradoxical enrichment of Akkermansia in children with poorly controlled asthma: a longitudinal study.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "keep",
-    "stage": "stage1_metadata",
-    "score": 0.9,
-    "reason": "human+microbiome_mesh:humans,gastrointestinal microbiome"
-  },
-  {
-    "title": "Multidimensional exploration of the relationship between gut microbiota and colorectal cancer: focus on clinical tumorigenesis and treatment.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "keep",
-    "stage": "stage1_metadata",
-    "score": 0.7,
-    "reason": "human+microbiome+animal_mesh:human_wins"
   },
   {
     "title": "Dose-Dependent Alterations of the Human Gut Microbiome During Oral Iron Supplementation: A Randomized Study in Iron-Deficient Non-Anaemic Women.",
@@ -117,15 +162,6 @@
     "reason": "pos:[intestinal microbiome,gut microbiome,intestinal] neg:[]"
   },
   {
-    "title": "Gut Microbiota and Psychological Distress in Fibromyalgia: A Systematic Review.",
-    "source": "europepmc",
-    "year": 2026,
-    "decision": "keep",
-    "stage": "stage2_rules",
-    "score": 1.0,
-    "reason": "pos:[intestinal microbiome,randomized controlled,gut microbiota] neg:[]"
-  },
-  {
     "title": "Association between soft drink consumption and depression mediated by gut microbiome: a perspective.",
     "source": "europepmc",
     "year": 2026,
@@ -133,6 +169,15 @@
     "stage": "stage2_rules",
     "score": 1.0,
     "reason": "pos:[intestinal microbiome,gut microbiome,participants] neg:[]"
+  },
+  {
+    "title": "Gut Microbiota and Psychological Distress in Fibromyalgia: A Systematic Review.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[intestinal microbiome,randomized controlled,gut microbiota] neg:[]"
   },
   {
     "title": "Interspecies interaction controls &lt;i&gt;Escherichia coli&lt;/i&gt; growth in human gut microbiome samples.",
@@ -171,15 +216,6 @@
     "reason": "pos:[gut microbiome,metagenomics,clinical] neg:[]"
   },
   {
-    "title": "The human gut microbiome across the life course.",
-    "source": "europepmc",
-    "year": 2026,
-    "decision": "keep",
-    "stage": "stage2_rules",
-    "score": 0.933,
-    "reason": "pos:[gut microbiome,human,ena] neg:[]"
-  },
-  {
     "title": "The neuroactive potential of the elderly human gut microbiome is associated with mental health status.",
     "source": "europepmc",
     "year": 2026,
@@ -187,6 +223,15 @@
     "stage": "stage2_rules",
     "score": 1.0,
     "reason": "pos:[intestinal microbiome,gut microbiome,participants] neg:[]"
+  },
+  {
+    "title": "The human gut microbiome across the life course.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 0.933,
+    "reason": "pos:[gut microbiome,human,ena] neg:[]"
   },
   {
     "title": "Human Gut Microbiome Can Degrade the Sweetener Acesulfame K with Potential Damaging Effects in the Intestinal Barrier Function.",

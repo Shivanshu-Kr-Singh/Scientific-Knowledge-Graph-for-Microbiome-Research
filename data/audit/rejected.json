@@ -1,147 +1,129 @@
 [
   {
+    "title": "Phytochemical signatures and multifunctional bioactivities of two Ocimum basilicum varieties (Obb vs. Obg): antimicrobial, antioxidant, and anticancer potential.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[human] neg:[]"
+  },
+  {
     "title": "[Functional and Structural Features of RecA and RAD51 Recombinases in the Contexts of Antibiotic Resistance of Pathogenic Bacteria and Therapy of Cancer].",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[human] neg:[pathogen]"
   },
   {
     "title": "Construction and immunogenicity evaluation of a tuberculosis subunit vaccine based on fusion protein AP2 and novel adjuvant ASM.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[human] neg:[]"
   },
   {
     "title": "A critical review on antibacterial mechanisms of carbon dots: a comprehensive approach to combating multidrug resistance.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage4_llm (cached)",
+    "score": 0.95,
+    "reason": "llm:The paper is a review focused on antibacterial mechanisms of carbon dots against multidrug-resistant"
   },
   {
     "title": "Overcoming LPS-mediated resistance in gram-negative pathogens: a review of LL-37 analogs and computational design strategies.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage2_rules",
+    "score": 0.167,
+    "reason": "pos:[clinical,human] neg:[pathogen]"
   },
   {
     "title": "Combination strategies targeting multiple ETC subunits as a rational approach for drug-resistant TB therapy.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage4_llm (cached)",
+    "score": 0.99,
+    "reason": "llm:Pure pathogen study (Mycobacterium tuberculosis) focusing on drug targets and metabolism, with no hu"
   },
   {
     "title": "The ppsA-ppsE gene cluster in Mycobacterium bovis: structure, function, and role in virulence.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[human] neg:[pathogen]"
   },
   {
     "title": "Synergistic strategies to rescue the last-resort antibiotic colistin.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage4_llm (cached)",
+    "score": 0.95,
+    "reason": "llm:Paper focuses on antibiotic resistance and specific pathogens, not human microbiome profiling or com"
   },
   {
     "title": "A synopsis of competence-regulated virulence in Streptococcus pneumoniae.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[sepsis,human,ena] neg:[colonization,bacteremia,sepsis]"
   },
   {
     "title": "Activation of AMPK/SIRT1/PGC-1\u03b1 Signaling Pathway by Casticin Protects Against S. aureus-Induced Endometritis.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[human] neg:[]"
   },
   {
     "title": "Septicaemic erysipeloid infection complicated by hepatic injury: the first demonstration of pathogen clearance dynamics via longitudinal PCR profiling.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage2_rules",
+    "score": 0.367,
+    "reason": "pos:[clinical,patient,human] neg:[pathogen]"
   },
   {
     "title": "Invasive group A Streptococcal infections in Franche-Comt\u00e9, France (2022-2023).",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage2_rules",
+    "score": 0.033,
+    "reason": "pos:[patients,clinical,patient] neg:[streptococcal infection,bacteremia]"
   },
   {
     "title": "Mycobacterium abscessus bacteremia complicated by sepsis and septic shock in a patient with multiple comorbidities: a case report.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
-  },
-  {
-    "title": "Correlation between Staphylococcus aureus colonization and disease severity in atopic dermatitis: a systematic review and meta-analysis of randomized controlled trials.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
-  },
-  {
-    "title": "Humoral immune response to polyvalent pneumococcal vaccine in healthy participants receiving efgartigimod: a randomized, open-label, placebo-controlled, parallel-group phase 1 trial.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
-  },
-  {
-    "title": "Porphyromonas gingivalis outer membrane vesicles prevent the induction of tolerogenic dendritic cells by first trimester trophoblast cells.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage1_mesh",
-    "score": 0.1,
-    "reason": "no_microbiome_mesh"
+    "stage": "stage4_llm",
+    "score": 0.98,
+    "reason": "llm:Pure pathogen/infectious disease case report focusing on Mycobacterium abscessus bacteremia, with no"
   },
   {
     "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
     "source": "semantic_scholar",
     "year": 2026,
     "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.0,
-    "reason": "pos:[] neg:[]"
+    "stage": "stage4_llm",
+    "score": 0.95,
+    "reason": "llm:Human infant respiratory microbiome study focusing on bacterial diversity and strain dynamics."
   },
   {
     "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
@@ -149,8 +131,8 @@
     "year": 2026,
     "decision": "reject",
     "stage": "stage4_llm (cached)",
-    "score": 0.85,
-    "reason": "llm:Paper focuses on the human gut microbiome, its links to diet, and human hepatic health, strongly ali"
+    "score": 0.88,
+    "reason": "llm:Paper focuses on the human gut microbiome, diet, and hepatic (liver) health, indicating strong human"
   },
   {
     "title": "Breaking the culture habit: Complementing culture-based veterinary diagnostics with metagenomic data -A case study of feline and canine skin infections",
@@ -169,6 +151,15 @@
     "stage": "stage2_rules",
     "score": 0.133,
     "reason": "pos:[gut] neg:[]"
+  },
+  {
+    "title": "Intestinal epithelial Syndecan-1 maintains mucosal homeostasis in inflammatory bowel disease by enhancing Faecalibacterium prausnitzii biofilm formation",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.99,
+    "reason": "llm:Primary focus is an animal model (DSS-induced colitis in Sdc1 knockout mice) despite human disease c"
   },
   {
     "title": "Metagenomic insights into urolithin formation from rambutan rind extract by rat faecal-derived microbiome",
@@ -194,11 +185,29 @@
     "year": 2024,
     "decision": "reject",
     "stage": "stage2_rules",
-    "score": 0.167,
-    "reason": "pos:[clinical] neg:[]"
+    "score": 0.0,
+    "reason": "pos:[clinical] neg:[pathogen]"
   },
   {
     "title": "Straightforward semi-quantitative MALDI-TOF MS based screening approach for selection of recombinant protein producing E. Coli",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Orally delivered biodegradable targeted inflammation resolving pectin-coated nanoparticles induce anastomotic healing post intestinal surgery",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm (cached)",
+    "score": 0.95,
+    "reason": "llm:Paper focuses on therapeutic nanoparticles for IBD and anastomotic healing in humans, but lacks any "
+  },
+  {
+    "title": "De novo multi-mechanism antimicrobial peptide design via multimodal deep learning",
     "source": "biorxiv",
     "year": 2024,
     "decision": "reject",

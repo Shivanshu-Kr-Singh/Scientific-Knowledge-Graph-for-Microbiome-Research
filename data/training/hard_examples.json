@@ -1,0 +1,64 @@
+[
+  {
+    "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
+    "paper_decision": "reject",
+    "true_label": "keep",
+    "failure_type": "llm_false_negative",
+    "stage": "stage4_llm",
+    "reason": "human gut microbiome review wrongly rejected"
+  },
+
+  {
+    "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
+    "paper_decision": "reject",
+    "true_label": "keep",
+    "failure_type": "llm_false_negative",
+    "stage": "stage4_llm",
+    "reason": "human respiratory microbiome study wrongly rejected"
+  },
+
+  {
+    "title": "From gut to brain: effects of fecal microbiota transplants from humans to rats on hippocampal gene regulation - a study on anorexia nervosa",
+    "paper_decision": "keep",
+    "true_label": "reject",
+    "failure_type": "rule_false_positive",
+    "stage": "stage2_rules",
+    "reason": "human→rat transplant animal study"
+  },
+
+  {
+    "title": "Correlation between Staphylococcus aureus colonization and disease severity in atopic dermatitis",
+    "paper_decision": "review",
+    "true_label": "reject",
+    "failure_type": "gate_overreview",
+    "stage": "gate_metagenomics",
+    "reason": "pathogen review not microbiome"
+  },
+
+  {
+    "title": "Humoral immune response to polyvalent pneumococcal vaccine in healthy participants receiving efgartigimod",
+    "paper_decision": "review",
+    "true_label": "reject",
+    "failure_type": "gate_overreview",
+    "stage": "gate_metagenomics",
+    "reason": "vaccine trial not microbiome"
+  },
+
+  {
+    "title": "Sexually Transmitted Infections Among Patients on Antiretroviral Treatment",
+    "paper_decision": "review",
+    "true_label": "reject",
+    "failure_type": "gate_overreview",
+    "stage": "gate_metagenomics",
+    "reason": "infection study not microbiome"
+  },
+
+  {
+    "title": "Selenium: From Redox Signaling to Interactions with the Gut Microbiome",
+    "paper_decision": "review",
+    "true_label": "review",
+    "failure_type": "true_ambiguous",
+    "stage": "stage4_llm",
+    "reason": "borderline review paper"
+  }
+]

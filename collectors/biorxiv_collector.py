@@ -55,42 +55,45 @@ class BioRxivCollector(BaseCollector):
 
         We fetch from both bioRxiv and medRxiv.
         """
+
         all_results = []
-
         for server in query_params["servers"]:
-            url = (
-                f"{BIORXIV_BASE}/details/{server}/"
-                f"{query_params['date_from']}/"
-                f"{query_params['date_to']}/"
-                f"{page * 100}/json"
-            )
+            # scan deeper into preprints
+            for page_offset in range(0,200,100):
+                url=(
+                    f"{BIORXIV_BASE}/details/{server}/"
+                    f"{query_params['date_from']}/"
+                    f"{query_params['date_to']}/"
+                    f"{page_offset}/json")
 
-            try:
-                response = self._get(url)
-                data = response.json()
-                collection = data.get("collection", [])
+                try:
+                    response = self._get(url)
+                    data = response.json()
+                    collection = data.get("collection",[])
+                    if not collection:
+                        break
 
-                # Client-side keyword filtering:
-                # bioRxiv API returns ALL papers in a date range regardless of topic.
-                # We only keep papers mentioning microbiome-related terms.
-                MICROBIOME_KEYWORDS = {"microbiome", "microbiota", "metagenom", "16s", "microbial",
-    "dysbiosis", "probiotics", "gut bacteria", "microorganism",
-    "bacteriome", "virome", "mycobiome"}
+                    MICROBIOME_KEYWORDS = {"microbiome","microbiota","metagenom","16s","microbial",
+                                           "dysbiosis","probiotics","gut bacteria","microorganism","bacteriome","virome","mycobiome"}
 
-                filtered = [
-                    item for item in collection
-                    if self._is_microbiome_related(item, MICROBIOME_KEYWORDS)
-                ]
+                    filtered = [
+                        item
+                        for item in collection
+                        if self._is_microbiome_related(item,MICROBIOME_KEYWORDS)]
 
-                # Tag each item with which server it came from
-                for item in filtered:
-                    item["_server"] = server
+                    for item in filtered:
+                        item["_server"] = server
 
-                all_results.extend(filtered)
-                logger.info(f"[biorxiv] {server} page {page}: {len(filtered)}/{len(collection)} papers kept after filtering")
+                    all_results.extend(
+                        filtered)
 
-            except Exception as e:
-                logger.error(f"[biorxiv] Failed to fetch from {server}: {e}")
+                    logger.info(
+                        f"[biorxiv] {server} offset {page_offset}: "
+                        f"{len(filtered)}/{len(collection)} papers kept")
+
+                except Exception as e:
+                    logger.error(
+                        f"[biorxiv] Failed {server}: {e}")
 
         self._save_raw(f"page_{page}", {"results": all_results})
         return {"records": all_results}

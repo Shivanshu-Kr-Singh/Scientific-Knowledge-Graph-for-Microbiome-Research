@@ -1,18 +1,74 @@
 [
   {
+    "title": "A critical review on antibacterial mechanisms of carbon dots: a comprehensive approach to combating multidrug resistance.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "The paper is a review focused on antibacterial mechanisms of carbon dots against multidrug-resistant",
+    "cached": true
+  },
+  {
+    "title": "Combination strategies targeting multiple ETC subunits as a rational approach for drug-resistant TB therapy.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "Pure pathogen study (Mycobacterium tuberculosis) focusing on drug targets and metabolism, with no hu",
+    "cached": true
+  },
+  {
+    "title": "Synergistic strategies to rescue the last-resort antibiotic colistin.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "Paper focuses on antibiotic resistance and specific pathogens, not human microbiome profiling or com",
+    "cached": true
+  },
+  {
+    "title": "Mycobacterium abscessus bacteremia complicated by sepsis and septic shock in a patient with multiple comorbidities: a case report.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "Pure pathogen/infectious disease case report focusing on Mycobacterium abscessus bacteremia, with no",
+    "cached": false
+  },
+  {
+    "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "Human infant respiratory microbiome study focusing on bacterial diversity and strain dynamics.",
+    "cached": false
+  },
+  {
     "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
     "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.85,
-    "reason": "Paper focuses on the human gut microbiome, its links to diet, and human hepatic health, strongly ali",
+    "confidence": 0.88,
+    "reason": "Paper focuses on the human gut microbiome, diet, and hepatic (liver) health, indicating strong human",
     "cached": true
+  },
+  {
+    "title": "Intestinal epithelial Syndecan-1 maintains mucosal homeostasis in inflammatory bowel disease by enhancing Faecalibacterium prausnitzii biofilm formation",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "Primary focus is an animal model (DSS-induced colitis in Sdc1 knockout mice) despite human disease c",
+    "cached": false
   },
   {
     "title": "Selenium: From Redox Signaling to Interactions with the Gut Microbiome",
     "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.6,
-    "reason": "Title suggests a review article on selenium and gut microbiome. Without an abstract, it's unclear if",
+    "confidence": 0.65,
+    "reason": "Review article discussing selenium and gut microbiome interactions; human relevance not explicitly s",
+    "cached": true
+  },
+  {
+    "title": "Orally delivered biodegradable targeted inflammation resolving pectin-coated nanoparticles induce anastomotic healing post intestinal surgery",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "Paper focuses on therapeutic nanoparticles for IBD and anastomotic healing in humans, but lacks any ",
     "cached": true
   }
 ]

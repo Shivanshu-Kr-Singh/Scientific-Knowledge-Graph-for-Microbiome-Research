@@ -32,6 +32,8 @@ from tqdm import tqdm
 
 from models import PaperRecord
 from collectors.audit_logger import AuditLogger
+from collectors.metadata_filter import MetadataFilter
+from collectors.ml_classifier import MLClassifier
 from collections import Counter
 import json
 from pathlib import Path
@@ -81,14 +83,16 @@ class RelevanceFilter:
         self.mesh_human = [m.lower() for m in self.cfg.get("mesh_human_signal", [])]
         self.mesh_animal= [m.lower() for m in self.cfg.get("mesh_animal_only", [])]
 
-        # ML model — loaded only if trained model file exists
-        self._ml_model     = None
-        self._ml_vectorizer = None
-        if MODEL_PATH.exists():
-            self._load_ml_model()
-            logger.info("[filter] ML classifier loaded")
-        else:
-            logger.info("[filter] No ML model found — using rules only (Stage 3 skipped)")
+        # Standalone stage modules
+        self._metadata_filter = MetadataFilter()
+        self._ml_classifier   = MLClassifier()
+
+        # Legacy inline ML (kept for train_ml_model compatibility)
+        self._ml_model      = self._ml_classifier._model
+        self._ml_vectorizer = self._ml_classifier._encoder
+
+        status = "active" if self._ml_classifier.trained else "inactive (not trained yet)"
+        logger.info(f"[filter] Pipeline ready | Stage3 ML: {status}")
 
     # ── Public interface ───────────────────────────────────────────────────────
 
@@ -123,43 +127,60 @@ class RelevanceFilter:
     # ── Evaluation pipeline ────────────────────────────────────────────────────
 
     def _evaluate(self, paper: PaperRecord) -> FilterVerdict:
-        """Routes each paper through the appropriate stages."""
+        """
+        Routes each paper through stages in correct order:
+        Stage1(MeSH) → Stage2(rules) → Gate → Stage3(ML) → Stage4(LLM)
+
+        Cheap/precise stages first. Each stage only runs if the previous
+        stage couldn't make a confident decision.
+        """
         source = (paper.source or "").lower()
 
-        # PubMed papers → Stage 1 first (MeSH is human-curated and reliable)
+        # ── Stage 1: MeSH metadata filter (PubMed papers only) ───────────────
+        # Use the standalone MetadataFilter module for clean separation
         if "pubmed" in source:
-            v = self._stage1_mesh(paper)
-            if v.score >= self.thresholds["keep"] or v.score < self.thresholds["review"]:
-                return v
-            # Borderline PubMed → fall through to Stage 2
+            mv = self._metadata_filter.evaluate(paper)
+            if mv.decision == "KEEP":
+                return FilterVerdict(keep=True,  score=mv.score,
+                                     stage=mv.stage, reason=mv.reason)
+            if mv.decision == "REJECT":
+                return FilterVerdict(keep=False, score=mv.score,
+                                     stage=mv.stage, reason=mv.reason)
+            # UNKNOWN → fall through to Stage 2
 
-        # All sources → Stage 2 (weighted rule scorer)
+        # ── Stage 2: Weighted rule scorer (all sources) ───────────────────────
         v = self._stage2_rules(paper)
 
-        # Confident reject
+        # Confident reject from rules
         if v.score < self.thresholds["review"]:
             return v
 
-        # Run gate
-        v = self._metagenomics_gate(paper,v)
-
-        # Borderline → send to LLM
-        if v.review:
-            return self._stage4_llm(paper,v)
-
-        # High confidence keep
+        # Confident keep from rules → apply gate first, then return
         if v.score >= self.thresholds["keep"]:
-            return v
+            return self._metagenomics_gate(paper, v)
 
-        # Stage3 ML
-        if self._ml_model is not None:
-            v = self._stage3_ml(paper,v)
-            if v.score >= self.thresholds[
-                "keep"]:
-                return v
+        # ── Borderline [review, keep) — continue through remaining stages ────
 
-        # Stage4
-        return self._stage4_llm(paper,v)
+        # ── Metagenomics gate BEFORE ML/LLM ──────────────────────────────────
+        # Eliminates papers lacking sequencing terms cheaply
+        # No point sending soil/animal papers to ML or LLM
+        gate_v = self._metagenomics_gate(paper, v)
+        if not gate_v.keep and not gate_v.review:
+            # Gate confidently rejected — stop here
+            return gate_v
+
+        # ── Stage 3: ML classifier ────────────────────────────────────────────
+        ml_verdict = self._ml_classifier.evaluate(paper)
+        if ml_verdict.decision == "KEEP":
+            return FilterVerdict(keep=True, score=ml_verdict.prob,
+                                 stage=ml_verdict.stage, reason=ml_verdict.reason)
+        if ml_verdict.decision == "REJECT":
+            return FilterVerdict(keep=False, score=ml_verdict.prob,
+                                 stage=ml_verdict.stage, reason=ml_verdict.reason)
+        # BORDERLINE or UNTRAINED → Stage 4 LLM
+
+        # ── Stage 4: LLM verifier (only truly uncertain papers) ───────────────
+        return self._stage4_llm(paper, gate_v)
 
     # ── Stage 1: MeSH metadata filter ─────────────────────────────────────────
 

@@ -271,15 +271,27 @@ Return JSON ONLY.
 }
 """
 
-FEW_SHOT_EXAMPLES=[
-{"title": "Gut microbiome in IBD patients: 16S rRNA cohort study",
-    "output": {"keep": True,  "confidence": 0.97, "reason": "human IBD cohort with 16S sequencing"}},
-{"title": "Zebrafish gut microbiome response to antibiotic treatment",
-    "output": {"keep": False, "confidence": 0.99, "reason": "zebrafish animal model"}},
-{"title": "Microbiota of homemade tepache fermented beverage",
-    "output": {"keep": False, "confidence": 0.98, "reason": "food fermentation not human study"}},
-{"title": "Shotgun metagenomics of gut microbiome in type 2 diabetes",
-    "output": {"keep": True,  "confidence": 0.96, "reason": "human T2D metagenomics study"}},]
+FEW_SHOT_EXAMPLES = [
+    {
+        "title": "Decoding the diet-gut-liver axis",
+        "output": {"keep": True, "confidence": 0.95, "reason": "human gut microbiome review"}
+    },
+    {
+        "title": "Gut microbiome in IBD patients: 16S rRNA cohort study",
+        "output": {"keep": True, "confidence": 0.97, "reason": "human IBD cohort with 16S sequencing"}
+    },
+    {
+        "title": "Zebrafish gut microbiome response to antibiotic treatment",
+        "output": {"keep": False, "confidence": 0.99, "reason": "zebrafish animal model"}
+    },
+    {
+        "title": "Microbiota of homemade tepache fermented beverage",
+        "output": {"keep": False, "confidence": 0.98, "reason": "food fermentation not human study"}
+    },
+    {
+        "title": "Shotgun metagenomics of gut microbiome in type 2 diabetes",
+        "output": {"keep": True, "confidence": 0.96, "reason": "human T2D metagenomics study"}
+}]
 
 
 class LLMVerifier:
@@ -300,7 +312,7 @@ class LLMVerifier:
                 self._available = True
                 logger.info(f"[llm_verifier] Gemini ready | model={LLM_MODEL} | FREE tier")
             except ImportError:
-                logger.warning("[llm_verifier] Run: pip install google-generativeai")
+                logger.warning("[llm_verifier] Run: pip install google-genai")
             except Exception as e:
                 logger.error(f"[llm_verifier] Gemini setup failed: {e}")
 

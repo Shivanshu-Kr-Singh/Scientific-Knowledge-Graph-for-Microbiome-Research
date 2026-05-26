@@ -32,3 +32,8 @@ python-dotenv==1.0.1        # Load secrets from .env file
 loguru==0.7.2               # Structured logging
 pydantic==2.7.1             # Data validation / schemas
 tqdm==4.66.4                # Progress bars for batch jobs
+
+google-genai            # Google Gemini SDK
+
+# ── Relevance Filter ──────────────────────────────────────────────────────────
+pyyaml==6.0.1               # organisms.yaml config loading

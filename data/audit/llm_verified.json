@@ -1,66 +1,306 @@
 [
   {
-    "title": "A critical review on antibacterial mechanisms of carbon dots: a comprehensive approach to combating multidrug resistance.",
+    "title": "Capnocytophaga canimorsus Bacteremia Without Animal Bite: A Rare but Severe Infection to Consider in Older Adults.",
     "source": "pubmed",
     "keep": false,
-    "confidence": 0.95,
-    "reason": "The paper is a review focused on antibacterial mechanisms of carbon dots against multidrug-resistant",
+    "confidence": 0.5,
+    "reason": "ollama_error",
     "cached": true
   },
   {
-    "title": "Combination strategies targeting multiple ETC subunits as a rational approach for drug-resistant TB therapy.",
+    "title": "Ligand-Induced Trigger RNA Cleavage Enables Programmable Gene Expression Regulation via Strand Displacement in Prokaryotic and Eukaryotic Cells.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.5,
+    "reason": "ollama_error",
+    "cached": true
+  },
+  {
+    "title": "Clinical characteristics, treatment outcomes, and predictors of early mortality in Vibrio vulnificus infection in Eastern Thailand: A 6.5-year multicenter cohort study.",
     "source": "pubmed",
     "keep": false,
     "confidence": 0.99,
-    "reason": "Pure pathogen study (Mycobacterium tuberculosis) focusing on drug targets and metabolism, with no hu",
+    "reason": "pure pathogen/infectious disease with no microbiome profiling",
     "cached": true
   },
   {
-    "title": "Synergistic strategies to rescue the last-resort antibiotic colistin.",
+    "title": "Epidemiology of microbiological findings in the lower respiratory tract in mechanically ventilated patients with and without inhalation injury.",
+    "source": "pubmed",
+    "keep": true,
+    "confidence": 0.92,
+    "reason": "human mechanically ventilated patients with lower respiratory tract microbiome analysis",
+    "cached": true
+  },
+  {
+    "title": "Clinical management and pharmaceutical care of severe Chlamydia psittaci Pneumonia complicated with rhabdomyolysis and multiple organ dysfunction: a case report and literature review.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "animal model (zoonotic disease in humans, but no human microbiome study)",
+    "cached": true
+  },
+  {
+    "title": "The non-bacterial oncobiome: the role of the mycobiome and virome in tumor plasticity.",
+    "source": "pubmed",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human oncobiome review with mycobiome and virome",
+    "cached": true
+  },
+  {
+    "title": "Bacterial contamination of surgical instruments in 25-gauge pars plana vitrectomy: Incidence and risk factors.",
     "source": "pubmed",
     "keep": false,
     "confidence": 0.95,
-    "reason": "Paper focuses on antibiotic resistance and specific pathogens, not human microbiome profiling or com",
+    "reason": "surgical instruments not human microbiome study",
+    "cached": true
+  },
+  {
+    "title": "Performance of EUCAST disc diffusion and supplementary methods to detect reduced susceptibility to linezolid in enterococci- the NordicAST LRE-study.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "animal model not applicable, focus on antimicrobial susceptibility testing",
+    "cached": true
+  },
+  {
+    "title": "Experimental evolution reveals adaptive pathways to reduced antibiotic susceptibility in Pseudomonas aeruginosa biofilms.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "pure pathogen study without human microbiome profiling",
+    "cached": true
+  },
+  {
+    "title": "Cyclomodulins and supplementary virulence genes as determinants of clinical severity and antimicrobial resistance in uropathogenic Escherichia coli and Klebsiella pneumoniae.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "pure pathogen/infectious disease with no microbiome profiling",
+    "cached": true
+  },
+  {
+    "title": "[Development and preliminary clinical evaluation of a CRISPR-AaCas12b-based nucleic acid detection method for Mycobacterium tuberculosis].",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "pure pathogen/infectious disease with no microbiome profiling",
+    "cached": true
+  },
+  {
+    "title": "Staphylococcus aureus small colony variants originating from the lower respiratory tract are associated with persistent pulmonary infection.",
+    "source": "pubmed",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human pulmonary microbiome study",
+    "cached": true
+  },
+  {
+    "title": "Histoplasmosis with mediastinal lymphadenopathy in an immunocompetent municipal water department employee in Texas: a case report.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "focus on infectious disease with no microbiome profiling",
+    "cached": true
+  },
+  {
+    "title": "Antimicrobial activity of ceftolozane/tazobactam, imipenem/relebactam, and comparators against Gram-negative pathogens collected in Arabian Gulf countries: SMART 2020-2024.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "pure pathogen/infectious disease with no microbiome profiling",
+    "cached": true
+  },
+  {
+    "title": "Dual valve Achromobacter endocarditis in a long-term acute care unit: a case report and review of the literature.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "animal model not applicable, focus on infectious disease without microbiome profiling",
+    "cached": true
+  },
+  {
+    "title": "Evolving Etiology of Community-Acquired Pneumonia.",
+    "source": "pubmed",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human CAP study with microbiome implications",
+    "cached": true
+  },
+  {
+    "title": "Skin and Soft Tissue Infections.",
+    "source": "pubmed",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human skin microbiome study",
+    "cached": true
+  },
+  {
+    "title": "Guanilated Quinolones with Dual Antitubercular and Anti-Inflammatory Activities.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "pure pathogen/infectious disease with no microbiome profiling",
+    "cached": true
+  },
+  {
+    "title": "Characteristics of children with first febrile urinary tract infection caused by Staphylococcus species.",
+    "source": "pubmed",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human pediatric UTI study with microbiome focus",
+    "cached": true
+  },
+  {
+    "title": "Animal farming and the oral microbiome in the Agricultural Health Study",
+    "source": "merged:europepmc+europepmc",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human oral microbiome study",
+    "cached": true
+  },
+  {
+    "title": "Protein-Mediated Interactions Between Gut Microbiota, Probiotics and Host Immunity",
+    "source": "merged:europepmc+europepmc",
+    "keep": true,
+    "confidence": 0.9,
+    "reason": "human gut microbiome review",
+    "cached": true
+  },
+  {
+    "title": "The Human Breast Microbiome: From Homeostasis to Malignancy, Mechanistic Insights and Therapeutic Perspectives",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.5,
+    "reason": "ollama_error",
     "cached": true
   },
   {
     "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
     "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.95,
-    "reason": "Human infant respiratory microbiome study focusing on bacterial diversity and strain dynamics.",
+    "confidence": 0.5,
+    "reason": "ollama_error",
     "cached": true
   },
   {
     "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
     "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.88,
-    "reason": "Paper focuses on the human gut microbiome, diet, and hepatic (liver) health, indicating strong human",
+    "confidence": 0.5,
+    "reason": "ollama_error",
     "cached": true
   },
   {
     "title": "Intestinal epithelial Syndecan-1 maintains mucosal homeostasis in inflammatory bowel disease by enhancing Faecalibacterium prausnitzii biofilm formation",
     "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.99,
-    "reason": "Primary focus is an animal model (DSS-induced colitis in Sdc1 knockout mice) despite human disease c",
+    "confidence": 0.5,
+    "reason": "ollama_error",
     "cached": true
   },
   {
     "title": "Selenium: From Redox Signaling to Interactions with the Gut Microbiome",
     "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.65,
-    "reason": "Review article discussing selenium and gut microbiome interactions; human relevance not explicitly s",
+    "confidence": 0.5,
+    "reason": "ollama_error",
+    "cached": true
+  },
+  {
+    "title": "Sex shapes the human genitourinary microbiome, including many species recognized as uropathogens: urine profiles from a population-level shotgun metagenomics study",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.96,
+    "reason": "human genitourinary microbiome with shotgun metagenomics",
+    "cached": true
+  },
+  {
+    "title": "Decoding the Microbial Diversity of Indian Fermented Foods: Integrating Ethnobiology, Multi-Omics and Functional Insights.",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.97,
+    "reason": "food fermentation not human study",
+    "cached": true
+  },
+  {
+    "title": "The effect of pet dog exposure on gut antibiotic resistome and microbiome of their owners.",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.92,
+    "reason": "human gut microbiome with antibiotic resistome analysis",
+    "cached": true
+  },
+  {
+    "title": "Creation of a fecal microbiota bank network in the Russian Federation",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human fecal microbiota bank review",
+    "cached": true
+  },
+  {
+    "title": "Metagenomic insights into the influence of goose farming on the gut microbiome and antibiotic resistome of workers",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human gut microbiome with metagenomic analysis",
+    "cached": true
+  },
+  {
+    "title": "Metagenomic Comparison of Bat Colony Resistomes Across Anthropogenic and Pristine Habitats",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "environmental microbiome study of bat colonies",
+    "cached": true
+  },
+  {
+    "title": "Computational Metagenomic Analysis of the Breast Oncomicrobiome: Taxonomic Profiling and Functional Insights",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.96,
+    "reason": "human breast microbiome metagenomics study",
+    "cached": true
+  },
+  {
+    "title": "Bifidobacterium animalis subsp. lactis Bbm-19 ameliorates insomnia by remodeling the gut microbiota and restoring \u03b3-aminobutyric acid and serotonin signaling.",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "animal model (mouse) used for insomnia study",
+    "cached": true
+  },
+  {
+    "title": "Flavonifractor plautii as a Next-Generation Probiotic Enhancing the NGP F/P Index in a Simulated Human Gut Microbiome Ecosystem",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human gut microbiome study with simulated ecosystem",
+    "cached": true
+  },
+  {
+    "title": "The Human Respiratory Virome in Health and Disease: Interactions, Dysbiosis, and Methodological Challenges",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.85,
+    "reason": "human respiratory microbiome with metagenomics",
+    "cached": true
+  },
+  {
+    "title": "Can Beetroot (Beta vulgaris) Support Brain Health? A Perspective Review on Alzheimer\u2019s Disease",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "food/fermentation not human study",
     "cached": true
   },
   {
     "title": "Orally delivered biodegradable targeted inflammation resolving pectin-coated nanoparticles induce anastomotic healing post intestinal surgery",
     "source": "biorxiv",
     "keep": false,
-    "confidence": 0.95,
-    "reason": "Paper focuses on therapeutic nanoparticles for IBD and anastomotic healing in humans, but lacks any ",
+    "confidence": 0.5,
+    "reason": "ollama_error",
     "cached": true
   }
 ]

@@ -52,16 +52,18 @@ class NLPPipeline:
     Produces a list of EnrichedPaperRecords ready for Layer 3.
     """
 
-    def __init__(self, use_ner_model: bool = False):
+    def __init__(self, use_ner_model: bool = False, use_llm: bool = False):
         """
-        use_ner_model: Whether to load BioBERT for NER.
+        use_ner_model: Whether to load BioBERT for NER (Tier 2).
                        False = rules only (fast, no GPU needed)
                        True  = rules + BioBERT (better recall, needs ~4GB RAM or GPU)
+        use_llm: Whether to use Ollama LLM for Tier 3 entity extraction.
+                 Requires Ollama running with a model loaded.
         """
         logger.info("Initializing NLP pipeline modules...")
         self.article_classifier  = ArticleClassifier()
         self.journal_classifier  = JournalClassifier()
-        self.ner_extractor       = NERExtractor(use_model=use_ner_model)
+        self.ner_extractor       = NERExtractor(use_model=use_ner_model, use_llm=use_llm)
         self.section_parser      = SectionParser()
         self.data_av_extractor   = DataAvailabilityExtractor()
         self.fulltext = (FullTextOrchestrator())

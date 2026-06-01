@@ -8,6 +8,7 @@ across 10 files. This is standard production practice.
 """
 
 import os
+from dataclasses import dataclass
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -59,10 +60,47 @@ NCBI_API_KEY  = os.getenv("NCBI_API_KEY", "")
 SEMANTIC_SCHOLAR_API_KEY = os.getenv("SEMANTIC_SCHOLAR_API_KEY", "")
 
 
-# Neo4j connection (Layer 4)
-NEO4J_URI      = os.getenv("NEO4J_URI", "bolt://localhost:7687")
-NEO4J_USER     = os.getenv("NEO4J_USER", "neo4j")
-NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "password")
+# ─── Enhanced Knowledge Graph Configuration ──────────────────────────────────
+# The enhanced knowledge graph system uses semantic relationships with provenance
+# tracking, evidence aggregation, and entity normalization.
+#
+# MIGRATION NOTE: The old flat relationship system has been decommissioned.
+# All new data should use the enhanced pipeline.
+
+# Neo4j Enhanced Knowledge Graph (primary system)
+NEO4J_ENHANCED_URI      = os.getenv("NEO4J_ENHANCED_URI", "bolt://localhost:7687")
+NEO4J_ENHANCED_USER     = os.getenv("NEO4J_ENHANCED_USER", "neo4j")
+NEO4J_ENHANCED_PASSWORD = os.getenv("NEO4J_ENHANCED_PASSWORD", "password")
+NEO4J_ENHANCED_DATABASE = os.getenv("NEO4J_ENHANCED_DATABASE", "neo4j_enhanced")
+
+# Enhanced Pipeline Settings
+ENHANCED_PIPELINE_ENABLED = os.getenv("ENHANCED_PIPELINE_ENABLED", "true").lower() == "true"
+ENHANCED_BATCH_SIZE = int(os.getenv("ENHANCED_BATCH_SIZE", "100"))
+ENHANCED_NUM_WORKERS = int(os.getenv("ENHANCED_NUM_WORKERS", "8"))
+
+# Query Engine Settings
+QUERY_CACHE_ENABLED = os.getenv("QUERY_CACHE_ENABLED", "true").lower() == "true"
+QUERY_CACHE_TTL_HOURS = int(os.getenv("QUERY_CACHE_TTL_HOURS", "24"))
+QUERY_TIMEOUT_SECONDS = int(os.getenv("QUERY_TIMEOUT_SECONDS", "30"))
+
+# Entity Normalization Settings
+ENTITY_NORMALIZATION_ENABLED = os.getenv("ENTITY_NORMALIZATION_ENABLED", "true").lower() == "true"
+ENTITY_FUZZY_MATCH_THRESHOLD = int(os.getenv("ENTITY_FUZZY_MATCH_THRESHOLD", "2"))  # Edit distance
+
+# Provenance Tracking Settings
+PROVENANCE_CONTEXT_SENTENCES = int(os.getenv("PROVENANCE_CONTEXT_SENTENCES", "2"))  # ±N sentences
+PROVENANCE_VALIDATION_STRICT = os.getenv("PROVENANCE_VALIDATION_STRICT", "true").lower() == "true"
+
+# Evidence Aggregation Settings
+MIN_CONFIDENCE_THRESHOLD = float(os.getenv("MIN_CONFIDENCE_THRESHOLD", "0.5"))
+REIFICATION_ENABLED = os.getenv("REIFICATION_ENABLED", "true").lower() == "true"
+
+# Legacy System (DEPRECATED - kept for rollback only)
+# DO NOT USE FOR NEW DATA
+NEO4J_LEGACY_URI      = os.getenv("NEO4J_LEGACY_URI", "bolt://localhost:7688")
+NEO4J_LEGACY_USER     = os.getenv("NEO4J_LEGACY_USER", "neo4j")
+NEO4J_LEGACY_PASSWORD = os.getenv("NEO4J_LEGACY_PASSWORD", "password")
+NEO4J_LEGACY_DATABASE = os.getenv("NEO4J_LEGACY_DATABASE", "neo4j_legacy")
 
 # PostgreSQL connection (Layer 4)
 POSTGRES_URI = os.getenv(
@@ -113,3 +151,107 @@ SCHEDULE = {
 
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")   # DEBUG | INFO | WARNING | ERROR
 LOG_FILE  = LOG_DIR / "miner.log"
+
+
+# ─── Ollama / LLM Backend Configuration ──────────────────────────────────────
+
+class ConfigurationError(Exception):
+    """Raised at import time when environment variable configuration is invalid."""
+    pass
+
+
+@dataclass(frozen=True)
+class BackendConfig:
+    """Typed, immutable configuration for the LLM backend."""
+    llm_backend: str                  # "ollama" | "gemini"
+    ollama_base_url: str              # e.g. "http://localhost:11434"
+    ollama_extraction_model: str      # e.g. "llama3"
+    ollama_grounding_model: str       # e.g. "llama3"
+    ollama_timeout_seconds: int       # ≥ 1
+    ollama_max_retries: int           # ≥ 0
+    ollama_retry_backoff_base: float  # ≥ 1.0
+    ollama_fallback_to_gemini: bool
+    gemini_extraction_model: str      # e.g. "gemini-2.0-flash"
+    gemini_grounding_model: str       # e.g. "gemini-2.5-flash"
+
+
+def _load_backend_config() -> BackendConfig:
+    """
+    Reads env vars, validates types and accepted values, raises ConfigurationError
+    on any violation. Called once at module import; result stored as BACKEND_CONFIG.
+    """
+    # ── LLM_BACKEND ──────────────────────────────────────────────────────────
+    llm_backend = os.getenv("LLM_BACKEND", "ollama")
+    accepted_backends = {"ollama", "gemini"}
+    if llm_backend not in accepted_backends:
+        raise ConfigurationError(
+            f"LLM_BACKEND={llm_backend!r} is not valid. "
+            f"Accepted values: {sorted(accepted_backends)}"
+        )
+
+    # ── OLLAMA_TIMEOUT_SECONDS ────────────────────────────────────────────────
+    _timeout_raw = os.getenv("OLLAMA_TIMEOUT_SECONDS", "30")
+    try:
+        ollama_timeout_seconds = int(_timeout_raw)
+        if ollama_timeout_seconds < 1:
+            raise ValueError("must be ≥ 1")
+    except (ValueError, TypeError):
+        raise ConfigurationError(
+            f"OLLAMA_TIMEOUT_SECONDS={_timeout_raw!r} is not a valid integer ≥ 1"
+        )
+
+    # ── OLLAMA_MAX_RETRIES ────────────────────────────────────────────────────
+    _retries_raw = os.getenv("OLLAMA_MAX_RETRIES", "3")
+    try:
+        ollama_max_retries = int(_retries_raw)
+        if ollama_max_retries < 0:
+            raise ValueError("must be ≥ 0")
+    except (ValueError, TypeError):
+        raise ConfigurationError(
+            f"OLLAMA_MAX_RETRIES={_retries_raw!r} is not a valid integer ≥ 0"
+        )
+
+    # ── OLLAMA_RETRY_BACKOFF_BASE ─────────────────────────────────────────────
+    _backoff_raw = os.getenv("OLLAMA_RETRY_BACKOFF_BASE", "2.0")
+    try:
+        import math as _math
+        ollama_retry_backoff_base = float(_backoff_raw)
+        if not _math.isfinite(ollama_retry_backoff_base) or ollama_retry_backoff_base < 1.0:
+            raise ValueError("must be a finite float ≥ 1.0")
+    except (ValueError, TypeError):
+        raise ConfigurationError(
+            f"OLLAMA_RETRY_BACKOFF_BASE={_backoff_raw!r} is not a valid float ≥ 1.0"
+        )
+
+    # ── OLLAMA_FALLBACK_TO_GEMINI ─────────────────────────────────────────────
+    _fallback_raw = os.getenv("OLLAMA_FALLBACK_TO_GEMINI", "false")
+    ollama_fallback_to_gemini = _fallback_raw.lower() == "true"
+
+    # ── GEMINI_API_KEY presence checks ────────────────────────────────────────
+    gemini_api_key = os.getenv("GEMINI_API_KEY", "")
+
+    if llm_backend == "gemini" and not gemini_api_key:
+        raise ConfigurationError(
+            "LLM_BACKEND is set to 'gemini' but GEMINI_API_KEY is not set in the environment"
+        )
+
+    if ollama_fallback_to_gemini and not gemini_api_key:
+        raise ConfigurationError(
+            "OLLAMA_FALLBACK_TO_GEMINI is 'true' but GEMINI_API_KEY is not set in the environment"
+        )
+
+    return BackendConfig(
+        llm_backend=llm_backend,
+        ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
+        ollama_extraction_model=os.getenv("OLLAMA_EXTRACTION_MODEL", "llama3"),
+        ollama_grounding_model=os.getenv("OLLAMA_GROUNDING_MODEL", "llama3"),
+        ollama_timeout_seconds=ollama_timeout_seconds,
+        ollama_max_retries=ollama_max_retries,
+        ollama_retry_backoff_base=ollama_retry_backoff_base,
+        ollama_fallback_to_gemini=ollama_fallback_to_gemini,
+        gemini_extraction_model=os.getenv("GEMINI_EXTRACTION_MODEL", "gemini-2.0-flash"),
+        gemini_grounding_model=os.getenv("GEMINI_GROUNDING_MODEL", "gemini-2.5-flash"),
+    )
+
+
+BACKEND_CONFIG: BackendConfig = _load_backend_config()

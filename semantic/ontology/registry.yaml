@@ -1,0 +1,748 @@
+# ===== fallback =====
+
+unknown:
+
+  ontology: provisional
+
+  aliases: []
+
+
+# ===== microbiome / organism =====
+
+taxon:
+
+  ontology: NCBI
+
+  aliases:
+
+    - microorganism
+    - microbe
+    - bacteria
+    - species
+    - genus
+
+
+organism:
+
+  ontology: NCBI
+
+  aliases:
+
+    - host organism
+
+
+strain:
+
+  ontology: NCBI
+
+  aliases:
+
+    - isolate
+    - lineage
+
+
+# ===== disease / clinical =====
+
+disease:
+
+  ontology: MONDO
+
+  aliases:
+
+    - disorder
+    - syndrome
+    - disease state
+
+
+phenotype:
+
+  ontology: HPO
+
+  aliases:
+
+    - phenotype
+
+
+clinical_endpoint:
+
+  ontology: MONDO
+
+  aliases:
+
+    - endpoint
+    - outcome
+
+
+symptom:
+
+  ontology: HPO
+
+  aliases:
+
+    - clinical symptom
+
+
+# ===== molecular biology =====
+
+gene:
+
+  ontology: HGNC
+
+  aliases:
+
+    - gene marker
+
+
+protein:
+
+  ontology: UniProt
+
+  aliases:
+
+    - protein marker
+
+
+microRNA:
+
+  ontology: miRBase
+
+  aliases:
+
+    - mirna
+    - rna
+
+
+transcript:
+
+  ontology: Ensembl
+
+  aliases:
+
+    - transcriptome
+
+
+metabolite:
+
+  ontology: ChEBI
+
+  aliases:
+
+    - metabolite
+    - metabolomic marker
+
+
+pathway:
+
+  ontology: GO
+
+  aliases:
+
+    - pathway
+    - signaling pathway
+
+
+enzyme:
+
+  ontology: EC
+
+  aliases:
+
+    - catalyst
+
+
+biomarker:
+
+  ontology: custom
+
+  promote_threshold: 100
+
+  aliases:
+
+    - marker
+    - molecular marker
+
+
+# ===== intervention / treatment =====
+
+drug:
+
+  ontology: DrugBank
+
+  aliases:
+
+    - drug
+    - medicine
+    - pharmaceutical
+    - treatment
+    - supplement
+
+
+intervention:
+
+  ontology: custom
+
+  aliases:
+
+    - intervention
+    - therapeutic intervention
+
+
+probiotic:
+
+  ontology: NCBI
+
+  aliases:
+
+    - probiotic
+
+
+prebiotic:
+
+  ontology: ChEBI
+
+  aliases:
+
+    - prebiotic
+
+
+diet:
+
+  ontology: FoodOn
+
+  aliases:
+
+    - nutrition
+    - dietary intervention
+
+
+# ===== anatomy =====
+
+body_site:
+
+  ontology: UBERON
+
+  aliases:
+
+    - body site
+    - anatomical site
+    - organ
+
+
+cell_type:
+
+  ontology: CellOntology
+
+  aliases:
+
+    - cell
+
+
+tissue:
+
+  ontology: UBERON
+
+  aliases:
+
+    - tissue
+
+
+# ===== sequencing / omics =====
+
+sequencing:
+
+  ontology: custom
+
+  aliases:
+
+    - sequencing
+    - sequencing method
+    - sequencing platform
+
+
+omics:
+
+  ontology: custom
+
+  aliases:
+
+    - omics
+    - metagenomics
+    - metatranscriptomics
+    - metabolomics
+    - proteomics
+
+
+platform:
+
+  ontology: custom
+
+  aliases:
+
+    - instrument
+    - sequencing platform
+
+
+statistical_method:
+
+  ontology: custom
+
+  aliases:
+
+    - statistical test
+    - model
+
+
+# ===== datasets =====
+
+dataset:
+
+  ontology: SRA
+
+  aliases:
+
+    - dataset
+    - accession
+
+
+repository:
+
+  ontology: custom
+
+  aliases:
+
+    - repository
+    - archive
+
+
+accession:
+
+  ontology: SRA
+
+  aliases:
+
+    - accession number
+    - project id
+
+
+# ===== population / cohort =====
+
+population:
+
+  ontology: custom
+
+  aliases:
+
+    - cohort
+    - patient group
+    - demographic
+    - subjects
+    - participants
+
+
+ethnicity:
+
+  ontology: custom
+
+  aliases:
+
+    - ethnicity
+    - ancestry
+
+
+geography:
+
+  ontology: GeoNames
+
+  aliases:
+
+    - location
+    - country
+    - region
+
+
+sex:
+
+  ontology: custom
+
+  aliases:
+
+    - male
+    - female
+    - gender
+
+
+age_group:
+
+  ontology: custom
+
+  aliases:
+
+    - age
+    - age group
+
+
+timepoint:
+
+  ontology: custom
+
+  aliases:
+
+    - follow up
+    - longitudinal point
+
+
+sample_type:
+
+  ontology: custom
+
+  aliases:
+
+    - specimen
+    - sample
+
+
+# ===== evidence / study =====
+
+study_design:
+
+  ontology: custom
+
+  aliases:
+
+    - rct
+    - cohort
+    - case control
+    - cross sectional
+    - longitudinal
+    - time series
+    - pilot study
+    - protocol
+    - review
+    - meta analysis
+
+
+effect_size:
+
+  ontology: custom
+
+  aliases:
+
+    - effect size
+
+
+effect_direction:
+
+  ontology: custom
+
+  aliases:
+
+    - increase
+    - decrease
+    - enrichment
+    - depletion
+
+
+confounder:
+
+  ontology: custom
+
+  aliases:
+
+    - confounding factor
+
+
+causal_claim:
+
+  ontology: custom
+
+  aliases:
+
+    - causal relation
+    - association
+
+
+quality_metric:
+
+  ontology: custom
+
+  aliases:
+
+    - quality score
+    - confidence
+
+
+# ===== genetics / variants =====
+
+variant:
+
+  ontology: dbSNP
+
+  aliases:
+
+    - snp
+    - variant
+
+
+mutation:
+
+  ontology: ClinVar
+
+  aliases:
+
+    - mutation
+
+
+genotype:
+
+  ontology: custom
+
+  aliases:
+
+    - genotype
+
+
+# ===== microbiome function =====
+
+functional_gene:
+
+  ontology: KEGG
+
+  aliases:
+
+    - functional gene
+
+
+module:
+
+  ontology: KEGG
+
+  aliases:
+
+    - module
+
+
+metabolic_process:
+
+  ontology: GO
+
+  aliases:
+
+    - metabolism
+    - process
+
+
+# ===== environment =====
+
+environment:
+
+  ontology: ENVO
+
+  aliases:
+
+    - environment
+
+
+exposure:
+
+  ontology: ENVO
+
+  aliases:
+
+    - exposure
+
+
+lifestyle:
+
+  ontology: custom
+
+  aliases:
+
+    - smoking
+    - exercise
+    - diet habit
+
+
+# ===== experimental design =====
+
+control_group:
+
+  ontology: custom
+
+  aliases:
+
+    - control
+
+
+case_group:
+
+  ontology: custom
+
+  aliases:
+
+    - case
+
+
+arm:
+
+  ontology: custom
+
+  aliases:
+
+    - trial arm
+
+
+# ===== measurements =====
+
+p_value:
+
+  ontology: custom
+
+  aliases:
+
+    - p value
+
+
+confidence_interval:
+
+  ontology: custom
+
+  aliases:
+
+    - ci
+
+
+hazard_ratio:
+
+  ontology: custom
+
+  aliases:
+
+    - hr
+
+
+odds_ratio:
+
+  ontology: custom
+
+  aliases:
+
+    - or
+
+
+fold_change:
+
+  ontology: custom
+
+  aliases:
+
+    - fold change
+
+
+abundance_metric:
+
+  ontology: custom
+
+  aliases:
+
+    - abundance
+
+
+alpha_diversity:
+
+  ontology: custom
+
+  aliases:
+
+    - shannon
+    - simpson
+
+
+beta_diversity:
+
+  ontology: custom
+
+  aliases:
+
+    - bray curtis
+    - unifrac
+
+
+# ===== microbiome specific =====
+
+alpha_diversity_index:
+
+  ontology: custom
+
+  aliases:
+
+    - shannon index
+
+
+beta_diversity_index:
+
+  ontology: custom
+
+  aliases:
+
+    - unifrac distance
+
+
+enterotype:
+
+  ontology: custom
+
+  aliases:
+
+    - enterotype
+
+
+microbial_signature:
+
+  ontology: custom
+
+  promote_threshold: 100
+
+  aliases:
+
+    - signature
+
+
+resistome:
+
+  ontology: custom
+
+  aliases:
+
+    - resistome
+
+
+virulome:
+
+  ontology: custom
+
+  aliases:
+
+    - virulome
+
+
+mobilome:
+
+  ontology: custom
+
+  aliases:
+
+    - mobilome
+
+
+# ===== publication =====
+
+publication_entity:
+
+  ontology: custom
+
+  aliases:
+
+    - author
+    - institution
+    - funding
+    - citation

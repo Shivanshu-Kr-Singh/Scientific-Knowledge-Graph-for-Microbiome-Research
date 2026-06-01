@@ -1,0 +1,10 @@
+shotgun metagenomics:
+  - shotgun sequencing
+  - shotgun metagenomics
+
+16s:
+  - 16s
+  - 16s rrna
+
+metatranscriptomics:
+  - metatranscriptomics

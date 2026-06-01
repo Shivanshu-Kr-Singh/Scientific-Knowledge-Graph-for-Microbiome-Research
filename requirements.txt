@@ -37,3 +37,10 @@ google-genai            # Google Gemini SDK
 
 # ── Relevance Filter ──────────────────────────────────────────────────────────
 pyyaml==6.0.1               # organisms.yaml config loading
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+hypothesis==6.155.0         # Property-based testing framework
+
+# ── API Layer ─────────────────────────────────────────────────────────────────
+fastapi==0.109.0            # Modern web framework for building APIs
+uvicorn==0.27.0             # ASGI server for FastAPI

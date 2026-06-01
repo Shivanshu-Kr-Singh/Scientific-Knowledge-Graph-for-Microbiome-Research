@@ -1,6 +1,30 @@
 """
 Entry point for the Microbiome Literature Miner.
-Run this to kick off Layer 1:
+
+This script provides entry points for all three layers of the pipeline:
+
+Layer 1 (Collection): Fetch papers from PubMed, Europe PMC, Semantic Scholar, bioRxiv
+  - Run with: RUN_LAYER=1 python main.py
+  - Output: data/processed/collected_YYYYMMDD_HHMMSS.json
+
+Layer 2 (NLP Enrichment): Extract entities, classify articles, parse sections
+  - Run with: RUN_LAYER=2 python main.py
+  - Output: data/processed/enriched_YYYYMMDD_HHMMSS.json
+
+Layer 3 (Knowledge Graph): Build enhanced knowledge graph with semantic relationships
+  - Run with: RUN_LAYER=3 python main.py
+  - Output: Neo4j database (neo4j_enhanced) + JSON files
+  - Components: SemanticRelationshipExtractor → ProvenanceEncoder → 
+                RelationshipReifier → EnhancedNeo4jLoader
+
+Configuration:
+  Layer 1: MAX_PER_SOURCE (default: 50)
+  Layer 2: USE_NER_MODEL (default: false)
+  Layer 3: ENHANCED_PIPELINE_ENABLED (default: true)
+           LOAD_TO_NEO4J (default: true)
+           ENHANCED_BATCH_SIZE (default: 100)
+           ENHANCED_NUM_WORKERS (default: 8)
+
 During development, set MAX_RESULTS_PER_SOURCE small (e.g. 20) so you're
 not waiting 10 minutes for a full run while testing.
 """
@@ -98,7 +122,7 @@ def run_layer1(max_per_source: int = 100):
 
     return papers
 
-def run_layer2(use_ner_model: bool = False):
+def run_layer2(use_ner_model: bool = False, use_llm: bool = False):
     """
     Runs the NLP pipeline on the latest Layer 1 collected data.
 
@@ -108,7 +132,8 @@ def run_layer2(use_ner_model: bool = False):
       3. Saves enriched_YYYYMMDD.json to data/processed/
       4. Returns list of EnrichedPaperRecords for Layer 3
 
-    set use_ner_model=True for BioBERT NER (needs: pip install transformers torch)
+    set USE_NER_MODEL=true for BioBERT NER (needs: pip install transformers torch)
+    set USE_LLM=true for Ollama LLM extraction (needs Ollama running with a model)
     """
     from collectors.orchestrator import CollectionOrchestrator
     from nlp.pipeline import NLPPipeline
@@ -118,10 +143,92 @@ def run_layer2(use_ner_model: bool = False):
     papers = orchestrator.load_latest()
     logger.info(f"Loaded {len(papers)} papers from Layer 1")
 
-    pipeline = NLPPipeline(use_ner_model=use_ner_model)
+    pipeline = NLPPipeline(use_ner_model=use_ner_model, use_llm=use_llm)
     enriched = pipeline.process_all(papers)
     logger.success(f"Layer 2 complete. {len(enriched)} enriched records ready for Layer 3.")
     return enriched
+
+
+def run_layer3(
+    enable_enhanced_pipeline: bool = True,
+    load_to_neo4j: bool = True,
+    batch_size: int = 100,
+    num_workers: int = 8
+):
+    """
+    Runs the enhanced knowledge graph pipeline (Layer 3).
+    
+    WHAT HAPPENS:
+      1. Loads latest enriched papers from Layer 2
+      2. Extracts semantic relationships with provenance tracking
+      3. Reifies claims by aggregating evidence across papers
+      4. Loads edges and claims into Neo4j (separate database)
+      5. Saves intermediate results to JSON files
+    
+    This pipeline runs in parallel with the existing system, writing to
+    a separate Neo4j database instance (neo4j_enhanced) for safe migration.
+    
+    Configuration:
+      - enable_enhanced_pipeline: Enable/disable the enhanced pipeline
+      - load_to_neo4j: Whether to load results into Neo4j
+      - batch_size: Papers per batch (default: 100)
+      - num_workers: Parallel workers (default: 8, recommended: 8-16)
+    
+    Requirements: 16.1 (parallel execution), 17.1 (component wiring)
+    """
+    from nlp.pipeline import NLPPipeline
+    from graph.enhanced_kg_pipeline import EnhancedKGPipeline, PipelineConfig
+    
+    logger.info("Starting Layer 3 — Enhanced Knowledge Graph Pipeline")
+    
+    # Load enriched papers from Layer 2
+    nlp_pipeline = NLPPipeline()
+    enriched_papers = nlp_pipeline.load_latest()
+    logger.info(f"Loaded {len(enriched_papers)} enriched papers from Layer 2")
+    
+    # Create pipeline configuration from environment variables
+    config = PipelineConfig.from_env()
+    config.enabled = enable_enhanced_pipeline
+    config.batch_size = batch_size
+    config.num_workers = num_workers
+    config.save_intermediate = True
+    
+    # Initialize and run the enhanced pipeline
+    # This wires together: SemanticRelationshipExtractor → ProvenanceEncoder → 
+    # RelationshipReifier → EnhancedNeo4jLoader
+    pipeline = EnhancedKGPipeline(config)
+    
+    try:
+        results = pipeline.run(enriched_papers, load_to_neo4j=load_to_neo4j)
+        
+        if results["status"] == "success":
+            logger.success(
+                f"Layer 3 complete. "
+                f"Extracted {results['edges_count']} relationships, "
+                f"created {results['claims_count']} reified claims. "
+                f"Processing time: {results['processing_time_seconds']:.2f}s"
+            )
+            
+            # Print statistics
+            stats = results["statistics"]
+            logger.info("\nPipeline Statistics:")
+            logger.info(f"  Total relationships: {stats.get('total_relationships', 0)}")
+            logger.info(f"  Associations: {stats.get('associations', 0)}")
+            logger.info(f"  Interventions: {stats.get('interventions', 0)}")
+            logger.info(f"  Methodologies: {stats.get('methodologies', 0)}")
+            logger.info(f"  Reified claims: {results['claims_count']}")
+            logger.info(f"  Processing time: {results['processing_time_seconds']:.2f}s")
+            
+            if load_to_neo4j:
+                logger.info("\nResults loaded into Neo4j database: neo4j_enhanced")
+                logger.info("Next step: Run research queries to validate the knowledge graph")
+        else:
+            logger.warning(f"Pipeline status: {results['status']}")
+        
+        return results
+        
+    finally:
+        pipeline.close()
 
 
 def train_relevance_model():
@@ -160,6 +267,19 @@ if __name__ == "__main__":
         run_layer1(max_per_source=MAX)
     elif mode == "2":
         USE_MODEL = os.getenv("USE_NER_MODEL", "false").lower() == "true"
-        run_layer2(use_ner_model=USE_MODEL)
+        USE_LLM   = os.getenv("USE_LLM", "false").lower() == "true"
+        run_layer2(use_ner_model=USE_MODEL, use_llm=USE_LLM)
+    elif mode == "3":
+        # Layer 3: Enhanced Knowledge Graph Pipeline
+        ENABLE_ENHANCED = os.getenv("ENHANCED_PIPELINE_ENABLED", "true").lower() == "true"
+        LOAD_TO_NEO4J = os.getenv("LOAD_TO_NEO4J", "true").lower() == "true"
+        BATCH_SIZE = int(os.getenv("ENHANCED_BATCH_SIZE", "100"))
+        NUM_WORKERS = int(os.getenv("ENHANCED_NUM_WORKERS", "8"))
+        run_layer3(
+            enable_enhanced_pipeline=ENABLE_ENHANCED,
+            load_to_neo4j=LOAD_TO_NEO4J,
+            batch_size=BATCH_SIZE,
+            num_workers=NUM_WORKERS
+        )
     elif mode == "train_filter":
         train_relevance_model()

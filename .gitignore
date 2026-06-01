@@ -32,7 +32,32 @@ ENV/
 *.swp
 *.swo
 
+# ── Runtime databases ─────────────────────────────────────────────
+*.db
+data/audit_log.db
+graph/entity_normalization.db
+
+# ── Runtime data files ────────────────────────────────────────────
+data/audit/
+data/training/
+data/conflicting_statistics_log.json
+data/curator_review_queue.json
+data/incomplete_extraction_queue.json
+data/query_timeout_log.json
+data/validation_queue.json
+
+# ── LLM / semantic cache ──────────────────────────────────────────
+semantic/cache/
+.hypothesis/
+
+# ── Test / coverage artifacts ─────────────────────────────────────
+.coverage
+.pytest_cache/
+coverage*.json
+htmlcov/
+
 # ── OS files ──────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 desktop.ini
+

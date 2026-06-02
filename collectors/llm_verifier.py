@@ -39,45 +39,102 @@ class LLMVerdict:
 
 # ── Prompt ────────────────────────────────────────────────────────────────────
 
-SYSTEM_PROMPT = """You are a biomedical literature relevance classifier for an academic research system.
+SYSTEM_PROMPT = """/no_think
+You are a biomedical literature relevance classifier for a scientific knowledge graph project.
 
-PROJECT: Literature Mining and Metagenomic Data Preprocessing for HUMAN MICROBIOME STUDIES (2024–2026)
+PROJECT: Human Microbiome Research Literature Mining (2024-2026)
+GOAL: Build a knowledge graph of human microbiome-disease-treatment associations.
+Only include papers that contribute to this goal.
 
-TASK: Determine whether a paper should be INCLUDED for downstream NLP, data extraction, and knowledge graph construction.
+=== INCLUDE (keep: true) ===
 
-INCLUSION CRITERIA — KEEP if paper studies:
-- Human subjects (patients, cohorts, volunteers, clinical/RCT/observational studies)
-- Microbiome / microbiota / microbial community / gut flora
-- Sequencing methods: 16S, shotgun metagenomics, metatranscriptomics, amplicon sequencing
-- Body sites: gut, oral, skin, vaginal, lung, nasal, blood, breast milk
+REQUIRED — paper must study ALL of:
+1. HUMAN SUBJECTS: patients, cohorts, volunteers, clinical trials, RCTs, observational studies,
+   longitudinal studies, case-control, cross-sectional, meta-analyses, systematic reviews
+   → Body sites: gut, oral, skin, vaginal, lung, nasal, blood, placenta, breast milk, urinary
+   → Populations: adults, children, neonates, elderly, pregnant women, disease cohorts
 
-REJECT if primary focus is:
-- Animal models (mouse, rat, zebrafish, etc.) — even with human microbiota transplant
-- Environmental microbiome (soil, marine, wastewater, sediment)
-- Food/fermentation (kombucha, kefir, cheese, wine, beer)
-- Plant/agricultural microbiome
-- Pure pathogen/infectious disease with no microbiome profiling
+2. MICROBIOME/MICROBIOTA: gut flora, microbial community, dysbiosis, microbial diversity,
+   taxonomic profiling, microbial composition, microbial abundance, microbial function
 
-CONFIDENCE CALIBRATION:
-0.90–1.00: Explicit human microbiome + sequencing/metagenomics
-0.75–0.89: Strong human microbiome evidence
-0.50–0.74: Borderline → REVIEW
-0.00–0.49: Reject
+3. AT LEAST ONE OF:
+   - Sequencing: 16S rRNA, shotgun metagenomics, WGS, metatranscriptomics, amplicon sequencing
+   - Bioinformatics: QIIME, MetaPhlAn, HUMAnN, DADA2, LEfSe, DESeq2
+   - Outcomes: association with disease, intervention effect, clinical outcome, biomarker
 
-OUTPUT FORMAT — Return JSON only, no markdown:
-{"keep": true/false, "confidence": 0.0-1.0, "reason": "short explanation", "human": true/false, "microbiome": true/false, "metagenomics": true/false, "animal": true/false, "environmental": true/false, "article_type": "review/cohort/RCT/preprint/etc"}"""
+ALWAYS INCLUDE:
+- Reviews and meta-analyses of human microbiome studies
+- Studies using FMT, probiotics, prebiotics, dietary interventions on microbiome
+- Mechanistic studies (host-microbe interactions, metabolites, immune response)
+
+=== EXCLUDE (keep: false) ===
+
+REJECT if primary focus is ANY of:
+- ANIMAL MODELS: mouse, rat, zebrafish, pig, dog, cattle, primate — even humanized/germ-free
+  Exception: only reject if >50% of study is animal; if minor animal validation of human data, keep
+- ENVIRONMENTAL: soil, marine, wastewater, sediment, rhizosphere, compost, aquatic ecosystems
+- FOOD/FERMENTATION: kombucha, kefir, cheese, wine, beer, food microbiology, fermented products
+- PLANT/AGRICULTURE: plant microbiome, crop microbiome, phytobiome, soil-plant interactions
+- PURE PATHOGEN: single-pathogen infection with NO microbiome community analysis
+  (e.g., H. pylori eradication without microbiome profiling is REJECT)
+- IN VITRO ONLY: cell culture or ex vivo with no human or microbiome data
+
+=== CONFIDENCE CALIBRATION ===
+0.95-1.00: Explicit human microbiome + sequencing + disease/outcome
+0.85-0.94: Strong human microbiome evidence, clear clinical relevance
+0.70-0.84: Human microbiome likely but less explicit
+0.50-0.69: Borderline — human and microbiome present but marginal relevance
+0.00-0.49: REJECT
+
+=== OUTPUT FORMAT ===
+Return ONLY valid JSON, no markdown, no explanation:
+{"keep": true/false, "confidence": 0.0-1.0, "reason": "one concise sentence",
+ "human": true/false, "microbiome": true/false, "metagenomics": true/false,
+ "animal": true/false, "environmental": true/false,
+ "article_type": "RCT/cohort/case-control/cross-sectional/review/meta-analysis/preprint/other"}
+"""
 
 FEW_SHOT_EXAMPLES = [
-    {"title": "Decoding the diet-gut-liver axis",
-     "output": {"keep": True, "confidence": 0.95, "reason": "human gut microbiome review"}},
-    {"title": "Gut microbiome in IBD patients: 16S rRNA cohort study",
-     "output": {"keep": True, "confidence": 0.97, "reason": "human IBD cohort with 16S sequencing"}},
-    {"title": "Zebrafish gut microbiome response to antibiotic treatment",
-     "output": {"keep": False, "confidence": 0.99, "reason": "zebrafish animal model"}},
-    {"title": "Microbiota of homemade tepache fermented beverage",
-     "output": {"keep": False, "confidence": 0.98, "reason": "food fermentation not human study"}},
-    {"title": "Shotgun metagenomics of gut microbiome in type 2 diabetes",
-     "output": {"keep": True, "confidence": 0.96, "reason": "human T2D metagenomics study"}},
+    {
+        "title": "Gut microbiome dysbiosis in IBD: 16S rRNA profiling of 200 patients",
+        "abstract": "We performed 16S rRNA sequencing on fecal samples from 100 IBD patients and 100 healthy controls.",
+        "output": {"keep": True, "confidence": 0.98, "reason": "human IBD cohort with 16S sequencing and disease association", "article_type": "case-control"}
+    },
+    {
+        "title": "FMT improves outcomes in recurrent C. difficile infection: RCT",
+        "abstract": "Double-blind RCT of fecal microbiota transplantation versus vancomycin in 120 patients.",
+        "output": {"keep": True, "confidence": 0.97, "reason": "human RCT of FMT intervention with microbiome outcome", "article_type": "RCT"}
+    },
+    {
+        "title": "Shotgun metagenomics reveals gut microbiome signatures in type 2 diabetes",
+        "abstract": "Whole-metagenome sequencing of 300 T2D patients identifies Faecalibacterium prausnitzii depletion.",
+        "output": {"keep": True, "confidence": 0.99, "reason": "human T2D metagenomics with specific taxon associations", "article_type": "cohort"}
+    },
+    {
+        "title": "Butyrate produced by gut bacteria suppresses NF-kB signaling: mechanistic review",
+        "abstract": "This review synthesizes evidence on microbial butyrate production and host immune modulation.",
+        "output": {"keep": True, "confidence": 0.92, "reason": "mechanistic review of human gut microbiome-immune interactions", "article_type": "review"}
+    },
+    {
+        "title": "Zebrafish gut microbiome response to antibiotics",
+        "abstract": "We treated zebrafish with ampicillin and monitored gut microbiota changes by 16S sequencing.",
+        "output": {"keep": False, "confidence": 0.99, "reason": "zebrafish animal model — no human data", "article_type": "other"}
+    },
+    {
+        "title": "Helicobacter pylori eradication with triple therapy: clinical outcomes",
+        "abstract": "We evaluated clarithromycin-based triple therapy for H. pylori eradication in 150 patients.",
+        "output": {"keep": False, "confidence": 0.88, "reason": "single-pathogen infection treatment with no microbiome community profiling", "article_type": "RCT"}
+    },
+    {
+        "title": "Soil microbiome diversity in agricultural fields",
+        "abstract": "We characterized bacterial diversity in soil samples from 5 farming regions.",
+        "output": {"keep": False, "confidence": 0.99, "reason": "environmental soil microbiome — not human study", "article_type": "other"}
+    },
+    {
+        "title": "Vaginal microbiome in pregnancy and preterm birth risk: prospective cohort",
+        "abstract": "16S rRNA sequencing of vaginal samples from 500 pregnant women assessed Lactobacillus dominance.",
+        "output": {"keep": True, "confidence": 0.97, "reason": "human vaginal microbiome in pregnancy with clinical outcome", "article_type": "cohort"}
+    },
 ]
 
 
@@ -163,15 +220,15 @@ class LLMVerifier:
 
     def _build_prompt(self, title: str, abstract: str) -> str:
         examples = "\n".join([
-            f"Title: {ex['title']}\nOutput: {json.dumps(ex['output'])}"
+            f"Title: {ex['title']}\nAbstract: {ex.get('abstract', '')[:150]}\nOutput: {json.dumps(ex['output'])}"
             for ex in FEW_SHOT_EXAMPLES
         ])
         return (
             f"{SYSTEM_PROMPT}\n\n"
-            f"Examples:\n{examples}\n\n"
-            f"Classify this paper:\n"
+            f"=== FEW-SHOT EXAMPLES ===\n{examples}\n\n"
+            f"=== PAPER TO CLASSIFY ===\n"
             f"Title: {title}\n"
-            f"Abstract: {abstract[:500]}\n\n"
+            f"Abstract: {abstract[:800]}\n\n"
             f"Return JSON only."
         )
 
@@ -182,7 +239,7 @@ class LLMVerifier:
             "prompt": prompt,
             "stream": False,
             "format": "json",
-            "options": {"temperature": 0.1},
+            "options": {"temperature": 0},
         }
         resp = requests.post(
             f"{OLLAMA_BASE_URL}/api/generate",

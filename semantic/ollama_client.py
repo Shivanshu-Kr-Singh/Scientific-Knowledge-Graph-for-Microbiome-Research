@@ -69,6 +69,7 @@ class OllamaClient:
             "prompt": prompt,
             "stream": False,
             "format": "json",
+            "options": {"temperature": 0},  # deterministic output
         }
 
         total_attempts = cfg.ollama_max_retries + 1

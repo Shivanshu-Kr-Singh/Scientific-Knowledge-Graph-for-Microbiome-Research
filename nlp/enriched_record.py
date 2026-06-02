@@ -57,6 +57,15 @@ class NamedEntity(BaseModel):
     end:         Optional[int] = None
     confidence:  Optional[float] = None  # Model confidence score 0-1
 
+    # ── Grounding fields (populated by NLPPipeline after extraction) ──────────
+    # These make the enriched record self-contained — no need to re-normalize in Layer 3
+    canonical_name:       Optional[str]   = None  # e.g. "Helicobacter pylori"
+    ontology_id:          Optional[str]   = None  # e.g. "ncbi:210", "mesh:D015212", "chebi:17968"
+    ontology_name:        Optional[str]   = None  # e.g. "NCBI Taxonomy", "MeSH", "ChEBI"
+    grounded:             bool            = False  # True if authoritative ontology ID found
+    grounding_confidence: Optional[float] = None  # 1.0=authoritative, 0.8=fuzzy, 0.6=LLM, 0.0=none
+    grounding_source:     Optional[str]   = None  # "ncbi" | "ols" | "uniprot" | "llm" | "none"
+
 
 class ParsedSection(BaseModel):
     """One logical section of the paper's full text."""
@@ -119,6 +128,27 @@ class EnrichedPaperRecord(PaperRecord):
     body_sites: List[str] = Field(default_factory=list)   # e.g. ["gut", "oral cavity"]
     treatments: List[str] = Field(default_factory=list)   # e.g. ["probiotics", "FMT"]
     datasets: list = Field(default_factory=list)
+    # ── New entity group fields (12 additional categories) ────────────────────
+    metabolites:           List[str] = Field(default_factory=list)   # SCFAs, bile acids, LPS, etc.
+    genes:                 List[str] = Field(default_factory=list)   # TLR4, NOD2, IL-6, etc.
+    proteins:              List[str] = Field(default_factory=list)   # zonulin, calprotectin, etc.
+    biomarkers:            List[str] = Field(default_factory=list)   # CRP, Shannon index, etc.
+    pathways:              List[str] = Field(default_factory=list)   # NF-κB, butyrate metabolism, etc.
+    populations:           List[str] = Field(default_factory=list)   # healthy adults, IBD patients, etc.
+    dietary_components:    List[str] = Field(default_factory=list)   # dietary fiber, inulin, etc.
+    immune_cells:          List[str] = Field(default_factory=list)   # Treg, Th17, macrophages, etc.
+    clinical_outcomes:     List[str] = Field(default_factory=list)   # remission, dysbiosis, etc.
+    environmental_factors: List[str] = Field(default_factory=list)   # antibiotic exposure, birth mode, etc.
+    sequencing_platforms:  List[str] = Field(default_factory=list)   # Illumina MiSeq, PacBio, etc.
+    omics_features:        List[str] = Field(default_factory=list)   # OTU, ASV, MAG, KEGG, etc.
+
+    # ── Open-world entity store ───────────────────────────────────────────────
+    # Entities discovered by BioBERT or LLM that don't fit the 18 known categories
+    # are stored here instead of being silently dropped.
+    # Key = entity type string (e.g. "biological_process", "receptor", "therapeutic")
+    # Value = list of entity name strings
+    # This enables open-world entity discovery without schema changes.
+    other_entities: Dict[str, List[str]] = Field(default_factory=dict)
     # ── Module 4: Section parser output ───────────────────────────────────────
     sections: List[ParsedSection] = Field(default_factory=list)
 

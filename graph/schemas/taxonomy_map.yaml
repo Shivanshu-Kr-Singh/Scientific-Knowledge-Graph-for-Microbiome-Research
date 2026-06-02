@@ -1,3 +1,302 @@
-faecalibacterium prausnitzii:
+# taxonomy_map.yaml
+# Maps common abbreviations and synonyms → canonical taxon name
+# Used as pre-step before NCBI Taxonomy API lookup
+# Format: "Canonical Name":
+#           - variant1
+#           - variant2
+
+# ── Species abbreviations ─────────────────────────────────────────────────────
+"Faecalibacterium prausnitzii":
   - f. prausnitzii
   - faecalibacterium prausnitzii
+  - f prausnitzii
+  - fp
+
+"Akkermansia muciniphila":
+  - a. muciniphila
+  - akkermansia muciniphila
+  - a muciniphila
+  - akk. muciniphila
+
+"Bacteroides fragilis":
+  - b. fragilis
+  - bacteroides fragilis
+  - b fragilis
+
+"Bacteroides thetaiotaomicron":
+  - b. thetaiotaomicron
+  - bacteroides thetaiotaomicron
+  - b. theta
+
+"Helicobacter pylori":
+  - h. pylori
+  - helicobacter pylori
+  - h pylori
+  - hp
+
+"Clostridioides difficile":
+  - c. difficile
+  - clostridioides difficile
+  - clostridium difficile
+  - c diff
+  - cdiff
+  - c.difficile
+
+"Escherichia coli":
+  - e. coli
+  - escherichia coli
+  - e coli
+  - ec
+
+"Lactobacillus rhamnosus":
+  - l. rhamnosus
+  - lactobacillus rhamnosus
+  - l rhamnosus
+  - lr
+  - l. rhamnosus gg
+  - lactobacillus rhamnosus gg
+  - lgg
+
+"Lactobacillus acidophilus":
+  - l. acidophilus
+  - lactobacillus acidophilus
+  - l acidophilus
+
+"Lactobacillus reuteri":
+  - l. reuteri
+  - lactobacillus reuteri
+  - l reuteri
+
+"Lactobacillus plantarum":
+  - l. plantarum
+  - lactobacillus plantarum
+  - l plantarum
+
+"Lactobacillus casei":
+  - l. casei
+  - lactobacillus casei
+  - l casei
+
+"Lactobacillus fermentum":
+  - l. fermentum
+  - lactobacillus fermentum
+
+"Lactobacillus gasseri":
+  - l. gasseri
+  - lactobacillus gasseri
+
+"Lactobacillus crispatus":
+  - l. crispatus
+  - lactobacillus crispatus
+
+"Lactobacillus iners":
+  - l. iners
+  - lactobacillus iners
+
+"Bifidobacterium longum":
+  - b. longum
+  - bifidobacterium longum
+  - b longum
+
+"Bifidobacterium infantis":
+  - b. infantis
+  - bifidobacterium infantis
+  - b infantis
+
+"Bifidobacterium breve":
+  - b. breve
+  - bifidobacterium breve
+
+"Bifidobacterium adolescentis":
+  - b. adolescentis
+  - bifidobacterium adolescentis
+
+"Bifidobacterium bifidum":
+  - b. bifidum
+  - bifidobacterium bifidum
+
+"Bifidobacterium animalis":
+  - b. animalis
+  - bifidobacterium animalis lactis
+  - b. animalis subsp. lactis
+
+"Prevotella copri":
+  - p. copri
+  - prevotella copri
+  - p copri
+
+"Roseburia intestinalis":
+  - r. intestinalis
+  - roseburia intestinalis
+
+"Ruminococcus gnavus":
+  - r. gnavus
+  - ruminococcus gnavus
+  - r gnavus
+
+"Ruminococcus bromii":
+  - r. bromii
+  - ruminococcus bromii
+
+"Ruminococcus torques":
+  - r. torques
+  - ruminococcus torques
+
+"Blautia obeum":
+  - b. obeum
+  - blautia obeum
+
+"Eubacterium rectale":
+  - e. rectale
+  - eubacterium rectale
+  - e rectale
+
+"Eubacterium hallii":
+  - e. hallii
+  - eubacterium hallii
+
+"Porphyromonas gingivalis":
+  - p. gingivalis
+  - porphyromonas gingivalis
+  - p gingivalis
+
+"Fusobacterium nucleatum":
+  - f. nucleatum
+  - fusobacterium nucleatum
+  - f nucleatum
+
+"Klebsiella pneumoniae":
+  - k. pneumoniae
+  - klebsiella pneumoniae
+  - k pneumoniae
+  - kpn
+
+"Pseudomonas aeruginosa":
+  - p. aeruginosa
+  - pseudomonas aeruginosa
+  - p aeruginosa
+  - pa
+
+"Staphylococcus aureus":
+  - s. aureus
+  - staphylococcus aureus
+  - s aureus
+  - sa
+  - mrsa
+
+"Streptococcus mutans":
+  - s. mutans
+  - streptococcus mutans
+
+"Candida albicans":
+  - c. albicans
+  - candida albicans
+  - c albicans
+
+"Saccharomyces cerevisiae":
+  - s. cerevisiae
+  - saccharomyces cerevisiae
+  - s cerevisiae
+
+"Methanobrevibacter smithii":
+  - m. smithii
+  - methanobrevibacter smithii
+  - m smithii
+
+# ── Genera ────────────────────────────────────────────────────────────────────
+"Lactobacillus":
+  - lactobacillus
+  - lactobacilli
+  - lab
+  - lactic acid bacteria
+
+"Bifidobacterium":
+  - bifidobacterium
+  - bifidobacteria
+
+"Bacteroides":
+  - bacteroides
+  - bacteroidetes (when referring to genus)
+
+"Prevotella":
+  - prevotella
+
+"Akkermansia":
+  - akkermansia
+
+"Faecalibacterium":
+  - faecalibacterium
+
+"Ruminococcus":
+  - ruminococcus
+
+"Clostridium":
+  - clostridium
+  - clostridia
+
+"Roseburia":
+  - roseburia
+
+"Blautia":
+  - blautia
+
+"Coprococcus":
+  - coprococcus
+
+"Dorea":
+  - dorea
+
+"Eubacterium":
+  - eubacterium
+
+"Fusobacterium":
+  - fusobacterium
+
+# ── Phyla / Higher taxa ───────────────────────────────────────────────────────
+"Firmicutes":
+  - firmicutes
+  - firmicute
+
+"Bacteroidetes":
+  - bacteroidetes
+  - bacteroidota
+
+"Proteobacteria":
+  - proteobacteria
+  - proteobacterium
+
+"Actinobacteria":
+  - actinobacteria
+  - actinobacteriota
+
+"Verrucomicrobia":
+  - verrucomicrobia
+  - verrucomicrobiota
+
+"Fusobacteria":
+  - fusobacteria
+  - fusobacteriota
+
+# ── General microbiome terms ──────────────────────────────────────────────────
+"gut microbiome":
+  - gut microbiome
+  - gut microbiota
+  - intestinal microbiome
+  - intestinal microbiota
+  - gastrointestinal microbiome
+  - gi microbiome
+  - fecal microbiota
+  - gut flora
+  - intestinal flora
+  - gut microbial community
+
+"oral microbiome":
+  - oral microbiome
+  - oral microbiota
+  - oral microbial community
+  - mouth microbiome
+
+"vaginal microbiome":
+  - vaginal microbiome
+  - vaginal microbiota
+  - cervicovaginal microbiome

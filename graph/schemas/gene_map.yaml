@@ -1,0 +1,257 @@
+# gene_map.yaml
+# Maps common abbreviations and synonyms → canonical gene/protein symbol
+# Used as pre-step before NCBI Gene API lookup
+
+# ── Pattern Recognition Receptors ─────────────────────────────────────────────
+"Toll-Like Receptor 4":
+  - tlr4
+  - toll-like receptor 4
+  - cd284
+
+"Toll-Like Receptor 2":
+  - tlr2
+  - toll-like receptor 2
+  - cd282
+
+"Toll-Like Receptor 5":
+  - tlr5
+  - toll-like receptor 5
+
+"Toll-Like Receptor 9":
+  - tlr9
+  - toll-like receptor 9
+  - cd289
+
+"NOD2":
+  - nod2
+  - nucleotide-binding oligomerization domain 2
+  - caspase recruitment domain 15
+  - card15
+  - cd
+
+"NOD1":
+  - nod1
+  - nucleotide-binding oligomerization domain 1
+  - card4
+
+"NLRP3":
+  - nlrp3
+  - nalp3
+  - nacht leucine-rich repeat pyrin domain 3
+  - cryopyrin
+  - inflammasome (nlrp3)
+
+"CARD9":
+  - card9
+  - caspase recruitment domain 9
+
+# ── Transcription Factors / Signaling ─────────────────────────────────────────
+"NF-kB":
+  - nf-kb
+  - nf-κb
+  - nfkb
+  - nuclear factor kappa b
+  - nuclear factor-kb
+  - nf-kappab
+
+"STAT3":
+  - stat3
+  - signal transducer and activator of transcription 3
+
+"STAT1":
+  - stat1
+  - signal transducer and activator of transcription 1
+
+"JAK1":
+  - jak1
+  - janus kinase 1
+
+"JAK2":
+  - jak2
+  - janus kinase 2
+
+"FOXP3":
+  - foxp3
+  - forkhead box p3
+  - scurfin
+
+"RORγt":
+  - rorgt
+  - rort
+  - ror-gamma-t
+  - rorγt
+  - retinoic acid receptor-related orphan receptor gamma t
+
+"MAPK":
+  - mapk
+  - mitogen-activated protein kinase
+
+"PI3K":
+  - pi3k
+  - phosphatidylinositol 3-kinase
+  - phosphoinositide 3-kinase
+
+# ── Cytokines ─────────────────────────────────────────────────────────────────
+"Interleukin-6":
+  - il-6
+  - il6
+  - interleukin-6
+  - interleukin 6
+
+"Interleukin-10":
+  - il-10
+  - il10
+  - interleukin-10
+  - interleukin 10
+
+"Interleukin-17":
+  - il-17
+  - il17
+  - interleukin-17
+  - il-17a
+  - il17a
+
+"Interleukin-22":
+  - il-22
+  - il22
+  - interleukin-22
+
+"Interleukin-1 beta":
+  - il-1b
+  - il-1β
+  - il1b
+  - interleukin-1 beta
+  - interleukin 1 beta
+  - il1beta
+
+"Interleukin-18":
+  - il-18
+  - il18
+  - interleukin-18
+
+"Interleukin-23":
+  - il-23
+  - il23
+  - interleukin-23
+
+"Interleukin-12":
+  - il-12
+  - il12
+  - interleukin-12
+
+"Interleukin-4":
+  - il-4
+  - il4
+  - interleukin-4
+
+"Interleukin-13":
+  - il-13
+  - il13
+  - interleukin-13
+
+"TNF-alpha":
+  - tnf-alpha
+  - tnf-α
+  - tnfa
+  - tnf
+  - tumor necrosis factor alpha
+  - tumor necrosis factor-alpha
+
+"IFN-gamma":
+  - ifn-gamma
+  - ifn-γ
+  - ifng
+  - interferon gamma
+  - interferon-gamma
+
+"TGF-beta":
+  - tgf-beta
+  - tgf-β
+  - tgfb
+  - transforming growth factor beta
+  - tgf-b
+
+# ── Receptors ─────────────────────────────────────────────────────────────────
+"Farnesoid X Receptor":
+  - fxr
+  - farnesoid x receptor
+  - nr1h4
+  - bile acid receptor
+
+"GPR41":
+  - gpr41
+  - g protein-coupled receptor 41
+  - free fatty acid receptor 3
+  - ffar3
+
+"GPR43":
+  - gpr43
+  - g protein-coupled receptor 43
+  - free fatty acid receptor 2
+  - ffar2
+
+"GPR109A":
+  - gpr109a
+  - g protein-coupled receptor 109a
+  - hydroxycarboxylic acid receptor 2
+  - hcar2
+  - niacin receptor
+
+# ── Tight Junction Proteins ───────────────────────────────────────────────────
+"Occludin":
+  - occludin
+  - ocln
+
+"Claudin-1":
+  - claudin-1
+  - cldn1
+  - claudin 1
+
+"ZO-1":
+  - zo-1
+  - zonula occludens-1
+  - tight junction protein 1
+  - tjp1
+
+"MUC2":
+  - muc2
+  - mucin 2
+  - intestinal mucin
+
+"REG3 gamma":
+  - reg3g
+  - reg3 gamma
+  - regenerating islet-derived protein 3 gamma
+  - reg3γ
+
+# ── Antimicrobial Peptides ────────────────────────────────────────────────────
+"Defensin":
+  - defensin
+  - alpha-defensin
+  - beta-defensin
+  - hd5
+  - hbd-2
+
+"Cathelicidin":
+  - cathelicidin
+  - ll-37
+  - camp
+
+# ── Immunoglobulins ───────────────────────────────────────────────────────────
+"Secretory IgA":
+  - siga
+  - secretory iga
+  - secretary iga
+  - immunoglobulin a
+  - iga
+  - fecal iga
+
+# ── Signaling pathways as gene terms ─────────────────────────────────────────
+"MyD88":
+  - myd88
+  - myeloid differentiation primary response 88
+
+"TRIF":
+  - trif
+  - tir domain-containing adaptor inducing ifn-beta
+  - ticam1

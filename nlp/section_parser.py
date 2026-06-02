@@ -39,67 +39,213 @@ from nlp.enriched_record import ParsedSection
 # Patterns are checked against the start of each line (case-insensitive).
 
 SECTION_PATTERNS: List[Tuple[str, str]] = [
-    # Abstract sub-sections (structured abstract labels)
+    # ── Abstract sub-sections (structured abstract labels) ────────────────────
     (r"^background[:\s]*$",             "background"),
     (r"^introduction[:\s]*$",           "introduction"),
     (r"^objective[s]?[:\s]*$",          "background"),
     (r"^purpose[:\s]*$",                "background"),
+    (r"^aims?[:\s]*$",                  "background"),
+    (r"^rationale[:\s]*$",              "background"),
+    (r"^lay\s+summary[:\s]*$",          "background"),
+    (r"^key\s+messages?[:\s]*$",        "conclusion"),
+    (r"^take.home\s+message",           "conclusion"),
+    (r"^clinical\s+relevance[:\s]*$",   "discussion"),
+    (r"^highlights[:\s]*$",             "background"),
 
-    # Methods
+    # ── Methods ───────────────────────────────────────────────────────────────
     (r"^method[s]?[:\s]*$",             "methods"),
     (r"^materials?\s+and\s+method[s]?", "methods"),
     (r"^study design[:\s]*$",           "methods"),
     (r"^experimental\s+design",         "methods"),
     (r"^subjects?\s+and\s+method",      "methods"),
     (r"^patients?\s+and\s+method",      "methods"),
+    (r"^participants?\s+and\s+method",  "methods"),
+    (r"^sample\s+collection[:\s]*$",    "methods"),
+    (r"^sample\s+processing[:\s]*$",    "methods"),
+    (r"^specimen\s+collection",         "methods"),
+    (r"^laboratory\s+method",           "methods"),
+    (r"^clinical\s+procedures?",        "methods"),
+    (r"^data\s+collection[:\s]*$",      "methods"),
+    (r"^recruitment[:\s]*$",            "methods"),
 
-    # Results
+    # ── Study Population ──────────────────────────────────────────────────────
+    (r"^study\s+population[:\s]*$",     "study_population"),
+    (r"^participant[s]?[:\s]*$",        "study_population"),
+    (r"^subject[s]?[:\s]*$",            "study_population"),
+    (r"^cohort\s+description",          "study_population"),
+    (r"^patient\s+population",          "study_population"),
+    (r"^inclusion\s+criteri",           "study_population"),
+    (r"^exclusion\s+criteri",           "study_population"),
+    (r"^eligibility\s+criteri",         "study_population"),
+    (r"^demographic",                   "study_population"),
+
+    # ── Bioinformatics / Computational ────────────────────────────────────────
+    (r"^bioinformatics[:\s]*$",         "bioinformatics"),
+    (r"^computational\s+method",        "bioinformatics"),
+    (r"^sequence\s+analysis",           "bioinformatics"),
+    (r"^sequencing\s+analysis",         "bioinformatics"),
+    (r"^data\s+analysis[:\s]*$",        "bioinformatics"),
+    (r"^microbiome\s+analysis",         "bioinformatics"),
+    (r"^metagenomic\s+analysis",        "bioinformatics"),
+    (r"^16s\s+(rrna\s+)?analysis",      "bioinformatics"),
+    (r"^shotgun\s+analysis",            "bioinformatics"),
+    (r"^taxonomic\s+analysis",          "bioinformatics"),
+    (r"^functional\s+analysis",         "bioinformatics"),
+    (r"^pipeline[:\s]*$",               "bioinformatics"),
+    (r"^software[:\s]*$",               "bioinformatics"),
+
+    # ── Statistical Methods ───────────────────────────────────────────────────
+    (r"^statistical\s+(analysis|method)", "statistical_analysis"),
+    (r"^statistics[:\s]*$",             "statistical_analysis"),
+    (r"^statistical\s+approach",        "statistical_analysis"),
+    (r"^biostatistics",                 "statistical_analysis"),
+
+    # ── Results ───────────────────────────────────────────────────────────────
     (r"^results?[:\s]*$",               "results"),
     (r"^findings[:\s]*$",               "results"),
     (r"^outcomes?[:\s]*$",              "results"),
+    (r"^main\s+results?",               "results"),
+    (r"^primary\s+(outcome|result)",    "results"),
+    (r"^secondary\s+(outcome|result)",  "results"),
+    (r"^microbiome\s+results?",         "results"),
+    (r"^clinical\s+outcomes?[:\s]*$",   "results"),
 
-    # Discussion
+    # ── Discussion ────────────────────────────────────────────────────────────
     (r"^discussion[:\s]*$",             "discussion"),
     (r"^interpretation[:\s]*$",         "discussion"),
+    (r"^clinical\s+implications?",      "discussion"),
+    (r"^research\s+implications?",      "discussion"),
+    (r"^implications?[:\s]*$",          "discussion"),
 
-    # Conclusion
+    # ── Conclusion ────────────────────────────────────────────────────────────
     (r"^conclusion[s]?[:\s]*$",         "conclusion"),
     (r"^summary[:\s]*$",                "conclusion"),
     (r"^concluding\s+remark",           "conclusion"),
+    (r"^final\s+remark",                "conclusion"),
 
-    # Data availability (critical for our project)
+    # ── Limitations / Strengths ───────────────────────────────────────────────
+    (r"^limitation[s]?[:\s]*$",         "limitations"),
+    (r"^strength[s]?\s+and\s+limit",    "limitations"),
+    (r"^strength[s]?[:\s]*$",           "strengths"),
+    (r"^strength[s]?\s+of\s+the\s+stud","strengths"),
+
+    # ── Future Directions ─────────────────────────────────────────────────────
+    (r"^future\s+(direction|research|work|perspect)", "future_directions"),
+    (r"^prospect[s]?[:\s]*$",           "future_directions"),
+    (r"^outlook[:\s]*$",                "future_directions"),
+
+    # ── Data availability (critical for our project) ──────────────────────────
     (r"^data\s+avail",                  "data_availability"),
     (r"^availability\s+of\s+data",      "data_availability"),
     (r"^data\s+and\s+code\s+avail",     "data_availability"),
     (r"^data\s+access",                 "data_availability"),
     (r"^code\s+avail",                  "data_availability"),
     (r"^data\s+sharing",                "data_availability"),
-    (r"^supplementary\s+data",          "data_availability"),
+    (r"^resources[:\s]*$",              "data_availability"),
+    (r"^accession\s+number",            "data_availability"),
+    (r"^repository[:\s]*$",             "data_availability"),
 
-    # Funding / acknowledgements
-    (r"^funding[:\s]*$",                "funding"),
-    (r"^financial\s+support",           "funding"),
-    (r"^acknowledg",                    "acknowledgements"),
-
-    # Supplementary
+    # ── Supplementary ─────────────────────────────────────────────────────────
     (r"^supplementary\s+method",        "supplementary"),
     (r"^supplemental\s+information",    "supplementary"),
     (r"^supporting\s+information",      "supplementary"),
+    (r"^supplementary\s+material",      "supplementary"),
+    (r"^supplementary\s+data",          "data_availability"),
+    (r"^appendix[:\s]*$",               "supplementary"),
+    (r"^online\s+supplement",           "supplementary"),
+
+    # ── Ethics ────────────────────────────────────────────────────────────────
+    (r"^ethics\s+(statement|approv|declaration)", "ethics"),
+    (r"^ethical\s+(approv|consideration|statement)", "ethics"),
+    (r"^institutional\s+review",        "ethics"),
+    (r"^informed\s+consent",            "ethics"),
+    (r"^irb[:\s]*$",                    "ethics"),
+
+    # ── Clinical Trial Registration ───────────────────────────────────────────
+    (r"^trial\s+registr",               "trial_registration"),
+    (r"^clinical\s+trial\s+registr",    "trial_registration"),
+    (r"^clinicaltrials",                "trial_registration"),
+    (r"^registered\s+at[:\s]*$",        "trial_registration"),
+
+    # ── Conflict of Interest ──────────────────────────────────────────────────
+    (r"^conflict[s]?\s+of\s+interest",  "conflict_of_interest"),
+    (r"^competing\s+interest",          "conflict_of_interest"),
+    (r"^declaration\s+of\s+interest",   "conflict_of_interest"),
+    (r"^disclosure[s]?[:\s]*$",         "conflict_of_interest"),
+
+    # ── Funding / Acknowledgements ────────────────────────────────────────────
+    (r"^funding[:\s]*$",                "funding"),
+    (r"^financial\s+support",           "funding"),
+    (r"^grant\s+support",               "funding"),
+    (r"^source[s]?\s+of\s+funding",     "funding"),
+    (r"^acknowledg",                    "acknowledgements"),
+    (r"^author\s+contributions?",       "acknowledgements"),
+    (r"^role\s+of\s+(the\s+)?funder",   "funding"),
+
+    # ── References ────────────────────────────────────────────────────────────
+    (r"^references?[:\s]*$",            "references"),
+    (r"^bibliography[:\s]*$",           "references"),
+    (r"^cited\s+literature",            "references"),
+
+    # ── Glossary / Abbreviations ──────────────────────────────────────────────
+    (r"^glossary[:\s]*$",               "glossary"),
+    (r"^abbreviations?[:\s]*$",         "glossary"),
+    (r"^list\s+of\s+abbrevi",           "glossary"),
+    (r"^definitions?[:\s]*$",           "glossary"),
 ]
 
 # Structured abstract label patterns (found inside abstract text itself)
 STRUCTURED_ABSTRACT_LABELS = {
-    "background":    "background",
-    "introduction":  "introduction",
-    "objective":     "background",
-    "purpose":       "background",
-    "methods":       "methods",
-    "results":       "results",
-    "findings":      "results",
-    "conclusions":   "conclusion",
-    "conclusion":    "conclusion",
-    "significance":  "conclusion",
-    "importance":    "conclusion",
+    # Standard
+    "background":          "background",
+    "introduction":        "introduction",
+    "objective":           "background",
+    "objectives":          "background",
+    "purpose":             "background",
+    "aim":                 "background",
+    "aims":                "background",
+    "rationale":           "background",
+    # Methods
+    "methods":             "methods",
+    "materials and methods": "methods",
+    "study design":        "methods",
+    "design":              "methods",
+    "participants":        "study_population",
+    "subjects":            "study_population",
+    "patients":            "study_population",
+    "setting":             "methods",
+    "interventions":       "methods",
+    "intervention":        "methods",
+    "measurements":        "methods",
+    "outcome measures":    "methods",
+    "statistical analysis": "statistical_analysis",
+    "statistics":          "statistical_analysis",
+    # Results
+    "results":             "results",
+    "findings":            "results",
+    "outcomes":            "results",
+    "main results":        "results",
+    "key results":         "results",
+    # Discussion / Conclusion
+    "discussion":          "discussion",
+    "interpretation":      "discussion",
+    "conclusions":         "conclusion",
+    "conclusion":          "conclusion",
+    "significance":        "conclusion",
+    "importance":          "conclusion",
+    "implications":        "discussion",
+    "clinical relevance":  "discussion",
+    "key messages":        "conclusion",
+    "summary":             "conclusion",
+    # Limitations
+    "limitations":         "limitations",
+    "strengths and limitations": "limitations",
+    # Trial registration
+    "trial registration":  "trial_registration",
+    "clinical trial registration": "trial_registration",
+    # Funding
+    "funding":             "funding",
+    "financial support":   "funding",
 }
 
 

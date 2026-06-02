@@ -52,15 +52,61 @@ def _get_gemini_client():
 
 def _build_prompt(entity: CandidateEntity) -> str:
     """
-    Build the grounding prompt for the given entity (Req 11.2, 11.4).
+    Build the grounding prompt for the given entity.
+    Returns the canonical biomedical name and the most appropriate ontology ID.
+    Temperature=0 in OllamaClient ensures deterministic output.
     """
+    # Entity-type-specific ontology hints
+    ontology_hints = {
+        "taxon":           "NCBI Taxonomy (format: NCBI:TXID e.g. NCBI:210 for H. pylori)",
+        "disease":         "MeSH (format: MESH:DXXXXXX e.g. MESH:D015212 for IBD) or OMIM",
+        "gene":            "NCBI Gene (format: NCBI_GENE:ID) or HGNC symbol",
+        "protein":         "UniProt (format: UNIPROT:P12345) or canonical protein name",
+        "metabolite":      "ChEBI (format: CHEBI:XXXXX e.g. CHEBI:17968 for butyrate) or HMDB",
+        "pathway":         "KEGG (format: KEGG:map00XXX) or Reactome or GO",
+        "body_site":       "UBERON (format: UBERON:XXXXXXX) or BTO",
+        "immune_cell":     "Cell Ontology (format: CL:XXXXXXX)",
+        "drug":            "ChEMBL (format: CHEMBL:XXXXX) or DrugBank",
+        "treatment":       "MeSH (format: MESH:DXXXXXX) or NCI Thesaurus",
+        "method":          "OBI (Ontology for Biomedical Investigations, format: OBI:XXXXXXX)",
+        "clinical_outcome":"MeSH or NCI Thesaurus",
+        "biomarker":       "MeSH or relevant ontology; if purely computational (e.g. Shannon index), use 'statistical_measure'",
+        "dietary_component": "ChEBI or FoodOn (format: FOODON:XXXXX)",
+        "environmental_factor": "ENVO or MeSH",
+        "sequencing_platform": "OBI or EFO",
+        "omics_feature":   "SO (Sequence Ontology, format: SO:XXXXXXX) or KEGG",
+        "dataset":         "use accession prefix (e.g. SRA:SRP123456, GEO:GSE12345)",
+        "population":      "MeSH or NCI Thesaurus population descriptor",
+    }
+
+    hint = ontology_hints.get(entity.entity_type.lower(), "most appropriate biomedical ontology")
+
     return (
-        "You are a biomedical entity normalizer. Return ONLY a JSON object.\n"
-        "No text before or after the JSON. No markdown code fences.\n"
-        "\n"
-        "Required format (example):\n"
-        '{"canonical": "Lactobacillus reuteri DSM 17938", "ontology": "NCBI:1598"}\n'
-        "\n"
+        "/no_think\n"
+        "You are a biomedical ontology grounding expert for human microbiome research.\n"
+        "Your task: map a raw entity string to its official canonical name and ontology ID.\n\n"
+
+        "RULES:\n"
+        "1. canonical: the official scientific name (not abbreviation, not synonym)\n"
+        "   - Prefer the full Latin binomial for taxa (e.g. 'Helicobacter pylori' not 'H. pylori')\n"
+        "   - Prefer the MeSH descriptor name for diseases (e.g. 'Inflammatory Bowel Diseases' not 'IBD')\n"
+        "   - Use the exact IUPAC name for metabolites when possible\n"
+        "2. ontology: the best ontology ID in format PREFIX:ID\n"
+        f"   - For {entity.entity_type}: use {hint}\n"
+        "   - If no reliable ontology ID exists, use 'unknown'\n"
+        "   - Do NOT guess or hallucinate IDs — return 'unknown' if uncertain\n\n"
+
+        "EXAMPLES:\n"
+        '  Entity: "h pylori", Type: taxon → {"canonical": "Helicobacter pylori", "ontology": "NCBI:210"}\n'
+        '  Entity: "ibd", Type: disease → {"canonical": "Inflammatory Bowel Diseases", "ontology": "MESH:D015212"}\n'
+        '  Entity: "butyrate", Type: metabolite → {"canonical": "butyrate", "ontology": "CHEBI:17968"}\n'
+        '  Entity: "tlr4", Type: gene → {"canonical": "TLR4", "ontology": "NCBI_GENE:7099"}\n'
+        '  Entity: "treg", Type: immune_cell → {"canonical": "regulatory T cell", "ontology": "CL:0000792"}\n'
+        '  Entity: "gut-bone axis", Type: pathway → {"canonical": "gut-bone axis", "ontology": "unknown"}\n\n'
+
+        "Return ONLY a JSON object, no markdown, no explanation:\n"
+        '{"canonical": "official name here", "ontology": "PREFIX:ID or unknown"}\n\n'
+
         f"Entity: {entity.name}\n"
         f"Type: {entity.entity_type}"
     )

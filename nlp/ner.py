@@ -531,13 +531,266 @@ DATASET_PATTERNS = [
     r"\becho cohort\b", r"\bcanue\b",
 ]
 
+METABOLITE_PATTERNS = [
+    r"\bscfa\b", r"\bshort.chain fatty acid", r"\bbutyrate\b", r"\bpropionate\b",
+    r"\bacetate\b", r"\bsuccinate\b", r"\blactate\b", r"\bethanol\b",
+    r"\bbile acid", r"\bsecondary bile acid", r"\bprimary bile acid",
+    r"\bdeoxycholic acid\b", r"\bdca\b", r"\blithocholic acid\b", r"\blca\b",
+    r"\bursodeoxycholic acid\b", r"\budca\b", r"\bchenodeoxycholic acid\b", r"\bcdca\b",
+    r"\bindole.3.propionic acid\b", r"\bipa\b", r"\bindole.3.acetic acid\b", r"\biaa\b",
+    r"\bindole\b", r"\btryptophan metabolite", r"\btryptamine\b", r"\bkynurenine\b",
+    r"\bserotonin\b", r"\bgaba\b", r"\bdopamine\b",
+    r"\blipopolysaccharide\b", r"\blps\b", r"\bpeptidoglycan\b", r"\bflagellin\b",
+    r"\bteichoic acid\b", r"\bn.formylmethionine\b", r"\bfmet\b",
+    r"\btrimethylamine\b", r"\btma\b", r"\btmao\b", r"\btrimethylamine n.oxide\b",
+    r"\bhydrogen sulfide\b", r"\bh2s\b", r"\bmethane\b", r"\bhydrogen gas\b",
+    r"\bformate\b", r"\bvalerate\b", r"\bisobutyrate\b", r"\bisovalerate\b",
+    r"\bphenylacetate\b", r"\bp.cresol\b", r"\bindoxyl sulfate\b",
+    r"\bsecondary metabolite", r"\bmicrobial metabolite",
+]
+
+GENE_PATTERNS = [
+    r"\btlr4\b", r"\btlr2\b", r"\btlr5\b", r"\btlr9\b", r"\btlr\d\b",
+    r"\bnod2\b", r"\bnod1\b", r"\bcard9\b", r"\bcard\d+\b",
+    r"\bfxr\b", r"\bgpr41\b", r"\bgpr43\b", r"\bgpr109a\b",
+    r"\bnf.kb\b", r"\bnfkb\b", r"\bnf.kappab\b",
+    r"\bil.6\b", r"\bil.10\b", r"\bil.17\b", r"\bil.22\b", r"\bil.1b\b",
+    r"\bil.18\b", r"\bil.23\b", r"\bil.12\b", r"\bil.4\b", r"\bil.13\b",
+    r"\btnf.alpha\b", r"\btnf.a\b", r"\btnfa\b", r"\btnf\b",
+    r"\bifn.gamma\b", r"\bifng\b", r"\bifn.y\b",
+    r"\btgf.beta\b", r"\btgfb\b", r"\btgf.b\b",
+    r"\bfoxp3\b", r"\brort\b", r"\brorgt\b", r"\bror.t\b",
+    r"\bmuc2\b", r"\bmuc5ac\b", r"\bmucin\b",
+    r"\boccludin\b", r"\bclaudin.1\b", r"\bzo.1\b", r"\btight junction protein",
+    r"\breg3.?\b", r"\bdefensin\b", r"\bcathelicidin\b",
+    r"\b16s rrna gene\b", r"\b16s rrna\b",
+    r"\biga\b", r"\bsecretory iga\b", r"\bsiga\b",
+    r"\bstat3\b", r"\bstat1\b", r"\bstat6\b",
+    r"\bmyd88\b", r"\btrif\b", r"\btirap\b",
+    r"\binflamasome\b", r"\bnlrp3\b",
+]
+
+PROTEIN_PATTERNS = [
+    r"\bzonulin\b", r"\bcalprotectin\b", r"\blactoferrin\b", r"\blysozyme\b",
+    r"\bmucin\b", r"\btight junction protein", r"\boccludin\b", r"\bclaudin\b",
+    r"\bzo.1\b", r"\bzo.2\b", r"\bzo.3\b",
+    r"\bpattern recognition receptor", r"\bprr\b",
+    r"\btoll.like receptor", r"\bnod.like receptor",
+    r"\bc.reactive protein\b", r"\bcrp\b",
+    r"\blps.binding protein\b", r"\blbp\b",
+    r"\bcd14\b", r"\bmyd88\b", r"\btrif\b",
+    r"\bserum amyloid a\b", r"\bsaa\b",
+    r"\bfibronectin\b", r"\blaminin\b", r"\bcollagen\b",
+    r"\binterleukin\b", r"\bcytokine\b", r"\bchemokine\b",
+    r"\badiponectin\b", r"\bleptin\b", r"\bghrelin\b",
+    r"\bglp.1\b", r"\bglp.2\b", r"\bpyy\b", r"\bgip\b",
+    r"\bsecretin\b", r"\bcholecystokinin\b", r"\bccl\d+\b", r"\bcxcl\d+\b",
+]
+
+BIOMARKER_PATTERNS = [
+    r"\bfecal calprotectin\b", r"\bcalprotectin\b",
+    r"\bserum zonulin\b", r"\bzonulin\b",
+    r"\bc.reactive protein\b", r"\bcrp\b",
+    r"\blps.binding protein\b", r"\blbp\b",
+    r"\balpha diversity\b", r"\bshannon index\b", r"\bshannon diversity\b",
+    r"\bsimpson index\b", r"\bchao1\b", r"\bfaith.s pd\b", r"\bfaith pd\b",
+    r"\bobserved species\b", r"\bspecies richness\b",
+    r"\bbeta diversity\b", r"\bbray.curtis\b", r"\bunifrac\b",
+    r"\bweighted unifrac\b", r"\bunweighted unifrac\b", r"\bjaccard distance\b",
+    r"\bfecal biomarker", r"\bserum biomarker", r"\bplasma biomarker",
+    r"\binflammatory marker", r"\binflammatory biomarker",
+    r"\bgut permeability marker", r"\bintestinal permeability marker",
+    r"\bmicrobiome biomarker", r"\bmicrobial biomarker",
+    r"\bfecal lactoferrin\b", r"\bfecal immunoglobulin\b",
+    r"\bintestinal fatty acid binding protein\b", r"\bifabp\b",
+    r"\bcitrulline\b", r"\bd.lactate\b",
+]
+
+PATHWAY_PATTERNS = [
+    r"\btlr signaling\b", r"\btoll.like receptor signaling",
+    r"\bnf.kb pathway\b", r"\bnfkb pathway\b", r"\bnf.kappab pathway\b",
+    r"\bjak.stat pathway\b", r"\bjak.stat signaling\b",
+    r"\bmapk pathway\b", r"\bmapk signaling\b",
+    r"\bpi3k.akt pathway\b", r"\bpi3k.akt signaling\b",
+    r"\bbutyrate metabolism\b", r"\bbutyrate production\b",
+    r"\bbile acid metabolism\b", r"\bbile acid synthesis\b",
+    r"\btryptophan metabolism\b", r"\btryptophan pathway\b",
+    r"\bshort.chain fatty acid metabolism\b", r"\bscfa metabolism\b",
+    r"\bscfa production\b", r"\bfermentation pathway\b",
+    r"\bmucus degradation\b", r"\bmucin degradation\b",
+    r"\bcolonization resistance\b",
+    r"\bquorum sensing\b",
+    r"\bhorizontal gene transfer\b", r"\bhgt\b",
+    r"\bepithelial barrier function\b", r"\bgut barrier function\b",
+    r"\bimmune signaling\b", r"\binnate immune pathway\b",
+    r"\badaptive immune pathway\b", r"\bmucosal immunity\b",
+    r"\binflammasome activation\b", r"\bnlrp3 activation\b",
+    r"\bautophagy\b", r"\bapoptosis\b", r"\bpyroptosis\b",
+    r"\bepigenetic regulation\b", r"\bhistone modification\b",
+    r"\bkynurenine pathway\b", r"\bserotonin pathway\b",
+]
+
+POPULATION_PATTERNS = [
+    r"\bhealthy adult", r"\bhealthy control", r"\bhealthy volunteer",
+    r"\bibd patient", r"\bcrohn.s disease patient", r"\bulcerative colitis patient",
+    r"\bobese individual", r"\bobese patient", r"\boverweight individual",
+    r"\btype 2 diabetes patient", r"\bt2d patient",
+    r"\bneonate\b", r"\bnewborn\b", r"\binfant\b", r"\bpremature infant\b",
+    r"\belderly\b", r"\bolder adult", r"\baged individual",
+    r"\bpregnant woman\b", r"\bpregnant women\b", r"\bpregnancy cohort\b",
+    r"\bcancer patient", r"\bhiv patient", r"\bhiv.positive\b",
+    r"\bantibiotic.treated\b", r"\bantibiotic.exposed\b",
+    r"\bgerm.free mouse\b", r"\bgerm.free mice\b", r"\bgf mouse\b", r"\bgf mice\b",
+    r"\bgnotobiotic mouse\b", r"\bgnotobiotic mice\b",
+    r"\bhumanized mouse\b", r"\bhumanized mice\b",
+    r"\bpediatric patient", r"\bchildren\b", r"\bchild cohort\b",
+    r"\badolescent\b", r"\byoung adult\b",
+    r"\bimmunocompromised\b", r"\bimmunosuppressed\b",
+    r"\btransplant patient", r"\bstem cell transplant\b",
+    r"\bcritically ill\b", r"\bicu patient\b",
+]
+
+DIETARY_COMPONENT_PATTERNS = [
+    r"\bdietary fiber\b", r"\bfiber intake\b", r"\bfibre\b",
+    r"\binulin\b", r"\bfructooligosaccharide", r"\bfos\b",
+    r"\bgalactooligosaccharide", r"\bgos\b",
+    r"\bresistant starch\b", r"\bpectin\b", r"\bbeta.glucan\b",
+    r"\bpolyphenol\b", r"\bquercetin\b", r"\bresveratrol\b", r"\bcurcumin\b",
+    r"\banthocyanin\b", r"\bflavonoid\b", r"\bphenolic compound",
+    r"\bred meat\b", r"\bprocessed meat\b", r"\bprocessed food\b",
+    r"\bhigh.fat diet\b", r"\bwestern diet\b",
+    r"\bmediterranean diet\b", r"\bplant.based diet\b",
+    r"\bfermented food\b", r"\bfermented beverage\b",
+    r"\bwhole grain\b", r"\bvegetable\b", r"\bfruit\b",
+    r"\blegume\b", r"\bpulse\b", r"\bnut\b",
+    r"\bdairy\b", r"\bmilk\b", r"\byogurt\b", r"\bcheese\b",
+    r"\bfish\b", r"\bseafood\b", r"\bomega.3\b",
+    r"\bsoy\b", r"\bsoybean\b", r"\bisoflavone\b",
+    r"\bgluten\b", r"\bwheat\b", r"\bbarley\b", r"\brye\b",
+    r"\bsugar\b", r"\bsucrose\b", r"\bfructose\b", r"\bglucose\b",
+    r"\bartificial sweetener\b", r"\bsaccharin\b", r"\baspartame\b",
+    r"\bfood additive\b", r"\bemulsifier\b", r"\bpreservative\b",
+]
+
+IMMUNE_CELL_PATTERNS = [
+    r"\bregulatory t cell", r"\btreg\b", r"\btregs\b",
+    r"\bth17 cell", r"\bth17\b", r"\bt helper 17\b",
+    r"\bth1 cell", r"\bth1\b", r"\bt helper 1\b",
+    r"\bth2 cell", r"\bth2\b", r"\bt helper 2\b",
+    r"\bdendritic cell", r"\bplasmacytoid dendritic\b",
+    r"\bmacrophage\b", r"\bm1 macrophage\b", r"\bm2 macrophage\b",
+    r"\bneutrophil\b", r"\bnatural killer cell", r"\bnk cell\b",
+    r"\bilc3\b", r"\binnate lymphoid cell", r"\bilc\b",
+    r"\bb cell\b", r"\bplasma cell\b", r"\bmemory b cell\b",
+    r"\bmast cell\b", r"\beosinophil\b", r"\bbasophil\b",
+    r"\bmonocyte\b", r"\bcd4\+ t cell\b", r"\bcd8\+ t cell\b",
+    r"\bcytotoxic t cell\b", r"\beffector t cell\b",
+    r"\blamina propria lymphocyte", r"\bintraepithelial lymphocyte",
+    r"\bmucosal immune cell", r"\bgut immune cell",
+    r"\bpaneth cell\b", r"\bgoblet cell\b", r"\benteroendocrine cell\b",
+    r"\btuft cell\b", r"\bm cell\b",
+]
+
+CLINICAL_OUTCOME_PATTERNS = [
+    r"\bremission\b", r"\bclinical remission\b", r"\bdeep remission\b",
+    r"\brelapse\b", r"\bflare\b", r"\bdisease relapse\b",
+    r"\bcolonization\b", r"\bengraftment\b", r"\bsuccessful engraftment\b",
+    r"\bdysbiosis\b", r"\bmicrobial dysbiosis\b",
+    r"\beubiosis\b", r"\bmicrobial eubiosis\b",
+    r"\binflammation\b", r"\bsystemic inflammation\b", r"\bmucosal inflammation\b",
+    r"\bintestinal permeability\b", r"\bleaky gut\b", r"\bgut permeability\b",
+    r"\bbarrier function\b", r"\bgut barrier\b", r"\bepithelial barrier\b",
+    r"\bmucosal healing\b", r"\bmucosal recovery\b",
+    r"\bclinical response\b", r"\btreatment response\b",
+    r"\bmicrobiome diversity\b", r"\bspecies richness\b",
+    r"\bcommunity composition\b", r"\bmicrobial composition\b",
+    r"\bweight loss\b", r"\bweight gain\b", r"\bbody weight change\b",
+    r"\bglycemic control\b", r"\bblood glucose\b", r"\bhba1c\b",
+    r"\blipid profile\b", r"\bcholesterol level\b",
+    r"\bblood pressure\b", r"\bcardiovascular risk\b",
+    r"\bcognitive function\b", r"\bbehavioral outcome\b",
+    r"\bmortality\b", r"\bsurvival\b", r"\bhospitalization\b",
+    r"\bsymptom score\b", r"\bquality of life\b", r"\bqol\b",
+]
+
+ENVIRONMENTAL_FACTOR_PATTERNS = [
+    r"\bantibiotic exposure\b", r"\bantibiotic use\b", r"\bantibiotic treatment\b",
+    r"\bbirth mode\b", r"\bmode of delivery\b",
+    r"\bcesarean section\b", r"\bc.section\b", r"\bcesarean delivery\b",
+    r"\bvaginal delivery\b", r"\bvaginal birth\b",
+    r"\bbreastfeeding\b", r"\bbreast.fed\b", r"\bhuman milk\b",
+    r"\bformula feeding\b", r"\bformula.fed\b", r"\binfant formula\b",
+    r"\bgeographic location\b", r"\bgeography\b", r"\bcountry of origin\b",
+    r"\bsocioeconomic status\b", r"\bses\b", r"\bincome level\b",
+    r"\bsmoking\b", r"\btobacco use\b", r"\bcigarette\b",
+    r"\balcohol consumption\b", r"\balcohol intake\b", r"\balcohol use\b",
+    r"\bphysical activity\b", r"\bexercise habit\b", r"\bsedentary\b",
+    r"\bstress\b", r"\bpsychological stress\b", r"\bchronic stress\b",
+    r"\bsleep\b", r"\bsleep quality\b", r"\bsleep duration\b",
+    r"\bage\b", r"\bsex\b", r"\bgender\b", r"\bbmi\b", r"\bbody mass index\b",
+    r"\bethnic\b", r"\brace\b", r"\bpopulation background\b",
+    r"\burban\b", r"\brural\b", r"\benvironment\b",
+    r"\bpet ownership\b", r"\bfarm exposure\b", r"\bhygiene hypothesis\b",
+    r"\bpollution\b", r"\bair quality\b", r"\bwater quality\b",
+]
+
+SEQUENCING_PLATFORM_PATTERNS = [
+    r"\billumina miseq\b", r"\bmiseq\b",
+    r"\billumina hiseq\b", r"\bhiseq\b",
+    r"\billumina novaseq\b", r"\bnovaseq\b",
+    r"\billumina nextseq\b", r"\bnextseq\b",
+    r"\bpacbio sequel\b", r"\bpacbio\b", r"\bpacific biosciences\b",
+    r"\boxford nanopore\b", r"\bnanopore minion\b", r"\bminion\b",
+    r"\bnanopore\b", r"\bont\b",
+    r"\bion torrent\b", r"\bion pgm\b", r"\bion proton\b",
+    r"\b454 pyrosequencing\b", r"\b454 sequencing\b", r"\bpyrosequencing\b",
+    r"\bsanger sequencing\b", r"\bsanger\b",
+    r"\bpromethion\b", r"\bgridion\b",
+    r"\bsequel ii\b", r"\bsequel iie\b",
+]
+
+OMICS_FEATURE_PATTERNS = [
+    r"\botu\b", r"\botus\b", r"\boperational taxonomic unit",
+    r"\basv\b", r"\basvs\b", r"\bamplicon sequence variant",
+    r"\bmag\b", r"\bmags\b", r"\bmetagenome.assembled genome",
+    r"\b16s rrna amplicon\b", r"\b16s amplicon\b",
+    r"\bits amplicon\b", r"\bits sequencing\b",
+    r"\bshotgun read\b", r"\bmetagenomic read\b",
+    r"\bmetatranscript\b", r"\bmetatranscriptome\b",
+    r"\bmetaprotein\b", r"\bmetaproteome\b",
+    r"\bmetabolic profile\b", r"\bmetabolomic profile\b",
+    r"\bfunctional gene\b", r"\bfunctional annotation\b",
+    r"\bcog\b", r"\bcog category\b", r"\bclusters of orthologous\b",
+    r"\bkegg ortholog\b", r"\bko\b", r"\bkegg pathway\b",
+    r"\bpfam domain\b", r"\bpfam\b",
+    r"\bgene catalog\b", r"\bgene cluster\b",
+    r"\bcore genome\b", r"\bpan.genome\b", r"\baccessory genome\b",
+    r"\bphylogenetic marker\b", r"\bmarker gene\b",
+    r"\brelative abundance\b", r"\babundance profile\b",
+    r"\btaxonomic profile\b", r"\bfunctional profile\b",
+]
+
 ENTITY_PATTERNS = {
-    "taxon":     TAXA_PATTERNS,
-    "disease":   DISEASE_PATTERNS,
-    "method":    METHOD_PATTERNS,
-    "body_site": BODY_SITE_PATTERNS,
-    "treatment": TREATMENT_PATTERNS,
-    "dataset":   DATASET_PATTERNS,
+    # ── Original 6 categories ─────────────────────────────────────────────────
+    "taxon":                TAXA_PATTERNS,
+    "disease":              DISEASE_PATTERNS,
+    "method":               METHOD_PATTERNS,
+    "body_site":            BODY_SITE_PATTERNS,
+    "treatment":            TREATMENT_PATTERNS,
+    "dataset":              DATASET_PATTERNS,
+    # ── 12 new categories ─────────────────────────────────────────────────────
+    "metabolite":           METABOLITE_PATTERNS,
+    "gene":                 GENE_PATTERNS,
+    "protein":              PROTEIN_PATTERNS,
+    "biomarker":            BIOMARKER_PATTERNS,
+    "pathway":              PATHWAY_PATTERNS,
+    "population":           POPULATION_PATTERNS,
+    "dietary_component":    DIETARY_COMPONENT_PATTERNS,
+    "immune_cell":          IMMUNE_CELL_PATTERNS,
+    "clinical_outcome":     CLINICAL_OUTCOME_PATTERNS,
+    "environmental_factor": ENVIRONMENTAL_FACTOR_PATTERNS,
+    "sequencing_platform":  SEQUENCING_PLATFORM_PATTERNS,
+    "omics_feature":        OMICS_FEATURE_PATTERNS,
 }
 
 
@@ -590,25 +843,49 @@ class NERExtractor:
             logger.warning(f"[NER] LLM extractor load failed: {e} — Tier 3 disabled")
             self._llm_extractor = None
 
-    def extract(self, title: str, abstract: Optional[str]) -> List[NamedEntity]:
+    def extract(self, title: str, abstract: Optional[str], sections: list = None, full_text: str = None) -> List[NamedEntity]:
         title = title or ""
         abstract = abstract or ""
-        text = f"{title} {abstract}".lower()
-        full_text = f"{title} {abstract}"
+        base_text = f"{title} {abstract}".lower()
+        base_text_original = f"{title} {abstract}"
 
         entities: List[NamedEntity] = []
 
-        # Tier 1: Rule-based
-        entities.extend(self._rule_based_extract(text))
+        # Tier 1: Rule-based on title+abstract always
+        entities.extend(self._rule_based_extract(base_text))
 
-        # Tier 2: BioBERT
+        # Tier 1: Also run on section content if available (skip abstract — already in base_text)
+        if sections:
+            ranked_sections = self._rank_sections(sections)
+            for section in ranked_sections:
+                section_type = getattr(section, 'section_type', None) or section.get('section_type', '')
+                if section_type == 'abstract':
+                    continue  # Already processed as part of base_text
+                content = getattr(section, 'content', None) or section.get('content', '')
+                if content and content.strip():
+                    entities.extend(self._rule_based_extract(content.lower()))
+
+        # Tier 2: BioBERT — section-ranked chunked if sections available,
+        # else chunked on full_text, else chunked on title+abstract
         if self._model_loaded and self._model:
-            entities.extend(self._model_extract(full_text))
+            if sections:
+                entities.extend(self._model_extract(base_text_original, sections=sections))
+            elif full_text:
+                entities.extend(self._model_extract(full_text))
+            else:
+                entities.extend(self._model_extract(base_text_original))
 
-        # Tier 3: LLM (Ollama) — runs on all papers to catch novel entities
-        # missed by regex and BioBERT. Results are cached so re-runs are instant.
+        # Tier 3: LLM — uses prioritized sections if available
+        # Pass known entities from Tier 1+2 so LLM focuses on novel gaps
         if self._use_llm and self._llm_extractor:
-            entities.extend(self._llm_extract(full_text))
+            # Collect all entity names found so far by Tier 1 + Tier 2
+            known = [e.text for e in entities]
+            if sections:
+                entities.extend(self._llm_extract(base_text_original, sections=sections, known_entities=known))
+            elif full_text:
+                entities.extend(self._llm_extract(full_text, known_entities=known))
+            else:
+                entities.extend(self._llm_extract(base_text_original, known_entities=known))
 
         # Deduplicate by (text, label)
         seen = set()
@@ -646,34 +923,155 @@ class NERExtractor:
                     ))
         return results
 
-    def _model_extract(self, text: str) -> List[NamedEntity]:
+    def _chunk_text(self, text: str, chunk_size: int = 400, overlap: int = 50) -> List[str]:
+        """Split text into overlapping word-based chunks."""
+        words = text.split()
+        if len(words) <= chunk_size:
+            return [text]
+        chunks = []
+        start = 0
+        while start < len(words):
+            end = min(start + chunk_size, len(words))
+            chunks.append(" ".join(words[start:end]))
+            if end == len(words):
+                break
+            start += chunk_size - overlap
+        return chunks
+
+    def _rank_sections(self, sections: list) -> list:
+        """Sort sections by importance (priority 1 first, skip priority 5)."""
+        SECTION_PRIORITY = {
+            # Priority 1 — highest scientific value
+            "results": 1,
+            "discussion": 1,
+            # Priority 2 — important supporting content
+            "data_availability": 2,
+            "supplementary": 2,
+            "statistical_analysis": 2,
+            "bioinformatics": 2,
+            "limitations": 2,
+            "clinical_outcome": 2,
+            # Priority 3 — methodology and context
+            "methods": 3,
+            "abstract": 3,
+            "conclusion": 3,
+            "study_population": 3,
+            # Priority 4 — background context
+            "introduction": 4,
+            "background": 4,
+            "other": 4,
+            "future_directions": 4,
+            "strengths": 4,
+            # Priority 5 — skip (no scientific entity value)
+            "references": 5,
+            "acknowledgements": 5,
+            "funding": 5,
+            "conflict_of_interest": 5,
+            "ethics": 5,
+            "trial_registration": 5,
+            "glossary": 5,
+        }
+
+        def get_priority(section):
+            section_type = getattr(section, 'section_type', None) or section.get('section_type', 'other')
+            return SECTION_PRIORITY.get(section_type.lower(), 4)
+
+        ranked = sorted(sections, key=get_priority)
+        # Filter out priority 5 sections (references, acknowledgements, etc.)
+        return [s for s in ranked if get_priority(s) < 5]
+
+    def _model_extract_chunks(self, text: str, max_chunks: int = 10) -> List[NamedEntity]:
+        """Run BioBERT on chunked text, deduplicate results."""
         if not self._model or not text.strip():
             return []
-        try:
-            truncated = " ".join(text.split()[:350])
-            raw_entities = self._model(truncated)
-            results = []
-            for ent in raw_entities:
-                label = self._map_model_label(ent.get("entity_group", ""))
-                if label:
-                    results.append(NamedEntity(
-                        text=ent.get("word", "").strip(),
-                        label=label,
-                        confidence=round(float(ent.get("score", 0)), 3),
-                    ))
-            return results
-        except Exception as e:
-            logger.warning(f"[NER] Model inference failed: {e}")
+        chunks = self._chunk_text(text, chunk_size=400, overlap=50)
+        chunks = chunks[:max_chunks]
+        all_entities = []
+        for chunk in chunks:
+            try:
+                raw_entities = self._model(chunk)
+                for ent in raw_entities:
+                    label = self._map_model_label(ent.get("entity_group", ""))
+                    if label:
+                        all_entities.append(NamedEntity(
+                            text=ent.get("word", "").strip(),
+                            label=label,
+                            confidence=round(float(ent.get("score", 0)), 3),
+                        ))
+            except Exception as e:
+                logger.warning(f"[NER] BioBERT chunk inference failed: {e}")
+                continue
+        # Deduplicate by (text.lower(), label)
+        seen = set()
+        unique = []
+        for e in all_entities:
+            key = (e.text.lower(), e.label)
+            if key not in seen:
+                seen.add(key)
+                unique.append(e)
+        return unique
+
+    def _model_extract(self, text: str, sections: list = None) -> List[NamedEntity]:
+        if not self._model or not text.strip():
             return []
 
-    def _llm_extract(self, text: str) -> List[NamedEntity]:
-        """Tier 3: LLM-based extraction via Ollama."""
+        all_entities = []
+
+        if sections:
+            # Section-ranked chunked extraction
+            ranked_sections = self._rank_sections(sections)
+            for section in ranked_sections:
+                content = getattr(section, 'content', None) or section.get('content', '')
+                if not content or not content.strip():
+                    continue
+                section_entities = self._model_extract_chunks(content, max_chunks=10)
+                all_entities.extend(section_entities)
+                logger.debug(
+                    f"[NER] BioBERT extracted {len(section_entities)} entities "
+                    f"from {getattr(section, 'section_type', 'unknown')} section"
+                )
+        else:
+            # Chunked extraction on raw text (no truncation)
+            all_entities = self._model_extract_chunks(text, max_chunks=20)
+
+        return all_entities
+
+    def _llm_extract(self, text: str, sections: list = None, known_entities: list = None) -> List[NamedEntity]:
+        """Tier 3: LLM-based extraction via Ollama. Uses prioritized sections if available.
+        
+        known_entities: list of entity name strings already found by Tier 1+2.
+                        Passed to the LLM prompt so it focuses on novel entities only.
+        """
         if not self._llm_extractor or not text.strip():
             return []
+
+        # If sections available, use results+discussion first, then others
+        if sections:
+            ranked = self._rank_sections(sections)
+            # Concatenate top-priority sections up to 3000 chars
+            priority_text = ""
+            for section in ranked:
+                content = getattr(section, 'content', None) or section.get('content', '')
+                section_type = getattr(section, 'section_type', None) or section.get('section_type', 'unknown')
+                if content:
+                    priority_text += f"\n\n[SECTION: {section_type.upper()}]\n{content}"
+                    if len(priority_text) >= 3000:
+                        break
+            extraction_text = priority_text[:3000] if priority_text.strip() else text[:3000]
+        else:
+            extraction_text = text[:3000]
+
+        if not extraction_text.strip():
+            return []
+
         try:
-            candidate_entities, _ = self._llm_extractor.extract(text)
+            candidate_entities, _ = self._llm_extractor.extract(
+                extraction_text,
+                known_entities=known_entities  # pass known entities to focus LLM on gaps
+            )
             results = []
             label_map = {
+                # Original 6
                 "taxon": "taxon", "taxa": "taxon", "organism": "taxon",
                 "bacteria": "taxon", "microbe": "taxon", "microorganism": "taxon",
                 "disease": "disease", "condition": "disease", "disorder": "disease",
@@ -684,6 +1082,35 @@ class NERExtractor:
                 "treatment": "treatment", "drug": "treatment", "therapy": "treatment",
                 "intervention": "treatment", "supplement": "treatment",
                 "dataset": "dataset", "database": "dataset", "cohort": "dataset",
+                # New 12
+                "metabolite": "metabolite", "metabolites": "metabolite",
+                "scfa": "metabolite", "bile acid": "metabolite",
+                "gene": "gene", "genes": "gene", "gene product": "gene",
+                "receptor": "gene", "cytokine gene": "gene",
+                "protein": "protein", "proteins": "protein",
+                "biomarker": "biomarker", "biomarkers": "biomarker",
+                "marker": "biomarker", "clinical marker": "biomarker",
+                "pathway": "pathway", "pathways": "pathway",
+                "signaling pathway": "pathway", "metabolic pathway": "pathway",
+                "population": "population", "study population": "population",
+                "patient group": "population", "subject": "population",
+                "dietary component": "dietary_component",
+                "dietary_component": "dietary_component",
+                "food": "dietary_component", "nutrient": "dietary_component",
+                "diet component": "dietary_component",
+                "immune cell": "immune_cell", "immune_cell": "immune_cell",
+                "cell type": "immune_cell", "lymphocyte": "immune_cell",
+                "clinical outcome": "clinical_outcome",
+                "clinical_outcome": "clinical_outcome",
+                "outcome": "clinical_outcome", "endpoint": "clinical_outcome",
+                "environmental factor": "environmental_factor",
+                "environmental_factor": "environmental_factor",
+                "exposure": "environmental_factor", "risk factor": "environmental_factor",
+                "sequencing platform": "sequencing_platform",
+                "sequencing_platform": "sequencing_platform",
+                "platform": "sequencing_platform", "instrument": "sequencing_platform",
+                "omics feature": "omics_feature", "omics_feature": "omics_feature",
+                "feature": "omics_feature", "genomic feature": "omics_feature",
             }
             for ent in candidate_entities:
                 if not ent.name or len(ent.name.strip()) < 2:
@@ -711,14 +1138,25 @@ class NERExtractor:
 
     def _map_model_label(self, raw_label: str) -> Optional[str]:
         label_map = {
-            "Chemical":             "treatment",
-            "Simple_chemical":      "treatment",
+            "Chemical":             "metabolite",
+            "Simple_chemical":      "metabolite",
             "Disease":              "disease",
-            "Gene_or_gene_product": None,
+            "Gene_or_gene_product": "gene",
             "Organism":             "taxon",
             "Species":              "taxon",
-            "Cell":                 "body_site",
-            "Protein":              None,
+            "Cell":                 "immune_cell",
+            "Cell_type":            "immune_cell",
+            "Protein":              "protein",
+            "Amino_acid":           "metabolite",
+            "Anatomical_system":    "body_site",
+            "Organ":                "body_site",
+            "Multi-tissue_structure": "body_site",
+            "Tissue":               "body_site",
+            "Developing_anatomical_structure": "body_site",
+            "Pathological_formation": "disease",
+            "Cancer":               "disease",
+            "Immaterial_anatomical_entity": "body_site",
+            "Cellular_component":   "body_site",
         }
         for key, mapped in label_map.items():
             if key.lower() in raw_label.lower():
@@ -726,8 +1164,33 @@ class NERExtractor:
         return None
 
     def group_entities(self, entities: List[NamedEntity]) -> dict:
+        """
+        Groups entities by label for easy access.
+
+        Known labels (18 categories) go into their dedicated lists.
+        Unknown labels — discovered by BioBERT or LLM but not in ENTITY_PATTERNS —
+        go into 'other_entities' as a dict keyed by label type.
+        This prevents novel entity types from being silently dropped.
+        """
         groups: dict = {label: [] for label in ENTITY_PATTERNS}
+        other: dict = {}  # open-world bucket for unknown types
+
         for ent in entities:
             if ent.label in groups:
                 groups[ent.label].append(ent.text)
-        return {label: list(dict.fromkeys(items)) for label, items in groups.items()}
+            elif ent.label and ent.label.strip():
+                # Unknown entity type — store in open-world bucket
+                label_key = ent.label.lower().strip().replace(" ", "_")
+                if label_key not in other:
+                    other[label_key] = []
+                other[label_key].append(ent.text)
+
+        # Deduplicate within each group
+        result = {label: list(dict.fromkeys(items)) for label, items in groups.items()}
+
+        # Deduplicate within other_entities
+        result["other_entities"] = {
+            k: list(dict.fromkeys(v)) for k, v in other.items()
+        }
+
+        return result

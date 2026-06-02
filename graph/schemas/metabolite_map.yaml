@@ -1,0 +1,190 @@
+# metabolite_map.yaml
+# Maps common abbreviations and synonyms → canonical metabolite name
+# Used as pre-step before ChEBI/HMDB API lookup
+
+# ── Short-Chain Fatty Acids ───────────────────────────────────────────────────
+"Short-Chain Fatty Acids":
+  - scfa
+  - scfas
+  - short-chain fatty acids
+  - short chain fatty acids
+  - microbial scfas
+
+"Butyrate":
+  - butyrate
+  - butyric acid
+  - n-butyrate
+  - sodium butyrate
+  - butyric acid (butyrate)
+
+"Propionate":
+  - propionate
+  - propionic acid
+  - sodium propionate
+
+"Acetate":
+  - acetate
+  - acetic acid
+  - sodium acetate
+
+"Valerate":
+  - valerate
+  - valeric acid
+  - pentanoic acid
+
+"Succinate":
+  - succinate
+  - succinic acid
+
+"Lactate":
+  - lactate
+  - lactic acid
+  - l-lactate
+
+# ── Bile Acids ────────────────────────────────────────────────────────────────
+"Bile Acids":
+  - bile acids
+  - bile acid
+  - ba
+  - bas
+  - fecal bile acids
+  - gut bile acids
+
+"Deoxycholic Acid":
+  - dca
+  - deoxycholic acid
+  - desoxycholic acid
+  - 3alpha,12alpha-dihydroxy-5beta-cholanoic acid
+
+"Lithocholic Acid":
+  - lca
+  - lithocholic acid
+  - monohydroxycholanoic acid
+
+"Ursodeoxycholic Acid":
+  - udca
+  - ursodeoxycholic acid
+  - ursodiol
+
+"Chenodeoxycholic Acid":
+  - cdca
+  - chenodeoxycholic acid
+  - chenodesoxycholic acid
+
+"Cholic Acid":
+  - ca
+  - cholic acid
+  - 3alpha,7alpha,12alpha-trihydroxycholanoic acid
+
+"Tauroursodeoxycholic Acid":
+  - tudca
+  - tauroursodeoxycholic acid
+
+# ── Tryptophan Metabolites ────────────────────────────────────────────────────
+"Indole-3-Propionic Acid":
+  - ipa
+  - indole-3-propionic acid
+  - indolepropionate
+
+"Indole-3-Acetic Acid":
+  - iaa
+  - indole-3-acetic acid
+  - indoleacetic acid
+
+"Indoxyl Sulfate":
+  - indoxyl sulfate
+  - is
+  - indican
+
+"Kynurenine":
+  - kynurenine
+  - l-kynurenine
+
+"Serotonin":
+  - serotonin
+  - 5-hydroxytryptamine
+  - 5-ht
+
+"Tryptamine":
+  - tryptamine
+  - 3-(2-aminoethyl)indole
+
+# ── TMAO and related ──────────────────────────────────────────────────────────
+"Trimethylamine N-oxide":
+  - tmao
+  - trimethylamine n-oxide
+  - trimethylamine oxide
+
+"Trimethylamine":
+  - tma
+  - trimethylamine
+  - n,n,n-trimethylamine
+
+# ── Microbial cell wall components ───────────────────────────────────────────
+"Lipopolysaccharide":
+  - lps
+  - lipopolysaccharide
+  - endotoxin
+  - bacterial endotoxin
+  - gram-negative endotoxin
+
+"Peptidoglycan":
+  - peptidoglycan
+  - pgn
+  - muramyl dipeptide
+  - mdp
+
+"Lipoteichoic Acid":
+  - lta
+  - lipoteichoic acid
+  - teichoic acid
+
+"Flagellin":
+  - flagellin
+  - bacterial flagellin
+
+# ── Gases ─────────────────────────────────────────────────────────────────────
+"Hydrogen Sulfide":
+  - h2s
+  - hydrogen sulfide
+  - hydrogen sulphide
+  - h2s gas
+
+"Methane":
+  - methane
+  - ch4
+  - gut methane
+
+"Hydrogen Gas":
+  - hydrogen gas
+  - h2
+  - gut hydrogen
+
+# ── Other metabolites ─────────────────────────────────────────────────────────
+"p-Cresol":
+  - p-cresol
+  - para-cresol
+  - 4-methylphenol
+  - p-cresyl sulfate
+
+"Phenylacetate":
+  - phenylacetate
+  - phenylacetic acid
+
+"Formate":
+  - formate
+  - formic acid
+
+"N-Formylmethionine":
+  - fmet
+  - n-formylmethionine
+  - formylmethionine
+
+"Gamma-Aminobutyric Acid":
+  - gaba
+  - gamma-aminobutyric acid
+  - 4-aminobutyric acid
+
+"Dopamine":
+  - dopamine
+  - 3,4-dihydroxyphenethylamine

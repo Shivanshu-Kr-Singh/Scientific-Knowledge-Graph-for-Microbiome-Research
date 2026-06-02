@@ -50,23 +50,112 @@ def _get_gemini_client():
 
 # ─── Extraction prompt ────────────────────────────────────────────────────────
 
-def _build_prompt(text: str) -> str:
+def _build_prompt(text: str, known_entities: list = None) -> str:
     """
-    Build the extraction prompt. Input text is truncated to 3,000 characters
-    for speed (abstracts are typically 200-400 words).
+    Build a research-grade extraction prompt for human microbiome NER.
+    Input text is truncated to 3,000 characters for speed.
     /no_think disables qwen3 chain-of-thought for faster responses.
+
+    Includes: domain context, all 18 entity types with descriptions,
+    confidence calibration, specificity rules, 1-shot example, and
+    optional known-entities exclusion block.
     """
     truncated = text[:3000]
+
+    # ── Known-entities exclusion block ────────────────────────────────────────
+    if known_entities and len(known_entities) > 0:
+        unique_known = list(dict.fromkeys(e.lower() for e in known_entities))[:50]
+        known_block = (
+            f"ALREADY EXTRACTED (do NOT repeat these):\n{unique_known}\n\n"
+            "Your job: find entities NOT in the list above.\n\n"
+        )
+    else:
+        known_block = ""
+
+    # ── 1-shot example ────────────────────────────────────────────────────────
+    few_shot = (
+        'EXAMPLE INPUT: "Faecalibacterium prausnitzii was significantly depleted '
+        "in IBD patients (p<0.01). Butyrate levels were reduced. 16S rRNA sequencing "
+        "was performed on 50 fecal samples from Crohn's disease patients.\"\n"
+        'EXAMPLE OUTPUT:\n'
+        '{"entities": [\n'
+        '  {"name": "Faecalibacterium prausnitzii", "type": "taxon", "confidence": 0.98},\n'
+        '  {"name": "IBD", "type": "disease", "confidence": 0.95},\n'
+        '  {"name": "butyrate", "type": "metabolite", "confidence": 0.92},\n'
+        '  {"name": "16S rRNA sequencing", "type": "method", "confidence": 0.97},\n'
+        '  {"name": "fecal", "type": "body_site", "confidence": 0.90},\n'
+        "  {\"name\": \"Crohn's disease patients\", \"type\": \"population\", \"confidence\": 0.93}\n"
+        '],\n'
+        '"relations": [\n'
+        '  {"subject": "Faecalibacterium prausnitzii", "predicate": "depleted in", "object": "IBD", "confidence": 0.95},\n'
+        '  {"subject": "butyrate", "predicate": "decreased in", "object": "IBD patients", "confidence": 0.88}\n'
+        '],\n'
+        '"evidence": {"sample_size": 50, "study_design": "case-control", "population": "IBD patients"}}\n\n'
+    )
+
     return (
         "/no_think\n"
-        "You are a biomedical extraction engine. Return ONLY a JSON object.\n"
-        "No text before or after the JSON. No markdown code fences. No thinking.\n"
-        "\n"
-        "Required format:\n"
-        '{"entities": [{"name": "Lactobacillus", "type": "taxon", "confidence": 0.9, "novel": false}],\n'
-        ' "relations": [{"subject": "Lactobacillus", "predicate": "modulates", "object": "gut barrier", "confidence": 0.85}],\n'
-        ' "evidence": {"sample_size": 42, "study_design": "RCT", "population": "adult humans"}}\n'
-        "\n"
+        "You are a biomedical named entity recognition engine specialized in "
+        "human microbiome research (2024-2026).\n\n"
+
+        "PROJECT CONTEXT: Extract entities from microbiome research papers for a "
+        "scientific knowledge graph. Focus on human microbiome studies covering "
+        "gut, oral, skin, vaginal, and lung microbiomes and their associations "
+        "with human health and disease.\n\n"
+
+        "ENTITY TYPES — use ONLY these 18 types:\n"
+        "  taxon             -> microbial taxa: species, genera, phyla, families "
+        "(e.g. Lactobacillus rhamnosus, Firmicutes, Akkermansia muciniphila)\n"
+        "  disease           -> medical conditions (e.g. IBD, Crohn's disease, T2D, obesity)\n"
+        "  method            -> analytical/bioinformatics methods "
+        "(e.g. 16S rRNA sequencing, QIIME2, DADA2, LEfSe)\n"
+        "  body_site         -> anatomical locations (e.g. gut, colon, fecal, oral cavity)\n"
+        "  treatment         -> interventions, drugs, probiotics, FMT, diet changes\n"
+        "  dataset           -> named datasets or accession numbers (e.g. HMP, PRJNA123456)\n"
+        "  metabolite        -> metabolic compounds (e.g. butyrate, TMAO, bile acids, SCFAs)\n"
+        "  gene              -> genes, receptors, signaling molecules "
+        "(e.g. TLR4, NOD2, NF-kB, IL-6, FXR)\n"
+        "  protein           -> proteins, antibodies (e.g. zonulin, calprotectin, IgA)\n"
+        "  biomarker         -> clinical/microbiome biomarkers "
+        "(e.g. Shannon index, CRP, fecal calprotectin)\n"
+        "  pathway           -> biological pathways (e.g. butyrate metabolism, TLR signaling)\n"
+        "  population        -> study populations (e.g. IBD patients, healthy adults, neonates)\n"
+        "  dietary_component -> food/dietary items (e.g. dietary fiber, inulin, polyphenols)\n"
+        "  immune_cell       -> immune cells (e.g. Treg, Th17, macrophages, dendritic cells)\n"
+        "  clinical_outcome  -> outcomes (e.g. remission, dysbiosis, mucosal healing)\n"
+        "  environmental_factor -> exposures (e.g. antibiotic use, birth mode, breastfeeding)\n"
+        "  sequencing_platform  -> platforms (e.g. Illumina MiSeq, PacBio, Oxford Nanopore)\n"
+        "  omics_feature     -> omics units (e.g. OTU, ASV, MAG, KEGG ortholog)\n\n"
+
+        "CONFIDENCE CALIBRATION:\n"
+        "  0.95-1.00: exact named entity with full scientific name\n"
+        "  0.85-0.94: named entity with clear context\n"
+        "  0.70-0.84: entity mentioned but abbreviated or partially described\n"
+        "  0.50-0.69: inferred or ambiguous entity\n"
+        "  <0.50: do NOT include\n\n"
+
+        "SPECIFICITY RULES:\n"
+        "  - Prefer specific over general: 'Lactobacillus rhamnosus GG' > 'Lactobacillus'\n"
+        "  - Include full strain names when present\n"
+        "  - Use the exact name as it appears in the text\n"
+        "  - Extract population descriptors (who was studied)\n"
+        "  - Extract statistical evidence sentences for relations\n\n"
+
+        f"{few_shot}"
+        f"{known_block}"
+        "INSTRUCTIONS:\n"
+        "1. Extract ALL entities of the 18 types above from the TEXT\n"
+        "2. Extract relations as (subject, predicate, object) triples\n"
+        "3. Extract study evidence metadata\n"
+        "4. Return ONLY valid JSON — no markdown, no explanation, no extra text\n\n"
+
+        "REQUIRED OUTPUT FORMAT:\n"
+        '{"entities": [{"name": "exact text span", "type": "one of 18 types", '
+        '"confidence": 0.0-1.0}],\n'
+        ' "relations": [{"subject": "entity name", "predicate": "verb phrase", '
+        '"object": "entity name", "confidence": 0.0-1.0}],\n'
+        ' "evidence": {"sample_size": integer_or_null, "study_design": "string", '
+        '"population": "string"}}\n\n'
         "TEXT:\n"
         f"{truncated}"
     )
@@ -212,10 +301,14 @@ class LLMExtractor:
     """
 
     def extract(
-        self, text: str
+        self, text: str, known_entities: list = None
     ) -> tuple[list[CandidateEntity], list[CandidateRelation]]:
         """
         Extract entities and relations from *text*.
+
+        known_entities: optional list of entity name strings already found by
+                        regex/BioBERT. When provided, the LLM prompt instructs
+                        the model to focus on novel entities not in this list.
 
         Decision tree (Req 4.1–4.8):
           1. Empty / whitespace / None → return ([], [])
@@ -231,16 +324,18 @@ class LLMExtractor:
         if not text or not text.strip():
             return [], []
 
-        # ── 2. Cache lookup (Req 4.3, 7.1, 7.2) ─────────────────────────────
-        key = hashlib.md5(text.encode("utf-8")).hexdigest()
+        # ── 2. Cache lookup — key includes known_entities to allow re-extraction
+        #       with different known sets (Req 4.3, 7.1, 7.2) ─────────────────
+        known_key = ",".join(sorted(known_entities)) if known_entities else ""
+        key = hashlib.md5(f"{text}|{known_key}".encode("utf-8")).hexdigest()
         cache = _cache.load()
         if key in cache:
             cached_data = cache[key]
             if isinstance(cached_data, dict):
                 return _build_result(cached_data)
 
-        # ── 3. Build prompt (Req 4.7, 11.1, 11.3, 11.5) ─────────────────────
-        prompt = _build_prompt(text)
+        # ── 3. Build prompt with known entities context ───────────────────────
+        prompt = _build_prompt(text, known_entities=known_entities)
 
         # ── 4. Route to backend ───────────────────────────────────────────────
         if BACKEND_CONFIG.llm_backend == "gemini":

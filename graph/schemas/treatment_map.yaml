@@ -1,0 +1,242 @@
+# treatment_map.yaml
+# Maps common abbreviations and synonyms → canonical treatment name
+# Used as pre-step before MeSH API lookup
+
+# ── Fecal Microbiota Transplantation ─────────────────────────────────────────
+"Fecal Microbiota Transplantation":
+  - fmt
+  - fecal microbiota transplantation
+  - faecal microbiota transplantation
+  - fecal transplant
+  - stool transplant
+  - fecal microbiome transplantation
+  - fecal bacteriotherapy
+  - microbiota transplant
+  - fmt therapy
+
+# ── Probiotics ────────────────────────────────────────────────────────────────
+"Probiotics":
+  - probiotic
+  - probiotics
+  - probiotic supplement
+  - probiotic therapy
+  - live biotherapeutic
+  - live biotherapeutic product
+  - lbp
+
+"Lactobacillus rhamnosus GG":
+  - lgg
+  - lactobacillus rhamnosus gg
+  - l. rhamnosus gg
+  - culturelle
+
+"VSL#3":
+  - vsl#3
+  - vsl3
+  - vivomixx
+
+# ── Prebiotics ────────────────────────────────────────────────────────────────
+"Prebiotics":
+  - prebiotic
+  - prebiotics
+  - prebiotic supplement
+  - prebiotic fiber
+
+"Inulin":
+  - inulin
+  - chicory inulin
+  - inulin-type fructans
+  - itf
+
+"Fructooligosaccharides":
+  - fos
+  - fructooligosaccharides
+  - fructo-oligosaccharides
+  - scfos
+  - oligofructose
+
+"Galactooligosaccharides":
+  - gos
+  - galactooligosaccharides
+  - galacto-oligosaccharides
+  - human milk oligosaccharides (similar)
+
+"Resistant Starch":
+  - rs
+  - resistant starch
+  - rs2
+  - rs3
+  - high-amylose starch
+
+"Beta-glucan":
+  - beta-glucan
+  - β-glucan
+  - oat beta-glucan
+  - barley beta-glucan
+
+# ── Antibiotics ───────────────────────────────────────────────────────────────
+"Metronidazole":
+  - metronidazole
+  - flagyl
+  - metro
+
+"Vancomycin":
+  - vancomycin
+  - vancocin
+
+"Rifaximin":
+  - rifaximin
+  - xifaxan
+  - rifamycin (gut-restricted)
+
+"Ciprofloxacin":
+  - ciprofloxacin
+  - cipro
+
+"Amoxicillin":
+  - amoxicillin
+  - amoxil
+  - amoxycillin
+
+"Ampicillin":
+  - ampicillin
+  - principen
+
+"Doxycycline":
+  - doxycycline
+  - vibramycin
+
+"Clindamycin":
+  - clindamycin
+  - cleocin
+
+"Azithromycin":
+  - azithromycin
+  - zithromax
+  - z-pack
+
+"Clarithromycin":
+  - clarithromycin
+  - biaxin
+
+"Fidaxomicin":
+  - fidaxomicin
+  - dificid
+  - opt-80
+
+# ── Drugs affecting gut microbiome ────────────────────────────────────────────
+"Metformin":
+  - metformin
+  - glucophage
+  - metformin hydrochloride
+
+"Proton Pump Inhibitor":
+  - ppi
+  - proton pump inhibitor
+  - omeprazole
+  - pantoprazole
+  - esomeprazole
+  - lansoprazole
+  - rabeprazole
+
+"Non-Steroidal Anti-Inflammatory Drug":
+  - nsaid
+  - nsaids
+  - non-steroidal anti-inflammatory drug
+  - non-steroidal anti-inflammatory drugs
+  - ibuprofen
+  - aspirin
+  - naproxen
+
+"Corticosteroids":
+  - corticosteroid
+  - corticosteroids
+  - prednisolone
+  - prednisone
+  - dexamethasone
+  - budesonide
+
+"Mesalazine":
+  - mesalazine
+  - mesalamine
+  - 5-asa
+  - aminosalicylate
+
+"Infliximab":
+  - infliximab
+  - remicade
+  - anti-tnf
+
+"Adalimumab":
+  - adalimumab
+  - humira
+
+"Vedolizumab":
+  - vedolizumab
+  - entyvio
+
+"Ustekinumab":
+  - ustekinumab
+  - stelara
+
+"GLP-1 Receptor Agonist":
+  - glp-1
+  - glp-1 receptor agonist
+  - semaglutide
+  - liraglutide
+  - exenatide
+  - ozempic
+  - victoza
+
+# ── Diet interventions ────────────────────────────────────────────────────────
+"Mediterranean Diet":
+  - mediterranean diet
+  - med diet
+  - medi diet
+
+"High-Fiber Diet":
+  - high-fiber diet
+  - high fiber diet
+  - high fibre diet
+  - fiber-rich diet
+
+"Ketogenic Diet":
+  - ketogenic diet
+  - keto diet
+  - low-carb high-fat diet
+  - lchf
+
+"Plant-Based Diet":
+  - plant-based diet
+  - vegan diet
+  - vegetarian diet
+  - plant diet
+
+"Western Diet":
+  - western diet
+  - western-style diet
+  - high-fat western diet
+  - hfd (high-fat diet)
+  - standard western diet
+
+"Caloric Restriction":
+  - caloric restriction
+  - calorie restriction
+  - cr
+  - dietary restriction
+
+"Intermittent Fasting":
+  - intermittent fasting
+  - if
+  - time-restricted eating
+  - tre
+  - time-restricted feeding
+
+# ── Lifestyle interventions ───────────────────────────────────────────────────
+"Physical Exercise":
+  - exercise
+  - physical activity
+  - physical exercise
+  - aerobic exercise
+  - resistance training
+  - endurance training

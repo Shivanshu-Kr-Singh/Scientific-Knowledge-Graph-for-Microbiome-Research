@@ -1,0 +1,161 @@
+# body_site_map.yaml
+# Maps common abbreviations and synonyms → canonical anatomical location
+# Used as pre-step before UBERON/BTO OLS lookup
+
+"Gastrointestinal Tract":
+  - gi tract
+  - gastrointestinal tract
+  - gut
+  - digestive tract
+  - alimentary canal
+
+"Colon":
+  - colon
+  - large intestine
+  - large bowel
+  - colonic
+  - colorectum
+
+"Cecum":
+  - cecum
+  - caecum
+  - cecal
+
+"Small Intestine":
+  - small intestine
+  - small bowel
+  - intestinal
+
+"Ileum":
+  - ileum
+  - ileal
+  - terminal ileum
+
+"Jejunum":
+  - jejunum
+  - jejunal
+
+"Duodenum":
+  - duodenum
+  - duodenal
+
+"Rectum":
+  - rectum
+  - rectal
+  - anorectum
+
+"Feces":
+  - feces
+  - fecal
+  - faeces
+  - faecal
+  - stool
+  - fecal sample
+  - stool sample
+  - fecal material
+
+"Intestinal Mucosa":
+  - intestinal mucosa
+  - colonic mucosa
+  - gut mucosa
+  - mucosal tissue
+  - intestinal epithelium
+  - gut epithelium
+
+"Gut Barrier":
+  - gut barrier
+  - intestinal barrier
+  - epithelial barrier
+  - gut wall
+  - tight junctions
+
+"Oral Cavity":
+  - oral cavity
+  - mouth
+  - oral
+  - buccal
+
+"Saliva":
+  - saliva
+  - salivary
+
+"Subgingival":
+  - subgingival
+  - gingival
+  - periodontal
+  - dental plaque
+
+"Skin":
+  - skin
+  - cutaneous
+  - dermis
+  - epidermis
+  - cutaneous surface
+
+"Lung":
+  - lung
+  - pulmonary
+  - respiratory tract
+  - airway
+  - bronchoalveolar
+
+"Nasopharynx":
+  - nasopharynx
+  - nasopharyngeal
+  - nasal
+  - nasal cavity
+  - upper respiratory tract
+
+"Vagina":
+  - vagina
+  - vaginal
+  - vaginal canal
+  - cervicovaginal
+
+"Placenta":
+  - placenta
+  - placental
+  - intrauterine
+
+"Breast Milk":
+  - breast milk
+  - human milk
+  - colostrum
+  - breastmilk
+
+"Blood":
+  - blood
+  - serum
+  - plasma
+  - peripheral blood
+  - whole blood
+  - bloodstream
+
+"Liver":
+  - liver
+  - hepatic
+  - hepatic tissue
+
+"Pancreas":
+  - pancreas
+  - pancreatic
+
+"Adipose Tissue":
+  - adipose tissue
+  - fat tissue
+  - visceral fat
+  - subcutaneous fat
+  - adipose
+
+"Brain":
+  - brain
+  - central nervous system
+  - cns
+  - cerebral
+  - gut-brain
+
+"Urinary Tract":
+  - urinary tract
+  - bladder
+  - urethra
+  - urinary

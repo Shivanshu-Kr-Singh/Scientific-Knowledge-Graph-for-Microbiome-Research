@@ -86,7 +86,8 @@ class RelationshipReifier:
         supporting_evidence: List[ProvenanceMetadata],
         claim_type: str = "association",
         p_value: Optional[float] = None,
-        article_type: Optional[str] = None
+        article_type: Optional[str] = None,
+        publication_date: Optional[str] = None,  # ISO date string from paper metadata
     ) -> ScientificClaim:
         """
         Create a reified claim from multiple pieces of evidence.
@@ -147,14 +148,14 @@ class RelationshipReifier:
         # Extract unique paper IDs from supporting evidence
         supporting_papers = list(set(evidence.paper_id for evidence in supporting_evidence))
         
-        # Calculate consensus_confidence as weighted average (Requirement 4.3)
-        # Weight by confidence score (all weights are equal to confidence itself)
-        total_weight = sum(evidence.confidence_score for evidence in supporting_evidence)
-        weighted_sum = sum(
-            evidence.confidence_score * evidence.confidence_score 
-            for evidence in supporting_evidence
-        )
-        consensus_confidence = weighted_sum / total_weight if total_weight > 0 else 0.0
+        # consensus_confidence = arithmetic mean of confidence scores across supporting evidence
+        # Scientifically: average extraction quality across all supporting papers
+        n = len(supporting_evidence)
+        if n == 1:
+            consensus_confidence = supporting_evidence[0].confidence_score
+        else:
+            consensus_confidence = sum(e.confidence_score for e in supporting_evidence) / n
+        consensus_confidence = max(0.0, min(1.0, consensus_confidence))
         
         # For initial claim creation, all evidence supports the claim
         # so effect_direction_consistency is 1.0
@@ -167,10 +168,13 @@ class RelationshipReifier:
             has_contradicting_evidence=False  # No contradicting evidence at creation
         )
         
-        # Get temporal bounds from evidence timestamps
-        timestamps = [evidence.extraction_timestamp for evidence in supporting_evidence]
-        first_reported = min(timestamps).isoformat()
-        last_updated = max(timestamps).isoformat()
+        # Use extraction timestamps as proxy for temporal bounds
+        # In a full implementation, this would use paper publication dates
+        # For now, use current UTC time as the claim creation timestamp
+        now_iso = datetime.now(timezone.utc).isoformat()
+        # Use publication date if provided, otherwise use current UTC timestamp
+        first_reported = publication_date if publication_date else now_iso
+        last_updated = now_iso
         
         # Create the reified claim
         claim = ScientificClaim(

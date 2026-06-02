@@ -14,6 +14,7 @@ Requirements: 16.1, 17.2
 
 import json
 import logging
+import re
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from datetime import datetime
@@ -27,6 +28,11 @@ from neo4j import GraphDatabase
 
 
 logger = logging.getLogger(__name__)
+
+
+def _to_neo4j_label(entity_type: str) -> str:
+    """Convert entity type string to CamelCase Neo4j node label."""
+    return "".join(word.capitalize() for word in (entity_type or "entity").replace("_", " ").split()) or "Entity"
 
 
 @dataclass
@@ -43,7 +49,7 @@ class PipelineConfig:
     neo4j_uri: str = "bolt://localhost:7687"
     neo4j_user: str = "neo4j"
     neo4j_password: str = "password"
-    neo4j_database: str = "neo4j_enhanced"  # Separate database instance
+    neo4j_database: str = "neo4j"  # Neo4j Community Edition only supports "neo4j"
     
     # Batch processing configuration (Requirement 17.2)
     batch_size: int = 100  # Papers per batch
@@ -163,6 +169,15 @@ class EnhancedNeo4jLoader:
             # Composite index on (evidence_strength, consensus_confidence) for REPORTS_INTERVENTION_EFFECT (Requirement 12.4)
             session.run("CREATE INDEX rel_intervention_evidence_consensus_composite IF NOT EXISTS FOR ()-[r:REPORTS_INTERVENTION_EFFECT]-() ON (r.evidence_strength, r.consensus_confidence)")
             
+            # Indexes for common open-world triple entity types
+            common_types = ["Metabolite", "Gene", "Protein", "Pathway", "ImmuneCell",
+                            "Biomarker", "Population", "DietaryComponent", "ClinicalOutcome"]
+            for node_type in common_types:
+                try:
+                    session.run(f"CREATE INDEX {node_type.lower()}_name IF NOT EXISTS FOR (n:{node_type}) ON (n.name)")
+                except Exception:
+                    pass  # Index may already exist or node type not yet present
+            
             logger.info("Created Neo4j indexes")
     
     def load_edges(self, edges: List[EnhancedGraphEdge]):
@@ -231,15 +246,24 @@ class EnhancedNeo4jLoader:
                         accession_numbers=edge_dict.get("accession_numbers", [])
                     )
 
-                    # Create target node with correct label
+                    # Create target node with correct label and canonical name
                     tx.run(
                         f"""
                         MERGE (target:{target_label} {{id: $target_id}})
                         ON CREATE SET target.created_at = datetime(),
-                                      target.name = $target_name
+                                      target.name = $target_name,
+                                      target.canonical_name = $canonical_name,
+                                      target.ontology = $ontology,
+                                      target.grounded = $grounded
+                        ON MATCH SET  target.canonical_name = $canonical_name,
+                                      target.ontology = $ontology,
+                                      target.grounded = $grounded
                         """,
                         target_id=edge.target,
-                        target_name=edge.target
+                        target_name=edge_dict.get("target_canonical", edge.target),
+                        canonical_name=edge_dict.get("target_canonical", edge.target),
+                        ontology=edge_dict.get("target_ontology"),
+                        grounded=edge_dict.get("target_grounded", False)
                     )
 
                     # Create relationship with all properties
@@ -258,27 +282,89 @@ class EnhancedNeo4jLoader:
                 tx.commit()
     
     def load_claims(self, claims: List[ScientificClaim]):
-        """
-        Load reified claims into Neo4j as first-class nodes.
-        
-        Requirement 4.1: Create reified claim nodes
-        
-        Args:
-            claims: List of ScientificClaim objects to load
-        """
+        """Load reified claims into Neo4j as first-class nodes."""
         if not claims:
             logger.warning("No claims to load")
             return
         
         logger.info(f"Loading {len(claims)} reified claims into Neo4j...")
-        
-        # Process in batches
         for i in range(0, len(claims), self.batch_size):
             batch = claims[i:i + self.batch_size]
             self._load_claim_batch(batch)
             logger.info(f"Loaded batch {i // self.batch_size + 1} ({len(batch)} claims)")
-        
         logger.info(f"Successfully loaded {len(claims)} claims")
+
+    def load_open_world_triples(self, triples: List[Dict]) -> None:
+        """
+        Load open-world (subject, predicate, object) triples into Neo4j.
+
+        Each triple is stored as a RELATES_TO (or canonical_predicate) relationship
+        between two Entity nodes. Subject/object entity types are stored as node labels.
+        Novel predicates are preserved as raw_predicate property.
+        """
+        if not triples:
+            return
+
+        logger.info(f"Loading {len(triples)} open-world triples into Neo4j...")
+
+        for i in range(0, len(triples), self.batch_size):
+            batch = triples[i:i + self.batch_size]
+            with self.driver.session(database=self.database) as session:
+                with session.begin_transaction() as tx:
+                    for t in batch:
+                        subject = t.get("subject", "").strip()
+                        object_ = t.get("object", "").strip()
+                        if not subject or not object_:
+                            continue
+
+                        canonical_pred = t.get("canonical_predicate", "RELATES_TO")
+                        # Use canonical predicate as relationship type if it's a known type
+                        # otherwise use RELATES_TO
+                        rel_type = canonical_pred if canonical_pred else "RELATES_TO"
+                        # Sanitize: keep only uppercase letters, digits, underscores (valid Cypher rel type chars)
+                        rel_type = re.sub(r'[^A-Z0-9_]', '_', rel_type.replace("-", "_").replace(" ", "_").upper())
+                        # Relationship types cannot start with a digit
+                        if rel_type and rel_type[0].isdigit():
+                            rel_type = "REL_" + rel_type
+                        # Fallback for empty
+                        if not rel_type:
+                            rel_type = "RELATES_TO"
+
+                        subj_label = _to_neo4j_label(t.get("subject_type") or "entity")
+                        obj_label = _to_neo4j_label(t.get("object_type") or "entity")
+
+                        tx.run(
+                            f"""
+                            MERGE (s:{subj_label} {{name: $subject}})
+                            MERGE (o:{obj_label} {{name: $object}})
+                            CREATE (s)-[r:{rel_type} {{
+                                raw_predicate: $raw_predicate,
+                                canonical_predicate: $canonical_predicate,
+                                predicate_category: $predicate_category,
+                                is_novel_predicate: $is_novel_predicate,
+                                confidence: $confidence,
+                                evidence: $evidence,
+                                paper_id: $paper_id,
+                                section_type: $section_type,
+                                extraction_method: 'llm_triple_extractor',
+                                extracted_at: $extracted_at
+                            }}]->(o)
+                            """,
+                            subject=subject,
+                            object=object_,
+                            raw_predicate=t.get("predicate", ""),
+                            canonical_predicate=canonical_pred,
+                            predicate_category=t.get("predicate_category", "generic"),
+                            is_novel_predicate=t.get("is_novel_predicate", False),
+                            confidence=t.get("confidence", 0.7),
+                            evidence=t.get("evidence", "")[:500],
+                            paper_id=t.get("paper_id", ""),
+                            section_type=t.get("section_type", "unknown"),
+                            extracted_at=t.get("extracted_at", ""),
+                        )
+                    tx.commit()
+
+        logger.info(f"Successfully loaded {len(triples)} open-world triples")
     
     def _load_claim_batch(self, claims: List[ScientificClaim]):
         """
@@ -470,6 +556,9 @@ class EnhancedKGPipeline:
         # Get statistics
         stats = merged_builder.get_statistics()
         stats["total_claims"] = len(claims)
+        # Count open-world triples across all builders
+        all_ow_triples_count = sum(len(b.get_open_world_triples()) for b in all_builders)
+        stats["open_world_triples"] = all_ow_triples_count
         stats["processing_time_seconds"] = (datetime.now() - start_time).total_seconds()
         
         logger.info(f"Pipeline statistics: {stats}")
@@ -483,6 +572,13 @@ class EnhancedKGPipeline:
             logger.info("Loading results into Neo4j...")
             self.neo4j_loader.load_edges(all_edges)
             self.neo4j_loader.load_claims(claims)
+            # Load open-world triples from all builders
+            all_ow_triples = []
+            for builder in all_builders:
+                all_ow_triples.extend(builder.get_open_world_triples())
+            if all_ow_triples:
+                self.neo4j_loader.load_open_world_triples(all_ow_triples)
+                logger.info(f"Loaded {len(all_ow_triples)} open-world triples into Neo4j")
             logger.info("Successfully loaded results into Neo4j")
         
         return {

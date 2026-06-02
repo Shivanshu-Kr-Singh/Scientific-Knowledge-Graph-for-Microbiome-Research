@@ -65,7 +65,14 @@ class ProvenanceMetadata(BaseModel):
     @classmethod
     def validate_section_type(cls, v: str) -> str:
         """Validate section_type is one of the allowed values."""
-        allowed = {"abstract", "methods", "results", "discussion", "introduction", "other"}
+        allowed = {
+            "abstract", "methods", "results", "discussion", "introduction",
+            "background", "conclusion", "study_population", "bioinformatics",
+            "statistical_analysis", "limitations", "strengths", "future_directions",
+            "data_availability", "supplementary", "ethics", "trial_registration",
+            "conflict_of_interest", "funding", "acknowledgements", "references",
+            "glossary", "other",
+        }
         if v not in allowed:
             raise ValueError(f"section_type must be one of {allowed}, got '{v}'")
         return v

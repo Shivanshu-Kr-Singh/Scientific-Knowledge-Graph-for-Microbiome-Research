@@ -1,12 +1,417 @@
-t2d:
-  - t2d
-  - type 2 diabetes
-  - type ii diabetes
+# disease_map.yaml
+# Maps common abbreviations and synonyms → canonical disease name
+# Used as pre-step before MeSH API lookup
 
-ibd:
+# ── Inflammatory Bowel Disease ────────────────────────────────────────────────
+"Inflammatory Bowel Disease":
   - ibd
   - inflammatory bowel disease
+  - inflammatory bowel diseases
 
-crohn:
-  - crohn disease
+"Crohn's Disease":
+  - cd
   - crohn's disease
+  - crohn disease
+  - crohns disease
+  - crohns
+  - regional enteritis
+
+"Ulcerative Colitis":
+  - uc
+  - ulcerative colitis
+  - ulcerative colitis (uc)
+
+"Irritable Bowel Syndrome":
+  - ibs
+  - irritable bowel syndrome
+  - spastic colon
+  - functional bowel disorder
+
+# ── Metabolic diseases ────────────────────────────────────────────────────────
+"Type 2 Diabetes Mellitus":
+  - t2d
+  - type 2 diabetes
+  - type 2 diabetes mellitus
+  - type ii diabetes
+  - type-2 diabetes
+  - t2dm
+  - non-insulin-dependent diabetes
+  - niddm
+
+"Type 1 Diabetes Mellitus":
+  - t1d
+  - type 1 diabetes
+  - type 1 diabetes mellitus
+  - type i diabetes
+  - t1dm
+  - insulin-dependent diabetes mellitus
+  - iddm
+  - juvenile diabetes
+
+"Obesity":
+  - obesity
+  - obese
+  - overweight
+  - adiposity
+  - high bmi
+
+"Metabolic Syndrome":
+  - metabolic syndrome
+  - mets
+  - syndrome x
+  - insulin resistance syndrome
+
+"Non-Alcoholic Fatty Liver Disease":
+  - nafld
+  - non-alcoholic fatty liver disease
+  - nonalcoholic fatty liver disease
+  - fatty liver disease
+
+"Non-Alcoholic Steatohepatitis":
+  - nash
+  - non-alcoholic steatohepatitis
+  - nonalcoholic steatohepatitis
+
+"Alcoholic Liver Disease":
+  - ald
+  - alcoholic liver disease
+  - alcohol-associated liver disease
+  - alcohol-related liver disease
+
+"Liver Cirrhosis":
+  - liver cirrhosis
+  - hepatic cirrhosis
+  - cirrhosis
+  - liver fibrosis
+
+"Gestational Diabetes":
+  - gdm
+  - gestational diabetes
+  - gestational diabetes mellitus
+
+"Hypertension":
+  - hypertension
+  - high blood pressure
+  - arterial hypertension
+  - htn
+
+"Hyperlipidemia":
+  - hyperlipidemia
+  - hypercholesterolemia
+  - dyslipidemia
+  - high cholesterol
+  - high triglycerides
+
+"Gout":
+  - gout
+  - hyperuricemia
+  - gouty arthritis
+
+# ── Gastrointestinal diseases ─────────────────────────────────────────────────
+"Colorectal Cancer":
+  - crc
+  - colorectal cancer
+  - colon cancer
+  - rectal cancer
+  - colorectal carcinoma
+  - colorectal neoplasm
+
+"Gastric Cancer":
+  - gastric cancer
+  - stomach cancer
+  - gastric carcinoma
+
+"Celiac Disease":
+  - celiac disease
+  - coeliac disease
+  - gluten enteropathy
+  - gluten intolerance
+
+"Small Intestinal Bacterial Overgrowth":
+  - sibo
+  - small intestinal bacterial overgrowth
+  - small bowel bacterial overgrowth
+
+"Clostridium difficile Infection":
+  - cdi
+  - clostridium difficile infection
+  - clostridioides difficile infection
+  - c. diff infection
+  - c difficile colitis
+  - pseudomembranous colitis
+
+"Bacterial Vaginosis":
+  - bv
+  - bacterial vaginosis
+  - vaginal dysbiosis
+
+"Hepatocellular Carcinoma":
+  - hcc
+  - hepatocellular carcinoma
+  - liver cancer
+  - primary liver cancer
+
+"Necrotizing Enterocolitis":
+  - nec
+  - necrotizing enterocolitis
+  - neonatal necrotizing enterocolitis
+
+# ── Autoimmune / Inflammatory diseases ───────────────────────────────────────
+"Rheumatoid Arthritis":
+  - ra
+  - rheumatoid arthritis
+
+"Systemic Lupus Erythematosus":
+  - sle
+  - lupus
+  - systemic lupus erythematosus
+  - lupus erythematosus
+
+"Multiple Sclerosis":
+  - ms
+  - multiple sclerosis
+  - relapsing-remitting ms
+  - rrms
+  - progressive ms
+
+"Psoriasis":
+  - psoriasis
+  - psoriatic disease
+  - plaque psoriasis
+
+"Psoriatic Arthritis":
+  - psa
+  - psoriatic arthritis
+
+"Ankylosing Spondylitis":
+  - as
+  - ankylosing spondylitis
+  - axial spondyloarthritis
+
+"Atopic Dermatitis":
+  - ad
+  - atopic dermatitis
+  - eczema
+  - atopic eczema
+
+"Asthma":
+  - asthma
+  - bronchial asthma
+  - allergic asthma
+
+"Hashimoto's Thyroiditis":
+  - hashimoto's thyroiditis
+  - hashimoto thyroiditis
+  - autoimmune thyroiditis
+  - hypothyroidism (autoimmune)
+
+"Graves Disease":
+  - graves disease
+  - graves' disease
+  - hyperthyroidism (autoimmune)
+
+# ── Neurological / Psychiatric diseases ──────────────────────────────────────
+"Parkinson's Disease":
+  - pd
+  - parkinson's disease
+  - parkinson disease
+  - parkinsons disease
+
+"Alzheimer's Disease":
+  - ad
+  - alzheimer's disease
+  - alzheimer disease
+  - alzheimers disease
+  - dementia (alzheimer's type)
+
+"Autism Spectrum Disorder":
+  - asd
+  - autism spectrum disorder
+  - autism
+  - autistic spectrum disorder
+
+"Major Depressive Disorder":
+  - mdd
+  - major depressive disorder
+  - depression
+  - major depression
+  - depressive disorder
+
+"Attention Deficit Hyperactivity Disorder":
+  - adhd
+  - attention deficit hyperactivity disorder
+  - attention deficit disorder
+  - add
+
+"Amyotrophic Lateral Sclerosis":
+  - als
+  - amyotrophic lateral sclerosis
+  - motor neuron disease
+  - lou gehrig's disease
+
+# ── Cardiovascular diseases ───────────────────────────────────────────────────
+"Coronary Artery Disease":
+  - cad
+  - coronary artery disease
+  - coronary heart disease
+  - ischemic heart disease
+
+"Heart Failure":
+  - hf
+  - heart failure
+  - cardiac failure
+  - congestive heart failure
+  - chf
+
+"Myocardial Infarction":
+  - mi
+  - myocardial infarction
+  - heart attack
+  - acute myocardial infarction
+  - ami
+
+"Atherosclerosis":
+  - atherosclerosis
+  - arteriosclerosis
+  - coronary atherosclerosis
+
+"Atrial Fibrillation":
+  - af
+  - afib
+  - atrial fibrillation
+
+# ── Infectious diseases ───────────────────────────────────────────────────────
+"Sepsis":
+  - sepsis
+  - septicemia
+  - bacteremia
+  - blood poisoning
+
+"HIV Infection":
+  - hiv
+  - hiv infection
+  - hiv/aids
+  - aids
+  - human immunodeficiency virus infection
+
+"COVID-19":
+  - covid-19
+  - covid19
+  - sars-cov-2 infection
+  - coronavirus disease 2019
+  - coronavirus disease
+
+"Tuberculosis":
+  - tb
+  - tuberculosis
+  - pulmonary tuberculosis
+  - mtb infection
+
+"Graft-versus-Host Disease":
+  - gvhd
+  - graft-versus-host disease
+  - graft versus host disease
+  - allogeneic gvhd
+
+"Hepatitis B":
+  - hbv
+  - hepatitis b
+  - hepatitis b virus infection
+  - chronic hepatitis b
+
+"Hepatitis C":
+  - hcv
+  - hepatitis c
+  - hepatitis c virus infection
+  - chronic hepatitis c
+
+# ── Kidney diseases ───────────────────────────────────────────────────────────
+"Chronic Kidney Disease":
+  - ckd
+  - chronic kidney disease
+  - chronic renal disease
+  - renal failure
+  - end-stage renal disease
+  - esrd
+
+"Urinary Tract Infection":
+  - uti
+  - urinary tract infection
+  - urinary infection
+  - cystitis (bacterial)
+
+# ── Respiratory diseases ──────────────────────────────────────────────────────
+"Chronic Obstructive Pulmonary Disease":
+  - copd
+  - chronic obstructive pulmonary disease
+  - emphysema
+  - chronic bronchitis
+
+"Cystic Fibrosis":
+  - cf
+  - cystic fibrosis
+
+# ── Pediatric diseases ────────────────────────────────────────────────────────
+"Pediatric IBD":
+  - pediatric ibd
+  - paediatric ibd
+  - childhood ibd
+  - juvenile ibd
+
+# ── Cancer (general) ─────────────────────────────────────────────────────────
+"Pancreatic Cancer":
+  - pdac
+  - pancreatic cancer
+  - pancreatic ductal adenocarcinoma
+  - pancreatic adenocarcinoma
+
+"Lung Cancer":
+  - nsclc
+  - lung cancer
+  - non-small cell lung cancer
+  - small cell lung cancer
+
+"Breast Cancer":
+  - breast cancer
+  - breast carcinoma
+  - mammary cancer
+
+"Prostate Cancer":
+  - pca
+  - prostate cancer
+  - prostatic carcinoma
+
+# ── Women's health ────────────────────────────────────────────────────────────
+"Polycystic Ovary Syndrome":
+  - pcos
+  - polycystic ovary syndrome
+  - polycystic ovarian syndrome
+
+"Preeclampsia":
+  - preeclampsia
+  - pre-eclampsia
+  - gestational hypertension
+
+# ── Other ─────────────────────────────────────────────────────────────────────
+"Chronic Fatigue Syndrome":
+  - cfs
+  - chronic fatigue syndrome
+  - me/cfs
+  - myalgic encephalomyelitis
+  - systemic exertion intolerance disease
+
+"Osteoporosis":
+  - osteoporosis
+  - bone loss
+  - low bone density
+
+"Sarcopenia":
+  - sarcopenia
+  - muscle wasting
+  - age-related muscle loss
+
+"Dyslipidemia":
+  - dyslipidemia
+  - hyperlipidemia
+  - hypercholesterolemia
+  - hypertriglyceridemia

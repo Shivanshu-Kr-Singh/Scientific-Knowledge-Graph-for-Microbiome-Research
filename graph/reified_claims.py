@@ -17,6 +17,7 @@ from typing import List, Optional
 from pydantic import BaseModel, Field, field_validator
 from enum import Enum
 from datetime import datetime
+from loguru import logger
 
 
 class EvidenceStrength(str, Enum):
@@ -149,11 +150,17 @@ class ScientificClaim(BaseModel):
     @classmethod
     def validate_claim_type(cls, v: str) -> str:
         """Validate claim_type is one of the allowed values."""
-        allowed_types = {"association", "intervention_effect", "methodology_comparison"}
+        allowed_types = {
+            "association", "intervention_effect", "methodology_comparison",
+            "open_world",       # LLM-extracted open-world triples
+            "mechanistic",      # Causal/mechanistic relationships
+            "biomarker",        # Biomarker associations
+            "unknown",          # Fallback for unclassified claims
+        }
         if v not in allowed_types:
-            raise ValueError(
-                f"claim_type must be one of {allowed_types}, got '{v}'"
-            )
+            # Instead of raising, normalize to "unknown" for forward compatibility
+            logger.warning(f"Unknown claim_type '{v}', normalizing to 'unknown'")
+            return "unknown"
         return v
     
     def model_post_init(self, __context) -> None:
@@ -341,11 +348,17 @@ class ReifiedClaimNode(BaseModel):
     @classmethod
     def validate_claim_type(cls, v: str) -> str:
         """Validate claim_type is one of the allowed values."""
-        allowed_types = {"association", "intervention_effect", "methodology_comparison"}
+        allowed_types = {
+            "association", "intervention_effect", "methodology_comparison",
+            "open_world",       # LLM-extracted open-world triples
+            "mechanistic",      # Causal/mechanistic relationships
+            "biomarker",        # Biomarker associations
+            "unknown",          # Fallback for unclassified claims
+        }
         if v not in allowed_types:
-            raise ValueError(
-                f"claim_type must be one of {allowed_types}, got '{v}'"
-            )
+            # Instead of raising, normalize to "unknown" for forward compatibility
+            logger.warning(f"Unknown claim_type '{v}', normalizing to 'unknown'")
+            return "unknown"
         return v
     
     @field_validator('meta_analysis_method')

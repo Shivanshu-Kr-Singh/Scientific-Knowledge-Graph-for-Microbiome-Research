@@ -1,0 +1,90 @@
+# dataset_map.yaml
+# Maps common abbreviations and synonyms → canonical dataset/repository name
+
+# ── Major microbiome databases/projects ──────────────────────────────────────
+"Human Microbiome Project":
+  - hmp
+  - human microbiome project
+  - hmp1
+  - hmp phase 1
+  - ihmp
+  - integrative human microbiome project
+  - hmp2
+
+"curatedMetagenomicData":
+  - curatedmetagenomicdata
+  - curatedmetagenomic data
+  - cmd
+  - waldron lab database
+
+"American Gut Project":
+  - american gut
+  - american gut project
+  - agp
+
+"MetaHIT":
+  - metahit
+  - metagenomics of the human intestinal tract
+
+"GMrepo":
+  - gmrepo
+  - gut metagenome repository
+
+"MgniFY":
+  - mgnify
+  - ebi metagenomics
+
+"NCBI SRA":
+  - sra
+  - ncbi sra
+  - sequence read archive
+  - ncbi sequence read archive
+
+"European Nucleotide Archive":
+  - ena
+  - european nucleotide archive
+  - embl-ebi archive
+
+"GEO":
+  - geo
+  - ncbi geo
+  - gene expression omnibus
+
+"dbGaP":
+  - dbgap
+  - database of genotypes and phenotypes
+
+"UK Biobank":
+  - uk biobank
+  - ukbb
+  - ukb
+
+"FINRISK":
+  - finrisk
+  - finrisk study
+
+"PREDIMED":
+  - predimed
+  - prevención con dieta mediterránea
+
+"NHANES":
+  - nhanes
+  - national health and nutrition examination survey
+
+"Lifelines":
+  - lifelines
+  - lifelines cohort
+
+"MIBC":
+  - mibc
+  - microbiome cohort
+
+"HMP2":
+  - hmp2
+  - ihmp
+  - integrative human microbiome project phase 2
+
+"IMG/M":
+  - img/m
+  - img-m
+  - integrated microbial genomes and microbiomes

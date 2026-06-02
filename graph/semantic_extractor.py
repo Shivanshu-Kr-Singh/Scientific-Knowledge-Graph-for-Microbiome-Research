@@ -107,11 +107,14 @@ class SemanticRelationshipExtractor:
                 if not mentioned_taxa or not mentioned_diseases:
                     continue
                 
-                # Try to extract direction from sentence first, then fall back to full section
-                # (abstracts often state direction in a different sentence from the taxon mention)
+                # Try to extract direction from sentence first
                 direction = self._extract_direction(sentence)
                 if not direction:
-                    direction = self._extract_direction(section.content)
+                    # Only fall back to section-level if section is short (structured abstract ≤ 3 sentences)
+                    # For longer sections, requiring direction in the sentence prevents false associations
+                    sentences_in_section = self._split_into_sentences(section.content)
+                    if len(sentences_in_section) <= 3:
+                        direction = self._extract_direction(section.content)
                 if not direction:
                     continue
                 

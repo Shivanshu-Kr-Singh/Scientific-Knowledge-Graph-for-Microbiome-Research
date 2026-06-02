@@ -216,6 +216,7 @@ def run_layer3(
             logger.info(f"  Associations: {stats.get('associations', 0)}")
             logger.info(f"  Interventions: {stats.get('interventions', 0)}")
             logger.info(f"  Methodologies: {stats.get('methodologies', 0)}")
+            logger.info(f"  Open-world triples: {stats.get('open_world_triples', 0)}")
             logger.info(f"  Reified claims: {results['claims_count']}")
             logger.info(f"  Processing time: {results['processing_time_seconds']:.2f}s")
             

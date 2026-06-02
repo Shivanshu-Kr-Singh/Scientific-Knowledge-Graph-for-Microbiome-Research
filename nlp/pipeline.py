@@ -41,10 +41,14 @@ from nlp.ner import NERExtractor
 from nlp.section_parser import SectionParser
 from nlp.data_availability import DataAvailabilityExtractor
 from nlp.fulltext.fulltext_orchestrator import (FullTextOrchestrator)
-
 from nlp.study_design import (extract_design)
 from nlp.evidence_extractor import (extract as extract_evidence)
 from nlp.quality_scorer import (score as quality_score)
+
+# Lazy import to avoid circular deps — EntityNormalizer is only needed at runtime
+def _get_entity_normalizer():
+    from graph.entity_normalizer import EntityNormalizer
+    return EntityNormalizer()
 
 class NLPPipeline:
     """
@@ -66,7 +70,15 @@ class NLPPipeline:
         self.ner_extractor       = NERExtractor(use_model=use_ner_model, use_llm=use_llm)
         self.section_parser      = SectionParser()
         self.data_av_extractor   = DataAvailabilityExtractor()
-        self.fulltext = (FullTextOrchestrator())
+        self.fulltext            = FullTextOrchestrator()
+        # Entity normalizer for inline grounding at Layer 2 time
+        # Loaded once and reused across all papers (SQLite cache amortizes API calls)
+        try:
+            self.entity_normalizer = _get_entity_normalizer()
+            logger.info("[pipeline] EntityNormalizer loaded — inline grounding enabled")
+        except Exception as e:
+            self.entity_normalizer = None
+            logger.warning(f"[pipeline] EntityNormalizer unavailable — grounding deferred to Layer 3: {e}")
         logger.success("NLP pipeline ready")
 
     def process_all(
@@ -154,8 +166,31 @@ class NLPPipeline:
         entities = self.ner_extractor.extract(
             title=paper.title,
             abstract=paper.abstract,
+            sections=sections if sections else None,
+            full_text=full_text if full_text else None,
         )
         grouped = self.ner_extractor.group_entities(entities)
+
+        # ── Module 4b: Inline entity grounding ───────────────────────────────
+        # Ground each extracted entity to its canonical ontology ID here in Layer 2
+        # so the enriched record is self-contained and Layer 3 doesn't re-normalize.
+        # The grounding cache (SQLite) ensures APIs are only called once per entity.
+        if self.entity_normalizer is not None:
+            grounded_entities = []
+            for ent in entities:
+                try:
+                    result = self.entity_normalizer.normalize(ent.text, ent.label)
+                    grounded_entities.append(ent.model_copy(update={
+                        "canonical_name":       result.get("canonical_name") or ent.text,
+                        "ontology_id":          result.get("id"),
+                        "ontology_name":        result.get("ontology"),
+                        "grounded":             result.get("grounded", False),
+                        "grounding_confidence": result.get("confidence", 0.0),
+                        "grounding_source":     result.get("source", "none"),
+                    }))
+                except Exception:
+                    grounded_entities.append(ent)
+            entities = grounded_entities
 
         # ── Module 5: Data availability extraction ────────────────────────────
         data_availability: DataAvailabilityInfo = self.data_av_extractor.extract(sections=sections,abstract=paper.abstract,)
@@ -163,7 +198,7 @@ class NLPPipeline:
         
         source_text = (
             full_text
-            if full_text.strip()
+            if full_text and full_text.strip()
             else
             paper.abstract)
         study_design = (extract_design(source_text))
@@ -183,6 +218,20 @@ class NLPPipeline:
             methods=grouped.get("method", []),
             body_sites=grouped.get("body_site", []),
             treatments=grouped.get("treatment", []),
+            # ── New 12 entity group fields ────────────────────────────────────
+            metabolites=grouped.get("metabolite", []),
+            genes=grouped.get("gene", []),
+            proteins=grouped.get("protein", []),
+            biomarkers=grouped.get("biomarker", []),
+            pathways=grouped.get("pathway", []),
+            populations=grouped.get("population", []),
+            dietary_components=grouped.get("dietary_component", []),
+            immune_cells=grouped.get("immune_cell", []),
+            clinical_outcomes=grouped.get("clinical_outcome", []),
+            environmental_factors=grouped.get("environmental_factor", []),
+            sequencing_platforms=grouped.get("sequencing_platform", []),
+            omics_features=grouped.get("omics_feature", []),
+            other_entities=grouped.get("other_entities", {}),
             data_availability=data_availability,
             nlp_processed_at=datetime.utcnow().isoformat(),
             nlp_version="1.0",

@@ -1,10 +1,264 @@
-shotgun metagenomics:
-  - shotgun sequencing
-  - shotgun metagenomics
+# method_map.yaml
+# Maps common abbreviations and synonyms → canonical method name
+# Used as pre-step before OBI ontology lookup
 
-16s:
+# ── Sequencing methods ────────────────────────────────────────────────────────
+"16S rRNA gene sequencing":
   - 16s
   - 16s rrna
+  - 16s rrna sequencing
+  - 16s rrna gene sequencing
+  - 16s amplicon sequencing
+  - 16s-based
+  - v3-v4 sequencing
+  - v4 sequencing
+  - v1-v3 sequencing
+  - v3 sequencing
+  - amplicon sequencing (16s)
+  - bacterial 16s
+  - 16s metagenomics
 
-metatranscriptomics:
+"Shotgun metagenomics":
+  - shotgun metagenomics
+  - shotgun sequencing
+  - whole metagenome sequencing
+  - wms
+  - wgs (metagenomics)
+  - metagenomics
+  - metagenomic sequencing
+  - whole-genome shotgun
+  - wgs sequencing
+
+"Whole Genome Sequencing":
+  - wgs
+  - whole genome sequencing
+  - whole-genome sequencing
+  - complete genome sequencing
+
+"Metatranscriptomics":
   - metatranscriptomics
+  - metatranscriptomic sequencing
+  - rna sequencing (microbial)
+  - meta-rna-seq
+
+"RNA-seq":
+  - rna-seq
+  - rnaseq
+  - rna sequencing
+  - transcriptomics
+  - transcriptomic sequencing
+  - mrna sequencing
+
+"Metaproteomics":
+  - metaproteomics
+  - metaproteomic analysis
+  - gut metaproteomics
+
+"Metabolomics":
+  - metabolomics
+  - metabolomic analysis
+  - untargeted metabolomics
+  - targeted metabolomics
+  - metabolite profiling
+
+"ITS sequencing":
+  - its sequencing
+  - its amplicon sequencing
+  - internal transcribed spacer sequencing
+  - fungal its sequencing
+  - its1
+  - its2
+
+"Single-cell sequencing":
+  - single-cell sequencing
+  - scRNA-seq
+  - sc-seq
+  - single cell rna sequencing
+  - single-cell rna-seq
+
+# ── Bioinformatics tools ──────────────────────────────────────────────────────
+"QIIME2":
+  - qiime2
+  - qiime 2
+  - qiime
+  - quantitative insights into microbial ecology
+
+"DADA2":
+  - dada2
+  - divisive amplicon denoising algorithm
+
+"MOTHUR":
+  - mothur
+  - mothur pipeline
+
+"MetaPhlAn":
+  - metaphlan
+  - metaphlan2
+  - metaphlan3
+  - metaphlan4
+  - metaphlan (metagenomic phylogenetic analysis)
+
+"HUMAnN":
+  - humann
+  - humann2
+  - humann3
+  - human microbiome project unified metabolic analysis network
+
+"PICRUSt":
+  - picrust
+  - picrust2
+  - phylogenetic investigation of communities
+
+"Kraken2":
+  - kraken2
+  - kraken
+  - kraken2/bracken
+
+"LEfSe":
+  - lefse
+  - linear discriminant analysis effect size
+
+"DESeq2":
+  - deseq2
+  - differential expression analysis
+
+"MaAsLin2":
+  - maaslin2
+  - maaslin
+  - multivariable association discovery in population-scale meta-omics
+
+"SPAdes":
+  - spades
+  - metaspades
+  - meta-spades
+  - metagenomic assembly
+
+"MEGAHIT":
+  - megahit
+  - metagenome assembly tool
+
+"CheckM":
+  - checkm
+  - checkm2
+  - genome quality assessment
+
+"GTDB-Tk":
+  - gtdb-tk
+  - gtdbtk
+  - genome taxonomy database toolkit
+
+# ── Statistical methods ───────────────────────────────────────────────────────
+"PERMANOVA":
+  - permanova
+  - permutational multivariate analysis of variance
+  - permutational anova
+
+"Principal Coordinates Analysis":
+  - pcoa
+  - principal coordinates analysis
+  - pcoA
+
+"Principal Component Analysis":
+  - pca
+  - principal component analysis
+
+"Random Forest":
+  - random forest
+  - rf classification
+  - rf model
+  - random forest classifier
+
+"Linear Discriminant Analysis":
+  - lda
+  - linear discriminant analysis
+  - lda score
+
+"Mendelian Randomization":
+  - mr
+  - mendelian randomization
+  - mendelian randomisation
+
+"GWAS":
+  - gwas
+  - genome-wide association study
+  - genome-wide association analysis
+
+# ── Study designs ─────────────────────────────────────────────────────────────
+"Randomized Controlled Trial":
+  - rct
+  - randomized controlled trial
+  - randomised controlled trial
+  - randomized clinical trial
+  - double-blind rct
+  - placebo-controlled trial
+
+"Case-Control Study":
+  - case-control study
+  - case-control
+  - case control study
+
+"Cohort Study":
+  - cohort study
+  - prospective cohort
+  - retrospective cohort
+  - longitudinal cohort
+
+"Cross-Sectional Study":
+  - cross-sectional study
+  - cross-sectional
+  - cross sectional
+
+"Meta-Analysis":
+  - meta-analysis
+  - meta analysis
+  - systematic review and meta-analysis
+
+"Systematic Review":
+  - systematic review
+  - systematic literature review
+  - scoping review
+
+# ── Lab methods ───────────────────────────────────────────────────────────────
+"Flow Cytometry":
+  - flow cytometry
+  - facs
+  - fluorescence-activated cell sorting
+  - fluorescence activated cell sorting
+
+"ELISA":
+  - elisa
+  - enzyme-linked immunosorbent assay
+  - sandwich elisa
+
+"Western Blot":
+  - western blot
+  - western blotting
+  - immunoblot
+
+"qPCR":
+  - qpcr
+  - quantitative pcr
+  - quantitative polymerase chain reaction
+  - real-time pcr
+  - rt-pcr (quantitative)
+  - ddpcr
+  - digital droplet pcr
+
+"Mass Spectrometry":
+  - mass spectrometry
+  - ms
+  - lc-ms
+  - gc-ms
+  - lc-ms/ms
+  - lc/ms
+
+"NMR Spectroscopy":
+  - nmr
+  - nuclear magnetic resonance
+  - nmr spectroscopy
+  - 1h nmr
+
+"Fluorescence In Situ Hybridization":
+  - fish
+  - fluorescence in situ hybridization
+  - fluorescence in situ hybridisation

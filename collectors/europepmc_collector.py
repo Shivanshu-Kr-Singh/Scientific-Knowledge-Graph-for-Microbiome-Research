@@ -102,6 +102,11 @@ class EuropePMCCollector(BaseCollector):
         response = self._get(f"{EPMC_BASE}/search", params=params)
         data = response.json()
 
+        # Log total hit count once, on the first page — mirrors PubMed behaviour
+        if page == 0:
+            total = data.get("hitCount", 0)
+            logger.info(f"[europepmc] Total results in Europe PMC: {total}")
+
         # Cache the raw response
         self._save_raw(f"page_{page}", data)
 

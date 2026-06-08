@@ -15,6 +15,7 @@ Implements a routing-table-driven entity normalizer with:
 Concern 5 — generalized ontology registry.
 """
 
+import io
 import os
 import sqlite3
 import time
@@ -42,8 +43,35 @@ CACHE_DB_PATH = Path(__file__).parent / "grounding_cache.db"
 # ─── NCBI e-mail ──────────────────────────────────────────────────────────────
 
 ENTREZ_EMAIL = os.getenv("NCBI_EMAIL", "research@example.com")
+ENTREZ_API_KEY = os.getenv("NCBI_API_KEY", "")
 if ENTREZ_AVAILABLE:
     Entrez.email = ENTREZ_EMAIL
+    if ENTREZ_API_KEY:
+        Entrez.api_key = ENTREZ_API_KEY
+
+# ─── SSL fix for Windows ──────────────────────────────────────────────────────
+# On Windows the system SSL store may not include all CA certs needed for
+# NCBI / EBI / UniProt. Point Python's ssl module and requests to the certifi
+# bundle so all HTTPS calls succeed properly with full certificate verification.
+import ssl as _ssl
+import certifi as _certifi
+
+_CERTIFI_PATH = _certifi.where()
+
+# Patch urllib (used by Biopython Entrez) to use certifi bundle
+_ssl_ctx = _ssl.create_default_context(cafile=_CERTIFI_PATH)
+_orig_create_default = _ssl.create_default_context
+
+def _patched_ssl_context(*args, **kwargs):
+    kwargs.setdefault("cafile", _CERTIFI_PATH)
+    return _orig_create_default(*args, **kwargs)
+
+_ssl.create_default_https_context = lambda: _ssl_ctx
+
+# NCBI rate-limit: 3 req/sec without key, 10 with key.
+# 0.34 s gap keeps us safely under the no-key limit;
+# 0.12 s is sufficient with an API key.
+_NCBI_DELAY = 0.12 if ENTREZ_API_KEY else 0.34
 
 # ─── Confidence levels ────────────────────────────────────────────────────────
 
@@ -126,9 +154,7 @@ ONTOLOGY_ROUTING: Dict[str, Dict[str, Any]] = {
     },
 }
 
-# NCBI rate-limit: 3 req/sec without key, 10 with key.
-# 0.34 s gap keeps us safely under the no-key limit.
-_NCBI_DELAY = 0.34
+
 
 
 # ─── EntityNormalizer ─────────────────────────────────────────────────────────
@@ -384,82 +410,109 @@ class EntityNormalizer:
             )
             return None
 
+        import socket as _socket
         try:
-            handle = Entrez.esearch(db=ncbi_db, term=entity_text, retmax=1)
-            record = Entrez.read(handle)
-            handle.close()
-            time.sleep(_NCBI_DELAY)
+            old_timeout = _socket.getdefaulttimeout()
+            _socket.setdefaulttimeout(8)
+            try:
+                handle = Entrez.esearch(db=ncbi_db, term=entity_text, retmax=1)
+                raw = handle.read()
+                handle.close()
+                if isinstance(raw, str):
+                    raw = raw.encode("utf-8")
+                # Guard: NCBI occasionally returns an HTML error page (rate limit, 5xx)
+                # instead of XML.  Detect this before passing to Entrez.read().
+                raw_preview = raw[:200].lstrip()
+                if not raw_preview.startswith(b"<?xml") and not raw_preview.startswith(b"<"):
+                    logger.debug(
+                        "EntityNormalizer: NCBI esearch returned non-XML response for {!r} — skipping",
+                        entity_text,
+                    )
+                    return None
+                record = Entrez.read(io.BytesIO(raw))
+                time.sleep(_NCBI_DELAY)
 
-            id_list = record.get("IdList", [])
-            if not id_list:
-                return None
+                id_list = record.get("IdList", [])
+                if not id_list:
+                    return None
 
-            entity_id = id_list[0]
+                entity_id = id_list[0]
 
-            handle = Entrez.efetch(
-                db=ncbi_db, id=entity_id, retmode="xml"
-            )
-            records = Entrez.read(handle)
-            handle.close()
-            time.sleep(_NCBI_DELAY)
+                handle = Entrez.efetch(db=ncbi_db, id=entity_id, retmode="xml")
+                raw = handle.read()
+                handle.close()
+                if isinstance(raw, str):
+                    raw = raw.encode("utf-8")
+                # Same guard for efetch response
+                raw_preview = raw[:200].lstrip()
+                if not raw_preview.startswith(b"<?xml") and not raw_preview.startswith(b"<"):
+                    logger.debug(
+                        "EntityNormalizer: NCBI efetch returned non-XML response for {!r} (db={!r}) — skipping",
+                        entity_text,
+                        ncbi_db,
+                    )
+                    return None
+                records = Entrez.read(io.BytesIO(raw))
+                time.sleep(_NCBI_DELAY)
 
-            if not records:
-                return None
+                if not records:
+                    return None
 
-            rec = records[0]
+                rec = records[0]
 
-            # ── taxonomy ──────────────────────────────────────────────────────
-            if ncbi_db == "taxonomy":
+                # ── taxonomy ──────────────────────────────────────────────────
+                if ncbi_db == "taxonomy":
+                    return {
+                        "id": f"ncbi:{entity_id}",
+                        "canonical_name": rec.get("ScientificName", entity_text),
+                        "ontology": "NCBI Taxonomy",
+                        "confidence": CONFIDENCE_AUTHORITATIVE,
+                        "grounded": True,
+                        "source": "ncbi",
+                    }
+
+                # ── mesh ──────────────────────────────────────────────────────
+                if ncbi_db == "mesh":
+                    descriptor = rec.get("DescriptorName", {})
+                    canonical = (
+                        descriptor.get("String", entity_text)
+                        if isinstance(descriptor, dict)
+                        else entity_text
+                    )
+                    return {
+                        "id": f"mesh:{entity_id}",
+                        "canonical_name": canonical,
+                        "ontology": "MeSH",
+                        "confidence": CONFIDENCE_AUTHORITATIVE,
+                        "grounded": True,
+                        "source": "ncbi",
+                    }
+
+                # ── gene ──────────────────────────────────────────────────────
+                if ncbi_db == "gene":
+                    entrez_gene = rec.get("Entrezgene_gene", {})
+                    gene_ref = entrez_gene.get("Gene-ref", {})
+                    symbol = gene_ref.get("Gene-ref_locus", entity_text)
+                    return {
+                        "id": f"ncbi_gene:{entity_id}",
+                        "canonical_name": symbol,
+                        "ontology": "NCBI Gene",
+                        "confidence": CONFIDENCE_AUTHORITATIVE,
+                        "grounded": True,
+                        "source": "ncbi",
+                    }
+
+                # ── generic fallback for other NCBI dbs ───────────────────────
                 return {
-                    "id": f"ncbi:{entity_id}",
-                    "canonical_name": rec.get("ScientificName", entity_text),
-                    "ontology": "NCBI Taxonomy",
+                    "id": f"{ncbi_db}:{entity_id}",
+                    "canonical_name": entity_text,
+                    "ontology": ncbi_db.upper(),
                     "confidence": CONFIDENCE_AUTHORITATIVE,
                     "grounded": True,
                     "source": "ncbi",
                 }
-
-            # ── mesh ──────────────────────────────────────────────────────────
-            if ncbi_db == "mesh":
-                descriptor = rec.get("DescriptorName", {})
-                canonical = (
-                    descriptor.get("String", entity_text)
-                    if isinstance(descriptor, dict)
-                    else entity_text
-                )
-                return {
-                    "id": f"mesh:{entity_id}",
-                    "canonical_name": canonical,
-                    "ontology": "MeSH",
-                    "confidence": CONFIDENCE_AUTHORITATIVE,
-                    "grounded": True,
-                    "source": "ncbi",
-                }
-
-            # ── gene ──────────────────────────────────────────────────────────
-            if ncbi_db == "gene":
-                # Gene records are nested; extract the official symbol
-                entrez_gene = rec.get("Entrezgene_gene", {})
-                gene_ref = entrez_gene.get("Gene-ref", {})
-                symbol = gene_ref.get("Gene-ref_locus", entity_text)
-                return {
-                    "id": f"ncbi_gene:{entity_id}",
-                    "canonical_name": symbol,
-                    "ontology": "NCBI Gene",
-                    "confidence": CONFIDENCE_AUTHORITATIVE,
-                    "grounded": True,
-                    "source": "ncbi",
-                }
-
-            # ── generic fallback for other NCBI dbs ───────────────────────────
-            return {
-                "id": f"{ncbi_db}:{entity_id}",
-                "canonical_name": entity_text,
-                "ontology": ncbi_db.upper(),
-                "confidence": CONFIDENCE_AUTHORITATIVE,
-                "grounded": True,
-                "source": "ncbi",
-            }
+            finally:
+                _socket.setdefaulttimeout(old_timeout)
 
         except Exception as exc:  # noqa: BLE001
             logger.warning(
@@ -484,7 +537,7 @@ class EntityNormalizer:
                 "format": "json",
                 "size": 1,
             }
-            resp = requests.get(url, params=params, timeout=10)
+            resp = requests.get(url, params=params, timeout=8, verify=_CERTIFI_PATH)
             resp.raise_for_status()
             data = resp.json()
             results = data.get("results", [])
@@ -537,7 +590,8 @@ class EntityNormalizer:
                     resp = requests.get(
                         "https://www.ebi.ac.uk/ols4/api/search",
                         params=params,
-                        timeout=10,
+                        timeout=60,
+                        verify=_CERTIFI_PATH,
                     )
                     resp.raise_for_status()
                     break

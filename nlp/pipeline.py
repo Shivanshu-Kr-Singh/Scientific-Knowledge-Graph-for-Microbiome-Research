@@ -278,7 +278,7 @@ class NLPPipeline:
             raise FileNotFoundError("No enriched data found. Run process_all() first.")
         path = files[0]
         logger.info(f"Loading: {path}")
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             data = json.load(f)
         return [EnrichedPaperRecord(**item) for item in data]
 
@@ -286,7 +286,7 @@ class NLPPipeline:
         """Saves enriched records to a timestamped JSON file."""
         ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         path = PROC_DIR / f"enriched_{ts}.json"
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             json.dump([r.model_dump() for r in enriched], f, indent=2,
                       ensure_ascii=False, default=str)
         return path

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 scripts/rollback_neo4j.py
 --------------------------
@@ -91,7 +91,7 @@ class Neo4jRollbackManager:
             if metadata_file.name == "latest_backup.json":
                 continue
             
-            with open(metadata_file, 'r') as f:
+            with open(metadata_file, 'r', encoding='utf-8') as f:
                 metadata = json.load(f)
                 backups.append(metadata)
         
@@ -113,7 +113,7 @@ class Neo4jRollbackManager:
             logger.warning("No latest backup found")
             return None
         
-        with open(latest_file, 'r') as f:
+        with open(latest_file, 'r', encoding='utf-8') as f:
             return json.load(f)
     
     def verify_backup(self, backup_name: str) -> bool:
@@ -135,7 +135,7 @@ class Neo4jRollbackManager:
             return False
         
         # Load metadata
-        with open(metadata_file, 'r') as f:
+        with open(metadata_file, 'r', encoding='utf-8') as f:
             metadata = json.load(f)
         
         # Check Cypher file exists
@@ -203,7 +203,7 @@ class Neo4jRollbackManager:
         logger.info(f"Restoring database from {cypher_file}...")
         
         # Read Cypher file
-        with open(cypher_file, 'r') as f:
+        with open(cypher_file, 'r', encoding='utf-8') as f:
             cypher_content = f.read()
         
         # Split into individual statements
@@ -306,7 +306,7 @@ class Neo4jRollbackManager:
             backup_name = metadata["backup_name"]
         else:
             metadata_file = self.backup_dir / f"{backup_name}_metadata.json"
-            with open(metadata_file, 'r') as f:
+            with open(metadata_file, 'r', encoding='utf-8') as f:
                 metadata = json.load(f)
         
         logger.info(f"Rolling back to backup: {backup_name}")
@@ -373,7 +373,7 @@ class Neo4jRollbackManager:
         
         # Save rollback report
         report_file = self.backup_dir / f"rollback_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
-        with open(report_file, 'w') as f:
+        with open(report_file, 'w', encoding='utf-8') as f:
             json.dump(rollback_info, f, indent=2)
         
         logger.info(f"Rollback report saved to {report_file}")

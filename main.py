@@ -1,4 +1,4 @@
-"""
+﻿"""
 Entry point for the Microbiome Literature Miner.
 
 This script provides entry points for all three layers of the pipeline:
@@ -98,7 +98,7 @@ def run_layer1(max_per_source: int = 100):
 
     for f in ["kept.json", "rejected.json", "review.json", "llm_verified.json"]:
 
-        with open(audit / f,"w") as fp: json.dump([], fp)
+        with open(audit / f, "w", encoding="utf-8") as fp: json.dump([], fp)
 
     logger.info("[audit] Audit files reset")
     # ─────────────────────────────────────────────────────

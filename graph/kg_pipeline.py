@@ -1,4 +1,4 @@
-import json
+﻿import json
 from pathlib import Path
 from graph.enhanced_graph_builder import EnhancedGraphBuilder
 from nlp.enriched_record import (EnrichedPaperRecord)
@@ -34,7 +34,7 @@ class KGPipeline:
         ts = __import__("datetime").datetime.now().strftime("%Y%m%d_%H%M%S")
         path = Path("data/processed") / f"graph_{ts}.json"
 
-        with open(path, "w") as fp:
+        with open(path, "w", encoding="utf-8") as fp:
             json.dump(out, fp, indent=2, default=str)
 
         return path

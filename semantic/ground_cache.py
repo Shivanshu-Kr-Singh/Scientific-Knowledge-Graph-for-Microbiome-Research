@@ -1,4 +1,4 @@
-import json
+﻿import json
 from pathlib import Path
 
 FILE = Path(__file__).parent / "cache" / "ground_cache.json"
@@ -10,4 +10,4 @@ class GroundCache:
         return json.load(open(FILE))
 
     def save(self, db):
-        json.dump(db, open(FILE, "w"), indent=2)
+        json.dump(db, open(FILE, "w", encoding="utf-8"), indent=2)

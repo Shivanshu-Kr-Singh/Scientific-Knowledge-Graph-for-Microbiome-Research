@@ -30,56 +30,17 @@ CACHE_PATH = Path(__file__).parent / "triple_cache.json"
 TRIPLE_CACHE_VERSION = "v2"  # Bump this when the extraction prompt changes
 
 TRIPLE_EXTRACTION_PROMPT = """/no_think
-You are a biomedical relationship extractor specialized in human microbiome research.
-Extract ALL scientific (subject, predicate, object) triples from the TEXT.
+Extract biomedical (subject, predicate, object) triples from the TEXT below.
+Return ONLY valid JSON. No markdown, no explanation.
 
-=== ENTITY TYPES (use ONLY these) ===
-taxon, disease, gene, metabolite, pathway, protein, treatment, body_site,
-biomarker, population, dietary_component, immune_cell, clinical_outcome,
-method, sequencing_platform, omics_feature, environmental_factor, dataset
+Rules:
+- Only extract relationships explicitly stated in the text
+- Subject and object must be specific named entities
+- Confidence: 0.9=stated with stats, 0.7=clearly stated, 0.5=implied
+- evidence: exact sentence from text supporting this triple
 
-=== PREDICATE GUIDELINES ===
-Use short, precise verb phrases (2-5 words). Preferred predicates:
-- Abundance: "increased in", "decreased in", "depleted in", "enriched in"
-- Causal: "produces", "inhibits", "activates", "promotes", "suppresses", "regulates"
-- Mechanistic: "mediates", "modulates", "degrades", "metabolizes", "ferments"
-- Association: "associated with", "correlates with", "linked to"
-- Clinical: "improves", "worsens", "treats", "prevents", "predicts", "biomarker for"
-- Interaction: "colonizes", "competes with", "synergizes with"
-
-=== RULES ===
-1. Only extract relationships EXPLICITLY stated in the text — no inference
-2. Subject and object must be specific named entities (not vague terms like "bacteria" or "health")
-3. Confidence 0.9-1.0: directly stated with statistical evidence
-   Confidence 0.7-0.89: clearly stated without stats
-   Confidence 0.5-0.69: implied or indirectly stated
-   Do NOT include < 0.5 confidence
-4. evidence: copy the EXACT sentence from the text that supports this triple
-5. Extract ALL triples you find — do not limit yourself
-
-=== EXAMPLES ===
-TEXT: "Faecalibacterium prausnitzii was significantly reduced in IBD patients (p<0.001).
-       This depletion was associated with decreased butyrate production. Butyrate
-       inhibits NF-kB signaling, reducing intestinal inflammation."
-
-OUTPUT:
-{{"triples": [
-  {{"subject": "Faecalibacterium prausnitzii", "subject_type": "taxon",
-    "predicate": "decreased in", "object": "IBD", "object_type": "disease",
-    "confidence": 0.97, "evidence": "Faecalibacterium prausnitzii was significantly reduced in IBD patients (p<0.001)"}},
-  {{"subject": "Faecalibacterium prausnitzii", "subject_type": "taxon",
-    "predicate": "produces", "object": "butyrate", "object_type": "metabolite",
-    "confidence": 0.88, "evidence": "This depletion was associated with decreased butyrate production"}},
-  {{"subject": "butyrate", "subject_type": "metabolite",
-    "predicate": "inhibits", "object": "NF-kB signaling", "object_type": "pathway",
-    "confidence": 0.95, "evidence": "Butyrate inhibits NF-kB signaling, reducing intestinal inflammation"}},
-  {{"subject": "butyrate", "subject_type": "metabolite",
-    "predicate": "reduces", "object": "intestinal inflammation", "object_type": "clinical_outcome",
-    "confidence": 0.90, "evidence": "Butyrate inhibits NF-kB signaling, reducing intestinal inflammation"}}
-]}}
-
-=== NOW EXTRACT FROM THIS TEXT ===
-Return ONLY valid JSON with a "triples" array. No markdown, no explanation.
+Output format:
+{"triples": [{"subject": "...", "subject_type": "taxon|disease|gene|metabolite|treatment|method", "predicate": "...", "object": "...", "object_type": "taxon|disease|gene|metabolite|treatment|method", "confidence": 0.0, "evidence": "..."}]}
 
 TEXT:
 {text}"""
@@ -148,7 +109,7 @@ class LLMTripleExtractor:
         if cache_key in self._cache:
             return self._cache[cache_key]
 
-        # Build prompt
+        # Build prompt — keep text short so small local models can respond in time
         truncated = text[:2500]
         prompt = TRIPLE_EXTRACTION_PROMPT.replace("{text}", truncated)
 
@@ -173,9 +134,19 @@ class LLMTripleExtractor:
             return []
 
     def _parse_triples(
-        self, raw: str, paper_id: str, section_type: str
+        self, raw, paper_id: str, section_type: str
     ) -> List[Dict[str, Any]]:
         """Parse LLM response into normalized triple dicts."""
+        # Guard against None, list, dict or any non-string response from LLM
+        if raw is None:
+            return []
+        if not isinstance(raw, str):
+            try:
+                raw = str(raw)
+            except Exception:
+                return []
+        if not raw.strip():
+            return []
         # Strip think tags and markdown fences
         clean = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
         if clean.startswith("```"):
@@ -262,7 +233,7 @@ class LLMTripleExtractor:
     def _save_cache(self) -> None:
         try:
             CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
-            with open(CACHE_PATH, "w") as f:
+            with open(CACHE_PATH, "w", encoding="utf-8") as f:
                 json.dump(self._cache, f)
         except Exception as exc:
             logger.warning("[LLMTripleExtractor] Could not save cache: {}", exc)

@@ -1,4 +1,4 @@
-"""
+﻿"""
 graph/enhanced_kg_pipeline.py
 ------------------------------
 Enhanced knowledge graph pipeline that runs in parallel with the existing system.
@@ -31,8 +31,14 @@ logger = logging.getLogger(__name__)
 
 
 def _to_neo4j_label(entity_type: str) -> str:
-    """Convert entity type string to CamelCase Neo4j node label."""
-    return "".join(word.capitalize() for word in (entity_type or "entity").replace("_", " ").split()) or "Entity"
+    """Convert entity type string to CamelCase Neo4j node label.
+    Strips any characters invalid in Neo4j labels (e.g. | from LLM responses).
+    """
+    # Take only the first type if LLM returns "disease|condition" style
+    clean = (entity_type or "entity").split("|")[0].split("/")[0].strip()
+    # Remove any remaining non-alphanumeric/underscore/space characters
+    clean = re.sub(r'[^a-zA-Z0-9_ ]', '', clean)
+    return "".join(word.capitalize() for word in clean.replace("_", " ").split()) or "Entity"
 
 
 @dataclass
@@ -180,7 +186,7 @@ class EnhancedNeo4jLoader:
             
             logger.info("Created Neo4j indexes")
     
-    def load_edges(self, edges: List[EnhancedGraphEdge]):
+    def load_edges(self, edges: List[EnhancedGraphEdge], title_lookup: Dict[str, str] = None):
         """
         Load enhanced graph edges into Neo4j in batches.
         
@@ -188,32 +194,44 @@ class EnhancedNeo4jLoader:
         
         Args:
             edges: List of EnhancedGraphEdge objects to load
+            title_lookup: Mapping of DOI / doi:DOI keys to paper title strings
         """
         if not edges:
             logger.warning("No edges to load")
             return
         
+        if title_lookup is None:
+            title_lookup = {}
+
         logger.info(f"Loading {len(edges)} edges into Neo4j...")
         
         # Process in batches
         for i in range(0, len(edges), self.batch_size):
             batch = edges[i:i + self.batch_size]
-            self._load_edge_batch(batch)
+            self._load_edge_batch(batch, title_lookup)
             logger.info(f"Loaded batch {i // self.batch_size + 1} ({len(batch)} edges)")
         
         logger.info(f"Successfully loaded {len(edges)} edges")
     
-    def _load_edge_batch(self, edges: List[EnhancedGraphEdge]):
+    def _load_edge_batch(self, edges: List[EnhancedGraphEdge], title_lookup: Dict[str, str] = None):
         """
         Load a batch of edges in a single transaction.
         
         Args:
             edges: Batch of edges to load
+            title_lookup: Mapping of DOI / doi:DOI keys to paper title strings
         """
+        if title_lookup is None:
+            title_lookup = {}
+
         with self.driver.session(database=self.database) as session:
             with session.begin_transaction() as tx:
                 for edge in edges:
                     edge_dict = edge.to_dict()
+
+                    # Resolve paper title: prefer title_lookup (keyed by doi or doi:doi),
+                    # fall back to edge.source so the node always gets a meaningful name.
+                    paper_title = title_lookup.get(edge.source, edge.source)
 
                     # Determine target label based on relation type
                     if edge.relation == "REPORTS_ASSOCIATION":
@@ -230,16 +248,21 @@ class EnhancedNeo4jLoader:
                         """
                         MERGE (source:Paper {id: $source_id})
                         ON CREATE SET source.created_at = datetime(),
+                                      source.name = $title,
+                                      source.title = $title,
                                       source.year = $year,
                                       source.article_type = $article_type,
                                       source.data_availability = $data_availability,
                                       source.accession_numbers = $accession_numbers
-                        ON MATCH SET  source.year = $year,
+                        ON MATCH SET  source.name = $title,
+                                      source.title = $title,
+                                      source.year = $year,
                                       source.article_type = $article_type,
                                       source.data_availability = $data_availability,
                                       source.accession_numbers = $accession_numbers
                         """,
                         source_id=edge.source,
+                        title=paper_title,
                         year=edge_dict.get("year"),
                         article_type=edge_dict.get("article_type"),
                         data_availability=edge_dict.get("data_availability"),
@@ -563,14 +586,27 @@ class EnhancedKGPipeline:
         
         logger.info(f"Pipeline statistics: {stats}")
         
+        # Build title_lookup once from records: maps doi, doi:doi -> paper title
+        title_lookup: Dict[str, str] = {}
+        for paper in records:
+            doi = getattr(paper, "doi", None) or ""
+            pmid = getattr(paper, "pmid", None) or ""
+            title = getattr(paper, "title", "") or ""
+            if doi and title:
+                title_lookup[doi] = title
+                title_lookup[f"doi:{doi}"] = title
+            if pmid and title:
+                title_lookup[str(pmid)] = title
+                title_lookup[f"pmid:{pmid}"] = title
+
         # Save intermediate results
         if self.config.save_intermediate:
-            self._save_results(all_edges, claims, stats)
+            self._save_results(all_edges, claims, stats, title_lookup)
         
         # Load into Neo4j
         if load_to_neo4j:
             logger.info("Loading results into Neo4j...")
-            self.neo4j_loader.load_edges(all_edges)
+            self.neo4j_loader.load_edges(all_edges, title_lookup)
             self.neo4j_loader.load_claims(claims)
             # Load open-world triples from all builders
             all_ow_triples = []
@@ -579,6 +615,7 @@ class EnhancedKGPipeline:
             if all_ow_triples:
                 self.neo4j_loader.load_open_world_triples(all_ow_triples)
                 logger.info(f"Loaded {len(all_ow_triples)} open-world triples into Neo4j")
+
             logger.info("Successfully loaded results into Neo4j")
         
         return {
@@ -610,7 +647,7 @@ class EnhancedKGPipeline:
         )
         
         edges = builder.process_papers(batch)
-        
+
         return edges, builder
     
     def _merge_builders(
@@ -649,21 +686,26 @@ class EnhancedKGPipeline:
         self,
         edges: List[EnhancedGraphEdge],
         claims: List[ScientificClaim],
-        stats: Dict[str, Any]
+        stats: Dict[str, Any],
+        title_lookup: Dict[str, str] = None
     ):
         """
-        Save edges, claims, and statistics to JSON files.
-        
+        Save edges, claims, statistics, entities, and relationships to JSON files.
+
         Args:
-            edges: List of enhanced graph edges
-            claims: List of reified claims
-            stats: Pipeline statistics
+            edges: All extracted graph edges.
+            claims: All reified scientific claims.
+            stats: Pipeline statistics dictionary.
+            title_lookup: Mapping of DOI / doi:DOI / pmid keys to paper title strings.
         """
+        if title_lookup is None:
+            title_lookup = {}
+
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
         # Save edges
         edges_path = self.config.output_dir / f"enhanced_edges_{timestamp}.json"
-        with open(edges_path, "w") as f:
+        with open(edges_path, "w", encoding="utf-8") as f:
             json.dump(
                 [edge.to_dict() for edge in edges],
                 f,
@@ -674,7 +716,7 @@ class EnhancedKGPipeline:
         
         # Save claims
         claims_path = self.config.output_dir / f"enhanced_claims_{timestamp}.json"
-        with open(claims_path, "w") as f:
+        with open(claims_path, "w", encoding="utf-8") as f:
             json.dump(
                 [claim.model_dump() for claim in claims],
                 f,
@@ -685,9 +727,74 @@ class EnhancedKGPipeline:
         
         # Save statistics
         stats_path = self.config.output_dir / f"enhanced_stats_{timestamp}.json"
-        with open(stats_path, "w") as f:
+        with open(stats_path, "w", encoding="utf-8") as f:
             json.dump(stats, f, indent=2, default=str)
         logger.info(f"Saved statistics to {stats_path}")
+
+        # ── Export entities (nodes) ──────────────────────────────────────────
+        # Collect all unique entities from edges
+        entities: Dict[str, Dict] = {}
+        for edge in edges:
+            d = edge.to_dict()
+            # Source = Paper node
+            src_id = edge.source
+            if src_id not in entities:
+                paper_title = title_lookup.get(src_id, src_id)
+                entities[src_id] = {
+                    "id": src_id,
+                    "type": "Paper",
+                    "name": paper_title,
+                    "doi": src_id,
+                    "year": d.get("year"),
+                    "article_type": d.get("article_type"),
+                    "data_availability": d.get("data_availability"),
+                }
+            # Target = Taxon / Method / Entity node
+            tgt_id = edge.target
+            if tgt_id not in entities:
+                if edge.relation == "USES_METHODOLOGY":
+                    node_type = "Method"
+                elif edge.relation in ("REPORTS_ASSOCIATION", "REPORTS_INTERVENTION_EFFECT"):
+                    node_type = "Taxon"
+                else:
+                    node_type = "Entity"
+                entities[tgt_id] = {
+                    "id": tgt_id,
+                    "type": node_type,
+                    "name": d.get("target_canonical", tgt_id),
+                    "ontology": d.get("target_ontology"),
+                    "ontology_id": d.get("target_ontology_id"),
+                    "grounded": d.get("target_grounded", False),
+                }
+
+        entities_path = self.config.output_dir / f"entities_{timestamp}.json"
+        with open(entities_path, "w", encoding="utf-8") as f:
+            json.dump(list(entities.values()), f, indent=2, default=str)
+        logger.info(f"Saved {len(entities)} entities to {entities_path}")
+
+        # ── Export relationships ─────────────────────────────────────────────
+        relationships = []
+        for edge in edges:
+            d = edge.to_dict()
+            src_id = edge.source
+            paper_title = title_lookup.get(src_id, src_id)
+            relationships.append({
+                "from_id": src_id,
+                "from_name": paper_title,
+                "relationship_type": edge.relation,
+                "to_id": edge.target,
+                "to_name": d.get("target_canonical", edge.target),
+                "confidence": edge.confidence,
+                "evidence_strength": edge.evidence_strength,
+                "source_sentence": d.get("source_sentence", ""),
+                "extraction_method": d.get("extraction_method", ""),
+                "year": d.get("year"),
+            })
+
+        relationships_path = self.config.output_dir / f"relationships_{timestamp}.json"
+        with open(relationships_path, "w", encoding="utf-8") as f:
+            json.dump(relationships, f, indent=2, default=str)
+        logger.info(f"Saved {len(relationships)} relationships to {relationships_path}")
     
     def close(self):
         """Close the pipeline and cleanup resources."""

@@ -10,29 +10,88 @@ on bioRxiv months or years before journal publication. Tracking preprints lets y
 Returns JSON.
 """
 
-from typing import Optional 
+from typing import List, Optional
 from loguru import logger
 from models import PaperRecord
 from collectors.base_collector import BaseCollector
 
 BIORXIV_BASE = "https://api.biorxiv.org"
 
+# bioRxiv API returns at most 100 records per call
+_PAGE_SIZE = 100
+
+
 class BioRxivCollector(BaseCollector):
     """Fetches preprints from bioRxiv and medRxiv."""
 
     source_name = "biorxiv"
 
+    def collect(
+        self,
+        query: str,
+        date_from: str,
+        date_to: str,
+        max_results: int = 500,
+        page_size: int = 50,
+    ) -> List[PaperRecord]:
+        """
+        Override to emit a bioRxiv-appropriate start log.
+        The bioRxiv API has no keyword search — it filters by date range only,
+        so logging the query string would be misleading.
+        All actual pagination logic lives in fetch_page().
+        """
+        from datetime import datetime
+        logger.info(
+            f"[{self.source_name}] Starting collection | "
+            f"{date_from} → {date_to} | "
+            f"keyword search: not available in API — client-side filtering applied"
+        )
+
+        query_params = self.build_query(query, date_from, date_to)
+        papers: List[PaperRecord] = []
+        page = 0
+        total_fetched = 0
+
+        while total_fetched < max_results:
+            batch_size = min(page_size, max_results - total_fetched)
+
+            try:
+                raw_page = self.fetch_page(query_params, page=page, page_size=batch_size)
+            except Exception as e:
+                logger.error(f"[{self.source_name}] Failed to fetch page {page}: {e}")
+                break
+
+            records_on_page = 0
+            for raw_item in self._extract_items(raw_page):
+                paper = self.parse_record(raw_item)
+                if paper is None:
+                    continue
+
+                paper.source = self.source_name
+                paper.content_hash = self._compute_hash(paper)
+                paper.fetched_at = datetime.utcnow().isoformat()
+
+                papers.append(paper)
+                records_on_page += 1
+
+            total_fetched += records_on_page
+            logger.info(
+                f"[{self.source_name}] Page {page}: {records_on_page} records | Total: {total_fetched}"
+            )
+
+            if records_on_page < batch_size:
+                logger.info(f"[{self.source_name}] Reached end of results at page {page}")
+                break
+
+            page += 1
+
+        logger.success(f"[{self.source_name}] Collection complete: {len(papers)} papers")
+        return papers
+
     def build_query(self, query: str, date_from: str, date_to: str) -> dict:
         """
-        bioRxiv API filters by date range and category, not full-text search.
-        We filter for microbiome-relevant categories:
-          - microbiology: obvious
-          - genomics: covers metagenomics papers
-          - bioinformatics: covers analysis methods
-          - physiology: some microbiome-host interaction papers
-
-        We'll do keyword filtering AFTER fetching (client-side) because the
-        API doesn't support full-text search.
+        bioRxiv API filters by date range only — no keyword search.
+        We do keyword filtering client-side after fetching.
 
         Date format for bioRxiv API: YYYY-MM-DD
         """
@@ -40,74 +99,98 @@ class BioRxivCollector(BaseCollector):
         date_to_clean   = date_to.replace("/", "-")[:10]
 
         return {
-            "date_from":  date_from_clean,
-            "date_to":    date_to_clean,
-            "servers":    ["biorxiv", "medrxiv"],
+            "date_from": date_from_clean,
+            "date_to":   date_to_clean,
+            "servers":   ["biorxiv", "medrxiv"],
         }
 
     def fetch_page(self, query_params: dict, page: int, page_size: int) -> dict:
         """
+        Fetches ALL papers in the date range from both bioRxiv and medRxiv,
+        then applies keyword filtering to keep only microbiome-relevant ones.
+
+        WHY EXHAUST ALL PAGES:
+          The bioRxiv API has no keyword search — it returns everything
+          published in the date window regardless of topic. We must scan
+          all available pages before filtering, otherwise we'd miss relevant
+          papers that happen to fall on later pages.
+
         bioRxiv API URL format:
-          /details/{server}/{date_from}/{date_to}/{cursor}/{format}
+          /details/{server}/{date_from}/{date_to}/{offset}/json
 
-        cursor = page number (0-indexed)
-        Each page returns up to 100 results.
+          offset — 0-based cursor, increments by 100 each call.
+          Each call returns up to 100 records.
+          An empty "collection" array means we've reached the end.
 
-        We fetch from both bioRxiv and medRxiv.
+        page_size is the desired number of *filtered* results to collect
+        per server. We stop paginating once we've found enough.
         """
-
         all_results = []
+
         for server in query_params["servers"]:
-            # scan deeper into preprints
-            for page_offset in range(0,200,100):
-                url=(
+            offset = 0
+            server_kept = 0
+            total_available = None  # populated from first API response
+
+            while True:
+                url = (
                     f"{BIORXIV_BASE}/details/{server}/"
                     f"{query_params['date_from']}/"
                     f"{query_params['date_to']}/"
-                    f"{page_offset}/json")
+                    f"{offset}/json"
+                )
 
                 try:
-                    response = self._get(url)
-                    data = response.json()
-                    collection = data.get("collection",[])
-                    if not collection:
-                        break
-
-                    MICROBIOME_KEYWORDS = {"microbiome","microbiota","metagenom","16s","microbial",
-                                           "dysbiosis","probiotics","gut bacteria","microorganism","bacteriome","virome","mycobiome"}
-
-                    filtered = [
-                        item
-                        for item in collection
-                        if self._is_microbiome_related(item,MICROBIOME_KEYWORDS)]
-
-                    for item in filtered:
-                        item["_server"] = server
-
-                    all_results.extend(
-                        filtered)
-
-                    logger.info(
-                        f"[biorxiv] {server} offset {page_offset}: "
-                        f"{len(filtered)}/{len(collection)} papers kept")
-
+                    response   = self._get(url)
+                    data       = response.json()
+                    collection = data.get("collection", [])
                 except Exception as e:
-                    logger.error(
-                        f"[biorxiv] Failed {server}: {e}")
+                    logger.error(f"[biorxiv] Failed {server} offset {offset}: {e}")
+                    break
+
+                # Log total available once, on the first page — mirrors PubMed/EuropePMC
+                if offset == 0:
+                    raw_total = data.get("messages", [{}])[0].get("total", None)
+                    total_available = int(raw_total) if raw_total is not None else None
+                    if total_available is not None:
+                        logger.info(
+                            f"[biorxiv] Total results available on {server}: "
+                            f"{total_available} | collecting up to {page_size}"
+                        )
+
+                if not collection:
+                    # Empty page → exhausted all results for this server
+                    logger.info(f"[biorxiv] {server}: no more results at offset {offset}")
+                    break
+
+                for item in collection:
+                    item["_server"] = server
+
+                all_results.extend(collection)
+                server_kept += len(collection)
+
+                logger.info(
+                    f"[biorxiv] {server} offset {offset}: "
+                    f"{len(collection)} papers fetched | total so far: {server_kept}"
+                )
+
+                # Stop early if we already have enough for this server
+                if server_kept >= page_size:
+                    logger.info(
+                        f"[biorxiv] {server}: reached target of {page_size} "
+                        f"papers — stopping early "
+                        f"({total_available - server_kept if total_available else '?'} remaining uncollected)"
+                    )
+                    break
+
+                # Fewer results than a full page → this was the last page
+                if len(collection) < _PAGE_SIZE:
+                    break
+
+                offset += _PAGE_SIZE
 
         self._save_raw(f"page_{page}", {"results": all_results})
         return {"records": all_results}
-
-    def _is_microbiome_related(self, item: dict, keywords: set) -> bool:
-        """
-        Returns True if the paper title or abstract contains any microbiome keyword.
-        Case-insensitive substring match.
-        """
-        text = (
-            (item.get("title") or "") + " " +
-            (item.get("abstract") or "")
-        ).lower()
-        return any(kw in text for kw in keywords)
 
     def _extract_items(self, raw_page: dict) -> list:
         return raw_page.get("records", [])

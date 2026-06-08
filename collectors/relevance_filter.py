@@ -1,4 +1,4 @@
-"""
+﻿"""
 3-stage relevance filter pipeline.
 PIPELINE:
 Stage 1 — Metadata filter (PubMed MeSH only, highest precision)
@@ -382,78 +382,140 @@ class RelevanceFilter:
     # ── ML training ───
     def train_ml_model(self, papers: List[PaperRecord]):
         """
-        Bootstraps an ML classifier from the collected papers.
+        Trains ML classifier with balanced, quality-focused sampling.
 
-        TRAINING STRATEGY — self-supervised bootstrap:
-          1. Run Stage 2 rules on all collected papers
-          2. High-confidence keeps (score > 0.85) → label as 1 (relevant)
-          3. High-confidence rejects (score < 0.15) → label as 0 (off-topic)
-          4. Discard borderline papers from training
-          5. Train sentence-transformers + LogisticRegression
-          6. Save model to config/relevance_model.pkl
-
-        WHY SELF-SUPERVISED?
-          We don't have labeled training data yet. The rules give us
-          high-confidence labels on the extremes. The ML model then
-          generalizes to handle the borderline cases the rules struggle with.
-          This is called label propagation/pseudo-labeling.
-
-        WHEN TO RUN:
-          After your first large collection (MAX_PER_SOURCE=500+).
-          You'll have ~1000+ papers → enough for a solid classifier.
-          Re-train monthly as more papers accumulate.
+        STRATEGY:
+          Positives: collected papers with rule score > 0.85 (confident relevant)
+          Negatives: sampled from rejected files with priority on HARD negatives
+                     (score 0.3-0.6) over easy ones (score < 0.1)
+          Balance:   caps negatives at 2× positives to prevent class imbalance
+          Model:     sentence-transformers embeddings + LogisticRegression
         """
         try:
             from sentence_transformers import SentenceTransformer
             from sklearn.linear_model import LogisticRegression
-            from sklearn.model_selection import cross_val_score
+            from sklearn.model_selection import StratifiedKFold, cross_val_score
+            from sklearn.utils import shuffle as sk_shuffle
             import numpy as np
         except ImportError:
             logger.error("Run: pip install sentence-transformers scikit-learn")
             return
 
-        logger.info("[filter] Bootstrapping ML training data from rule scores...")
+        logger.info("[filter] Building balanced training dataset...")
 
-        texts, labels = [], []
+        # ── Collect positives from high-confidence collected papers ───────────
+        pos_texts = []
         for paper in papers:
             v = self._stage2_rules(paper)
             if v.score >= 0.85:
-                texts.append(f"{paper.title or ''} {paper.abstract or ''}")
-                labels.append(1)
-            elif v.score <= 0.15:
-                texts.append(f"{paper.title or ''} {paper.abstract or ''}")
-                labels.append(0)
+                pos_texts.append(f"{paper.title or ''} {paper.abstract or ''}")
 
-        if len(texts) < 50:
-            logger.warning(f"[filter] Only {len(texts)} training samples — need 50+. "
-                           "Collect more papers before training.")
+        if len(pos_texts) < 30:
+            logger.warning(f"[filter] Only {len(pos_texts)} positive samples — need 30+.")
             return
+
+        logger.info(f"[filter] Positives: {len(pos_texts)} papers (rule score ≥ 0.85)")
+
+        # ── Collect negatives from rejected files, prioritising hard cases ─────
+        from config import PROC_DIR
+        import glob as _glob
+
+        # Buckets by difficulty
+        hard_negs   = []  # score 0.3–0.6  (model needs these most)
+        medium_negs = []  # score 0.15–0.3
+        easy_negs   = []  # score < 0.15   (too obvious, limit these)
+
+        rejected_files = _glob.glob(str(PROC_DIR / "rejected_*.json"))
+        for path in rejected_files:
+            try:
+                with open(path, encoding="utf-8") as f:
+                    rejected = json.load(f)
+                for r in rejected:
+                    title    = r.get("title", "") or ""
+                    abstract = r.get("abstract", "") or ""
+                    if not title and not abstract:
+                        continue
+                    try:
+                        paper = PaperRecord(**r)
+                        v = self._stage2_rules(paper)
+                        text = f"{title} {abstract}"
+                        if v.score >= 0.30:
+                            hard_negs.append(text)
+                        elif v.score >= 0.15:
+                            medium_negs.append(text)
+                        else:
+                            easy_negs.append(text)
+                    except Exception:
+                        easy_negs.append(f"{title} {abstract}")
+            except Exception as e:
+                logger.warning(f"[filter] Could not load {path}: {e}")
+
+        logger.info(
+            f"[filter] Negatives available — hard: {len(hard_negs)}, "
+            f"medium: {len(medium_negs)}, easy: {len(easy_negs)}"
+        )
+
+        # Sample negatives: fill up to 2× positives, prioritise hard > medium > easy
+        target_neg = min(len(pos_texts) * 2, len(hard_negs) + len(medium_negs) + len(easy_negs))
+        import random
+        random.seed(42)
+
+        selected_negs = []
+        # Take all hard negatives first (capped at target)
+        selected_negs.extend(random.sample(hard_negs, min(len(hard_negs), target_neg)))
+        remaining = target_neg - len(selected_negs)
+        if remaining > 0:
+            selected_negs.extend(random.sample(medium_negs, min(len(medium_negs), remaining)))
+        remaining = target_neg - len(selected_negs)
+        if remaining > 0:
+            selected_negs.extend(random.sample(easy_negs, min(len(easy_negs), remaining)))
+
+        logger.info(f"[filter] Selected {len(selected_negs)} negatives (target: {target_neg})")
+
+        # ── Build final dataset ───────────────────────────────────────────────
+        texts  = pos_texts + selected_negs
+        labels = [1] * len(pos_texts) + [0] * len(selected_negs)
 
         pos = labels.count(1)
         neg = labels.count(0)
-        logger.info(f"[filter] Training samples: {pos} relevant, {neg} off-topic")
+        logger.info(f"[filter] Final training set: {pos} relevant, {neg} off-topic "
+                    f"(ratio {neg/max(pos,1):.1f}:1)")
 
-        # Encode with sentence-transformers
-        logger.info("[filter] Encoding papers with sentence-transformers...")
+        if len(texts) < 50:
+            logger.warning(f"[filter] Only {len(texts)} total samples — need 50+.")
+            return
+
+        # ── Encode with sentence-transformers ─────────────────────────────────
+        logger.info("[filter] Encoding with sentence-transformers (all-MiniLM-L6-v2)...")
         encoder = SentenceTransformer("all-MiniLM-L6-v2")
         X = encoder.encode(texts, show_progress_bar=True, batch_size=32)
         y = np.array(labels)
+        X, y = sk_shuffle(X, y, random_state=42)
 
-        # Train LogisticRegression
+        # ── Train with stratified cross-validation ────────────────────────────
+        cv_folds = min(5, min(pos, neg))
         clf = LogisticRegression(C=1.0, max_iter=1000, class_weight="balanced")
-        scores = cross_val_score(clf, X, y, cv=5, scoring="f1")
-        logger.info(f"[filter] Cross-val F1: {scores.mean():.3f} ± {scores.std():.3f}")
+        cv = StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=42)
+        scores = cross_val_score(clf, X, y, cv=cv, scoring="f1")
+        logger.info(f"[filter] Cross-val F1 ({cv_folds}-fold): {scores.mean():.3f} ± {scores.std():.3f}")
         clf.fit(X, y)
 
-        # Save model + encoder
+        # ── Save ──────────────────────────────────────────────────────────────
         with open(MODEL_PATH, "wb") as f:
-            pickle.dump({"model": clf, "encoder_name": "all-MiniLM-L6-v2"}, f)
+            pickle.dump({
+                "model": clf,
+                "encoder_name": "all-MiniLM-L6-v2",
+                "trained_on": len(texts),
+                "pos_samples": pos,
+                "neg_samples": neg,
+            }, f)
 
         self._ml_model      = clf
         self._ml_vectorizer = encoder
-        logger.success(f"[filter] ML model trained and saved → {MODEL_PATH}")
-        logger.info(f"[filter] F1 score: {scores.mean():.3f} — "
-                    f"{'excellent' if scores.mean() > 0.9 else 'good' if scores.mean() > 0.8 else 'retrain with more data'}")
+        logger.success(f"[filter] Model saved → {MODEL_PATH} "
+                       f"(trained on {len(texts)} samples)")
+        quality = "excellent" if scores.mean() > 0.92 else "good" if scores.mean() > 0.85 else "retrain with more data"
+        logger.info(f"[filter] F1 score: {scores.mean():.3f} — {quality}")
 
     def _load_ml_model(self):
         with open(MODEL_PATH, "rb") as f:
@@ -526,7 +588,7 @@ class RelevanceFilter:
         ts   = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         path = PROC_DIR / f"rejected_{ts}.json"
         import json
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             json.dump([p.model_dump() for p in removed], f, indent=2,
                       default=str)
         logger.info(f"[filter] Rejected papers saved → {path}")

@@ -1,4 +1,4 @@
-import json
+﻿import json
 from pathlib import Path
 
 FILE = Path(__file__).parent / "cache" / "entity_registry.json"
@@ -14,4 +14,4 @@ class EntityRegistry:
         db.setdefault(entity_type, 0)
         db[entity_type] += 1
 
-        json.dump(db, open(FILE, "w"), indent=2)
+        json.dump(db, open(FILE, "w", encoding="utf-8"), indent=2)

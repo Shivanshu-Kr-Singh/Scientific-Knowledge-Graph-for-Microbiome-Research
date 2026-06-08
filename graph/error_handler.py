@@ -1,4 +1,4 @@
-"""
+﻿"""
 graph/error_handler.py
 ----------------------
 Error handling and recovery mechanisms for the knowledge graph system.
@@ -486,7 +486,7 @@ class ErrorHandler:
             return []
         
         try:
-            with open(path, 'r') as f:
+            with open(path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception as e:
             logger.error(f"Failed to load queue from {path}: {e}")
@@ -495,7 +495,7 @@ class ErrorHandler:
     def _save_json_queue(self, path: Path, queue: List[Dict[str, Any]]) -> None:
         """Save JSON queue to file."""
         try:
-            with open(path, 'w') as f:
+            with open(path, 'w', encoding='utf-8') as f:
                 json.dump(queue, f, indent=2)
         except Exception as e:
             logger.error(f"Failed to save queue to {path}: {e}")

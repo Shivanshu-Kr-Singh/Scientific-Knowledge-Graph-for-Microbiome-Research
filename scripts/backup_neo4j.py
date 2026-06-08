@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 scripts/backup_neo4j.py
 -----------------------
@@ -140,7 +140,7 @@ class Neo4jBackupManager:
         
         cypher_file = self.backup_dir / f"{backup_name}_export.cypher"
         
-        with open(cypher_file, 'w') as f:
+        with open(cypher_file, 'w', encoding='utf-8') as f:
             # Write header
             f.write(f"// Neo4j Database Backup\n")
             f.write(f"// Created: {datetime.now(timezone.utc).isoformat()}\n")
@@ -294,7 +294,7 @@ class Neo4jBackupManager:
         }
         
         metadata_file = self.backup_dir / f"{backup_name}_metadata.json"
-        with open(metadata_file, 'w') as f:
+        with open(metadata_file, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, indent=2)
         
         logger.info(f"Backup metadata saved to {metadata_file}")
@@ -305,7 +305,7 @@ class Neo4jBackupManager:
             latest_link.unlink()
         
         # Write latest backup info
-        with open(latest_link, 'w') as f:
+        with open(latest_link, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, indent=2)
         
         logger.info(f"✓ Backup completed successfully: {backup_name}")
@@ -329,7 +329,7 @@ class Neo4jBackupManager:
             if metadata_file.name == "latest_backup.json":
                 continue
             
-            with open(metadata_file, 'r') as f:
+            with open(metadata_file, 'r', encoding='utf-8') as f:
                 metadata = json.load(f)
                 backups.append(metadata)
         
@@ -357,7 +357,7 @@ class Neo4jBackupManager:
             return False
         
         # Load metadata
-        with open(metadata_file, 'r') as f:
+        with open(metadata_file, 'r', encoding='utf-8') as f:
             metadata = json.load(f)
         
         # Check Cypher file exists

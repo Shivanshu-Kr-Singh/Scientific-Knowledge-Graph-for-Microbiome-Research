@@ -1,4 +1,4 @@
-import json
+﻿import json
 from pathlib import Path
 
 PATH = Path("data/hash")
@@ -13,4 +13,4 @@ class HashTracker:
         return json.load(open(FILE))
 
     def save(self, data):
-        json.dump(data, open(FILE, "w"), indent=2)
+        json.dump(data, open(FILE, "w", encoding="utf-8"), indent=2)

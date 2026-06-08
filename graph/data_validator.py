@@ -1,4 +1,4 @@
-"""
+﻿"""
 graph/data_validator.py
 ------------------------
 Data validation module for knowledge graph relationships.
@@ -363,7 +363,7 @@ class DataValidator:
         existing_queue = []
         if self.validation_queue_path.exists():
             try:
-                with open(self.validation_queue_path, 'r') as f:
+                with open(self.validation_queue_path, 'r', encoding='utf-8') as f:
                     existing_queue = json.load(f)
             except Exception as e:
                 logger.error(f"Failed to load existing validation queue: {e}")
@@ -406,7 +406,7 @@ class DataValidator:
         
         # Write back to file
         try:
-            with open(self.validation_queue_path, 'w') as f:
+            with open(self.validation_queue_path, 'w', encoding='utf-8') as f:
                 json.dump(existing_queue, f, indent=2)
             
             logger.info(
@@ -449,7 +449,7 @@ class DataValidator:
             }
         
         try:
-            with open(self.validation_queue_path, 'r') as f:
+            with open(self.validation_queue_path, 'r', encoding='utf-8') as f:
                 queue = json.load(f)
             
             # Count error types

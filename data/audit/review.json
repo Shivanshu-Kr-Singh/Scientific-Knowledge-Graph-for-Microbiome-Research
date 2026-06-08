@@ -1,21 +1,273 @@
 [
   {
-    "title": "Capnocytophaga canimorsus Bacteremia Without Animal Bite: A Rare but Severe Infection to Consider in Older Adults.",
-    "source": "pubmed",
-    "year": 2026,
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
     "decision": "review",
-    "stage": "stage4_llm (cached)",
+    "stage": "gate_metagenomics",
     "score": 0.5,
-    "reason": "llm:ollama_error"
+    "reason": "no_sequencing_terms (prev_score=1.0)"
   },
   {
-    "title": "Ligand-Induced Trigger RNA Cleavage Enables Programmable Gene Expression Regulation via Strand Displacement in Prokaryotic and Eukaryotic Cells.",
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "[In vitro and in vivo antibacterial effects of the mitochondrial antioxidant Visomitin against Enterococcus].",
     "source": "pubmed",
     "year": 2026,
     "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
+  },
+  {
+    "title": "Re-Emergence of Pertussis in the Pediatric Population: A Tertiary Care Center's Experience.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
+  },
+  {
+    "title": "Increased Carbapenem resistance and gene carriage in Pseudomonas aeruginosa clinical isolates after the COVID-19 pandemic in Egypt.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
+  },
+  {
+    "title": "Syphilitic proctitis presenting as rectal bleeding.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.4,
+    "reason": "no_sequencing_terms (prev_score=0.8)"
+  },
+  {
+    "title": "Contact lens-associated infectious keratitis: microbiological profile, management, and hygiene behaviors in a tertiary eye hospital.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
+  },
+  {
+    "title": "Untargeted and Targeted Liquid Chromatography-Mass Spectrometry-Based Lipidomic Profiling Revealed a Potential Biomarker Panel to Distinguish Clinical Isolates of M. tuberculosis From Nontuberculous M. kansasii.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
   },
   {
     "title": "Prevalence of Drug-Resistant Mycobacterium tuberculosis in Rural Communities of Vhembe District, South Africa.",
@@ -45,49 +297,103 @@
     "reason": "no_sequencing_terms (prev_score=1.0)"
   },
   {
-    "title": "The Human Breast Microbiome: From Homeostasis to Malignancy, Mechanistic Insights and Therapeutic Perspectives",
-    "source": "semantic_scholar",
+    "title": "Pulmonary Actinomycosis: A Hidden Threat with Clinical Impact.",
+    "source": "pubmed",
     "year": 2026,
     "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
   },
   {
-    "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
-    "source": "semantic_scholar",
+    "title": "The Many Faces of Sporadic Acute Q Fever, Gran Canaria: Canary Islands (Spain) (1998-2024).",
+    "source": "pubmed",
     "year": 2026,
     "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
   },
   {
-    "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
-    "source": "semantic_scholar",
+    "title": "Salivary Prevalence of Four Oral Pathogens in Postpartum Women in Northeast Romania: An Exploratory Cross-Sectional Study.",
+    "source": "pubmed",
     "year": 2026,
     "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
+    "stage": "stage2_rules",
+    "score": 0.7,
+    "reason": "pos:[participants,participant,clinical] neg:[pathogen]"
   },
   {
-    "title": "Intestinal epithelial Syndecan-1 maintains mucosal homeostasis in inflammatory bowel disease by enhancing Faecalibacterium prausnitzii biofilm formation",
-    "source": "semantic_scholar",
+    "title": "Efficacy and safety of Doxycycline versus Macrolides for Mycoplasma pneumoniae INfectiOn in Children (DOMINO): a protocol for a multicentre, randomised, open-label, superiority trial.",
+    "source": "pubmed",
     "year": 2026,
     "decision": "review",
-    "stage": "stage4_llm (cached)",
+    "stage": "gate_metagenomics",
     "score": 0.5,
-    "reason": "llm:ollama_error"
+    "reason": "no_sequencing_terms (prev_score=1.0)"
   },
   {
-    "title": "Selenium: From Redox Signaling to Interactions with the Gut Microbiome",
-    "source": "semantic_scholar",
+    "title": "Incidence and risk factors of C. trachomatis, N. gonorrhoeae and syphilis among a cohort of urban Canadian gay, bisexual and other men who have sex with men, 2017-2023: informing the potential impact of doxycycline prophylaxis.",
+    "source": "pubmed",
     "year": 2026,
     "decision": "review",
-    "stage": "stage4_llm (cached)",
+    "stage": "gate_metagenomics",
+    "score": 0.4665,
+    "reason": "no_sequencing_terms (prev_score=0.933)"
+  },
+  {
+    "title": "Appropriateness of antibiotic use in the emergency department: A five-year retrospective study in a region with high antibiotic consumption.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
+  },
+  {
+    "title": "Role of Gram-Negative Bacterial Infections in Acute-On-Chronic Liver Failure.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.35,
+    "reason": "no_sequencing_terms (prev_score=0.7)"
+  },
+  {
+    "title": "Correlation between Staphylococcus aureus colonization and disease severity in atopic dermatitis: a systematic review and meta-analysis of randomized controlled trials.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.35,
+    "reason": "no_sequencing_terms (prev_score=0.7)"
+  },
+  {
+    "title": "Humoral immune response to polyvalent pneumococcal vaccine in healthy participants receiving efgartigimod: a randomized, open-label, placebo-controlled, parallel-group phase 1 trial.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
     "score": 0.5,
-    "reason": "llm:ollama_error"
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Propensity score matching analysis of the association between Helicobacter pylori infection and colorectal polyps: A case-control study.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.4835,
+    "reason": "no_sequencing_terms (prev_score=0.967)"
+  },
+  {
+    "title": "Clinical characteristics and predictors of Mycoplasma pneumoniae pneumonia coinfection with Bordetella pertussis in children.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.4165,
+    "reason": "no_sequencing_terms (prev_score=0.833)"
   },
   {
     "title": "Gut dysbiosis induces the development of asthenozoospermia through butanoate metabolism",
@@ -99,21 +405,12 @@
     "reason": "pos:[patients,patient,human] neg:[pathogen]"
   },
   {
-    "title": "Orally delivered biodegradable targeted inflammation resolving pectin-coated nanoparticles induce anastomotic healing post intestinal surgery",
-    "source": "biorxiv",
-    "year": 2024,
+    "title": "Profiling the diversity of the village chicken faecal microbiota using 16S rRNA gene and metagenomic sequencing data to reveal patterns of gut microbiome signatures",
+    "source": "semantic_scholar",
+    "year": 2025,
     "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Sexually Transmitted Infections Among Patients on Antiretroviral Treatment at Adama Hospital Medical College, Adama, Ethiopia",
-    "source": "biorxiv",
-    "year": 2024,
-    "decision": "review",
-    "stage": "gate_metagenomics",
-    "score": 0.5,
-    "reason": "no_sequencing_terms (prev_score=1.0)"
+    "stage": "stage2_rules",
+    "score": 0.7,
+    "reason": "pos:[gut microbiome,16s rrna,human] neg:[pathogen]"
   }
 ]

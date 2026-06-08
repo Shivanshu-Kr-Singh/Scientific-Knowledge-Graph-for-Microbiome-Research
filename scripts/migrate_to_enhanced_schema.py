@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 scripts/migrate_to_enhanced_schema.py
 --------------------------------------
@@ -666,7 +666,7 @@ class SchemaEnhancementMigrator:
             "statistics": self.stats.to_dict(),
         }
         
-        with open(output_path, 'w') as f:
+        with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2)
         
         logger.info(f"Migration report saved to {output_path}")

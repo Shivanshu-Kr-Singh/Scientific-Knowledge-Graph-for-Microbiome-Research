@@ -1,306 +1,610 @@
 [
   {
-    "title": "Capnocytophaga canimorsus Bacteremia Without Animal Bite: A Rare but Severe Infection to Consider in Older Adults.",
-    "source": "pubmed",
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
     "keep": false,
-    "confidence": 0.5,
-    "reason": "ollama_error",
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
   },
   {
-    "title": "Ligand-Induced Trigger RNA Cleavage Enables Programmable Gene Expression Regulation via Strand Displacement in Prokaryotic and Eukaryotic Cells.",
-    "source": "pubmed",
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
     "keep": false,
-    "confidence": 0.5,
-    "reason": "ollama_error",
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
   },
   {
-    "title": "Clinical characteristics, treatment outcomes, and predictors of early mortality in Vibrio vulnificus infection in Eastern Thailand: A 6.5-year multicenter cohort study.",
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "Metabolic reprogramming promotes Staphylococcus aureus serum resistance.",
     "source": "pubmed",
     "keep": false,
-    "confidence": 0.99,
-    "reason": "pure pathogen/infectious disease with no microbiome profiling",
+    "confidence": 0.98,
+    "reason": "single-pathogen infection treatment with no microbiome community profiling",
+    "cached": true
+  },
+  {
+    "title": "Global Survey on the Management of Multidrug-resistant Gram-negative Bacilli: Divergence of Practice Between High-Income Countries and the Rest of the World.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.85,
+    "reason": "animal model validation of human data \u2014 >50% animal content",
+    "cached": true
+  },
+  {
+    "title": "Epidemiological profile and risk factors of community-acquired caused by enterobacteria strains producing ESBL urinary tract infections in Tunisian children.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.88,
+    "reason": "single-pathogen infection treatment with no microbiome community profiling",
+    "cached": true
+  },
+  {
+    "title": "Thermosensitive in situ Hydrogel Based on Benzalkonium Chloride-Loaded Selenium-Doped Mesoporous Silica Nanoparticles for Diabetic Chronic Wound Treatment.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "Saccharomyces cerevisiae \u03b2-Glucan Training Induces a Nonclassical PGE2-High/NO-Low Macrophage Phenotype in Response to Pseudomonas aeruginosa Exopolysaccharide.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (mice) with no human microbiome data",
+    "cached": true
+  },
+  {
+    "title": "In vitro exposure to non-antipseudomonal antibiotics (NAPA) induces Pseudomonas aeruginosa resistance to antipseudomonal antibiotics (APA).",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model \u2014 no human data",
     "cached": true
   },
   {
     "title": "Epidemiology of microbiological findings in the lower respiratory tract in mechanically ventilated patients with and without inhalation injury.",
     "source": "pubmed",
-    "keep": true,
-    "confidence": 0.92,
-    "reason": "human mechanically ventilated patients with lower respiratory tract microbiome analysis",
-    "cached": true
-  },
-  {
-    "title": "Clinical management and pharmaceutical care of severe Chlamydia psittaci Pneumonia complicated with rhabdomyolysis and multiple organ dysfunction: a case report and literature review.",
-    "source": "pubmed",
     "keep": false,
-    "confidence": 0.99,
-    "reason": "animal model (zoonotic disease in humans, but no human microbiome study)",
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
   },
   {
     "title": "The non-bacterial oncobiome: the role of the mycobiome and virome in tumor plasticity.",
     "source": "pubmed",
-    "keep": true,
-    "confidence": 0.85,
-    "reason": "human oncobiome review with mycobiome and virome",
-    "cached": true
-  },
-  {
-    "title": "Bacterial contamination of surgical instruments in 25-gauge pars plana vitrectomy: Incidence and risk factors.",
-    "source": "pubmed",
     "keep": false,
-    "confidence": 0.95,
-    "reason": "surgical instruments not human microbiome study",
+    "confidence": 0.98,
+    "reason": "animal model validation \u2014 no human data",
     "cached": true
   },
   {
     "title": "Performance of EUCAST disc diffusion and supplementary methods to detect reduced susceptibility to linezolid in enterococci- the NordicAST LRE-study.",
     "source": "pubmed",
     "keep": false,
-    "confidence": 0.95,
-    "reason": "animal model not applicable, focus on antimicrobial susceptibility testing",
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
   },
   {
     "title": "Experimental evolution reveals adaptive pathways to reduced antibiotic susceptibility in Pseudomonas aeruginosa biofilms.",
     "source": "pubmed",
     "keep": false,
-    "confidence": 0.99,
-    "reason": "pure pathogen study without human microbiome profiling",
-    "cached": true
-  },
-  {
-    "title": "Cyclomodulins and supplementary virulence genes as determinants of clinical severity and antimicrobial resistance in uropathogenic Escherichia coli and Klebsiella pneumoniae.",
-    "source": "pubmed",
-    "keep": false,
-    "confidence": 0.99,
-    "reason": "pure pathogen/infectious disease with no microbiome profiling",
-    "cached": true
-  },
-  {
-    "title": "[Development and preliminary clinical evaluation of a CRISPR-AaCas12b-based nucleic acid detection method for Mycobacterium tuberculosis].",
-    "source": "pubmed",
-    "keep": false,
-    "confidence": 0.99,
-    "reason": "pure pathogen/infectious disease with no microbiome profiling",
-    "cached": true
-  },
-  {
-    "title": "Staphylococcus aureus small colony variants originating from the lower respiratory tract are associated with persistent pulmonary infection.",
-    "source": "pubmed",
-    "keep": true,
-    "confidence": 0.85,
-    "reason": "human pulmonary microbiome study",
-    "cached": true
-  },
-  {
-    "title": "Histoplasmosis with mediastinal lymphadenopathy in an immunocompetent municipal water department employee in Texas: a case report.",
-    "source": "pubmed",
-    "keep": false,
     "confidence": 0.98,
-    "reason": "focus on infectious disease with no microbiome profiling",
+    "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
   },
   {
     "title": "Antimicrobial activity of ceftolozane/tazobactam, imipenem/relebactam, and comparators against Gram-negative pathogens collected in Arabian Gulf countries: SMART 2020-2024.",
     "source": "pubmed",
     "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model validation \u2014 no human microbiome data",
+    "cached": false
+  },
+  {
+    "title": "Antimicrobial Efficacy of Endogenous Blue Light Photoinactivation (400-470 nm) Against Escherichia coli: A Systematic Review of In Vitro Evidence and Clinical Implications.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Genomic Diversity of Vaginal Lactobacillus crispatus Prophages from South African Women.",
+    "source": "pubmed",
+    "keep": false,
     "confidence": 0.99,
-    "reason": "pure pathogen/infectious disease with no microbiome profiling",
-    "cached": true
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
   },
   {
-    "title": "Dual valve Achromobacter endocarditis in a long-term acute care unit: a case report and review of the literature.",
+    "title": "Clinical Outcome After Surgery for Fracture-Related Infection Is Dependent on Both Microbiology and the Host Inflammatory Response.",
+    "source": "pubmed",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human surgical cohort with microbiome and inflammatory response analysis",
+    "cached": false
+  },
+  {
+    "title": "Tackling Biofilm-Forming Pathogens: A Challenge to Overcome in the Fight Against Infectious Diseases.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Pathogenic Roles of Fusobacterium nucleatum in Colorectal Cancer: From Strain Heterogeneity to Host-Pathogen Interactions.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Temporal Trends and Mortality of Vancomycin-Resistant Enterococcus Bacteremia-A Six-Year Retrospective Cohort Study in a Tertiary Hospital in Greece.",
     "source": "pubmed",
     "keep": false,
     "confidence": 0.95,
-    "reason": "animal model not applicable, focus on infectious disease without microbiome profiling",
-    "cached": true
+    "reason": "animal model \u2014 no human microbiome data",
+    "cached": false
   },
   {
-    "title": "Evolving Etiology of Community-Acquired Pneumonia.",
-    "source": "pubmed",
-    "keep": true,
-    "confidence": 0.85,
-    "reason": "human CAP study with microbiome implications",
-    "cached": true
-  },
-  {
-    "title": "Skin and Soft Tissue Infections.",
-    "source": "pubmed",
-    "keep": true,
-    "confidence": 0.85,
-    "reason": "human skin microbiome study",
-    "cached": true
-  },
-  {
-    "title": "Guanilated Quinolones with Dual Antitubercular and Anti-Inflammatory Activities.",
+    "title": "Laboratory-Acquired Brucella abortus Infection Mimicking Autoimmune Disease: A Case Report with Genomic Confirmation.",
     "source": "pubmed",
     "keep": false,
-    "confidence": 0.95,
-    "reason": "pure pathogen/infectious disease with no microbiome profiling",
-    "cached": true
+    "confidence": 0.99,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
   },
   {
-    "title": "Characteristics of children with first febrile urinary tract infection caused by Staphylococcus species.",
+    "title": "Invasive Giant Goldenrod (Solidago gigantea Aiton): Phytochemical Profiling and Evaluation of Chemopreventive and Antimicrobial Activities.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "environmental soil microbiome \u2014 not human study",
+    "cached": false
+  },
+  {
+    "title": "Phenotypic and Genetic Characteristics of blaIMP-6-Harboring Enterobacterales Isolates Lacking blaCTX-M-2 in Japan.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Two Worlds, One Battle: How Bacteria and Malignancies Converge on Drug Resistance.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Comparative Analysis of Antimicrobial Resistance in Male Uropathogens Before and After the COVID-19 Pandemic: A Single-Center Study from Romania.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "environmental soil microbiome \u2014 not human study",
+    "cached": false
+  },
+  {
+    "title": "Uropathogens' AMR in Male and Female Romanian Population-A Bi-Center Analysis over 1 Year.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "environmental soil microbiome \u2014 not human study",
+    "cached": false
+  },
+  {
+    "title": "The Role of Oral Pathobionts' Outer Membrane Vesicles in Cancer Pathology and Therapeutic Development.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "The \"Direct Structural Disruption\" Hypothesis: Bacteroides fragilis Toxin as a Potentiating Cofactor in MASH Pathogenesis.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "From Sea to Therapy: Development and Analytical Control of Recombinant Human CDKL5 Production in the Marine Bacterium Pseudoalteromonas haloplanktis TAC125.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Akkermansia muciniphila-Driven ceRNA Networks Regulate Immune Modulation and Breast Cancer Progression.",
     "source": "pubmed",
     "keep": true,
-    "confidence": 0.85,
-    "reason": "human pediatric UTI study with microbiome focus",
-    "cached": true
+    "confidence": 0.92,
+    "reason": "mechanistic review of human microbiome-immune interactions",
+    "cached": false
+  },
+  {
+    "title": "Synergistic strategies to rescue the last-resort antibiotic colistin.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Mycobacterium abscessus bacteremia complicated by sepsis and septic shock in a patient with multiple comorbidities: a case report.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Descriptive Epidemiology of Aerococcus urinae Isolated From Urine Cultures in a Pediatric Hospital: A Case Series.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Early population-level impact of Helicobacter pylori eradication on gastric cancer mortality in Japan: a counterfactual analysis of short-term divergence.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "single-pathogen infection treatment with no microbiome community profiling \u2014 not human study",
+    "cached": false
+  },
+  {
+    "title": "Comprehensive phenotypic characterization of Pseudomonas aeruginosa isolates from cystic fibrosis patients: antimicrobial susceptibility, tolerance, hypermutation, biofilm formation, and antibiofilm activity.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "The effect of Demodex-associated Bacillus oleronius proteins and hyperosmolarity on a human conjunctival epithelial cell line.",
+    "source": "pubmed",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
   },
   {
     "title": "Animal farming and the oral microbiome in the Agricultural Health Study",
-    "source": "merged:europepmc+europepmc",
-    "keep": true,
-    "confidence": 0.85,
-    "reason": "human oral microbiome study",
-    "cached": true
-  },
-  {
-    "title": "Protein-Mediated Interactions Between Gut Microbiota, Probiotics and Host Immunity",
-    "source": "merged:europepmc+europepmc",
-    "keep": true,
-    "confidence": 0.9,
-    "reason": "human gut microbiome review",
-    "cached": true
-  },
-  {
-    "title": "The Human Breast Microbiome: From Homeostasis to Malignancy, Mechanistic Insights and Therapeutic Perspectives",
-    "source": "semantic_scholar",
+    "source": "merged:europepmc+europepmc+europepmc+europepmc+europepmc+europepmc+europepmc+europepmc+europepmc",
     "keep": false,
-    "confidence": 0.5,
-    "reason": "ollama_error",
+    "confidence": 0.99,
+    "reason": "animal farming model \u2014 no human data",
     "cached": true
   },
   {
     "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
     "source": "semantic_scholar",
-    "keep": false,
-    "confidence": 0.5,
-    "reason": "ollama_error",
-    "cached": true
-  },
-  {
-    "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
-    "source": "semantic_scholar",
-    "keep": false,
-    "confidence": 0.5,
-    "reason": "ollama_error",
-    "cached": true
-  },
-  {
-    "title": "Intestinal epithelial Syndecan-1 maintains mucosal homeostasis in inflammatory bowel disease by enhancing Faecalibacterium prausnitzii biofilm formation",
-    "source": "semantic_scholar",
-    "keep": false,
-    "confidence": 0.5,
-    "reason": "ollama_error",
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human infant cohort with metagenomics analysis on respiratory microbiome",
     "cached": true
   },
   {
     "title": "Selenium: From Redox Signaling to Interactions with the Gut Microbiome",
     "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.5,
-    "reason": "ollama_error",
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
   },
   {
     "title": "Sex shapes the human genitourinary microbiome, including many species recognized as uropathogens: urine profiles from a population-level shotgun metagenomics study",
     "source": "semantic_scholar",
     "keep": true,
-    "confidence": 0.96,
-    "reason": "human genitourinary microbiome with shotgun metagenomics",
-    "cached": true
-  },
-  {
-    "title": "Decoding the Microbial Diversity of Indian Fermented Foods: Integrating Ethnobiology, Multi-Omics and Functional Insights.",
-    "source": "semantic_scholar",
-    "keep": false,
-    "confidence": 0.97,
-    "reason": "food fermentation not human study",
+    "confidence": 0.98,
+    "reason": "human cohort with sex-specific urinary microbiome analysis",
     "cached": true
   },
   {
     "title": "The effect of pet dog exposure on gut antibiotic resistome and microbiome of their owners.",
     "source": "semantic_scholar",
     "keep": true,
-    "confidence": 0.92,
-    "reason": "human gut microbiome with antibiotic resistome analysis",
+    "confidence": 0.98,
+    "reason": "human study with metagenomics analysis on microbiome composition and antibiotic resistance genes",
     "cached": true
   },
   {
     "title": "Creation of a fecal microbiota bank network in the Russian Federation",
     "source": "semantic_scholar",
     "keep": true,
-    "confidence": 0.95,
-    "reason": "human fecal microbiota bank review",
+    "confidence": 0.98,
+    "reason": "human RCT of FMT intervention with microbiome outcome",
     "cached": true
   },
   {
     "title": "Metagenomic insights into the influence of goose farming on the gut microbiome and antibiotic resistome of workers",
     "source": "semantic_scholar",
     "keep": true,
-    "confidence": 0.85,
-    "reason": "human gut microbiome with metagenomic analysis",
-    "cached": true
-  },
-  {
-    "title": "Metagenomic Comparison of Bat Colony Resistomes Across Anthropogenic and Pristine Habitats",
-    "source": "semantic_scholar",
-    "keep": false,
-    "confidence": 0.99,
-    "reason": "environmental microbiome study of bat colonies",
+    "confidence": 0.95,
+    "reason": "human study on the influence of goose farming on the human microbiome and antibiotic resistance",
     "cached": true
   },
   {
     "title": "Computational Metagenomic Analysis of the Breast Oncomicrobiome: Taxonomic Profiling and Functional Insights",
     "source": "semantic_scholar",
     "keep": true,
-    "confidence": 0.96,
-    "reason": "human breast microbiome metagenomics study",
+    "confidence": 0.95,
+    "reason": "human breast cancer cohort with metagenomics and disease association",
     "cached": true
   },
   {
     "title": "Bifidobacterium animalis subsp. lactis Bbm-19 ameliorates insomnia by remodeling the gut microbiota and restoring \u03b3-aminobutyric acid and serotonin signaling.",
     "source": "semantic_scholar",
-    "keep": false,
-    "confidence": 0.99,
-    "reason": "animal model (mouse) used for insomnia study",
-    "cached": true
-  },
-  {
-    "title": "Flavonifractor plautii as a Next-Generation Probiotic Enhancing the NGP F/P Index in a Simulated Human Gut Microbiome Ecosystem",
-    "source": "semantic_scholar",
     "keep": true,
-    "confidence": 0.85,
-    "reason": "human gut microbiome study with simulated ecosystem",
+    "confidence": 0.95,
+    "reason": "human study on Bifidobacterium animalis subsp. lactis Bbm-19 ameliorating insomnia through gut micro",
     "cached": true
   },
   {
     "title": "The Human Respiratory Virome in Health and Disease: Interactions, Dysbiosis, and Methodological Challenges",
     "source": "semantic_scholar",
     "keep": true,
-    "confidence": 0.85,
-    "reason": "human respiratory microbiome with metagenomics",
+    "confidence": 0.95,
+    "reason": "human study of the human respiratory virome with clinical outcomes",
     "cached": true
   },
   {
     "title": "Can Beetroot (Beta vulgaris) Support Brain Health? A Perspective Review on Alzheimer\u2019s Disease",
     "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.95,
-    "reason": "food/fermentation not human study",
+    "confidence": 0.99,
+    "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
   },
   {
-    "title": "Orally delivered biodegradable targeted inflammation resolving pectin-coated nanoparticles induce anastomotic healing post intestinal surgery",
-    "source": "biorxiv",
+    "title": "Detection of antimicrobial peptides from fecal samples of FMT donors using deep learning",
+    "source": "semantic_scholar",
     "keep": false,
-    "confidence": 0.5,
-    "reason": "ollama_error",
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
+  },
+  {
+    "title": "Uncovering the gut microbiome and antibiotic resistome of mammals on the Tibetan Plateau",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (mammals) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "Alternatives Integrating Omics Approaches for the Advancement of Human Skin Models: A Focus on Metagenomics, Metatranscriptomics, and Metaproteomics",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "Application of image guided analyses to monitor fecal microbial composition and diversity in a human cohort",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model validation \u2014 no human data",
+    "cached": true
+  },
+  {
+    "title": "Restoration of the human skin microbiome following immune recovery after hematopoietic stem cell transplantation.",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human skin microbiome study with clinical outcome",
+    "cached": true
+  },
+  {
+    "title": "Hybrid-metagenomics reveal off-target effects of albendazole, ivermectin-albendazole and moxidectin-albendazole on the human gut bacteria",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model validation \u2014 no human microbiome data",
+    "cached": true
+  },
+  {
+    "title": "The chicken gut resistome data from different regions of Kazakhstan",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "animal model (chicken) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Longitudinal profiling of low-abundance strains in microbiomes with ChronoStrain",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human longitudinal study of low-abundance strains with microbiome sequencing",
+    "cached": false
+  },
+  {
+    "title": "Insights into human respiratory microbiome under dysbiosis and its analysis tool",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human study on respiratory microbiome dysbiosis with sequencing and disease association",
+    "cached": false
+  },
+  {
+    "title": "Longitudinal dynamics of the nasopharyngeal microbiome in response to SARS-CoV-2 Omicron variant and HIV infection in Kenyan women and their children",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human longitudinal study of nasopharyngeal microbiome in response to SARS-CoV-2 Omicron variant and ",
+    "cached": false
+  },
+  {
+    "title": "Metagenomic analysis of the faecal microbiota and AMR in roe deer in Western Pomerania",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "environmental soil microbiome \u2014 not human study",
+    "cached": false
+  },
+  {
+    "title": "Prospective comparison of the digestive tract resistome and microbiota in cattle raised in grass-fed versus grain-fed production systems",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "environmental soil microbiome \u2014 not human study",
+    "cached": false
+  },
+  {
+    "title": "Microbial Dynamics in COVID-19: Unraveling the Impact of Human Microbiome on Disease Susceptibility and Therapeutic Strategies",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human study with microbiome analysis and disease association",
+    "cached": false
+  },
+  {
+    "title": "Experimental tests challenge the evidence of a healthy human blood microbiome",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Optimization of metagenomic detection method for human breast milk microbiome",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human breast milk microbiome study using metagenomics",
+    "cached": false
+  },
+  {
+    "title": "Deep longitudinal lower respiratory tract microbiome profiling reveals genome-resolved functional and evolutionary dynamics in critical illness",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human ICU cohort with deep metagenomic profiling of LRT microbiome",
+    "cached": false
+  },
+  {
+    "title": "Abstract P168: The Unholy Link: The Herbicide Glyphosate Contributes to Hypertension, Gut Microbiota Dysbiosis, and Sympathetic Overdrive",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Age-Related Specificities of the Gut Microbiota Composition of Rhesus Macaques Kept in Captivity",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "zebrafish animal model \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Time-series sewage metagenomics distinguishes seasonal, human-derived and environmental microbial communities potentially allowing source-attributed surveillance",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human sewage microbiome study with metagenomics",
+    "cached": false
+  },
+  {
+    "title": "Placental and fetal microbiota in rhesus macaque: a case study using metagenomic sequencing",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human Rhesus macaque study using metagenomic sequencing on placental and fetal microbiota",
+    "cached": false
+  },
+  {
+    "title": "Metagenomic assessment of the bacterial breastfeeding microbiome in mature milk across lactation",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human cohort study on breast milk microbiome with longitudinal assessment",
+    "cached": false
+  },
+  {
+    "title": "Multi-omics strategy reveals potential role of antimicrobial resistance and virulence factor genes responsible for Simmental diarrheic calves caused by Escherichia coli",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (Simmental cattle) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Bacteriocin diversity, function, discovery and application as antimicrobials",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.98,
+    "reason": "human microbiome diversity study with post-translationally modified peptides",
+    "cached": false
+  },
+  {
+    "title": "Comprehensive analysis of phenotypes and transcriptome characteristics reveal the best atopic dermatitis mouse model induced by MC903.",
+    "source": "semantic_scholar",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
   }
 ]

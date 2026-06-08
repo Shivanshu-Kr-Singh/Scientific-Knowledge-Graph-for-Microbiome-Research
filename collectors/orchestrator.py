@@ -84,12 +84,27 @@ class CollectionOrchestrator:
                     date_to=date_to,
                     max_results=max_per_source,
                 )
+
+                # bioRxiv has no server-side keyword filter — it returns everything
+                # in the date range. Run RelevanceFilter now to trim it down before
+                # it pollutes the shared pool. We run it again after merging on the
+                # non-bioRxiv papers (which may carry MeSH terms / richer metadata
+                # that makes the filter more accurate at that point).
+                if collector.source_name == "biorxiv" and records:
+                    logger.info(
+                        f"[biorxiv] Pre-filtering {len(records)} raw preprints "
+                        f"through RelevanceFilter before merge"
+                    )
+                    pre_filter = RelevanceFilter()
+                    records, _, _ = pre_filter.filter(records)
+                    logger.info(
+                        f"[biorxiv] Pre-filter kept {len(records)} relevant preprints"
+                    )
+
                 all_records.extend(records)
                 logger.info(f"[{collector.source_name}] Added {len(records)} records")
 
             except Exception as e:
-                # If one source fails entirely, log and continue with the others.
-                # We NEVER let one broken source kill the whole job.
                 logger.error(f"[{collector.source_name}] COLLECTOR FAILED: {e}")
                 logger.exception(e)
 
@@ -101,12 +116,21 @@ class CollectionOrchestrator:
         logger.success(f"After deduplication: {len(merged)} unique papers")
 
         # ── Step 3: Post-collection relevance filter (3-stage) ───────────────
+        # bioRxiv papers were already filtered above — run only on the rest.
         # Stage 1: MeSH metadata filter (PubMed papers)
         # Stage 2: Weighted rule scorer (all sources, from organisms.yaml)
         # Stage 3: ML classifier (if trained model exists)
         # + Metagenomics gate (project-specific requirement)
-        rel_filter = RelevanceFilter()
-        merged, removed, review_queue = rel_filter.filter(merged)
+        non_biorxiv = [p for p in merged if "biorxiv" not in (p.source or "").lower()]
+        biorxiv_kept = [p for p in merged if "biorxiv" in (p.source or "").lower()]
+
+        if non_biorxiv:
+            rel_filter = RelevanceFilter()
+            non_biorxiv, removed, review_queue = rel_filter.filter(non_biorxiv)
+        else:
+            removed, review_queue = [], []
+
+        merged = non_biorxiv + biorxiv_kept
         logger.info(
             f"Relevance filter: kept {len(merged)}, "
             f"removed {len(removed)}, "

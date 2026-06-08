@@ -5,6 +5,7 @@ tenacity==8.2.3             # Retry logic with exponential backoff
 ratelimit==2.2.1            # Per-source rate limiting
 
 # ── Layer 2: Web Scraping (full-text fallback) ────────────────────────────────
+beautifulsoup4==4.12.3      # HTML parsing for full-text extraction
 scrapy==2.11.0              # Structured web crawling
 playwright==1.43.0          # JS-rendered journal pages
 pdfminer.six==20221105      # PDF text extraction
@@ -28,6 +29,8 @@ apscheduler==3.10.4         # Job scheduler (daily/weekly runs)
 redis==5.0.4                # Optional: Celery task broker
 
 # ── Utilities ────────────────────────────────────────────────────────────────
+trafilatura==1.12.2         # Web content extraction (full-text scraping)
+psutil==5.9.8               # System/process utilities
 python-dotenv==1.0.1        # Load secrets from .env file
 loguru==0.7.2               # Structured logging
 pydantic==2.7.1             # Data validation / schemas

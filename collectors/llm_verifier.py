@@ -1,4 +1,4 @@
-"""
+﻿"""
 Stage 4 — LLM verifier for borderline papers only.
 
 SUPPORTED PROVIDERS:
@@ -287,7 +287,7 @@ class LLMVerifier:
 
     def _save_cache(self):
         CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        with open(CACHE_PATH, "w") as f:
+        with open(CACHE_PATH, "w", encoding="utf-8") as f:
             json.dump(self._cache, f, indent=2)
 
     def cache_stats(self) -> dict:

@@ -1,119 +1,38 @@
 [
   {
-    "title": "Capnocytophaga canimorsus Bacteremia Without Animal Bite: A Rare but Severe Infection to Consider in Older Adults.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Ligand-Induced Trigger RNA Cleavage Enables Programmable Gene Expression Regulation via Strand Displacement in Prokaryotic and Eukaryotic Cells.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Prevalence of Drug-Resistant Mycobacterium tuberculosis in Rural Communities of Vhembe District, South Africa.",
-    "source": "pubmed",
-    "year": 2026,
+    "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
+    "source": "biorxiv",
+    "year": 2024,
     "decision": "review",
     "stage": "gate_metagenomics",
     "score": 0.5,
     "reason": "no_sequencing_terms (prev_score=1.0)"
   },
   {
-    "title": "Prior Chlamydia trachomatis Infection and the Risk of Epithelial Ovarian Cancer and Borderline Ovarian Tumors.",
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "[In vitro and in vivo antibacterial effects of the mitochondrial antioxidant Visomitin against Enterococcus].",
     "source": "pubmed",
     "year": 2026,
     "decision": "review",
     "stage": "gate_metagenomics",
     "score": 0.4165,
     "reason": "no_sequencing_terms (prev_score=0.833)"
-  },
-  {
-    "title": "Early treatment interruption and nutritional status as predictors of mortality in Mycobacterium avium complex pulmonary disease.",
-    "source": "pubmed",
-    "year": 2026,
-    "decision": "review",
-    "stage": "gate_metagenomics",
-    "score": 0.5,
-    "reason": "no_sequencing_terms (prev_score=1.0)"
-  },
-  {
-    "title": "The Human Breast Microbiome: From Homeostasis to Malignancy, Mechanistic Insights and Therapeutic Perspectives",
-    "source": "semantic_scholar",
-    "year": 2026,
-    "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
-    "source": "semantic_scholar",
-    "year": 2026,
-    "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Decoding the diet-gut-liver axis: links between dietary pattern adherence, gut microbiome, and hepatic health",
-    "source": "semantic_scholar",
-    "year": 2026,
-    "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Intestinal epithelial Syndecan-1 maintains mucosal homeostasis in inflammatory bowel disease by enhancing Faecalibacterium prausnitzii biofilm formation",
-    "source": "semantic_scholar",
-    "year": 2026,
-    "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Selenium: From Redox Signaling to Interactions with the Gut Microbiome",
-    "source": "semantic_scholar",
-    "year": 2026,
-    "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Gut dysbiosis induces the development of asthenozoospermia through butanoate metabolism",
-    "source": "semantic_scholar",
-    "year": 2026,
-    "decision": "review",
-    "stage": "stage2_rules",
-    "score": 0.7,
-    "reason": "pos:[patients,patient,human] neg:[pathogen]"
-  },
-  {
-    "title": "Orally delivered biodegradable targeted inflammation resolving pectin-coated nanoparticles induce anastomotic healing post intestinal surgery",
-    "source": "biorxiv",
-    "year": 2024,
-    "decision": "review",
-    "stage": "stage4_llm (cached)",
-    "score": 0.5,
-    "reason": "llm:ollama_error"
-  },
-  {
-    "title": "Sexually Transmitted Infections Among Patients on Antiretroviral Treatment at Adama Hospital Medical College, Adama, Ethiopia",
-    "source": "biorxiv",
-    "year": 2024,
-    "decision": "review",
-    "stage": "gate_metagenomics",
-    "score": 0.5,
-    "reason": "no_sequencing_terms (prev_score=1.0)"
   }
 ]

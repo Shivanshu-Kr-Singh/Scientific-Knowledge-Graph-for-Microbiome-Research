@@ -15,6 +15,7 @@ Implements a routing-table-driven entity normalizer with:
 Concern 5 — generalized ontology registry.
 """
 
+import io
 import os
 import sqlite3
 import time
@@ -42,8 +43,16 @@ CACHE_DB_PATH = Path(__file__).parent / "grounding_cache.db"
 # ─── NCBI e-mail ──────────────────────────────────────────────────────────────
 
 ENTREZ_EMAIL = os.getenv("NCBI_EMAIL", "research@example.com")
+ENTREZ_API_KEY = os.getenv("NCBI_API_KEY", "")
 if ENTREZ_AVAILABLE:
     Entrez.email = ENTREZ_EMAIL
+    if ENTREZ_API_KEY:
+        Entrez.api_key = ENTREZ_API_KEY
+
+# NCBI rate-limit: 3 req/sec without key, 10 with key.
+# 0.34 s gap keeps us safely under the no-key limit;
+# 0.12 s is sufficient with an API key.
+_NCBI_DELAY = 0.12 if ENTREZ_API_KEY else 0.34
 
 # ─── Confidence levels ────────────────────────────────────────────────────────
 
@@ -126,9 +135,7 @@ ONTOLOGY_ROUTING: Dict[str, Dict[str, Any]] = {
     },
 }
 
-# NCBI rate-limit: 3 req/sec without key, 10 with key.
-# 0.34 s gap keeps us safely under the no-key limit.
-_NCBI_DELAY = 0.34
+
 
 
 # ─── EntityNormalizer ─────────────────────────────────────────────────────────
@@ -386,8 +393,20 @@ class EntityNormalizer:
 
         try:
             handle = Entrez.esearch(db=ncbi_db, term=entity_text, retmax=1)
-            record = Entrez.read(handle)
+            raw = handle.read()
             handle.close()
+            if isinstance(raw, str):
+                raw = raw.encode("utf-8")
+            # Guard: NCBI occasionally returns an HTML error page (rate limit, 5xx)
+            # instead of XML.  Detect this before passing to Entrez.read().
+            raw_preview = raw[:200].lstrip()
+            if not raw_preview.startswith(b"<?xml") and not raw_preview.startswith(b"<"):
+                logger.debug(
+                    "EntityNormalizer: NCBI esearch returned non-XML response for {!r} — skipping",
+                    entity_text,
+                )
+                return None
+            record = Entrez.read(io.BytesIO(raw))
             time.sleep(_NCBI_DELAY)
 
             id_list = record.get("IdList", [])
@@ -399,8 +418,20 @@ class EntityNormalizer:
             handle = Entrez.efetch(
                 db=ncbi_db, id=entity_id, retmode="xml"
             )
-            records = Entrez.read(handle)
+            raw = handle.read()
             handle.close()
+            if isinstance(raw, str):
+                raw = raw.encode("utf-8")
+            # Same guard for efetch response
+            raw_preview = raw[:200].lstrip()
+            if not raw_preview.startswith(b"<?xml") and not raw_preview.startswith(b"<"):
+                logger.debug(
+                    "EntityNormalizer: NCBI efetch returned non-XML response for {!r} (db={!r}) — skipping",
+                    entity_text,
+                    ncbi_db,
+                )
+                return None
+            records = Entrez.read(io.BytesIO(raw))
             time.sleep(_NCBI_DELAY)
 
             if not records:

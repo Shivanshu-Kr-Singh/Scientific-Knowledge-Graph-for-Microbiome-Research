@@ -993,8 +993,13 @@ class NERExtractor:
                 for ent in raw_entities:
                     label = self._map_model_label(ent.get("entity_group", ""))
                     if label:
+                        word = ent.get("word", "").strip()
+                        # Skip WordPiece subword tokens (e.g. "##pa", "##tion")
+                        # that leak through when aggregation fails across chunk boundaries
+                        if not word or word.startswith("##") or len(word) < 2:
+                            continue
                         all_entities.append(NamedEntity(
-                            text=ent.get("word", "").strip(),
+                            text=word,
                             label=label,
                             confidence=round(float(ent.get("score", 0)), 3),
                         ))

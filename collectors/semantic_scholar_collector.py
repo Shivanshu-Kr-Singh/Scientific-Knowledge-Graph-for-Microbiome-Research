@@ -103,6 +103,7 @@ class SemanticScholarCollector(BaseCollector):
         date_to: str,
         max_results: int = 500,
         page_size: int = 100,    # Bulk endpoint supports up to 1000 per page
+        start_offset: int = 0,   # ignored — S2 uses token pagination; cursor stored separately
     ) -> List[PaperRecord]:
         """
         Override base collect() to use token-based pagination correctly.
@@ -114,8 +115,11 @@ class SemanticScholarCollector(BaseCollector):
           4. Include token in next request to get next page
           5. Stop when no token in response
 
-          This is different from offset pagination where you calculate
-          the next page number yourself.
+        NOTE ON start_offset:
+          Semantic Scholar uses opaque continuation tokens, not numeric offsets.
+          The cursor for S2 is stored separately as "semantic_scholar_token" in
+          the cursor file. start_offset is accepted for interface compatibility
+          but is not used here.
         """
         logger.info(
             f"[semantic_scholar] Starting bulk collection | "
@@ -140,7 +144,14 @@ class SemanticScholarCollector(BaseCollector):
 
         papers: List[PaperRecord] = []
         page = 0
-        token = None
+
+        # Resume from a previously saved continuation token if available.
+        # The orchestrator stores this as "semantic_scholar_token" in the cursor file.
+        resume_token = getattr(self, "_resume_token", None)
+        token = resume_token
+        if resume_token:
+            logger.info(f"[semantic_scholar] Resuming from saved continuation token")
+        self._last_token = None  # will be set to the final token after collection
 
         while len(papers) < max_results:
             if token:
@@ -206,6 +217,7 @@ class SemanticScholarCollector(BaseCollector):
 
             # Check for next page token
             token = data.get("token")
+            self._last_token = token  # persist so orchestrator can save it
             if not token:
                 logger.info("[semantic_scholar] No more pages (no token in response)")
                 break

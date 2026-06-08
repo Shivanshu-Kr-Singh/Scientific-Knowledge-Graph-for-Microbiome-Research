@@ -185,6 +185,7 @@ class BaseCollector(ABC):
         date_to: str,
         max_results: int = 500,
         page_size: int = 50,
+        start_offset: int = 0,
     ) -> List[PaperRecord]:
         """
         Runs the full collection loop for this source.
@@ -196,17 +197,23 @@ class BaseCollector(ABC):
           4. Compute and attach a content hash to each record
           5. Return the full list
 
+        start_offset: resume from this page offset (used for cursor-based
+          incremental collection so each run fetches novel papers).
+
         The caller (Orchestrator) handles deduplication across sources.
         """
         logger.info(f"[{self.source_name}] Starting collection | query='{query}' | {date_from} → {date_to}")
 
         query_params = self.build_query(query, date_from, date_to)
         papers: List[PaperRecord] = []
-        page = 0
+        # Use max_results as the page size so the page number correctly maps
+        # to the start_offset. e.g. start_offset=20, max_results=10 → page=2
+        effective_page_size = max_results
+        page = start_offset // max(effective_page_size, 1)
         total_fetched = 0
 
         while total_fetched < max_results:
-            batch_size = min(page_size, max_results - total_fetched)
+            batch_size = min(effective_page_size, max_results - total_fetched)
 
             try:
                 raw_page = self.fetch_page(query_params, page=page, page_size=batch_size)

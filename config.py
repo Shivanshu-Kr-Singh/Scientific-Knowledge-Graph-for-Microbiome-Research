@@ -123,6 +123,9 @@ RATE_LIMITS = {
     "europepmc":        0.5,   # 2 req/sec
     "semantic_scholar": 1.0,   # 1 req/sec (conservative)
     "biorxiv":          0.5,   # 2 req/sec
+    "openalex":         0.1,   # 10 req/sec (polite pool with email)
+    "crossref":         0.02,  # 50 req/sec (polite pool with User-Agent)
+    "core":             0.6,   # 100 req/min with API key = ~1 req/sec
 }
 
 # How many times to retry a failed request before giving up

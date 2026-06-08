@@ -124,8 +124,10 @@ class PubMedCollector(BaseCollector):
         pmids = data.get("esearchresult", {}).get("idlist", [])
         total = int(data.get("esearchresult", {}).get("count", 0))
 
-        if retstart == 0:
+        # Always log total on the first call of each run (retstart may be non-zero on resumed runs)
+        if not getattr(self, "_total_logged", False):
             logger.info(f"[pubmed] Total results in PubMed: {total}")
+            self._total_logged = True
 
         return pmids
 
@@ -161,6 +163,12 @@ class PubMedCollector(BaseCollector):
         Returns a dict that _extract_items will process.
         """
         retstart = page * page_size
+
+        # Reset the total-logged flag at the start of each collect() run
+        # so the total is always printed once per run regardless of start page
+        if not hasattr(self, "_total_logged") or page == 0:
+            self._total_logged = False
+
         pmids = self._esearch(query_params["query"], retstart=retstart, retmax=page_size)
 
         if not pmids:

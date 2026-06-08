@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
     "source": "biorxiv",
     "keep": false,
@@ -142,10 +143,18 @@
     "confidence": 0.98,
     "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": true
+=======
+    "title": "The brainstem's red nucleus was evolutionarily upgraded to support goal-directed action",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
   },
   {
-    "title": "Antimicrobial activity of ceftolozane/tazobactam, imipenem/relebactam, and comparators against Gram-negative pathogens collected in Arabian Gulf countries: SMART 2020-2024.",
-    "source": "pubmed",
+    "title": "Detection of Antibodies Against the African Parasite Trypanosoma brucei Using Synthetic glycosylphosphatidylinositol oligosaccharide fragments",
+    "source": "biorxiv",
     "keep": false,
     "confidence": 0.98,
     "reason": "animal model validation \u2014 no human microbiome data",
@@ -164,6 +173,7 @@
     "source": "pubmed",
     "keep": false,
     "confidence": 0.99,
+<<<<<<< HEAD
     "reason": "animal model (zebrafish) \u2014 no human data",
     "cached": false
   },
@@ -204,10 +214,61 @@
     "source": "pubmed",
     "keep": false,
     "confidence": 0.99,
+=======
     "reason": "animal model \u2014 no human data",
     "cached": false
   },
   {
+    "title": "Clinical Impact of Calcified Nodules in Patients with Severely Calcified Lesions Treated by Rotational Atherectomy: A Serial Optical Coherence Tomography Study",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Cardiac Troponin T is a Serum Biomarker of Respiratory Dysfunction in Amyotrophic Lateral Sclerosis",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.95,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Robodoc: a conversational-AI based app for medical conversations",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "not related to human microbiome research or disease/outcome association",
+    "cached": false
+  },
+  {
+    "title": "Identifying direct risk factors in UK Biobank with simultaneous Bayesian-frequentist model-averaged hypothesis testing using Doublethink",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.85,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "The decline of renal function aggravates arterial stiffness: a large-scale cross-sectional and longitudinal study",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "environmental soil microbiome \u2014 not human study",
+    "cached": false
+  },
+  {
+    "title": "Clinical features and outcomes of scorpion sting in western lowland of Eritrea: a prospective descriptive study.",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.99,
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
+    "reason": "animal model \u2014 no human data",
+    "cached": false
+  },
+  {
+<<<<<<< HEAD
     "title": "Invasive Giant Goldenrod (Solidago gigantea Aiton): Phytochemical Profiling and Evaluation of Chemopreventive and Antimicrobial Activities.",
     "source": "pubmed",
     "keep": false,
@@ -334,10 +395,75 @@
     "confidence": 0.99,
     "reason": "animal farming model \u2014 no human data",
     "cached": true
+=======
+    "title": "Diverse and weakly immunogenic var gene expression facilitates malaria infection",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Extracellular Matrix Abnormalities in the Hippocampus of Subjects with Substance Use Disorder",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal models \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Effects of changes in calculating GFR using KDIGO standards: Discordance in the Staging and Timing of Diagnosis of Chronic Kidney Disease",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.85,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Trends in SARS-CoV-2 seroprevalence among pregnant women attending first antenatal care visits in Zambia: a repeated cross-sectional survey, 2021-2022",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "Validation of the Arabic version of the Orthognathic Quality of Life Questionnaire",
+    "source": "biorxiv",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "not human microbiome or sequencing",
+    "cached": false
+  },
+  {
+    "title": "GABA-Producing Bacteria as Potential Psychobiotics in Gut\u2013Brain Axis Regulation",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human microbiome study on GABA-producing bacteria in the gut-brain axis",
+    "cached": false
+  },
+  {
+    "title": "The Human Breast Microbiome: From Homeostasis to Malignancy, Mechanistic Insights and Therapeutic Perspectives",
+    "source": "semantic_scholar",
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human breast microbiome study with clinical relevance",
+    "cached": false
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
   },
   {
     "title": "Bacterial diversity and strain dynamics in the infant respiratory microbiome during the first year of life",
     "source": "semantic_scholar",
+<<<<<<< HEAD
     "keep": true,
     "confidence": 0.95,
     "reason": "human infant cohort with metagenomics analysis on respiratory microbiome",
@@ -605,6 +731,43 @@
     "keep": false,
     "confidence": 0.98,
     "reason": "animal model \u2014 no human data",
+=======
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human infant cohort with metagenomics analysis on respiratory microbiome",
+    "cached": false
+  },
+  {
+    "title": "Gut Microbiome Interventions: From Dysbiosis to Next-Generation Probiotics (NGPs) for Disease Management",
+    "source": "crossref",
+    "keep": true,
+    "confidence": 0.95,
+    "reason": "human gut microbiome intervention studies with next-generation probiotics",
+    "cached": false
+  },
+  {
+    "title": "Nanoscale Approaches to Oro-Dental Tissue Engineering: A Review of Strategies, Composites, and Translational Challenges",
+    "source": "core",
+    "keep": false,
+    "confidence": 0.99,
+    "reason": "animal model (zebrafish) \u2014 no human data",
+    "cached": false
+  },
+  {
+    "title": "The Microbiota-Gut-Brain Axis as a Fundamental Regulator of Neuroplasticity: A Systematic Review and Meta-Analytic Synthesis",
+    "source": "core",
+    "keep": false,
+    "confidence": 0.98,
+    "reason": "systematic review/meta-analysis on microbiota-gut-brain axis but lacks human studies",
+    "cached": false
+  },
+  {
+    "title": "Computational analysis of the correlation between vaginal microbiota and HPV status in the general female population",
+    "source": "core",
+    "keep": true,
+    "confidence": 0.97,
+    "reason": "human vaginal microbiome in pregnancy with clinical outcome",
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "cached": false
   }
 ]

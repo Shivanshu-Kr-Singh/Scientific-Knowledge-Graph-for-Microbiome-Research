@@ -3,6 +3,7 @@
     "title": "KCNQ2/3 regulates efferent mediated slow excitation of vestibular afferents in mammals",
     "source": "biorxiv",
     "year": 2024,
+<<<<<<< HEAD
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
@@ -4611,21 +4612,33 @@
     "title": "Trained immunity agonists given to neonatal mice fail to protect against leptospiral infection in adulthood and may cause adverse effects.",
     "source": "pubmed",
     "year": 2026,
+=======
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
-    "reason": "pos:[human] neg:[pathogen]"
+    "reason": "pos:[] neg:[]"
   },
   {
-    "title": "Diversity and assembly mechanisms of Porphyromonas gingivalis fimbriae: Conservation and structural heterogeneity of type V fimbriae.",
-    "source": "pubmed",
-    "year": 2026,
+    "title": "Synaptic connectivity and electrophysiological properties of the nucleus of the lateral olfactory tract",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Transcriptomic Analysis Identifies Candidate Genes for Differential Expression during Xenopus laevis Inner Ear Development",
+    "source": "biorxiv",
+    "year": 2024,
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.2,
-    "reason": "pos:[human,ena] neg:[pathogen]"
+    "reason": "pos:[ena] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "Pathobiology of Mycobacterium fortuitum and NTM biofilms: spotlight on emerging therapeutic horizons.",
     "source": "pubmed",
     "year": 2026,
@@ -4665,16 +4678,22 @@
     "title": "Synthesis, Characterization, Antimicrobial Activity, Docking, and In Silico ADMET Analysis of Some New 2,3-Dihydrobenzo[b][1,4]thiazepine Derivatives.",
     "source": "pubmed",
     "year": 2026,
+=======
+    "title": "Mechanisms of alcohol influence on fear conditioning: a computational model",
+    "source": "biorxiv",
+    "year": 2024,
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
-    "reason": "pos:[human] neg:[salmon]"
+    "reason": "pos:[] neg:[]"
   },
   {
-    "title": "Post-marketing safety surveillance of Haemophilus influenzae Type b conjugate vaccine in children aged 3 months to 5 years in Jiangsu, China.",
-    "source": "pubmed",
-    "year": 2026,
+    "title": "The brainstem's red nucleus was evolutionarily upgraded to support goal-directed action",
+    "source": "biorxiv",
+    "year": 2024,
     "decision": "reject",
+<<<<<<< HEAD
     "stage": "stage2_rules",
     "score": 0.267,
     "reason": "pos:[human] neg:[]"
@@ -6217,6 +6236,11 @@
     "stage": "stage4_llm (cached)",
     "score": 0.99,
     "reason": "llm:animal model (zebrafish) \u2014 no human data"
+=======
+    "stage": "stage4_llm",
+    "score": 0.98,
+    "reason": "llm:animal model \u2014 no human data"
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
   },
   {
     "title": "Microbiome Profiling of Pretreated Human Breast Milk Using Shotgun Metagenomic Sequencing",
@@ -6237,6 +6261,7 @@
     "reason": "pos:[human,ena] neg:[marine microbiome,sediment]"
   },
   {
+<<<<<<< HEAD
     "title": "Prediction of sporulating Firmicutes from uncultured gut microbiota using SpoMAG, an ensemble learning tool",
     "source": "semantic_scholar",
     "year": 2025,
@@ -6276,21 +6301,51 @@
     "title": "Breaking the culture habit: metagenomic diagnosis of companion animal skin infections",
     "source": "semantic_scholar",
     "year": 2025,
+=======
+    "title": "Nucleoid-associated proteins shape the global protein occupancy and transcriptional landscape of a clinical isolate of Vibrio cholerae",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[clinical] neg:[pathogen]"
+  },
+  {
+    "title": "Beyond Basic Characterization and Omics: Immunomodulatory Roles of Platelet-Derived Extracellular Vesicles Unveiled by Functional Testing",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[human] neg:[zebrafish]"
+  },
+  {
+    "title": "Rapid turnover of CTLA4 is associated with a complex architecture of reversible ubiquitylation.",
+    "source": "biorxiv",
+    "year": 2024,
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
     "reason": "pos:[] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "The oral microbiome of King Richard III of England",
     "source": "semantic_scholar",
     "year": 2025,
+=======
+    "title": "Development of a PROTAC Targeting Chk1",
+    "source": "biorxiv",
+    "year": 2024,
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
     "reason": "pos:[] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "Akkermansia muciniphila impacts group B Streptococcus vaginal colonization",
     "source": "semantic_scholar",
     "year": 2025,
@@ -6393,12 +6448,36 @@
     "title": "Deciphering the microbial landscape of lower respiratory tract in health and respiratory diseases",
     "source": "semantic_scholar",
     "year": 2025,
+=======
+    "title": "Cell density couples tissue mechanics to control the elongation speed of the body axis",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "Discovery of Waddington's developmental canals elucidates the embryogenesis stability in Caenorhabditis elegans",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "Indirect effects of habitat amount mediated by habitat configuration determine bat diversity at the landscape-scale in Peninsular Malaysia",
+    "source": "biorxiv",
+    "year": 2024,
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
     "reason": "pos:[] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "Bovine ocular microbiome: the next frontier in managing Pinkeye in cattle",
     "source": "semantic_scholar",
     "year": 2025,
@@ -6420,12 +6499,18 @@
     "title": "Fluorescence-based spectrometric and imaging methods and machine learning analyses for microbiota analysis",
     "source": "semantic_scholar",
     "year": 2025,
+=======
+    "title": "Genomic signatures of the evolution of loss of egg yolk in parasitoid wasps",
+    "source": "biorxiv",
+    "year": 2024,
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
     "reason": "pos:[] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "The chicken gut resistome data from different regions of Kazakhstan",
     "source": "semantic_scholar",
     "year": 2025,
@@ -6447,12 +6532,18 @@
     "title": "An early microbial landscape: inspiring endeavor from the China Space Station Habitation Area Microbiome Program (CHAMP)",
     "source": "semantic_scholar",
     "year": 2025,
+=======
+    "title": "Functional consequences of reductive protein evolution in a minimal eukaryotic genome",
+    "source": "biorxiv",
+    "year": 2024,
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
     "reason": "pos:[] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "Metagenomic analysis of the faecal microbiota and AMR in roe deer in Western Pomerania",
     "source": "semantic_scholar",
     "year": 2025,
@@ -6554,6 +6645,10 @@
   {
     "title": "Assessing environmental gradients in relation to dark CO2 fixation in estuarine wetland microbiomes",
     "source": "semantic_scholar",
+=======
+    "title": "Phylogenomics analyses of all species of Swordtails (Genus Xiphophorus) highlights hybridization precedes speciation",
+    "source": "biorxiv",
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "year": 2024,
     "decision": "reject",
     "stage": "stage2_rules",
@@ -6561,8 +6656,39 @@
     "reason": "pos:[human] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "The microbiome and the eye: a new era in ophthalmology",
     "source": "semantic_scholar",
+=======
+    "title": "Piggybacking functionalized DNA nanostructures into live cell nuclei",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[human] neg:[]"
+  },
+  {
+    "title": "Pharmacological inhibition of mTORC1 reduces neural death and damage volume after MCAO by modulating microglial reactivity",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[murine]"
+  },
+  {
+    "title": "Transcranial direct current stimulation alters cerebrospinal fluid-interstitial fluid exchange in mouse brain",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[clinical] neg:[knockout mice]"
+  },
+  {
+    "title": "Extinction Training Suppresses Activity of Fear Memory Ensembles Across the Hippocampus and Alters Transcriptomes of Fear-Encoding Cells",
+    "source": "biorxiv",
     "year": 2024,
     "decision": "reject",
     "stage": "stage2_rules",
@@ -6570,6 +6696,71 @@
     "reason": "pos:[] neg:[]"
   },
   {
+    "title": "Neurotransmitter Genes in the Nucleus Accumbens that Are Involved in the Development of Behavioral Pathology After Positive Fighting Experiences and Their Deprivation. A Conceptual Paradigm for Neurogenomic Data Analysis",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "Decoding of resting-state using task-based multivariate pattern analysis supports the Incentive-Sensitization Theory in nicotine use disorder",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[human] neg:[]"
+  },
+  {
+    "title": "Spatially Resolved Transcriptomic Signatures of Hippocampal Subregions and Arc-Expressing Ensembles in Active Place Avoidance Memory",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Genomic Transfer via Membrane Vesicle: A Strategy of Giant Phage phiKZ for Early Infection",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "DNA-PKcs Suppresses Illegitimate Chromosome Rearrangements",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[human] neg:[]"
+  },
+  {
+    "title": "Detection of Antibodies Against the African Parasite Trypanosoma brucei Using Synthetic glycosylphosphatidylinositol oligosaccharide fragments",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.99,
+    "reason": "llm:animal model \u2014 no human data"
+  },
+  {
+    "title": "Straightforward semi-quantitative MALDI-TOF MS based screening approach for selection of recombinant protein producing E. Coli",
+    "source": "biorxiv",
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+<<<<<<< HEAD
     "title": "Experimental tests challenge the evidence of a healthy human blood microbiome",
     "source": "semantic_scholar",
     "year": 2024,
@@ -6707,6 +6898,10 @@
   {
     "title": "Rethinking Aspergillosis in the Era of Microbiota and Mycobiota",
     "source": "semantic_scholar",
+=======
+    "title": "Genomic background sequences systematically outperform synthetic ones in de novo motif discovery for ChIP-seq data",
+    "source": "biorxiv",
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "year": 2024,
     "decision": "reject",
     "stage": "stage2_rules",
@@ -6714,12 +6909,45 @@
     "reason": "pos:[] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "Soil microbiota and identification of microorganisms using 16S rRNA gene sequencing by Illumina MiSeq in the Hail Region of Saudi Arabia",
     "source": "semantic_scholar",
+=======
+    "title": "Multiparameter-based photosynthetic state transitions of single phytoplankton cells",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "Cryo-EM structure and biochemical analysis of human chemokine receptor CCR8",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[human] neg:[]"
+  },
+  {
+    "title": "Global risk of selection and spread of Plasmodium falciparum histidine-rich protein 2 and 3 gene deletions",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "Understanding the variant landscape, and genetic epidemiology of Multiple Endocrine Neoplasia in India",
+    "source": "biorxiv",
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "year": 2024,
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
+<<<<<<< HEAD
     "reason": "pos:[metagenomics,16s rrna,human] neg:[soil microbiome,soil microbiota,pathogen]"
   },
   {
@@ -6734,6 +6962,94 @@
   {
     "title": "Comprehensive analysis of phenotypes and transcriptome characteristics reveal the best atopic dermatitis mouse model induced by MC903.",
     "source": "semantic_scholar",
+=======
+    "reason": "pos:[clinical] neg:[pathogen]"
+  },
+  {
+    "title": "In-kind nutritional supplementation for household contacts of persons with tuberculosis would be cost-effective for reducing tuberculosis incidence and mortality in India: a modeling study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.167,
+    "reason": "pos:[cohort] neg:[]"
+  },
+  {
+    "title": "Clinical Impact of Calcified Nodules in Patients with Severely Calcified Lesions Treated by Rotational Atherectomy: A Serial Optical Coherence Tomography Study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.99,
+    "reason": "llm:animal model \u2014 no human data"
+  },
+  {
+    "title": "How are APOE4, changes in body weight, and longevity related? Insights from a causal mediation analysis",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[human] neg:[]"
+  },
+  {
+    "title": "Cardiac Troponin T is a Serum Biomarker of Respiratory Dysfunction in Amyotrophic Lateral Sclerosis",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.95,
+    "reason": "llm:animal model \u2014 no human data"
+  },
+  {
+    "title": "Robodoc: a conversational-AI based app for medical conversations",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.99,
+    "reason": "llm:not related to human microbiome research or disease/outcome association"
+  },
+  {
+    "title": "Identifying direct risk factors in UK Biobank with simultaneous Bayesian-frequentist model-averaged hypothesis testing using Doublethink",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.85,
+    "reason": "llm:animal model (zebrafish) \u2014 no human data"
+  },
+  {
+    "title": "GroceryDB: Prevalence of Processed Food in Grocery Stores",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "The decline of renal function aggravates arterial stiffness: a large-scale cross-sectional and longitudinal study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.99,
+    "reason": "llm:environmental soil microbiome \u2014 not human study"
+  },
+  {
+    "title": "Clinical features and outcomes of scorpion sting in western lowland of Eritrea: a prospective descriptive study.",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.99,
+    "reason": "llm:animal model \u2014 no human data"
+  },
+  {
+    "title": "Diverse and weakly immunogenic var gene expression facilitates malaria infection",
+    "source": "biorxiv",
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "year": 2024,
     "decision": "reject",
     "stage": "stage4_llm",
@@ -6741,8 +7057,58 @@
     "reason": "llm:animal model \u2014 no human data"
   },
   {
+<<<<<<< HEAD
     "title": "Multiple Omics Find New Cecal Microbial Features Associated with Feed Efficiency in Ducks",
     "source": "semantic_scholar",
+=======
+    "title": "HOW ARE RAPID RESPONSE SERVICES IMPLEMENTED OR CHANGED, AND HOW IS THEIR SUCCESS MEASURED? A SYSTEMATIC REVIEW PROTOCOL",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.167,
+    "reason": "pos:[cohort] neg:[]"
+  },
+  {
+    "title": "First-episode mild depression in young adults is a pre-proatherogenic condition even in the absence of subclinical metabolic syndrome: lowered lecithin-cholesterol acyltransferase as a key factor",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.98,
+    "reason": "llm:animal model (zebrafish) \u2014 no human data"
+  },
+  {
+    "title": "Capability and reliability of deep learning models to make density predictions on low dose mammograms",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "Levels and predictors of knowledge, attitude and practice of contraception among female TV undergraduates in Nigeria: a cross-sectional study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.333,
+    "reason": "pos:[participants,participant] neg:[]"
+  },
+  {
+    "title": "Extracellular Matrix Abnormalities in the Hippocampus of Subjects with Substance Use Disorder",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.98,
+    "reason": "llm:animal models \u2014 no human data"
+  },
+  {
+    "title": "Predictive factors of non-pharmacological measures to prevent SARS-CoV-2 contagion: Results of a large adult Spanish sample from the PSY-COVID study",
+    "source": "biorxiv",
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "year": 2024,
     "decision": "reject",
     "stage": "stage2_rules",
@@ -6750,12 +7116,246 @@
     "reason": "pos:[] neg:[]"
   },
   {
+<<<<<<< HEAD
     "title": "Reduction of product composition variability using pooled microbiome ecosystem therapy and consequence in two infectious murine models",
     "source": "semantic_scholar",
+=======
+    "title": "Comparisons of Auditory Steady State and Auditory Brainstem Response Thresholds in Infants with Normal Hearing and Conductive Hearing Loss",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.167,
+    "reason": "pos:[clinical] neg:[]"
+  },
+  {
+    "title": "Optical Genome Mapping improves detection and streamlines analysis of structural variants in myeloid neoplasms.",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.367,
+    "reason": "pos:[clinical,ena] neg:[]"
+  },
+  {
+    "title": "Effects of changes in calculating GFR using KDIGO standards: Discordance in the Staging and Timing of Diagnosis of Chronic Kidney Disease",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.85,
+    "reason": "llm:animal model (zebrafish) \u2014 no human data"
+  },
+  {
+    "title": "Comparative Analysis of Three Surveys on Primary Care Providers' Experiences with Interoperability and Electronic Health Records",
+    "source": "biorxiv",
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "year": 2024,
     "decision": "reject",
     "stage": "stage2_rules",
     "score": 0.0,
+<<<<<<< HEAD
     "reason": "pos:[gut microbiota,intestinal,clinical] neg:[mouse model,pathogen,murine]"
+=======
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Genetic Markers and Predictive Factors Influencing the Aggressive Behavior of Cerebral Cavernous Malformation",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.3,
+    "reason": "pos:[patients,patient,cohort] neg:[pathogen]"
+  },
+  {
+    "title": "Trends in SARS-CoV-2 seroprevalence among pregnant women attending first antenatal care visits in Zambia: a repeated cross-sectional survey, 2021-2022",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.98,
+    "reason": "llm:animal model (zebrafish) \u2014 no human data"
+  },
+  {
+    "title": "Validation of the Arabic version of the Orthognathic Quality of Life Questionnaire",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.99,
+    "reason": "llm:not human microbiome or sequencing"
+  },
+  {
+    "title": "Prevalence of metabolic dysfunction-associated fatty liver disease and its association with glycemic control in persons with type 2 diabetes in Africa: a systematic review and meta-analysis",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[type 2 diabetes] neg:[]"
+  },
+  {
+    "title": "Acute Septic Arthritis Caused by Finegoldia magna After ACL Reconstruction Diagnosed by PCR: A Case Report.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.4,
+    "reason": "pos:[patient,human,ena] neg:[pathogen]"
+  },
+  {
+    "title": "Insights into the microbiota profile of Pediculus humanus capitis using metagenomic next-generation sequencing and molecular detection of unexpected pathogen DNA in Hunan Province, China",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[human] neg:[pathogen]"
+  },
+  {
+    "title": "Phytochemical Screening of Selected Cholistani Plants and Their Biological Activities by In-Vitro Assays",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Phytochemical Screening of Selected Cholistani Plants and Their Biological Activities by In-Vitro Assays",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Multi-omic profiling of early pregnancy small and large plasma extracellular vesicles reveals placental, metabolic, and structural adaptation signatures",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Multi-omic profiling of early pregnancy small and large plasma extracellular vesicles reveals placental, metabolic, and structural adaptation signatures",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Multi-omic profiling of early pregnancy small and large plasma extracellular vesicles reveals placental, metabolic, and structural adaptation signatures",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Uma Revis\u00e3o Sobre Fungos Muito Resistentes \u00c0 Radia\u00e7\u00e3o",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Uma Revis\u00e3o Sobre Fungos Muito Resistentes \u00c0 Radia\u00e7\u00e3o",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Multivalent Antigen Display on Nanoparticles Diversifies B Cell Responses",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Surat pencatatan ciptaan-Fotodegradasi Remazol Brilliant Blue R menggunakan karbon dari tempurung kelapa sawit sebagai material pendukung ZnO (sertifikat hak cipta)",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.2,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "Physico-Chemical Properties and Microbial Community of Soils Polluted by Tannery Effluents at the Nigerian Institute of Leather and Science Technology Zaria, Nigeria",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[wastewater]"
+  },
+  {
+    "title": "Nanoscale Approaches to Oro-Dental Tissue Engineering: A Review of Strategies, Composites, and Translational Challenges",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.99,
+    "reason": "llm:animal model (zebrafish) \u2014 no human data"
+  },
+  {
+    "title": "The Microbiota-Gut-Brain Axis as a Fundamental Regulator of Neuroplasticity: A Systematic Review and Meta-Analytic Synthesis",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage4_llm",
+    "score": 0.98,
+    "reason": "llm:systematic review/meta-analysis on microbiota-gut-brain axis but lacks human studies"
+  },
+  {
+    "title": "Disturbi del comportamento alimentare e Microbiota intestinale: correlazioni fisiopatologiche e nuove prospettive di trattamento",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.133,
+    "reason": "pos:[intestinal] neg:[]"
+  },
+  {
+    "title": "Cerebral ischaemic stroke results in altered mucosal antibody responses and host-commensal microbiota interactions",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.233,
+    "reason": "pos:[intestinal,patients,clinical] neg:[mouse model]"
+  },
+  {
+    "title": "Host Genetics and the Skin Microbiome Independently Predict Parasite Resistance",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Prophylactic impact of cecal fermentation broth against gut microbiota dysbiosis of broiler chickens challenged with Escherichia coli",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[gut microbiota,gut] neg:[broiler]"
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
   }
 ]

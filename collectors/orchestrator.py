@@ -33,7 +33,12 @@ from collectors.pubmed_collector import PubMedCollector
 from collectors.relevance_filter import RelevanceFilter
 from collectors.europepmc_collector import EuropePMCCollector
 from collectors.semantic_scholar_collector import SemanticScholarCollector
-from collectors.biorxiv_collector import BioRxivCollector
+from collectors.openalex_collector import OpenAlexCollector
+from collectors.crossref_collector import CrossrefCollector
+from collectors.core_collector import CoreCollector
+
+# Path to the file that persists per-source fetch cursors across runs
+CURSOR_FILE = PROC_DIR / "collector_cursors.json"
 
 
 class CollectionOrchestrator:
@@ -46,7 +51,9 @@ class CollectionOrchestrator:
             PubMedCollector(),
             EuropePMCCollector(),
             SemanticScholarCollector(),
-            BioRxivCollector(),
+            OpenAlexCollector(),
+            CrossrefCollector(),
+            CoreCollector(),
         ]
         logger.info(f"Orchestrator ready with {len(self.collectors)} collectors")
 
@@ -75,16 +82,37 @@ class CollectionOrchestrator:
 
         all_records: List[PaperRecord] = []
 
+        # ── Load cursors (resume from where last run left off) ─────────────────
+        cursors = self._load_cursors()
+        updated_cursors = dict(cursors)  # will be updated after each collector
+
         # ── Step 1: Run each collector ─────────────────────────────────────────
         for collector in self.collectors:
+            source = collector.source_name
+            start_offset = cursors.get(source, 0)
+
+            # Semantic Scholar uses token-based pagination — inject the saved token
+            if source == "semantic_scholar":
+                saved_token = cursors.get("semantic_scholar_token")
+                collector._resume_token = saved_token
+                if saved_token:
+                    logger.info(f"[semantic_scholar] Resuming from saved continuation token")
+            elif start_offset > 0:
+                logger.info(
+                    f"[{source}] Resuming from offset {start_offset} "
+                    f"(fetched {start_offset} papers in previous runs)"
+                )
+
             try:
                 records = collector.collect(
                     query=query,
                     date_from=date_from,
                     date_to=date_to,
                     max_results=max_per_source,
+                    start_offset=start_offset,
                 )
 
+<<<<<<< HEAD
                 # bioRxiv has no server-side keyword filter — it returns everything
                 # in the date range. Run RelevanceFilter now to trim it down before
                 # it pollutes the shared pool. We run it again after merging on the
@@ -100,13 +128,39 @@ class CollectionOrchestrator:
                     logger.info(
                         f"[biorxiv] Pre-filter kept {len(records)} relevant preprints"
                     )
+=======
+                # Advance numeric cursor for offset-based collectors
+                updated_cursors[source] = start_offset + max_per_source
+
+                # For S2: save the continuation token for next run
+                if source == "semantic_scholar":
+                    last_token = getattr(collector, "_last_token", None)
+                    if last_token:
+                        updated_cursors["semantic_scholar_token"] = last_token
+                    else:
+                        # Token exhausted — S2 results fully consumed, reset
+                        updated_cursors.pop("semantic_scholar_token", None)
+                        updated_cursors[source] = 0
+                        logger.info("[semantic_scholar] All results consumed — cursor reset")                # bioRxiv runs its own inline RelevanceFilter after every 30-paper
+                # batch — by the time collect() returns, papers are already filtered.
+                # No additional pre-filter needed here.
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 
                 all_records.extend(records)
-                logger.info(f"[{collector.source_name}] Added {len(records)} records")
+                logger.info(f"[{source}] Added {len(records)} records")
 
             except Exception as e:
+<<<<<<< HEAD
                 logger.error(f"[{collector.source_name}] COLLECTOR FAILED: {e}")
+=======
+                logger.error(f"[{source}] COLLECTOR FAILED: {e}")
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
                 logger.exception(e)
+                # Don't advance cursor if collector failed — retry same offset next run
+                updated_cursors[source] = start_offset
+
+        # ── Save updated cursors ───────────────────────────────────────────────
+        self._save_cursors(updated_cursors)
 
         logger.info(f"Total raw records before dedup: {len(all_records)}")
 
@@ -121,6 +175,7 @@ class CollectionOrchestrator:
         # Stage 2: Weighted rule scorer (all sources, from organisms.yaml)
         # Stage 3: ML classifier (if trained model exists)
         # + Metagenomics gate (project-specific requirement)
+<<<<<<< HEAD
         non_biorxiv = [p for p in merged if "biorxiv" not in (p.source or "").lower()]
         biorxiv_kept = [p for p in merged if "biorxiv" in (p.source or "").lower()]
 
@@ -131,6 +186,13 @@ class CollectionOrchestrator:
             removed, review_queue = [], []
 
         merged = non_biorxiv + biorxiv_kept
+=======
+        if merged:
+            rel_filter = RelevanceFilter()
+            merged, removed, review_queue = rel_filter.filter(merged)
+        else:
+            removed, review_queue = [], []
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
         logger.info(
             f"Relevance filter: kept {len(merged)}, "
             f"removed {len(removed)}, "
@@ -223,6 +285,61 @@ class CollectionOrchestrator:
         return merged_records
 
     def _merge_lists(self, list1: list, list2: list) -> list:
+        """Returns union of two lists, preserving order, deduplicating by lowercase."""
+        seen = set()
+        result = []
+        for item in (list1 or []) + (list2 or []):
+            key = item.lower() if isinstance(item, str) else str(item)
+            if key not in seen:
+                seen.add(key)
+                result.append(item)
+        return result
+
+    def _load_cursors(self) -> Dict[str, int]:
+        """
+        Loads per-source fetch cursors from disk.
+        Returns a dict like {"pubmed": 40, "europepmc": 20, ...}.
+
+        AUTO-RESET LOGIC:
+          If the cursor file says we've already fetched papers, but there are
+          no collected_*.json files in the processed folder, the data was
+          deleted while cursors were not. In that case we reset all cursors
+          to 0 so the next run re-fetches from the beginning.
+        """
+        if not CURSOR_FILE.exists():
+            return {}
+
+        with open(CURSOR_FILE) as f:
+            cursors = json.load(f)
+
+        # Check if any non-zero cursor exists but the collected data is gone
+        has_nonzero_cursor = any(v > 0 for v in cursors.values())
+        collected_files = list(PROC_DIR.glob("collected_*.json"))
+
+        if has_nonzero_cursor and not collected_files:
+            logger.warning(
+                "[cursors] Collected data files not found but cursors are non-zero — "
+                "data may have been deleted. Resetting all cursors to 0."
+            )
+            self.reset_cursors()
+            return {}
+
+        return cursors
+
+    def _save_cursors(self, cursors: Dict[str, int]):
+        """Persists the updated cursors to disk after a successful run."""
+        with open(CURSOR_FILE, "w") as f:
+            json.dump(cursors, f, indent=2)
+        logger.info(f"[cursors] Saved fetch cursors → {CURSOR_FILE}")
+
+    def reset_cursors(self):
+        """
+        Resets all cursors back to 0 so the next run starts from the beginning.
+        Call this when you want to re-collect from scratch (e.g. new date range).
+        """
+        if CURSOR_FILE.exists():
+            CURSOR_FILE.unlink()
+        logger.info("[cursors] All fetch cursors reset to 0")
         """Returns union of two lists, preserving order, deduplicating by lowercase."""
         seen = set()
         result = []

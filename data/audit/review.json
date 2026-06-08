@@ -3,6 +3,7 @@
     "title": "An Adaptive Pragmatic Randomized Controlled Trial of Emergency Department Acupuncture for Acute Musculoskeletal Pain Management",
     "source": "biorxiv",
     "year": 2024,
+<<<<<<< HEAD
     "decision": "review",
     "stage": "gate_metagenomics",
     "score": 0.5,
@@ -273,19 +274,40 @@
     "title": "Prevalence of Drug-Resistant Mycobacterium tuberculosis in Rural Communities of Vhembe District, South Africa.",
     "source": "pubmed",
     "year": 2026,
+=======
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     "decision": "review",
     "stage": "gate_metagenomics",
     "score": 0.5,
     "reason": "no_sequencing_terms (prev_score=1.0)"
   },
   {
-    "title": "Prior Chlamydia trachomatis Infection and the Risk of Epithelial Ovarian Cancer and Borderline Ovarian Tumors.",
+    "title": "Surgical diagnoses and post-operative outcomes of intestinal obstruction among adults at regional referral hospitals in Dar-es-Salaam, Tanzania: a prospective, observational hospital-based study",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.5,
+    "reason": "no_sequencing_terms (prev_score=1.0)"
+  },
+  {
+    "title": "Metformin mitigates insulin signaling variations induced by COVID-19 vaccine boosters in type 2 diabetes",
+    "source": "biorxiv",
+    "year": 2024,
+    "decision": "review",
+    "stage": "gate_metagenomics",
+    "score": 0.3835,
+    "reason": "no_sequencing_terms (prev_score=0.767)"
+  },
+  {
+    "title": "[In vitro and in vivo antibacterial effects of the mitochondrial antioxidant Visomitin against Enterococcus].",
     "source": "pubmed",
     "year": 2026,
     "decision": "review",
     "stage": "gate_metagenomics",
     "score": 0.4165,
     "reason": "no_sequencing_terms (prev_score=0.833)"
+<<<<<<< HEAD
   },
   {
     "title": "Early treatment interruption and nutritional status as predictors of mortality in Mycobacterium avium complex pulmonary disease.",
@@ -412,5 +434,7 @@
     "stage": "stage2_rules",
     "score": 0.7,
     "reason": "pos:[gut microbiome,16s rrna,human] neg:[pathogen]"
+=======
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
   }
 ]

@@ -49,6 +49,7 @@ if ENTREZ_AVAILABLE:
     if ENTREZ_API_KEY:
         Entrez.api_key = ENTREZ_API_KEY
 
+<<<<<<< HEAD
 # ─── SSL fix for Windows ──────────────────────────────────────────────────────
 # On Windows the system SSL store may not include all CA certs needed for
 # NCBI / EBI / UniProt. Point Python's ssl module and requests to the certifi
@@ -68,6 +69,8 @@ def _patched_ssl_context(*args, **kwargs):
 
 _ssl.create_default_https_context = lambda: _ssl_ctx
 
+=======
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 # NCBI rate-limit: 3 req/sec without key, 10 with key.
 # 0.34 s gap keeps us safely under the no-key limit;
 # 0.12 s is sufficient with an API key.
@@ -412,6 +415,7 @@ class EntityNormalizer:
 
         import socket as _socket
         try:
+<<<<<<< HEAD
             old_timeout = _socket.getdefaulttimeout()
             _socket.setdefaulttimeout(8)
             try:
@@ -431,6 +435,24 @@ class EntityNormalizer:
                     return None
                 record = Entrez.read(io.BytesIO(raw))
                 time.sleep(_NCBI_DELAY)
+=======
+            handle = Entrez.esearch(db=ncbi_db, term=entity_text, retmax=1)
+            raw = handle.read()
+            handle.close()
+            if isinstance(raw, str):
+                raw = raw.encode("utf-8")
+            # Guard: NCBI occasionally returns an HTML error page (rate limit, 5xx)
+            # instead of XML.  Detect this before passing to Entrez.read().
+            raw_preview = raw[:200].lstrip()
+            if not raw_preview.startswith(b"<?xml") and not raw_preview.startswith(b"<"):
+                logger.debug(
+                    "EntityNormalizer: NCBI esearch returned non-XML response for {!r} — skipping",
+                    entity_text,
+                )
+                return None
+            record = Entrez.read(io.BytesIO(raw))
+            time.sleep(_NCBI_DELAY)
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 
                 id_list = record.get("IdList", [])
                 if not id_list:
@@ -438,6 +460,7 @@ class EntityNormalizer:
 
                 entity_id = id_list[0]
 
+<<<<<<< HEAD
                 handle = Entrez.efetch(db=ncbi_db, id=entity_id, retmode="xml")
                 raw = handle.read()
                 handle.close()
@@ -454,6 +477,26 @@ class EntityNormalizer:
                     return None
                 records = Entrez.read(io.BytesIO(raw))
                 time.sleep(_NCBI_DELAY)
+=======
+            handle = Entrez.efetch(
+                db=ncbi_db, id=entity_id, retmode="xml"
+            )
+            raw = handle.read()
+            handle.close()
+            if isinstance(raw, str):
+                raw = raw.encode("utf-8")
+            # Same guard for efetch response
+            raw_preview = raw[:200].lstrip()
+            if not raw_preview.startswith(b"<?xml") and not raw_preview.startswith(b"<"):
+                logger.debug(
+                    "EntityNormalizer: NCBI efetch returned non-XML response for {!r} (db={!r}) — skipping",
+                    entity_text,
+                    ncbi_db,
+                )
+                return None
+            records = Entrez.read(io.BytesIO(raw))
+            time.sleep(_NCBI_DELAY)
+>>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 
                 if not records:
                     return None

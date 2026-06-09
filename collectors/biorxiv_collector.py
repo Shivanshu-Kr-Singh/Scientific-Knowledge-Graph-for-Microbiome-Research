@@ -33,29 +33,6 @@ class BioRxivCollector(BaseCollector):
         date_to: str,
         max_results: int = 500,
         page_size: int = 50,
-<<<<<<< HEAD
-    ) -> List[PaperRecord]:
-        """
-        Override to emit a bioRxiv-appropriate start log.
-        The bioRxiv API has no keyword search — it filters by date range only,
-        so logging the query string would be misleading.
-        All actual pagination logic lives in fetch_page().
-        """
-        from datetime import datetime
-        logger.info(
-            f"[{self.source_name}] Starting collection | "
-            f"{date_from} → {date_to} | "
-            f"keyword search: not available in API — client-side filtering applied"
-        )
-
-        query_params = self.build_query(query, date_from, date_to)
-        papers: List[PaperRecord] = []
-        page = 0
-        total_fetched = 0
-
-        while total_fetched < max_results:
-            batch_size = min(page_size, max_results - total_fetched)
-=======
         start_offset: int = 0,
     ) -> List[PaperRecord]:
         """
@@ -81,7 +58,6 @@ class BioRxivCollector(BaseCollector):
 
         while total_fetched < max_results:
             batch_size = min(effective_page_size, max_results - total_fetched)
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 
             try:
                 raw_page = self.fetch_page(query_params, page=page, page_size=batch_size)
@@ -89,28 +65,6 @@ class BioRxivCollector(BaseCollector):
                 logger.error(f"[{self.source_name}] Failed to fetch page {page}: {e}")
                 break
 
-<<<<<<< HEAD
-            records_on_page = 0
-            for raw_item in self._extract_items(raw_page):
-                paper = self.parse_record(raw_item)
-                if paper is None:
-                    continue
-
-                paper.source = self.source_name
-                paper.content_hash = self._compute_hash(paper)
-                paper.fetched_at = datetime.utcnow().isoformat()
-
-                papers.append(paper)
-                records_on_page += 1
-
-            total_fetched += records_on_page
-            logger.info(
-                f"[{self.source_name}] Page {page}: {records_on_page} records | Total: {total_fetched}"
-            )
-
-            if records_on_page < batch_size:
-                logger.info(f"[{self.source_name}] Reached end of results at page {page}")
-=======
             # fetch_page returns pre-parsed, pre-filtered PaperRecord objects
             records_on_page = 0
             for item in self._extract_items(raw_page):
@@ -131,17 +85,12 @@ class BioRxivCollector(BaseCollector):
                     f"[{self.source_name}] Reached end of results at page {page} "
                     f"(fewer relevant papers than target)"
                 )
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
                 break
 
             page += 1
 
         logger.success(f"[{self.source_name}] Collection complete: {len(papers)} papers")
         return papers
-<<<<<<< HEAD
-=======
-        return papers
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 
     def build_query(self, query: str, date_from: str, date_to: str) -> dict:
         """
@@ -161,33 +110,6 @@ class BioRxivCollector(BaseCollector):
 
     def fetch_page(self, query_params: dict, page: int, page_size: int) -> dict:
         """
-<<<<<<< HEAD
-        Fetches ALL papers in the date range from both bioRxiv and medRxiv,
-        then applies keyword filtering to keep only microbiome-relevant ones.
-
-        WHY EXHAUST ALL PAGES:
-          The bioRxiv API has no keyword search — it returns everything
-          published in the date window regardless of topic. We must scan
-          all available pages before filtering, otherwise we'd miss relevant
-          papers that happen to fall on later pages.
-
-        bioRxiv API URL format:
-          /details/{server}/{date_from}/{date_to}/{offset}/json
-
-          offset — 0-based cursor, increments by 100 each call.
-          Each call returns up to 100 records.
-          An empty "collection" array means we've reached the end.
-
-        page_size is the desired number of *filtered* results to collect
-        per server. We stop paginating once we've found enough.
-        """
-        all_results = []
-
-        for server in query_params["servers"]:
-            offset = 0
-            server_kept = 0
-            total_available = None  # populated from first API response
-=======
         Fetches batches of 30 from bioRxiv/medRxiv, running RelevanceFilter
         after EACH batch, accumulating only relevant papers until we have
         page_size relevant papers per server (or exhaust all available papers).
@@ -219,7 +141,6 @@ class BioRxivCollector(BaseCollector):
 
             # One RelevanceFilter instance per server — reuse across batches
             rel_filter = RelevanceFilter()
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 
             while True:
                 url = (
@@ -236,50 +157,6 @@ class BioRxivCollector(BaseCollector):
                 except Exception as e:
                     logger.error(f"[biorxiv] Failed {server} offset {offset}: {e}")
                     break
-<<<<<<< HEAD
-
-                # Log total available once, on the first page — mirrors PubMed/EuropePMC
-                if offset == 0:
-                    raw_total = data.get("messages", [{}])[0].get("total", None)
-                    total_available = int(raw_total) if raw_total is not None else None
-                    if total_available is not None:
-                        logger.info(
-                            f"[biorxiv] Total results available on {server}: "
-                            f"{total_available} | collecting up to {page_size}"
-                        )
-
-                if not collection:
-                    # Empty page → exhausted all results for this server
-                    logger.info(f"[biorxiv] {server}: no more results at offset {offset}")
-                    break
-
-                for item in collection:
-                    item["_server"] = server
-
-                all_results.extend(collection)
-                server_kept += len(collection)
-
-                logger.info(
-                    f"[biorxiv] {server} offset {offset}: "
-                    f"{len(collection)} papers fetched | total so far: {server_kept}"
-                )
-
-                # Stop early if we already have enough for this server
-                if server_kept >= page_size:
-                    logger.info(
-                        f"[biorxiv] {server}: reached target of {page_size} "
-                        f"papers — stopping early "
-                        f"({total_available - server_kept if total_available else '?'} remaining uncollected)"
-                    )
-                    break
-
-                # Fewer results than a full page → this was the last page
-                if len(collection) < _PAGE_SIZE:
-                    break
-
-                offset += _PAGE_SIZE
-=======
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 
                 # Log total available on the first call for this server
                 if offset == initial_offset:
@@ -291,8 +168,6 @@ class BioRxivCollector(BaseCollector):
                             f"{total_available} | target: {page_size} relevant papers"
                         )
 
-<<<<<<< HEAD
-=======
                 if not collection:
                     logger.info(f"[biorxiv] {server}: no more results at offset {offset}")
                     break
@@ -350,7 +225,6 @@ class BioRxivCollector(BaseCollector):
         # Return already-parsed PaperRecord objects — _extract_items passes them through
         return {"records": all_relevant, "_pre_parsed": True}
 
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
     def _extract_items(self, raw_page: dict) -> list:
         return raw_page.get("records", [])
 

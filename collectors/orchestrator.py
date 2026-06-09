@@ -112,23 +112,6 @@ class CollectionOrchestrator:
                     start_offset=start_offset,
                 )
 
-<<<<<<< HEAD
-                # bioRxiv has no server-side keyword filter — it returns everything
-                # in the date range. Run RelevanceFilter now to trim it down before
-                # it pollutes the shared pool. We run it again after merging on the
-                # non-bioRxiv papers (which may carry MeSH terms / richer metadata
-                # that makes the filter more accurate at that point).
-                if collector.source_name == "biorxiv" and records:
-                    logger.info(
-                        f"[biorxiv] Pre-filtering {len(records)} raw preprints "
-                        f"through RelevanceFilter before merge"
-                    )
-                    pre_filter = RelevanceFilter()
-                    records, _, _ = pre_filter.filter(records)
-                    logger.info(
-                        f"[biorxiv] Pre-filter kept {len(records)} relevant preprints"
-                    )
-=======
                 # Advance numeric cursor for offset-based collectors
                 updated_cursors[source] = start_offset + max_per_source
 
@@ -141,20 +124,17 @@ class CollectionOrchestrator:
                         # Token exhausted — S2 results fully consumed, reset
                         updated_cursors.pop("semantic_scholar_token", None)
                         updated_cursors[source] = 0
-                        logger.info("[semantic_scholar] All results consumed — cursor reset")                # bioRxiv runs its own inline RelevanceFilter after every 30-paper
+                        logger.info("[semantic_scholar] All results consumed — cursor reset")
+
+                # bioRxiv runs its own inline RelevanceFilter after every 30-paper
                 # batch — by the time collect() returns, papers are already filtered.
                 # No additional pre-filter needed here.
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
 
                 all_records.extend(records)
                 logger.info(f"[{source}] Added {len(records)} records")
 
             except Exception as e:
-<<<<<<< HEAD
-                logger.error(f"[{collector.source_name}] COLLECTOR FAILED: {e}")
-=======
                 logger.error(f"[{source}] COLLECTOR FAILED: {e}")
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
                 logger.exception(e)
                 # Don't advance cursor if collector failed — retry same offset next run
                 updated_cursors[source] = start_offset
@@ -175,24 +155,11 @@ class CollectionOrchestrator:
         # Stage 2: Weighted rule scorer (all sources, from organisms.yaml)
         # Stage 3: ML classifier (if trained model exists)
         # + Metagenomics gate (project-specific requirement)
-<<<<<<< HEAD
-        non_biorxiv = [p for p in merged if "biorxiv" not in (p.source or "").lower()]
-        biorxiv_kept = [p for p in merged if "biorxiv" in (p.source or "").lower()]
-
-        if non_biorxiv:
-            rel_filter = RelevanceFilter()
-            non_biorxiv, removed, review_queue = rel_filter.filter(non_biorxiv)
-        else:
-            removed, review_queue = [], []
-
-        merged = non_biorxiv + biorxiv_kept
-=======
         if merged:
             rel_filter = RelevanceFilter()
             merged, removed, review_queue = rel_filter.filter(merged)
         else:
             removed, review_queue = [], []
->>>>>>> 74ebc70b97b04bd4abe564892ac2a6c5b4ce7932
         logger.info(
             f"Relevance filter: kept {len(merged)}, "
             f"removed {len(removed)}, "

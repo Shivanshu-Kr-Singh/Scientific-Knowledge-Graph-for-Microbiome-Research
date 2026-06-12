@@ -31,7 +31,7 @@ from pathlib import Path
 import yaml
 from loguru import logger
 
-CONFIG_PATH = Path(__file__).parent.parent / "config" / "organisms.yaml"
+CONFIG_PATH = Path(__file__).parent.parent / "config" / "stage1_mesh.yaml"
 
 
 @dataclass

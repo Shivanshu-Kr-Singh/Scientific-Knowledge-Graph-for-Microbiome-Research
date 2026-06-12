@@ -1,1 +1,191 @@
-[]
+[
+  {
+    "title": "Bacterial Acyl Carrier Proteins Are a Cytoplasmic Target for Different Cationic Antimicrobial and Antibiofilm Peptides.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage3_ml",
+    "score": 0.060164962606933874,
+    "reason": "ml_prob=0.060"
+  },
+  {
+    "title": "Mortality associated with healthcare-associated Staphylococcus aureus bacteraemia in Aotearoa New Zealand.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.333,
+    "reason": "pos:[patients,human] neg:[]"
+  },
+  {
+    "title": "Development and rapid identification of a self-constructed MALDI-TOF MS library for Mycoplasma pneumoniae clinical isolates.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[clinical,human] neg:[]"
+  },
+  {
+    "title": "Eliminate Mycobacterium tuberculosis via HELZ2 and up-regulating ATG16L1 to promote macrophage autophagy.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.333,
+    "reason": "pos:[patients,human] neg:[]"
+  },
+  {
+    "title": "A systematic review of molecular signaling in the muscle\u2013brain\u2013gut axis: exercise-induced myokines and microbial metabolites as key mediators",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.233,
+    "reason": "pos:[systematic review,gut] neg:[]"
+  },
+  {
+    "title": "The Microbiome and Ocular-Related Research",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.167,
+    "reason": "pos:[gut microbiome,gut microbiota,intestinal] neg:[murine model,murine]"
+  },
+  {
+    "title": "Insights into the microbiota profile of Pediculus humanus capitis using metagenomic next-generation sequencing and molecular detection of unexpected pathogen DNA in Hunan Province, China.",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.3,
+    "reason": "pos:[next-generation sequencing,human] neg:[]"
+  },
+  {
+    "title": "Phytochemical Screening of Selected Cholistani Plants and Their Biological Activities by In-Vitro Assays",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Phytochemical Screening of Selected Cholistani Plants and Their Biological Activities by In-Vitro Assays",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Multi-omic profiling of early pregnancy small and large plasma extracellular vesicles reveals placental, metabolic, and structural adaptation signatures",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Multi-omic profiling of early pregnancy small and large plasma extracellular vesicles reveals placental, metabolic, and structural adaptation signatures",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Multi-omic profiling of early pregnancy small and large plasma extracellular vesicles reveals placental, metabolic, and structural adaptation signatures",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Uma Revis\u00e3o Sobre Fungos Muito Resistentes \u00c0 Radia\u00e7\u00e3o",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Uma Revis\u00e3o Sobre Fungos Muito Resistentes \u00c0 Radia\u00e7\u00e3o",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Multivalent Antigen Display on Nanoparticles Diversifies B Cell Responses",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "New epidote-supergroup minerals from the Mogurazawa mine, Gunma, Japan: akasakaite-(Ce), akasakaite-(La), vanadoakasakaite-(Ca), and vanadoakasakaite-(La).",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[] neg:[]"
+  },
+  {
+    "title": "Surat pencatatan ciptaan-Fotodegradasi Remazol Brilliant Blue R menggunakan karbon dari tempurung kelapa sawit sebagai material pendukung ZnO (sertifikat hak cipta)",
+    "source": "openalex",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.233,
+    "reason": "pos:[ena] neg:[]"
+  },
+  {
+    "title": "Nanoscale Approaches to Oro-Dental Tissue Engineering: A Review of Strategies, Composites, and Translational Challenges",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage3_ml",
+    "score": 0.0356434845437159,
+    "reason": "ml_prob=0.036"
+  },
+  {
+    "title": "Disturbi del comportamento alimentare e Microbiota intestinale: correlazioni fisiopatologiche e nuove prospettive di trattamento",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.1,
+    "reason": "pos:[intestinal] neg:[]"
+  },
+  {
+    "title": "Cerebral ischaemic stroke results in altered mucosal antibody responses and host-commensal microbiota interactions",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.267,
+    "reason": "pos:[intestinal microbiota,microbial community,intestinal] neg:[mouse model,mice]"
+  },
+  {
+    "title": "Prophylactic impact of cecal fermentation broth against gut microbiota dysbiosis of broiler chickens challenged with Escherichia coli",
+    "source": "core",
+    "year": 2026,
+    "decision": "reject",
+    "stage": "stage2_rules",
+    "score": 0.0,
+    "reason": "pos:[gut microbiota,gut] neg:[broiler]"
+  }
+]

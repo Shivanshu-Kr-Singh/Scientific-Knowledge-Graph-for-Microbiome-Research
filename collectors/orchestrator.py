@@ -153,7 +153,7 @@ class CollectionOrchestrator:
         # ── Step 3: Post-collection relevance filter (3-stage) ───────────────
         # bioRxiv papers were already filtered above — run only on the rest.
         # Stage 1: MeSH metadata filter (PubMed papers)
-        # Stage 2: Weighted rule scorer (all sources, from organisms.yaml)
+        # Stage 2: Weighted rule scorer (all sources, from stage2_rules.yaml)
         # Stage 3: ML classifier (if trained model exists)
         # + Metagenomics gate (project-specific requirement)
         if merged:

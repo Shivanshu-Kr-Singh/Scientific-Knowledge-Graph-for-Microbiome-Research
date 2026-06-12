@@ -2,7 +2,7 @@
 3-stage relevance filter pipeline.
 PIPELINE:
 Stage 1 — Metadata filter (PubMed MeSH only, highest precision)
-Stage 2 — Weighted rule scorer(all sources, reads from organisms.yaml)
+Stage 2 — Weighted rule scorer(all sources, reads from stage2_rules.yaml)
 Stage 3 — ML classifier(sentence-transformers+LogisticRegression)
 Metagenomics gate — project-specific requirement
 
@@ -12,7 +12,7 @@ Other sources → Stage 2 directly, then Stage 3 if borderline
 All papers → metagenomics gate as final check
 
 DESIGN PRINCIPLES:
-- All term lists live in config/organisms.yaml — not hardcoded here
+- All term lists live in config/stage1_mesh.yaml (Stage 1) and config/stage2_rules.yaml (Stage 2) — not hardcoded here
 - ML model is optional — system works rule-only until enough data to train
 - Every decision is logged with reason — fully auditable
 - Review queue for borderline papers — researcher makes final call
@@ -49,7 +49,7 @@ def _get_llm_verifier():
     return _llm_verifier
 
 
-CONFIG_PATH = Path(__file__).parent.parent / "config" / "organisms.yaml"
+CONFIG_PATH = Path(__file__).parent.parent / "config" / "stage2_rules.yaml"
 MODEL_PATH  = Path(__file__).parent.parent / "config" / "relevance_model.pkl"
 
 
@@ -229,7 +229,7 @@ class RelevanceFilter:
 
     def _stage2_rules(self, paper: PaperRecord) -> FilterVerdict:
         """
-        Additive weighted scoring from organisms.yaml terms.
+        Additive weighted scoring from stage2_rules.yaml terms.
         Checks title + abstract combined.
         """
         text = (
@@ -356,7 +356,7 @@ class RelevanceFilter:
         Project-specific gate: paper must mention at least one sequencing/
         data term to pass. This enforces the project objective:
         'metagenomics + literature mining + data availability'.
-        Disabled if metagenomics_gate.enabled = false in organisms.yaml.
+        Disabled if metagenomics_gate.enabled = false in stage2_rules.yaml.
         """
         if not self.gate_cfg.get("enabled", True):
             return prev

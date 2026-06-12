@@ -1,1 +1,344 @@
-[]
+[
+  {
+    "title": "Intratumor Lactobacillus drives ferroptosis resistance via D-lactate-STAT3 K631 lactylation in esophageal squamous cell carcinoma.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.7,
+    "reason": "human+microbiome+animal_mesh:human_wins"
+  },
+  {
+    "title": "Dietary Supplementation with Amaranth Protein Isolate Modulates the Gut Microbiota in Children with Overweight and Obesity: A Nonrandomized Trial.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.9,
+    "reason": "human+microbiome_mesh:humans,gastrointestinal microbiome"
+  },
+  {
+    "title": "The Triangular Interaction Between Dietary Polyphenols, Gut Microbiota and Type 2 Diabetes.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.7,
+    "reason": "human+microbiome+animal_mesh:human_wins"
+  },
+  {
+    "title": "Phylogenetic Profiling of the Diabetic Foot Ulcer Microbiome of an Afro-Caribbean Population.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.9,
+    "reason": "human+microbiome_mesh:humans,bacteria"
+  },
+  {
+    "title": "TRENDS AND RESEARCH FRONTIERS ON GUT MICROBIOTA AND STUNTING: A BIBLIOMETRIC INSIGHT FROM 2009 TO 2025.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage1_metadata",
+    "score": 0.9,
+    "reason": "human+microbiome_mesh:humans,gastrointestinal microbiome"
+  },
+  {
+    "title": "Prevalence of diphtheria and antimicrobial-resistant wound infections among asylum seekers in Heidelberg, Germany, August-October 2024.",
+    "source": "pubmed",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 0.733,
+    "reason": "pos:[cross-sectional study,participants,clinical] neg:[]"
+  },
+  {
+    "title": "Effect of bedrest on the human gut and oral microbiome: implications for frailty.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[16s rrna gene sequencing,intestinal microbiome,human microbiome] neg:[]"
+  },
+  {
+    "title": "Dose-Dependent Alterations of the Human Gut Microbiome During Oral Iron Supplementation: A Randomized Study in Iron-Deficient Non-Anaemic Women.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[intestinal microbiome,human gut microbiome,16s rrna sequencing] neg:[]"
+  },
+  {
+    "title": "The Complex Interplay between Botanical Supplements and the Human Gut Microbiome.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[intestinal microbiome,human gut microbiome,human gut microbiota] neg:[]"
+  },
+  {
+    "title": "Effect of Vitamin D Supplementation on Human Gut Microbiota: A Systematic Review of Randomized Controlled Trials.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[randomized controlled trial,intestinal microbiome,human gut microbiota] neg:[]"
+  },
+  {
+    "title": "[Gut Microbiota Transplantation for Esophageal and Gastric Cancer].",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[fecal microbiota transplantation,intestinal microbiome,checkpoint inhibitor] neg:[]"
+  },
+  {
+    "title": "Recent advances in our understanding of the gut microbiome: an analysis from the Gut Microbiota for Health Expert Panel of the British Society of Gastroenterology.",
+    "source": "merged:europepmc+semantic_scholar",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[inflammatory bowel disease,intestinal microbiome,shotgun metagenomics] neg:[]"
+  },
+  {
+    "title": "Association between soft drink consumption and depression mediated by gut microbiome: a perspective.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[intestinal microbiome,human participants,gut microbiome] neg:[]"
+  },
+  {
+    "title": "Gut Microbiota and Psychological Distress in Fibromyalgia: A Systematic Review.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[randomized controlled trial,intestinal microbiome,human participants] neg:[]"
+  },
+  {
+    "title": "Interspecies interaction controls &lt;i&gt;Escherichia coli&lt;/i&gt; growth in human gut microbiome samples.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[intestinal microbiome,taxonomic composition,human gut microbiome] neg:[]"
+  },
+  {
+    "title": "Multifaceted human gut microbiome data associated with health and nutrition.",
+    "source": "europepmc",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[human gut microbiome,gut microbiome,metagenomics] neg:[]"
+  },
+  {
+    "title": "Differential co-occurrence analysis: a method to extract ecological modules from clinical microbiome data.",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[intestinal microbiota,checkpoint inhibitor,human microbiota] neg:[]"
+  },
+  {
+    "title": "The role of the gut microbiome in antibiotic-driven antimicrobial resistance",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[faecal microbiota transplantation,next-generation sequencing,human gut microbiota] neg:[]"
+  },
+  {
+    "title": "Sulfidogenic bacteria and the risk of colorectal cancer.",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[metagenomic sequencing,publicly available,colorectal cancer] neg:[]"
+  },
+  {
+    "title": "GABA-Producing Bacteria as Potential Psychobiotics in Gut\u2013Brain Axis Regulation",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[bifidobacterium,gut microbiome,lactobacillus] neg:[fermented food]"
+  },
+  {
+    "title": "Microbiome-Driven Neurobiology Understanding of the Gut-Brain Communication Network",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[fecal microbiota transplantation,autism spectrum disorder,human gut microbiome] neg:[]"
+  },
+  {
+    "title": "Deep Understanding of Vaginal Microbiota in HPV\u2010Related Diseases From a Multi\u2010Omics Perspective",
+    "source": "semantic_scholar",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[metatranscriptomics,vaginal microbiota,human microbiome] neg:[]"
+  },
+  {
+    "title": "Human DNA hijacking microbiota surveys: causes and consequences in colon related 16s rRNA amplicon sequencing",
+    "source": "crossref",
+    "year": 2025,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[amplicon sequencing,publicly available,intestinal] neg:[]"
+  },
+  {
+    "title": "Evaluating the prebiotic activity of arabinogalactan on the human gut microbiota using 16S rRNA gene sequencing and Raman-activated cell sorting",
+    "source": "crossref",
+    "year": 2025,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[faecalibacterium prausnitzii,16s rrna gene sequencing,microbial composition] neg:[]"
+  },
+  {
+    "title": "Microbiota and Autism: A Review on Oral and Gut Microbiome Analysis Through 16S rRNA Sequencing",
+    "source": "crossref",
+    "year": 2024,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[16s rrna gene sequencing,autism spectrum disorder,16s rrna sequencing] neg:[]"
+  },
+  {
+    "title": "Gut bioengineered models to study host-microbiota-probiotics interactions",
+    "source": "crossref",
+    "year": 2025,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[clinical trial,gut microbiota,intestinal] neg:[mice]"
+  },
+  {
+    "title": "Alterations in gut microbial metabolic pathways following bariatric surgery assessed by 16S rRNA gene sequencing",
+    "source": "crossref",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[16s rrna gene sequencing,gut microbiota,beta diversity] neg:[]"
+  },
+  {
+    "title": "Gut Microbiome Interventions: From Dysbiosis to Next-Generation Probiotics (NGPs) for Disease Management",
+    "source": "crossref",
+    "year": 2025,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 0.733,
+    "reason": "pos:[gut microbiome,probiotics,gut] neg:[]"
+  },
+  {
+    "title": "Identification of gut microbiota features of diarrheic calves using the full-length 16S rRNA gene amplicon sequencing and machine learning",
+    "source": "crossref",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[amplicon sequencing,gut microbiota,16s rrna] neg:[]"
+  },
+  {
+    "title": "Gut microbiota composition of stunted children in Banyumas Regency, Indonesia: A 16S rRNA microbiome profiling analysis",
+    "source": "crossref",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 0.767,
+    "reason": "pos:[gut microbiota,16s rrna,gut] neg:[]"
+  },
+  {
+    "title": "Diversity Characterization of the Gut Microbiome in Kazakh Horses using 16s rRNA Sequencing",
+    "source": "crossref",
+    "year": 2024,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[16s rrna sequencing,gut microbiome,16s rrna] neg:[]"
+  },
+  {
+    "title": "Profiling the diversity of the village chicken faecal microbiota using 16S rRNA gene and metagenomic sequencing data to reveal patterns of gut microbiome signatures",
+    "source": "crossref",
+    "year": 2025,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[16s rrna gene sequencing,metagenomic sequencing,microbial diversity] neg:[]"
+  },
+  {
+    "title": "The Microbiota-Gut-Brain Axis as a Fundamental Regulator of Neuroplasticity: A Systematic Review and Meta-Analytic Synthesis",
+    "source": "core",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[systematic review,neurodegenerative,gut microbiome] neg:[]"
+  },
+  {
+    "title": "Computational analysis of the correlation between vaginal microbiota and HPV status in the general female population",
+    "source": "core",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[taxonomic composition,microbial diversity,vaginal microbiota] neg:[]"
+  },
+  {
+    "title": "Therapeutic potential of butyrate supplementation in sepsis: a review of preclinical evidence and translational perspectives",
+    "source": "core",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[short-chain fatty acids,clinical trial,intestinal] neg:[]"
+  },
+  {
+    "title": "Host Genetics and the Skin Microbiome Independently Predict Parasite Resistance",
+    "source": "core",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 0.7,
+    "reason": "pos:[microbial diversity,skin microbiome,ngs] neg:[]"
+  },
+  {
+    "title": "A young child formula with Limosilactobacillus reuteri and GOS modulates gut microbiome and enhances bone and muscle development: a randomized trial",
+    "source": "core",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[shotgun metagenomics,stool microbiome,gut microbiome] neg:[]"
+  },
+  {
+    "title": "Age-related diversity of the oral and gut microbiome and its correlation with systemic fatty acids and cytokine profiles in healthy subjects",
+    "source": "core",
+    "year": 2026,
+    "decision": "keep",
+    "stage": "stage2_rules",
+    "score": 1.0,
+    "reason": "pos:[human microbiome,oral microbiome,gut microbiome] neg:[]"
+  }
+]

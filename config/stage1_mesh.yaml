@@ -1,0 +1,239 @@
+# config/stage1_mesh.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+# Stage 1 — PubMed MeSH metadata filter configuration.
+# Used exclusively by: collectors/metadata_filter.py
+#
+# WHAT THIS FILE CONTROLS:
+#   Stage 1 makes fast KEEP / REJECT / UNKNOWN decisions using PubMed's
+#   human-curated MeSH (Medical Subject Headings) tags before any keyword
+#   scoring or ML inference runs. This is the cheapest and most precise stage.
+#
+# HOW DECISIONS ARE MADE:
+#   has microbiome MeSH + human MeSH         → KEEP  (score 0.90)
+#   has microbiome MeSH + human + animal     → KEEP  (score 0.70, human wins)
+#   has animal MeSH only, no human           → REJECT (score 0.05)
+#   has microbiome MeSH, no human/animal     → UNKNOWN → passes to Stage 2
+#   no MeSH terms at all                     → UNKNOWN → passes to Stage 2
+#
+# HOW TO UPDATE:
+#   Add new MeSH headings under the correct section. Spelling must match
+#   exactly what PubMed assigns (case-insensitive matching is applied in code).
+#   Do NOT add keyword phrases here — those belong in stage2_rules.yaml.
+#
+# SOURCE:
+#   MeSH tree browser: https://meshb.nlm.nih.gov/treeView
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ── MeSH terms that indicate a microbiome paper ───────────────────────────────
+# Source: full MeSH tree for D006831 (Microbiota) + related headings.
+# Any paper tagged with at least one of these is considered microbiome-relevant.
+mesh_keep:
+
+  # Core microbiome headings
+  - "Gastrointestinal Microbiome"
+  - "Microbiota"
+  - "Metagenomics"
+  - "Metagenome"
+  - "Fecal Microbiota Transplantation"
+  - "Dysbiosis"
+  - "Probiotics"
+  - "Prebiotics"
+  - "Synbiotics"
+  - "RNA, Ribosomal, 16S"
+  - "DNA, Ribosomal"
+
+  # Body-site specific microbiomes (MeSH narrower terms)
+  - "Oral Microbiome"
+  - "Lung Microbiome"
+  - "Respiratory Microbiome"
+  - "Skin Microbiome"
+  - "Urinary Microbiome"
+  - "Vaginal Microbiome"
+  - "Placental Microbiome"
+  - "Breast Milk Microbiome"
+  - "Nasal Microbiome"
+  - "Ocular Microbiome"
+
+  # Sequencing and omics methods assigned as MeSH headings
+  - "High-Throughput Nucleotide Sequencing"
+  - "Sequence Analysis, RNA"
+  - "Whole Genome Sequencing"
+  - "Sequence Analysis, DNA"
+  - "Metatranscriptomics"
+  - "Metabolomics"
+  - "Metaproteomics"
+  - "Amplicon Sequencing"
+
+  # Microbiome-disease association headings
+  - "Gastrointestinal Diseases"
+  - "Inflammatory Bowel Diseases"
+  - "Irritable Bowel Syndrome"
+  - "Crohn Disease"
+  - "Colitis, Ulcerative"
+  - "Clostridium Infections"
+  - "Clostridioides difficile"
+
+  # Microbial ecology / diversity headings
+  - "Biodiversity"
+  - "Phylogeny"
+  - "Bacteria"
+  - "Archaea"
+  - "Fungi"
+  - "Bacteroidetes"
+  - "Firmicutes"
+  - "Proteobacteria"
+  - "Actinobacteria"
+  - "Verrucomicrobia"
+  - "Akkermansia"
+  - "Bifidobacterium"
+  - "Lactobacillus"
+  - "Faecalibacterium"
+  - "Ruminococcus"
+  - "Prevotella"
+  - "Bacteroides"
+  - "Clostridiales"
+  - "Blautia"
+  - "Roseburia"
+
+  # Data / study type headings
+  - "Databases, Genetic"
+  - "Genomics"
+  - "Biological Specimen Banks"
+  - "Cohort Studies"
+  - "Randomized Controlled Trials as Topic"
+  - "Clinical Trials as Topic"
+
+
+# ── MeSH terms confirming human subjects ─────────────────────────────────────
+# If ANY of these appear alongside a microbiome MeSH → KEEP.
+mesh_human_signal:
+
+  # Direct subject tag
+  - "Humans"
+
+  # Age group headings (full MeSH list)
+  - "Adult"
+  - "Young Adult"
+  - "Middle Aged"
+  - "Aged"
+  - "Aged, 80 and over"
+  - "Child"
+  - "Child, Preschool"
+  - "Infant"
+  - "Infant, Newborn"
+  - "Infant, Premature"
+  - "Adolescent"
+  - "Female"
+  - "Male"
+
+  # Patient / clinical population tags
+  - "Patients"
+  - "Inpatients"
+  - "Outpatients"
+  - "Volunteers"
+  - "Healthy Volunteers"
+
+  # Human-only condition headings (implicitly human)
+  - "Pregnancy"
+  - "Pregnancy Complications"
+  - "Neonatal Sepsis"
+  - "Premature Birth"
+  - "Breast Feeding"
+  - "Cesarean Section"
+  - "Vaginal Birth"
+
+  # Demographic / epidemiology headings
+  - "Sex Factors"
+  - "Age Factors"
+  - "Racial Groups"
+  - "Ethnicity"
+  - "Socioeconomic Factors"
+
+  # Clinical study design headings
+  - "Randomized Controlled Trial"
+  - "Clinical Trial"
+  - "Multicenter Study"
+  - "Observational Study"
+  - "Case-Control Studies"
+  - "Cross-Sectional Studies"
+  - "Longitudinal Studies"
+  - "Prospective Studies"
+  - "Retrospective Studies"
+  - "Twin Studies as Topic"
+  - "Cohort Studies"
+
+
+# ── MeSH terms indicating animal-only studies ─────────────────────────────────
+# If ONLY these appear (no human signal) → REJECT at Stage 1.
+# These are checked AFTER confirming no human MeSH is present.
+mesh_animal_only:
+
+  # Broad animal tags
+  - "Animals"
+  - "Animal Experimentation"
+  - "Disease Models, Animal"
+  - "Models, Animal"
+
+  # Rodents
+  - "Mice"
+  - "Mice, Inbred C57BL"
+  - "Mice, Inbred BALB C"
+  - "Mice, Knockout"
+  - "Mice, Transgenic"
+  - "Mice, Nude"
+  - "Mice, SCID"
+  - "Rats"
+  - "Rats, Sprague-Dawley"
+  - "Rats, Wistar"
+  - "Rats, Inbred Strains"
+  - "Gerbillinae"
+  - "Hamsters"
+  - "Guinea Pigs"
+  - "Germ-Free Life"
+
+  # Aquatic / fish
+  - "Zebrafish"
+  - "Fishes"
+  - "Salmonidae"
+  - "Tilapia"
+  - "Carassius auratus"
+
+  # Livestock / farm animals
+  - "Swine"
+  - "Sus scrofa"
+  - "Cattle"
+  - "Sheep"
+  - "Goats"
+  - "Horses"
+  - "Poultry"
+  - "Chickens"
+  - "Turkeys"
+  - "Ducks"
+  - "Rabbits"
+
+  # Companion animals
+  - "Dogs"
+  - "Cats"
+  - "Ferrets"
+
+  # Non-human primates
+  - "Macaca mulatta"
+  - "Macaca fascicularis"
+  - "Cercopithecidae"
+  - "Pan troglodytes"
+
+  # Other lab / wild animals
+  - "Drosophila"
+  - "Caenorhabditis elegans"
+  - "Galleria mellonella"
+  - "Apis mellifera"
+  - "Reptiles"
+  - "Amphibia"
+  - "Birds"
+  - "Deer"
+  - "Bears"
+  - "Bats"
+  - "Elephants"
+  - "Cetacea"
+  - "Seals, Earless"

@@ -2,6 +2,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 # Stage 2 — Weighted keyword rule scorer configuration.
 # Used exclusively by: collectors/relevance_filter.py
+# Scale target: 300,000+ PubMed / Europe PMC / Semantic Scholar papers
 #
 # WHAT THIS FILE CONTROLS:
 #   Stage 2 scores every paper (all sources) by scanning title + abstract +
@@ -15,19 +16,19 @@
 # HOW TO UPDATE:
 #   - Add new positive phrases under positive_terms with an appropriate weight
 #   - Add new negative phrases under negative_terms with a negative weight
-#   - Multi-word phrases are matched before single words (longest-first) to
-#     avoid partial overlaps — no special action needed when adding phrases
+#   - Multi-word phrases are matched before single words (longest-first) —
+#     no special action needed when adding multi-word phrases
 #   - Do NOT add MeSH headings here — those belong in stage1_mesh.yaml
 #
 # WEIGHT GUIDE (positive_terms):
 #   0.60–0.80 → very strong signal (human microbiome, specific sequencing)
 #   0.40–0.59 → strong signal (gut microbiota, clinical study designs)
-#   0.20–0.39 → supporting signal (body sites, disease names, cohort keywords)
+#   0.20–0.39 → supporting signal (body sites, diseases, cohort keywords)
 #   0.10–0.19 → weak but positive (general terms like "gut", "stool")
 #
 # WEIGHT GUIDE (negative_terms):
 #   -0.80 to -1.0 → confident off-topic (soil, zebrafish, gnotobiotic)
-#   -0.50 to -0.79 → likely off-topic (specific animal models, aquatic)
+#   -0.50 to -0.79 → likely off-topic (animal models, aquatic, industrial)
 #   -0.20 to -0.49 → contextual penalty (may still be relevant with other signals)
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -44,6 +45,8 @@ positive_terms:
   "human microbiota": 0.70
   "human fecal microbiota": 0.70
   "human fecal microbiome": 0.70
+  "human colonic microbiota": 0.70
+  "human colonic microbiome": 0.70
   "healthy human": 0.50
   "human subjects": 0.50
   "human participants": 0.50
@@ -51,27 +54,87 @@ positive_terms:
   "adult patients": 0.40
   "pediatric patients": 0.40
   "pregnant women": 0.40
+  "pregnant mothers": 0.40
   "neonates": 0.35
   "newborns": 0.35
+  "preterm infants": 0.40
+  "premature infants": 0.40
+  "breastfed infants": 0.40
+  "formula-fed infants": 0.35
+  "elderly patients": 0.35
   "elderly": 0.30
+  "older adults": 0.30
+  "postmenopausal women": 0.30
   "patients": 0.30
   "participants": 0.25
   "volunteers": 0.25
   "cohort": 0.25
   "human": 0.20
+  "subject": 0.15
+
+  # ── Early life / pediatric microbiome ─────────────────────────────────────
+  "early life microbiome": 0.60
+  "early-life microbiome": 0.60
+  "infant microbiome": 0.60
+  "infant gut microbiome": 0.65
+  "infant gut microbiota": 0.65
+  "neonatal microbiome": 0.60
+  "neonatal gut microbiota": 0.60
+  "birth cohort": 0.45
+  "birth mode": 0.35
+  "cesarean section": 0.35
+  "caesarean section": 0.35
+  "vaginal delivery": 0.35
+  "mode of delivery": 0.35
+  "breastfeeding": 0.35
+  "breast milk": 0.30
+  "formula feeding": 0.30
+  "weaning": 0.25
+  "complementary feeding": 0.30
+  "solid food introduction": 0.25
+  "postnatal microbiome": 0.55
+  "perinatal microbiome": 0.55
+  "childhood microbiome": 0.55
+  "pediatric microbiome": 0.55
+  "mother-infant": 0.40
+  "maternal microbiome": 0.55
+  "maternal gut microbiota": 0.55
+
+  # ── Aging microbiome ───────────────────────────────────────────────────────
+  "aging microbiome": 0.55
+  "ageing microbiome": 0.55
+  "gut microbiome aging": 0.55
+  "centenarians": 0.40
+  "longevity": 0.25
+  "frailty": 0.30
+  "sarcopenia": 0.30
+  "age-related microbiome": 0.50
+  "microbiome across lifespan": 0.50
 
   # ── Clinical study design signals ─────────────────────────────────────────
   "randomized controlled trial": 0.45
   "randomised controlled trial": 0.45
+  "rct": 0.35
   "clinical trial": 0.40
   "double-blind": 0.35
+  "double blind": 0.35
   "placebo-controlled": 0.35
+  "placebo controlled": 0.35
   "open-label trial": 0.30
+  "open label trial": 0.30
   "multicenter study": 0.30
+  "multicentre study": 0.30
   "prospective cohort": 0.35
   "longitudinal cohort": 0.35
+  "longitudinal study": 0.30
+  "birth cohort study": 0.40
   "cross-sectional study": 0.25
+  "cross-sectional": 0.20
+  "case-control study": 0.25
   "case-control": 0.25
+  "twin study": 0.35
+  "monozygotic twins": 0.35
+  "dizygotic twins": 0.35
   "meta-analysis": 0.25
   "systematic review": 0.20
   "clinical": 0.20
@@ -82,6 +145,8 @@ positive_terms:
   "intestinal microbiome": 0.55
   "intestinal microbiota": 0.55
   "intestinal bacteria": 0.50
+  "intestinal flora": 0.50
+  "gut flora": 0.50
   "colonic microbiome": 0.55
   "colonic microbiota": 0.55
   "fecal microbiota": 0.55
@@ -93,47 +158,116 @@ positive_terms:
   "bowel microbiome": 0.50
   "bowel microbiota": 0.50
   "rectal microbiome": 0.45
+  "rectal microbiota": 0.45
   "duodenal microbiome": 0.45
+  "duodenal microbiota": 0.45
   "ileal microbiome": 0.45
+  "ileal microbiota": 0.45
+  "jejunal microbiome": 0.45
+  "jejunal microbiota": 0.45
+  "esophageal microbiome": 0.45
+  "esophageal microbiota": 0.45
+  "gastric microbiome": 0.45
+  "gastric microbiota": 0.45
+  "appendix microbiome": 0.40
   "cecal microbiota": 0.40
+  "cecal microbiome": 0.40
   "gut": 0.15
   "intestinal": 0.15
   "fecal": 0.20
   "faecal": 0.20
   "stool": 0.20
+  "colon": 0.15
+  "colorectal": 0.20
 
   # ── Other body-site microbiomes ────────────────────────────────────────────
   "oral microbiome": 0.55
   "oral microbiota": 0.55
+  "salivary microbiome": 0.50
+  "salivary microbiota": 0.50
+  "dental microbiome": 0.45
+  "subgingival microbiome": 0.45
+  "supragingival microbiome": 0.45
   "lung microbiome": 0.55
   "lung microbiota": 0.55
+  "pulmonary microbiome": 0.55
+  "pulmonary microbiota": 0.55
   "respiratory microbiome": 0.55
   "airway microbiome": 0.55
   "airway microbiota": 0.55
+  "bronchoalveolar microbiome": 0.50
   "skin microbiome": 0.50
   "skin microbiota": 0.50
+  "cutaneous microbiome": 0.50
   "vaginal microbiome": 0.55
   "vaginal microbiota": 0.55
+  "cervicovaginal microbiome": 0.55
   "urinary microbiome": 0.50
+  "urinary microbiota": 0.50
+  "urobiome": 0.50
+  "bladder microbiome": 0.45
+  "bladder microbiota": 0.45
   "placental microbiome": 0.50
+  "placental microbiota": 0.50
   "breast milk microbiome": 0.50
+  "breast milk microbiota": 0.50
   "nasal microbiome": 0.45
+  "nasal microbiota": 0.45
+  "nasopharyngeal microbiome": 0.45
   "sinus microbiome": 0.45
   "ocular microbiome": 0.45
+  "conjunctival microbiome": 0.40
   "biliary microbiome": 0.45
   "pancreatic microbiome": 0.45
   "tumor microbiome": 0.45
-  "bladder microbiome": 0.45
+  "tumor microbiota": 0.45
+  "intratumoral microbiome": 0.50
+  "cancer microbiome": 0.45
+  "seminal microbiome": 0.45
+  "seminal microbiota": 0.45
+  "endometrial microbiome": 0.45
+  "uterine microbiome": 0.45
+
+  # ── Host-microbiome interaction & genetics ────────────────────────────────
+  "host-microbiome interaction": 0.55
+  "host-microbiota interaction": 0.55
+  "host genetics": 0.35
+  "microbiome heritability": 0.50
+  "microbiota heritability": 0.50
+  "gwas": 0.30
+  "snp": 0.20
+  "genome-wide association": 0.30
+  "host genotype": 0.30
+  "immune-microbiome": 0.50
+  "microbiome-immune": 0.50
+  "innate immunity": 0.25
+  "adaptive immunity": 0.25
+  "mucosal immunity": 0.35
+  "intestinal barrier": 0.35
+  "gut barrier": 0.35
+  "leaky gut": 0.35
+  "intestinal permeability": 0.40
+  "tight junction": 0.30
+  "epithelial barrier": 0.30
+  "mucus layer": 0.30
+  "microbiome-gut-brain": 0.50
 
   # ── Sequencing / omics methods ─────────────────────────────────────────────
   "shotgun metagenomics": 0.55
   "whole metagenome sequencing": 0.55
   "whole-metagenome sequencing": 0.55
+  "wms": 0.45
   "shotgun sequencing": 0.50
   "16s rrna sequencing": 0.50
   "16s rrna gene sequencing": 0.50
+  "16s rrna amplicon": 0.50
   "16s sequencing": 0.45
   "16s rrna": 0.40
+  "v1-v2": 0.35
+  "v3-v4": 0.35
+  "v4 region": 0.35
+  "v1-v3": 0.35
+  "hypervariable region": 0.35
   "18s rrna": 0.35
   "its sequencing": 0.40
   "its1": 0.30
@@ -144,26 +278,70 @@ positive_terms:
   "metatranscriptomics": 0.40
   "metaproteomics": 0.40
   "metabolomics": 0.30
+  "metametabolomics": 0.35
   "multi-omics": 0.35
   "multiomics": 0.35
+  "integrative omics": 0.35
   "whole genome sequencing": 0.35
   "nanopore sequencing": 0.35
+  "oxford nanopore": 0.35
   "pacbio sequencing": 0.30
+  "pacbio": 0.25
   "illumina sequencing": 0.30
+  "miseq": 0.35
+  "hiseq": 0.30
+  "novaseq": 0.30
   "long-read sequencing": 0.30
   "short-read sequencing": 0.25
   "next-generation sequencing": 0.25
   "ngs": 0.20
+  "deep sequencing": 0.25
+
+  # ── Bioinformatics tools (imply sequencing was done) ──────────────────────
+  "qiime2": 0.45
+  "qiime 2": 0.45
+  "qiime": 0.40
+  "dada2": 0.45
+  "mothur": 0.40
+  "metaphlan": 0.45
+  "metaphlan2": 0.45
+  "metaphlan3": 0.45
+  "humann": 0.40
+  "humann2": 0.40
+  "humann3": 0.40
+  "kraken2": 0.40
+  "kraken": 0.35
+  "bracken": 0.35
+  "diamond": 0.25
+  "megan": 0.35
+  "picrust": 0.40
+  "picrust2": 0.40
+  "lefse": 0.40
+  "deseq2": 0.35
+  "ancom": 0.35
+  "maaslin": 0.35
+  "maaslin2": 0.40
+  "songbird": 0.35
+  "sparcc": 0.35
+  "flash": 0.20
+  "trimmomatic": 0.20
+  "cutadapt": 0.25
+  "fastp": 0.25
 
   # ── Data availability signals (repository accession numbers) ──────────────
   "prjna": 0.60
   "prjeb": 0.55
+  "prjdb": 0.50
   "srp": 0.50
   "srr": 0.50
   "err": 0.45
   "drr": 0.45
   "gse": 0.45
   "pxd": 0.40
+  "egas": 0.45
+  "samn": 0.40
+  "srs": 0.40
+  "sams": 0.35
   "mgnify": 0.45
   "mgrast": 0.40
   "ebi metagenomics": 0.50
@@ -179,14 +357,20 @@ positive_terms:
   "dryad": 0.25
   "github": 0.20
   "data availability": 0.25
+  "data availability statement": 0.30
   "open access data": 0.30
   "publicly available": 0.25
   "raw reads": 0.35
   "raw sequences": 0.35
   "fastq": 0.35
   "bam files": 0.25
+  "deposited in": 0.30
+  "accession number": 0.35
+  "accession code": 0.35
 
   # ── Disease / condition associations ──────────────────────────────────────
+
+  # Gastrointestinal
   "inflammatory bowel disease": 0.45
   "ibd": 0.40
   "crohn disease": 0.40
@@ -196,6 +380,22 @@ positive_terms:
   "ibs": 0.35
   "colorectal cancer": 0.40
   "colon cancer": 0.35
+  "rectal cancer": 0.35
+  "colorectal adenoma": 0.35
+  "colorectal polyp": 0.30
+  "clostridioides difficile": 0.40
+  "c. difficile infection": 0.40
+  "cdi": 0.35
+  "gastrointestinal cancer": 0.35
+  "gastric cancer": 0.35
+  "esophageal cancer": 0.30
+  "pancreatic cancer": 0.35
+  "hepatocellular carcinoma": 0.35
+  "diverticular disease": 0.30
+  "celiac disease": 0.35
+  "coeliac disease": 0.35
+
+  # Metabolic / endocrine
   "type 2 diabetes": 0.35
   "type 1 diabetes": 0.35
   "t1d": 0.30
@@ -203,40 +403,107 @@ positive_terms:
   "metabolic syndrome": 0.35
   "obesity": 0.30
   "overweight": 0.25
+  "body mass index": 0.25
+  "bmi": 0.20
   "insulin resistance": 0.30
   "non-alcoholic fatty liver": 0.35
   "nafld": 0.35
   "nash": 0.30
   "liver cirrhosis": 0.30
   "hepatic encephalopathy": 0.30
-  "celiac disease": 0.35
+  "hyperlipidemia": 0.25
+  "dyslipidemia": 0.25
+  "hypertension": 0.25
+  "cardiovascular disease": 0.25
+  "atherosclerosis": 0.25
+  "thyroid": 0.20
+  "polycystic ovary syndrome": 0.35
+  "pcos": 0.35
+  "gout": 0.30
+  "hyperuricemia": 0.25
+
+  # Neurological / psychiatric
   "autism spectrum disorder": 0.35
+  "autism": 0.30
   "asd": 0.30
   "multiple sclerosis": 0.30
   "parkinson disease": 0.35
+  "parkinson's disease": 0.35
   "alzheimer disease": 0.30
+  "alzheimer's disease": 0.30
   "depression": 0.25
+  "major depressive disorder": 0.30
   "anxiety": 0.20
+  "anxiety disorder": 0.25
   "gut-brain axis": 0.45
   "gut brain axis": 0.45
+  "microbiome-brain axis": 0.45
+  "microbiota-gut-brain axis": 0.50
   "neurodegenerative": 0.25
+  "cognitive function": 0.25
+  "cognitive decline": 0.25
+  "dementia": 0.25
+  "schizophrenia": 0.25
+  "bipolar disorder": 0.25
+  "adhd": 0.25
+  "attention deficit": 0.20
+  "stress microbiome": 0.40
+  "psychobiotics": 0.45
+
+  # Autoimmune / inflammatory
   "rheumatoid arthritis": 0.30
   "systemic lupus": 0.30
+  "sle": 0.25
+  "ankylosing spondylitis": 0.30
+  "psoriatic arthritis": 0.30
   "psoriasis": 0.30
   "atopic dermatitis": 0.30
   "eczema": 0.25
   "allergy": 0.20
+  "food allergy": 0.30
   "asthma": 0.25
   "cystic fibrosis": 0.30
+  "endometriosis": 0.35
+
+  # Infectious disease
   "hiv": 0.25
+  "hiv microbiome": 0.40
   "covid-19": 0.30
   "sars-cov-2": 0.30
+  "post-covid": 0.35
+  "long covid": 0.35
+  "post-acute sequelae": 0.35
+  "pasc": 0.30
   "sepsis": 0.20
+  "bacteremia": 0.20
   "critical illness": 0.20
   "icu patients": 0.25
+  "helicobacter pylori": 0.35
+  "h. pylori": 0.35
+  "clostridium difficile": 0.40
+  "antibiotic-associated diarrhea": 0.40
+  "antibiotic resistance": 0.30
+  "antimicrobial resistance": 0.30
+  "resistome": 0.40
+
+  # Cancer / oncology
   "cancer": 0.20
   "immunotherapy": 0.25
   "checkpoint inhibitor": 0.25
+  "immune checkpoint": 0.25
+  "pd-1": 0.25
+  "pd-l1": 0.25
+  "ctla-4": 0.25
+  "car-t": 0.25
+  "cancer immunotherapy microbiome": 0.50
+  "tumor immunology": 0.25
+
+  # Renal / other
+  "chronic kidney disease": 0.30
+  "ckd": 0.25
+  "end-stage renal disease": 0.30
+  "kidney transplant": 0.25
+  "uremia": 0.25
 
   # ── Intervention / treatment signals ──────────────────────────────────────
   "fecal microbiota transplantation": 0.60
@@ -248,54 +515,316 @@ positive_terms:
   "probiotics": 0.35
   "prebiotics": 0.35
   "synbiotics": 0.35
+  "postbiotics": 0.40
   "dietary intervention": 0.30
+  "dietary pattern": 0.25
+  "dietary fiber": 0.30
+  "fiber intake": 0.25
+  "mediterranean diet": 0.35
+  "ketogenic diet": 0.30
+  "high-fiber diet": 0.35
+  "plant-based diet": 0.30
+  "vegetarian diet": 0.25
+  "vegan diet": 0.25
+  "western diet": 0.30
+  "high-fat diet": 0.25
+  "caloric restriction": 0.25
+  "intermittent fasting": 0.25
+  "exercise microbiome": 0.40
+  "physical activity microbiome": 0.40
   "antibiotic treatment": 0.30
   "antibiotic exposure": 0.30
   "antibiotic use": 0.25
+  "antibiotic course": 0.25
   "diet-induced": 0.25
+  "polyphenols": 0.25
+  "omega-3": 0.25
+  "microbiome modulation": 0.45
+  "microbiota modulation": 0.45
 
   # ── Microbial diversity metrics ────────────────────────────────────────────
   "alpha diversity": 0.40
   "beta diversity": 0.40
+  "gamma diversity": 0.30
   "species richness": 0.35
+  "shannon diversity": 0.35
   "shannon index": 0.35
+  "shannon entropy": 0.35
   "simpson index": 0.30
   "chao1": 0.30
+  "ace estimator": 0.25
+  "faith phylogenetic diversity": 0.35
   "observed species": 0.25
+  "observed otus": 0.25
   "otu": 0.30
   "asv": 0.35
   "amplicon sequence variant": 0.35
   "operational taxonomic unit": 0.30
   "unifrac": 0.35
+  "weighted unifrac": 0.35
+  "unweighted unifrac": 0.35
   "bray-curtis": 0.30
+  "bray curtis dissimilarity": 0.30
+  "jaccard distance": 0.25
   "permanova": 0.30
+  "anosim": 0.25
   "taxonomic composition": 0.30
   "microbial diversity": 0.35
   "microbial community": 0.30
   "microbial composition": 0.30
+  "community structure": 0.25
+  "taxonomic profiling": 0.35
+  "microbial profiling": 0.35
+  "relative abundance": 0.30
+  "differential abundance": 0.35
+  "core microbiome": 0.40
+  "enterotype": 0.40
+  "microbial signature": 0.40
+  "microbial biomarker": 0.40
+  "dysbiosis": 0.40
+
+  # ── Functional / metabolic microbiome ─────────────────────────────────────
+  "microbial function": 0.35
+  "functional diversity": 0.35
+  "functional microbiome": 0.40
+  "microbial metabolism": 0.35
+  "microbial gene catalog": 0.45
+  "integrated gene catalog": 0.45
+  "igc": 0.35
+  "kegg": 0.30
+  "cog": 0.25
+  "pathway abundance": 0.35
+  "metabolic pathway": 0.25
+  "gene family": 0.20
+  "microbial genes": 0.25
 
   # ── Key organisms / taxa (strong human gut signal) ─────────────────────────
   "akkermansia muciniphila": 0.45
+  "akkermansia": 0.35
   "faecalibacterium prausnitzii": 0.45
+  "faecalibacterium": 0.35
   "bifidobacterium": 0.35
+  "bifidobacterium longum": 0.40
+  "bifidobacterium breve": 0.40
+  "bifidobacterium adolescentis": 0.35
   "lactobacillus": 0.30
+  "lactobacillus rhamnosus": 0.40
+  "lactobacillus acidophilus": 0.35
+  "lactobacillus reuteri": 0.40
+  "ligilactobacillus": 0.35
+  "lacticaseibacillus": 0.35
   "bacteroides": 0.25
+  "bacteroides fragilis": 0.35
+  "bacteroides thetaiotaomicron": 0.35
   "prevotella": 0.25
+  "prevotella copri": 0.35
   "ruminococcus": 0.25
+  "ruminococcus gnavus": 0.35
+  "ruminococcus bromii": 0.35
   "blautia": 0.25
   "roseburia": 0.25
+  "roseburia intestinalis": 0.30
   "clostridiales": 0.20
+  "lachnospiraceae": 0.25
+  "ruminococcaceae": 0.25
+  "eubacterium": 0.25
+  "eubacterium rectale": 0.30
+  "eubacterium hallii": 0.30
+  "coprococcus": 0.25
+  "dorea": 0.20
+  "alistipes": 0.25
+  "parabacteroides": 0.25
+  "escherichia coli": 0.25
+  "enterococcus": 0.25
+  "streptococcus": 0.20
   "firmicutes": 0.20
   "bacteroidetes": 0.20
   "firmicutes/bacteroidetes ratio": 0.35
   "f/b ratio": 0.30
+  "proteobacteria": 0.15
+  "actinobacteria": 0.15
+  "verrucomicrobia": 0.20
+  "archaea": 0.15
+  "methanobrevibacter": 0.30
+  "candida": 0.20
+  "mycobiome": 0.35
+  "virome": 0.30
+  "phageome": 0.30
+  "bacteriophage": 0.25
+
+  # ── Microbial metabolites ──────────────────────────────────────────────────
   "short-chain fatty acids": 0.40
   "scfa": 0.40
   "butyrate": 0.35
+  "butyric acid": 0.30
   "propionate": 0.30
+  "propionic acid": 0.25
   "acetate": 0.25
+  "acetic acid": 0.20
   "bile acids": 0.30
+  "secondary bile acids": 0.35
+  "primary bile acids": 0.30
   "tryptophan metabolism": 0.30
+  "indole": 0.25
+  "serotonin": 0.25
+  "trimethylamine": 0.30
+  "tmao": 0.35
+  "lipopolysaccharide": 0.25
+  "lps": 0.20
+  "endotoxin": 0.25
+  "branched-chain amino acids": 0.25
+  "bcaa": 0.20
+  "urolithins": 0.30
+  "equol": 0.25
+  "lactate": 0.20
+
+  # ── Omics integration ─────────────────────────────────────────────────────
+  "transcriptomics": 0.25
+  "proteomics": 0.25
+  "lipidomics": 0.25
+  "genomics": 0.20
+  "epigenomics": 0.20
+  "metagenome-assembled genomes": 0.45
+  "mags": 0.40
+  "metagenome assembled genome": 0.45
+  "binning": 0.30
+  "genome binning": 0.35
+  "single-cell": 0.20
+  "spatial transcriptomics": 0.20
+
+  # ── OpenAlex concept display names ────────────────────────────────────────
+  # OpenAlex stores concept labels as keywords (e.g. "Gut flora", "Microbial
+  # ecology"). These are the exact strings OpenAlex assigns — must match here.
+  "gut flora": 0.60
+  "intestinal flora": 0.55
+  "microbial ecology": 0.35
+  "microbial genetics": 0.30
+  "human gut": 0.55
+  "gut health": 0.45
+  "intestinal microflora": 0.55
+  "colonic flora": 0.50
+  "gastrointestinal tract": 0.30
+  "fecal transplant": 0.55
+  "fecal bacteria": 0.45
+  "stool transplant": 0.45
+  "probiotic bacteria": 0.40
+  "commensal bacteria": 0.40
+  "commensal microbiota": 0.45
+  "host microbiome": 0.55
+  "mucosal microbiome": 0.50
+  "mucosal microbiota": 0.50
+  "microbial colonization": 0.40
+  "colonization resistance": 0.40
+  "microbiome research": 0.45
+  "microbiota research": 0.45
+  "microbial genomics": 0.35
+  "microbial metagenomics": 0.50
+  "environmental microbiome": 0.10
+  "microbial sequencing": 0.45
+  "human biology": 0.15
+  "clinical microbiology": 0.30
+  "gastroenterology": 0.30
+  "hepatology": 0.25
+  "internal medicine": 0.20
+  "infectious disease": 0.20
+  "immunology": 0.20
+  "nutrition": 0.20
+  "nutritional science": 0.20
+  "dietary supplement": 0.25
+  "microbiota composition": 0.50
+  "taxonomic classification": 0.30
+  "microbial taxonomy": 0.30
+  "phylogenetic analysis": 0.30
+  "phylogenetic diversity": 0.35
+  "bioinformatics": 0.20
+  "computational biology": 0.15
+
+  # ── Crossref funder name keywords ─────────────────────────────────────────
+  # Crossref stores funder names as keywords. Major funders of microbiome
+  # research are positive signals — a funded microbiome paper is more likely
+  # to be high-quality primary research.
+  "national institutes of health": 0.25
+  "nih": 0.20
+  "national institute of allergy": 0.20
+  "national institute of diabetes": 0.20
+  "national human genome research": 0.20
+  "national cancer institute": 0.20
+  "welcome trust": 0.20
+  "wellcome trust": 0.20
+  "european research council": 0.20
+  "erc": 0.15
+  "horizon 2020": 0.20
+  "horizon europe": 0.20
+  "bill and melinda gates": 0.20
+  "gates foundation": 0.20
+  "canadian institutes of health": 0.20
+  "cihr": 0.20
+  "australian research council": 0.20
+  "arc": 0.10
+  "national health and medical research": 0.20
+  "nhmrc": 0.20
+  "deutsche forschungsgemeinschaft": 0.20
+  "dfg": 0.15
+  "swiss national science foundation": 0.20
+  "snsf": 0.15
+  "agence nationale de la recherche": 0.20
+  "anr": 0.15
+  "medical research council": 0.20
+  "mrc": 0.15
+  "biotechnology and biological sciences": 0.20
+  "bbsrc": 0.15
+
+  # ── bioRxiv / Semantic Scholar article type / category signals ────────────
+  # bioRxiv stores paper categories in article_types (e.g. "microbiology",
+  # "gastroenterology"). Semantic Scholar uses types like "JournalArticle".
+  # Stage 2 now scans article_types, so these match directly.
+  "microbiology": 0.35
+  "gastroenterology": 0.30
+  "infectious diseases": 0.20
+  "immunology and inflammation": 0.20
+  "genomics": 0.20
+  "bioinformatics": 0.20
+  "clinical trials": 0.25
+  "epidemiology": 0.20
+  "nutrition and metabolism": 0.25
+  "new results": 0.10
+  "confirmatory results": 0.10
+  "journal article": 0.10
+  "research article": 0.10
+  "review article": 0.10
+  "clinical study": 0.20
+  "observational study": 0.20
+  "cohort study": 0.25
+  "case report": 0.10
+
+  # ── Journal name signals (now scanned via paper.journal field) ─────────────
+  # High-impact / microbiome-specific journals are a strong prior that the
+  # paper is relevant. Stage 2 now includes paper.journal in the scored text.
+  "microbiome": 0.50
+  "gut microbes": 0.55
+  "npj biofilms and microbiomes": 0.50
+  "msystems": 0.45
+  "mbio": 0.40
+  "cell host and microbe": 0.55
+  "cell host microbe": 0.55
+  "nature microbiology": 0.50
+  "nature medicine": 0.35
+  "gut": 0.30
+  "gastroenterology": 0.30
+  "journal of crohn's and colitis": 0.40
+  "inflammatory bowel diseases": 0.40
+  "clinical gastroenterology": 0.30
+  "american journal of gastroenterology": 0.30
+  "alimentary pharmacology": 0.25
+  "journal of infectious diseases": 0.20
+  "clinical infectious diseases": 0.20
+  "plos one": 0.10
+  "scientific reports": 0.10
+  "frontiers in microbiology": 0.25
+  "frontiers in cellular and infection": 0.20
+  "isme journal": 0.45
+  "environmental microbiology": 0.15
+  "applied and environmental microbiology": 0.15
 
 
 # ── Negative keyword terms ────────────────────────────────────────────────────
@@ -306,11 +835,17 @@ negative_terms:
   "danio rerio": -0.90
   "salmon": -0.70
   "salmonid": -0.70
+  "atlantic salmon": -0.75
+  "rainbow trout": -0.70
   "trout": -0.65
   "tilapia": -0.70
   "carp": -0.65
   "catfish": -0.65
   "eel": -0.65
+  "sea bass": -0.65
+  "sea bream": -0.65
+  "turbot": -0.65
+  "flounder": -0.65
   "shrimp": -0.70
   "prawn": -0.65
   "oyster": -0.65
@@ -318,26 +853,39 @@ negative_terms:
   "clam": -0.60
   "lobster": -0.60
   "crab": -0.60
+  "abalone": -0.65
   "coral": -0.70
   "sponge microbiome": -0.75
   "marine fish": -0.70
   "aquaculture": -0.70
   "fish gut microbiome": -0.75
+  "fish gut microbiota": -0.75
   "fish microbiota": -0.75
+  "fish microbiome": -0.75
+  "larval fish": -0.70
 
   # ── Rodent model organisms ─────────────────────────────────────────────────
   "mouse model": -0.75
   "murine model": -0.75
   "murine": -0.70
   "germ-free mice": -0.90
+  "germ free mice": -0.90
   "gnotobiotic mice": -0.90
   "gnotobiotic": -0.85
+  "germ-free": -0.80
+  "germ free": -0.80
   "knockout mice": -0.85
   "transgenic mice": -0.80
   "c57bl/6": -0.85
   "balb/c": -0.85
   "nude mice": -0.80
   "scid mice": -0.80
+  "specific pathogen free": -0.75
+  "spf mice": -0.80
+  "axenic": -0.85
+  "colonized mice": -0.75
+  "conventionalized mice": -0.75
+  "humanized mice": -0.60
   "rat model": -0.75
   "sprague-dawley": -0.80
   "wistar rat": -0.80
@@ -345,7 +893,7 @@ negative_terms:
   "mice": -0.55
   "rats": -0.50
 
-  # ── Other lab / wild animals ───────────────────────────────────────────────
+  # ── Other lab / model organisms ───────────────────────────────────────────
   "drosophila": -0.75
   "drosophila melanogaster": -0.85
   "caenorhabditis elegans": -0.85
@@ -357,31 +905,52 @@ negative_terms:
   "termite": -0.75
   "cockroach": -0.70
   "mosquito": -0.65
+  "aedes aegypti": -0.75
+  "anopheles": -0.75
   "tick microbiome": -0.75
+  "tick gut": -0.75
   "insect microbiome": -0.75
   "insect gut": -0.70
+  "insect microbiota": -0.75
+  "silkworm": -0.70
+  "mealworm": -0.70
+  "black soldier fly": -0.70
+  "woodlouse": -0.65
 
   # ── Livestock / farm animals ───────────────────────────────────────────────
   "porcine": -0.75
   "swine": -0.70
   "pig gut": -0.75
   "pig microbiome": -0.75
+  "pig microbiota": -0.75
   "piglet": -0.70
+  "weaned piglets": -0.75
   "broiler": -0.75
+  "broiler chicken": -0.80
   "poultry": -0.70
   "chicken gut": -0.75
+  "laying hen": -0.70
   "layer hen": -0.70
+  "turkey microbiome": -0.70
   "bovine": -0.70
   "dairy cow": -0.70
+  "beef cattle": -0.70
   "rumen microbiome": -0.85
   "rumen microbiota": -0.85
   "ruminant": -0.75
+  "ovine": -0.70
+  "sheep gut": -0.70
+  "caprine": -0.70
+  "goat gut": -0.70
   "equine gut": -0.70
   "horse gut": -0.70
   "canine gut": -0.65
   "feline gut": -0.65
   "dog gut": -0.65
   "cat gut": -0.65
+  "rabbit gut": -0.65
+  "rabbit microbiome": -0.65
+  "guinea pig gut": -0.65
 
   # ── Exotic / wildlife animals ──────────────────────────────────────────────
   "tortoise": -0.85
@@ -394,7 +963,9 @@ negative_terms:
   "amphibian": -0.75
   "salamander": -0.75
   "koala": -0.80
+  "koala gut": -0.85
   "panda gut": -0.80
+  "giant panda": -0.80
   "bear gut": -0.75
   "elephant gut": -0.75
   "whale gut": -0.75
@@ -404,48 +975,79 @@ negative_terms:
   "avian gut": -0.65
   "penguin gut": -0.70
   "chimpanzee gut": -0.60
+  "gorilla gut": -0.65
+  "non-human primate": -0.55
+  "macaque gut": -0.65
+  "marmoset gut": -0.65
+  "deer gut": -0.65
+  "moose gut": -0.65
+  "wolf gut": -0.65
+  "fox gut": -0.65
+  "sea lion": -0.65
 
   # ── Environmental / non-host microbiomes ──────────────────────────────────
   "soil microbiome": -0.85
   "soil microbiota": -0.85
   "soil bacterial community": -0.85
+  "soil microbial community": -0.85
+  "soil microbial": -0.75
   "rhizosphere": -0.90
   "rhizosphere microbiome": -0.95
+  "rhizosphere microbiota": -0.95
   "plant microbiome": -0.85
   "plant microbiota": -0.85
+  "plant endophyte": -0.80
   "phyllosphere": -0.90
   "endosphere": -0.85
   "root microbiome": -0.85
+  "root microbiota": -0.85
   "bulk soil": -0.80
   "marine microbiome": -0.85
   "ocean microbiome": -0.85
   "seawater microbiome": -0.85
+  "seawater microbiota": -0.85
   "aquatic microbiome": -0.80
   "freshwater microbiome": -0.80
   "lake microbiome": -0.80
   "river microbiome": -0.80
+  "pond microbiome": -0.75
+  "estuary microbiome": -0.80
+  "mangrove microbiome": -0.80
   "sediment microbiome": -0.75
   "sediment": -0.50
   "wastewater": -0.75
+  "wastewater treatment": -0.80
   "activated sludge": -0.80
+  "anaerobic digestion": -0.75
   "bioreactor": -0.65
+  "biogas": -0.70
   "composting": -0.70
   "compost": -0.65
   "biofilm": -0.30
   "drinking water microbiome": -0.75
+  "drinking water microbiota": -0.75
   "groundwater": -0.65
   "permafrost": -0.80
+  "permafrost microbiome": -0.85
+  "arctic microbiome": -0.80
   "hot spring": -0.75
   "hydrothermal vent": -0.80
+  "deep sea microbiome": -0.85
   "cave microbiome": -0.75
   "air microbiome": -0.60
   "indoor air": -0.55
   "built environment microbiome": -0.60
+  "hospital environment microbiome": -0.55
+  "glacier microbiome": -0.80
+  "desert microbiome": -0.75
+  "atmospheric microbiome": -0.75
 
   # ── Food / fermentation microbiomes ───────────────────────────────────────
   "fermented beverage": -0.80
   "fermented food": -0.75
   "fermented milk": -0.65
+  "fermented meat": -0.70
+  "fermented vegetable": -0.70
   "kombucha": -0.85
   "tepache": -0.95
   "kefir microbiome": -0.80
@@ -458,19 +1060,78 @@ negative_terms:
   "miso": -0.70
   "tempeh": -0.70
   "yogurt microbiome": -0.65
+  "natto": -0.70
+  "vinegar microbiome": -0.75
   "food safety": -0.40
   "food spoilage": -0.60
+  "food microbiome": -0.65
+  "food fermentation": -0.70
+  "starter culture": -0.65
+  "lactic acid bacteria fermentation": -0.65
 
   # ── Purely in-vitro / lab models ──────────────────────────────────────────
   "cell line": -0.50
   "in vitro": -0.35
+  "in vitro model": -0.45
   "in vivo model": -0.40
   "organoid": -0.20
+  "intestinal organoid": -0.25
   "gut-on-a-chip": -0.30
+  "organ-on-a-chip": -0.30
   "simulated gut": -0.35
   "artificial gut": -0.35
   "chemostat": -0.45
   "batch culture": -0.40
+  "continuous culture": -0.40
+  "in vitro fermentation": -0.45
+  "fecal fermentation": -0.30
+  "batch fermentation": -0.45
+  "in vitro digestion": -0.40
+
+  # ── Plant / agriculture / agronomy ────────────────────────────────────────
+  "plant growth": -0.60
+  "crop microbiome": -0.80
+  "wheat microbiome": -0.80
+  "rice microbiome": -0.80
+  "maize microbiome": -0.80
+  "corn microbiome": -0.80
+  "soybean microbiome": -0.75
+  "tomato microbiome": -0.75
+  "potato microbiome": -0.75
+  "lettuce microbiome": -0.75
+  "agronomy": -0.70
+  "agroecosystem": -0.70
+  "biofertilizer": -0.70
+  "plant growth promoting": -0.70
+  "pgpr": -0.70
+  "mycorrhizal": -0.75
+  "endophytic fungi": -0.70
+  "phytobiome": -0.80
+  "plant pathogen": -0.70
+  "biocontrol": -0.60
+
+  # ── Industrial / biotechnology ────────────────────────────────────────────
+  "industrial fermentation": -0.70
+  "bioremediation": -0.75
+  "biodegradation": -0.65
+  "biotransformation": -0.45
+  "bioprospecting": -0.60
+  "enzyme production": -0.55
+  "bioethanol": -0.75
+  "biorefinery": -0.75
+  "biomass degradation": -0.70
+  "cellulose degradation": -0.60
+  "lignocellulose": -0.65
+  "bioplastics": -0.70
+
+  # ── Veterinary medicine ────────────────────────────────────────────────────
+  "veterinary": -0.55
+  "companion animal": -0.55
+  "pet microbiome": -0.60
+  "zoo animal": -0.65
+  "wildlife microbiome": -0.65
+  "animal husbandry": -0.65
+  "livestock microbiome": -0.70
 
 
 # ── Scoring thresholds ────────────────────────────────────────────────────────
@@ -502,16 +1163,30 @@ metagenomics_gate:
     - "nanopore"
     - "pacbio"
     - "illumina"
+    - "miseq"
+    - "hiseq"
+    - "novaseq"
     - "next-generation sequencing"
     - "ngs"
     - "long-read"
     - "short-read"
+    - "deep sequencing"
 
     # Microbiome core terms
     - "microbiome"
     - "microbiota"
     - "microbial community"
     - "microbial diversity"
+    - "microbial composition"
+
+    # Bioinformatics tools (presence implies sequencing was done)
+    - "qiime"
+    - "dada2"
+    - "mothur"
+    - "metaphlan"
+    - "humann"
+    - "kraken"
+    - "mags"
 
     # Diversity metrics (implies sequencing was done)
     - "alpha diversity"
@@ -519,16 +1194,26 @@ metagenomics_gate:
     - "otu"
     - "asv"
     - "unifrac"
+    - "bray-curtis"
+    - "permanova"
+
+    # Omics
+    - "metagenome-assembled"
+    - "virome"
+    - "phageome"
+    - "mycobiome"
 
     # Public data repository accession patterns
     - "prjna"
     - "prjeb"
+    - "prjdb"
     - "srp"
     - "srr"
     - "err"
     - "drr"
     - "gse"
     - "pxd"
+    - "egas"
     - "ena"
     - "sra"
     - "mgnify"
@@ -537,3 +1222,4 @@ metagenomics_gate:
     - "fastq"
     - "raw reads"
     - "raw sequences"
+    - "accession number"

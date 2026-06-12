@@ -230,13 +230,25 @@ class RelevanceFilter:
     def _stage2_rules(self, paper: PaperRecord) -> FilterVerdict:
         """
         Additive weighted scoring from stage2_rules.yaml terms.
-        Checks title + abstract combined.
+
+        SCANNED FIELDS (covers all 6 collectors):
+          title + abstract     → all sources
+          mesh_terms           → PubMed, EuropePMC
+          keywords             → PubMed, EuropePMC author keywords
+                                 OpenAlex concept display names (e.g. "Gut flora")
+                                 Crossref funder names (e.g. "NIH", "Wellcome Trust")
+          article_types        → bioRxiv categories ("microbiology", "new results")
+                                 Semantic Scholar types ("JournalArticle", "Review")
+                                 OpenAlex types ("article")
+          journal              → journal name as additional signal
         """
         text = (
-            (paper.title or "") + " " +
-            (paper.abstract or "") + " " +
-            " ".join(paper.mesh_terms or []) + " " +
-            " ".join(paper.keywords or [])
+            (paper.title or "")                    + " " +
+            (paper.abstract or "")                 + " " +
+            " ".join(paper.mesh_terms or [])       + " " +
+            " ".join(paper.keywords or [])         + " " +
+            " ".join(paper.article_types or [])    + " " +
+            (paper.journal or "")
         ).lower()
 
         score = 0.0

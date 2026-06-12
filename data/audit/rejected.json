@@ -1,21 +1,21 @@
 [
   {
-    "title": "Antibacterial Potential of Human Umbilical Cord Mesenchymal Stem Cell-Derived Exosomes Against Clostridium Perfringens: An Experimental In Vitro and In Silico Study.",
+    "title": "Acute Septic Arthritis Caused by Finegoldia magna After ACL Reconstruction Diagnosed by PCR: A Case Report.",
     "source": "pubmed",
     "year": 2026,
     "decision": "reject",
     "stage": "stage2_rules",
-    "score": 0.133,
-    "reason": "pos:[intestinal,human] neg:[pathogen]"
+    "score": 0.4,
+    "reason": "pos:[patient,human,ena] neg:[pathogen]"
   },
   {
-    "title": "Insights into the microbiota profile of Pediculus humanus capitis using metagenomic next-generation sequencing and molecular detection of unexpected pathogen DNA in Hunan Province, China",
+    "title": "A systematic review of molecular signaling in the muscle-brain-gut axis: exercise-induced myokines and microbial metabolites as key mediators.",
     "source": "semantic_scholar",
     "year": 2026,
     "decision": "reject",
     "stage": "stage2_rules",
-    "score": 0.0,
-    "reason": "pos:[human] neg:[pathogen]"
+    "score": 0.133,
+    "reason": "pos:[gut] neg:[]"
   },
   {
     "title": "Phytochemical Screening of Selected Cholistani Plants and Their Biological Activities by In-Vitro Assays",
@@ -63,8 +63,8 @@
     "reason": "pos:[] neg:[]"
   },
   {
-    "title": "Uma Revis\u00e3o Sobre Fungos Muito Resistentes \u00c0 Radia\u00e7\u00e3o",
-    "source": "openalex",
+    "title": "Host Genetics and the Skin Microbiome Independently Predict Parasite Resistance",
+    "source": "core",
     "year": 2026,
     "decision": "reject",
     "stage": "stage2_rules",
@@ -72,93 +72,12 @@
     "reason": "pos:[] neg:[]"
   },
   {
-    "title": "Uma Revis\u00e3o Sobre Fungos Muito Resistentes \u00c0 Radia\u00e7\u00e3o",
-    "source": "openalex",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.0,
-    "reason": "pos:[] neg:[]"
-  },
-  {
-    "title": "Multivalent Antigen Display on Nanoparticles Diversifies B Cell Responses",
-    "source": "openalex",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.0,
-    "reason": "pos:[] neg:[]"
-  },
-  {
-    "title": "Surat pencatatan ciptaan-Fotodegradasi Remazol Brilliant Blue R menggunakan karbon dari tempurung kelapa sawit sebagai material pendukung ZnO (sertifikat hak cipta)",
-    "source": "openalex",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.2,
-    "reason": "pos:[ena] neg:[]"
-  },
-  {
-    "title": "Physico-Chemical Properties and Microbial Community of Soils Polluted by Tannery Effluents at the Nigerian Institute of Leather and Science Technology Zaria, Nigeria",
-    "source": "openalex",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.0,
-    "reason": "pos:[] neg:[wastewater]"
-  },
-  {
-    "title": "INTESTINAL DYSBIOSIS AND ROSACEA: A CONTEMPORARY  REVIEW OF MICROBIOME-MEDIATED GUT\u2013SKIN INTERACTION  MECHANISMS (LITERATURE REVIEW)",
-    "source": "crossref",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.267,
-    "reason": "pos:[intestinal,gut] neg:[]"
-  },
-  {
-    "title": "The effect of dietary transition on infant microbiota composition and metabolic activity captured with the simulator of the human intestinal microbial ecosystem (SHIME)",
-    "source": "crossref",
-    "year": 2025,
-    "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.0,
-    "reason": "pos:[intestinal,human] neg:[bovine]"
-  },
-  {
-    "title": "ACMTF-R:Supervised multi-omics data integration uncovering shared and distinct outcome-associated variation",
-    "source": "core",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage4_llm",
-    "score": 0.98,
-    "reason": "llm:animal model \u2014 no human microbiome data"
-  },
-  {
-    "title": "Microbiota composition of human milk based on storage and processing methods in Korea",
+    "title": "Prophylactic impact of cecal fermentation broth against gut microbiota dysbiosis of broiler chickens challenged with Escherichia coli",
     "source": "core",
     "year": 2026,
     "decision": "reject",
     "stage": "stage2_rules",
-    "score": 0.267,
-    "reason": "pos:[human] neg:[]"
-  },
-  {
-    "title": "Exploring microbial signatures in sarcoidosis: etiological and therapeutic implications of host\u2013microbiota interactions",
-    "source": "core",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.333,
-    "reason": "pos:[gut microbiota,intestinal,gut] neg:[pathogen]"
-  },
-  {
-    "title": "DNA Extraction from Equine Feces for Microbiome Studies \u2013 Optimization Challenges",
-    "source": "core",
-    "year": 2026,
-    "decision": "reject",
-    "stage": "stage2_rules",
-    "score": 0.4,
-    "reason": "pos:[gut microbiome,fecal,stool] neg:[equine gut]"
+    "score": 0.0,
+    "reason": "pos:[gut microbiota,gut] neg:[broiler]"
   }
 ]

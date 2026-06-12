@@ -29,6 +29,17 @@ During development, set MAX_RESULTS_PER_SOURCE small (e.g. 20) so you're
 not waiting 10 minutes for a full run while testing.
 """
 import sys
+import warnings
+
+# Suppress huggingface_hub FutureWarning about deprecated resume_download parameter.
+# This is an internal library warning, not our code — safe to silence.
+warnings.filterwarnings(
+    "ignore",
+    message=".*resume_download.*",
+    category=FutureWarning,
+    module="huggingface_hub"
+)
+
 from loguru import logger
 from config import LOG_FILE, LOG_LEVEL
 from collectors.orchestrator import CollectionOrchestrator

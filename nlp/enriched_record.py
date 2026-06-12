@@ -154,7 +154,7 @@ class EnrichedPaperRecord(PaperRecord):
 
     # ── Module 5: Data availability output ────────────────────────────────────
     data_availability: Optional[DataAvailabilityInfo] = None
-    full_text: str | None = None
+    # NOTE: full_text is inherited from PaperRecord — do not redefine here
     fetch_source: str | None = None
     fetch_status: str | None = None
 

@@ -36,6 +36,7 @@ from collectors.semantic_scholar_collector import SemanticScholarCollector
 from collectors.openalex_collector import OpenAlexCollector
 from collectors.crossref_collector import CrossrefCollector
 from collectors.core_collector import CoreCollector
+from collectors.pmc_enricher import PMCEnricher
 
 # Path to the file that persists per-source fetch cursors across runs
 CURSOR_FILE = PROC_DIR / "collector_cursors.json"
@@ -166,11 +167,26 @@ class CollectionOrchestrator:
             f"flagged for review: {len(review_queue)}"
         )
 
-        # ── Step 4: Save to disk ───────────────────────────────────────────────
+        # ── Step 4: PMC full-text enrichment ──────────────────────────────────
+        # For any paper that has a PMCID, fetch its full XML from PMC and
+        # attach structured full text (Methods, Results, Discussion, etc.).
+        # This upgrades existing papers rather than finding new ones.
+        pmc_candidates = sum(1 for p in merged if p.pmcid and not p.full_text)
+        if pmc_candidates > 0:
+            logger.info(
+                f"[pmc_enricher] {pmc_candidates} papers have PMCID — "
+                f"fetching full text from PMC"
+            )
+            enricher = PMCEnricher()
+            merged = enricher.enrich(merged, max_enrichments=pmc_candidates)
+        else:
+            logger.info("[pmc_enricher] No papers with PMCID — skipping enrichment")
+
+        # ── Step 5: Save to disk ───────────────────────────────────────────────
         output_path = self._save_merged(merged)
         logger.success(f"Saved merged dataset → {output_path}")
 
-        # ── Step 5: Print summary ──────────────────────────────────────────────
+        # ── Step 6: Print summary ──────────────────────────────────────────────
         self._print_summary(merged)
 
         return merged

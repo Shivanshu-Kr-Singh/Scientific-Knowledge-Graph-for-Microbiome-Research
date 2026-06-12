@@ -62,6 +62,7 @@ class PaperRecord(BaseModel):
     is_open_access:     bool = False
     full_text_url:      Optional[str] = None   # URL to full text if available
     pdf_url:            Optional[str] = None
+    full_text:          Optional[str] = None   # Parsed full text (from PMC XML enrichment)
 
     # ── Citations ─────────────────────────────────────────────────────────────
     citation_count:     Optional[int] = None

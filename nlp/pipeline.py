@@ -206,8 +206,13 @@ class NLPPipeline:
 
 
         # ── Merge everything into EnrichedPaperRecord ─────────────────────────
+        # Pop 'full_text' from the base dump so the explicit kwarg below doesn't
+        # collide with the field already present in PaperRecord.model_dump().
+        paper_fields = paper.model_dump()
+        paper_fields.pop("full_text", None)
+
         enriched = EnrichedPaperRecord(
-            **paper.model_dump(),              # All Layer 1 fields carried forward
+            **paper_fields,                    # All Layer 1 fields carried forward
             article_type_normalized=article_type,
             article_type_confidence=confidence,
             journal_info=journal_info,

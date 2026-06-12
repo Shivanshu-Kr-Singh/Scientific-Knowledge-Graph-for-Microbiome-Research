@@ -367,6 +367,100 @@ class CollectionOrchestrator:
 
         return [PaperRecord(**item) for item in data]
 
+    def load_all(self) -> List[PaperRecord]:
+        """
+        Loads and merges ALL collected_*.json files from disk, deduplicating
+        across runs by DOI → PMID → title fallback.
+
+        WHY THIS EXISTS:
+          load_latest() only sees the most recent batch. For ML training
+          at scale (60k papers across many runs), you need ALL collected
+          papers merged into one deduplicated list — otherwise the model
+          trains on a tiny subset and misses patterns from earlier runs.
+
+        Returns a single deduplicated list sorted newest-first.
+        """
+        files = sorted(PROC_DIR.glob("collected_*.json"), reverse=True)
+        if not files:
+            raise FileNotFoundError("No collected data found. Run collect_all() first.")
+
+        logger.info(f"[load_all] Found {len(files)} collected file(s) — merging...")
+
+        seen_keys: set = set()
+        all_papers: List[PaperRecord] = []
+        total_raw = 0
+
+        for path in files:
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+            except Exception as e:
+                logger.warning(f"[load_all] Skipping {path.name}: {e}")
+                continue
+
+            file_added = 0
+            for item in data:
+                try:
+                    paper = PaperRecord(**item)
+                    key = paper.get_dedup_key()
+                    if key not in seen_keys:
+                        seen_keys.add(key)
+                        all_papers.append(paper)
+                        file_added += 1
+                except Exception:
+                    pass
+            total_raw += len(data)
+            logger.info(f"[load_all]   {path.name}: {len(data)} records, "
+                        f"{file_added} new after dedup")
+
+        logger.info(f"[load_all] Total: {total_raw} raw → {len(all_papers)} unique papers")
+        return all_papers
+
+    def load_all_rejected(self) -> List[PaperRecord]:
+        """
+        Loads and merges ALL rejected_*.json files, deduplicating across runs.
+
+        Used by train_ml_model() to build the negative training set from
+        every rejection across all collection runs — not just the latest one.
+        """
+        files = sorted(PROC_DIR.glob("rejected_*.json"))
+        if not files:
+            logger.info("[load_all_rejected] No rejection files found.")
+            return []
+
+        logger.info(f"[load_all_rejected] Found {len(files)} rejected file(s) — merging...")
+
+        seen_keys: set = set()
+        all_rejected: List[PaperRecord] = []
+        total_raw = 0
+
+        for path in files:
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+            except Exception as e:
+                logger.warning(f"[load_all_rejected] Skipping {path.name}: {e}")
+                continue
+
+            file_added = 0
+            for item in data:
+                try:
+                    paper = PaperRecord(**item)
+                    key = paper.get_dedup_key()
+                    if key not in seen_keys:
+                        seen_keys.add(key)
+                        all_rejected.append(paper)
+                        file_added += 1
+                except Exception:
+                    pass
+            total_raw += len(data)
+            logger.info(f"[load_all_rejected]   {path.name}: {len(data)} raw, "
+                        f"{file_added} new after dedup")
+
+        logger.info(f"[load_all_rejected] Total: {total_raw} raw → "
+                    f"{len(all_rejected)} unique rejected papers")
+        return all_rejected
+
     # ─── Reporting ────────────────────────────────────────────────────────────
 
     def _print_summary(self, records: List[PaperRecord]):

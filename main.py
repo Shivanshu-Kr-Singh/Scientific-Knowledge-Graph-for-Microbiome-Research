@@ -245,30 +245,36 @@ def run_layer3(
 
 def train_relevance_model():
     """
-    Trains the Stage 3 ML classifier from collected papers.
+    Trains the Stage 3 ML classifier from ALL collected papers across all runs.
     Run this after your first large collection (MAX_PER_SOURCE=500+).
 
     WHAT HAPPENS:
-      1. Loads latest collected JSON from data/processed/
-      2. Runs Stage 2 rules on all papers to generate pseudo-labels
-         (high-confidence keeps → label 1, high-confidence rejects → label 0)
-      3. Encodes papers with sentence-transformers (all-MiniLM-L6-v2)
-      4. Trains LogisticRegression with 5-fold cross-validation
-      5. Saves model to config/relevance_model.pkl
-      6. Reports F1 score
+      1. Loads ALL collected_*.json files (not just the latest) and deduplicates
+         across runs — so every paper ever kept feeds into the positive set
+      2. Loads ALL rejected_*.json files and deduplicates — full negative set
+      3. Runs Stage 2 rules to pseudo-label: high-score → 1, low-score → 0
+      4. Encodes with sentence-transformers (all-MiniLM-L6-v2), batch_size=128
+      5. Trains LogisticRegression (saga solver, all CPU cores) with 5-fold CV
+      6. Hot-reloads the model into the live MLClassifier — no restart needed
+      7. Saves to config/relevance_model.pkl and reports F1
 
-    Re-run monthly as more papers accumulate.
+    Re-run after every 5,000–10,000 new papers collected.
     """
     from collectors.orchestrator import CollectionOrchestrator
     from collectors.relevance_filter import RelevanceFilter
 
-    logger.info("Training ML relevance classifier...")
+    logger.info("Training ML relevance classifier from all collected runs...")
     orchestrator = CollectionOrchestrator()
-    papers = orchestrator.load_latest()
-    logger.info(f"Loaded {len(papers)} papers for training")
+
+    # Load ALL runs — not just the latest batch
+    papers          = orchestrator.load_all()
+    rejected_papers = orchestrator.load_all_rejected()
+
+    logger.info(f"Training corpus: {len(papers)} collected, "
+                f"{len(rejected_papers)} rejected across all runs")
 
     rf = RelevanceFilter()
-    rf.train_ml_model(papers)
+    rf.train_ml_model(papers, rejected_papers=rejected_papers)
 
 
 if __name__ == "__main__":

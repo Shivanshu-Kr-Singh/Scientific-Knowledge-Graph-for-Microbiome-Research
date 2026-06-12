@@ -379,17 +379,33 @@ class RelevanceFilter:
             review=True   # Flag for review — don't silently reject
         )
 
-    # ── ML training ───
-    def train_ml_model(self, papers: List[PaperRecord]):
+    # ── ML training ───────────────────────────────────────────────────────────
+
+    def train_ml_model(self, papers: List[PaperRecord],
+                       rejected_papers: Optional[List[PaperRecord]] = None):
         """
         Trains ML classifier with balanced, quality-focused sampling.
 
+        WHAT CHANGED FOR 60k SCALE:
+          - `papers` should now be ALL collected papers across ALL runs
+            (pass orchestrator.load_all() not load_latest())
+          - `rejected_papers` can be pre-loaded via orchestrator.load_all_rejected()
+            to avoid re-reading every rejected_*.json file on each train run
+          - Deduplication by content_hash / title before training — prevents
+            duplicate papers from multiple runs from inflating counts
+          - Encoding batch_size raised to 128 for GPU / 64 for CPU throughput
+          - Hard negative cap raised: fills up to 3× positives instead of 2×
+            to give the model more ambiguous examples at scale
+          - Min samples raised: 100+ needed before training at production scale
+          - After training, the live MLClassifier instance is hot-reloaded so
+            the new weights are used immediately without a process restart
+
         STRATEGY:
-          Positives: collected papers with rule score > 0.85 (confident relevant)
-          Negatives: sampled from rejected files with priority on HARD negatives
-                     (score 0.3-0.6) over easy ones (score < 0.1)
-          Balance:   caps negatives at 2× positives to prevent class imbalance
-          Model:     sentence-transformers embeddings + LogisticRegression
+          Positives: all collected papers with rule score ≥ 0.85
+          Negatives: from rejected files, prioritising HARD cases (score 0.30–0.65)
+                     over medium (0.15–0.30) over easy (< 0.15)
+          Balance:   caps negatives at 3× positives
+          Model:     sentence-transformers (all-MiniLM-L6-v2) + LogisticRegression
         """
         try:
             from sentence_transformers import SentenceTransformer
@@ -398,124 +414,207 @@ class RelevanceFilter:
             from sklearn.utils import shuffle as sk_shuffle
             import numpy as np
         except ImportError:
-            logger.error("Run: pip install sentence-transformers scikit-learn")
+            logger.error("[filter] Run: pip install sentence-transformers scikit-learn")
             return
 
-        logger.info("[filter] Building balanced training dataset...")
+        logger.info("[filter] Building balanced training dataset across all runs...")
 
-        # ── Collect positives from high-confidence collected papers ───────────
-        pos_texts = []
+        # ── Deduplicate incoming papers by content_hash / dedup_key ──────────
+        seen_keys: set = set()
+        unique_papers: List[PaperRecord] = []
         for paper in papers:
+            key = (paper.content_hash or paper.get_dedup_key())
+            if key not in seen_keys:
+                seen_keys.add(key)
+                unique_papers.append(paper)
+
+        logger.info(f"[filter] Collected papers after dedup: {len(unique_papers)} "
+                    f"(from {len(papers)} total across all runs)")
+
+        # ── Collect positives: rule score ≥ 0.85 ─────────────────────────────
+        pos_texts: List[str] = []
+        for paper in unique_papers:
             v = self._stage2_rules(paper)
             if v.score >= 0.85:
-                pos_texts.append(f"{paper.title or ''} {paper.abstract or ''}")
+                pos_texts.append(
+                    f"{paper.title or ''} {paper.abstract or ''}".strip()
+                )
 
-        if len(pos_texts) < 30:
-            logger.warning(f"[filter] Only {len(pos_texts)} positive samples — need 30+.")
+        MIN_POSITIVES = 50  # raised from 30 — too few produces unreliable models
+        if len(pos_texts) < MIN_POSITIVES:
+            logger.warning(
+                f"[filter] Only {len(pos_texts)} positive samples — need {MIN_POSITIVES}+. "
+                f"Collect more papers (MAX_PER_SOURCE=500+) before training."
+            )
             return
 
         logger.info(f"[filter] Positives: {len(pos_texts)} papers (rule score ≥ 0.85)")
 
-        # ── Collect negatives from rejected files, prioritising hard cases ─────
-        from config import PROC_DIR
-        import glob as _glob
+        # ── Collect negatives from rejected papers ────────────────────────────
+        # If pre-loaded externally, use those. Otherwise fall back to globbing
+        # rejected_*.json files — but deduplicate across files first.
+        if rejected_papers is None:
+            from config import PROC_DIR
+            import glob as _glob
 
-        # Buckets by difficulty
-        hard_negs   = []  # score 0.3–0.6  (model needs these most)
-        medium_negs = []  # score 0.15–0.3
-        easy_negs   = []  # score < 0.15   (too obvious, limit these)
+            seen_rej: set = set()
+            rejected_papers = []
+            for path in _glob.glob(str(PROC_DIR / "rejected_*.json")):
+                try:
+                    with open(path, encoding="utf-8") as f:
+                        batch = json.load(f)
+                    for r in batch:
+                        try:
+                            p   = PaperRecord(**r)
+                            key = p.content_hash or p.get_dedup_key()
+                            if key not in seen_rej:
+                                seen_rej.add(key)
+                                rejected_papers.append(p)
+                        except Exception:
+                            pass
+                except Exception as e:
+                    logger.warning(f"[filter] Could not load {path}: {e}")
 
-        rejected_files = _glob.glob(str(PROC_DIR / "rejected_*.json"))
-        for path in rejected_files:
+            logger.info(f"[filter] Rejected papers loaded: {len(rejected_papers)} unique")
+
+        # Bucket rejected papers by difficulty (rule score)
+        hard_negs:   List[str] = []   # 0.30–0.65 — model needs these most
+        medium_negs: List[str] = []   # 0.15–0.30
+        easy_negs:   List[str] = []   # < 0.15 — trivially irrelevant
+
+        for paper in rejected_papers:
+            title    = paper.title    or ""
+            abstract = paper.abstract or ""
+            if not title and not abstract:
+                continue
             try:
-                with open(path, encoding="utf-8") as f:
-                    rejected = json.load(f)
-                for r in rejected:
-                    title    = r.get("title", "") or ""
-                    abstract = r.get("abstract", "") or ""
-                    if not title and not abstract:
-                        continue
-                    try:
-                        paper = PaperRecord(**r)
-                        v = self._stage2_rules(paper)
-                        text = f"{title} {abstract}"
-                        if v.score >= 0.30:
-                            hard_negs.append(text)
-                        elif v.score >= 0.15:
-                            medium_negs.append(text)
-                        else:
-                            easy_negs.append(text)
-                    except Exception:
-                        easy_negs.append(f"{title} {abstract}")
-            except Exception as e:
-                logger.warning(f"[filter] Could not load {path}: {e}")
+                v    = self._stage2_rules(paper)
+                text = f"{title} {abstract}".strip()
+                if v.score >= 0.30:
+                    hard_negs.append(text)
+                elif v.score >= 0.15:
+                    medium_negs.append(text)
+                else:
+                    easy_negs.append(text)
+            except Exception:
+                easy_negs.append(f"{title} {abstract}".strip())
 
         logger.info(
             f"[filter] Negatives available — hard: {len(hard_negs)}, "
             f"medium: {len(medium_negs)}, easy: {len(easy_negs)}"
         )
 
-        # Sample negatives: fill up to 2× positives, prioritise hard > medium > easy
-        target_neg = min(len(pos_texts) * 2, len(hard_negs) + len(medium_negs) + len(easy_negs))
+        # Fill up to 3× positives (more at scale → better decision boundary)
         import random
         random.seed(42)
 
-        selected_negs = []
-        # Take all hard negatives first (capped at target)
-        selected_negs.extend(random.sample(hard_negs, min(len(hard_negs), target_neg)))
-        remaining = target_neg - len(selected_negs)
-        if remaining > 0:
-            selected_negs.extend(random.sample(medium_negs, min(len(medium_negs), remaining)))
-        remaining = target_neg - len(selected_negs)
-        if remaining > 0:
-            selected_negs.extend(random.sample(easy_negs, min(len(easy_negs), remaining)))
+        total_neg_available = len(hard_negs) + len(medium_negs) + len(easy_negs)
+        target_neg = min(len(pos_texts) * 3, total_neg_available)
 
-        logger.info(f"[filter] Selected {len(selected_negs)} negatives (target: {target_neg})")
+        selected_negs: List[str] = []
+        selected_negs.extend(
+            random.sample(hard_negs, min(len(hard_negs), target_neg))
+        )
+        remaining = target_neg - len(selected_negs)
+        if remaining > 0:
+            selected_negs.extend(
+                random.sample(medium_negs, min(len(medium_negs), remaining))
+            )
+        remaining = target_neg - len(selected_negs)
+        if remaining > 0:
+            selected_negs.extend(
+                random.sample(easy_negs, min(len(easy_negs), remaining))
+            )
+
+        logger.info(
+            f"[filter] Selected {len(selected_negs)} negatives "
+            f"(target: {target_neg}, hard: {min(len(hard_negs), target_neg)})"
+        )
 
         # ── Build final dataset ───────────────────────────────────────────────
         texts  = pos_texts + selected_negs
         labels = [1] * len(pos_texts) + [0] * len(selected_negs)
+        pos    = labels.count(1)
+        neg    = labels.count(0)
 
-        pos = labels.count(1)
-        neg = labels.count(0)
-        logger.info(f"[filter] Final training set: {pos} relevant, {neg} off-topic "
-                    f"(ratio {neg/max(pos,1):.1f}:1)")
+        logger.info(
+            f"[filter] Final training set: {pos} relevant, {neg} off-topic "
+            f"(ratio {neg / max(pos, 1):.1f}:1)"
+        )
 
-        if len(texts) < 50:
-            logger.warning(f"[filter] Only {len(texts)} total samples — need 50+.")
+        MIN_TOTAL = 100   # raised from 50 — need sufficient volume at 60k scale
+        if len(texts) < MIN_TOTAL:
+            logger.warning(
+                f"[filter] Only {len(texts)} total samples — need {MIN_TOTAL}+. "
+                f"Collect more data before training."
+            )
             return
 
         # ── Encode with sentence-transformers ─────────────────────────────────
-        logger.info("[filter] Encoding with sentence-transformers (all-MiniLM-L6-v2)...")
+        # batch_size=128 is faster on GPU; use 64 if you see OOM errors
+        logger.info(
+            f"[filter] Encoding {len(texts)} texts with "
+            f"sentence-transformers (all-MiniLM-L6-v2)..."
+        )
         encoder = SentenceTransformer("all-MiniLM-L6-v2")
-        X = encoder.encode(texts, show_progress_bar=True, batch_size=32)
-        y = np.array(labels)
-        X, y = sk_shuffle(X, y, random_state=42)
+        X = encoder.encode(
+            texts,
+            show_progress_bar=True,
+            batch_size=128,          # was 32 — 4× faster encoding at scale
+            convert_to_numpy=True,
+        )
+        y      = np.array(labels)
+        X, y   = sk_shuffle(X, y, random_state=42)
 
         # ── Train with stratified cross-validation ────────────────────────────
         cv_folds = min(5, min(pos, neg))
-        clf = LogisticRegression(C=1.0, max_iter=1000, class_weight="balanced")
-        cv = StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=42)
-        scores = cross_val_score(clf, X, y, cv=cv, scoring="f1")
-        logger.info(f"[filter] Cross-val F1 ({cv_folds}-fold): {scores.mean():.3f} ± {scores.std():.3f}")
+        clf = LogisticRegression(
+            C=1.0,
+            max_iter=2000,           # raised from 1000 — large datasets need more iters
+            class_weight="balanced",
+            random_state=42,
+            solver="saga",           # faster for large n_samples vs default lbfgs
+            n_jobs=-1,               # use all CPU cores
+        )
+        cv     = StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=42)
+        scores = cross_val_score(clf, X, y, cv=cv, scoring="f1", n_jobs=-1)
+        logger.info(
+            f"[filter] Cross-val F1 ({cv_folds}-fold): "
+            f"{scores.mean():.3f} ± {scores.std():.3f}"
+        )
         clf.fit(X, y)
 
         # ── Save ──────────────────────────────────────────────────────────────
         with open(MODEL_PATH, "wb") as f:
             pickle.dump({
-                "model": clf,
+                "model":        clf,
                 "encoder_name": "all-MiniLM-L6-v2",
-                "trained_on": len(texts),
-                "pos_samples": pos,
-                "neg_samples": neg,
+                "trained_on":   len(texts),
+                "n_samples":    len(texts),
+                "pos_samples":  pos,
+                "neg_samples":  neg,
+                "f1":           float(scores.mean()),
             }, f)
 
+        # ── Hot-reload the live MLClassifier so new weights are used NOW ──────
+        # Without this, the new model only takes effect after a process restart
+        # because _ml_classifier still holds the old (or untrained) instance.
         self._ml_model      = clf
         self._ml_vectorizer = encoder
-        logger.success(f"[filter] Model saved → {MODEL_PATH} "
-                       f"(trained on {len(texts)} samples)")
-        quality = "excellent" if scores.mean() > 0.92 else "good" if scores.mean() > 0.85 else "retrain with more data"
-        logger.info(f"[filter] F1 score: {scores.mean():.3f} — {quality}")
+        self._ml_classifier._model   = clf
+        self._ml_classifier._encoder = encoder
+        self._ml_classifier.trained  = True
+
+        quality = (
+            "excellent"              if scores.mean() > 0.92 else
+            "good — ready to use"    if scores.mean() > 0.85 else
+            "moderate — collect more data and retrain"
+        )
+        logger.success(
+            f"[filter] Model saved → {MODEL_PATH} | "
+            f"trained on {len(texts)} samples | "
+            f"F1={scores.mean():.3f} — {quality}"
+        )
 
     def _load_ml_model(self):
         with open(MODEL_PATH, "rb") as f:

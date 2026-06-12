@@ -77,11 +77,32 @@ class RelevanceFilter:
         self.cfg = _load_config()
         self.pos_terms  = self.cfg.get("positive_terms", {})
         self.neg_terms  = self.cfg.get("negative_terms", {})
-        self.thresholds = self.cfg.get("thresholds", {"keep": 0.70, "review": 0.40})
         self.gate_cfg   = self.cfg.get("metagenomics_gate", {"enabled": True, "terms": []})
         self.mesh_keep  = [m.lower() for m in self.cfg.get("mesh_keep", [])]
         self.mesh_human = [m.lower() for m in self.cfg.get("mesh_human_signal", [])]
         self.mesh_animal= [m.lower() for m in self.cfg.get("mesh_animal_only", [])]
+
+        # Load Stage 2 thresholds — auto-calibrated values take priority
+        # over stage2_rules.yaml static values. Falls back to yaml if no
+        # calibration file exists yet.
+        from collectors.stage2_calibrator import load_calibrated_thresholds
+        yaml_thresholds = self.cfg.get("thresholds", {"keep": 0.70, "review": 0.40})
+        cal_keep, cal_review = load_calibrated_thresholds()
+
+        self.thresholds = {
+            "keep":   cal_keep,
+            "review": cal_review,
+        }
+
+        # Log which source the thresholds came from
+        from collectors.stage2_calibrator import CALIBRATION_PATH
+        source = "calibration file" if CALIBRATION_PATH.exists() else "stage2_rules.yaml defaults"
+        logger.info(
+            f"[filter] Stage 2 thresholds: "
+            f"keep≥{self.thresholds['keep']:.3f}  "
+            f"review≥{self.thresholds['review']:.3f}  "
+            f"(source: {source})"
+        )
 
         # Standalone stage modules
         self._metadata_filter = MetadataFilter()
@@ -627,6 +648,27 @@ class RelevanceFilter:
             f"trained on {len(texts)} samples | "
             f"F1={scores.mean():.3f} — {quality}"
         )
+
+        # ── Calibrate Stage 2 thresholds from the same paper set ─────────────
+        # Now that the ML model is trained, also update Stage 2 keep/review
+        # thresholds so they reflect the actual score distribution of your data.
+        logger.info("[filter] Running Stage 2 threshold calibration...")
+        try:
+            from collectors.stage2_calibrator import calibrate_stage2_thresholds
+            new_keep, new_review = calibrate_stage2_thresholds(
+                papers          = unique_papers,
+                stage2_scorer   = self._stage2_rules,
+                metadata_filter = self._metadata_filter,
+            )
+            # Hot-reload thresholds into this running instance immediately
+            self.thresholds["keep"]   = new_keep
+            self.thresholds["review"] = new_review
+            logger.success(
+                f"[filter] Stage 2 thresholds updated: "
+                f"keep≥{new_keep:.3f}  review≥{new_review:.3f}"
+            )
+        except Exception as e:
+            logger.warning(f"[filter] Stage 2 calibration failed: {e} — keeping current thresholds")
 
     def _load_ml_model(self):
         with open(MODEL_PATH, "rb") as f:

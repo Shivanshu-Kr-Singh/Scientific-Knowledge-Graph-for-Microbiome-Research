@@ -3,22 +3,19 @@ collectors/pubmed_collector.py
 -------------------------------
 Fetches research papers from PubMed using NCBI's E-utilities API.
 
-WHY PUBMED IS THE PRIMARY SOURCE:
-  PubMed indexes 35+ million citations from MEDLINE and life science journals.
-  For human microbiome research specifically, it's the most comprehensive
-  database. The E-utilities API is free, well-documented, and returns
-  structured XML/JSON with MeSH terms — which are invaluable for NLP.
-
 HOW E-UTILITIES WORKS (2-step process):
-  Step 1: esearch → Give it a query, get back a LIST of PMIDs
-  Step 2: efetch  → Give it those PMIDs, get back FULL records
+  Step 1: esearch → Give it a query, get back a WebEnv + query_key
+  Step 2: efetch  → Use WebEnv + query_key to fetch full records in pages
 
-  We never skip step 1 and go straight to efetch because we need the
-  PMIDs to know which records to fetch.
+  We use WebHistory (usehistory=y) which avoids PubMed's hard limit of
+  retstart ≤ 9,999 on direct PMID-based pagination. WebHistory stores
+  the result set server-side and lets us page through any number of results.
 
 API DOCS: https://www.ncbi.nlm.nih.gov/books/NBK25500/
 """
 
+import json
+import re
 import xml.etree.ElementTree as ET
 from typing import Optional, List
 from loguru import logger
@@ -28,8 +25,10 @@ from models import PaperRecord
 from collectors.base_collector import BaseCollector
 
 
-# E-utilities base URL
 EUTILS_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+# PubMed hard-limits retstart to 9,999 for direct PMID pagination.
+# WebHistory has no such limit — always use it.
+PUBMED_MAX_RETSTART = 9999
 
 
 class PubMedCollector(BaseCollector):
@@ -97,98 +96,260 @@ class PubMedCollector(BaseCollector):
             "date_to":    date_to,
         }
 
-    # ─── Step 1a: esearch — get PMIDs ─────────────────────────────────────────
+    # ─── Step 1a: esearch — register query in WebHistory ─────────────────────
+
+    def _esearch_webhistory(self, query: str) -> tuple:
+        """
+        Runs esearch with usehistory=y — stores results server-side.
+
+        Returns (WebEnv, query_key, total_count).
+        WebEnv + query_key are then passed to efetch for any retstart.
+
+        WHY WEBHISTORY:
+          Direct PMID pagination (retstart) is hard-capped at 9,999 by PubMed.
+          WebHistory has no such limit — you can page through all 70,000+
+          results by incrementing retstart in steps of page_size.
+        """
+        params = {
+            **self._base_params,
+            "db":         "pubmed",
+            "term":       query,
+            "retmax":     0,        # We only want the WebEnv, not PMIDs yet
+            "retmode":    "json",
+            "usehistory": "y",
+        }
+        response = self._get(f"{EUTILS_BASE}/esearch.fcgi", params=params)
+
+        # Clean response — esearch JSON can contain \n inside string values
+        raw  = response.content.decode("utf-8", errors="replace")
+        data = json.loads(re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", " ", raw))
+
+        result    = data.get("esearchresult", {})
+        web_env   = result.get("webenv", "")
+        query_key = result.get("querykey", "1")
+        total     = int(result.get("count", 0))
+
+        if not web_env:
+            raise RuntimeError(f"[pubmed] esearch returned no WebEnv: {result}")
+
+        logger.info(f"[pubmed] Total results in PubMed: {total}")
+        return web_env, query_key, total
+
+    # ─── Step 1b: efetch — fetch a page using WebHistory ─────────────────────
+
+    def _efetch_page(self, web_env: str, query_key: str,
+                     retstart: int, retmax: int) -> ET.Element:
+        """
+        Fetches one page of full records using WebHistory.
+        No retstart limit — can page through all results.
+        Strips illegal XML control characters before parsing.
+        """
+        params = {
+            **self._base_params,
+            "db":        "pubmed",
+            "WebEnv":    web_env,
+            "query_key": query_key,
+            "retstart":  retstart,
+            "retmax":    retmax,
+            "retmode":   "xml",
+            "rettype":   "abstract",
+        }
+        response = self._get(f"{EUTILS_BASE}/efetch.fcgi", params=params)
+
+        # Strip XML-illegal control chars (0x00-0x08, 0x0B, 0x0C, 0x0E-0x1F)
+        raw   = response.content.decode("utf-8", errors="replace")
+        clean = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "", raw)
+        return ET.fromstring(clean.encode("utf-8"))
+
+    # ─── Main collection loop ─────────────────────────────────────────────────
+
+    def collect(
+        self,
+        query: str,
+        date_from: str,
+        date_to: str,
+        max_results: int = 500,
+        page_size: int = 200,
+        start_offset: int = 0,
+    ) -> List[PaperRecord]:
+        """
+        Collects papers from PubMed using WebHistory pagination.
+
+        PUBMED PAGINATION HARD LIMIT:
+          PubMed's efetch retstart is capped at 9,999. A single query session
+          can return at most ~10,000 papers. This is an NCBI API constraint.
+
+        STRATEGY FOR 60,000+ PAPERS:
+          We split the date range into monthly sub-ranges. Each sub-range
+          gets its own WebHistory session with up to 10,000 results.
+          start_offset tracks which month we're on across runs.
+
+          For 2024-01-01 to 2026-12-31 = 36 months.
+          Each month can have up to ~3,000 microbiome papers = 100,000+ total.
+
+          start_offset encodes: (month_index * 10000) + retstart_within_month
+          e.g. offset=15000 → month_index=1, retstart=5000
+               offset=0     → month_index=0, retstart=0
+        """
+        import datetime as dt
+        from dateutil.relativedelta import relativedelta
+        from datetime import date
+
+        logger.info(
+            f"[{self.source_name}] Starting collection | "
+            f"query='{query}' | {date_from} → {date_to}"
+        )
+
+        # Parse date range into list of monthly sub-ranges
+        try:
+            d_from = dt.datetime.strptime(date_from[:10].replace("/", "-"), "%Y-%m-%d").date()
+            d_to   = dt.datetime.strptime(date_to[:10].replace("/", "-"),   "%Y-%m-%d").date()
+        except Exception:
+            d_from = date(2024, 1, 1)
+            d_to   = date(2026, 12, 31)
+
+        # Build monthly sub-ranges
+        months = []
+        cur = d_from.replace(day=1)
+        while cur <= d_to:
+            month_end = (cur + relativedelta(months=1)) - relativedelta(days=1)
+            month_end = min(month_end, d_to)
+            months.append((
+                cur.strftime("%Y/%m/%d"),
+                month_end.strftime("%Y/%m/%d"),
+            ))
+            cur = cur + relativedelta(months=1)
+
+        MONTH_WINDOW = PUBMED_MAX_RETSTART  # max retstart per month session
+
+        # Decode start_offset into (month_index, retstart_within_month)
+        month_index    = start_offset // (MONTH_WINDOW + 1)
+        retstart_start = start_offset %  (MONTH_WINDOW + 1)
+
+        if start_offset > 0:
+            logger.info(
+                f"[pubmed] Resuming from month {month_index + 1}/{len(months)} "
+                f"at retstart {retstart_start}"
+            )
+
+        papers: List[PaperRecord] = []
+        self._last_retstart = start_offset   # default — updated as we go
+
+        for m_idx in range(month_index, len(months)):
+            if len(papers) >= max_results:
+                break
+
+            m_from, m_to = months[m_idx]
+            query_params = self.build_query(query, m_from, m_to)
+
+            # Register this month's query in WebHistory
+            try:
+                web_env, query_key, total = self._esearch_webhistory(
+                    query_params["query"]
+                )
+            except Exception as e:
+                logger.error(f"[pubmed] esearch failed for {m_from}–{m_to}: {e}")
+                continue
+
+            if total == 0:
+                logger.info(f"[pubmed] No results for {m_from}–{m_to}")
+                # Advance to next month
+                self._last_retstart = (m_idx + 1) * (MONTH_WINDOW + 1)
+                continue
+
+            logger.info(
+                f"[pubmed] Month {m_idx + 1}/{len(months)}: "
+                f"{m_from}→{m_to} | {total} total results"
+            )
+
+            # retstart within this month — 0 for new months, resumed for current
+            retstart = retstart_start if m_idx == month_index else 0
+
+            while len(papers) < max_results:
+                if retstart > MONTH_WINDOW:
+                    logger.info(
+                        f"[pubmed] Reached retstart limit for {m_from}–{m_to}"
+                    )
+                    break
+
+                batch = min(page_size, max_results - len(papers),
+                            MONTH_WINDOW - retstart)
+
+                try:
+                    xml_root = self._efetch_page(
+                        web_env, query_key, retstart, batch
+                    )
+                except Exception as e:
+                    logger.error(
+                        f"[pubmed] efetch failed at {m_from}–{m_to} "
+                        f"offset {retstart}: {e}"
+                    )
+                    break
+
+                articles = xml_root.findall(".//PubmedArticle")
+                if not articles:
+                    logger.info(
+                        f"[pubmed] No more articles at {m_from}–{m_to} "
+                        f"offset {retstart}"
+                    )
+                    break
+
+                batch_count = 0
+                for article_elem in articles:
+                    if len(papers) >= max_results:
+                        break
+                    paper = self.parse_record({"_xml_element": article_elem})
+                    if paper:
+                        paper.source       = self.source_name
+                        paper.content_hash = self._compute_hash(paper)
+                        paper.fetched_at   = dt.datetime.utcnow().isoformat()
+                        papers.append(paper)
+                        batch_count += 1
+
+                # Track real position for cursor saving:
+                # encoded as month_index * (MONTH_WINDOW+1) + retstart
+                self._last_retstart = (
+                    m_idx * (MONTH_WINDOW + 1) + retstart
+                )
+
+                logger.info(
+                    f"[pubmed] {m_from}–{m_to} offset {retstart}: "
+                    f"{batch_count} records | Total: {len(papers)}"
+                )
+
+                if len(articles) < batch:
+                    # End of this month's results — move to next month
+                    logger.info(
+                        f"[pubmed] Exhausted {m_from}–{m_to} "
+                        f"({retstart + len(articles)} of {total})"
+                    )
+                    self._last_retstart = (m_idx + 1) * (MONTH_WINDOW + 1)
+                    break
+
+                retstart += len(articles)
+
+        logger.success(f"[pubmed] Collection complete: {len(papers)} papers")
+        return papers
+
+    # ─── Legacy interface methods (kept for base class compatibility) ─────────
 
     def _esearch(self, query: str, retstart: int, retmax: int) -> List[str]:
-        """
-        Searches PubMed and returns a list of PMIDs.
-
-        retstart: offset (for pagination)
-        retmax:   how many PMIDs to return
-
-        RETURNS: list of PMID strings like ["38765432", "38712345", ...]
-        """
-        params = {
-            **self._base_params,
-            "db":       "pubmed",
-            "term":     query,
-            "retstart": retstart,
-            "retmax":   retmax,
-            "retmode":  "json",
-            "usehistory": "n",  # We'll use the PMID list directly
-        }
-
-        response = self._get(f"{EUTILS_BASE}/esearch.fcgi", params=params)
-        data = response.json()
-
-        pmids = data.get("esearchresult", {}).get("idlist", [])
-        total = int(data.get("esearchresult", {}).get("count", 0))
-
-        # Always log total on the first call of each run (retstart may be non-zero on resumed runs)
-        if not getattr(self, "_total_logged", False):
-            logger.info(f"[pubmed] Total results in PubMed: {total}")
-            self._total_logged = True
-
-        return pmids
-
-    # ─── Step 1b: efetch — get full records from PMIDs ────────────────────────
+        """Legacy method — not used by the overridden collect(). Kept for compatibility."""
+        return []
 
     def _efetch_xml(self, pmids: List[str]) -> ET.Element:
-        """
-        Fetches full PubMed records for a list of PMIDs.
-        Returns the root XML element (PubmedArticleSet).
+        """Legacy method — not used by the overridden collect(). Kept for compatibility."""
+        return ET.Element("PubmedArticleSet")
 
-        WHY XML NOT JSON?
-          PubMed's JSON mode doesn't include all fields (notably MeSH terms
-          and detailed author affiliations). XML has everything.
-          We parse it manually using Python's built-in xml.etree module.
-        """
-        params = {
-            **self._base_params,
-            "db":      "pubmed",
-            "id":      ",".join(pmids),
-            "retmode": "xml",
-            "rettype": "abstract",
-        }
-
-        response = self._get(f"{EUTILS_BASE}/efetch.fcgi", params=params)
-        root = ET.fromstring(response.content)
-        return root
-
-    # ─── Implement BaseCollector interface ────────────────────────────────────
+    def _efetch_chunk(self, pmids: List[str]) -> ET.Element:
+        """Legacy method — not used by the overridden collect(). Kept for compatibility."""
+        return ET.Element("PubmedArticleSet")
 
     def fetch_page(self, query_params: dict, page: int, page_size: int) -> dict:
-        """
-        Combines esearch (get PMIDs) + efetch (get records) for one page.
-        Returns a dict that _extract_items will process.
-        """
-        retstart = page * page_size
-
-        # Reset the total-logged flag at the start of each collect() run
-        # so the total is always printed once per run regardless of start page
-        if not hasattr(self, "_total_logged") or page == 0:
-            self._total_logged = False
-
-        pmids = self._esearch(query_params["query"], retstart=retstart, retmax=page_size)
-
-        if not pmids:
-            return {"records": []}
-
-        # Save raw PMID list
-        self._save_raw(f"pmids_page{page}", {"pmids": pmids, "query": query_params})
-
-        # Fetch full XML records
-        xml_root = self._efetch_xml(pmids)
-
-        # Convert XML articles to raw dicts for parse_record to process
-        articles = []
-        for article_elem in xml_root.findall(".//PubmedArticle"):
-            articles.append({"_xml_element": article_elem})
-
-        return {"records": articles}
+        """Not used — overridden by collect() above. Required by BaseCollector."""
+        return {"records": []}
 
     def _extract_items(self, raw_page: dict) -> list:
-        """Override base — our records are already a list of dicts."""
         return raw_page.get("records", [])
 
     def parse_record(self, raw: dict) -> Optional[PaperRecord]:

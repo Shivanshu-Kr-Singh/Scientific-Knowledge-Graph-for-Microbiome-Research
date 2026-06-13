@@ -98,6 +98,12 @@ class CollectionOrchestrator:
                 collector._resume_token = saved_token
                 if saved_token:
                     logger.info(f"[semantic_scholar] Resuming from saved continuation token")
+            # OpenAlex uses opaque cursor strings — inject the saved cursor
+            elif source == "openalex":
+                saved_cursor = cursors.get("openalex_cursor")
+                collector._resume_cursor = saved_cursor
+                if saved_cursor and start_offset > 0:
+                    logger.info(f"[openalex] Resuming from saved cursor string")
             elif start_offset > 0:
                 logger.info(
                     f"[{source}] Resuming from offset {start_offset} "
@@ -113,8 +119,41 @@ class CollectionOrchestrator:
                     start_offset=start_offset,
                 )
 
-                # Advance numeric cursor for offset-based collectors
-                updated_cursors[source] = start_offset + max_per_source
+                # Advance cursor by ACTUAL records collected, not by max_per_source.
+                # This ensures if collection stops early (network drop, API limit,
+                # source exhausted), the cursor reflects reality.
+                # Next run with MAX_PER_SOURCE=5000 will collect 5000 MORE from
+                # where this run actually stopped — not restart from 0.
+                actual_collected = len(records)
+
+                # For PubMed: use the last retstart the collector reached,
+                # since it tracks its own offset internally via WebHistory.
+                # For all others: start_offset + actual_collected is correct.
+                # For PubMed: use the last retstart the collector reached,
+                # since it tracks its own offset internally via WebHistory.
+                # For OpenAlex: save the opaque cursor string for cross-run resume.
+                # For all others: start_offset + actual_collected is correct.
+                if source == "pubmed":
+                    last_offset = getattr(collector, "_last_retstart", None)
+                    if last_offset is not None:
+                        updated_cursors[source] = last_offset
+                    else:
+                        updated_cursors[source] = start_offset + actual_collected
+
+                elif source == "openalex":
+                    # Save numeric offset for resume detection
+                    updated_cursors[source] = start_offset + actual_collected
+                    # Save opaque cursor string for actual pagination resume
+                    last_cursor = getattr(collector, "_last_cursor", None)
+                    if last_cursor:
+                        updated_cursors["openalex_cursor"] = last_cursor
+                        # Inject into next collector instance at run start
+                    else:
+                        # Cursor exhausted — reset both
+                        updated_cursors.pop("openalex_cursor", None)
+                        logger.info("[openalex] All results consumed — cursor reset")
+                else:
+                    updated_cursors[source] = start_offset + actual_collected
 
                 # For S2: save the continuation token for next run
                 if source == "semantic_scholar":
@@ -127,12 +166,11 @@ class CollectionOrchestrator:
                         updated_cursors[source] = 0
                         logger.info("[semantic_scholar] All results consumed — cursor reset")
 
-                # bioRxiv runs its own inline RelevanceFilter after every 30-paper
-                # batch — by the time collect() returns, papers are already filtered.
-                # No additional pre-filter needed here.
-
                 all_records.extend(records)
-                logger.info(f"[{source}] Added {len(records)} records")
+                logger.info(
+                    f"[{source}] Added {actual_collected} records | "
+                    f"cursor → {updated_cursors[source]}"
+                )
 
             except Exception as e:
                 logger.error(f"[{source}] COLLECTOR FAILED: {e}")

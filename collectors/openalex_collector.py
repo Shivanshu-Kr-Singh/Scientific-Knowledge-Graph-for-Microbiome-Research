@@ -31,7 +31,7 @@ API DOCS: https://docs.openalex.org/api-entities/works/search-works
 Base URL:  https://api.openalex.org/works
 """
 
-from typing import Optional
+from typing import Optional, List
 from loguru import logger
 
 from models import PaperRecord
@@ -82,29 +82,128 @@ class OpenAlexCollector(BaseCollector):
 
         FILTER STRATEGY (two-layer, same approach as EuropePMC):
           Layer A — Concept filter: require at least one microbiome concept tag.
-            This is much more precise than keyword search alone because OpenAlex's
-            ML model assigns concepts based on full semantic analysis of the paper,
-            not just keyword matching.
-
           Layer B — Date filter: publication_year range from the query.
-
-        OPENALEX FILTER SYNTAX:
-          filter=concept.id:C2778793              → single concept
-          filter=concept.id:C2778793|C185592680   → OR across concepts
-          filter=publication_year:2024-2026        → year range
-          Multiple filters: comma-separated (AND logic)
         """
         year_from = date_from[:4]
         year_to   = date_to[:4]
-
         concept_filter = "|".join(MICROBIOME_CONCEPTS)
-
         return {
             "concept_filter": concept_filter,
             "year_from":      year_from,
             "year_to":        year_to,
             "query":          query,
         }
+
+    def collect(
+        self,
+        query: str,
+        date_from: str,
+        date_to: str,
+        max_results: int = 500,
+        page_size: int = 200,    # OpenAlex max per page is 200
+        start_offset: int = 0,
+    ) -> List[PaperRecord]:
+        """
+        Override base collect() to use OpenAlex cursor-based pagination.
+
+        CURSOR PERSISTENCE ACROSS RUNS:
+          OpenAlex uses opaque cursor strings, not numeric offsets.
+          We save the last cursor string in the cursor file as a special
+          key "openalex_cursor". start_offset is used only to detect
+          "fresh start vs resume" — 0 = fresh, >0 = check for saved cursor.
+        """
+        import hashlib
+        import datetime as dt
+
+        logger.info(
+            f"[{self.source_name}] Starting collection | "
+            f"{date_from} → {date_to} | max={max_results}"
+        )
+
+        query_params = self.build_query(query, date_from, date_to)
+
+        filters = [
+            f"concepts.id:{query_params['concept_filter']}",
+            f"publication_year:{query_params['year_from']}-{query_params['year_to']}",
+            "type:article",
+        ]
+
+        base_params = {
+            "filter":   ",".join(filters),
+            "per_page": min(page_size, 200),
+            "sort":     "publication_date:desc",
+            "mailto":   self._polite_email,
+            "select":   ",".join([
+                "id", "doi", "title", "abstract_inverted_index",
+                "authorships", "publication_date", "publication_year",
+                "primary_location", "open_access", "cited_by_count",
+                "referenced_works_count", "type", "concepts",
+                "best_oa_location",
+            ]),
+        }
+
+        # Use saved cursor string if resuming, otherwise start fresh
+        saved_cursor = getattr(self, "_resume_cursor", None)
+        cursor = saved_cursor if (start_offset > 0 and saved_cursor) else "*"
+        if cursor != "*":
+            logger.info(f"[openalex] Resuming from saved cursor")
+
+        papers: List[PaperRecord] = []
+        page = 0
+        self._last_cursor = None   # will be updated after each page
+
+        while len(papers) < max_results:
+            params = {**base_params, "cursor": cursor}
+
+            try:
+                self._wait_for_rate_limit()
+                response = self.session.get(
+                    f"{OPENALEX_BASE}/works", params=params, timeout=30
+                )
+                response.raise_for_status()
+                data = response.json()
+            except Exception as e:
+                logger.error(f"[openalex] Request failed on page {page}: {e}")
+                break
+
+            if page == 0:
+                total = data.get("meta", {}).get("count", "unknown")
+                logger.info(f"[openalex] Total results available: {total}")
+
+            results = data.get("results", [])
+            if not results:
+                logger.info(f"[openalex] No more results at page {page}")
+                break
+
+            batch_count = 0
+            for raw in results:
+                if len(papers) >= max_results:
+                    break
+                paper = self.parse_record(raw)
+                if paper:
+                    paper.source       = self.source_name
+                    paper.content_hash = self._compute_hash(paper)
+                    paper.fetched_at   = dt.datetime.utcnow().isoformat()
+                    papers.append(paper)
+                    batch_count += 1
+
+            logger.info(
+                f"[openalex] Page {page}: {batch_count} records | "
+                f"Total so far: {len(papers)}"
+            )
+
+            # Advance cursor and save it for cross-run persistence
+            cursor = data.get("meta", {}).get("next_cursor")
+            self._last_cursor = cursor   # orchestrator saves this to cursor file
+
+            if not cursor:
+                logger.info("[openalex] Cursor exhausted — no more pages")
+                break
+
+            page += 1
+
+        logger.success(f"[openalex] Collection complete: {len(papers)} papers")
+        return papers
 
     def fetch_page(self, query_params: dict, page: int, page_size: int) -> dict:
         """

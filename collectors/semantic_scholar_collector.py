@@ -62,7 +62,7 @@ class SemanticScholarCollector(BaseCollector):
         if SEMANTIC_SCHOLAR_API_KEY:
             # API key sent as x-api-key header (as per official tutorial)
             self.session.headers["x-api-key"] = SEMANTIC_SCHOLAR_API_KEY
-            logger.info("[semantic_scholar] API key loaded — 1 req/sec rate limit")
+            logger.info("[semantic_scholar] API key loaded — 1 req/sec rate limit | 1000 papers/request")
         else:
             logger.warning(
                 "[semantic_scholar] No API key — sharing rate limit with all "
@@ -102,7 +102,7 @@ class SemanticScholarCollector(BaseCollector):
         date_from: str,
         date_to: str,
         max_results: int = 500,
-        page_size: int = 100,    # Bulk endpoint supports up to 1000 per page
+        page_size: int = 1000,   # Bulk endpoint max is 1000 per request
         start_offset: int = 0,   # ignored — S2 uses token pagination; cursor stored separately
     ) -> List[PaperRecord]:
         """
@@ -131,8 +131,8 @@ class SemanticScholarCollector(BaseCollector):
 
         import hashlib, datetime as dt
 
-        # Request exactly as many as needed per page (API max is 1000)
-        per_page = min(max_results, 1000)
+        # Request exactly as many as needed per page, capped at API max of 1000
+        per_page = min(max_results, page_size, 1000)
 
         params = {
             "query":  query_params["query"],
@@ -157,8 +157,8 @@ class SemanticScholarCollector(BaseCollector):
             if token:
                 params["token"] = token
             else:
-                # Recalculate exactly how many we still need
-                params["limit"] = min(max_results - len(papers), 1000)
+                # Recalculate exactly how many we still need, capped at page_size
+                params["limit"] = min(max_results - len(papers), page_size, 1000)
 
             try:
                 self._wait_for_rate_limit()

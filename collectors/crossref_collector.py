@@ -34,7 +34,7 @@ NOTE ON SEARCH QUALITY:
   and post-fetch relevance filtering.
 """
 
-from typing import Optional
+from typing import Optional, List
 from loguru import logger
 
 from models import PaperRecord
@@ -121,7 +121,7 @@ class CrossrefCollector(BaseCollector):
             ),
             "rows":            min(page_size, 1000),  # Crossref max is 1000
             "offset":          offset,
-            "sort":            "score",
+            "sort":            "published",    # date sort works at deep offsets; relevance sort breaks at offset >9999
             "order":           "desc",
             # Select only fields we need — dramatically reduces response size
             "select": ",".join([
@@ -150,6 +150,83 @@ class CrossrefCollector(BaseCollector):
 
     def _extract_items(self, raw_page: dict) -> list:
         return raw_page.get("items", [])
+
+    def collect(
+        self,
+        query: str,
+        date_from: str,
+        date_to: str,
+        max_results: int = 500,
+        page_size: int = 1000,    # Crossref max per request is 1000
+        start_offset: int = 0,
+    ) -> List[PaperRecord]:
+        """
+        Override base collect() to paginate Crossref correctly.
+
+        The base collect() uses max_results as page_size, which causes it
+        to stop after one page because Crossref caps at 1000 per request
+        and 1000 < 5000 looks like "end of results" to the base class.
+
+        This override uses a fixed page_size of 1000 and loops until
+        max_results is reached or results are exhausted.
+        """
+        import datetime as dt
+
+        logger.info(
+            f"[{self.source_name}] Starting collection | "
+            f"{date_from} → {date_to} | max={max_results}"
+        )
+        if start_offset > 0:
+            logger.info(f"[{self.source_name}] Resuming from offset {start_offset}")
+
+        query_params = self.build_query(query, date_from, date_to)
+        papers: List[PaperRecord] = []
+        offset = start_offset
+
+        while len(papers) < max_results:
+            rows = min(page_size, max_results - len(papers), 1000)
+
+            try:
+                raw_page = self.fetch_page(
+                    query_params,
+                    page=offset // max(rows, 1),
+                    page_size=rows,
+                )
+            except Exception as e:
+                logger.error(f"[crossref] Failed at offset {offset}: {e}")
+                break
+
+            items = self._extract_items(raw_page)
+            if not items:
+                logger.info(f"[crossref] No more results at offset {offset}")
+                break
+
+            batch_count = 0
+            for raw in items:
+                if len(papers) >= max_results:
+                    break
+                paper = self.parse_record(raw)
+                if paper:
+                    paper.source       = self.source_name
+                    paper.content_hash = self._compute_hash(paper)
+                    paper.fetched_at   = dt.datetime.utcnow().isoformat()
+                    papers.append(paper)
+                    batch_count += 1
+
+            logger.info(
+                f"[crossref] Offset {offset}: {batch_count} records | "
+                f"Total so far: {len(papers)}"
+            )
+
+            # Fewer results than requested → genuinely exhausted
+            if len(items) < rows:
+                logger.info(f"[crossref] Reached end of results at offset {offset}")
+                break
+
+            offset += len(items)
+
+        logger.success(f"[crossref] Collection complete: {len(papers)} papers")
+        return papers
 
     def parse_record(self, raw: dict) -> Optional[PaperRecord]:
         """

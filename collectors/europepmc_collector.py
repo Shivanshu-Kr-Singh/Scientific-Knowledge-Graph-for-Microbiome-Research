@@ -14,7 +14,7 @@ API DOCS: https://europepmc.org/RestfulWebService
 Base URL:  https://www.ebi.ac.uk/europepmc/webservices/rest/search
 """
 
-from typing import Optional
+from typing import Optional, List
 from loguru import logger
 
 from models import PaperRecord
@@ -115,6 +115,83 @@ class EuropePMCCollector(BaseCollector):
     def _extract_items(self, raw_page: dict) -> list:
         """Europe PMC nests results under resultList.result"""
         return raw_page.get("resultList", {}).get("result", [])
+
+    def collect(
+        self,
+        query: str,
+        date_from: str,
+        date_to: str,
+        max_results: int = 500,
+        page_size: int = 1000,    # Europe PMC max per page is 1000
+        start_offset: int = 0,
+    ) -> List[PaperRecord]:
+        """
+        Override base collect() to paginate Europe PMC correctly.
+
+        The base collect() uses max_results as page_size. Europe PMC caps
+        at 1000 per page, so asking for 5000 returns 0 results (page too
+        large). This override uses a fixed 1000-per-page loop.
+
+        Europe PMC is 1-indexed — page 1 = first page.
+        start_offset maps to: start_page = (start_offset // page_size) + 1
+        """
+        import datetime as dt
+
+        logger.info(
+            f"[{self.source_name}] Starting collection | "
+            f"{date_from} → {date_to} | max={max_results}"
+        )
+
+        query_params = self.build_query(query, date_from, date_to)
+        papers: List[PaperRecord] = []
+
+        # Convert numeric offset to 1-indexed page number
+        rows      = min(page_size, 1000)
+        start_page = (start_offset // rows) + 1 if start_offset > 0 else 1
+
+        if start_page > 1:
+            logger.info(f"[{self.source_name}] Resuming from page {start_page}")
+
+        page = start_page
+
+        while len(papers) < max_results:
+            try:
+                raw_page = self.fetch_page(query_params, page=page - 1, page_size=rows)
+            except Exception as e:
+                logger.error(f"[europepmc] Failed at page {page}: {e}")
+                break
+
+            items = self._extract_items(raw_page)
+            if not items:
+                logger.info(f"[europepmc] No more results at page {page}")
+                break
+
+            batch_count = 0
+            for raw in items:
+                if len(papers) >= max_results:
+                    break
+                paper = self.parse_record(raw)
+                if paper:
+                    paper.source       = self.source_name
+                    paper.content_hash = self._compute_hash(paper)
+                    paper.fetched_at   = dt.datetime.utcnow().isoformat()
+                    papers.append(paper)
+                    batch_count += 1
+
+            logger.info(
+                f"[europepmc] Page {page}: {batch_count} records | "
+                f"Total so far: {len(papers)}"
+            )
+
+            # Fewer than requested → last page
+            if len(items) < rows:
+                logger.info(f"[europepmc] Reached end of results at page {page}")
+                break
+
+            page += 1
+
+        logger.success(f"[europepmc] Collection complete: {len(papers)} papers")
+        return papers
 
     def parse_record(self, raw: dict) -> Optional[PaperRecord]:
         """

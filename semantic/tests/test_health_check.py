@@ -1,14 +1,13 @@
 """
 Unit tests for check_ollama_health() in semantic/ollama_client.py.
 
-Covers requirements 9.1–9.7:
+Covers requirements 9.1–9.6:
   9.1  GET {OLLAMA_BASE_URL}/api/tags with 10-second timeout
   9.2  Verify both extraction and grounding models appear in models[].name
   9.3  Both models found → True, log INFO with model names and base URL
   9.4  Server unreachable or non-200 → False, log ERROR with base URL / status
   9.5  One or more models missing → False, log ERROR with ollama pull hint
   9.6  Callable as check_ollama_health() -> bool
-  9.7  LLM_BACKEND=gemini → skip probe, return True without HTTP call
 
 All tests pass a BackendConfig directly to check_ollama_health(config=...)
 to avoid touching environment variables.
@@ -31,7 +30,7 @@ def _make_ollama_config(
     grounding_model: str = "mistral",
     base_url: str = "http://localhost:11434",
 ) -> BackendConfig:
-    """Build a BackendConfig pointing at the Ollama backend."""
+    """Build a BackendConfig for the Ollama backend."""
     return BackendConfig(
         llm_backend="ollama",
         ollama_base_url=base_url,
@@ -40,25 +39,6 @@ def _make_ollama_config(
         ollama_timeout_seconds=30,
         ollama_max_retries=3,
         ollama_retry_backoff_base=2.0,
-        ollama_fallback_to_gemini=False,
-        gemini_extraction_model="gemini-2.0-flash",
-        gemini_grounding_model="gemini-2.5-flash",
-    )
-
-
-def _make_gemini_config() -> BackendConfig:
-    """Build a BackendConfig pointing at the Gemini backend."""
-    return BackendConfig(
-        llm_backend="gemini",
-        ollama_base_url="http://localhost:11434",
-        ollama_extraction_model="llama3",
-        ollama_grounding_model="mistral",
-        ollama_timeout_seconds=30,
-        ollama_max_retries=3,
-        ollama_retry_backoff_base=2.0,
-        ollama_fallback_to_gemini=False,
-        gemini_extraction_model="gemini-2.0-flash",
-        gemini_grounding_model="gemini-2.5-flash",
     )
 
 
@@ -172,22 +152,6 @@ def test_non_200_status_returns_false(caplog):
     assert result is False
     error_messages = [r.message for r in caplog.records if r.levelno == logging.ERROR]
     assert any("503" in msg for msg in error_messages)
-
-
-# ─── Test 6: LLM_BACKEND=gemini → True without HTTP call ──────────────────────
-
-def test_gemini_backend_returns_true_without_http_call():
-    """
-    Req 9.7: When LLM_BACKEND is 'gemini', check_ollama_health() skips the
-    Ollama probe and returns True without making any HTTP request.
-    """
-    config = _make_gemini_config()
-
-    with patch("requests.get") as mock_get:
-        result = check_ollama_health(config=config)
-
-    assert result is True
-    mock_get.assert_not_called()
 
 
 # ─── Test 7: Extraction and grounding models are the same (deduplication) ─────

@@ -1,4 +1,4 @@
-﻿"""
+"""
 3-stage relevance filter pipeline.
 PIPELINE:
 Stage 1 — Metadata filter (PubMed MeSH only, highest precision)
@@ -34,6 +34,14 @@ from models import PaperRecord
 from collectors.audit_logger import AuditLogger
 from collectors.metadata_filter import MetadataFilter
 from collectors.ml_classifier import MLClassifier
+from collectors.embedding_filter import EmbeddingVerdict
+from collectors.embedding_store import EmbeddingStore, EmbeddingMetadata
+from config import (
+    BLENDED_CONFIDENCE_LOW,
+    BLENDED_CONFIDENCE_HIGH,
+    GROWTH_KEEP_THRESHOLD,
+    GROWTH_REJECT_THRESHOLD,
+)
 from collections import Counter
 import json
 from pathlib import Path
@@ -47,6 +55,29 @@ def _get_llm_verifier():
         from collectors.llm_verifier import LLMVerifier
         _llm_verifier = LLMVerifier()
     return _llm_verifier
+
+
+# Lazy singletons for embedding model and store — keeps __init__ lightweight
+_embedding_model = None
+_embedding_store = None
+
+
+def _get_embedding_model():
+    """Lazily initialize the shared EmbeddingModel singleton."""
+    global _embedding_model
+    if _embedding_model is None:
+        from collectors.embedding_model import EmbeddingModel
+        _embedding_model = EmbeddingModel()
+    return _embedding_model
+
+
+def _get_embedding_store():
+    """Lazily initialize the shared EmbeddingStore singleton."""
+    global _embedding_store
+    if _embedding_store is None:
+        from collectors.embedding_store import EmbeddingStore
+        _embedding_store = EmbeddingStore()
+    return _embedding_store
 
 
 CONFIG_PATH = Path(__file__).parent.parent / "config" / "stage2_rules.yaml"
@@ -112,8 +143,65 @@ class RelevanceFilter:
         self._ml_model      = self._ml_classifier._model
         self._ml_vectorizer = self._ml_classifier._encoder
 
+        # ── Layer 1 scale components (lazy, fail-graceful) ────────────────────
+        # All components below are optional — if sentence-transformers or any
+        # dependency is missing, the pipeline falls back to the original
+        # Stage 4 LLM path.
+        self._embedding_model: Optional[object] = None
+        self._embedding_store: Optional[object] = None
+        self._embedding_filter: Optional[object] = None
+        self._semantic_cache: Optional[object] = None
+        self._batched_verifier: Optional[object] = None
+        self._metrics_logger: Optional[object] = None
+
+        try:
+            from collectors.embedding_model import EmbeddingModel as _EM
+            self._embedding_model = _EM()
+        except Exception as e:
+            logger.debug(f"[filter] EmbeddingModel not available: {e}")
+
+        try:
+            from collectors.embedding_store import EmbeddingStore as _ES
+            self._embedding_store = _ES()
+        except Exception as e:
+            logger.debug(f"[filter] EmbeddingStore not available: {e}")
+
+        try:
+            from collectors.embedding_filter import EmbeddingFilter as _EF
+            if self._embedding_model and self._embedding_store:
+                self._embedding_filter = _EF(
+                    embedding_model=self._embedding_model,
+                    embedding_store=self._embedding_store,
+                )
+            else:
+                logger.debug("[filter] EmbeddingFilter skipped — model or store unavailable")
+        except Exception as e:
+            logger.debug(f"[filter] EmbeddingFilter not available: {e}")
+
+        try:
+            from collectors.llm_verifier import SemanticCache as _SC
+            self._semantic_cache = _SC()
+        except Exception as e:
+            logger.debug(f"[filter] SemanticCache not available: {e}")
+
+        try:
+            from collectors.llm_verifier import BatchedVerifier as _BV
+            self._batched_verifier = _BV()
+        except Exception as e:
+            logger.debug(f"[filter] BatchedVerifier not available: {e}")
+
+        try:
+            from collectors.metrics_logger import MetricsLogger as _ML
+            self._metrics_logger = _ML()
+        except Exception as e:
+            logger.debug(f"[filter] MetricsLogger not available: {e}")
+
         status = "active" if self._ml_classifier.trained else "inactive (not trained yet)"
-        logger.info(f"[filter] Pipeline ready | Stage3 ML: {status}")
+        stage35_status = "active" if self._embedding_filter else "inactive"
+        logger.info(
+            f"[filter] Pipeline ready | Stage3 ML: {status} | "
+            f"Stage3.5 Embedding: {stage35_status}"
+        )
 
     # ── Public interface ───────────────────────────────────────────────────────
 
@@ -122,17 +210,50 @@ class RelevanceFilter:
         papers: List[PaperRecord],
     ) -> Tuple[List[PaperRecord], List[PaperRecord], List[Tuple]]:
         """
-        Runs the full 3-stage pipeline on a list of papers.
+        Runs the full multi-stage pipeline on a list of papers.
+
+        After evaluating all papers:
+          1. Invokes embedding store growth for each (paper, verdict) pair
+          2. Records pipeline run metrics (stage counts, LLM stats, store size)
+
         Returns: (kept, removed, review_queue)
         """
         kept, removed, review = [], [], []
-        stage_counts = {"stage1": 0, "stage2": 0, "stage3": 0, "gate": 0}
+        stage_counts = {
+            "stage1": 0,
+            "stage2": 0,
+            "stage3": 0,
+            "stage3_5": 0,
+            "stage4": 0,
+            "gate": 0,
+        }
+
+        # Track LLM-related statistics for metrics
+        llm_calls = 0
+        semantic_cache_hits = 0
+
+        # Collect (paper, verdict) pairs for post-loop processing
+        paper_verdicts: List[Tuple[PaperRecord, FilterVerdict]] = []
 
         for paper in tqdm(papers, desc="Relevance filtering"):
             verdict = self._evaluate(paper)
             AuditLogger.log(paper, verdict)
-            stage_counts[verdict.stage.split("_")[0]] = \
-                stage_counts.get(verdict.stage.split("_")[0], 0) + 1
+
+            # Categorize stage for counting
+            stage_key = verdict.stage.split("_")[0]
+            # Normalize stage3.5 variants (stage3_5_embedding → stage3_5)
+            if "stage3_5" in verdict.stage or "stage3.5" in verdict.stage:
+                stage_key = "stage3_5"
+            elif "stage4" in verdict.stage:
+                stage_key = "stage4"
+                # Count LLM calls vs semantic cache hits
+                if "semantic_cache" in verdict.stage:
+                    semantic_cache_hits += 1
+                else:
+                    llm_calls += 1
+            stage_counts[stage_key] = stage_counts.get(stage_key, 0) + 1
+
+            paper_verdicts.append((paper, verdict))
 
             if verdict.review:
                 review.append((paper, verdict))
@@ -140,6 +261,64 @@ class RelevanceFilter:
                 kept.append(paper)
             else:
                 removed.append(paper)
+
+        # ── Post-loop: Embedding Store Growth ─────────────────────────────────
+        # Feed confident verdicts back into the store for progressive learning
+        for paper, verdict in paper_verdicts:
+            try:
+                self._embedding_store_growth(paper, verdict.score)
+            except Exception as e:
+                logger.debug(f"[filter] Store growth failed for '{(paper.title or '')[:40]}': {e}")
+
+        # ── Post-loop: Pipeline Metrics ───────────────────────────────────────
+        if self._metrics_logger is not None:
+            try:
+                from collectors.metrics_logger import PipelineMetrics
+
+                # Embedding store sizes at run completion
+                store_positive = 0
+                store_negative = 0
+                avg_latency_ms = 0.0
+                p95_latency_ms = 0.0
+
+                if self._embedding_store is not None:
+                    try:
+                        store_positive = self._embedding_store.positive_count
+                        store_negative = self._embedding_store.negative_count
+                    except Exception:
+                        pass
+                    try:
+                        latency_stats = self._embedding_store.query_latency_stats()
+                        avg_latency_ms = latency_stats.get("avg_ms", 0.0)
+                        p95_latency_ms = latency_stats.get("p95_ms", 0.0)
+                    except Exception:
+                        pass
+
+                metrics = PipelineMetrics(
+                    timestamp=datetime.utcnow().isoformat(),
+                    total_papers=len(papers),
+                    stage1_resolved=stage_counts.get("stage1", 0),
+                    stage2_resolved=stage_counts.get("stage2", 0),
+                    gate_resolved=stage_counts.get("gate", 0),
+                    stage3_resolved=stage_counts.get("stage3", 0),
+                    stage3_5_resolved=stage_counts.get("stage3_5", 0),
+                    stage4_resolved=stage_counts.get("stage4", 0),
+                    llm_calls=llm_calls,
+                    semantic_cache_hits=semantic_cache_hits,
+                    batch_count=0,  # Batch stats tracked in future batch mode
+                    batch_retries=0,
+                    embedding_store_positive=store_positive,
+                    embedding_store_negative=store_negative,
+                    avg_embedding_latency_ms=avg_latency_ms,
+                    p95_embedding_latency_ms=p95_latency_ms,
+                )
+                self._metrics_logger.record(metrics)
+                logger.info(
+                    f"[filter] Pipeline metrics recorded: {len(papers)} papers, "
+                    f"LLM calls={llm_calls}, cache hits={semantic_cache_hits}"
+                )
+            except Exception as e:
+                logger.warning(f"[filter] Failed to record pipeline metrics: {e}")
 
         self._log_summary(papers, kept, removed, review)
         self._save_removed(removed)
@@ -198,10 +377,67 @@ class RelevanceFilter:
         if ml_verdict.decision == "REJECT":
             return FilterVerdict(keep=False, score=ml_verdict.prob,
                                  stage=ml_verdict.stage, reason=ml_verdict.reason)
-        # BORDERLINE or UNTRAINED → Stage 4 LLM
+        # BORDERLINE or UNTRAINED → Stage 3.5 embedding filter
+
+        # ── Stage 3.5: Embedding-based similarity filter ──────────────────────
+        emb_verdict = self._stage3_5_embedding(paper)
+        if emb_verdict is not None and emb_verdict.decision in ("KEEP", "REJECT"):
+            # Stage 3.5 has a confident decision — check disagreement router
+            blended_confidence = (v.score + emb_verdict.pos_similarity) / 2.0
+            route_to_llm, route_reason = self._disagreement_router(
+                paper, v, emb_verdict, blended_confidence
+            )
+            if not route_to_llm:
+                # Router says no LLM needed — accept Stage 3.5 verdict
+                keep = emb_verdict.decision == "KEEP"
+                score = emb_verdict.pos_similarity if keep else (1.0 - emb_verdict.neg_similarity)
+                return FilterVerdict(
+                    keep=keep,
+                    score=round(score, 3),
+                    stage=emb_verdict.stage,
+                    reason=f"{emb_verdict.reason} | router: {route_reason}",
+                )
+            # Router says LLM needed — fall through to Stage 4
 
         # ── Stage 4: LLM verifier (only truly uncertain papers) ───────────────
+        # Try semantic cache first to avoid redundant LLM calls
+        if self._semantic_cache is not None and self._embedding_model is not None:
+            try:
+                paper_embedding = self._embedding_model.encode_paper(
+                    paper.title or "", paper.abstract
+                )
+                cached_verdict = self._semantic_cache.lookup(paper_embedding)
+                if cached_verdict is not None:
+                    keep = cached_verdict.confidence >= 0.70 and cached_verdict.keep
+                    return FilterVerdict(
+                        keep=keep,
+                        score=round(cached_verdict.confidence, 3),
+                        stage="stage4_llm (semantic_cache)",
+                        reason=f"semantic_cache_hit: {cached_verdict.reason}",
+                    )
+            except Exception as e:
+                logger.debug(f"[stage4] Semantic cache lookup failed: {e}")
+
         return self._stage4_llm(paper, gate_v)
+
+    # ── Stage 3.5: Embedding filter ─────────────────────────────────────────────
+
+    def _stage3_5_embedding(self, paper: PaperRecord) -> Optional[EmbeddingVerdict]:
+        """
+        Delegates to the EmbeddingFilter for Stage 3.5 classification.
+
+        Returns the EmbeddingVerdict if the filter is available and produces
+        a result, otherwise returns None (pipeline falls through to Stage 4).
+        """
+        if self._embedding_filter is None:
+            return None
+
+        try:
+            verdict = self._embedding_filter.evaluate(paper)
+            return verdict
+        except Exception as e:
+            logger.warning(f"[stage3_5] Embedding filter failed: {e}")
+            return None
 
     # ── Stage 1: MeSH metadata filter ─────────────────────────────────────────
 
@@ -258,9 +494,9 @@ class RelevanceFilter:
           keywords             → PubMed, EuropePMC author keywords
                                  OpenAlex concept display names (e.g. "Gut flora")
                                  Crossref funder names (e.g. "NIH", "Wellcome Trust")
-          article_types        → bioRxiv categories ("microbiology", "new results")
-                                 Semantic Scholar types ("JournalArticle", "Review")
+          article_types        → Semantic Scholar types ("JournalArticle", "Review")
                                  OpenAlex types ("article")
+                                 Other source categories ("microbiology", "new results")
           journal              → journal name as additional signal
         """
         text = (
@@ -337,12 +573,12 @@ class RelevanceFilter:
 
     def _stage4_llm(self, paper: PaperRecord, prev: FilterVerdict) -> FilterVerdict:
         """
-        Calls LLM API for borderline papers that Stage 2+3 couldn't resolve.
+        Calls Ollama LLM for borderline papers that Stage 2+3 couldn't resolve.
         COST CONTROL:
           - Only called when score is in [review_threshold, keep_threshold]
           - All responses cached by content hash
           - Typically 5-10% of total papers
-        PROVIDER: Set LLM_PROVIDER=gemini in .env"""
+        REQUIRES: Ollama running locally (ollama serve)"""
         verifier = _get_llm_verifier()
 
         if not verifier.is_available:
@@ -411,6 +647,152 @@ class RelevanceFilter:
             reason=f"no_sequencing_terms (prev_score={prev.score})",
             review=True   # Flag for review — don't silently reject
         )
+
+    # ── Disagreement Router ───────────────────────────────────────────────────
+
+    def _disagreement_router(
+        self,
+        paper: PaperRecord,
+        stage2_verdict: FilterVerdict,
+        stage3_5_verdict: EmbeddingVerdict,
+        blended_confidence: float,
+    ) -> tuple:
+        """
+        Determines whether to route a paper to the LLM verifier.
+
+        Routing conditions (any triggers LLM):
+          1. Stage 2 and Stage 3.5 disagree (one keeps, other rejects)
+          2. Blended Confidence falls in the uncertain zone [0.40, 0.70]
+
+        If neither condition is met, the Stage 3.5 verdict is accepted as final.
+
+        Returns
+        -------
+        tuple[bool, str]
+            (route_to_llm, reason) — True if LLM verification is needed.
+        """
+        # Determine Stage 2 keep/reject based on threshold
+        stage2_keeps = stage2_verdict.score >= self.thresholds["keep"]
+
+        # Determine Stage 3.5 keep/reject
+        stage3_5_keeps = stage3_5_verdict.decision == "KEEP"
+        stage3_5_rejects = stage3_5_verdict.decision == "REJECT"
+
+        # Condition 1: Verdict disagreement
+        # Disagreement = one stage says keep while the other says reject
+        verdicts_disagree = (
+            (stage2_keeps and stage3_5_rejects)
+            or (not stage2_keeps and stage3_5_keeps)
+        )
+
+        if verdicts_disagree:
+            reason = (
+                f"disagreement: stage2={'keep' if stage2_keeps else 'reject'}, "
+                f"stage3_5={stage3_5_verdict.decision}"
+            )
+            logger.info(
+                f"[disagreement_router] Routing to LLM — {reason} | "
+                f"paper='{(paper.title or '')[:60]}'"
+            )
+            return (True, reason)
+
+        # Condition 2: Blended confidence in uncertain zone [LOW, HIGH]
+        if BLENDED_CONFIDENCE_LOW <= blended_confidence <= BLENDED_CONFIDENCE_HIGH:
+            reason = f"borderline confidence: {blended_confidence:.4f}"
+            logger.info(
+                f"[disagreement_router] Routing to LLM — {reason} | "
+                f"paper='{(paper.title or '')[:60]}'"
+            )
+            return (True, reason)
+
+        # Neither condition met — accept Stage 3.5 verdict as final
+        reason = "confident agreement — accepting Stage 3.5 verdict"
+        logger.debug(
+            f"[disagreement_router] No LLM needed — {reason} | "
+            f"paper='{(paper.title or '')[:60]}'"
+        )
+        return (False, reason)
+
+    # ── Embedding Store Growth ──────────────────────────────────────────────────
+
+    def _embedding_store_growth(self, paper: PaperRecord, score: float) -> None:
+        """
+        Appends paper embedding to the Embedding Store after a final verdict.
+
+        Growth rules:
+          - score >= 0.80 → positive partition
+          - score <= 0.20 → negative partition
+          - 0.20 < score < 0.80 → skip (borderline, no feedback)
+          - paper already in store (by DOI/PMID) → skip
+
+        Handles encoding errors gracefully to avoid crashing the pipeline.
+        """
+        # Skip borderline scores — no feedback signal
+        if GROWTH_REJECT_THRESHOLD < score < GROWTH_KEEP_THRESHOLD:
+            logger.debug(
+                f"[store_growth] Skip borderline score={score:.3f} | "
+                f"paper='{(paper.title or '')[:50]}'"
+            )
+            return
+
+        try:
+            store = _get_embedding_store()
+        except Exception as e:
+            logger.warning(f"[store_growth] Could not initialize embedding store: {e}")
+            return
+
+        # Deduplication check
+        doi = getattr(paper, "doi", None)
+        pmid = getattr(paper, "pmid", None)
+
+        if store.contains(doi=doi, pmid=pmid):
+            logger.debug(
+                f"[store_growth] Paper already in store (doi={doi}, pmid={pmid}) — skipping"
+            )
+            return
+
+        # Determine target partition
+        if score >= GROWTH_KEEP_THRESHOLD:
+            partition = "positive"
+        elif score <= GROWTH_REJECT_THRESHOLD:
+            partition = "negative"
+        else:
+            # Shouldn't reach here due to early return above, but defensive
+            return
+
+        # Encode the paper
+        try:
+            model = _get_embedding_model()
+            embedding = model.encode_paper(paper.title or "", paper.abstract)
+        except Exception as e:
+            logger.warning(
+                f"[store_growth] Encoding failed for '{(paper.title or '')[:50]}': {e}"
+            )
+            return
+
+        # Build metadata
+        metadata = EmbeddingMetadata(
+            doi=doi,
+            pmid=pmid,
+            title=paper.title or "",
+            partition=partition,
+            added_at=datetime.utcnow().isoformat(),
+        )
+
+        # Append to store
+        try:
+            store.append(vector=embedding, metadata=metadata)
+            logger.debug(
+                f"[store_growth] Appended to {partition} partition | "
+                f"score={score:.3f} | paper='{(paper.title or '')[:50]}'"
+            )
+        except Exception as e:
+            logger.warning(
+                f"[store_growth] Append failed for '{(paper.title or '')[:50]}': {e}"
+            )
+
+    # Alias used in pipeline wiring (task 14.1 calls _store_growth)
+    _store_growth = _embedding_store_growth
 
     # ── ML training ───────────────────────────────────────────────────────────
 

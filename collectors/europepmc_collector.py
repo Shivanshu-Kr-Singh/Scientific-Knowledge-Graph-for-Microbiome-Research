@@ -6,7 +6,7 @@ Fetches papers from Europe PubMed Central (Europe PMC).
 WHY EUROPE PMC IN ADDITION TO PUBMED?
   1. Europe PMC provides FULL TEXT for open-access papers — not just abstracts.
      This means we can extract Methods and Data Availability sections.
-  2. It covers preprints from bioRxiv/medRxiv that haven't yet been indexed
+  2. It covers preprints from medRxiv and other sources that haven't yet been indexed
      by NCBI PubMed.
   3. It has a clean JSON REST API (no XML parsing needed).
 

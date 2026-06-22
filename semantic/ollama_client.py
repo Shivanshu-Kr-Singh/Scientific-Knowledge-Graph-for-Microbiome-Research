@@ -143,17 +143,10 @@ def check_ollama_health(config: BackendConfig | None = None) -> bool:
     ``models`` array of the response.
 
     Returns True on success, False on any failure.
-    If LLM_BACKEND is "gemini", skips the probe and returns True immediately.
 
-    Requirements: 9.1–9.7
+    Requirements: 9.1–9.6
     """
     cfg = config if config is not None else BACKEND_CONFIG
-
-    # Req 9.7: skip probe when using Gemini backend
-    if cfg.llm_backend == "gemini":
-        log.info("LLM_BACKEND=gemini — skipping Ollama health probe")
-        return True
-
     url = f"{cfg.ollama_base_url}/api/tags"
     try:
         response = requests.get(url, timeout=10)

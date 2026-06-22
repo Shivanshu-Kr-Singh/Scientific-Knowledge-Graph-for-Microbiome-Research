@@ -22,8 +22,11 @@ RAW_DIR  = DATA_DIR / "raw"              # Where raw API responses are cached
 PROC_DIR = DATA_DIR / "processed"        # Where NLP-processed records go
 LOG_DIR  = BASE_DIR / "logs"
 
+# ── Embedding Store Configuration ─────────────────────────────────────────────
+EMBEDDING_STORE_DIR = Path(os.getenv("EMBEDDING_STORE_DIR", str(DATA_DIR / "embeddings")))
+
 # Create directories if they don't exist yet (safe to call repeatedly)
-for d in [RAW_DIR, PROC_DIR, LOG_DIR]:
+for d in [RAW_DIR, PROC_DIR, LOG_DIR, EMBEDDING_STORE_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 
@@ -122,7 +125,6 @@ RATE_LIMITS = {
     "pubmed":           0.4,   # seconds between requests (= 2.5 req/sec)
     "europepmc":        0.5,   # 2 req/sec
     "semantic_scholar": 1.0,   # 1 req/sec (conservative)
-    "biorxiv":          0.5,   # 2 req/sec
     "openalex":         0.1,   # 10 req/sec (polite pool with email)
     "crossref":         0.02,  # 50 req/sec (polite pool with User-Agent)
     "core":             0.6,   # 100 req/min with API key = ~1 req/sec
@@ -156,6 +158,47 @@ LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")   # DEBUG | INFO | WARNING | ERROR
 LOG_FILE  = LOG_DIR / "miner.log"
 
 
+# ── Embedding Model Configuration ─────────────────────────────────────────────
+EMBEDDING_MODEL_NAME = os.getenv("EMBEDDING_MODEL_NAME", "allenai/specter2")
+EMBEDDING_FALLBACK_MODEL = os.getenv("EMBEDDING_FALLBACK_MODEL", "all-MiniLM-L6-v2")
+EMBEDDING_BATCH_SIZE = int(os.getenv("EMBEDDING_BATCH_SIZE", "64"))
+
+# ── Stage 3.5 Thresholds ──────────────────────────────────────────────────────
+EMBEDDING_POS_KEEP_THRESHOLD = float(os.getenv("EMBEDDING_POS_KEEP_THRESHOLD", "0.85"))
+EMBEDDING_NEG_REJECT_THRESHOLD = float(os.getenv("EMBEDDING_NEG_REJECT_THRESHOLD", "0.85"))
+EMBEDDING_CROSS_CEILING = float(os.getenv("EMBEDDING_CROSS_CEILING", "0.60"))
+EMBEDDING_MIN_PARTITION_SIZE = int(os.getenv("EMBEDDING_MIN_PARTITION_SIZE", "50"))
+
+# ── Semantic Cache ─────────────────────────────────────────────────────────────
+SEMANTIC_CACHE_THRESHOLD = float(os.getenv("SEMANTIC_CACHE_THRESHOLD", "0.97"))
+
+# ── Batched Verifier ──────────────────────────────────────────────────────────
+BATCH_LLM_SIZE = int(os.getenv("BATCH_LLM_SIZE", "16"))
+
+# ── Hybrid Classifier ─────────────────────────────────────────────────────────
+HYBRID_MIN_STORE_SIZE = int(os.getenv("HYBRID_MIN_STORE_SIZE", "2000"))
+HYBRID_MIN_TRAIN_SAMPLES = int(os.getenv("HYBRID_MIN_TRAIN_SAMPLES", "200"))
+HYBRID_MIN_RETRAIN_NEW = int(os.getenv("HYBRID_MIN_RETRAIN_NEW", "100"))
+
+# ── Disagreement Router ────────────────────────────────────────────────────────
+BLENDED_CONFIDENCE_LOW = float(os.getenv("BLENDED_CONFIDENCE_LOW", "0.40"))
+BLENDED_CONFIDENCE_HIGH = float(os.getenv("BLENDED_CONFIDENCE_HIGH", "0.70"))
+
+# ── Embedding Store Growth ─────────────────────────────────────────────────────
+GROWTH_KEEP_THRESHOLD = float(os.getenv("GROWTH_KEEP_THRESHOLD", "0.80"))
+GROWTH_REJECT_THRESHOLD = float(os.getenv("GROWTH_REJECT_THRESHOLD", "0.20"))
+
+# ── Latency Monitoring ─────────────────────────────────────────────────────────
+EMBEDDING_LATENCY_WARN_MS = float(os.getenv("EMBEDDING_LATENCY_WARN_MS", "200.0"))
+
+# ── Drift Monitor ─────────────────────────────────────────────────────────────
+DRIFT_SAMPLE_RATE = float(os.getenv("DRIFT_SAMPLE_RATE", "0.01"))
+DRIFT_MIN_SAMPLE = int(os.getenv("DRIFT_MIN_SAMPLE", "10"))
+
+# ── Embedding Store Backend ────────────────────────────────────────────────────
+EMBEDDING_STORE_BACKEND = os.getenv("EMBEDDING_STORE_BACKEND", "numpy")  # "numpy" | "faiss"
+
+
 # ─── Ollama / LLM Backend Configuration ──────────────────────────────────────
 
 class ConfigurationError(Exception):
@@ -165,17 +208,14 @@ class ConfigurationError(Exception):
 
 @dataclass(frozen=True)
 class BackendConfig:
-    """Typed, immutable configuration for the LLM backend."""
-    llm_backend: str                  # "ollama" | "gemini"
+    """Typed, immutable configuration for the Ollama LLM backend."""
+    llm_backend: str                  # always "ollama"
     ollama_base_url: str              # e.g. "http://localhost:11434"
     ollama_extraction_model: str      # e.g. "llama3"
     ollama_grounding_model: str       # e.g. "llama3"
     ollama_timeout_seconds: int       # ≥ 1
     ollama_max_retries: int           # ≥ 0
     ollama_retry_backoff_base: float  # ≥ 1.0
-    ollama_fallback_to_gemini: bool
-    gemini_extraction_model: str      # e.g. "gemini-2.0-flash"
-    gemini_grounding_model: str       # e.g. "gemini-2.5-flash"
 
 
 def _load_backend_config() -> BackendConfig:
@@ -185,11 +225,10 @@ def _load_backend_config() -> BackendConfig:
     """
     # ── LLM_BACKEND ──────────────────────────────────────────────────────────
     llm_backend = os.getenv("LLM_BACKEND", "ollama")
-    accepted_backends = {"ollama", "gemini"}
-    if llm_backend not in accepted_backends:
+    if llm_backend != "ollama":
         raise ConfigurationError(
             f"LLM_BACKEND={llm_backend!r} is not valid. "
-            f"Accepted values: {sorted(accepted_backends)}"
+            f"Accepted value: 'ollama'"
         )
 
     # ── OLLAMA_TIMEOUT_SECONDS ────────────────────────────────────────────────
@@ -226,23 +265,6 @@ def _load_backend_config() -> BackendConfig:
             f"OLLAMA_RETRY_BACKOFF_BASE={_backoff_raw!r} is not a valid float ≥ 1.0"
         )
 
-    # ── OLLAMA_FALLBACK_TO_GEMINI ─────────────────────────────────────────────
-    _fallback_raw = os.getenv("OLLAMA_FALLBACK_TO_GEMINI", "false")
-    ollama_fallback_to_gemini = _fallback_raw.lower() == "true"
-
-    # ── GEMINI_API_KEY presence checks ────────────────────────────────────────
-    gemini_api_key = os.getenv("GEMINI_API_KEY", "")
-
-    if llm_backend == "gemini" and not gemini_api_key:
-        raise ConfigurationError(
-            "LLM_BACKEND is set to 'gemini' but GEMINI_API_KEY is not set in the environment"
-        )
-
-    if ollama_fallback_to_gemini and not gemini_api_key:
-        raise ConfigurationError(
-            "OLLAMA_FALLBACK_TO_GEMINI is 'true' but GEMINI_API_KEY is not set in the environment"
-        )
-
     return BackendConfig(
         llm_backend=llm_backend,
         ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
@@ -251,9 +273,6 @@ def _load_backend_config() -> BackendConfig:
         ollama_timeout_seconds=ollama_timeout_seconds,
         ollama_max_retries=ollama_max_retries,
         ollama_retry_backoff_base=ollama_retry_backoff_base,
-        ollama_fallback_to_gemini=ollama_fallback_to_gemini,
-        gemini_extraction_model=os.getenv("GEMINI_EXTRACTION_MODEL", "gemini-2.0-flash"),
-        gemini_grounding_model=os.getenv("GEMINI_GROUNDING_MODEL", "gemini-2.5-flash"),
     )
 
 

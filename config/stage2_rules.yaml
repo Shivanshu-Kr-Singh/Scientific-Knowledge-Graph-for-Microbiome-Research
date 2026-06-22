@@ -774,10 +774,10 @@ positive_terms:
   "biotechnology and biological sciences": 0.20
   "bbsrc": 0.15
 
-  # ── bioRxiv / Semantic Scholar article type / category signals ────────────
-  # bioRxiv stores paper categories in article_types (e.g. "microbiology",
-  # "gastroenterology"). Semantic Scholar uses types like "JournalArticle".
-  # Stage 2 now scans article_types, so these match directly.
+  # ── Article type / category signals ────────────────────────────────────────
+  # Semantic Scholar uses types like "JournalArticle"; other sources store
+  # paper categories in article_types (e.g. "microbiology", "gastroenterology").
+  # Stage 2 scans article_types, so these match directly.
   "microbiology": 0.35
   "gastroenterology": 0.30
   "infectious diseases": 0.20

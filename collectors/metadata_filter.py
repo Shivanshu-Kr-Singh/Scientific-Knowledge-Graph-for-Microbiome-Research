@@ -12,7 +12,7 @@ WHAT IT DOES:
   algorithms. They are the single most reliable signal we have.
 
   This stage makes confident KEEP/REJECT decisions only when MeSH is available.
-  For papers without MeSH (EuropePMC, Semantic Scholar, bioRxiv) it returns
+  For papers without MeSH (EuropePMC, Semantic Scholar, OpenAlex, etc.) it returns
   UNKNOWN so Stage 2 rules handle them.
 
 DECISIONS:

@@ -1,9 +1,9 @@
-﻿"""
+"""
 Entry point for the Microbiome Literature Miner.
 
 This script provides entry points for all three layers of the pipeline:
 
-Layer 1 (Collection): Fetch papers from PubMed, Europe PMC, Semantic Scholar, bioRxiv
+Layer 1 (Collection): Fetch papers from PubMed, Europe PMC, Semantic Scholar, OpenAlex, Crossref, CORE
   - Run with: RUN_LAYER=1 python main.py
   - Output: data/processed/collected_YYYYMMDD_HHMMSS.json
 
@@ -17,6 +17,15 @@ Layer 3 (Knowledge Graph): Build enhanced knowledge graph with semantic relation
   - Components: SemanticRelationshipExtractor → ProvenanceEncoder → 
                 RelationshipReifier → EnhancedNeo4jLoader
 
+Seed (Backfill): Seed the embedding store from historical audit data
+  - Run with: RUN_LAYER=seed python main.py
+  - Reads: data/audit/{kept,rejected,llm_verified}.json
+  - Output: data/embeddings/ store files
+
+Drift (Monitor): Sample automated decisions for manual drift review
+  - Run with: RUN_LAYER=drift python main.py
+  - Output: data/audit/drift_review_YYYYMM.json
+
 Configuration:
   Layer 1: MAX_PER_SOURCE (default: 50)
   Layer 2: USE_NER_MODEL (default: false)
@@ -28,6 +37,7 @@ Configuration:
 During development, set MAX_RESULTS_PER_SOURCE small (e.g. 20) so you're
 not waiting 10 minutes for a full run while testing.
 """
+import os
 import sys
 import warnings
 
@@ -63,17 +73,36 @@ logger.add(
 )
 
 
+def _check_layer1_dependencies() -> bool:
+    """Verify sentence-transformers is importable for Layer 1 features."""
+    try:
+        import sentence_transformers
+        logger.info(
+            f"[startup] sentence-transformers v{sentence_transformers.__version__} available"
+        )
+        return True
+    except ImportError:
+        logger.warning(
+            "[startup] sentence-transformers not installed. "
+            "Layer 1 embedding features will be disabled. "
+            "Install with: pip install sentence-transformers"
+        )
+        return False
+
+
 def run_layer1(max_per_source: int = 100):
     """
     Runs the full Layer 1 data collection pipeline.
     WHAT HAPPENS:
-      1. PubMedCollector.collect()        → searches PubMed, parses XML records
-      2. EuropePMCCollector.collect()     → searches Europe PMC, parses JSON
-      3. SemanticScholarCollector.collect()→ searches S2 for citation data
-      4. BioRxivCollector.collect()       → fetches recent preprints
-      5. Orchestrator merges and deduplicates all four result sets
-      6. Saves the clean merged list to data/processed/collected_YYYYMMDD_HHMMSS.json
-      7. Prints a summary report
+      1. PubMedCollector.collect()         → searches PubMed, parses XML records
+      2. EuropePMCCollector.collect()      → searches Europe PMC, parses JSON
+      3. SemanticScholarCollector.collect() → searches S2 for citation data
+      4. OpenAlexCollector.collect()       → searches OpenAlex
+      5. CrossrefCollector.collect()       → searches Crossref
+      6. CoreCollector.collect()           → searches CORE open-access index
+      7. Orchestrator merges and deduplicates all result sets
+      8. Saves the clean merged list to data/processed/collected_YYYYMMDD_HHMMSS.json
+      9. Prints a summary report
 
     OUTPUT FILE FORMAT:
       JSON array of PaperRecord objects. Each looks like:
@@ -278,9 +307,25 @@ def train_relevance_model():
 
 
 if __name__ == "__main__":
-    import os
-    mode = os.getenv("RUN_LAYER", "1")
-    if mode == "1":
+    mode = os.getenv("RUN_LAYER", "1").lower().strip()
+
+    if mode == "seed":
+        _check_layer1_dependencies()
+        from scripts.seed_embedding_store import BackfillSeeder
+        logger.info("Starting backfill seeding (RUN_LAYER=seed)")
+        seeder = BackfillSeeder()
+        result = seeder.run()
+        logger.info(f"Backfill seeding complete: {result}")
+
+    elif mode == "drift":
+        from scripts.drift_monitor import DriftMonitor
+        logger.info("Starting drift monitor (RUN_LAYER=drift)")
+        monitor = DriftMonitor()
+        result = monitor.run()
+        logger.info(f"Drift monitoring complete: {result}")
+
+    elif mode == "1":
+        _check_layer1_dependencies()
         MAX = int(os.getenv("MAX_PER_SOURCE", "50"))
         run_layer1(max_per_source=MAX)
     elif mode == "2":

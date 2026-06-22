@@ -1,17 +1,16 @@
 """
 semantic/llm_extractor.py — LLM-based biomedical entity and relation extractor.
 
-Routes to Ollama (primary) or Gemini (fallback / direct) based on BACKEND_CONFIG.
+Uses Ollama as the sole LLM backend.
 Uses _JsonFileCache for atomic, persistent caching of extraction results.
 
-Requirements: 3.1, 3.3, 3.4, 3.5, 4.1–4.8, 7.1–7.4, 8.1, 8.3, 8.5, 8.7, 8.8,
-              11.1, 11.3, 11.5, 14.1, 14.3, 14.5
+Requirements: 3.1, 3.3, 3.4, 3.5, 4.1–4.8, 7.1–7.4, 8.1, 8.3, 11.1, 11.3, 11.5,
+              14.1, 14.3, 14.5
 """
 
 import hashlib
 import json
 import logging
-import os
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -29,23 +28,6 @@ log = logging.getLogger(__name__)
 
 _CACHE_PATH = Path(__file__).parent / "cache" / "llm_extract_cache.json"
 _cache = _JsonFileCache(_CACHE_PATH)
-
-# ─── Lazy Gemini client ───────────────────────────────────────────────────────
-
-
-def _get_gemini_client():
-    """
-    Lazily import and instantiate the Gemini client.
-    Only called when the Gemini path is actually taken, so google-genai is not
-    required when LLM_BACKEND=ollama.
-    """
-    try:
-        from google import genai  # noqa: PLC0415
-        return genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
-    except ImportError:
-        raise ImportError(
-            "google-genai is required for Gemini backend. pip install google-genai"
-        )
 
 
 # ─── Extraction prompt ────────────────────────────────────────────────────────
@@ -264,29 +246,6 @@ def _build_result(data: dict) -> tuple[list[CandidateEntity], list[CandidateRela
     return entities, relations
 
 
-# ─── Gemini extraction helper ─────────────────────────────────────────────────
-
-def _call_gemini(prompt: str) -> tuple[list[CandidateEntity], list[CandidateRelation]]:
-    """
-    Invoke the Gemini backend and return parsed results.
-    On any exception: log ERROR, return ([], []) (Req 4.8, 8.5).
-    """
-    try:
-        gemini_client = _get_gemini_client()
-        model = BACKEND_CONFIG.gemini_extraction_model
-        resp = gemini_client.models.generate_content(model=model, contents=prompt)
-        raw = resp.text or "{}"
-        data = _parse_response(raw)
-        if data is None:
-            return [], []
-        return _build_result(data)
-    except Exception as exc:  # noqa: BLE001
-        log.error(
-            "LLMExtractor: Gemini backend raised %s: %s",
-            type(exc).__name__,
-            exc,
-        )
-        return [], []
 
 
 # ─── LLMExtractor ─────────────────────────────────────────────────────────────
@@ -294,9 +253,8 @@ def _call_gemini(prompt: str) -> tuple[list[CandidateEntity], list[CandidateRela
 
 class LLMExtractor:
     """
-    Extracts biomedical entities and relations from text using an LLM backend.
+    Extracts biomedical entities and relations from text using Ollama.
 
-    Routes to Ollama or Gemini based on BACKEND_CONFIG.llm_backend.
     Results are cached in semantic/cache/llm_extract_cache.json.
     """
 
@@ -310,22 +268,19 @@ class LLMExtractor:
                         regex/BioBERT. When provided, the LLM prompt instructs
                         the model to focus on novel entities not in this list.
 
-        Decision tree (Req 4.1–4.8):
+        Decision tree:
           1. Empty / whitespace / None → return ([], [])
           2. Cache hit → return cached result
-          3. LLM_BACKEND == "gemini" → call Gemini directly
-          4. LLM_BACKEND == "ollama" → call OllamaClient
+          3. Call OllamaClient
              - On success: parse JSON, write cache, return result
-             - On Ollama error + fallback=True: log WARNING, call Gemini
-             - On Ollama error + fallback=False: log ERROR, return ([], [])
-          5. JSON parse failure: log ERROR, return ([], []), do NOT write cache
+             - On Ollama error: log ERROR, return ([], [])
+          4. JSON parse failure: log ERROR, return ([], []), do NOT write cache
         """
-        # ── 1. Guard empty / whitespace / None input (Req 4.2) ───────────────
+        # ── 1. Guard empty / whitespace / None input ──────────────────────────
         if not text or not text.strip():
             return [], []
 
-        # ── 2. Cache lookup — key includes known_entities to allow re-extraction
-        #       with different known sets (Req 4.3, 7.1, 7.2) ─────────────────
+        # ── 2. Cache lookup ───────────────────────────────────────────────────
         known_key = ",".join(sorted(known_entities)) if known_entities else ""
         key = hashlib.md5(f"{text}|{known_key}".encode("utf-8")).hexdigest()
         cache = _cache.load()
@@ -334,65 +289,29 @@ class LLMExtractor:
             if isinstance(cached_data, dict):
                 return _build_result(cached_data)
 
-        # ── 3. Build prompt with known entities context ───────────────────────
+        # ── 3. Build prompt ───────────────────────────────────────────────────
         prompt = _build_prompt(text, known_entities=known_entities)
 
-        # ── 4. Route to backend ───────────────────────────────────────────────
-        if BACKEND_CONFIG.llm_backend == "gemini":
-            # Direct Gemini path (Req 8.7, 8.8, 14.3)
-            entities, relations = _call_gemini(prompt)
-            if entities or relations:
-                # Write to cache on success
-                data = {
-                    "entities": [
-                        {"name": e.name, "type": e.entity_type, "confidence": 0.8, "novel": False}
-                        for e in entities
-                    ],
-                    "relations": [
-                        {
-                            "subject": r.subject,
-                            "predicate": r.predicate,
-                            "object": r.object,
-                            "confidence": r.confidence,
-                        }
-                        for r in relations
-                    ],
-                    "evidence": {},
-                }
-                cache[key] = data
-                _cache.save(cache)
-            return entities, relations
-
-        # ── Ollama path (Req 4.4, 4.5, 4.6) ──────────────────────────────────
+        # ── 4. Call Ollama ────────────────────────────────────────────────────
         ollama_client = OllamaClient(BACKEND_CONFIG)
         model = BACKEND_CONFIG.ollama_extraction_model
 
         try:
             raw = ollama_client.generate(model, prompt)
         except (OllamaUnavailableError, OllamaTimeoutError) as exc:
-            if BACKEND_CONFIG.ollama_fallback_to_gemini:
-                # Req 4.5, 8.1: log WARNING and activate Gemini fallback
-                log.warning(
-                    "LLMExtractor: %s — activating Gemini fallback",
-                    type(exc).__name__,
-                )
-                return _call_gemini(prompt)
-            else:
-                # Req 4.6: log ERROR, return ([], [])
-                log.error(
-                    "LLMExtractor: %s: %s — returning empty result",
-                    type(exc).__name__,
-                    exc,
-                )
-                return [], []
-
-        # ── Parse JSON response ───────────────────────────────────────────────
-        data = _parse_response(raw)
-        if data is None:
-            # Req 3.1, 4.4: parse failure → log ERROR (already done), do NOT cache
+            log.error(
+                "LLMExtractor: %s: %s — returning empty result",
+                type(exc).__name__,
+                exc,
+            )
             return [], []
 
-        # ── Write to cache atomically (Req 4.4, 7.4) ─────────────────────────
+        # ── 5. Parse JSON response ────────────────────────────────────────────
+        data = _parse_response(raw)
+        if data is None:
+            return [], []
+
+        # ── 6. Write to cache atomically ─────────────────────────────────────
         cache[key] = data
         _cache.save(cache)
 

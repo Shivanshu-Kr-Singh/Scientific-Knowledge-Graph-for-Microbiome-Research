@@ -1,4 +1,4 @@
-﻿"""
+"""
 Stage 4 — LLM verifier for borderline papers only.
 
 SUPPORTED PROVIDERS:
@@ -13,12 +13,19 @@ Re-runs never call the API twice for the same paper — critical for:
 
 import os
 import json
+import math
 import hashlib
 import requests
-from typing import Optional
+from typing import List, Optional
 from pathlib import Path
 from dataclasses import dataclass
+from datetime import datetime, timezone
+
+import numpy as np
+from filelock import FileLock
 from loguru import logger
+
+from config import SEMANTIC_CACHE_THRESHOLD, EMBEDDING_STORE_DIR
 
 # ── Config ──
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
@@ -292,3 +299,447 @@ class LLMVerifier:
 
     def cache_stats(self) -> dict:
         return {"total_cached": len(self._cache), "cache_path": str(CACHE_PATH)}
+
+
+# ── Semantic Cache ────────────────────────────────────────────────────────────
+
+
+class SemanticCache:
+    """
+    Cosine-similarity cache for LLM verdicts.
+
+    Reuses cached LLM verdicts for near-duplicate papers based on embedding
+    similarity (threshold: 0.97). This is INDEPENDENT from the content-hash
+    cache in data/processed/llm_cache.json.
+
+    Storage:
+      data/embeddings/llm_verdict_cache.npy       — (K, dim) float32 matrix
+      data/embeddings/llm_verdict_cache_meta.json  — list of verdict metadata dicts
+
+    Thread safety: Uses filelock for atomic read/write operations.
+    """
+
+    SIMILARITY_THRESHOLD = SEMANTIC_CACHE_THRESHOLD  # 0.97 from config
+
+    def __init__(self, store_dir: Path | None = None):
+        self._store_dir = Path(store_dir) if store_dir else EMBEDDING_STORE_DIR
+        self._store_dir.mkdir(parents=True, exist_ok=True)
+
+        self._npy_path = self._store_dir / "llm_verdict_cache.npy"
+        self._meta_path = self._store_dir / "llm_verdict_cache_meta.json"
+        self._lock_path = self._store_dir / "llm_verdict_cache.lock"
+
+        self._vectors: np.ndarray = np.empty((0, 0), dtype=np.float32)
+        self._metadata: List[dict] = []
+
+        self._load()
+
+    # ── Public API ────────────────────────────────────────────────────────
+
+    def lookup(self, paper_embedding: np.ndarray) -> Optional[LLMVerdict]:
+        """
+        Check if a cached verdict exists for a near-duplicate paper.
+
+        Computes cosine similarity between paper_embedding and all cached
+        vectors. If max similarity > SIMILARITY_THRESHOLD (0.97), returns
+        the cached LLMVerdict with cached=True.
+
+        Parameters
+        ----------
+        paper_embedding : np.ndarray
+            Shape (dim,) — the embedding of the candidate paper.
+
+        Returns
+        -------
+        Optional[LLMVerdict]
+            Cached verdict if a near-duplicate exists, otherwise None.
+        """
+        if self._vectors.size == 0 or len(self._metadata) == 0:
+            return None
+
+        query = paper_embedding.astype(np.float32).flatten()
+        query_norm = np.linalg.norm(query)
+
+        if query_norm == 0:
+            return None
+
+        # Cosine similarity against all cached vectors
+        vector_norms = np.linalg.norm(self._vectors, axis=1)
+        # Avoid division by zero for any zero-norm cached vectors
+        safe_norms = np.where(vector_norms == 0, 1.0, vector_norms)
+
+        similarities = np.dot(self._vectors, query) / (query_norm * safe_norms)
+
+        max_idx = int(np.argmax(similarities))
+        max_sim = float(similarities[max_idx])
+
+        if max_sim > self.SIMILARITY_THRESHOLD:
+            cached_meta = self._metadata[max_idx]
+            verdict_data = cached_meta.get("verdict", {})
+            logger.debug(
+                f"[semantic_cache] Hit: similarity={max_sim:.4f} | "
+                f"title='{cached_meta.get('title', '')[:50]}'"
+            )
+            return LLMVerdict(
+                keep=bool(verdict_data.get("keep", False)),
+                confidence=float(verdict_data.get("confidence", 0.5)),
+                reason=str(verdict_data.get("reason", "semantic_cache_hit")),
+                cached=True,
+            )
+
+        return None
+
+    def store_verdict(
+        self,
+        paper_embedding: np.ndarray,
+        verdict: LLMVerdict,
+        paper,
+    ) -> None:
+        """
+        Store a paper's embedding and its LLM verdict for future cache lookups.
+
+        Parameters
+        ----------
+        paper_embedding : np.ndarray
+            Shape (dim,) — the embedding of the verified paper.
+        verdict : LLMVerdict
+            The LLM verdict to cache.
+        paper : PaperRecord (or any object with doi, pmid, title attributes)
+            Paper metadata for traceability.
+        """
+        lock = FileLock(str(self._lock_path))
+
+        with lock:
+            # Reload from disk to pick up changes from other processes
+            self._load()
+
+            vec = paper_embedding.astype(np.float32).reshape(1, -1)
+
+            if self._vectors.size == 0:
+                self._vectors = vec
+            else:
+                self._vectors = np.vstack([self._vectors, vec])
+
+            meta_entry = {
+                "doi": getattr(paper, "doi", None),
+                "pmid": getattr(paper, "pmid", None),
+                "title": getattr(paper, "title", "")[:200],
+                "verdict": {
+                    "keep": verdict.keep,
+                    "confidence": verdict.confidence,
+                    "reason": verdict.reason,
+                },
+                "verified_at": datetime.now(timezone.utc).isoformat(),
+            }
+            self._metadata.append(meta_entry)
+
+            # Persist to disk immediately
+            self._save()
+
+        logger.debug(
+            f"[semantic_cache] Stored verdict: "
+            f"doi={meta_entry['doi']} | keep={verdict.keep}"
+        )
+
+    @property
+    def size(self) -> int:
+        """Number of cached verdicts."""
+        return len(self._metadata)
+
+    def stats(self) -> dict:
+        """Return cache statistics."""
+        return {
+            "cached_verdicts": len(self._metadata),
+            "npy_path": str(self._npy_path),
+            "meta_path": str(self._meta_path),
+        }
+
+    # ── Private Helpers ───────────────────────────────────────────────────
+
+    def _load(self) -> None:
+        """Load cached vectors and metadata from disk. Reinitializes on corruption."""
+        # Load .npy vectors
+        if self._npy_path.exists():
+            try:
+                vectors = np.load(str(self._npy_path), allow_pickle=False)
+                if vectors.ndim != 2:
+                    raise ValueError(f"Expected 2D array, got {vectors.ndim}D")
+                self._vectors = vectors.astype(np.float32)
+            except Exception as e:
+                logger.error(
+                    f"[semantic_cache] Corrupted .npy file: {e}. "
+                    f"Reinitializing empty cache."
+                )
+                self._vectors = np.empty((0, 0), dtype=np.float32)
+                self._metadata = []
+                self._save()
+                return
+        else:
+            self._vectors = np.empty((0, 0), dtype=np.float32)
+
+        # Load metadata JSON
+        if self._meta_path.exists():
+            try:
+                with open(self._meta_path, "r", encoding="utf-8") as f:
+                    self._metadata = json.load(f)
+                if not isinstance(self._metadata, list):
+                    raise ValueError("Metadata must be a list")
+            except Exception as e:
+                logger.error(
+                    f"[semantic_cache] Corrupted metadata file: {e}. "
+                    f"Reinitializing empty cache."
+                )
+                self._vectors = np.empty((0, 0), dtype=np.float32)
+                self._metadata = []
+                self._save()
+                return
+        else:
+            self._metadata = []
+
+        # Consistency check: vectors and metadata must have same count
+        if self._vectors.size > 0 and len(self._vectors) != len(self._metadata):
+            logger.error(
+                f"[semantic_cache] Vector/metadata count mismatch "
+                f"({len(self._vectors)} vs {len(self._metadata)}). "
+                f"Reinitializing empty cache."
+            )
+            self._vectors = np.empty((0, 0), dtype=np.float32)
+            self._metadata = []
+            self._save()
+
+    def _save(self) -> None:
+        """Persist vectors and metadata to disk."""
+        if self._vectors.size > 0:
+            np.save(str(self._npy_path), self._vectors)
+        else:
+            np.save(str(self._npy_path), np.empty((0, 0), dtype=np.float32))
+
+        with open(self._meta_path, "w", encoding="utf-8") as f:
+            json.dump(self._metadata, f, ensure_ascii=False, indent=2)
+
+
+# ── Batched LLM Verifier ──────────────────────────────────────────────────────
+
+@dataclass
+class BatchVerdict:
+    """One paper's verdict from a batch LLM call."""
+    title: str
+    keep: bool
+    confidence: float
+    reason: str
+
+
+class BatchedVerifier:
+    """
+    Groups papers into batches of up to 16, sends structured JSON prompts to Ollama.
+    Retry strategy: split failed batch in half, retry sub-batches.
+    Falls back to single-paper for persistent failures → marks for human review.
+    """
+    MAX_BATCH_SIZE = 16
+
+    def __init__(self):
+        from config import BATCH_LLM_SIZE, BACKEND_CONFIG
+        self._max_batch_size = min(BATCH_LLM_SIZE, self.MAX_BATCH_SIZE)
+        self._timeout = BACKEND_CONFIG.ollama_timeout_seconds
+        self._max_retries = BACKEND_CONFIG.ollama_max_retries
+        self._base_url = OLLAMA_BASE_URL
+        self._model = OLLAMA_MODEL
+
+    def verify_batch(self, papers: List) -> List[BatchVerdict]:
+        """
+        Verify a list of papers in batches of ≤ MAX_BATCH_SIZE.
+        Returns one BatchVerdict per input paper in the same order.
+        """
+        if not papers:
+            return []
+
+        # Split papers into batches
+        batches = self._split_into_batches(papers)
+        all_verdicts: List[BatchVerdict] = []
+        total_success = 0
+        total_retries = 0
+        total_splits = 0
+
+        for batch in batches:
+            verdicts, retries, splits = self._process_batch(batch)
+            all_verdicts.extend(verdicts)
+            total_success += sum(1 for v in verdicts if v.reason != "HUMAN_REVIEW: parse failure")
+            total_retries += retries
+            total_splits += splits
+
+        logger.info(
+            f"[batched_verifier] Complete | "
+            f"total_papers={len(papers)} | "
+            f"batch_count={len(batches)} | "
+            f"success_count={total_success} | "
+            f"retry_count={total_retries} | "
+            f"split_count={total_splits}"
+        )
+
+        return all_verdicts
+
+    def _split_into_batches(self, papers: List) -> List[List]:
+        """Split papers into batches of at most _max_batch_size."""
+        batch_size = self._max_batch_size
+        return [
+            papers[i:i + batch_size]
+            for i in range(0, len(papers), batch_size)
+        ]
+
+    def _process_batch(self, batch: List) -> tuple:
+        """
+        Process a single batch. Returns (verdicts, retry_count, split_count).
+        On parse failure: split in half and retry sub-batches.
+        On single-paper failure: mark for human review.
+        """
+        retry_count = 0
+        split_count = 0
+
+        logger.debug(f"[batched_verifier] Processing batch of {len(batch)} papers")
+
+        # Try the full batch first
+        for attempt in range(self._max_retries + 1):
+            try:
+                verdicts = self._call_ollama_batch(batch)
+                if verdicts is not None:
+                    return verdicts, retry_count, split_count
+            except Exception as e:
+                logger.warning(
+                    f"[batched_verifier] Batch call failed (attempt {attempt + 1}): {e}"
+                )
+            retry_count += 1
+
+        # Full batch failed — split in half and retry sub-batches
+        if len(batch) == 1:
+            # Single paper that still fails — mark for human review
+            paper = batch[0]
+            title = getattr(paper, "title", "Unknown")
+            logger.warning(
+                f"[batched_verifier] Single-paper retry failed, marking for human review: {title[:60]}"
+            )
+            return [
+                BatchVerdict(
+                    title=title,
+                    keep=False,
+                    confidence=0.0,
+                    reason="HUMAN_REVIEW: parse failure",
+                )
+            ], retry_count, split_count
+
+        # Split batch in half
+        split_count += 1
+        mid = len(batch) // 2
+        left_batch = batch[:mid]
+        right_batch = batch[mid:]
+
+        logger.info(
+            f"[batched_verifier] Splitting batch of {len(batch)} into "
+            f"{len(left_batch)} + {len(right_batch)}"
+        )
+
+        left_verdicts, left_retries, left_splits = self._process_batch(left_batch)
+        right_verdicts, right_retries, right_splits = self._process_batch(right_batch)
+
+        return (
+            left_verdicts + right_verdicts,
+            retry_count + left_retries + right_retries,
+            split_count + left_splits + right_splits,
+        )
+
+    def _call_ollama_batch(self, batch: List) -> Optional[List[BatchVerdict]]:
+        """
+        Send a batch of papers to Ollama as a structured JSON array prompt.
+        Returns a list of BatchVerdict on success, or None if the response is unparseable.
+        """
+        prompt = self._build_batch_prompt(batch)
+        payload = {
+            "model": self._model,
+            "prompt": prompt,
+            "stream": False,
+            "format": "json",
+            "options": {"temperature": 0},
+        }
+
+        resp = requests.post(
+            f"{self._base_url}/api/generate",
+            json=payload,
+            timeout=self._timeout,
+        )
+        resp.raise_for_status()
+
+        raw = resp.json().get("response", "")
+        return self._parse_batch_response(raw, batch)
+
+    def _build_batch_prompt(self, batch: List) -> str:
+        """Build a structured JSON array prompt for a batch of papers."""
+        papers_json = []
+        for paper in batch:
+            papers_json.append({
+                "title": getattr(paper, "title", ""),
+                "abstract": (getattr(paper, "abstract", "") or "")[:800],
+            })
+
+        prompt = (
+            f"{SYSTEM_PROMPT}\n\n"
+            f"=== BATCH CLASSIFICATION ===\n"
+            f"You are given {len(batch)} papers to classify. "
+            f"Return a JSON object with a single key \"results\" containing an array of {len(batch)} verdicts, "
+            f"one per paper in the SAME ORDER as the input.\n\n"
+            f"Each verdict must have: {{\"keep\": true/false, \"confidence\": 0.0-1.0, \"reason\": \"one sentence\"}}\n\n"
+            f"Input papers:\n{json.dumps(papers_json, indent=2)}\n\n"
+            f"Return ONLY valid JSON in this format:\n"
+            f"{{\"results\": [{{\"keep\": true/false, \"confidence\": 0.0-1.0, \"reason\": \"...\"}}]}}\n"
+        )
+        return prompt
+
+    def _parse_batch_response(self, raw: str, batch: List) -> Optional[List[BatchVerdict]]:
+        """
+        Parse the JSON array response from Ollama.
+        Returns list of BatchVerdict if successful, None if unparseable.
+        """
+        try:
+            clean = raw.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
+            data = json.loads(clean)
+
+            # Handle response as {"results": [...]} or as a direct list [...]
+            if isinstance(data, dict) and "results" in data:
+                results = data["results"]
+            elif isinstance(data, list):
+                results = data
+            else:
+                logger.warning(f"[batched_verifier] Unexpected response structure: {raw[:100]}")
+                return None
+
+            if not isinstance(results, list):
+                logger.warning(f"[batched_verifier] Results is not a list: {type(results)}")
+                return None
+
+            # If the number of results doesn't match batch size, it's unusable
+            if len(results) != len(batch):
+                logger.warning(
+                    f"[batched_verifier] Result count mismatch: "
+                    f"expected {len(batch)}, got {len(results)}"
+                )
+                return None
+
+            verdicts = []
+            for i, (result, paper) in enumerate(zip(results, batch)):
+                title = getattr(paper, "title", "Unknown")
+                try:
+                    verdicts.append(BatchVerdict(
+                        title=title,
+                        keep=bool(result.get("keep", False)),
+                        confidence=float(result.get("confidence", 0.5)),
+                        reason=str(result.get("reason", ""))[:100],
+                    ))
+                except (TypeError, ValueError, AttributeError) as e:
+                    logger.warning(
+                        f"[batched_verifier] Failed to parse verdict {i} for '{title[:40]}': {e}"
+                    )
+                    return None
+
+            return verdicts
+
+        except (json.JSONDecodeError, KeyError, TypeError) as e:
+            logger.warning(f"[batched_verifier] JSON parse failed: {raw[:100]} | {e}")
+            return None

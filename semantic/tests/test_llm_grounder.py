@@ -18,15 +18,11 @@ Property tests (Task 6.2):
 Unit tests (Task 6.3):
   - Cache hit skips Ollama call
   - Empty canonical substituted with entity.name
-  - Ollama error + fallback=True calls Gemini; log WARNING contains "activating Gemini fallback"
-  - Ollama error + fallback=False returns fallback dict; logs ERROR
+  - Ollama error returns fallback dict; logs ERROR
   - Invalid JSON returns fallback dict; logs ERROR
-  - Gemini exception returns fallback dict; logs ERROR
   - Successful Ollama response is cached (keyed by MD5 of name + entity_type)
   - Missing "ontology" key returns fallback dict
-  - LLM_BACKEND=gemini uses Gemini directly (no Ollama call)
-  - Timeout error + fallback=True calls Gemini
-  Requirements: 5.1-5.7, 6.1-6.7, 8.2, 8.4, 8.6, 8.7, 8.8
+  Requirements: 5.1-5.6, 6.1-6.7
 """
 
 import hashlib
@@ -81,7 +77,7 @@ def _is_valid_grounding_json(s: str) -> bool:
 # --- Shared helpers ----------------------------------------------------------
 
 
-def _make_ollama_config(fallback: bool = False):
+def _make_ollama_config():
     """Return a BackendConfig pointing to Ollama with no real server needed."""
     from config import BackendConfig
     return BackendConfig(
@@ -92,26 +88,6 @@ def _make_ollama_config(fallback: bool = False):
         ollama_timeout_seconds=5,
         ollama_max_retries=0,
         ollama_retry_backoff_base=1.0,
-        ollama_fallback_to_gemini=fallback,
-        gemini_extraction_model="gemini-2.0-flash",
-        gemini_grounding_model="gemini-2.5-flash",
-    )
-
-
-def _make_gemini_config():
-    """Return a BackendConfig pointing directly to Gemini."""
-    from config import BackendConfig
-    return BackendConfig(
-        llm_backend="gemini",
-        ollama_base_url="http://localhost:11434",
-        ollama_extraction_model="llama3",
-        ollama_grounding_model="llama3",
-        ollama_timeout_seconds=5,
-        ollama_max_retries=0,
-        ollama_retry_backoff_base=1.0,
-        ollama_fallback_to_gemini=False,
-        gemini_extraction_model="gemini-2.0-flash",
-        gemini_grounding_model="gemini-2.5-flash",
     )
 
 
@@ -146,7 +122,7 @@ def test_property6_resolve_always_returns_canonical_and_ontology(entity):
     """
     from semantic.ollama_client import OllamaUnavailableError
 
-    config = _make_ollama_config(fallback=False)
+    config = _make_ollama_config()
 
     with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
          patch("semantic.llm_grounder._cache.load", return_value={}), \
@@ -180,7 +156,7 @@ def test_property7_grounding_is_idempotent(entity):
     from semantic._cache import _JsonFileCache
 
     valid_response = _valid_grounding_json()
-    config = _make_ollama_config(fallback=False)
+    config = _make_ollama_config()
 
     call_count = {"n": 0}
 
@@ -221,7 +197,7 @@ def test_property8_canonical_is_always_non_empty(entity):
     """
     from semantic.ollama_client import OllamaUnavailableError
 
-    config = _make_ollama_config(fallback=False)
+    config = _make_ollama_config()
 
     with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
          patch("semantic.llm_grounder._cache.load", return_value={}), \
@@ -246,7 +222,7 @@ def test_property8_empty_canonical_substituted_with_entity_name(entity):
     When the LLM returns an empty canonical string, entity.name is substituted.
     """
     empty_canonical_response = json.dumps({"canonical": "", "ontology": "NCBI:1"})
-    config = _make_ollama_config(fallback=False)
+    config = _make_ollama_config()
 
     with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
          patch("semantic.llm_grounder._cache.load", return_value={}), \
@@ -303,7 +279,7 @@ def test_property10_invalid_json_falls_back_to_entity_name(entity):
     When the LLM returns a response that is not valid JSON, resolve() returns
     {"canonical": entity.name, "ontology": "unknown"}.
     """
-    config = _make_ollama_config(fallback=False)
+    config = _make_ollama_config()
 
     with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
          patch("semantic.llm_grounder._cache.load", return_value={}), \
@@ -329,7 +305,7 @@ def test_property10_missing_canonical_key_falls_back_to_entity_name(entity):
     When the LLM returns valid JSON but missing the "canonical" key, resolve()
     returns {"canonical": entity.name, "ontology": "unknown"}.
     """
-    config = _make_ollama_config(fallback=False)
+    config = _make_ollama_config()
     missing_canonical = json.dumps({"ontology": "NCBI:1598"})
 
     with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
@@ -356,7 +332,7 @@ def test_property10_non_string_canonical_falls_back_to_entity_name(entity):
     When the LLM returns valid JSON but "canonical" is not a string, resolve()
     returns {"canonical": entity.name, "ontology": "unknown"}.
     """
-    config = _make_ollama_config(fallback=False)
+    config = _make_ollama_config()
     non_string_canonical = json.dumps({"canonical": 42, "ontology": "NCBI:1598"})
 
     with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
@@ -389,7 +365,7 @@ def test_property15_cache_key_is_md5_of_name_plus_entity_type(entity):
     from semantic._cache import _JsonFileCache
 
     valid_response = _valid_grounding_json()
-    config = _make_ollama_config(fallback=False)
+    config = _make_ollama_config()
     expected_key = hashlib.md5(
         (entity.name + entity.entity_type).encode("utf-8")
     ).hexdigest()
@@ -474,66 +450,27 @@ class TestLLMGrounderUnit:
         assert result["ontology"] == "NCBI:1234"
 
 
-    # --- Test 3: Ollama error + fallback=True calls Gemini -------------------
+    # --- Test 3: Ollama error returns fallback dict --------------------------
 
-    def test_ollama_unavailable_with_fallback_calls_gemini(self, caplog):
+    def test_ollama_unavailable_returns_fallback_dict(self, caplog):
         """
-        Req 5.5, 8.2: OllamaUnavailableError + fallback=True -> _get_gemini_client() is called
-        and its result is returned; log WARNING contains "activating Gemini fallback".
-        """
-        from semantic.ollama_client import OllamaUnavailableError
-
-        entity = _make_entity()
-        config = _make_ollama_config(fallback=True)
-
-        mock_gemini_client = MagicMock()
-        mock_resp = MagicMock()
-        mock_resp.text = _valid_grounding_json()
-        mock_gemini_client.models.generate_content.return_value = mock_resp
-
-        with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
-             patch("semantic.llm_grounder._cache.load", return_value={}), \
-             patch("semantic.llm_grounder._cache.save"), \
-             patch("semantic.ollama_client.OllamaClient.generate",
-                   side_effect=OllamaUnavailableError("down", 1)), \
-             patch("semantic.llm_grounder._get_gemini_client",
-                   return_value=mock_gemini_client), \
-             caplog.at_level(logging.WARNING, logger="semantic.llm_grounder"):
-            from semantic.llm_grounder import LLMGrounder
-            result = LLMGrounder().resolve(entity)
-
-        mock_gemini_client.models.generate_content.assert_called_once()
-        assert result["canonical"] == "Lactobacillus reuteri DSM 17938"
-        assert result["ontology"] == "NCBI:1598"
-
-        warning_messages = [r.message for r in caplog.records if r.levelno == logging.WARNING]
-        assert any("activating Gemini fallback" in m for m in warning_messages), (
-            f"Expected WARNING with 'activating Gemini fallback', got: {warning_messages}"
-        )
-
-    # --- Test 4: Ollama error + fallback=False returns fallback dict ---------
-
-    def test_ollama_unavailable_no_fallback_returns_fallback_dict(self, caplog):
-        """
-        Req 5.6: OllamaUnavailableError + fallback=False -> returns
+        Req 5.5, 5.6: OllamaUnavailableError returns
         {"canonical": entity.name, "ontology": "unknown"} and logs ERROR.
         """
         from semantic.ollama_client import OllamaUnavailableError
 
         entity = _make_entity(name="Bifidobacterium longum")
-        config = _make_ollama_config(fallback=False)
+        config = _make_ollama_config()
 
         with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
              patch("semantic.llm_grounder._cache.load", return_value={}), \
              patch("semantic.llm_grounder._cache.save"), \
              patch("semantic.ollama_client.OllamaClient.generate",
                    side_effect=OllamaUnavailableError("server down", 1)), \
-             patch("semantic.llm_grounder._get_gemini_client") as mock_gemini, \
              caplog.at_level(logging.ERROR, logger="semantic.llm_grounder"):
             from semantic.llm_grounder import LLMGrounder
             result = LLMGrounder().resolve(entity)
 
-        mock_gemini.assert_not_called()
         assert result == {"canonical": entity.name, "ontology": "unknown"}
 
         error_messages = [r.message for r in caplog.records if r.levelno == logging.ERROR]
@@ -566,34 +503,7 @@ class TestLLMGrounderUnit:
         error_messages = [r.message for r in caplog.records if r.levelno == logging.ERROR]
         assert len(error_messages) > 0, "Expected at least one ERROR log message"
 
-    # --- Test 6: Gemini exception returns fallback dict ----------------------
-
-    def test_gemini_exception_returns_fallback_dict(self, caplog):
-        """
-        Req 5.7, 8.6: when LLM_BACKEND=gemini and Gemini raises an exception,
-        returns {"canonical": entity.name, "ontology": "unknown"} and logs ERROR.
-        """
-        entity = _make_entity(name="Akkermansia muciniphila")
-        config = _make_gemini_config()
-
-        mock_gemini_client = MagicMock()
-        mock_gemini_client.models.generate_content.side_effect = RuntimeError("Gemini quota exceeded")
-
-        with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
-             patch("semantic.llm_grounder._cache.load", return_value={}), \
-             patch("semantic.llm_grounder._cache.save"), \
-             patch("semantic.llm_grounder._get_gemini_client",
-                   return_value=mock_gemini_client), \
-             caplog.at_level(logging.ERROR, logger="semantic.llm_grounder"):
-            from semantic.llm_grounder import LLMGrounder
-            result = LLMGrounder().resolve(entity)
-
-        assert result == {"canonical": entity.name, "ontology": "unknown"}
-
-        error_messages = [r.message for r in caplog.records if r.levelno == logging.ERROR]
-        assert len(error_messages) > 0, "Expected at least one ERROR log message"
-
-    # --- Test 7: Successful Ollama response is cached ------------------------
+    # --- Test 6: Successful Ollama response is cached ------------------------
 
     def test_successful_response_is_cached(self, tmp_path):
         """
@@ -657,72 +567,3 @@ class TestLLMGrounderUnit:
 
         error_messages = [r.message for r in caplog.records if r.levelno == logging.ERROR]
         assert len(error_messages) > 0, "Expected at least one ERROR log message"
-
-    # --- Test 9: LLM_BACKEND=gemini uses Gemini directly --------------------
-
-    def test_gemini_backend_calls_gemini_directly(self):
-        """
-        Req 8.7, 14.4: when LLM_BACKEND=gemini, Ollama is never called;
-        Gemini is called directly.
-        """
-        entity = _make_entity()
-        config = _make_gemini_config()
-
-        mock_gemini_client = MagicMock()
-        mock_resp = MagicMock()
-        mock_resp.text = _valid_grounding_json()
-        mock_gemini_client.models.generate_content.return_value = mock_resp
-
-        with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
-             patch("semantic.llm_grounder._cache.load", return_value={}), \
-             patch("semantic.llm_grounder._cache.save"), \
-             patch("semantic.llm_grounder._get_gemini_client",
-                   return_value=mock_gemini_client), \
-             patch("semantic.ollama_client.OllamaClient.generate") as mock_ollama:
-            from semantic.llm_grounder import LLMGrounder
-            result = LLMGrounder().resolve(entity)
-
-        mock_ollama.assert_not_called()
-        mock_gemini_client.models.generate_content.assert_called_once()
-        assert result["canonical"] == "Lactobacillus reuteri DSM 17938"
-        assert result["ontology"] == "NCBI:1598"
-
-    # --- Test 10: Timeout error + fallback=True calls Gemini -----------------
-
-    def test_ollama_timeout_with_fallback_calls_gemini(self, caplog):
-        """
-        Req 5.5, 8.2: OllamaTimeoutError + fallback=True -> Gemini is invoked;
-        log WARNING contains "activating Gemini fallback".
-        """
-        from semantic.ollama_client import OllamaTimeoutError
-
-        entity = _make_entity(name="Prevotella copri")
-        config = _make_ollama_config(fallback=True)
-
-        mock_gemini_client = MagicMock()
-        mock_resp = MagicMock()
-        mock_resp.text = _valid_grounding_json(
-            canonical="Prevotella copri DSM 18205",
-            ontology="NCBI:165179"
-        )
-        mock_gemini_client.models.generate_content.return_value = mock_resp
-
-        with patch("semantic.llm_grounder.BACKEND_CONFIG", config), \
-             patch("semantic.llm_grounder._cache.load", return_value={}), \
-             patch("semantic.llm_grounder._cache.save"), \
-             patch("semantic.ollama_client.OllamaClient.generate",
-                   side_effect=OllamaTimeoutError(5)), \
-             patch("semantic.llm_grounder._get_gemini_client",
-                   return_value=mock_gemini_client), \
-             caplog.at_level(logging.WARNING, logger="semantic.llm_grounder"):
-            from semantic.llm_grounder import LLMGrounder
-            result = LLMGrounder().resolve(entity)
-
-        mock_gemini_client.models.generate_content.assert_called_once()
-        assert result["canonical"] == "Prevotella copri DSM 18205"
-        assert result["ontology"] == "NCBI:165179"
-
-        warning_messages = [r.message for r in caplog.records if r.levelno == logging.WARNING]
-        assert any("activating Gemini fallback" in m for m in warning_messages), (
-            f"Expected WARNING with 'activating Gemini fallback', got: {warning_messages}"
-        )

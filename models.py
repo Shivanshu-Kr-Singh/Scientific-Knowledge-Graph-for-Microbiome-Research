@@ -4,7 +4,7 @@ models.py
 The unified data model for a research paper.
 
 WHY A SHARED MODEL?
-  PubMed, Europe PMC, Semantic Scholar, and bioRxiv all return data in
+  PubMed, Europe PMC, Semantic Scholar, OpenAlex, Crossref, and CORE all return data in
   different formats (different field names, different nesting, different
   date formats). Every collector converts its raw response into THIS
   single PaperRecord. That way Layer 2 (NLP) and Layer 4 (storage) never
@@ -35,7 +35,7 @@ class PaperRecord(BaseModel):
     pmid:  Optional[str] = None        # e.g. "38765432"
     pmcid: Optional[str] = None        # e.g. "PMC11234567"
     arxiv_id: Optional[str] = None     # e.g. "2024.12345"
-    source: str = ""                   # "pubmed" | "europepmc" | "semantic_scholar" | "biorxiv"
+    source: str = ""                   # "pubmed" | "europepmc" | "semantic_scholar" | "openalex" | "crossref" | "core"
 
     # ── Core Metadata ─────────────────────────────────────────────────────────
     title:    str = ""

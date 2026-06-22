@@ -6,10 +6,9 @@ how to merge them. The orchestrator is the single entry point for Layer 1:
 call collect_all() and get back one clean, deduplicated list of PaperRecord
 objects — ready to feed into the NLP pipeline.
 
-DEDUPLICATION STRATEGY:
+        DEDUPLICATION STRATEGY:
   The same paper often appears in multiple sources:
     - A paper published in Nature → in PubMed AND Europe PMC AND Semantic Scholar
-    - A preprint that got published → in bioRxiv AND PubMed
 
   We deduplicate by DOI first (most reliable), then by PMID, then by
   normalized title (fuzzy fallback). When a paper appears in multiple sources,
@@ -188,8 +187,7 @@ class CollectionOrchestrator:
 
         logger.success(f"After deduplication: {len(merged)} unique papers")
 
-        # ── Step 3: Post-collection relevance filter (3-stage) ───────────────
-        # bioRxiv papers were already filtered above — run only on the rest.
+        # ── Step 3: Post-collection relevance filter ──────────────────────
         # Stage 1: MeSH metadata filter (PubMed papers)
         # Stage 2: Weighted rule scorer (all sources, from stage2_rules.yaml)
         # Stage 3: ML classifier (if trained model exists)
@@ -240,13 +238,15 @@ class CollectionOrchestrator:
             - PubMed:           best for MeSH terms, article types, dates
             - Europe PMC:       best for full text availability, PMC IDs
             - Semantic Scholar: best for citation counts, reference lists
-            - bioRxiv:          best for preprint version info
+            - OpenAlex:         best for open metadata, funder info
+            - Crossref:         best for DOI/publisher metadata
+            - CORE:             best for open-access full text
 
           For each field, we take the FIRST non-null value found in priority order.
           For list fields (authors, mesh_terms), we union and deduplicate.
         """
         # Source priority — lower index = higher priority for metadata
-        SOURCE_PRIORITY = ["pubmed", "europepmc", "semantic_scholar", "biorxiv"]
+        SOURCE_PRIORITY = ["pubmed", "europepmc", "semantic_scholar", "openalex", "crossref", "core"]
 
         # Group records by their dedup key
         groups: Dict[str, List[PaperRecord]] = {}

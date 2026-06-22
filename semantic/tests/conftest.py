@@ -105,11 +105,11 @@ non_numeric_string = st.text(min_size=1).filter(
 
 # ---------------------------------------------------------------------------
 # Strategy: invalid backend strings (Property 13)
-# Any string that is not "ollama" or "gemini".
+# Any string that is not "ollama".
 # Null bytes are excluded because os.environ cannot hold them.
 # ---------------------------------------------------------------------------
 invalid_backend = st.text().filter(
-    lambda s: s not in {"ollama", "gemini"} and "\x00" not in s
+    lambda s: s != "ollama" and "\x00" not in s
 )
 
 

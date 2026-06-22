@@ -28,9 +28,6 @@ def _make_config(max_retries: int) -> BackendConfig:
         ollama_timeout_seconds=30,
         ollama_max_retries=max_retries,
         ollama_retry_backoff_base=1.0,  # base=1.0 → sleep(1.0^n) = sleep(1s), patched anyway
-        ollama_fallback_to_gemini=False,
-        gemini_extraction_model="gemini-2.0-flash",
-        gemini_grounding_model="gemini-2.5-flash",
     )
 
 
@@ -120,9 +117,6 @@ def _make_fast_config(max_retries: int = 2, timeout: int = 5, backoff_base: floa
         ollama_timeout_seconds=timeout,
         ollama_max_retries=max_retries,
         ollama_retry_backoff_base=backoff_base,
-        ollama_fallback_to_gemini=False,
-        gemini_extraction_model="gemini-2.0-flash",
-        gemini_grounding_model="gemini-2.5-flash",
     )
 
 

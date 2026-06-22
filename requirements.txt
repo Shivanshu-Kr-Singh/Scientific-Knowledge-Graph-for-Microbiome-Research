@@ -15,6 +15,7 @@ pymupdf==1.24.0             # Faster PDF parsing (PyMuPDF)
 transformers==4.40.0        # BioBERT / PubMedBERT for NER
 torch==2.3.0                # PyTorch backend for transformers
 spacy==3.7.4                # Rule-based NLP + pipeline
+numpy>=1.24.0               # Array operations for embeddings and ML
 scikit-learn==1.4.2         # Article type classifier
 sentence-transformers==2.7.0  # Paper embeddings for similarity
 
@@ -35,8 +36,7 @@ python-dotenv==1.0.1        # Load secrets from .env file
 loguru==0.7.2               # Structured logging
 pydantic==2.7.1             # Data validation / schemas
 tqdm==4.66.4                # Progress bars for batch jobs
-
-google-genai            # Google Gemini SDK
+filelock>=3.12.0            # File-based locking for embedding store
 
 # ── Relevance Filter ──────────────────────────────────────────────────────────
 pyyaml==6.0.1               # organisms.yaml config loading

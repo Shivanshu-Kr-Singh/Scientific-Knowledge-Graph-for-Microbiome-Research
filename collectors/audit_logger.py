@@ -69,7 +69,17 @@ class AuditLogger:
             verdict.score,
 
             "reason":
-            verdict.reason}
+            verdict.reason,
+
+            "doi":
+            getattr(paper, "doi", None),
+
+            "pmid":
+            getattr(paper, "pmid", None),
+
+            "abstract":
+            (getattr(paper, "abstract", None) or "")[:2000],
+        }
 
         cls._append(
             path,
@@ -96,7 +106,16 @@ class AuditLogger:
             verdict.reason,
 
             "cached":
-            verdict.cached
+            verdict.cached,
+
+            "doi":
+            getattr(paper, "doi", None),
+
+            "pmid":
+            getattr(paper, "pmid", None),
+
+            "abstract":
+            (getattr(paper, "abstract", None) or "")[:2000],
         }
 
         cls._append(

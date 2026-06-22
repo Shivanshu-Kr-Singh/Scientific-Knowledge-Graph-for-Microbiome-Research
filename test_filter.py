@@ -6,7 +6,6 @@ Complete test suite for the 4-stage relevance filter.
 Run options:
   python test_filter.py              → runs all unit tests (no API needed)
   python test_filter.py --live       → tests against your collected JSON
-  python test_filter.py --llm        → tests Stage 4 Gemini with 3 borderline papers
   python test_filter.py --all        → everything above
 
 Usage:
@@ -183,29 +182,26 @@ def test_live():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TEST 3 — Stage 4 LLM test (Gemini)
+# TEST 3 — Stage 4 LLM test
 # ─────────────────────────────────────────────────────────────────────────────
 
 def test_llm():
     """
-    Tests Stage 4 Gemini verifier with 3 carefully chosen borderline papers.
+    Tests Stage 4 LLM verifier with 3 carefully chosen borderline papers.
     These are papers that Stage 2 rules find ambiguous (score 0.40-0.70).
-    Requires GEMINI_API_KEY in .env
+    Requires Ollama to be running locally.
     """
     from collectors.llm_verifier import LLMVerifier
 
     print("\n" + "="*55)
-    print("TEST 3 — Stage 4 Gemini LLM verifier")
+    print("TEST 3 — Stage 4 LLM verifier")
     print("="*55)
 
     verifier = LLMVerifier()
 
     if not verifier.is_available:
         print("\n  ⚠️  LLM not configured.")
-        print("  Add to .env:")
-        print("    LLM_PROVIDER=gemini")
-        print("    GEMINI_API_KEY=your_key_here")
-        print("  Get free key: https://aistudio.google.com")
+        print("  Ensure Ollama is running: ollama serve")
         return False
 
     # Borderline papers — ambiguous enough that rules alone are uncertain
@@ -236,8 +232,8 @@ def test_llm():
         ),
     ]
 
-    print(f"\n  Testing {len(borderline_cases)} borderline papers with Gemini...")
-    print(f"  Provider: {os.getenv('LLM_PROVIDER')} | Model: {os.getenv('LLM_MODEL')}\n")
+    print(f"\n  Testing {len(borderline_cases)} borderline papers with Ollama LLM...")
+    print(f"  Model: {os.getenv('OLLAMA_VERIFIER_MODEL', 'default')}\n")
 
     passed = 0
     for title, abstract, expected, desc in borderline_cases:
@@ -289,5 +285,5 @@ if __name__ == "__main__":
 
     if not run_live:
         print("\n  TIP: Run with --live to test on your collected papers")
-        print("       Run with --llm  to test Gemini Stage 4")
+        print("       Run with --llm  to test Stage 4 LLM verifier")
         print("       Run with --all  for everything")

@@ -191,6 +191,9 @@ GROWTH_REJECT_THRESHOLD = float(os.getenv("GROWTH_REJECT_THRESHOLD", "0.20"))
 # ── Latency Monitoring ─────────────────────────────────────────────────────────
 EMBEDDING_LATENCY_WARN_MS = float(os.getenv("EMBEDDING_LATENCY_WARN_MS", "200.0"))
 
+# ── Metagenomics Gate ──────────────────────────────────────────────────────────
+METAGENOMICS_GATE_ENABLED = os.getenv("METAGENOMICS_GATE_ENABLED", "true").lower() == "true"
+
 # ── Drift Monitor ─────────────────────────────────────────────────────────────
 DRIFT_SAMPLE_RATE = float(os.getenv("DRIFT_SAMPLE_RATE", "0.01"))
 DRIFT_MIN_SAMPLE = int(os.getenv("DRIFT_MIN_SAMPLE", "10"))

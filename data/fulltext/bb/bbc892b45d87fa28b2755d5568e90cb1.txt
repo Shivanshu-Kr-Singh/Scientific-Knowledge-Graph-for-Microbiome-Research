@@ -1,0 +1,11 @@
+The BCG vaccines on the market have employed a Mycobacterium bovis (M. bovis) sub-strains derived from the initial strain.
+To date, there has been no recommendation regarding the sub-strains with the highest effectiveness when administered to humans. Because it remains the standard for Tuberculosis treatment,
+the quality of the BCG vaccine must be verified. The viability test is one of the parameters for BCG vaccine quality control.
+The culture method has become the gold standard for viability testing with various testing media. The present study aimed to evaluate the performance of Lowenstein Jensen (LJ) and Ogawa
+media for the viability test of Pasteur 1173P2 and Russian (Moscow) – 384 sub-strains of M. bovis in the BCG vaccine.
+The number of culturable particles of each sub-strain in the BCG vaccine was estimated and statistically evaluated using the t-test.
+The colonies of the Pasteur 1173P2 have characteristics; tended to clump on both mediums with tiny, rough, and pale yellow/cream colors.
+Although the colony character of the Russian (Moscow) – 384 generally has similar feature, it did not cluster and had a smooth texture.
+In terms of growth rate, LJ and Ogawa media performed similarly for Pasteur 1173P2 and Russian (Moscow) – 384 sub-strains. Maximum growth is reached by the fifth week.
+The culturable particles of Pasteur P1173P2 sub-strains did not differ between mediums. Whereas the growth of the Russian (Moscow) - 384 sub-strains was statistically better on Ogawa media.
+The results of this study reveal that the performance of the media used for determining the number of culturable particles is based on the sub-strains of M. bovis present in the BCG vaccine.

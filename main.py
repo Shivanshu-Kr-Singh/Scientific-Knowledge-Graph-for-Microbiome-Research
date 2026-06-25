@@ -329,8 +329,8 @@ if __name__ == "__main__":
         MAX = int(os.getenv("MAX_PER_SOURCE", "50"))
         run_layer1(max_per_source=MAX)
     elif mode == "2":
-        USE_MODEL = os.getenv("USE_NER_MODEL", "false").lower() == "true"
-        USE_LLM   = os.getenv("USE_LLM", "false").lower() == "true"
+        USE_MODEL = os.getenv("USE_NER_MODEL", "true").lower() == "true"
+        USE_LLM   = os.getenv("USE_LLM", "true").lower() == "true"
         run_layer2(use_ner_model=USE_MODEL, use_llm=USE_LLM)
     elif mode == "3":
         # Layer 3: Enhanced Knowledge Graph Pipeline
@@ -346,3 +346,8 @@ if __name__ == "__main__":
         )
     elif mode == "train_filter":
         train_relevance_model()
+    elif mode == "dedup_enriched":
+        from nlp.pipeline import NLPPipeline
+        logger.info("Deduplicating enriched batch files...")
+        removed = NLPPipeline().deduplicate_batches()
+        logger.success(f"Removed {removed} duplicate enriched records")

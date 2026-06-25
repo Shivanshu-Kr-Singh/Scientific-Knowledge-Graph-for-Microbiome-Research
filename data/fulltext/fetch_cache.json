@@ -1,0 +1,45 @@
+{
+  "8058549458b1a6e18dac5ddb277379e8": {
+    "status": "success",
+    "fetch_source": "unpaywall_pdf",
+    "fetch_tier": 2
+  },
+  "516a108de7abe1fdef657aacb4f43c7a": {
+    "status": "exhausted",
+    "fetch_source": "abstract_only",
+    "tried": [
+      "pdf",
+      "web",
+      "unpaywall"
+    ]
+  },
+  "b70a23c3962f3342f029207d72181503": {
+    "status": "success",
+    "fetch_source": "unpaywall_pdf",
+    "fetch_tier": 2
+  },
+  "818c3d84d4a868a907ac8cc651853e49": {
+    "status": "success",
+    "fetch_source": "xml",
+    "fetch_tier": 1
+  },
+  "296876816850f9e6b307ae6cf4bd732c": {
+    "status": "exhausted",
+    "fetch_source": "abstract_only",
+    "tried": [
+      "unpaywall"
+    ]
+  },
+  "175ef881f278a441f11c57f690241849": {
+    "status": "success",
+    "fetch_source": "ncbi_pmc",
+    "fetch_tier": 1
+  },
+  "a062f38b36c7d26d71654d1b03c1f2ff": {
+    "status": "exhausted",
+    "fetch_source": "abstract_only",
+    "tried": [
+      "unpaywall"
+    ]
+  }
+}

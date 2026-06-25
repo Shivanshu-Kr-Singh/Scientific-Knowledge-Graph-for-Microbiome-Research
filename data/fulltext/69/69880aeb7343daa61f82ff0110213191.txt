@@ -1,0 +1,72 @@
+Resúmenes de Trabajos Libres del XIV Congreso 
+Colombiano de Alergia, Asma e Inmunología y el VI 
+Encuentro de la Asociación Colombiana de Inmunología
+Estudio de microbiota fecal revela disbiosis 
+­
+específica en espondiloartritis, según subtipo, ac-
+tividad de la enfermedad y tratamiento
+1Universidad Militar Nueva Granada, Facultad de Medicina, 
+Programa de Reumatología, Grupo de Inmunología Clínica 
+Aplicada, Bogotá, Colombia
+2Universidad El Bosque, Grupo de Inmunología Celular y Mole-
+cular / INMUBO, Bogotá, Colombia
+3Universidad Militar Nueva Granada, Programa de Medicina 
+Interna, Bogotá, Colombia
+Consuelo Romero-Sánchez,1,2 Carlos Ferrer-Santos,3 Deisy Abril,4 Eduin Acosta-Hernán-
+dez,1,5 Juliette De Ávila,2 Alejandro Ramos-Casallas,2 Javier Escobar,4 Wilson Bautista- 
+Molano,1,2 Diego Jaimes,6 Adriana Beltrán-Ostos,2 Juan Manuel Bello-Gualtero,1,5 Cristian 
+Flórez-Sarmiento,2,7 Viviana Parra-Izquierdo,2,7 Omar Javier Calixto1,5
+4Laboratorio de Genética Molecular Bacteriana, Universidad El 
+Bosque, Bogotá, Colombia
+5Hospital Militar Central, Departamento de Reumatología e 
+Inmunología, Grupo de Inmunología Clínica Aplicada, Bogotá, 
+Colombia
+6Clinicos IPS, Bogotá, Colombia
+7Gastroadvanced, IPS, Bogotá, Colombia
+Correspondencia:
+Omar Javier Calixto
+calixto.oj@gmail.com
+Rev Alerg Mex 2024; 71 (1): 81
+https://doi.org/10.29262/ram.v71i1.1305
+Resumen
+Objetivo: Comparar la diversidad y composición del microbioma gastrointestinal de pacientes con EspA.
+Métodos: La secuenciación MiSeq de la región V3-V4 del gen ARN ribosomal 16, se realizó en ADN aislado de heces. Se excluyeron pacientes con EspA 
+y EII simultánea. Se evaluaron diferencias para los índices de riqueza y diversidad por medio de QIIME 2™. Las diferencias entre medias> 0,2%, con un 
+valor de p< 0,05, se asumieron significativas. Aval del Comité de Ética Institucional.
+Resultados: 69 individuos incluidos, 49 con EspA (espondilitis anquilosante-EA 72,9%, artritis psoriásica-APs 18,8%, artritis reactiva-ARe 8,3%), cinco 
+controles positivos-disbiosis y 15 controles-eubiosis. El tratamiento convencional en 42,9%, anti-IL-17 16,3%, y anti-TNF 40,8%. Por subtipo-EasP
+, se 
+encontraron diferencias estadísticamente significativas a favor de EA para los índices de diversidad.  Entre EA vs APs, hubo diferencia a favor de EA 
+para Clostridium clostridioforme (p=0,002), Gemmiger formicilis (p=0,009), Roseburia inulivorans (p=0,008) y Lachnospira pectinoschiza. Entre EA vs 
+ARe hubo diferencia a favor de EA para L. pectinoschiza (p=0,009), Ruminococcus callidus (p = 0,006), Clostridium ruminantium (p=0,031); G. formicilis 
+(p=0,034). La diversidad y riqueza mostraron diferencias en pacientes con alta actividad para los índices de Simpson y Pielou. En alta actividad, se 
+encontró menor enriquecimiento de Bacteroides eggerthii (p=0,0003), C. ruminantium (p= 0,026) y Alistipes putredinis (p= 0,035). El número de ASV fue 
+superior en el grupo de anti IL-17 vs convencional (p=0.025), y una tendencia entre anti IL-17 vs anti-TNF (p=0,09). En anti TNF hubo menor proporción 
+para C. clostridioforme (p=0,023), G. formicilis (p=0,030) y R. callidus (p= 0,003). Y en anti IL-17, Alistipes indistinctus (p= 0,012), estuvo disminuida.
+Conclusiones: Existen diferencias en la diversidad microbiana para los subtipos de EspA. El nivel de actividad de la enfermedad es plausible para influir 
+en la composición de microbiota fecal. El tratamiento con anti-TNFα, puede influenciar el ambiente del microbioma favoreciendo la restauración de la 
+microbiota intestinal, mientras los anti IL-17 podrían mantener un ambiente inflamatorio.
+Palabras clave: Espondiloartritis; Microbioma; Actividad de la enfermedad; Terapia biológica.
+Abstract
+Objective: To compare the diversity and composition of the gastrointestinal microbiome of patients with SpA.
+Methods: MiSeq sequencing of the V3-V4 region of the 16S ribosomal RNA gene was performed on DNA isolated from stool. Patients with concurrent 
+SpA and IBD were excluded.  Differences were assessed for richness and diversity indices by QIIME 2™. Differences between means >0,2% with a 
+ 
+p-value<0,05 were assumed significant. Institutional Ethics Committee endorsement.
+Results: 69 individuals included, 49 with SpA (ankylosing spondylitis-AS 72,9%, psoriatic arthritis-PsA 18,8%, reactive arthritis-ReA 8,3%) 5 positive 
+controls-dysbiosis and 15 controls-eubiosis. Conventional treatment in 42,9%, anti-IL-17 16,3% and anti-TNF 40,8%. By subtype, statistically signifi-
+cant differences in favour of AS were found for the diversity indices.  AS vs PsA there was a difference in favour of AS for Clostridium clostridioforme 
+(p=0,002), Gemmiger formicilis (p=0,009), Roseburia inulivorans (p=0,008) and Lachnospira pectinoschiza. AS vs ReA there was a difference in favour 
+of AS for L. pectinoschiza (p=0,009), Ruminococcus callidus (p=0.006), Clostridium ruminantium (p=0.031); G. formicilis (p=0,034). Diversity and rich-
+ness showed differences in patients with high activity for Simpson's and Pielou's indices. In high activity, lower enrichment of Bacteroides eggerthii 
+ 
+(p= 0,0003), C. ruminantium (p= 0,026) and Alistipes putredinis (p=0,035) was found. The number of ASV was higher in the anti-IL-17 vs conventional 
+group (p=0.025) and a trend between anti-IL-17 vs anti-TNF (p=0.09). In anti-TNF there was a lower proportion for C. clostridioforme (p=0.023), G. for-
+micilis (p=0.030) and R. callidus (p= 0.003). In anti IL-17, Alistipes indistinctus (p= 0.012) was decreased.
+Conclusions: There are differences in microbial diversity for SpA subtypes. The level of disease activity is plausible to influence the composition of the 
+faecal microbiota. Anti-TNFα treatment may influence the microbiome environment favouring restoration of the gut microbiota, while anti-IL-17 may 
+maintain an inflammatory environment.
+Keywords: Spondyloarthritis; Microbiome; Disease activity; Biological therapy.
+© 2024 Colegio Mexicano de Inmunología Clínica y Alergia. Este es un artículo open access bajo la licencia 
+Publicado con
+81

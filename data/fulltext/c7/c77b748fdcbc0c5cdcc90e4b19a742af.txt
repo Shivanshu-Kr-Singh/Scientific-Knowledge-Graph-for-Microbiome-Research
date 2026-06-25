@@ -1,0 +1,12 @@
+Abstract
+Objective: This systematic review summarizes the current knowledge on the association between the oral microbiota and dental caries in adolescents. Design: An electronic search was carried out across five databases. Studies were included if they conducted research on generally healthy adolescents, applied molecular-based microbiological analyses and assessed caries status. Data extraction was performed by two reviewers and the Newcastle-Ottawa Scale was applied for quality assessment. Results: In total, 3935 records were reviewed which resulted in a selection of 20 cross-sectional studies (published 2005–2022) with a sample size ranging from 11 to 614 participants including adolescents between 11 and 19 years. The studies analyzed saliva, dental biofilm or tongue swabs with Checkerboard DNA-DNA hybridization, (q)PCR or Next-Generation Sequencing methods. Prevotella denticola, Scardoviae Wiggsiae, Streptococcus sobrinus and Streptococcus mutans were the most frequently reported species presenting higher abundance in adolescents with caries. The majority of the studies reported that the microbial diversity was similar between participants with and without dental caries. Conclusion: This systematic review is the first that shows how the oral microbiota composition in adolescents appears to differ between those with and without dental caries, suggesting certain taxa may be associated with increased caries risk. However, there is a need to replicate and expand these findings in larger, longitudinal studies that also focus on caries severity and take adolescent-specific factors into account.
+Bibliographical note
+Publisher Copyright: © 2024 The AuthorsFingerprint
+Dive into the research topics of 'Oral microbiota of adolescents with dental caries: A systematic review'. Together they form a unique fingerprint.Cite this
+- APA
+- Author
+- BIBTEX
+- Harvard
+- Standard
+- RIS
+- Vancouver

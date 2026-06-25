@@ -1,0 +1,1236 @@
+Therapy
+Eur J Dermatol 2024; 34(1): 79-88
+Real-world effectiveness and tolerability of a 
+cream containing postbiotic Aquaphilus dolomiae 
+extract-G3 in subjects with sensitive facial skin
+Andreas WOLLENBERG1
+Ana Maria GIMÉNEZ-ARNAU2
+Aline STENNEVIN3
+Ariadna ORTIZ-BRUGUÉS3,4
+1 Department of Dermatology and 
+Allergology, Ludwig-Maximilian 
+University, D-80337 Munich, Germany, 
+and Department of Dermatology 
+and Allergology, University Hospital 
+Augsburg, D-86179 Augsburg, Germany
+2 Department of Dermatology, Hospital 
+del Mar-IMIM, University Pompeu 
+Fabra, 08003 Barcelona, Spain
+3 Laboratoires Dermatologiques Avène, 
+Pierre Fabre Dermo-Cosmétique,  
+81500 Lavaur, France
+4 Department of Dermatology and 
+Venereology, Hospital La Paz,  
+28046 Madrid, Spain
+Background: Previous studies indicate that a postbiotic extract from 
+Aquaphilus dolomiae (ADE-G3) improves skin barrier function and 
+relieves neuroinflammation. Objectives: Evaluation of an ADE-G3-
+based soothing cream for managing sensitive facial skin. Materials & 
+Methods: This real-world, international, pre-post comparative study 
+involved adults with sensitive facial skin who used the study prod-
+uct once or twice daily for two to three months according to usual 
+practice. Subjects reported changes in perceived clinical symptoms 
+using self-administered questionnaires. Physicians assessed changes 
+in xerosis severity, overall product effectiveness and tolerability. User 
+satisfaction and quality of life (QoL) assessments, and subgroup 
+analyses according to the factors triggering sensitive skin were also 
+conducted. Results: In total, 2,382 subjects with sensitive facial skin 
+(female: 79%; median age: 40 years) were included. An immediate 
+skin soothing effect after the first ADE-G3-based cream application 
+was reported by 93% of subjects, and improvements in symptoms 
+were reported in 94% after a mean of nine days of product use. 
+After several months of use (mean: 71±21 days), xerosis severity 
+and dermatological-related QoL significantly improved in the whole 
+study population and in the subgroups (p<0.001). At the end of the 
+study, 92% of users were satisfied with the product and 95% reported 
+improvements in their overall skin condition. Physicians found the 
+cream to be effective and well tolerated in 92% and 98% of subjects, 
+respectively. Conclusion: Regular use of the ADE-G3-based cream 
+was shown to be effective in real-world management of sensitive facial 
+skin, regardless of the factors involved in triggering skin sensitivity.
+Reprints: Aline Stennevin 
+<aline.stennevin@pierre-fabre.com>
+Key words: Aquaphilus dolomiae, dermocosmetics, postbiotics, quality 
+of life, sensitive skin, xerosis
+Article accepted on 11/11/2023
+S
+ensitive or reactive skin is a common dermatolog-
+ical problem in the general population, with prev-
+alence estimates from self-reporting surveys 
+indicating that approximately 60% to 70% of women and 
+50% to 60% of men are affected [1]. 
+Sensitive skin is a complaint with a highly subjective 
+component, which makes its diagnosis and treatment 
+very difficult. Indeed, there is currently no standard diag-
+nostic test for the objective identification of this skin 
+syndrome, thus diagnosis mainly relies on self-assess-
+ment questionnaires [2-4]. Symptoms reported by 
+subjects mainly include burning sensations, pruritus, 
+tingling, skin redness and pain, which can be accompa-
+nied by other clinical signs such as mild erythema, 
+xerosis, urticaria, telangiectasias or desquamation. 
+However, in most cases, there are only subjective symp-
+toms. The symptoms are not related to lesions attribut-
+able to any other skin disease and occur in response to 
+stimuli that do not normally produce such effects [4, 5].
+The syndrome of sensitive skin profoundly impacts 
+quality of life (QoL) of the individuals affected, particu-
+larly when the symptoms and visible consequences of 
+the condition -such as skin redness, scaling or swelling- 
+manifest on the face.
+Various factors can aggravate the symptoms of sensitive 
+skin or initiate cutaneous reactions including: environ-
+mental factors, such as exposure to ultraviolet rays or 
+sunlight, air pollution, heat, cold and wind; factors asso-
+ciated with lifestyle such as the use of cosmetics, a spicy 
+diet, the consumption of alcohol or smoking; and phys-
+iological factors, such as stress or hormones [1, 4]. Some 
+pathologies, medical treatments or dermatological 
+procedures can also exacerbate sensitive skin. This skin 
+condition thus appears to be complex, and although not 
+all the pathophysiological mechanisms have been clearly 
+established, sensitive skin is increasingly being recog-
+nized as a neurodermatological syndrome. Current data 
+indeed indicate that individuals with sensitive skin
+doi:10.1684/ejd.2024.4637
+EJD, vol. 34, n° 1, January-February 2024
+79
+To cite this article: Wollenberg A, Giménez-Arnau AM, Stennevin A, Ortiz-Brugués A. Real-world effectiveness and tolerability of a cream containing postbi-
+otic Aquaphilus dolomiae extract-G3 in subjects with sensitive facial skin. Eur J Dermatol 2024; 34(1): 79-88 doi:10.1684/ejd.2024.4637
+display at least one of the following changes: an impaired 
+skin barrier function that facilitates the penetration of 
+irritants and allergens, an increased immune response 
+that can trigger itching and burning sensations, and 
+over-reactive cutaneous nerve endings or neurogenic 
+inflammation that exacerbate sensory messages [1, 2]. 
+The skin microbiome may also be involved in skin sensi-
+tivity, but its role has not yet been well established. 
+As part of its research on the microbiota derived from 
+Avène thermal spring water (France) and on the patho-
+physiology of sensitive or reactive skin, Avène labora-
+tories have developed a new generation of postbiotic 
+active ingredients. Among these, the extract ADE-G3 
+(DSensinoseTM) derived from the bacterium, Aquaphilus 
+dolomiae, has demonstrated beneficial effects on neuro-
+genic skin inflammation [6] and on skin barrier function 
+[7]. More specifically, in vitro studies have indicated that 
+this postbiotic may act on several nociceptors and 
+inflammation amplification loops, and thereby may 
+decrease cutaneous sensitivity via an anaesthetic-like 
+mechanism [6]. Several soothing formulations (cream 
+and balm) incorporating the postbiotic ADE-G3 have 
+been designed for the management of  sensitive facial 
+skin, and have demonstrated immediate and long-term 
+effects on the reduction of skin sensitivity in clinical eval-
+uations [8]. Thus, taken together, the in vitro and clinical 
+data indicate that the relieving effects of ADE-G3-
+containing products are likely due to the mitigation of 
+the cutaneous neurosensory response associated with 
+this syndrome.
+The current study was conducted to investigate real-
+world effectiveness and tolerability of an ADE-G3-based 
+cream in a large international cohort of subjects with 
+sensitive facial skin. This study included evaluation of 
+the immediate and long-term effects of the study product 
+on the clinical symptoms of sensitive skin, as well as 
+assessment of the changes in severity of xerosis after 
+several months of product use. The impact on QoL, and 
+overall user satisfaction, product effectiveness and toler-
+ability were also assessed.
+(Regulation [EC] No. 1223/2009 of the European 
+Commission for European countries). For this non-in-
+terventional study evaluating a cosmetic product admin-
+istered as part of the usual practice of the physicians and 
+involving no constraints or invasive examinations, 
+protocol approval by an ethics committee or an institu-
+tional review board was not required in all the countries 
+participating in the study, but it was obtained in the 
+countries where it was requested in accordance with their 
+current legislation. The included subjects received a 
+leaflet in their native language containing the details 
+about the study and their rights, including the processing 
+of their data and their right to access and modify their 
+data, in accordance with Regulation (EU) N°2016/679 
+of the European Parliament and of the Council of 27th 
+April 2016 on the protection of natural persons. All 
+subjects provided oral or written consent to take part in 
+the study.
+Participants
+The sponsor invited physicians from 520 medical centres 
+to participate in the study. Those agreeing to participate 
+were asked to recruit at least five subjects for whom use 
+of the study product was advised, i.e., adults with skin 
+prone to irritation (sensitive, reactive, or hyper-reactive 
+skin), skin susceptible to allergens (intolerant skin or 
+skin prone to allergic contact dermatitis), or skin irrita-
+tion due to dermatological pathologies or previously 
+performed dermatological procedures, and whose facial 
+skin type was rated by the physician as dry, normal or 
+a combination of both. Subjects with oily skin, a skin 
+disease affecting the face, and those who were intolerant 
+to one of the components of the product were not eligible 
+for product use. Moreover, subjects using a drug treat-
+ment that could interfere with the evaluation of the 
+results were not included.
+Study product
+The study product was a commercially available dermo-
+cosmetic: Tolérance Control® soothing cream (Avène, 
+France) containing the postbiotic ADE-G3 extract 
+(D-SensinoseTM) as the main non-medicated active 
+ingredient, as well as Avène thermal spring water, 
+caprylic/capric triglyceride, ethylhexyl palmitate, glyc-
+erin, cetearyl alcohol, squalane, Cetearyl glucoside, cetyl 
+esters, arginine, beeswax (Cera alba), citric acid, trometh-
+amine, water (aqua) and xanthan gum.
+Materials and methods
+Study design and ethics
+This real-world, prospective, observational, multicentre, 
+pre-post comparative study was conducted from 1st 
+September 2021 to 30th November 2022 in 13 countries 
+(Australia, Belgium, Czech Republic, Germany, France, 
+Greece, Italy, Japan, Poland, Portugal, Romania, 
+Slovakia, and the United States). The study involved 
+two visits: an inclusion visit (Visit 1), and a follow-up 
+visit (Visit 2) after about two to three months of product 
+use. These visits were part of the routine follow-up of 
+the included subjects by the physician who was usually 
+responsible for their dermatological management. 
+This study was performed in accordance with the 
+Helsinki Declaration of 1964 and its later amendments, 
+and complied with good clinical practice guidelines 
+(CPMP/ICH/135/95, https://www.ema.europa.eu) and 
+current legislation for clinical trials involving cosmetics 
+in the countries where the study was conducted
+Study procedure
+At inclusion, the physicians collected demographic and 
+clinical data from the subjects with sensitive skin, 
+including Fitzpatrick’s phototype and facial skin type. 
+The factors contributing to sensitive skin (grouped by 
+factor type: isolated constitutional factors, factors related 
+to a pathology, and factors related to a previous derma-
+tological procedure) and the symptoms experienced 
+during the three days prior to cream application 
+(including perceived and visible manifestations) were also 
+recorded at baseline through a multiple-choice self-as-
+sessment questionnaire in which one or several of the
+80
+EJD, vol. 34, n° 1, January-February 2024
+proposed responses could be selected. The study product 
+was issued to the subjects according to usual practice in 
+case of sensitive or hypersensitive skin, without any 
+specific instructions or recommendations from the 
+sponsor. The included subjects agreed to apply the cream 
+in compliance with the physician’s advice during the 
+whole study period, i.e., once or twice daily (morning and 
+evening) on the whole face for two to three months. 
+Participants were otherwise free to use any of their other 
+usual cleansing cosmetic products (shampoos, soaps, 
+make-up removers, etc.) during the study period.
+product at Visit 2 using a 7-point scale to answer the 
+question “How has the overall skin sensitivity evolved 
+since the start of the use of Tolérance Control?”.
+Tolerability
+Tolerability was ranked by the physician at Visit 2 using 
+a 4-point scale from 0 (poor) to 3 (very good). The 
+subjects also reported any acceptability issues they 
+encountered when using the product.
+Statistical analyses
+Descriptive data were expressed as the mean, standard 
+deviation (SD) and range (min-max), or as the number 
+and percentage (N and %) for each variable, as appro-
+priate. Between-visit differences in the means were 
+expressed as absolute changes (initial value-final value) 
+and as relative changes (initial value-final value/initial 
+value*100).
+Changes from baseline in the SS-10 score, xerosis severity 
+score and DLQI score were analysed in the whole study 
+population and in the three subpopulations of subjects 
+grouped according to types of factors contributing to 
+skin sensitivity reported at baseline, using either the 
+parametric Student’s t-test or the non-parametric 
+Wilcoxon test. A p value of less than 0.05 was considered 
+as statistically significant. All statistical analyses were 
+carried out using SAS®, version 9.4.
+Evaluation criteria
+The main evaluation criterion was the effectiveness of 
+the study product on the clinical symptoms of sensitive 
+skin on the face in the whole study population, immedi-
+ately after the first application, and after two to three 
+months of use in a real-life setting. Secondary criteria 
+included changes between baseline and follow-up in 
+xerosis severity, as assessed by the physician, and in QoL 
+and dermatological-related QoL, as assessed by the 
+subjects. These criteria were also analysed in three 
+subpopulations of subjects grouped according to the 
+types of factors contributing to skin sensitivity reported 
+at baseline. Additional outcomes included time to 
+improvement of symptoms, global product effectiveness 
+and user satisfaction, and product tolerability.
+Assessment methods
+Clinical symptoms and signs
+Users assessed the clinical symptoms of sensitive facial 
+skin at baseline before product application, 30 seconds 
+after the first application (Visit 1) and at follow-up 
+(Visit 2) using the optimized and validated Sensitive 
+Scale-10 (SS-10), comprising 10 items each rated on a 
+10-point visual analogue scale (VAS) to measure severity 
+of skin sensitivity [3]. On this scale, the highest possible 
+total score is 100, and a score above 20 identifies indi-
+viduals with sensitive skin. Users were also asked to 
+estimate the time to improvement of their symptoms at 
+Visit 2. Xerosis severity on the face was assessed at base-
+line (before product use) and at follow-up by the physi-
+cian using a 10-point VAS ranging from 0 (no skin 
+dryness) to 10 (severe skin dryness).
+Results
+Participants and baseline characteristics
+A total of 2,539 subjects from 392 centres were enrolled 
+in the study, of whom 2,382 with data from the two visits 
+were included in the study population (figure 1). Baseline 
+demographic and clinical characteristics of the included
+Centres contacted
+N = 520
+Centres included
+N = 392
+Quality of life
+QoL related to sleep and QoL related to stress, as well 
+as Dermatology Life Quality Index (DLQI) scores [9], 
+were assessed at the inclusion and follow-up visits by 
+means of self-administered questionnaires. DLQI total 
+scores can range from 0 to 30, with a higher score indi-
+cating a larger effect on QoL.
+Subjects included
+N = 2539
+Subjects excluded
+N = 157
+(only one visit)
+Global user satisfaction and product effectiveness 
+User satisfaction with the study product was assessed by 
+the subject and by the physician immediately after 
+product use and at follow-up using a single-item ques-
+tionnaire with four possible responses: very satisfied, 
+satisfied, moderately satisfied, and not satisfied. The 
+physician also assessed the global effectiveness of the
+Subjects analysed
+N = 2382
+Figure 1. Study flowchart.
+81
+EJD, vol. 34, n° 1, January-February 2024
+subjects are presented in table 1. Median age of the study 
+population was 40 years and 79% of the subjects were 
+female. About half of the subjects (49%) had dry skin 
+on the face, whereas 26% had normal skin and 24% had 
+a combination of both skin types. Mean scores for sensi-
+tive skin (SS-10 score of 44.9/100) and xerosis severity 
+(5.7/10) indicated the presence of skin impairment in 
+nearly all participants at baseline. Only two subjects had 
+no symptoms at initiation (both scores were zero).
+At initiation, most subjects (74%) reported that their sensi-
+tive skin was currently a source of stress, and the majority 
+(53%) declared that their sleep had been disturbed in the
+past week as a result of their skin condition (table 1). 
+Moreover, the average total DLQI score was 9.3/30, indi-
+cating that the skin sensitivity had a marked impact on QoL. 
+Details of the factors that were reported to contribute 
+to skin sensitivity at baseline are provided in table 2. Skin 
+sensitivity was reported to be triggered by at least one 
+type of contributing factor in 95% of subjects (2266/2382). 
+For at least 37% (885/2382) of the subjects, skin sensi-
+tivity was reported to be triggered by multiple factors
+Table 2.  Types of factors reported to contribute to sensi-
+tive skin in the study population at baseline grouped into 
+three main categories, and details of the factors reported 
+in each category.
+Table 1.  Baseline demographic and clinical characteristics 
+of the study population.
+Subjects
+DEMOGRAPHICS
+N = 2382
+Gender, n (%)
+n = 2373
+Females
+1879 (79.2%)
+Subjects
+Factors contributing to sensitive skin, N (%)
+N = 2382 (100%)
+FACTORS
+Males
+493 (20.8%)
+Isolated constitutional factors (IC)
+Related to a pathology (PATH)
+Resulting from a previous dermatologi-
+cal procedure (DP)
+IC + PATH
+IC + DP
+PATH + DP
+IC + PATH + DP
+None
+1256 (52.7%)
+69 (2.9%)
+56 (2.4%)
+623 (26.2%)
+133 (5.6%)
+11 (0.5%)
+118 (5.0%)
+116 (4.9%)
+Age, years
+n = 2357
+Mean±SD 
+Median (min–max)
+42.0±15.3 
+40 (18–98)
+CLINICAL CHARACTERISTICS
+N=2382
+Facial skin type, n (%) 
+n = 2368
+Dry
+Normal
+Combination of both
+1167 (49.3%)
+626 (26.4%)
+575 (24.3%)
+Fitzpatrick’s phototype, n (%)
+n = 2331
+I
+II
+III
+IV
+≥V
+SUBGROUPS
+Isolated constitutional factors a, N (%)
+N = 2130 (89.4%)
+173 (7.4%)
+1133 (48.6%)
+870 (37.3%)
+147 (6.3%)
+8 (0.3%)
+1700 (71.4%)
+Climatic factors (wind, cold/heat and sun)
+Environmental factors (heating/air 
+conditioning, urban pollution)
+Stress
+Wearing a face mask
+Cosmetics
+Diet (spices, hot foods, alcohol)
+Other
+1478 (62.0%)
+1400 (58.8%)
+1382 (58.0%)
+1082 (45.4%)
+870 (36.5%)
+278 (11.7%)
+Clinical symptoms of sensitive facial skin
+Sensitive Scale-10 scorea
+n = 2326
+44.9±23.2
+n = 2256
+5.7±2.3
+QUALITY OF LIFE 
+N = 2382
+QoL related to sleep, n (%):
+Was your sleep disturbed by your sensitive  
+skin during the past week?
+Mean±SD
+Xerosis severity scoreb
+Related to a pathology a, N (%)
+N = 821 (34.5%)
+Mean±SD
+Irritant contact eczema
+Allergy to cosmetics
+Allergic contact eczema 
+Photoallergy
+Post-cancer treatment
+Under anti-cancer treatment
+Phototoxicity
+Other pathology
+212 (8.9%)
+201 (8.4%)
+177 (7.4%)
+122 (5.1%)
+44 (1.8%)
+38 (1.6%)
+19 (0.8%)
+166 (7.0%)
+n = 2299
+Yes, a lot
+Yes, a little
+No, not at all
+387 (16.8%)
+825 (35.9%)
+1087 (47.3%)
+QoL related to stress, n (%):
+Is your sensitive skin currently a source of stress?
+n = 2331
+Resulting from a previous dermatological 
+procedure a, N (%)
+N = 318 (13.4%)
+Yes
+No
+1715 (73.6%)
+616 (26.4%)
+Superficial laser
+Dermabrasion
+Laser pigmentation removal
+Vascular laser
+Cryotherapy
+Intense pulsed light therapy
+Electrocautery
+LED therapy
+Other dermatological procedures
+78 (3.3%)
+42 (1.8%)
+29 (1.2%)
+28 (1.2%)
+28 (1.2%)
+23 (1.0%)
+9 (0.4%)
+3 (0.1%)
+84 (3.5%)
+DLQI scorec
+n = 2376
+Mean±SD
+9.3±7.0
+DLQI: Dermatology Life Quality Index; N: number of subjects in 
+the whole study population; n: number of subjects for whom data were 
+­
+collected; SD: standard deviation. 
+aThe Sensitive Scale-10 score was assessed by the subjects at baseline 
+ 
+(related to the symptoms experienced during the three days prior to cream 
+application). The highest possible value for this score is 100. A score of 0 
+was reported in 15 subjects, indicating no symptoms at ­
+initiation.
+bThe severity score for xerosis was assessed by the physician using a 
+10-point rating scale from 0 (no skin dryness) to 10 (severe skin dryness). 
+A score of 0 was reported in 31 subjects, indicating no xerosis at initiation.
+cThe DLQI score, assessed by the subjects, can range from 0 (no effect) 
+to 30 (extremely large effect).
+DP: related to a previous dermatological procedure; IC: isolated 
+­
+constitutional factors; LED: Light Emitting Diode; N: number of sub-
+jects; PATH: related to a pathology.
+aSeveral contributing factors belonging to the same or a different 
+­
+category may have been reported for the same subject. Thus, subjects 
+could be included in multiple subgroups.
+82
+EJD, vol. 34, n° 1, January-February 2024
+from different contributing factor categories. Overall, 
+2,130 subjects (89%) indicated that their skin sensitivity 
+was triggered by isolated constitutional factors (climate, 
+stress, cosmetics, diet, etc.), 821 (35%) indicated that it 
+was triggered by factors related to a pathology (eczema, 
+allergies, cancer, etc.), and 318 (13%) indicated that it 
+was triggered by a dermatological procedure (laser 
+therapy, electrocautery, dermabrasion, etc.).
+QoL was no longer being impacted by skin sensitivity. 
+Moreover, most subjects reported that their wellbeing 
+(90%, 2,137/2,382) and their professional and personal 
+relationships (75%, 1,785/2,382) improved after a mean 
+time of nine days (supplementary table 2).
+Overall user satisfaction and product effectiveness
+Most users were “satisfied” or “very satisfied” with the 
+immediate effect of the cream, according to the subject 
+(90%) and the physician (93%) assessments (figure 4A, 
+supplementary table 2). At follow-up, the cumulated 
+percentage of “satisfied” and “very satisfied” subjects 
+increased to 92% and 96%, respectively. The vast 
+majority of subjects (95%, 2,233/2,344) also found that 
+the regular use of the cream led to an overall improve-
+ment in their skin sensitivity. According to the physician, 
+the signs and symptoms of sensitive skin improved signif-
+icantly or even completely resolved in 92% (1,849/2,020) 
+of subjects at the end of the study (figure 4B, supplemen-
+tary table 3). The overall level of product effectiveness 
+was similar regardless of the contributing factors 
+reported at baseline, with symptoms improving or 
+resolving completely in 91% to 94% of subjects across 
+the subgroups.
+Study product use
+Almost all the included subjects (95%) used the product 
+as advised, with 77% (1817/2362) of them reporting that 
+they applied the cream twice a day, and 22% (516/2362) 
+reporting that they applied it once a day. The mean dura-
+tion of product use was 71±21 days (based on data from 
+2,264 subjects).
+Product effectiveness on clinical symptoms and 
+signs 
+The first application of the ADE-G3-based cream 
+resulted in immediate soothing of the skin in 93% of 
+subjects (1911/2,064). Statistically significant improve-
+ments in the clinical symptoms of sensitive facial skin 
+were also reported in the whole study population, with 
+the mean SS-10 score decreasing by –55% between base-
+line and 30 seconds after product application (p<0.001), 
+and by –79% between baseline and follow-up after two 
+to three months of use (p<0.001) (figure 2A). Compared 
+to baseline, mean scores for the 10 individual question-
+naire items were also significantly lower immediately after 
+application and at follow-up (supplementary table 1). 
+ 
+Furthermore, the regular use of the cream led to a reduc-
+tion in xerosis severity, with a significant decrease in 
+mean severity score between baseline and follow-up of 
+–72% (p<0.001) (figure 2B, supplementary table 1). 
+Similar decreases in SS-10 and xerosis severity scores 
+between baseline and follow-up were observed in all 
+three of the contributing factor subgroups, with changes 
+of –79% to –81% for SS-10 scores and of –72% to –74% 
+for xerosis severity across all groups (p<0.001 for all 
+analyses) (figure 2A, B, supplementary table 1). Overall, 
+most subjects (94%, 2,229/2,382) reported that their 
+symptoms improved after a mean time of product use 
+of nine days (supplementary table 2).
+Tolerability
+Product tolerability was rated by the physicians as 
+“good” or “very good” in 98% (2,276/2,329) of subjects 
+at follow-up (supplementary table 2). Only one case 
+reported an undesirable event in the cosmetovigilance 
+database over the study period.
+Discussion
+This multicentre, pre–post comparative study, conducted 
+on a large cohort of subjects with sensitive facial skin, 
+demonstrated that the daily use of an ADE-G3-based 
+cream in real-life conditions led to statistically significant 
+decreases in all the visible and perceived symptoms 
+assessed. The study product also drastically reduced the 
+severity of xerosis after two to three months of product 
+use, and improvements in QoL, with a notable impact 
+on sensitive skin-related sleep disturbances and stress, 
+were also reported. Furthermore, physicians reported 
+that the product was effective overall for improving 
+sensitive skin in a high proportion of subjects, and rated 
+the tolerability of the cream as good or very good in most 
+subjects. Importantly, improvements in the symptoms 
+assessed were also reported immediately after use, and 
+regardless of the type of contributing factors initially 
+reported to trigger skin sensitivity. 
+Sensitive or reactive skin is a common skin problem that 
+occurs more frequently in women and young subjects, 
+in particular, those with dry skin or an atopic predispo-
+sition. It can be a source of anxiety and significantly 
+impairs QoL [3, 10]. Indeed, healthy skin is important 
+for emotional and social well-being, and has a prepon-
+derant role in self-esteem, perception of attractiveness 
+and interpersonal relationships [11]. Effective manage-
+ment of this skin syndrome is therefore essential to
+Impact on quality of life
+QoL related to sleep and QoL related to stress both 
+improved between baseline and follow-up, with lower 
+proportions of subjects reporting skin sensitivity-related 
+sleep disturbance (13% versus 53% at baseline) and stress 
+(27% versus 74% at baseline) after several months of 
+product use (figure 3A, supplementary table 2). The 
+regular use of the cream was also associated with an 
+improvement in DLQI, with a decrease in the mean total 
+score between baseline and follow-up of –78% in the 
+whole study population and between –77% and –81% in 
+the three contributing factor subgroups (p<0.001) 
+ 
+(figure 3B, supplementary table 1). At the end of the 
+study, the mean total DLQI score was <3 in the whole 
+population and in all subgroups, indicating that subject
+83
+EJD, vol. 34, n° 1, January-February 2024
+A
+100
+Sensitive Scale-10
+90
+Baseline
+After 30s
+Follow-up
+80
+70
+60
+Mean score
+Mean score
+52.1
+50
+44.9
+44.4
+46.7
+-55%**
+-56**
+-53%**
+-49%**
+40
+30
+-79%**
+-80%**
+24.5
+-81%**
+23.9
+-79%**
+20.3
+19.7
+20
+10
+9.3
+9.0
+9.7
+9.7
+0
+Study
+groups
+All subjects
+Isolated constitutional
+factors
+Related to a pathology
+Resulting from a
+dermatological procedure
+B
+10
+Xerosis severity
+9
+Baseline
+Follow-up
+8
+7
+5.7
+5.7
+5.7
+6.2
+6
+5
+-72%**
+-72%**
+-73%**
+-74%**
+4
+3
+2
+1.7
+1.5
+1.6
+1.6
+1
+0
+Study
+groups 
+All subjects
+Isolated constitutional
+factors
+Related to a pathology
+Resulting from a
+dermatological procedure
+Figure 2. Effectiveness of ADE-G3-based cream on clinical symptoms and signs of sensitive facial skin. Bar charts showing 
+(A) subject-assessed Sensitive Scale-10 mean scores indicating the severity of symptoms, at baseline before product use, 
+30 seconds after product application and at follow-up (total scores could range from 0 to 100), and (B) physician-assessed 
+mean severity scores for xerosis before product use and at follow-up (scores could range from 0 to 10) in the whole study 
+population (all subjects) and in three subpopulations of subjects grouped according to the types of factors contributing 
+to skin sensitivity reported at baseline (isolated constitutional factors, factors related to a pathology, and factors related 
+to a previous dermatological procedure). The percentage score decreases between the baseline and follow-up visits are 
+indicated next to the arrows for each group. **p<0.001 (Wilcoxon test).
+improve the well-being and self-perception of subjects 
+with sensitive skin, and to alleviate the psychosocial 
+burden associated with the condition [12]. It has already
+been shown that routine skincare with dermocosmetics 
+and cosmetics globally contributes to improving self- 
+esteem and self-image [13], and that the management of
+84
+EJD, vol. 34, n° 1, January-February 2024
+A
+QoL impairement
+related to sleep 
+QoL impairement
+related to stress
+100%
+80%
+90%
+100%
+80%
+90%
+Percentage of subjects
+26%
+60%
+70%
+Percentage of subjects
+60%
+70%
+47%
+87%
+73%
+30%
+40%
+50%
+30%
+40%
+50%
+74%
+36%
+10%
+20%
+Baseline
+Follow-up
+Baseline
+Follow-up
+1%
+No, not at all
+Yes, a little
+Yes, a lot
+10%
+20%
+27%
+No
+Yes
+17%
+12%
+0%
+0%
+Study visits
+Study visits
+B
+DLQI score
+30
+25
+Baseline
+Follow-up
+20
+Mean score
+15
+11.4
+10.3
+9.3
+9.2
+10
+-78%**
+-78%**
+-81%**
+-77%**
+5
+2.1
+2.0
+2.2
+2.3
+0
+Study
+groups
+All subjects
+Isolated
+constitutional
+factors
+Related to a
+pathology
+Resulting from a
+dermatological
+procedure
+Figure 3. Effect of product use on quality of life (QoL) and Dermatology Life Quality Index (DLQI) total scores between 
+baseline and follow-up. A) Stacked histograms showing the percentage of subjects in each response category for impairment 
+in QoL related to sleep and QoL related to stress in the whole study population at each study visit. B) Changes in mean 
+DLQI scores between baseline and follow-up (scores could range from 0 to 30) and percentage score decreases (indicated 
+next to the arrows) in the whole study population (all subjects) and in three subpopulations of subjects grouped according 
+to the types of factors contributing to skin sensitivity reported at baseline (isolated constitutional factors, factors related 
+to a pathology, and factors related to a previous dermatological procedure). **p<0.001 (Wilcoxon test).
+sensitive skin with dedicated products can greatly 
+improve QoL [14-16], although this parameter is not 
+often assessed in clinical studies.
+Strategies for the treatment of sensitive skin mainly rely 
+on restoration of the skin barrier and reducing inflam-
+mation [2]. As subjects with sensitive skin have a thinner 
+and more permeable epidermis than individuals with 
+other skin types, it is essential to restore and maintain 
+the integrity of this protective skin layer. However, as 
+skin sensitivity is known to involve alterations in cuta-
+neous neurological components, such as higher levels of 
+nerve growth factor in the epidermis and increased sensi-
+tivity to electrical stimuli, topical products acting on 
+sensory neurons or on neuromediators are particularly 
+relevant for helping to alleviate hyperalgesia and other 
+unpleasant sensations associated with sensitive skin. An 
+increasing number of novel products that can mitigate
+neuronal skin sensitivity and neurogenic inflammation, 
+in addition to hydrating and protecting the skin, have 
+recently been developed to offer an integral solution to 
+subjects with sensitive skin [4]. 
+Several actives that can modulate neurogenic targets 
+have been identified and incorporated into dermocos-
+metic products for sensitive skin, but few studies 
+comparing the effectiveness of these actives in topical 
+formulations have been published. For instance, neuro-
+sensine, also known as acetyl dipeptide-1 cetyl ester, has 
+been shown to lower the hyperexcitability of nerve 
+endings by stimulating the production of endorphins and 
+enkephalins in keratinocytes and is used in dermocos-
+metics to reduce burning sensations and irritation asso-
+ciated with sensitive skin [17, 18]. Products containing 
+4-t-butylcyclohexanol have also been reported to have 
+soothing and calming effects on the skin by inhibiting
+85
+EJD, vol. 34, n° 1, January-February 2024
+Physician assessment
+User satisfaction
+Subject assessment
+A
+100%
+2%
+1%
+100%
+3%
+7%
+1%
+1%
+80%
+90%
+10%
+6%
+90%
+80%
+Percentage of subjects
+24%
+Percentage of subjects
+22%
+60%
+70%
+70%
+Not satisfied
+37%
+60%
+36%
+30%
+40%
+50%
+50%
+Moderately
+satisfied
+30%
+40%
+Satisfied
+Very satisfied
+10%
+20%
+20%
+0%
+52%
+68%
+10%
+Immediate
+Follow-up
+0%
+57%
+74%
+Immediate
+Follow-up
+Study visits
+Study visits
+B
+Overall product effectiveness on sensitive skin
+0.7%
+0.8%
+0.4%
+3%
+3%
+2%
+0%
+2%
+100%
+5%
+5%
+5%
+5%
+90%
+12%
+Percentage of subjects
+80%
+18%
+13%
+18%
+Worsened/Slightly
+worsended
+70%
+60%
+Unchanged
+Moderately improved
+50%
+Improved
+40%
+47%
+Significantly improved
+30%
+55%
+Resolved
+52%
+52%
+20%
+10%
+0%
+22%
+21%
+24%
+35%
+All
+subjects
+Isolated constitutional
+factors
+Related to
+a pathology
+Resulting from a
+dermatological
+procedure
+Study
+groups
+Figure 4. Overall user satisfaction and study product effectiveness. A) Stacked histograms showing the percentage of sub-
+jects in each response category for immediate and follow-up user satisfaction according to subject and physician assessments 
+in the whole study population. B) Overall improvements in signs and symptoms of sensitive skin at follow-up as assessed 
+by the physician in the whole study population (all subjects) and in three subpopulations of subjects grouped according 
+to the types of factors contributing to skin sensitivity reported at baseline (isolated constitutional factors, factors related 
+to a pathology, and factors related to a previous dermatological procedure).
+transient receptor potential vanilloid 1 (TRPV1)-
+mediated activation of C-type nerve fibres and blocking 
+the subsequent skin hyperalgesia and neurogenic inflam-
+mation [19-21]. In one of the few comparative clinical 
+studies conducted so far, Schoelermann et al. (2016) 
+showed that both types of products mitigated the imme-
+diate burning sensation induced by capsaicin, with 
+slightly faster and greater soothing effects observed with 
+the test product containing 4-t-butylcyclohexanol than 
+with the formulation containing neurosensine [22].
+Postbiotics are particularly promising naturally-derived 
+actives with multiple relevant properties for dermocos-
+metics [23]. The postbiotic ADE-G3-based soothing
+cream evaluated in our real-life study showed good 
+effectiveness on sensitive skin, which is likely related to 
+the combined action of the postbiotic for reducing the 
+neurogenic inflammation associated with skin sensitivity 
+and other product ingredients for improving skin hydra-
+tion and skin barrier function. The postbiotic ADE-G3 
+has indeed been shown to reduce neurogenic inflamma-
+tion in in vitro models through several effects, including 
+inhibition of the release of inflammatory cytokines and 
+interleukins by keratinocytes and the release of substance 
+P (SP) by sensory neurons, as well as a decrease in 
+SP-stimulated degranulation of mast cells [6]. The effec-
+tiveness of dermocosmetics containing this innovative
+86
+EJD, vol. 34, n° 1, January-February 2024
+and natural active to alleviate unpleasant sensory effects 
+has also been assessed in subjects with sensitive or reac-
+tive skin. In initial clinical studies using quantitative 
+measurements, the cream and balm formulations 
+containing this ingredient were shown to not only 
+protect the skin from dehydration and improve skin 
+barrier integrity by reducing transepithelial water loss 
+(TEWL) and increasing the lipid index [7, 24], but also 
+to attenuate the neurosensory response associated with 
+sensitive skin by reducing the electrodermal response 
+following heat and friction stimulation [8]. Moreover, 
+the formulations were designed to mimic the structure 
+and composition of the skin by incorporating multiple 
+lipid and non-lipid components to help reinforce the 
+lipid barrier and promote uniform spreading and 
+improved penetration of the product [24]. These prod-
+ucts also use Avène thermal spring water, with intrinsic 
+soothing and anti-irritant properties [25, 26], as a vehicle 
+and are therefore very well tolerated and particularly 
+suitable for use on sensitive skin. Furthermore, it should 
+be noted that the products are packaged in Sterile 
+Cosmetic® tubes, which protect the formula from the 
+air and bacteria and prevent degradation of ingredients 
+without the need to add preservatives, both of which 
+may worsen skin symptoms [2].
+Overall, the available data from the current study and 
+previously published reports show that ADE-G3-based 
+topical products offer an effective and safe solution for 
+immediate and long-term relief of symptoms in subjects 
+suffering from sensitive skin, regardless of whether the 
+factors contributing to the skin sensitivity are endoge-
+nous (emotional factors or disease), environmental 
+(weather, pollution or solar exposure), related to lifestyle 
+(diet, use of cosmetics) or associated with dermatological 
+treatments or procedures. These moisturizers can there-
+fore be used as part of a daily skincare routine to soothe 
+sensitive skin, maintain skin barrier function, relieve 
+pain and discomfort, and prevent the occurrence of cuta-
+neous reactions. In addition, individuals with sensitive 
+skin are advised to clean their skin using gentle cleansers 
+with a physiological pH, not to use too many cosmetics, 
+and, in particular, to avoid fragranced products or those 
+with preservatives that can sensitize the skin [2].
+The results of our pre–post analysis of a large cohort of 
+subjects has provided clear and valuable insights into 
+the significant benefits of a postbiotic-based product for 
+the management of sensitive skin in general practice, 
+regardless of the type of factors initially involved in 
+contributing to skin sensitivity. The analysis was based 
+on self-assessment questionnaires, as well as objective 
+and validated clinical assessment tools that were used in 
+standardised conditions across participating centres and 
+provided concordant and reliable findings. Overall, the 
+study design allowed good-quality data to be collected 
+for a large number of patients across multiple centres 
+and countries, supporting the generalizability of the find-
+ings. However, the real-world nature of our study led to 
+some inherent limitations and did not allow a compar-
+ison of the effects with a control vehicle or another 
+soothing product. In addition, the possibility of reporting 
+bias cannot be excluded, in particular for the assessment 
+involving self-reported study product use.
+Conclusion
+This real-world international study demonstrated that 
+the postbiotic ADE-G3based cream was an effective 
+topical solution for sustainably soothing sensitive skin, 
+calming skin discomfort and controlling skin hyper-re-
+activity, regardless of the factors initially contributing to 
+the skin sensitivity. The product was very well tolerated 
+and most subjects reported high levels of satisfaction 
+with the product. The product also allowed an immediate 
+relief of symptoms and helped to improve QoL following 
+regular use, which are key benefits for subjects living with 
+this stressful and chronic syndrome. ■
+Financial support: the study, statistical analyses, medical 
+writing and language editing services, and publication costs 
+were funded by Pierre Fabre Dermo-Cosmétique.
+Authorship: all named authors meet the International 
+Committee of Medical Journal Editors (ICMJE) cri-
+teria for authorship for this article, take responsibility 
+for the integrity of the work as a whole, and have given 
+their approval for this version to be published. In addition, 
+Ariadna Ortiz-Brugués contributed to the conception and 
+design of the study, and critically reviewed the manuscript; 
+Aline Stennevin managed the study, participated in the 
+interpretation of data and critically reviewed the man-
+uscript; Andreas Wollenberg and Ana Maria Giménez-
+Arnau contributed to drafting and critically revising the 
+manuscript.
+Medical writing, editorial and other assistance: the authors 
+acknowledge Drs Cécile Desjobert, Emma Pilling and 
+Marielle Romet (Synergy Pharm – Santé Active Edition) 
+who participated in writing and language editing of the 
+manuscript.
+Conflicts of interest: Andreas Wollenberg received grants 
+from Leo Pharma and Pierre Fabre, consulting fees from 
+Abbvie, Aileens, Almirall, Amgen, BMS, Galapagos, 
+Galderma, GSK, Hans Karrer, Janssen, Leo Pharma, 
+Eli Lilly, MedImmune, Merck, Novartis, Pfizer, Pierre 
+Fabre, Regeneron, Sandoz, Sanofi-Aventis and honoraria 
+from Abbvie, Almirall, Beiersdorf, Bioderma, Galderma, 
+Glenmark, Leo Pharma, Eli Lilly, L’Oréal, Maruho, 
+Novartis, Pfizer, Pierre Fabre, Regeneron, and Sanofi-
+Aventis. Ana Maria Giménez-Arnau received grants 
+from Uriach Pharma, Novartis, Instituto Carlos III- 
+FEDER, consulting fees from Uriach Pharma, Genentech, 
+Novartis, GSK, Sanofi–Regeneron, Amgen, Thermo Fisher 
+Scientific, Almirall, Celldex, Escient Pharmaceuticals 
+and Leo Pharma, and honoraria from Uriach Pharma, 
+Novartis, Genentech, Menarini, Leo Pharma, GSK, 
+MSD, Almirall, Sanofi, and Pierre Fabre laboratories. 
+Aline Stennevin is an employee of Pierre Fabre Dermo-
+Cosmétique, France and Ariadna Ortiz-Brugués was an 
+employee of Pierre Fabre Dermo-Cosmétique, France at 
+the time of the study.
+Acknowledgements: The authors thank all study partici-
+pants for their involvement in the study.
+87
+EJD, vol. 34, n° 1, January-February 2024
+Ethics: this study was conducted in accordance with the 
+Helsinki Declaration of 1964 and its later amendments, and 
+complied with good clinical practice guidelines (CPMP/
+ICH/135/95, https://www.ema.europa.eu) and current leg-
+islation for clinical trials involving cosmetics in the coun-
+tries where the study was conducted (Regulation [EC] No. 
+1223/2009 of the European Commission for the European 
+countries). For this non-interventional study evaluating a 
+cosmetic product administered as part of the usual ­
+practice 
+of physicians and involving no constraints or invasive 
+examinations, protocol approval by an ethics committee 
+or an institutional review board was not required in all the 
+countries participating in the study, but it was obtained in 
+the countries where it was requested in accordance with 
+their current legislation. The included subjects received 
+a leaflet in their native language containing the details 
+about the study and their rights, including the processing of 
+their data and their right to access and modify their data, 
+in accordance with Regulation (EU) N°2016/679 of the 
+European Parliament and of the Council of 27 April 2016 
+on the protection of natural persons. All subjects provided 
+oral or written consent to take part in the study.
+8. Villaret A, Lestienne F, Vial F, et al. Clinical evaluation of 
+ 
+anaesthetic-like effect of two dermocosmetic formulations containing 
+Aquaphilus dolomiae extract-G3 in subjects with sensitive facial skin. J 
+Eur Acad Dermatol Venereol 2022 ; 36 : 6-12.
+9. Finlay AY, Khan GK. Dermatology Life Quality Index (DLQI)--a simple 
+practical measure for routine clinical use. Clin Exp Dermatol 1994 ; 19 : 
+210-6.
+10. Misery L, Jourdan E, Huet F, et al. Sensitive skin in France: a study on 
+prevalence, relationship with age and skin type and impact on quality of 
+life. J Eur Acad Dermatol Venereol 2018 ; 32 : 791-5.
+11. Goldie K, Kerscher M, Fabi SG, et al. Skin quality - A holistic 360° view: 
+consensus results. Clin Cosmet Investig Dermatol 2021 ; 14 : 643-54.
+12. Misery L, Myon E, Martin N, et al. Sensitive skin: psychological 
+effects and seasonal changes. J Eur Acad Dermatol Venereol 2007 ; 21 : 
+620-8.
+13. Zhang L, Adique A, Sarkar P, et al. The impact of routine skin care 
+on the quality of life. Cosmetics. 2020 ; 7 : 59.
+14. Fauger A, Lhoste A, Chavagnac-Bonneville M, et al. Effects of a new 
+topical combination on sensitive skin. J Cosmet Sci 2015 ; 66 : 79-86.
+15. Schoelermann AM, Weber TM, Arrowitz C, Rizer RL, Qian K, 
+Babcock M. Skin compatibility and efficacy of a cosmetic skin care regi-
+men with licochalcone A and 4-t-butylcyclohexanol in patients with rosa-
+cea subtype I. J Eur Acad Dermatol Venereol 2016 ; 30 : 21-7.
+16. Weber TM, Ceilley RI, Buerger A, et al. Skin tolerance, efficacy, and 
+quality of life of patients with red facial skin using a skin care regimen 
+containing Licochalcone A. J Cosmet Dermatol 2006 ; 5 : 227-32.
+Data availability: the data generated and analysed dur-
+ing the current study are available from the corresponding 
+author on reasonable request.
+17. Seite S, Rougier A, Benech F, Bayer Vanmoen M, Veyrat S. Clinical 
+usefulness of a product developed for sensitive and allergy prone skin. 
+J Am Acad Dermatol 2012 ; 66(4S1) : P. AB72.
+18. Tan J, Demessant A, Le Dantec G, Le Floc’h C, Kerob D. Tolerance 
+and efficacy of a dermocosmetic containing neurosensine(®) in subjects 
+with eyelid eczema. Clin Cosmet Investig Dermatol 2023 ; 16 : 161-5.
+19. Kueper T, Krohn M, Haustedt LO, Hatt H, Schmaus G, Vielhaber 
+G. Inhibition of TRPV1 for the treatment of sensitive skin. Exp Dermatol 
+2010 ; 19 : 980-6.
+References
+20. Ortiz Brugués A, Braeuer LC, Grieu JB, Zhang Y. Clinical studies 
+in Chinese subjects investigating the tolerance and soothing efficacy of 
+a cream and balm containing 4-t-butylcyclohexanol on the sensitivity of 
+facial skin. Int J Cosmet Sci 2023 ; 45 : 29-37.
+1. Farage MA. The prevalence of sensitive skin. Front Med (Lausanne) 
+2019 ; 6 : 98.
+2. Guerra-Tapia A, Serra-Baldrich E, Prieto Cabezas L, Gonzalez- 
+Guerra E, Lopez-Estebaranz JL. Diagnosis and treatment of sensitive skin 
+syndrome: an algorithm for clinical practice. Actas Dermosifiliogr (Engl 
+Ed) 2019 ; 110 : 800-8.
+21. Srour J, Bengel J, Linden T, et al. Efficacy of a skin care cream with 
+TRPV1 inhibitor 4-t-butylcyclohexanol in the topical therapy of perioral 
+dermatitis. J Cosmet Dermatol 2020 ; 19 : 1409-14.
+3. Misery L, Jean-Decoster C, Mery S, Georgescu V, Sibaud V. A new 
+ten-item questionnaire for assessing sensitive skin: the sensitive scale-10. 
+Acta Derm Venereol 2014 ; 94 : 635-9.
+22. Schoelermann AM, Jung KA, Buck B, Gronniger E, Conzelmann 
+S. Comparison of skin calming effects of cosmetic products containing 
+4-t-butylcyclohexanol or acetyl dipeptide-1 cetyl ester on capsaicin-in-
+duced facial stinging in volunteers with sensitive skin. J Eur Acad Dermatol 
+Venereol 2016 ; 30 : 18-20.
+4. Wollenberg A, Giménez-Arnau A. Sensitive skin: a relevant syndrome, 
+be aware. J Eur Acad Dermatol Venereol 2022 ; 36 : 3-5.
+23. Duarte M, Oliveira AL, Oliveira C, Pintado M, Amaro A, Madureira 
+AR. Current postbiotics in the cosmetic market-an update and develop-
+ment opportunities. Appl Microbiol Biotechnol 2022 ; 106 : 5879-91.
+5. Misery L, Stander S, Szepietowski JC, et al. Definition of sensitive 
+skin: an expert position paper from the special interest group on sensitive 
+skin of the international forum for the study of itch. Acta Derm Venereol 
+2017 ; 97 : 4-6.
+24. Jacques C, Rattier S, Bianchi P, et al. In vitro characterization and ­
+clinical 
+evaluation of skin hydration by two formulations mimicking the skin’s natural 
+components. J Eur Acad Dermatol Venereol 2022 ; 36 : 21-9.
+6. Lestienne F, Viode C, Ceruti I, et al. Cutaneous sensitivity modulation by 
+Aquaphilus dolomiae extract-G3 on in vitro models of ­
+neuro-inflammation. 
+J Eur Acad Dermatol Venereol 2020 ; 34 : 43-8.
+25. Guerrero D, Garrigue E. Avène’s thermal water and atopic dermatitis 
+(article in french). Ann Dermatol Venereol. 2017 ; 144 : S27-34.
+7. Viodé C, Rouquier A, Mias C, Questel E, Bessou-Touya S, Duplan 
+H. Specific protection of sensitive skin against environmental stress by 
+maintenance and improvement of barrier function. J Eur Acad Dermatol 
+Venereol 2022 ; 36 : 13-20.
+26. Nocera T, Jean-Decoster C, Georgescu V, Guerrero D. Benefits of 
+Avene thermal hydrotherapy in chronic skin diseases and dermatolo-
+gical conditions: an overview. J Eur Acad Dermatol Venereol 2020 ; 
+34 : 49-52.
+88
+EJD, vol. 34, n° 1, January-February 2024

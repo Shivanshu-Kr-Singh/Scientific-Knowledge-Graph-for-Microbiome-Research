@@ -1,0 +1,1245 @@
+Impact of fibre supplementation on microbiome and resilience in
+healthy participants: a randomized, placebo-controlled clinical trial
+Maarse, B.C.E.; Eggink, H.M.; Warnke, I.; Bijlsma, S.; Broek, T.J.V.; Oosterman, J.E.; ... ;
+Hoevenaars, F.P.M.
+Citation
+Maarse, B. C. E., Eggink, H. M., Warnke, I., Bijlsma, S., Broek, T. J. V., Oosterman, J. E., …
+Hoevenaars, F. P. M. (2024). Impact of fibre supplementation on microbiome and resilience
+in healthy participants: a randomized, placebo-controlled clinical trial. Nutrition,
+Metabolism &Amp; Cardiovascular Diseases, 34(6), 1416-1426.
+doi:10.1016/j.numecd.2024.01.028
+Version:
+Publisher's Version
+License:
+Licensed under Article 25fa Copyright Act/Law (Amendment Taverne)
+Downloaded from:
+https://hdl.handle.net/1887/4302558
+Note: To cite this publication please use the final published version (if applicable).
+Nutrition, Metabolism & Cardiovascular Diseases (2024) 34, 1416e1426
+Available online at www.sciencedirect.com
+Nutrition, Metabolism & Cardiovascular Diseases
+journal homepage: www.elsevier.com/locate/nmcd
+Impact of ﬁbre supplementation on microbiome and resilience in
+healthy participants: A randomized, placebo-controlled clinical trial
+Boukje C. Eveleens Maarse a,b, Hannah M. Eggink c, Ines Warnke d, Sabina Bijlsma c,
+Tim J. van den Broek c, Johanneke E. Oosterman c, Martien P.M. Caspers c,
+Wilbert Sybesma d, Pim Gal a,b, Sebastiaan J.W. van Kraaij a,b, Frank H.J. Schuren c,
+Matthijs Moerland a,b, Femke P.M. Hoevenaars c,*
+a Centre for Human Drug Research, Leiden, the Netherlands
+b Leiden University Medical Center, Leiden, the Netherlands
+c TNO, Netherlands Organisation for Applied Scientiﬁc Research, Leiden, the Netherlands
+d dsm-ﬁrmenich, CH-4303, Kaiseraugst, Switzerland
+Received 6 September 2023; received in revised form 24 January 2024; accepted 25 January 2024
+Handling Editor: A. Siani
+Available online 6 February 2024
+KEYWORDS
+Microbiome;
+Prebiotic;
+Dietary ﬁbres;
+Health;
+Resilience;
+Metabolism;
+Short-chain fatty
+acids
+Abstract
+Background and aims: The gut microbiome exerts important roles in health, e.g., func-
+tions in metabolism and immunology. These functions are often exerted via short-chain fatty
+acid (SCFA) production by gut bacteria. Studies demonstrating causal relationships between in-
+terventions targeting the microbiome and clinical outcomes are limited. This study aimed to
+show a causal relationship between microbiome modulation through ﬁbre intervention and
+health.
+Methods and results: This randomized, double-blind, cross-over study included 65 healthy sub-
+jects, aged 45e70 years, with increased metabolic risk (i.e., body mass index [BMI] 25e30 kg/
+m2, low to moderate daily dietary ﬁbre intake, <30g/day). Subjects took daily a ﬁbre mixture
+of Acacia gum and carrot powder or placebo for 12 weeks, with an 8-week wash-out period.
+Faecal samples for measurement of SCFAs and microbiome analysis were collected every 4
+weeks. Before and after each intervention period subjects underwent the mixed-meal PhenFlex
+challenge Test (PFT). Health effects were expressed as resilience to the stressors of the PFT and as
+fasting metabolic and inﬂammatory state. The ﬁbre mixture exerted microbiome modulation,
+with an increase in b-diversity (p < 0.001). a-diversity was lower during ﬁbre mixture intake
+compared to placebo after 4, 8 and 12 weeks (p Z 0.002; p Z 0.012; p Z 0.031). There was
+no effect observed on faecal SCFA concentrations, nor on any of the primary clinical outcomes
+(Inﬂammatory resilience: p Z 0.605, Metabolic resilience: p Z 0.485).
+Conclusion: Although the intervention exerted effects on gut microbiome composition, no effects
+on SCFA production, on resilience or fasting metabolic and inﬂammatory state were observed in
+this cohort.
+Registration number Clinicaltrials.gov: NCT04829396.
+ª 2024 Published by Elsevier B.V. on behalf of The Italian Diabetes Society, the Italian Society for
+the Study of Atherosclerosis, the Italian Society of Human Nutrition and the Department of Clin-
+ical Medicine and Surgery, Federico II University.
+* Corresponding author. TNO, Sylviusweg 71, 2333 BE Leiden, the Netherlands.
+E-mail address: femke.hoevenaars@tno.nl (F.P.M. Hoevenaars).
+https://doi.org/10.1016/j.numecd.2024.01.028
+0939-4753/ª 2024 Published by Elsevier B.V. on behalf of The Italian Diabetes Society, the Italian Society for the Study of Atherosclerosis, the Italian Society of Human Nutrition
+and the Department of Clinical Medicine and Surgery, Federico II University.
+Impact of ﬁbre supplementation
+1417
+1. Introduction
+which is generally considered as healthy [36], and that
+these interventions affect resilience [31]. This study aimed
+to demonstrate a causal relationship between microbiome
+modulation through dietary ﬁbre intervention and resil-
+ience, i.e. the ability to return homeostasis as measured
+through selected biomarkers over time. To this end, three
+interdependent hypotheses were tested: dietary ﬁbre
+intervention (AG and carrot powder) exerts microbiome
+modulation (1), this modulation results in increased SCFA
+production (2), and this increase leads to an altered
+metabolic and inﬂammatory state (under fasting condi-
+tions and in response to the PFT) (3).
+The human body is colonized by microorganisms: the
+microbiome. Most bacteria of the microbiome are located in
+the gut and these bacteria have been shown to affect
+human physiology
+profoundly
+[1].
+Its
+composition
+is
+different for every individual and also changes over time
+within individuals [1e5]. The microbiome inﬂuences pro-
+tective, metabolic and regulatory functions [1,2,6]. More
+speciﬁcally, an important metabolic activity of the gut
+microbiome is fermentation of non-digestible dietary ﬁbres
+to short-chain fatty acids (SCFAs) [7]. SCFAs serve as fuel for
+colonocytes, but are also absorbed systemically and affect
+numerous physiological functions, including glucose and
+lipid metabolism and systemic inﬂammation [8,9]. Many
+intrinsic traits, e.g., production of SCFAs, are variable be-
+tween
+bacterial
+species
+of
+the
+microbiome
+[10].
+In-
+terventions,
+such
+as
+prebiotics,
+target
+microbiome
+composition and may improve health by modulating
+metabolic activities of commensal gut bacteria [11]. Pre-
+biotics are substrates that are selectively utilized by host
+bacteria [12], mostly indigestible food ingredients (e.g., di-
+etary ﬁbres) that speciﬁcally stimulate growth or func-
+tioning of beneﬁcial bacterial species. In this study, a dietary
+ﬁbre mixture of acacia gum (AG) and carrot powder was
+used as prebiotic intervention to modulate microbiome
+composition, thereby aiming to exert beneﬁcial health
+effects.
+AG contains complex soluble dietary ﬁbres of galactan
+polymers and originates from Acacia trees [13,14]. In vitro
+and in vivo studies have shown that AG increases growth
+of beneﬁcial bacteria in the gut microbiome, such as Biﬁ-
+dobacterium and Lactobacillus species [15e17], and its
+fermentation leads to increased SCFA production in vitro
+[18,19]. Clinically, dosages of 30g AG per day reduce blood
+pressure, serum cholesterol levels, body mass index (BMI)
+and postprandial satiety [20e23]. Carrot powder is a ﬁbre
+mix from carrot peels, containing soluble and insoluble
+ﬁbres. Main ﬁbre components are pectin and cellulose.
+Pectin ﬁbres have several beneﬁcial effects, e.g., delay in
+gastric emptying and increase in postprandial satiety [24].
+Like AG, it has been shown to reduce cholesterol and in-
+crease glucose tolerance [25,26]. Although many dietary
+ﬁbres have been associated with beneﬁcial health effects,
+randomized placebo-controlled studies showing this as
+causal relationships are limited [27].
+In this study, health effects of the dietary ﬁbre mixture
+were measured by determining changes in phenotypic
+ﬂexibility, i.e., resilience: the ability of the human body to
+adapt to a stressor and return to homeostasis. In this case a
+metabolic stressor was used consisting of a standardized
+mixed-meal test, the previously described PhenFlex chal-
+lenge test (PFT) [28]. Based on previous studies a set of
+biomarkers was selected which respond to the PFT and are
+used for a time-resolved analysis combining multiple
+markers,
+reﬂecting
+metabolic
+and
+inﬂammatory
+state
+[29e32].
+Previous research has shown that dietary ﬁbre in-
+terventions may increase microbiome diversity [33e35],
+2. Methods
+2.1. Study design and population
+A double-blind, randomized, placebo-controlled crossover
+study was conducted with two 12-week periods separated
+by 8 weeks wash-out period, in 65 healthy volunteers
+(Figure S1). In order to maximize effect of the intervention,
+participants with increased metabolic risk were selected, i.e.
+BMI 25e30 kg/m2, age 45e70 years, average daily dietary
+ﬁbre intake <30g. The study was conducted at the Centre
+for Human Drug Research (CHDR), Leiden, The Netherlands,
+between August 2020 and July 2021. All participants gave
+written informed consent according to Declaration of Hel-
+sinki recommendations prior to any study-related activity.
+Study
+protocol
+and
+informed
+consent
+process
+were
+approved by the Independent Ethics Committee of the
+Foundation ‘Evaluation of Ethics in Biomedical Research’
+(Stichting
+Beoordeling
+Ethiek
+Biomedisch
+Onderzoek),
+Assen, The Netherlands. The study was performed accord-
+ing to Good Clinical Practice (GCP) and registered in Toet-
+singonline
+Registry
+(number
+NL71723.056.19)
+and
+in
+clinicaltrials.gov register (number NCT04829396).
+2.2. Study protocol
+Participants
+underwent
+medical
+screening,
+including
+medical history, physical examination, BMI, vital signs
+measurements, 12-lead electrocardiography (ECG), urine
+analysis, drug screening and chemistry and haematology
+blood
+sampling.
+During
+medical
+screening,
+baseline
+average daily ﬁbre intake was measured by the Dietary
+Fibre Intake Short Food Frequency Questionnaire (DFI-FFQ)
+[37]. Key inclusion criteria were: no clinically signiﬁcant
+abnormalities
+during
+screening,
+and
+aforementioned
+criteria for increased metabolic risk. Key exclusion criteria
+were: use of antibiotics, antacids, laxatives, statins, anti-
+diarrheal, immunomodulatory or antidiabetic medication
+within 3 months before inclusion, use of any concomitant
+medication, vitamins or dietary supplements within 7 days
+(or 5 half-lives) before or during the study, excluding
+paracetamol and ibuprofen. Participants were instructed to
+take 13g powder (dietary ﬁbre mixture or placebo) stirred
+into ﬂuid daily for 12 weeks, followed by a wash-out
+period of 8 weeks, and to take the powder again daily
+for 12 weeks (Figure S1). They were instructed to keep
+1418
+B.C. Eveleens Maarse et al.
+their diet as constant as possible and to avoid initiating
+new food habits or diets during participation. Randomi-
+zation codes were generated by a study-independent
+statistician. Powders were dispensed by the Leiden Uni-
+versity Medical Center (LUMC) pharmacy in identical jars
+and were matching in appearance. Study staff involved in
+dosing was not involved in performing assays or data
+analysis. The dietary ﬁbre mixture was produced in a ratio
+ensuring that participants took 10g AG powder (Type
+4880, A. Seyal, Willy Benecke, Germany) and 3g milled
+carrot powder (KaroPRO 1e26 SG, Food Solutions Team
+B.V., The Netherlands) with every dosing. Total ﬁbre con-
+tent was 10g ﬁbre per 13g mixture. Placebo powder con-
+sisted of brown (Glucidex 19) and white (Glucidex 17)
+maltodextrin only (Roquette, France). On the ﬁrst and last
+day of every study period of 12 weeks, participants visited
+the CHDR (4 times). During each visit, the PFT, anthropo-
+metric measurements, the Dutch Healthy Diet Index
+(DHDI) questionnaire [38,39] and blood sampling were
+performed. Faecal samples were collected every 4 weeks
+(Figure
+S1).
+To
+measure
+compliance,
+subjects
+were
+required to hand in empty dietary ﬁbre intervention/pla-
+cebo jars at the end of each intervention period. By
+weighing these jars, total intake was calculated. Intake of
+minimal 80% of total dosing was considered as compliant.
+Compliance to study restrictions (e.g., no use of concomi-
+tant medication) and adverse events were monitored
+during every visit to the CHDR, and during the treatment
+periods by regular phone calls.
+spectrometry (LC-MS) using high-resolution mass spec-
+trometry (Q-Exactive, Thermo, USA) (Supplement 1).
+2.7. Biochemical parameters and cytokines
+Plasma
+levels
+of
+aspartate-amino-transferase
+(AST),
+alanine-amino-transferase (ALT), glucose, high-density li-
+poprotein (HDL) cholesterol, low-density lipoprotein (LDL)
+cholesterol, ratio HDL/LDL cholesterol, insulin, C-reactive
+protein
+(CRP),
+and
+gamma-glutamyltransferase
+(GGT)
+were measured in plasma according to standardized
+methods at the Leiden University Medical Center labora-
+tory (Leiden, The Netherlands). Cytokines (interleukin [IL]-
+1b, IL-2, IL-4, IL-6, IL-8, IL-10, IL-12p70, IL-13, interferon
+[IFN]-g, tumour necrosis factor [TNF]) were quantiﬁed by
+multiplexed
+immunoassays
+(Multiplex
+Panel
+Human
+Proinﬂammatory: Meso Scale Discovery). Plasma serum
+amyloid A (SAA) and Calprotectin S100A8/S100A9 heter-
+odimer were measured by Enzyme-linked Immuno Sor-
+bent Assay (ELISA) (both Duoset ELISA from R&D systems,
+Abingdon, United Kingdom) according to manufacturer’s
+instructions.
+Non-esteriﬁed
+fatty
+acids
+(NEFAs)
+were
+quantiﬁed using the ASC-ACOD method (NEFA-HR assay,
+Fujiﬁlm Wako Chemicals Europe GmbH, Neuss, Germany),
+after inhibiting plasma lipolytic activity with tetrahy-
+drolipstatin (Orlistat; SigmaeAldrich/Merck Life Science
+NV, Amsterdam, The Netherlands).
+2.8. Statistical analysis
+2.3. Microbiome proﬁling
+Baseline characteristics for all participants and stratiﬁed by
+sex were described by standard statistical methods. Sam-
+ple size was based on a previous study using the PFT,
+where the intervention resulted in 0.63 decrease in In-
+ﬂammatory resilience. In the current study, estimated ef-
+fect size was 65% and using the same standard deviation
+resulted in a sample size of minimal 52 subjects with
+power 80% and a Z 0.05 [31]. Results of the DHDI ques-
+tionnaire were analysed by descriptive statistics and dif-
+ferences between visits were tested by two-way ANOVA.
+Statistical analysis of the microbiome was performed
+using R version 4.1.2 (R Core Team 2020). All ﬁgures were
+composed using the ggplot2 package version 3.3 [41].
+Multivariate analysis and ordinations were performed using
+the vegan package, version 2.5e7 [42]. This package was
+also used to calculate the Shannon a-diversity (i.e., within-
+subject diversity) and b-diversity (i.e., between-subject di-
+versity).
+The
+multivariate
+model
+ﬁtted
+by
+Principal
+Response Curve analysis was tested by permutation analysis
+in order to produce Type III (marginal) p-values for the
+terms included in the model [43]. 103 permutations were
+used for all reported results. The 16S rRNA data were
+ﬁltered (Supplement 2) to include only those Amplicon
+Sequence Variants (ASV) contributing to the ﬁrst 95% of all
+counts in the data. Overall, 8199 taxa were determined in
+the microbiome samples. Of those taxa, 624 taxa repre-
+sented 95% of the reads and were included in analyses
+(except for a-diversity, which included all taxa). Treatment
+effects (i.e., effects of the intervention) on a-diversity were
+Microbial DNA was extracted from faecal samples, and 16S
+rRNA gene sequencing was performed as described pre-
+viously [40].
+2.4. DHDI questionnaire
+The DHDI questionnaire consists of 40 questions, reﬂecting
+16 components of the diet, and results in a score between
+0 and 10 for each component. This results in a total score
+between 0 and 160, representing adherence to the Dutch
+guidelines for a healthy diet, with a higher score repre-
+senting a better adherence [38,39].
+2.5. PhenFlex challenge test
+The PFT consisted of 500 mL mixed-meal challenge drink,
+composed as described previously (produced by ‘Instituut
+voor Landbouw- Visserij-en Voedingsonderzoek, Eenheid
+Technologie & Voeding, Food Pilot’, Melle, Belgium) [29].
+Blood samples were taken at baseline and 30, 60, 120 and
+240 min after intake of the drink.
+2.6. SCFAs
+Faecal SCFAs (iso-valeric acid, propionic acid, iso-butyric
+acid, butyric acid, valeric acid, acetic acid, 2-methylbutanoic
+acids) were measured by liquid chromatography-mass
+Impact of ﬁbre supplementation
+1419
+tested by ANOVA on a linear mixed effects (LME) model,
+with treatment and treatment*time as independent vari-
+ables. Post-hoc tests were performed using the emmeans
+package [44]. Statistical differences in b-diversity were
+tested by repeated-measures permutational ANOVA.
+All SCFA data were adjusted for the amount of bacterial
+16S rRNA gene per sample (Supplement 2). Intervention
+effects on SCFAs were tested by the paired Wilcoxon
+signed-rank test for each timepoint in the study period.
+Insulin resistance before and after each intervention
+period was calculated using previously published methods
+(Supplement 2). For every PFT, 2 scores were calculated:
+Inﬂammatory
+resilience
+and
+Metabolic
+resilience
+(Supplement 2). These scores were calculated by a regres-
+sion equation incorporating the applicable biochemical
+parameters over time during the PFT. For these 2 different
+scores the ANOVA model residuals were checked for
+normality and homoscedasticity. The score for Inﬂamma-
+tory resilience was log-transformed. There were no carry-
+over effects (Inﬂammatory resilience: p Z 0.676; Meta-
+bolic resilience: p Z 0.429). Intervention effects on insulin
+resistance, biochemical parameters and cytokine levels at
+baseline (i.e., before PFT) and the Inﬂammatory and Meta-
+bolic resilience scores were calculated by means of a LME
+model, with period and treatment as ﬁxed factors and
+subject as random factor. The interaction term treatment)
+sex and sex were introduced in the model by forward se-
+lection based on the Akaike Information Criterion (AIC).
+Statistical methods of Table S3, investigating the effect of
+the PFT on individual parameters of the Inﬂammatory and
+Metabolic resilience scores are described in Supplement 2.
+For all analyses, a p-value <0.05 was considered as statis-
+tically signiﬁcant.
+Baseline characteristics are shown in Table 1. Average ﬁbre
+intake
+at
+baseline
+was
+19g/day
+(median
+17g/day)
+(Figure S3). The dietary ﬁbre mixture was well-tolerated
+and safe: all adverse events possibly related to the inter-
+vention were mild. There was no effect of dietary ﬁbres on
+BMI and other anthropometric parameters (Table S1). Dur-
+ing the study, there was overall no change in diet of the
+participants as reﬂected in the total DHDI score (p Z 0.106).
+Detailed analyses of the DHDI results are shown in
+Supplement 3.
+3.1. Microbiome modulation
+The effect of dietary ﬁbre intervention compared to pla-
+cebo on microbiome composition over time was deter-
+mined by b-diversity at 0, 4, 8 and 12 weeks. The following
+factors had signiﬁcant effect on b-diversity: intervention
+(p  0.001), sex (p  0.001), and time (p  0.001). The
+absence of a signiﬁcant intervention)time interaction
+term on b-diversity indicates a stable effect of the inter-
+vention (p Z 0.736). Principal Response Curve analysis
+presenting the percentage of total variation caused by the
+intervention over time (0.44%, p  0.001; Fig. 1) demon-
+strated an increase in effect of the intervention on b-di-
+versity during the ﬁrst 4 weeks, remaining stable during
+the rest of the period. Fig. 2 shows the 10 taxa with the
+strongest increase and decrease over time associated with
+dietary ﬁbre intervention. Bacteria showing the highest
+increase in abundance during dietary ﬁbre intervention
+compared to placebo were Biﬁdobacterium breve species;
+bacteria showing the largest decrease were Erysipelo-
+trichaceae UCG-003 species. a-diversity (Shannoneindex)
+after 0, 4, 8 and 12 weeks of dietary ﬁbre intervention was
+compared to their respective sample during placebo use
+(Fig. 3). At week 4, 8 and 12, a-diversity differed signiﬁ-
+cantly between participants during their placebo period
+and dietary ﬁbre intervention period, with a lower di-
+versity during the dietary ﬁbre intervention period at each
+3. Results
+In total, 65 participants were enrolled in the study and 54
+participants were included in the analyses (Figure S2).
+Table 1
+Baseline characteristics.
+Entire cohort (N Z 54)
+Males (N Z 29)
+Females (N Z 25)
+Sex (N, %)
+N/A
+29, 53.7%
+25, 46.3%
+Age, years (mean  standard deviation [SD])
+57.8  5.8
+60.0  6.1
+55.4  4.4
+BMI, kg/m2 (mean  SD)
+27.3  1.4
+27.3  1.4
+27.3  1.4
+Body weight, kg (mean  SD)
+84.0  10.1
+90.2  8.3
+76.7  6.5
+Systolic blood pressure, mmHg (mean  SD)
+133  15
+140  14
+125  13
+Diastolic blood pressure, mmHg (mean  SD)
+82  9
+85  8
+78  8
+Heart rate, beats per minute (mean  SD)
+63  8
+63  8
+63  7
+Hip circumference, cm (mean  SD)
+100.8  6
+100.4  5
+101.3  7
+Waist circumference, cm (mean  SD)
+94.3  8
+98.8  6
+89.2  6
+CRP, mg/L (mean  SD)
+1.8  1.9
+1.6  1.7
+2.1  2.1
+AST, U/L (mean  SD)
+23  7
+23  5
+23  9
+ALT, U/L (mean  SD)
+26  10
+27  9
+25  12
+GGT, U/L (mean  SD)
+24  11
+28  12
+20  8
+Fasted glucose, mmol/L (mean  SD)
+5.2  0.7
+5.4  0.6
+4.9  0.7
+Sodium, mmol/L (mean  SD)
+142  2
+142  2
+142  2
+Potassium, mmol/L (mean  SD)
+4.3  0.3
+4.3  0.3
+4.3  0.4
+Triglycerides, mmol/L (mean  SD)
+1.6  0.9
+1.7  0.9
+1.5  0.8
+Daily ﬁbre intake, g/day (mean  SD)
+18.7  5.9
+19.0  6.4
+18.5  5.3
+ALT:
+alanine-amino-transferase,
+AST:
+aspartate-amino-transferase,
+BMI:
+Body
+Mass
+Index,
+CRP:
+C-reactive
+protein,
+GGT;
+gamma-
+glutamyltransferase, SD: standard deviation.
+1420
+B.C. Eveleens Maarse et al.
+Figure 1
+Effect of dietary ﬁbre intervention on b-diversity (between-subject variation) over time. Principal Response Curve analysis presenting
+effect of the intervention isolated from all other factors that affect microbiome composition (% of total variation caused by the intervention) over
+time. The y-axis represents the amount of variation that the intervention has induced per sample amongst the total microbiome variation of all
+participants at that speciﬁc timepoint. Coloured lines represent the two participants with the highest (blue, dark green) and lowest (light green,
+pink) median treatment effects highlighted. The variation that was induced by the intervention in these speciﬁc subjects contributed the most/least
+to the total variation induced by the intervention. Total ﬁbre intervention effect was 0.44%, p  0.001 without signiﬁcant intervention)time
+interaction. (For interpretation of the references to colour in this ﬁgure legend, the reader is referred to the Web version of this article.)
+timepoint (week 4: p < 0.001; week 8: p Z 0.003; week
+12: p Z 0.042).
+measures (Inﬂammatory resilience: p Z 0.605, Metabolic
+resilience: p Z 0.485) (Fig. 5, Table S2). There was also no
+signiﬁcant effect on Disposition Index (p Z 0.864), Mat-
+suda Index (p Z 0.104) and Muscle Insulin Resistance
+(p Z 0.806), while there was a signiﬁcant effect on Hepatic
+Insulin Resistance Index [HIRI] (p Z 0.027).
+3.2. SCFAs
+There was a signiﬁcantly higher concentration of faecal
+SCFAs
+during
+the
+dietary
+ﬁbre
+intervention
+period
+compared to the placebo period at some timepoints: 2-
+methyl butanoic acid at 12 weeks (p Z 0.025), acetic acid at
+2 weeks (p Z 0.038), butyric acid at 4 weeks (p Z 0.045),
+iso-butyric acid at 12 weeks (p Z 0.040), iso-valeric acid at
+12 weeks (p Z 0.045) and propionic acid at 4 weeks
+(p Z 0.034). However, overall there was no consistent sig-
+niﬁcant difference in faecal SCFA concentrations between
+the dietary ﬁbre intervention and placebo periods (Fig. 4).
+3.5. Fibre intake
+To further explore whether aforementioned observations
+were attributable to baseline daily ﬁbre intake, analysis
+stratiﬁed on median baseline ﬁbre intake according to the
+DFI-FFQ (17g/day) was performed. This analysis showed
+signiﬁcant differences in microbiome changes in amount
+and direction induced by dietary ﬁbre intervention be-
+tween subjects with baseline ﬁbre intake below and above
+17g/day (interaction term baseline dietary ﬁbre intake)
+intervention p  0.001). This was demonstrated by
+redundancy analysis (RDA), as shown in Figure S4. How-
+ever, there were no differences in clinical outcomes be-
+tween subjects with a baseline daily ﬁbre intake below or
+above 17 g/day.
+3.3. Inﬂammatory and metabolic state
+There was no effect of dietary ﬁbre intervention on fasting
+biochemical parameters and cytokines, except for IFN-g
+(p Z 0.040), with higher levels after 12 weeks of placebo
+compared to 12 weeks of dietary ﬁbre intervention (Table
+S1). These results show no effect of dietary ﬁbre inter-
+vention on metabolic and inﬂammatory state under fast-
+ing conditions.
+4. Discussion
+In this study, effects of daily dietary ﬁbre supplementation
+(AG/carrot powder mixture) on gut microbiome composi-
+tion and Metabolic and Inﬂammatory resilience were
+studied. A signiﬁcant effect of dietary ﬁbre intervention on
+microbiome composition was observed in almost all
+3.4. Resilience
+There was no signiﬁcant effect of the dietary ﬁbre inter-
+vention
+compared
+to
+placebo
+on
+the
+PFT
+outcome
+Impact of ﬁbre supplementation
+1421
+Figure 2
+Taxa with strongest increase and decrease over time associated with dietary ﬁbre intervention. A. Canonical coefﬁcients from
+Principal Response Curve analysis of 10 bacterial taxa (amplicon sequence variants) with the highest and lowest associations with the ﬁbre inter-
+vention. Error bars show bootstrapped 99% conﬁdence intervals. Showing only taxa with bootstrapped p-value 0.01. B. Heatmap visualising the
+difference in Log2 fold-change (Log2FC) per bacterial taxis between subjects in their ﬁbre and their placebo period, when comparing week 0 to a later
+week. Taxa with a signiﬁcant (p  0.01) intervention:time interaction are marked.
+participants, but this did not translate into effects on faecal
+SCFAs, fasting metabolic and inﬂammatory state and
+phenotypic ﬂexibility.
+Comparing the microbiome of participants after 12
+weeks of dietary ﬁbre intervention with placebo, a sig-
+niﬁcant change in microbiome composition emerged,
+mostly during the ﬁrst 4 weeks of dietary ﬁbre inter-
+vention. These changes, induced during the ﬁrst 4 weeks,
+remained stable during the rest of the intervention
+period. The rate at which effects were emerging varied
+between participants, which can be explained by the
+inherent wide variation in gut microbiome composition.
+The ﬁnding that almost all participants responded to the
+intervention
+is
+a
+notable
+ﬁnding,
+as
+many
+studies
+investigating interventions that target the microbiome
+show variable results [45]. The high response rate
+may have been a beneﬁcial effect of the two different ﬁ-
+bres in the intervention used in this study, since the
+response of microbial taxa to different ﬁbres varies
+[46,47]. A subject was considered to be compliant in case
+of an intake of at least 80% of the total dose, which is a
+common cut-off value for comparable studies. Only 1
+1422
+B.C. Eveleens Maarse et al.
+associated
+with
+health
+beneﬁts,
+such
+as
+high
+HDL-
+cholesterol levels and low insulin, CRP and IL-6 levels
+[53]. The decrease in Erysipelotrichaceae species may be a
+favourable effect of the intervention, as they are associated
+with
+negative
+effects
+on
+metabolism
+and
+increased
+inﬂammation of the gut [54]. Thus, the decreased a-di-
+versity
+over
+time
+during
+dietary
+ﬁbre
+intervention
+compared to placebo may have been caused by an
+increased share of bacteria associated with beneﬁcial
+properties, such as Biﬁdobacteria, at expense of bacteria
+associated with less favourable outcomes.
+The only observed systemic signiﬁcant effects of the
+intervention were on fasting levels of IFN-g and the HIRI.
+IFN-g increased more during placebo use compared to
+intervention, probably due to unnoticed infections. For the
+HIRI, considering the large spread in this index and the
+small difference between groups, this does not appear to
+be an effect of clinical signiﬁcance. No effect of the inter-
+vention was observed on phenotypic ﬂexibility, expressed
+as the Metabolic and Inﬂammatory resilience.
+The absence of clinical effects of the intervention as
+opposed to the effects on a- and b-diversity is contradic-
+tory. It should be considered that the effect of the inter-
+vention was, although signiﬁcant, very small, explaining
+only 0.44% of the total microbiome variation in the study.
+Possibly, bacteria increasing in abundance after the dietary
+ﬁbre intervention are correlated with beneﬁcial properties,
+but are not causally related with physiological effects
+[27,50e54]. As SCFAs are mediators in the causal rela-
+tionship between gut microbiome composition and both
+metabolic traits and systemic inﬂammation [8,55e57], it is
+in line with the absence of physiological effects that little
+change in faecal SCFA levels was observed. Although bac-
+terial species that increased in abundance are associated
+with SCFA production, there was also a decrease in SCFA-
+producing Roseburia species [58]. Possibly, there was no
+net effect on SCFA production because of a balance be-
+tween in- and decrease of SCFA producers. It should also
+be considered that faecal SCFAs are not always well
+correlated with the amount of produced SCFAs in the gut,
+as they are metabolized by colonocytes and absorbed into
+the blood [9,59]. Given the absence of any treatment effect
+on faecal SCFAs and clinical outcomes, circulating SCFAs
+were not measured, although circulating SCFAs are corre-
+lated more with metabolic outcomes (e.g., insulin sensi-
+tivity) than faecal SCFA concentrations [60]. Measuring
+additional mediators between microbiome and systemic
+outcomes may provide more insight into the reason for
+absence of clinical effects.
+Strengths of this study include the cross-over design,
+long-term follow-up with considerable wash-out period
+and large sample size. Factors that may have affected the
+results
+are,
+ﬁrstly,
+the
+used
+placebo
+(maltodextrin)
+potentially impacting microbiome composition, resulting
+in smaller differences between dietary ﬁbre and placebo
+effects [61]. However, RDA analysis (Figure S4) showed
+that the effect of maltodextrin on microbiome variation
+was much smaller than the effect of the dietary ﬁbre
+intervention. Therefore, we believe that maltodextrin was
+Figure 3
+a-diversity (within-subject variation). a-diversity (Shan-
+non diversity index) of participants during dietary ﬁbre intervention
+period and placebo period, measured at 0, 4, 8 and 12 weeks. Boxplots
+show median, ﬁrst and third quartile; error bars show maximum and
+minimum. Outliers are shown as grey dots.
+subject was excluded from analysis for not meeting this
+compliance rule.
+Although
+an
+increase
+in
+a-diversity
+is
+generally
+considered as characteristic of a ‘healthier’ microbiome
+[36], the decreased a-diversity after dietary ﬁbre inter-
+vention compared to placebo may be a result of the iso-
+lated increase of speciﬁc bacterial species by the dietary
+ﬁbre intervention. Indeed, we found an increase of Biﬁ-
+dobacteria, Lachnospiraceae and Subdoligranulum during
+12 weeks of dietary ﬁbre intervention. Particularly, the
+increase in Biﬁdobacteria is in line with ﬁndings of earlier
+in vitro and in vivo studies, demonstrating that AG in-
+creases
+mostly
+Biﬁdobacteria
+and
+Lactobacilli
+[15,17e19,48].
+Pectins
+are
+associated
+with
+increased
+abundance of Lactobacilli, Bacteroides and Prevotella species
+[49], which was not observed in the current study, possibly
+due to the small share of pectins as compared to AG in the
+dietary ﬁbre mixture. However, the observed increased
+abundance of Paraprevotella species, belonging to the same
+family as Prevotella, may be attributed to pectins admin-
+istered in this study. Biﬁdobacteria are already used widely
+as probiotic strains, as they have numerous beneﬁcial
+properties such as regulation of the intestinal immune
+homeostasis and suppression of pro-inﬂammatory cyto-
+kines [50]. Although the speciﬁc role of Lachnospiraceae
+has not been established, they are considered SCFA pro-
+ducers
+[51,52].
+Subdoligranulum
+species
+are
+strongly
+Impact of ﬁbre supplementation
+1423
+Figure 4
+Faecal SCFA concentrations. Concentration (mM) of various SCFA in faecal samples, adjusted for amount (ng/mL) of 16S bacterial RNA
+gene in the speciﬁc sample, measured at different timepoints during dietary ﬁbre intervention period and placebo period.
+Figure 5
+Measures of phenotypic ﬂexibility. Metabolic resilience (metabolic score), Inﬂammatory resilience (inﬂammatory score), Disposition
+index (b-cell function), Matsuda index (insulin sensitivity), and hepatic and muscle insulin resistance index, before and after 12 weeks of dietary
+ﬁbre or placebo intervention. Dots show mean, error bars indicate 95%CI.
+1424
+B.C. Eveleens Maarse et al.
+a suitable placebo for our study. Secondly, the cut-off of
+<30g baseline average daily dietary ﬁbre intake of par-
+ticipants may have been too high. According to limits of
+the DFI-FFQ, low average daily dietary ﬁbre intake is
+deﬁned as <18g/day for females and <22 g/day for males
+(Table S4) [37]. Possibly, selected participants were
+already ‘too healthy’ or consumed too much ﬁbre to gain
+beneﬁcial effects of the intervention. However, consid-
+ering the relatively low mean dietary ﬁbre intake at
+baseline (Figure S3, females: 18.5 g/day, males 19 g/day),
+an addition of 10g dietary ﬁbres per day is a considerable
+increase in dietary ﬁbre intake for the majority of the
+participants. This is especially the case considering the
+DFI-FFQ guidelines, that would classify most participants
+as having a low to moderate dietary ﬁbre intake at
+baseline, but as having a high dietary ﬁbre intake (fe-
+males: 25 g/day, males: 30 g/day) with the addition of
+10g dietary ﬁbre per day (Table S4). Although it is difﬁcult
+to establish doseeresponse relationships of nutritional
+interventions, systematic reviews have shown that doses
+of minimal 5g dietary ﬁbre per day can induce clinically
+beneﬁcial effects in cardiovascular patients [62], and that
+a dose of 7.6e8.3g per day is associated with improved
+glycaemic control in patients with type 2 diabetes [63].
+Additionally, it was shown that there is a doseeresponse
+relationship between dietary ﬁbre intake and mortality in
+patients with diabetes [64], and in patients with cardio-
+vascular disease [62]. Based on these data, it cannot be
+concluded that the used dose of 10g dietary ﬁbre per day
+was insufﬁcient to induce a clinical effect in our popula-
+tion of participants with increased metabolic risk. Lastly,
+although parameters of the scores expressing phenotypic
+ﬂexibility (i.e. Metabolic and Inﬂammatory resilience)
+were selected based on their response in previous
+research [31], TNF did not show a response to the PFT,
+possibly due to differences in study population (Table S3).
+Otherwise, it is possible that the intervention had effects
+on targets that were not included in the scores, although
+parameters were selected to measure subtle changes in
+various pathways [29].
+Concluding, this study investigated the effect of dietary
+ﬁbre intervention in a randomized, double-blind, cross-
+over trial, and related microbiome changes to physiolog-
+ical effects. Although microbiome changes were observed
+in almost all participants, and the observed changes are
+mostly associated with favourable health effects, there was
+no translation to effects on phenotypic ﬂexibility and other
+clinical outcomes in this population.
+Declaration of competing interest
+All authors declare that they have no relevant ﬁnancial
+interests or disclosures to report. This study was part of
+the collaboration project No Guts No Glory.
+Acknowledgements
+We would like to thank all participants for their partici-
+pation in this study.
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at
+https://doi.org/10.1016/j.numecd.2024.01.028.
+References
+[1] Iebba
+V,
+Totino
+V,
+Gagliardi
+A,
+Santangelo
+F,
+Cacciotti
+F,
+Trancassini M, et al. Eubiosis and dysbiosis: the two sides of the
+microbiota. New Microbiol 2016;39(1):1e12.
+[2] Hooper LV, Wong MH, Thelin A, Hansson L, Falk PG, Gordon JI.
+Molecular analysis of commensal host-microbial relationships in
+the
+intestine.
+Science
+2001;291(5505):881e4.
+https:
+//doi.org/10.1126/science.291.5505.881.
+[3] Rawls JF, Mahowald MA, Ley RE, Gordon JI. Reciprocal gut micro-
+biota transplants from zebraﬁsh and mice to germ-free recipients
+reveal host habitat selection. Cell 2006;127(2):423e33. https:
+//doi.org/10.1016/j.cell.2006.08.043.
+[4] Wu GD, Chen J, Hoffmann C, Bittinger K, Chen YY, Keilbaugh SA,
+et al. Linking long-term dietary patterns with gut microbial
+enterotypes.
+Science
+2011;334(6052):105e8.
+https:
+//doi.org/10.1126/science.1208344.
+[5] Huse SM, Ye Y, Zhou Y, Fodor AA. A core human microbiome as
+viewed through 16S rRNA sequence clusters. PLoS One 2012;7(6):
+e34242. https://doi.org/10.1371/journal.pone.0034242.
+[6] Bufﬁe CG, Pamer EG. Microbiota-mediated colonization resistance
+against intestinal pathogens. Nat Rev Immunol 2013;13(11):
+790e801. https://doi.org/10.1038/nri3535.
+[7] Bäckhed F, Ley RE, Sonnenburg JL, Peterson DA, Gordon JI. Host-
+bacterial mutualism in the human intestine. Science 2005;
+307(5717):1915e20. https://doi.org/10.1126/science.1104816.
+[8] He J, Zhang P, Shen L, Niu L, Tan Y, Chen L, et al. Short-chain fatty
+acids and their association with signalling pathways in inﬂam-
+mation, glucose and lipid metabolism. Int J Mol Sci 2020;21(17).
+https://doi.org/10.3390/ijms21176356.
+[9] Silva YP, Bernardi A, Frozza RL. The role of short-chain fatty acids
+from gut microbiota in gut-brain communication. Front Endo-
+crinol 2020;11:25. https://doi.org/10.3389/fendo.2020.00025.
+[10] Lozupone CA, Stombaugh JI, Gordon JI, Jansson JK, Knight R. Di-
+versity, stability and resilience of the human gut microbiota. Na-
+ture
+2012;489(7415):220e30.
+https:
+//doi.org/10.1038/nature11550.
+[11] Quigley EMM. Prebiotics and probiotics in digestive health. Clin
+Gastroenterol
+Hepatol
+2019;17(2):333e44.
+https:
+//doi.org/10.1016/j.cgh.2018.09.028.
+[12] Gibson GR, Hutkins R, Sanders ME, Prescott SL, Reimer RA,
+Salminen SJ, et al. Expert consensus document: the International
+Scientiﬁc
+Association
+for
+Probiotics
+and
+Prebiotics
+(ISAPP)
+consensus statement on the deﬁnition and scope of prebiotics. Nat
+Rev
+Gastroenterol
+Hepatol
+2017;14(8):491e502.
+https:
+//doi.org/10.1038/nrgastro.2017.75.
+[13] Ali BH, Ziada A, Blunden G. Biological effects of gum Arabic: a
+review of some recent research. Food Chem Toxicol 2009;47(1):
+1e8. https://doi.org/10.1016/j.fct.2008.07.001.
+[14] Mariod AA. Gum Arabic - structure, properties, application and
+economics. Academic Press; 2018.
+[15] Calame W, Weseler AR, Viebke C, Flynn C, Siemensma AD. Gum
+Arabic
+establishes
+prebiotic
+functionality
+in
+healthy
+human
+Funding
+The project was co-funded by the PPP Allowance made
+available by Top Sector Agri & Food to stimulate public-
+private partnerships (PPP), and Top Sector Life Sciences &
+Health. Funding was received from the Centre for Human
+Drug Research, Leiden, The Netherlands, dsm-ﬁrmenich,
+Kaiseraugst, Switzerland, and TNO Netherlands Organi-
+sation
+for
+Applied
+Scientiﬁc
+Research,
+Leiden,
+The
+Netherlands.
+Impact of ﬁbre supplementation
+1425
+volunteers in a dose-dependent manner. Br J Nutr 2008;100(6):
+1269e75. https://doi.org/10.1017/S0007114508981447.
+[16] Michel C, Kravtchenko TP, David A, Gueneau S, Kozlowski F,
+Cherbut C. In vitro prebiotic effects of Acacia gums onto the
+human intestinal microbiota depends on both botanical origin
+and
+environmental
+pH.
+Anaerobe
+1998;4(6):257e66.
+https:
+//doi.org/10.1006/anae.1998.0178.
+[17] Cherbut C, Michel C, Raison V, Kravtchenko TP, Severine M. Acacia
+gum is a biﬁdogenic dietary ﬁbre with high digestive tolerance in
+healthy humans. Microb Ecol Health Dis 2003;15:1.
+[18] AlariﬁS, Bell A, Walton G. In vitro fermentation of gum acacia -
+impact on the faecal microbiota. Int J Food Sci Nutr 2018;69(6):
+696e704. https://doi.org/10.1080/09637486.2017.1404970.
+[19] Koecher KJ, Noack JA, Timm DA, Klosterbuer AS, Thomas W,
+Slavin JL. Estimation and interpretation of fermentation in the gut:
+coupling results from a 24 h batch in vitro system with fecal
+measurements from a human intervention feeding study using
+fructo-oligosaccharides, inulin, gum acacia, and pea ﬁber. J Agric
+Food
+Chem
+2014;62(6):1332e7.
+https://doi.org/10.1021/jf4046
+88n.
+[20] Mohamed RE, Gadour MO, Adam I. The lowering effect of Gum
+Arabic on hyperlipidemia in Sudanese patients. Front Physiol
+2015;6:160. https://doi.org/10.3389/fphys.2015.00160.
+[21] Babiker R, Elmusharaf K, Keogh MB, Saeed AM. Effect of Gum
+Arabic (Acacia Senegal) supplementation on visceral adiposity
+index (VAI) and blood pressure in patients with type 2 diabetes
+mellitus as indicators of cardiovascular disease (CVD): a ran-
+domized and placebo-controlled clinical trial. Lipids Health Dis
+2018;17(1):56. https://doi.org/10.1186/s12944-018-0711-y.
+[22] Calame W, Thomassen F, Hull S, Viebke C, Siemensma AD. Evalu-
+ation of satiety enhancement, including compensation, by blends
+of gum Arabic. A methodological approach. Appetite 2011;57(2):
+358e64. https://doi.org/10.1016/j.appet.2011.06.005.
+[23] Babiker R, Merghani TH, Elmusharaf K, Badi RM, Lang F, Saeed AM.
+Effects of Gum Arabic ingestion on body mass index and body fat
+percentage in healthy adult females: two-arm randomized, pla-
+cebo controlled, double-blind trial. Nutr J 2012;11:111. https:
+//doi.org/10.1186/1475-2891-11-111.
+[24] Di Lorenzo C, Williams CM, Hajnal F, Valenzuela JE. Pectin delays
+gastric emptying and increases satiety in obese subjects. Gastro-
+enterology
+1988;95(5):1211e5.
+https://doi.org/10.1016/0016-
+5085(88)90352-6.
+[25] Brouns F, Theuwissen E, Adam A, Bell M, Berger A, Mensink RP.
+Cholesterol-lowering properties of different pectin types in mildly
+hyper-cholesterolemic men and women. Eur J Clin Nutr 2012;
+66(5):591e9. https://doi.org/10.1038/ejcn.2011.208.
+[26] Perrigue M, Carter B, Roberts SA, Drewnowski A. A low-calorie
+beverage supplemented with low-viscosity pectin reduces en-
+ergy intake at a subsequent meal. J Food Sci 2010;75(9):H300e5.
+https://doi.org/10.1111/j.1750-3841.2010.01858.x.
+[27] Quigley EMM, Gajula P. Recent advances in modulating the
+microbiome, vol. 9. F1000Res; 2020. https://doi.org/10.12688/
+f1000research.20204.1.
+[28] Wopereis S. Phenotypic ﬂexibility in nutrition research to quantify
+human variability: building the bridge to personalised nutrition.
+Proc
+Nutr
+Soc
+2022:1e13.
+https://doi.org/10.1017/S002966
+5122002853.
+[29] Wopereis S, Stroeve JHM, Staﬂeu A, Bakker GCM, Burggraaf J, van
+Erk MJ, et al. Multi-parameter comparison of a standardized
+mixed meal tolerance test in healthy and type 2 diabetic subjects:
+the
+PhenFlex
+challenge.
+Genes
+Nutr
+2017;12:21.
+https:
+//doi.org/10.1186/s12263-017-0570-6.
+[30] van
+den
+Broek
+TJ,
+Bakker
+GCM,
+Rubingh
+CM,
+Bijlsma
+S,
+Stroeve JHM, van Ommen B, et al. Ranges of phenotypic ﬂexibility
+in healthy subjects. Genes Nutr 2017;12:32. https://doi.org/10.
+1186/s12263-017-0589-8.
+[31] Hoevenaars FPM, Esser D, Schutte S, Priebe MG, Vonk RJ, van den
+Brink WJ, et al. Whole grain wheat consumption affects post-
+prandial inﬂammatory response in a randomized controlled trial
+in overweight and obese adults with mild hypercholesterolemia in
+the
+graandioos
+study.
+J
+Nutr
+2019;149(12):2133e44.
+https:
+//doi.org/10.1093/jn/nxz177.
+[32] Bouwman J, Vogels JT, Wopereis S, Rubingh CM, Bijlsma S,
+Ommen B. Visualization and identiﬁcation of health space, based
+on personalized molecular phenotype and treatment response to
+relevant underlying biological processes. BMC Med Genom 2012;
+5:1. https://doi.org/10.1186/1755-8794-5-1.
+[33] Roytio H, Mokkala K, Vahlberg T, Laitinen K. Dietary intake of fat
+and ﬁbre according to reference values relates to higher gut
+microbiota richness in overweight pregnant women. Br J Nutr
+2017;118(5):343e52. https://doi.org/10.1017/S0007114517002100.
+[34] Schutte S, Esser D, Hoevenaars FPM, Hooiveld G, Priebe MG,
+Vonk RJ, et al. A 12-wk whole-grain wheat intervention protects
+against hepatic fat: the Graandioos study, a randomized trial in
+overweight subjects. Am J Clin Nutr 2018;108(6):1264e74. https:
+//doi.org/10.1093/ajcn/nqy204.
+[35] Cotillard A, Kennedy SP, Kong LC, Prifti E, Pons N, Le Chatelier E,
+et al. Dietary intervention impact on gut microbial gene richness.
+Nature
+2013;500(7464):585e8.
+https://doi.org/10.1038/nature
+12480.
+[36] Human Microbiome Project C. Structure, function and diversity of
+the healthy human microbiome. Nature 2012;486(7402):207e14.
+https://doi.org/10.1038/nature11234.
+[37] Healey G, Brough L, Murphy R, Hedderley D, Butts C, Coad J. Val-
+idity and reproducibility of a habitual dietary ﬁbre intake short
+food
+frequency
+questionnaire.
+Nutrients
+2016;8(9).
+https:
+//doi.org/10.3390/nu8090558.
+[38] van Lee L, Geelen A, van Huysduynen EJ, de Vries JH, van’t Veer P,
+Feskens EJ. The Dutch healthy diet index (DHD-index): an instru-
+ment to measure adherence to the Dutch guidelines for a healthy
+diet. Nutr J 2012;11:49. https://doi.org/10.1186/1475-2891-11-49.
+[39] de Rijk MG, Slotegraaf AI, Brouwer-Brolsma EM, Perenboom CWM,
+Feskens EJM, de Vries JHM. Development and evaluation of a diet
+quality screener to assess adherence to the Dutch food-based di-
+etary guidelines. Br J Nutr 2021;128(8):1e11. https://doi.org/10.
+1017/S0007114521004499.
+[40] Gart E, Souto Lima E, Schuren F, de Ruiter CGF, Attema J,
+Verschuren L, et al. Diet-independent correlations between bac-
+teria and dysfunction of gut, adipose tissue, and liver: a compre-
+hensive microbiota analysis in feces and mucosa of the ileum and
+colon in obese mice with NAFLD. Int J Mol Sci 2018;20(1). https:
+//doi.org/10.3390/ijms20010001.
+[41] Wickham H. ggplot2: elegant graphics for data analysis. New York:
+Springer-Verlag; 2016.
+[42] Oksanen J, Simpson GL, Blanchet FG, Kindt R, Legendre P,
+Minchin PR, et al. Package ’vegan’ community ecology package.
+2020. version, https://github.com/vegandevs/vegan2022.
+[43] van den Brink PJ, den Besten PJ, bij de Vaate A, ter Braak CJ.
+Principal response curves technique for the analysis of multivar-
+iate biomonitoring time series. Environ Monit Assess 2009;
+152(1e4):271e81. https://doi.org/10.1007/s10661-008-0314-6.
+[44] Lenth RV, Buerkner P, Gine-Vazquez I, Herve M, Jung M, Love J,
+et al. Estimated marginal means, aka least-squares means pack-
+age. 2022.
+[45] Mills S, Lane JA, Smith GJ, Grimaldi KA, Ross RP, Stanton C. Pre-
+cision nutrition and the microbiome Part II: potential opportu-
+nities and pathways to commercialisation. Nutrients 2019;11(7).
+https://doi.org/10.3390/nu11071468.
+[46] Chen T, Long W, Zhang C, Liu S, Zhao L, Hamaker BR. Fiber-utilizing
+capacity varies in Prevotella- versus Bacteroides-dominated gut
+microbiota.
+Sci
+Rep
+2017;7(1):2594.
+https://doi.org/10.1038/
+s41598-017-02995-4.
+[47] Armstrong H, Mander I, Zhang Z, Armstrong D, Wine E. Not all
+ﬁbers are born equal; variable response to dietary ﬁber subtypes
+in IBD. Front Pediatr 2020;8:620189. https://doi.org/10.3389/fped.
+2020.620189.
+[48] Rawi MH, Abdullah A, Ismail A, Sarbini SR. Manipulation of gut
+microbiota using Acacia gum polysaccharide. ACS Omega 2021;
+6(28):17782e97. https://doi.org/10.1021/acsomega.1c00302.
+[49] Beukema M, Faas MM, de Vos P. The effects of different dietary
+ﬁber pectin structures on the gastrointestinal immune barrier:
+impact via gut microbiota and direct effects on immune cells. Exp
+Mol Med 2020;52(9):1364e76. https://doi.org/10.1038/s12276-
+020-0449-2.
+[50] Xue L, He J, Gao N, Lu X, Li M, Wu X, et al. Probiotics may delay the
+progression of nonalcoholic fatty liver disease by restoring the gut
+microbiota structure and improving intestinal endotoxemia. Sci
+Rep 2017;7:45176. https://doi.org/10.1038/srep45176.
+[51] Vacca M, Celano G, Calabrese FM, Portincasa P, Gobbetti M, De
+Angelis M. The controversial role of human gut Lachnospiraceae.
+1426
+B.C. Eveleens Maarse et al.
+Microorganisms 2020;8(4). https://doi.org/10.3390/microorganis
+ms8040573.
+[52] Verheggen R, Konstanti P, Smidt H, Hermus A, Thijssen DHJ,
+Hopman MTE. Eight-week exercise training in humans with
+obesity: marked improvements in insulin sensitivity and modest
+changes in gut microbiome. Obesity 2021;29(10):1615e24. https:
+//doi.org/10.1002/oby.23252.
+[53] Van Hul M, Le Roy T, Prifti E, Dao MC, Paquot A, Zucker JD, et al.
+From correlation to causality: the case of Subdoligranulum. Gut
+Microb 2020;12(1):1e13. https://doi.org/10.1080/19490976.2020.
+1849998.
+[54] Kaakoush NO. Insights into the role of Erysipelotrichaceae in the
+human
+host.
+Front
+Cell
+Infect
+Microbiol
+2015;5:84.
+https:
+//doi.org/10.3389/fcimb.2015.00084.
+[55] Sanna S, van Zuydam NR, Mahajan A, Kurilshikov A, Vich Vila A,
+Vosa U, et al. Causal relationships among the gut microbiome,
+short-chain fatty acids and metabolic diseases. Nat Genet 2019;
+51(4):600e5. https://doi.org/10.1038/s41588-019-0350-x.
+[56] Salvi PS, Cowles RA. Butyrate and the intestinal epithelium:
+modulation of proliferation and inﬂammation in homeostasis and
+disease. Cells 2021;10(7). https://doi.org/10.3390/cells10071775.
+[57] Sivaprakasam S, Prasad PD, Singh N. Beneﬁts of short-chain fatty
+acids and their receptors in inﬂammation and carcinogenesis.
+Pharmacol
+Ther
+2016;164:144e51.
+https://doi.org/10.1016/j.
+pharmthera.2016.04.007.
+[58] Tamanai-Shacoori Z, Smida I, Bousarghin L, Loreal O, Meuric V,
+Fong SB, et al. Roseburia spp.: a marker of health? Future Micro-
+biol 2017;12:157e70. https://doi.org/10.2217/fmb-2016-0130.
+[59] Boets E, Gomand SV, Deroover L, Preston T, Vermeulen K, De
+Preter V, et al. Systemic availability and metabolism of colonic-
+derived short-chain fatty acids in healthy subjects: a stable
+isotope study. J Physiol 2017;595(2):541e55. https://doi.org/10.
+1113/JP272613.
+[60] Muller M, Hernandez MAG, Goossens GH, Reijnders D, Holst JJ,
+Jocken JWE, et al. Circulating but not faecal short-chain fatty acids
+are related to insulin sensitivity, lipolysis and GLP-1 concentra-
+tions in humans. Sci Rep 2019;9(1):12515. https://doi.org/10.
+1038/s41598-019-48775-0.
+[61] Almutairi R, Basson AR, Wearsh P, Cominelli F, Rodriguez-
+Palacios A. Validity of food additive maltodextrin as placebo and
+effects on human gut physiology: systematic review of placebo-
+controlled clinical trials. Eur J Nutr 2022 Sep;61(6):2853e71.
+[62] Reynolds AN, Akerman A, Kumar S, Diep Pham HT, Coffey S,
+Mann
+J.
+Dietary
+ﬁbre
+in
+hypertension
+and
+cardiovascular
+disease management: systematic review and meta-analyses.
+BMC Med 2022;20(1):139. https://doi.org/10.1186/s12916-022-
+02328-x.
+[63] Xie Y, Gou L, Peng M, Zheng J, Chen L. Effects of soluble ﬁber
+supplementation on glycemic control in adults with type 2 dia-
+betes mellitus: a systematic review and meta-analysis of ran-
+domized controlled trials. Clin Nutr 2021;40(4):1800e10. https:
+//doi.org/10.1016/j.clnu.2020.10.032.
+[64] Reynolds AN, Akerman AP, Mann J. Dietary ﬁbre and whole grains
+in diabetes management: systematic review and meta-analyses.
+PLoS Med 2020;17(3):e1003053. https://doi.org/10.1371/journal.
+pmed.1003053.

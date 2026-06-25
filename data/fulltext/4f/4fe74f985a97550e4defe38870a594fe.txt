@@ -1,0 +1,1242 @@
+Original Article 
+ 
+Mycoplasma hominis increases the risk for Ureaplasma parvum infection in 
+Human immunodeficiency virus infected pregnant women 
+ 
+Nikita Nundlall1, Bongekile Ngobese1, Ravesh Singh2,3, Partson Tinarwo4, Nathlee Abbai1 
+ 
+1 School of Clinical Medicine Laboratory, College of Health Science, University of KwaZulu-Natal, Durban, South 
+Africa 
+2 Department of Medical Microbiology, School of Laboratory Medicine and Medical Sciences, College of Health 
+Sciences, University of KwaZulu-Natal, Durban, South Africa 
+3 National Health Laboratory Service, Durban, South Africa 
+4 Department of Biostatistics, Nelson R Mandela School of Medicine, University of KwaZulu-Natal, Durban, South 
+Africa 
+ 
+Abstract 
+Introduction: Mycoplasma hominis and Ureaplasma parvum have been recently linked to sexually transmitted diseases and other conditions. 
+There are a limited number of studies conducted on South African pregnant women that have assessed the prevalence and risk factors for 
+genital mycoplasmas.  
+Methodology: This study included 264 HIV infected pregnant women attending the King Edward VIII antenatal clinic in eThekwini, South 
+Africa. DNA was extracted using the PureLink Microbiome kit and pathogens were detected using the TaqMan Real-time PCR assays. The 
+statistical data analysis was conducted in a freely available Statistical Computing Environment, R software, version 3.6.3 using the RStudio 
+platform. 
+Results: The prevalence of M. hominis and U. parvum, was 215/264 (81.4%), and 203/264 (76.9%), respectively. In the M. hominis positive 
+group, a significantly (p = 0.004) higher proportion, 80.5% tested positive for U. parvum infection when compared to 61.2% among the M. 
+hominis negative. Of the U. parvum positive women, a significantly (p = 0.004) higher proportion of women (85.2%) tested positive for M. 
+hominis when compared to 68.9% among the U. parvum negative. In the unadjusted and adjusted analysis, being M. hominis positive increased 
+the risk for U. parvum by approximately 3 times more (p = 0.014) and 4-fold (p = 0.008), respectively.  
+Conclusions: This study showed a significant link between M. hominis and U. parvum infection. To date, there are a limited number of studies 
+that have investigated M. hominis being a risk factor for U. parvum infection. Therefore, the data presented in the current study now fills in 
+this gap in the literature.  
+ 
+Key words: Mycoplasma hominis; Ureaplasma parvum; human immunodeficiency virus; pregnant women. 
+ 
+J Infect Dev Ctries 2024; 18(2):258-265. doi:10.3855/jidc.17316 
+ 
+(Received 01 September 2022 – Accepted 08 February 2023) 
+ 
+Copyright © 2024 Nundlall et al. This is an open-access article distributed under the Creative Commons Attribution License, which permits unrestricted use, 
+distribution, and reproduction in any medium, provided the original work is properly cited. 
+ 
+Introduction
+on studies published from 2000-2019, reported a 
+prevalence of 9.68% for M. hominis for non-pregnant 
+Iranian women [6]. A recent study conducted by 
+Naicker et al. (2021) reported a prevalence of 48% for 
+M. hominis for a population of South African pregnant 
+women [7]. A previous study conducted in South Africa 
+by Redelinghuys et al. also reported high prevalence 
+data for M. hominis (50.7%) in pregnant women from 
+Gauteng, South Africa [8].
+The genus Mycoplasma is the smallest bacteria to 
+be discovered [1,2]. The species that can potentially 
+lead to significant clinical infections in humans are 
+Mycoplasma 
+pneumonia, 
+Mycoplasma 
+hominis, 
+Mycoplasma genitalium Ureaplasma parvum, and 
+Ureaplasma urealyticum [3].
+M. hominis was first identified and isolated in 1937 
+as the first Mycoplasma of human origin [4]. The role 
+of this bacteria in causing a disease has been researched 
+over the years and is still not yet fully understood. A 
+study conducted by Christofolini et al. [5] in a cohort of 
+non-pregnant women observed a prevalence of 11.3% 
+(12/106) for M. hominis infection. That same study also 
+reported on coinfections between M. hominis and 
+Chlamydia trachomatis [5]. A meta-analysis conducted
+Ureaplasma species were only first identified in the 
+last 20 years [9]. In a study conducted by Lee et al. 
+(2020) that analyzed 4,035 endocervical swab 
+specimens using a Mycoplasma IST2 kit, 1,589 (39.4%) 
+cases were positive for genital mycoplasmas, which 
+included 49 (3.1%) cases of M. hominis, 1,243 (78.2%) 
+cases of Ureaplasma species and 297 (18.7%) cases of
+Nundlall et al. – M. hominis increases risk of U. parvum infection  
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):258-265.
+both M. hominis and Ureaplasma species [10]. The 
+prevalence of Ureaplasma species (30.8%) was higher 
+than that of M. hominis (1.2%). According to several 
+studies conducted in South Korea, the prevalence of 
+Ureaplasma species in symptomatic patients was 
+higher than that of M. hominis. The prevalence of 
+Ureaplasma species and M. hominis was 21.3% and 
+2.9%, as reported by Moon et al. (2013) [11], 65.6% 
+and 11.8% by Kweon et al. (2016) [12], and 48.8% and 
+25.3% by Jang et al. (2019) [13], respectively. Similar 
+values were reported in Poland [14] and China [15].
+(Thermofisher Scientific, United States) according to 
+the manufacturer’s instructions.
+M. hominis was detected using the TaqMan Real-
+time PCR (sensitivity) assay (ThermoFisher Scientific, 
+United States) using commercially available primers 
+and probes specific for M. hominis (Ba04646255_s1). 
+The assay targets a Hypothetical protein from this 
+pathogen.
+M. genitalium was detected using the TaqMan Real-
+time PCR (sensitivity) assay (ThermoFisher Scientific, 
+United States) using commercially available primers 
+and probes specific for M. hominis (Ba04646251_s1). 
+The assay targets a hypothetical protein from this 
+pathogen.
+In a study conducted by Peretz et al. (2020), 214 
+gravidas women were sampled, and their prevalence 
+rates were found as follows: overall, 19 (9.3%) tested 
+positive for any genital mycoplasmas, with 5 (2.3%) 
+participants testing positive for M. genitalium, 9 (4.2%) 
+testing positive for U. parvum, and 5 (2.3%) testing 
+positive for U. urealyticum. It was found that mothers 
+would pass on these bacteria to their newborns after the 
+newborns were sampled and tested respectively [16].
+U. urealyticum was detected using the TaqMan 
+Real-time PCR (sensitivity) assay (ThermoFisher 
+Scientific, United States) using commercially available 
+primers and probes specific for U. urealyticum 
+(Ba04646254_s1). The assay targets ureB gene from 
+this pathogen. U. parvum was detected using in-house 
+designed primers and probes specific for this pathogen.
+Currently, there are a limited number of studies 
+conducted on South African pregnant women, 
+especially from KwaZulu-Natal which have assessed 
+the 
+prevalence 
+and 
+risk 
+factors 
+for 
+genital 
+mycoplasmas. In this study, the prevalence and risk 
+factors for M. genitalium, M. hominis, U. urealyticum, 
+and U. parvum were investigated in a cohort of HIV 
+infected pregnant women. The data generated in this 
+study, therefore adds to the growing body of knowledge 
+on these pathogens.
+The assays were run on the Quant Studio 5 Real-
+time PCR detection system (ThermoFisher Scientific, 
+United States). Each PCR reaction was performed in a 
+final volume of 20 µL comprising: 1 µL FAM-labeled 
+probe/primer mix, 5 µL Fast Start 4x probe master mix 
+(Thermofisher, Part No. 4444434), 1.5 µL template 
+DNA, and nuclease-free water. Non-template and 
+positive controls (TaqMan™ Vaginal Microbiota 
+Extraction Control; cat no. A32039) were also included. 
+Amplification was performed at 95°C for 30 seconds 
+followed by 45 cycles comprising of denaturation at 
+95°C for 3 seconds and annealing at 60°C for 30 
+seconds. Detection of amplified fluorescent products 
+was carried out at the end of the annealing phase. The 
+raw fluorescent data that included the CT mean values 
+were automatically generated by the Quant Studio 5 
+Real-time PCR system software.
+Methodology 
+Study population
+This study included 264 HIV infected pregnant 
+women attending the King Edward VIII antenatal clinic 
+in eThekwini, South Africa. The women were recruited 
+between October 2020 and April 2021. Each enrolled 
+woman provided self-collected vaginal swabs (dry 
+swabs) for detection of the vaginal infections. The 
+consenting women also completed a questionnaire on 
+socio-demographic, behavioral, and clinical factors. 
+The study was approved by the Biomedical Research 
+Ethics Committee (BREC) of the University of 
+KwaZulu-Natal (UKZN), (BREC/00003166/2021).
+Statistical Data Analyses
+The statistical data analysis was conducted in a 
+freely available Statistical Computing Environment, R 
+software, version 3.6.3 using the RStudio platform. 
+Initially, the population characteristics were described 
+using frequencies stratified by the infection status of the 
+pathogens. In addition to the frequencies, regression 
+analysis was used to assess the relationship between 
+each risk factor and the pathogen infection status. This 
+included univariate, multiple, and stepwise logistic 
+regressions to quantify their relationships with the 
+outcome in terms of odds ratios. All the tests were 
+conducted at a 5% level of significance.
+DNA isolation and pathogen detection
+After collection, the dry swabs were placed in a 2 
+mL of phosphate buffered saline. The solution was 
+vortexed to dislodge the cells from the swabs and the 
+swab was discarded. DNA was extracted from the 
+vaginal fluid using the PureLink Microbiome kit
+259
+Nundlall et al. – M. hominis increases risk of U. parvum infection  
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):258-265.
+Results 
+Factors associated with M. hominis status in the study 
+population
+positive status, U. parvum positive status, partners STI 
+symptoms and current symptoms of STIs (Table 1). Of 
+the women who tested U. urealyticum positive, 91.2% 
+of the women were M. hominis positive versus 81.6% 
+who were M. hominis negative, p = 0.051. Similarly, a
+The following factors were significantly associated 
+(p ≤ 0.05) with M. hominis status: U. urealyticum
+Table 1. Characteristics of the study women according to M. hominis status.
+M. hominis status 
+Negative (N = 49) 
+Positive (N = 215) 
+p value 
+Overall (N = 264)
+Age 
+Median (Q1-Q3) 
+34.0 (27.0-38.0) 
+30.0 (25.0-37.0) 
+0.081 Ranksum 
+31.0 (26.0-37.0)
+Min-Max 
+20.0-42.0 
+18.0-44.0 
+18.0-44.0
+Educational level 
+College, University 
+11 (22.4%) 
+37 (17.2%)
+48 (18.2%)
+Did not attend school 
+0 (0%) 
+1 (0.5%) 
+1 (0.4%)
+0.550 Fisher's
+High school 
+38 (77.6%) 
+171 (79.5%) 
+209 (79.2%)
+Primary school 
+0 (0%) 
+6 (2.8%) 
+6 (2.3%)
+Employed 
+No 
+36 (73.5%) 
+152 (70.7%) 
+0.699 Chisq. 
+188 (71.2%)
+Yes 
+13 (26.5%) 
+63 (29.3%) 
+76 (28.8%)
+Married 
+No 
+46 (93.9%) 
+188 (87.4%) 
+0.200 Chisq. 
+234 (88.6%)
+Yes 
+3 (6.1%) 
+27 (12.6%) 
+30 (11.4%)
+Regular sex partner 
+No 
+3 (6.1%) 
+17 (7.9%) 
+1.000 Fisher's 
+20 (7.6%)
+Yes 
+46 (93.9%) 
+198 (92.1%) 
+244 (92.4%)
+Partners HIV status 
+Don't know 
+9 (18.4%) 
+31 (14.4%)
+40 (15.2%)
+Negative 
+16 (32.7%) 
+72 (33.5%) 
+88 (33.3%)
+0.781 Chisq.
+Positive 
+24 (49.0%) 
+112 (52.1%) 
+136 (51.5%)
+Cohabiting 
+No 
+24 (49.0%) 
+133 (61.9%)
+Yes 
+25 (51.0%) 
+80 (37.2%) 
+105 (39.8%)
+0.083 Chisq.
+157 (59.5%)
+Missing 
+0 (0%) 
+2 (0.9%) 
+2 (0.8%)
+Age of 1st sex 
+< 15 
+1 (2.0%) 
+8 (3.7%)
+9 (3.4%)
+> 25 
+3 (6.1%) 
+3 (1.4%) 
+6 (2.3%)
+15 - 20 
+33 (67.3%) 
+156 (72.6%) 
+189 (71.6%)
+0.222 Fisher's
+21 - 25 
+12 (24.5%) 
+48 (22.3%) 
+60 (22.7%)
+Lifetime number of sex partners 
+> 4 
+12 (24.5%) 
+42 (19.5%)
+54 (20.5%)
+1 
+15 (30.6%) 
+61 (28.4%) 
+76 (28.8%)
+2 - 4 
+22 (44.9%) 
+112 (52.1%) 
+134 (50.8%)
+0.620 Chisq.
+Partner has other partners 
+Don't know 
+21 (42.9%) 
+117 (54.4%)
+138 (52.3%)
+No 
+16 (32.7%) 
+45 (20.9%) 
+61 (23.1%)
+0.183 Chisq.
+Yes 
+12 (24.5%) 
+53 (24.7%) 
+65 (24.6%)
+Condom used during last sex 
+No 
+32 (65.3%) 
+135 (62.8%) 
+0.742 Chisq. 
+167 (63.3%)
+Yes 
+17 (34.7%) 
+80 (37.2%) 
+97 (36.7%)
+Partner circumcised 
+No 
+21 (42.9%) 
+71 (33.0%) 
+0.192 Chisq. 
+92 (34.8%)
+Yes 
+28 (57.1%) 
+144 (67.0%) 
+172 (65.2%)
+Trimester 
+1st 
+3 (6.1%) 
+17 (7.9%)
+20 (7.6%)
+2nd 
+16 (32.7%) 
+66 (30.7%) 
+82 (31.1%)
+0.898 Chisq.
+3rd 
+30 (61.2%) 
+131 (60.9%) 
+161 (61.0%)
+Missing 
+0 (0%) 
+1 (0.5%) 
+1 (0.4%)
+Previously treated for STIs 
+No 
+30 (61.2%) 
+142 (66.0%) 
+0.523 Chisq. 
+172 (65.2%)
+Yes 
+19 (38.8%) 
+73 (34.0%) 
+92 (34.8%)
+Intravaginal practices 
+No 
+48 (98.0%) 
+200 (93.0%) 
+0.319 Fisher's 
+248 (93.9%)
+Yes 
+1 (2.0%) 
+15 (7.0%) 
+16 (6.1%)
+M. genitalium 
+Neg 
+48 (98.0%) 
+209 (97.2%) 
+1.000 Fisher's 
+257 (97.3%)
+Pos 
+1 (2.0%) 
+6 (2.8%) 
+7 (2.7%)
+U. urealyticum 
+Neg 
+9 (18.4%) 
+19 (8.8%) 
+0.051 Chisq. 
+28 (10.6%)
+Pos 
+40 (81.6%) 
+196 (91.2%) 
+236 (89.4%)
+U. parvum 
+Neg 
+19 (38.8%) 
+42 (19.5%) 
+0.004 Chisq. 
+61 (23.1%)
+Pos 
+30 (61.2%) 
+173 (80.5%) 
+203 (76.9%)
+Partner STI symptoms 
+No 
+32 (65.3%) 
+172 (80.0%) 
+0.027 Chisq. 
+204 (77.3%)
+Yes 
+17 (34.7%) 
+43 (20.0%) 
+60 (22.7%)
+Current STIs symptoms 
+No 
+40 (81.6%) 
+112 (52.1%) 
+< 0.001 Chisq. 
+152 (57.6%)
+Yes 
+9 (18.4%) 
+103 (47.9%) 
+112 (42.4%)
+260
+Nundlall et al. – M. hominis increases risk of U. parvum infection  
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):258-265.
+higher percentage of U. parvum positive also tested 
+positive for M. hominis (80.5%) when compared to 
+61.2% who tested negative for M. hominis, p = 0.004. 
+A higher proportion of women whose partner did not 
+have symptoms of STIs tested negative for M. hominis
+(34.7%) versus 20.0% who tested positive, p = 0.027. 
+Of the women who reported having current symptoms 
+of STIs, 47.9% tested positive for M. hominis when 
+compared to 18.4% who tested negative for M. hominis, 
+p < 0.001.
+Table 2. Characteristics of the study women according to U. parvum status.
+U. parvum status 
+Neg (N = 61) 
+Pos (N = 203) 
+p value 
+Overall (N = 264)
+Age 
+Median (Q1-Q3) 
+31.0 (24.0-37.0) 
+31.0 (26.0-37.0) 
+0.698 Ranksum 
+31.0 (26.0-37.0)
+Min-Max 
+19.0-44.0 
+18.0-43.0 
+18.0-44.0
+Educational level 
+College, University 
+14 (23.0%) 
+34 (16.7%)
+48 (18.2%)
+Did not attend school 
+1 (1.6%) 
+0 (0%) 
+1 (0.4%)
+0.122 Fisher's
+High school 
+46 (75.4%) 
+163 (80.3%) 
+209 (79.2%)
+Primary school 
+0 (0%) 
+6 (3.0%) 
+6 (2.3%)
+Employed 
+No 
+42 (68.9%) 
+146 (71.9%) 
+0.643 Chisq. 
+188 (71.2%)
+Yes 
+19 (31.1%) 
+57 (28.1%) 
+76 (28.8%)
+Married 
+No 
+52 (85.2%) 
+182 (89.7%) 
+0.341 Chisq. 
+234 (88.6%)
+Yes 
+9 (14.8%) 
+21 (10.3%) 
+30 (11.4%)
+Regular sex partner 
+No 
+3 (4.9%) 
+17 (8.4%) 
+0.581 Fisher's 
+20 (7.6%)
+Yes 
+58 (95.1%) 
+186 (91.6%) 
+244 (92.4%)
+Partners HIV status 
+Don't know 
+6 (9.8%) 
+34 (16.7%)
+40 (15.2%)
+Negative 
+28 (45.9%) 
+60 (29.6%) 
+88 (33.3%)
+0.049 Chisq.
+Positive 
+27 (44.3%) 
+109 (53.7%) 
+136 (51.5%)
+Cohabiting 
+No 
+32 (52.5%) 
+125 (61.6%)
+Yes 
+29 (47.5%) 
+76 (37.4%) 
+105 (39.8%)
+0.174 Chisq.
+157 (59.5%)
+Missing 
+0 (0%) 
+2 (1.0%) 
+2 (0.8%)
+Age of 1st sex 
+< 15 
+0 (0%) 
+9 (4.4%)
+9 (3.4%)
+> 25 
+0 (0%) 
+6 (3.0%) 
+6 (2.3%)
+15-20 
+46 (75.4%) 
+143 (70.4%) 
+189 (71.6%)
+0.225 Fisher's
+21-25 
+15 (24.6%) 
+45 (22.2%) 
+60 (22.7%)
+Lifetime number of sex partners 
+> 4 
+7 (11.5%) 
+47 (23.2%)
+54 (20.5%)
+1 
+26 (42.6%) 
+50 (24.6%) 
+76 (28.8%)
+2-4 
+28 (45.9%) 
+106 (52.2%) 
+134 (50.8%)
+0.012 Chisq.
+Partner has other partners 
+Don't know 
+33 (54.1%) 
+105 (51.7%)
+138 (52.3%)
+No 
+20 (32.8%) 
+41 (20.2%) 
+61 (23.1%)
+0.023 Chisq.
+Yes 
+8 (13.1%) 
+57 (28.1%) 
+65 (24.6%)
+Condom used during last sex 
+No 
+35 (57.4%) 
+132 (65.0%) 
+0.277 Chisq. 
+167 (63.3%)
+Yes 
+26 (42.6%) 
+71 (35.0%) 
+97 (36.7%)
+Partner circumcised 
+No 
+23 (37.7%) 
+69 (34.0%) 
+0.593 Chisq. 
+92 (34.8%)
+Yes 
+38 (62.3%) 
+134 (66.0%) 
+172 (65.2%)
+Trimester 
+1st 
+7 (11.5%) 
+13 (6.4%)
+20 (7.6%)
+2nd 
+14 (23.0%) 
+68 (33.5%) 
+82 (31.1%)
+0.171 Chisq.
+3rd 
+40 (65.6%) 
+121 (59.6%) 
+161 (61.0%)
+Missing 
+0 (0%) 
+1 (0.5%) 
+1 (0.4%)
+Previously treated for STIs 
+No 
+37 (60.7%) 
+135 (66.5%) 
+0.401 Chisq. 
+172 (65.2%)
+Yes 
+24 (39.3%) 
+68 (33.5%) 
+92 (34.8%)
+Intravaginal practices 
+No 
+59 (96.7%) 
+189 (93.1%) 
+0.376 Fisher's 
+248 (93.9%)
+Yes 
+2 (3.3%) 
+14 (6.9%) 
+16 (6.1%)
+M. genitalium 
+Neg 
+59 (96.7%) 
+198 (97.5%) 
+0.664 Fisher's 
+257 (97.3%)
+Pos 
+2 (3.3%) 
+5 (2.5%) 
+7 (2.7%)
+M. hominis 
+Neg 
+19 (31.1%) 
+30 (14.8%) 
+0.004 Chisq. 
+49 (18.6%)
+Pos 
+42 (68.9%) 
+173 (85.2%) 
+215 (81.4%)
+U. urealyticum 
+Neg 
+10 (16.4%) 
+18 (8.9%) 
+0.094 Chisq. 
+28 (10.6%)
+Pos 
+51 (83.6%) 
+185 (91.1%) 
+236 (89.4%)
+Partner STI symptom 
+No 
+46 (75.4%) 
+158 (77.8%) 
+0.692 Chisq. 
+204 (77.3%)
+Yes 
+15 (24.6%) 
+45 (22.2%) 
+60 (22.7%)
+Current STIs symptoms 
+No 
+30 (49.2%) 
+122 (60.1%) 
+0.130 Chisq. 
+152 (57.6%)
+Yes 
+31 (50.8%) 
+81 (39.9%) 
+112 (42.4%)
+261
+Nundlall et al. – M. hominis increases risk of U. parvum infection  
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):258-265.
+Factors associated with U. parvum status in the study 
+population
+M. hominis positive increased the risk for U. parvum by 
+2.53 in the unadjusted analysis and 4.33-fold in the 
+adjusted analysis. This association was significant, p = 
+0.014 and p = 0.008, respectively. After further 
+adjustments, it was still significant, p = 0.008 (Table 3).
+The following factors were significantly associated 
+(p = 0.05) with U. parvum status; partners HIV status, 
+lifetime number of sex partners, partner having other 
+partners, and M. hominis positive status (Table 2). A 
+higher proportion of women whose partners were HIV 
+positive were U. parvum positive (53.7%) when 
+compared to 44.3% who had an HIV positive partner 
+and tested negative for U. parvum, p = 0.049. Of the 
+women who reported having between 2 to 4 lifetime sex 
+partners, 52.2% tested positive for U. parvum when 
+compared to 45.9% who tested negative for U. parvum, 
+p = 0.012. A higher percentage of women who reported 
+that their partner had other partners tested positive for 
+U. parvum (28.1%) when compared to 13.1% to tested 
+negative, p = 0.023. Of the women who tested positive 
+for M. hominis, 85.2% tested positive for U. parvum 
+versus 68.9% who tested negative for U. parvum, p = 
+0.004.
+Discussion
+M. hominis and U. parvum form part of the normal 
+human flora and are found mostly in the respiratory, 
+reproductive, and urinary tracts. However, studies have 
+shown that these bacteria are sexually transmitted and 
+can be linked to sexually transmitted diseases and other 
+conditions [1,2,17]. The prevalence rates for each 
+organism 
+will 
+differ 
+according 
+to 
+respective 
+geographical locations. The detection rates of 
+Ureaplasma spp. and Mycoplasma spp. in women have 
+shown drastic variations across all regions and 
+countries and in different groups when individuals were 
+classified 
+according 
+to 
+age, 
+ethnicity, 
+and 
+socioeconomic status [18-20].
+The data obtained with this study is comparable to 
+previous studies conducted by Redelinghuys et al. 
+(2013) and Naicker et al. (2021) who reported 
+moderately high prevalence data for M. hominis, 50.7% 
+and 48% in pregnant women [7,8]. The prevalence of 
+M. hominis in this study is higher (81.4%) when 
+compared to previous studies. Our study prevalence 
+may be higher than other studies due to socioeconomic 
+factors. In this study, the following factors were 
+associated with testing positive for M. hominis: partner 
+having STI symptoms, women having current 
+symptoms of STIs and testing positive for U. 
+urealyticum and U. parvum. With regards to partner 
+having symptoms of STIs being significantly associated 
+with infection, our findings are similar to a study by 
+Mark et al. (2019), who reported that male partners with 
+STIs are at high risk of transmitting the infection to their 
+female partners [21]. A recent study conducted by
+Risk factors for U. parvum infection
+In the unadjusted and adjusted analyses, having 
+between 2 to 4 lifetime sex partners increased the risk 
+of infection with U. parvum by 2.10-fold and 3.08-fold, 
+p = 0.033 and p = 0.013, respectively. After further 
+adjustments, it was still significant, p = 0.017. Having 
+more than 4 lifetime sex partners increased the risk of 
+infection with U. parvum by 20.65-fold in the 
+unadjusted analysis and 88.02-fold in the adjusted 
+analysis, and was significant, p = 0.004 and p < 0.001, 
+respectively. After further adjustments, it was still 
+significant, p < 0.001. In the unadjusted and adjusted 
+analyses partner having other partners increased the risk 
+of infection with U. parvum by 4.80-fold and 6.72-fold, 
+respectively. This factor showed to be significant, p = 
+0.005 and p = 0.008, respectively. After further 
+adjustments, it was still significant, p = 0.005. Testing
+Table 3. Risk factors associated with U. parvum infection.
+Variable 
+Unadjusted odds ratio (OR)
+Adjusted odds ratio (OR),
+Further Adjusted odds ratio (OR)
+95% Confidence Interval (CI)
+95% Confidence Interval (CI)
+95% Confidence Interval (CI): Backstep analysis
+Age 
+1.03 (0.98-1.08, p = 0.261) 
+1.01 (0.95-1.09, p = 0.696) 
+-
+Employed-Yes 
+0.97 (0.48-2.04, p = 0.935) 
+0.65 (0.24-1.73, p = 0.384) 
+-
+Cohabiting- Yes 
+0.70 (0.36-1.35, p = 0.278) 
+0.96 (0.38-2.45, p = 0.937) 
+-
+Lifetime sex partners -2-4 
+2.10 (1.06-4.18, p = 0.033) 
+3.08 (1.29-7.67, p = 0.013) 
+2.77 (1.21-6.50, p = 0.017)
+Lifetime sex partners- > 4 
+20.65 (4.08-377.29, p = 0.004) 88.02 (10.85-2157.18, p < 0.001) 
+81.29 (10.91-1914.65, p < 0.001)
+Partner has other partners- Yes 
+4.80 (1.72-15.68, p = 0.005) 
+6.72 (1.74-29.76, p = 0.008) 
+6.84 (1.92-28.31, p = 0.005)
+Partner has other partners- Don't know 
+1.81 (0.86-3.75, p = 0.114) 
+1.91 (0.68-5.34, p = 0.215) 
+1.89 (0.72-4.94, p = 0.191)
+Condom used during last sex- Yes 
+0.65 (0.34-1.27, p = 0.205) 
+0.82 (0.33-2.05, p = 0.668) 
+-
+Partner circumcised- Yes 
+1.08 (0.54-2.10, p = 0.826) 
+1.55 (0.61-3.90, p = 0.355) 
+-
+Previously treated for STIs- Yes 
+0.65 (0.34-1.27, p = 0.205) 
+0.83 (0.33-2.08, p = 0.687) 
+-
+Partner STI symptom- Yes 
+0.91 (0.43-2.09, p = 0.822) 
+0.96 (0.34-2.91, p = 0.943) 
+-
+Current STIs symptoms- Yes 
+0.52 (0.27-1.00, p = 0.050) 
+0.24 (0.08-0.61, p = 0.004) 
+0.25 (0.10-0.59, p = 0.002)
+M. genitalium- Positive 
+1.14 (0.18-22.13, p = 0.906) 
+1.60 (0.06-105.33, p = 0.816) 
+-
+M hominis- Positive 
+2.53 (1.18-5.26, p = 0.014) 
+4.33 (1.48-13.10, p = 0.008) 
+4.05 (1.45-11.55, p = 0.008)
+U. urealyticum- Positive 
+1.96 (0.72-4.89, p = 0.163) 
+2.62 (0.71-9.56, p = 0.141) 
+2.84 (0.83-9.66, p = 0.091)
+262
+Nundlall et al. – M. hominis increases risk of U. parvum infection  
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):258-265.
+Plummer et al. (2021), reported that symptoms of STIs 
+such as abnormal vaginal discharge (adjusted odds ratio 
+[aOR] = 2.70, 95% CI: 1.92–3.79) and vaginal malodor 
+(aOR = 4.27, 95% CI: 3.08–5.91) was associated with 
+M. hominis infection [22]. In this study, a high 
+coinfection rate was observed between M. hominis and 
+U. urealyticum (91.2%) and M. hominis and U. parvum 
+(80.5%). In a South African study conducted by Taku 
+et al. (2021), a high coinfection rate was observed for 
+U. parvum and M. hominis and (26.9%) [23]. Amorim 
+et al. (2020), reported a coinfection rate of 16.7% for 
+M. hominis and U. urealyticum [24]. The coinfection 
+rates reported in this study are higher than those 
+reported elsewhere. These high rates could be attributed 
+to the type of population sampled. Our study population 
+was a HIV infected population and there is usually a 
+high prevalence of treatable STIs in pregnancy 
+especially in HIV-infected women [25].
+[29,30]. To break the cycle of transmission it is 
+fundamental to understand the critical components of 
+STI management. A study conducted by Davey et al. 
+(2019), found that women who reported being in a 
+concordant HIV-positive partnership had over twice the 
+odds of having an STI [25]. In addition, having a partner 
+who had other partners was also a significant factor in 
+relation to testing positive. A study conducted by Abbai 
+et al. (2018) found that having a partner that has other 
+partners was significantly associated with genital 
+infections such as bacterial vaginosis (BV) [31]. A 
+combination of vaginal U. parvum and BV has been 
+shown to significantly increase the risk for adverse 
+pregnancy outcomes [32]. A study conducted by 
+Lendamba et al. 2022 found that the prevalence of 
+genital mycoplasma infections such as M. hominis and 
+Ureaplasma spp. are significantly high in women with 
+bacterial vaginosis as 60.18% of the women were 
+positive for BV and were genital mycoplasma carriers, 
+including 5.19% pregnant women [33]. Testing positive 
+for M. hominis was significantly associated with testing 
+positive for U. parvum. To date, there are a limited 
+number of studies that have investigated the association 
+between testing positive for M. hominis being a risk 
+factor for U. parvum infection. A past study had 
+reported on the significant association between 
+Ureaplasma species and M. hominis infection [34] and 
+not on U. parvum exclusively. Therefore, the data 
+presented in the current study now fills in this gap in the 
+literature.
+In this study, a prevalence of 76.9% was observed 
+for U. parvum. Our data is consistent with a previous 
+study conducted by Redelinghuys et al. (2013) who also 
+reported a high prevalence for U. parvum (72.4%) 
+amongst South African pregnant women in Gauteng 
+[8]. Redelinghuys et al. (2013) also reported that U. 
+parvum was also present in 75% of the HIV positive 
+cases [8]. Another study conducted by Peretz et al. 
+(2020) reported a low prevalence data for U. parvum 
+with only 4.19% of pregnant women being infected 
+[16]. According to this study Mycoplasma or 
+Ureaplasma infection could be associated with 
+ethnicity and settlement type however further studies 
+are needed [16].
+Limitations
+In this study, lifetime number of sex partners was 
+significantly associated with being U. parvum positive. 
+However, studies conducted by Lobão et al. (2017) and 
+Karim et al. (2020) did not find a significant association 
+between the increased number of life-time sex partners 
+and testing positive for U. parvum [26,27]. In the 
+adjusted analysis, having between 2-4 lifetime sex 
+partners increased the risk of infection with U. parvum 
+and was found to be significant in the current study. 
+This correlated to findings observed in a study 
+conducted by Silva et al. (2018), where an increase in 
+the lifetime number of sexual partners was shown to be 
+associated with an increased risk of U. parvum [28]. 
+Having an HIV-positive partner was significantly 
+associated with testing positive for U. parvum in the 
+study women. Our findings show that being infected 
+with HIV revealed that individuals were at a higher risk 
+of STI acquisition and other infections. Individuals 
+infected with HIV have compromised immunity which 
+makes it easier to transmit and acquire pathogens
+The study had the following limitations; this study 
+was conducted at only one hospital clinic in KwaZulu-
+Natal and is not representative of the entire population. 
+A wider population will be needed to obtain more 
+accurate prevalence estimates and risk factors for these 
+infections. This study was also cross-sectional and 
+therefore this study could not provide data on the impact 
+of these infections on pregnancy outcomes. This study 
+was not designed to investigate the prevalence of the 
+pathogens in relation to BV and other STIs. This can be 
+a future research endeavor. The strength of the study is 
+that it provides data on the prevalence and risk factors 
+for infections for which data was previously lacking in 
+our setting.
+Conclusions
+Our data also showed a significant link between M. 
+hominis and U. parvum infection. The present study 
+provides information on the risk factors that are 
+associated with U. parvum infection. The identification
+263
+Nundlall et al. – M. hominis increases risk of U. parvum infection  
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):258-265.
+of risk factors provides the foundation for the 
+development of prevention interventions. In this study, 
+clinical and behavioral factors were shown to be 
+significantly associated with the risk for infection. 
+Based on this finding, it is evident that a single 
+prevention strategy will not be sufficient, what will be 
+needed is a combination prevention strategy for this 
+vulnerable population. STI risk reduction counselling 
+will also need to be strengthened in this population 
+since the majority of the women are not using condoms 
+during sex and a high proportion of women are 
+presenting with symptoms of STIs.
+9. 
+Kataoka S, Yamada T, Chou K, Nishida R, Morikawa M, 
+Minami M (2006) Association between preterm birth and 
+vaginal colonization by mycoplasmas in early pregnancy. J 
+Clin Microbiol 44: 51-5. doi: 10.1128/JCM.44.1.51-55.2006.
+10. Lee JY, Yang JS (2020) Prevalence and antimicrobial 
+susceptibility of Mycoplasma hominis and Ureaplasma species 
+in nonpregnant female patients in South Korea indicate an 
+increasing trend of pristinamycin-resistant isolates. Antimicrob 
+Agents Chemother 64: e01065-20. doi: 10.1128/AAC.01065-
+20.
+11. Se Jin M, Jung-Eun C, Kwang-Il P (2013) Comparison of the 
+Anyplex II STI-7 and Seeplex STD6 ACE detection kits for the 
+detection of sexually transmitted infections. J Lab Med Qual 
+Assur 35: 87-92.
+12. Kweon OJ, Lim YK, Oh SM, Kim TH, Choe HS, Lee SJ (2016) 
+Prevalence and antimicrobial susceptibility of Mycoplasma 
+hominis, Ureaplasma urealyticum and Ureaplasma parvum in 
+individuals with or without symptoms of genitourinary 
+infections. 
+Lab 
+Med 
+Online 
+20: 
+79–87. 
+doi: 
+https://doi.org/10.3343/lmo.2016.6.2.79.
+Acknowledgements 
+The authors would like to thank all the women who 
+participated in this study and the King Edward VIII Hospital 
+Antenatal Clinic. The authors would also like to thank 
+Beckon Dickinson for the sponsorship of study kits.  
+ 
+Funding 
+This work was supported by the Institut Mérieux (research 
+award: Prof N. Abbai). 
+ 
+ 
+References 
+1. 
+Cazanave C, Charron A, Renaudin H, Bébéar C (2012) Method 
+comparison for molecular typing of French and Tunisian 
+Mycoplasma genitalium-positive specimens. J Med Microbiol 
+61: 500-6. doi: 10.1099/jmm.0.037721-0.
+13. Jang YS, Min JW, Kim YS (2019) Positive culture rate and 
+antimicrobial susceptibilities of Mycoplasma hominis and 
+Ureaplasma urealyticum. Obstet Gynecol Sci 62: 127-33. doi: 
+10.5468/ogs.2019.62.2.127.
+14. Kasprzykowska U, Sobieszczańska B, Duda-Madej A, 
+Secewicz A, Nowicka J, Gościniak G (2018) A twelve-year 
+retrospective analysis of prevalence and antimicrobial 
+susceptibility patterns of Ureaplasma spp. and Mycoplasma 
+hominis in the province of Lower Silesia in Poland. Eur J 
+Obstet 
+Gynecol 
+Reprod 
+Biol 
+220: 
+44-9. 
+doi: 
+10.1016/j.ejogrb.2017.11.010.
+15. Wang QY, Li RH, Zheng LQ, Shang XH (2016) Prevalence 
+and antimicrobial susceptibility of Ureaplasma urealyticum 
+and Mycoplasma hominis in female outpatients, 2009-2013. J 
+Microbiol 
+Immunol 
+Infect 
+49: 
+359-62. 
+doi: 
+10.1016/j.jmii.2014.06.007.
+2. 
+Kokkayil P, Dhawan B (2015) Ureaplasma: current 
+perspectives. Indian J Med Microbiol 33: 205-14. doi: 
+10.4103/0255-0857.154850.
+16. Peretz A, Tameri O, Azrad M, Barak S, Perlitz Y, Dahoud WA 
+(2020) Mycoplasma and Ureaplasma carriage in pregnant 
+women: the prevalence of transmission from mother to 
+newborn. 
+BMC 
+pregnancy 
+childbirth 
+20: 
+456. 
+doi: 
+10.1186/s12884-020-03147-9.
+3. 
+Razin S, Yogev D, Naot Y (1998) Molecular biology and 
+pathogenicity of mycoplasmas. MMBR 62: 1094-156.
+4. 
+Dienes L, Edsall G (1937) Observations on the L-Organism of 
+Klieneberger. Proc Soc Exp Biol Med 36: 740 - 4. doi: 
+10.3181/00379727-36-9380.
+17. Glass JI, Lefkowitz EJ, Glass JS, Heiner CR, Chen EY, Cassell 
+GH (2000) The complete sequence of the mucosal pathogen 
+Ureaplasma 
+urealyticum. 
+Nature 
+407: 
+757-62. 
+doi: 
+10.1038/35037619.
+5. 
+Christofolini DM, Leuzzi L, Mafra FA, Rodart I, Kayaki EA, 
+Bianco B (2012) Prevalence of cases of Mycoplasma hominis, 
+Mycoplasma genitalium, Ureaplasma urealyticum and 
+Chlamydia trachomatis in women with no gynecologic 
+complaints. Reprod Med Biol 11: 201-5. doi: 10.1007/s12522-
+012-0132-y.
+18. Tsevat DG, Wiesenfeld HC, Parks C, Peipert JF (2017) 
+Sexually transmitted diseases and infertility. Am J Obstet 
+Gynecol 216: 1-9. doi: 10.1016/j.ajog.2016.08.008.
+19. Tang M, Wang D, Tong X, Wu Y, Zhang J, Zhang L (2021) 
+Comparison of different detection methods for Mycoplasma 
+pneumoniae infection in children with community-acquired 
+pneumonia. BMC pediatr 21: 90. doi: 10.1186/s12887-021-
+02523-4.
+6. 
+Moridi K, Hemmaty M, Azimian A, Fallah MH, Khaneghahi 
+Abyaneh H, Ghazvini K (2020) Epidemiology of genital 
+infections caused by Mycoplasma hominis, M. genitalium and 
+Ureaplasma urealyticum in Iran; a systematic review and 
+meta-analysis study (2000-2019). BMC Pub Health 20: 1020. 
+doi: 10.1186/s12889-020-08962-5.
+20. Farahani L, Tharakan T, Yap T, Ramsay JW, Jayasena CN, 
+Minhas S (2021) The semen microbiome and its impact on 
+sperm function and male fertility: A systematic review and 
+meta-analysis. Andrology 9: 115-44. doi: 10.1111/andr.12886.
+7. 
+Naicker M, Dessai F, Singh R, Mitchev N, Tinarwo P, Abbai 
+NS (2021) Mycoplasma hominis does not share common risk 
+factors with other genital pathogens': findings from a South 
+African pregnant cohort. S Afr J Infect Dis 36: 207. doi: 
+10.4102/sajid.v36i1.207.
+21. Mark J, Kinuthia J, Osoti AO, Gone MA, Asila V, Krakowiak 
+D (2019) Male partner linkage to clinic-based services for 
+sexually transmitted infections and human immunodeficiency 
+virus services following couple home-based education and 
+testing. 
+Sex 
+Transm 
+Dis 
+46: 
+716-21. 
+doi: 
+10.1097/OLQ.0000000000001057.
+8. 
+Redelinghuys MJ EM, Dreyer AW (2013) Prevalence of 
+genital mycoplasmas and bacterial vaginosis in pregnant 
+women in Gauteng, South Africa. Sex Transm Infec 89: A159. 
+doi:10.1136/sextrans-2013-051184.0495.
+264
+Nundlall et al. – M. hominis increases risk of U. parvum infection  
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):258-265.
+22. Plummer EL, Vodstrcil LA, Bodiyabadu K, Murray GL, Doyle 
+M, Latimer RL (2021) Are Mycoplasma hominis, Ureaplasma 
+urealyticum and Ureaplasma parvum associated with specific 
+genital symptoms and clinical signs in nonpregnant women? 
+Clin Infect Dis 73: 659-68. doi: 10.1093/cid/ciab061.
+30. Gray RH, Wawer MJ, Sewankambo NK, Serwadda D, Li C, 
+Moulton LH (1999) Relative risks and population attributable 
+fraction of incident HIV associated with symptoms of sexually 
+transmitted diseases and treatable symptomatic sexually 
+transmitted diseases in Rakai District, Uganda. Rakai Project 
+Team. AIDS 13: 2113-23. doi: 10.1097/00002030-199910220-
+00015.
+23. Taku O, Brink A, Meiring TL, Phohlo K, Businge CB, 
+Mbulawa ZZA (2021) Detection of sexually transmitted 
+pathogens and co-infection with human papillomavirus in 
+women residing in rural Eastern Cape, South Africa. Peer J 9: 
+e10793. doi: 10.7717/peerj.10793.
+31. Abbai NS, Nyirenda M, Naidoo S, Ramjee G (2018) Prevalent 
+herpes simplex virus-2 increases the risk of incident bacterial 
+vaginosis in women from South Africa. AIDS behav 22: 2172-
+80. doi: 10.1007/s10461-017-1924-1.
+24. Amorim AL TA, Souza GCd (2019) Prevalence of Ureaplasma 
+urealyticum, Mycoplasma hominis and Human papillomavirus 
+coinfection in people attending a sexually transmitted 
+infections HIV reference centre in Salvador, Bahia. DST - J 
+bras Doenças Sex Transm 34: 131-137. doi: 10.5327/DST-
+2177-8264-201931405.
+32. Rittenschober-Böhm J, Waldhoer T, Schulz SM, Pimpel B, 
+Goeral K, Kasper DC (2019) Vaginal Ureaplasma parvum 
+serovars and spontaneous preterm birth. Am J Obstet Gynecol 
+220: 594. doi: 10.1016/j.ajog.2019.01.237.
+33. Lendamba RW, Mbeang Nguema PP, Onanga R, Mombo L-E 
+(2022) Determination of the prevalence of Mycoplasma 
+hominis and Ureaplasma species in bacterial vaginosis patients 
+in association with antibiotic resistance profile in Franceville, 
+Gabon. 
+Microb 
+Pathog 
+166: 
+105528. 
+doi: 
+10.1016/j.micpath.2022.105528.
+25. Joseph Davey DL, Nyemba DC, Gomba Y, Bekker LG, 
+Taleghani S, DiTullio DJ (2019) Prevalence and correlates of 
+sexually transmitted infections in pregnancy in HIV-infected 
+and- uninfected women in Cape Town, South Africa. PloS one 
+14: e0218349. doi: 10.1371/journal.pone.0218349.
+26. Lobão TN, Campos GB, Selis NN, Amorim AT, Souza SG, 
+Mafra SS (2017) Ureaplasma urealyticum and U. parvum in 
+sexually active women attending public health clinics in Brazil. 
+Epidemiol 
+Infect 
+145: 
+2341-51. 
+doi: 
+10.1017/S0950268817001145.
+34. Paira DA, Molina G, Tissera AD, Olivera C, Molina RI, 
+Motrich RD (2021) Results from a large cross-sectional study 
+assessing Chlamydia trachomatis, Ureaplasma spp. and 
+Mycoplasma hominis urogenital infections in patients with 
+primary infertility. Sci rep 11: 13655. doi: 10.1038/s41598-
+021-93318-1.
+27. Karim S, Bouchikhi C, Banani A, Fatemi HEL, Souho T, 
+Erraghay S (2020) Detection of ureaplasma biovars and 
+subtyping of ureaplasma parvum among women referring to a 
+university hospital in Morocco. Infect Dis Obstet Gynecol 
+2020: 7286820. doi: 10.1155/2020/7286820.
+35. Kristiansen GQ, Lisby JG, Schønning K (2016) A 5' nuclease 
+genotyping assay for identification of macrolide-resistant 
+Mycoplasma genitalium in clinical specimens. J Clin Microbiol 
+54: 1593-7. doi: 10.1128/JCM.00012-16.
+28. Silva J, Cerqueira F, Teixeira AL, Bicho MC, Campainha R, 
+Amorim J (2018) Genital mycoplasmas and ureaplasmas in 
+cervicovaginal self-collected samples of reproductive-age 
+women: prevalence and risk factors. Int J STD AIDS 29: 999-
+1006. doi: 10.1177/0956462418774209.
+Corresponding author 
+Prof. Nathlee Abbai 
+School of Clinical Medicine laboratory 
+College of Health Science,  
+University of KwaZulu-Natal,  
+Durban, South Africa 
+Email: abbain@ukzn.ac.za 
+ 
+Conflict of interests: No conflict of interests is declared.
+29. Wawer MJ, Sewankambo NK, Serwadda D, Quinn TC, Paxton 
+LA, Kiwanuka N (1999) Control of sexually transmitted 
+diseases for AIDS prevention in Uganda: a randomised 
+community trial. Rakai Project Study Group. Lancet 353: 525-
+35. doi: 10.1016/s0140-6736(98)06439-3.
+265

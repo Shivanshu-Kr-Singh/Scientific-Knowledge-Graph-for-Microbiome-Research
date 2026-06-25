@@ -57,6 +57,12 @@ class NamedEntity(BaseModel):
     end:         Optional[int] = None
     confidence:  Optional[float] = None  # Model confidence score 0-1
 
+    # Source section — which part of the paper this entity was found in.
+    # Enables section-aware KG queries: "taxa found in Methods vs Discussion"
+    # Values: "title" | "abstract" | "methods" | "results" | "discussion" |
+    #         "data_availability" | "bioinformatics" | "conclusion" | "other"
+    source_section: Optional[str] = None
+
     # ── Grounding fields (populated by NLPPipeline after extraction) ──────────
     # These make the enriched record self-contained — no need to re-normalize in Layer 3
     canonical_name:       Optional[str]   = None  # e.g. "Helicobacter pylori"
@@ -157,6 +163,10 @@ class EnrichedPaperRecord(PaperRecord):
     # NOTE: full_text is inherited from PaperRecord — do not redefine here
     fetch_source: str | None = None
     fetch_status: str | None = None
+
+    # Path to full text stored outside JSON (data/fulltext/{hash}.txt)
+    # Empty string means full text not available or not yet stored separately.
+    fulltext_path: str = ""
 
     study_design: Optional[dict] = None
 

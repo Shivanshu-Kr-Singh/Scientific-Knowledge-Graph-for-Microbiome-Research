@@ -1,0 +1,1682 @@
+Journal of Dairy Research
+Non-aureus staphylococci and mammaliicocci
+(NASM): their role in bovine mastitis and
+One Health
+cambridge.org/dar
+Bruna Lourenço Crippa1, Luiz Gustavo de Matos1,2, Fernando Nogueira Souza3,4
+Invited Review
+and Nathália Cristina Cirone Silva1
+Cite this article: Crippa BL, de Matos LG,
+Souza FN and Silva NCC (2024). Non-aureus
+staphylococci and mammaliicocci (NASM):
+their role in bovine mastitis and One Health.
+Journal of Dairy Research 91, 44–56. https://
+doi.org/10.1017/S0022029924000165
+1Department of Food Science and Nutrition, School of Food Engineering (FEA), University of Campinas (UNICAMP),
+Campinas, SP, 13083-862, Brazil; 2Department of Veterinary Medicine, Università degli Studi di Milano, Lodi,
+Lombardia, Italy; 3Department of Clinical Science, Faculty of Veterinary Medicine and Animal Sciences, University
+of São Paulo, São Paulo, 05508-270, Brazil and 4Department of Veterinary Medicine, School of Food Engineering
+(FEA), University of Campinas (UNICAMP), Campinas, SP, 13083-862, Brazil
+Received: 25 April 2023
+Revised: 19 January 2024
+Accepted: 22 January 2024
+First published online: 8 April 2024
+Abstract
+Non-aureus staphylococci (NAS) are gaining importance in mastitis and public health, and
+some NAS have been reclassified as mammaliicocci (NASM). Bovine milk production has
+a major influence on the world economy, being an essential source of income for small,
+medium and large producers, and bovine mastitis caused by NASM can cause an economic
+impact. Mastitis generates financial losses due to reduced revenue, increased veterinary
+costs and expenses associated with animal slaughter. However, it is also a public health
+issue involving animal health and welfare, human health and the ecosystem. Furthermore,
+it is an increasingly common infection caused by NASM, including antimicrobial-resistant
+strains. Despite all these adverse effects that NASM can cause, some studies also point to
+its protective role against mastitis. Therefore, this review article addresses the negative and
+positive aspects that NASM can cause in bovine mastitis, the virulence of the disease and
+resistance factors that make it difficult to treat and, through the One Health approach, pre-
+sents a holistic view of how mastitis caused by NASM can affect both animal and human
+health at one and the same time.
+Keywords:
+Food safety; mastitis; milk; non-aureus
+staphylococci and Mammaliicocci (NASM); One
+Health; public health
+Corresponding author:
+Bruna Lourenço Crippa;
+Email: lourencobruna@yahoo.com.br
+Introduction
+Milk and milk products are important global dietary products consumed by more than 6 bil-
+lion people worldwide. In 2021, recorded milk consumption was 928 million tons, making the
+dairy industry a very profitable market (Food and Agriculture Organization of the United
+Nations, 2021). However, an infection of the mammary gland caused mainly by bacteria, mas-
+titis, is a major problem affecting animal welfare, productivity and the economy, especially in
+dairy production, which can lead to losses for the dairy industry (Abera et al., 2013).
+Among the main microorganisms involved in mastitis, we can mention Staphylococcus sp.,
+of which S. aureus is the most significant mastitis pathogen, whilst the NAS (non-aureus
+staphylococci) are regarded as minor mastitis pathogens. Among all NAS found among cattle,
+S. haemolyticus, S. chromogenes, S. epidermidis, S. warneri, S. cohnii, S. simulans, S. hominis,
+S. capitis, and S. xylosus are the most prevalent species (Traversari et al., 2019). Besides NAS, it
+is important to highlight the new genus reclassified from Staphylococcus, the Mammaliicoccus.
+A study published by Madhaiyan et al. (2020) suggests the reassignment of five species of
+Staphylococcus (S. sciuri, S. fleurettii, S.lentus, S. stepanovicii and S. vitulinus) to this novel
+genus, with Mammaliicoccus sciuri as the type species. By whole genome sequences, these mam-
+maliicocci species are as distant from staphylococci (64.2–67.3% amino acid identity – AAI) as
+Macroccus is distant from Staphylococcus (61.1–64.3%). Non-aureus staphylococci and mamma-
+liicocci (NASM) have become a concern among dairy producers, as they are the most common
+microorganisms isolated from aseptically collected quarter milk samples (Fergestad et al., 2021).
+According to the World Health Organization (WHO, 2024) 420 000 lives are lost due to
+food poisoning, and Staphylococcus spp. are characterized as important agents that can
+cause foodborne diseases. Poisoning occurs due to ingesting enterotoxins produced in food,
+including those produced by NASM, and symptoms include vomiting, diarrhea and cramps
+(da Silva Cândido et al., 2020). But there are other problems as well. Political agendas, legis-
+lation, development of therapies and educational initiatives are essential to mitigate the increas-
+ing rate of antibiotic resistance amongst pathogenic organisms. In addition to bacteria having the
+ability to form biofilms, other genes are also involved in antibiotic resistance, and the process of
+becoming resistant can also occur through mutation at the genetic level (Zaman et al., 2017). In
+addition, it has been suggested that NASM might act as a potential reservoir for resistance
+© The Author(s), 2024. Published by
+Cambridge University Press on behalf of
+Hannah Dairy Research Foundation
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+Journal of Dairy Research
+45
+genes, which can be transferred and integrated into the genome of
+S. aureus (Vitali et al., 2014). Despite being under debate, it is
+essential to highlight that there are species of Mammaliicoccus
+that are suggested to be the evolutionary origin of the mecA
+gene in S. aureus (Lakhundi and Zhang, 2018).
+For the most part, NASM can be regarded as minor pathogens
+that do have the ability to cause mastitis. However, some studies
+have demonstrated that NAS can reduce infection by S. aureus
+and other pathogens. Therefore, this review article aims to address
+the negative and positive aspects that NASM can have in bovine
+mastitis, in addition to addressing the importance of adopting
+the concept of One Health.
+microorganism not only bind but also be phagocyted by human
+endothelial cells (Christner et al., 2010). Besides that, NAS showed
+antimicrobial resistance and carried multiple resistance genes,
+which can be shared with other species (Lee et al., 2020).
+NAS brings issues not only to human health but also to ani-
+mals. They are often found as the majority in bovine intramam-
+mary infection, especially in dairy heifers, and several studies in
+different areas of the globe have found NAS in different propor-
+tions in bovine udder, mainly in non-bred or first lactation ani-
+mals (De Buck et al., 2021). This could have happened because
+the NAS group was considered to comprise minor pathogens
+and so were typically not treated. However, grouping these species
+contributed to a better understanding of their distribution and
+importance to the animal’s health care (Condas et al., 2017).
+Despite NAS being a large group, we can highlight some indi-
+vidual species. S. epidermidis is recognized as a pathogen and is
+the most important cause of nosocomial infection (Hugh and
+Ellis, 1968). This species can also adapt quickly to extreme condi-
+tions. For example, to survive in a place with a high salt concen-
+tration, the species has a different number of ion/proton
+exchangers and systems for osmo protectants (Gill et al., 2005),
+and carries many genes that allow it to survive in these severe
+situations (Otto, 2009). Also, it is known that S. epidermidis is
+capable of producing an extracellular polysaccharide adhesin,
+termed polysaccharide intercellular adhesin (PIA) or polymeric
+N-acetyl-glucosamine, by ica operon-encoded enzymes. This is
+a significant virulence factor of the specie, helping them to colon-
+ize medical devices and leading to device-related infections (Le
+et al., 2019). Besides this, they can also produce different toxins
+(Namvar et al., 2014). However, studies suggest that this bacter-
+ium has evolved to play an important role in maintaining the
+microbiomes of humans and other mammals (Otto, 2009).
+Due to its potential to produce biofilm, S. haemolyticus is also
+a critical species for nosocomial infections in humans, especially
+from blood infections. However, there is not as much information
+for them as for S. epidermidis (Barros et al., 2015). When the
+resistance to β-lactam antibiotics is considered, S. aureus and
+S. haemolyticus present enough similarity to say that they have
+the exact same resistance mechanism (Czekaj et al., 2015).
+In several countries, S. chromogenes has been identified as the
+most prevalent species in milk samples from healthy cows and
+those with subclinical mastitis and clinical mastitis (Valckenier
+et al., 2020). S. chromogenes could overcome the physical barrier
+of the udder and form biofilms. In addition, this species is more
+adapted to the cow’s mammary gland and may become a micro-
+bial reservoir and possible source of infection (Tomazi et al., 2015;
+Isaac et al., 2017). Molecular studies have also shown that
+S. chromogenes has several antibiotic resistance genes, in addition
+to having this resistance tested and confirmed in phenotypic tests
+(Qu et al., 2019).
+Non-aureus staphylococci
+Differences among and within bovine NAS species have been
+reported regarding epidemiology and ecology (Souza et al.,
+2016), antimicrobial resistance (Fergestad et al., 2021), virulence
+(Wuytack et al., 2020), potential protective traits (Toledo-Silva
+et al., 2021a, 2021b), host interaction (Piccart et al., 2016) and
+impact on udder health and milk yield (Valckenier et al., 2019,
+2020, 2021) as recently reviewed by De Buck et al. (2021).
+Non-aureus staphylococci can be present in a broad range of eco-
+logical habitats, which includes bovine teat canals (Traversari
+et al., 2019) and teat apices (Adkins et al., 2018) as well as the
+farm environment including bulk tank milk, bedding (Adkins
+et al., 2022) and feces (Wuytack et al., 2020). S. chromogenes
+and S. epidermidis are predominantly isolated from milk.
+Therefore, they are considered host-adapted species, whereas S.
+equorum and S. devriesei are mostly found in the environment
+and are classified as environmental NAS species (Adkins et al.,
+2022). Other species, such as S. haemolyticus, originate from vari-
+ous (extra)mammary sites and so are labeled opportunistic
+(Adkins et al., 2022). Unfortunately, multiple studies contradict
+this current species-stratification (Thorberg et al., 2009; Supré
+et al., 2011; De Visscher et al., 2014; Vanderhaeghen et al.,
+2015), and these confounding observations could be attributed
+to strain differences within NAS species. Wuytack et al. (2019),
+for example, suggested in a recent study on strain distribution
+of NAS in multiple bovine-associated habitats that different
+NAS strains within a species appear to be habitat-specific or
+site-specific.
+After several taxonomic reclassifications, introducing the
+coagulase test enabled differentiation between CoNS and CoPS
+(Fairbrother, 1940). Non-aureus staphylococci is a group of
+Gram-positive bacteria that were before known as coagulase-
+negative staphylococci (CoNS); they are usually found in the nor-
+mal flora of humans and different animals, and some species are
+recognized as human and facultative animal pathogens (Belhout
+et al., 2022). For a long time, only S. aureus was considered to
+be harmful to its host, however, as a consequence of patient-
+and procedure-related changes, NAS now includes a large number
+of nosocomial microorganisms, with S. epidermidis and S. haemo-
+lyticus being the most significant ones (Pereira-Ribeiro et al.,
+2019).
+Some of the pathogenicity of NAS strains is probably due to
+their ability to adhere to surfaces and form biofilm on polymer
+surfaces of medical devices used during the hospitalization pro-
+cess in hospitals (Le et al., 2019). In addition, NAS were also
+recognized to be capable of ‘hiding’ from the immune system
+by being internalized by nonprofessional phagocytes, a mechan-
+ism
+that
+is
+mediated
+by
+the
+AtlE
+gene
+that
+helps
+the
+Mammaliicoccus
+Mammaliicoccus
+are
+Gram-positive,
+non-motile,
+non-spore-
+forming, paired cocci cells with aerobic to facultative anaerobic
+growth. They are catalase-positive and possess variable oxidase
+activities. The G + C content varies from 31.6 to 35.7% in gen-
+omes that range from 2.44 to 2.81 Mbp. Based on the analyses
+of 16S rRNA gene sequences, five species (M. sciuri, M. fleurettii,
+M. lentus, M. stepanovicii, and M. vitulinus), are now in this novel
+genus (Madhaiyan et al., 2020) and are as distant from
+Staphyloccus species as Macrococcus (another genus) is from
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+46
+Bruna Lourenço Crippa et al.
+Staphylococcus. Recognized to colonize humans and animals, they
+are also considered potentially opportunist pathogens capable of
+affecting the immune system (Beuckelaere et al., 2021). Like the
+NAS, this group may also cause mastitis in different species,
+and/or may serve to transmit resistance genes to other more
+pathogenic species, as suggested by the study of Lienen et al.
+(2022) where M. sciuri, M. lentus, M. fleurettii and M. vitulinus
+were isolated from milk and swab samples collected from
+German dairy cows.
+M. sciuri (previously Staphylococcus sciuri) is usually found on
+the skin of wild and domestic animals. Based on their ribotype
+pattern, the species was divided into three different subspecies
+called S. sciuri subsp. sciuri, S. sciuri subsp. carnaticus and S.
+sciuri subsp. rodentium (Nemeghaire et al., 2014). In addition,
+some studies suggest this species as the origin of the mecA
+gene, which is located on a mobile genetic element called
+staphylococcal cassette chromosome mec (SCCmec), and is the
+gene responsible for methicillin-resistance in S. aureus (MRSA)
+or more generally in Staphylococcus spp (MRSS: Couto et al.,
+1996; Fuda et al., 2007). Whilst being characterized as a typical
+colonizer of a wide range of animals, this species has also been
+associated with various health problems including skin disease
+in goats and pigs (Nemeghaire et al., 2014). Despite displaying
+various virulence factors (lipolytic, proteolytic and hemolytic),
+these bacteria are not related to infection in humans, except
+after previous infection due to a pathogen (Nemeghaire et al.,
+2014).
+M. lentus (previously S. lentus) was first characterized as a sub-
+species of S. sciuri. However, after analysis of DNA-DNA hybrid-
+ization, it was placed into a new species (Schleifer et al., 1983). It
+was originally isolated from poultry and other animals and can
+produce enterotoxins, but only to a minor extent (less than 100
+ng/ml supernatant: Irlinger, 2008). Guerre et al. (1999) showed
+that the enterotoxigen strain of M. lentus inoculated in milk for
+the production of Camembert-type cheeses does not produce
+enterotoxins despite high levels of the microorganisms.
+For M. fleurettii (previously S. fleurettii), it was also possible to
+identify enterotoxin production, and some studies suggest that
+this species, rather than S. sciuri, is the origin of the mecA gene
+in MRSA. However, the exact origin is still debated (Lakhundi
+and Zhang, 2018). In this context, M. stepanovicii was also
+reported with the presence of the gene (Loncaric et al., 2013).
+Table 1 provides a complete list of NASM and the different sam-
+ples from which they were isolated.
+Although considered as pathogens with a lower clinical incidence,
+NAS infections have been identified as relatively common
+(Persson Waller et al., 2011; Gao et al., 2017; Heikkilä et al.,
+2018), clinical cases being due mainly to S. chromogenes, S. simu-
+lans and S. haemolyticus (Persson Waller et al., 2011). In subclin-
+ical mastitis cases, NAS are the second most commonly identified
+pathogen after S. aureus in Swedish dairy cows, S. epidermidis fol-
+lowed by S. chromogenes, S. simulans, and S. haemolyticus being
+the most common (Persson Waller et al., 2011). Another study
+isolated S. chromogenes, S. fleurettii, S. haemolyticus, S. sciuri,
+S. simulans, S. succinus and S. xylosus from mastitic bovine
+milk (Khazandi et al., 2018).
+The main pathogenic factors of NASM
+According to Vanderhaeghen et al. (2014), there are three viru-
+lence factor groups involved in the pathogenesis of staphylococcal
+infections: secreted proteins (e.g., superantigens, cytotoxins and
+tissue-degrading enzymes), cell surface-bound proteins (e.g.
+microbial surface components recognizing adhesive matrix mole-
+cules: MSCRAMM) and cell wall components, with the polysac-
+charide capsule and lipoteichoic being examples of those.
+Naushad
+et
+al.
+(2019),
+using
+whole
+genome
+sequencing
+analyzed the distribution of 191 virulence factors in 441 genomes
+of 25 NAS species; the authors reported virulence factors in func-
+tional categories such as toxins (n = 93), iron metabolism (n = 29),
+adherence (n = 28), exoenzymes (n = 21) and immune evasion
+(n = 20). Another study by Wuytack et al. (2020) compared
+the presence of virulence genes (agrA, bap, and cap5H and the
+mecA methicillin resistance gene) of NAS isolated from the
+milk samples of healthy quarters and quarters with clinical mas-
+titis. Based on this comparison, they suggested that NAS has the
+potential to cause mild clinical mastitis.
+Enterotoxins
+Staphylococcal poisoning is widespread and mainly transmitted
+by food products, as it can affect healthy people. NAS is also
+able to produce enterotoxins, which can be one of the causes of
+many
+food
+diseases
+(da
+Silva
+Cândido
+et
+al.,
+2020).
+Enterotoxins belong to a group of extracellular single-chain pro-
+teins that are water-soluble and resistant to proteolytic enzyme
+action in the digestive system. This means that they remain active
+after ingestion and can compromise human health and, conse-
+quently, the public health system. These proteins are also thermo-
+stable and resist thermal treatments such as pasteurization
+(Vanderhaeghen et al., 2014). There are more than 25 types of
+staphylococcal enterotoxins (SE) and enterotoxin-like (SEL) tox-
+ins; the former have an emetic effect in primates, whilst the latter
+do not. The most known of the enterotoxins are the classical ser-
+otypes (SEA through SEE: Bergdoll et al., 1971), followed by the
+non-classical SEG through SET as well as SEY and more recently
+SE02 (Su and Lee Wong, 1995; Munson et al., 1998; Ono et al.,
+2008, 2015, 2019; Omoe et al., 2013; Suzuki et al., 2020). The
+SELs identified until today are SELJ and then SELU through
+SELX, SELZ and SEL 01 (Zhang et al., 1998; Letertre et al.,
+2003; Thomas et al., 2006; Wilson et al., 2011; Spoor et al.,
+2015; Hisatsune et al., 2017). NASM are capable of producing
+the majority of these (Rodrigues et al., 2017; da Silva Cândido
+et al., 2020). However, this has largely been ignored by authorities
+as NAS can establish a commensal relationship with humans and
+NASM as a cause of mastitis
+NAS forms a heterogeneous group of more than 50 species, of
+which approximately ten are associated with intramammary
+infections in dairy cattle and are abundantly present in bulk
+milk
+(Vanderhaeghen
+et
+al.,
+2015).
+As
+other
+species
+of
+Staphylococci become more commonly associated with the dis-
+ease, it is of interest to learn more about the distribution of
+NAS on dairy farms. They have many virulence factors, and mas-
+titis control is complicated because this group contains many spe-
+cies (Thorberg et al., 2009).
+The main ways to diagnose subclinical mastitis from NAS are
+from the results of somatic cell count (SCC) and culture. Tomazi
+et al. (2015) observed that mammary quarters infected by NAS
+had elevated SCC (> 306 000 vs. < 65 000 in contralateral unin-
+fected quarters), without any affect on milk yield or contents of
+fat, crude protein, casein, lactose, total solids, and solids-not-fat.
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+Journal of Dairy Research
+47
+S. chromogenes
+29
+Quarters from 82 heifers
+324
+Not analyzed
+Valckenier et al. (2020)
+S. epidermidis
+75
+Human Nasal swab
+176
+Not analyzed
+Germany
+Marincola et al. (2021)
+(Continued)
+S. chromogenes
+49
+Intramammary infection
+5,434
+Not analyzed
+Canada
+Condas et al. (2017)
+S. equorum
+7
+Rectal feces
+80
+Not analyzed
+Belgium
+Wuytack et al. (2020)
+S. chromogenes
+49
+82 dairy cows
+328
+Not analyzed
+Finland
+Taponen et al. (2008)
+S. chromogenes
+47
+Composite milk samples
+441
+Not analyzed
+Argentina
+Raspanti et al. (2016)
+S. chromogenes
+48
+Milk samples
+604
+Not analyzed
+USA
+Jenkins et al. (2019)
+Specie
+Prevalence
+(%)
+Sample collection
+Number of
+samples
+Presence of enterotoxin
+Place
+Reference
+S. chromogenes
+30
+Quarter milk samples
+4220
+Not analyzed
+Netherlands
+Sampimon et al.
+(2009)
+S. epidermidis
+13
+S. warneri
+37
+Udder quarters
+46
+Not analyzed
+Poland
+Malinowski et al.
+(2006)
+S. chromogenes
+33
+S. epidermidis
+57.9
+Prosthetic joint infection
+113
+Not analyzed
+USA
+Tande et al. (2014)
+S. arlettae
+12
+Subclinical mastitis milk samples
+209
+seb (16.6%)
+China
+Xu et al. (2015)
+S. xylosus
+12
+No presence
+M. sciuri
+12
+sei (8.3%)
+Table 1. NASM isolated from different samples (human, animal, environment, and food) and different countries
+S. simulans
+17
+S. xylosus
+12
+S. xylosus
+9
+S. vitulinus
+9
+S. simulans
+23
+S. warneri
+5
+S. haemolyticus
+32
+S. warner
+7
+S. capitis
+11
+S. xylosus
+23
+S. haemolyticus
+18
+S. simulans
+7
+S. hominis
+15
+S. warneri/ S. pasteuri
+7.1
+S. capitis/caprae
+5.3
+S. lugdunensis
+7.9
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+48
+Bruna Lourenço Crippa et al.
+S. epidermidis,
+80.7
+Human nasal swab among patients
+undergoing haemodialysis
+71
+Not analyzed
+Poland
+Kozioł-Montewka et al.
+(2006)
+S. lugdunensis
+7.7
+M. sciuri
+58.8
+Environment
+17
+Not analyzed
+German
+Schnitt et al. (2021)
+S. haemolyticus
+1
+Ready-to-eat raw fish
+200
+Not analyzed
+Japan
+Hammad et al. (2012)
+S. intermedius
+25
+Meat
+286
+sec (12.5%)
+Jordan
+Al-Tarazi et al. (2009)
+Specie
+Prevalence
+(%)
+Sample collection
+Number of
+samples
+Presence of enterotoxin
+Place
+Reference
+S. epidermidis
+83.3
+Prosthetic joint infection
+6
+Not analyzed
+Poland
+Bogut et al. (2014)
+S. epidermidis
+56.7
+Blood, pus, wound swab, drain fluid, tracheal
+aspirate, peritoneal fluid, and pleural fluid
+120
+Not analyzed
+India
+Bora et al. (2018)
+S. haemolyticus
+29.0
+Bicycles/ Environment
+79
+Not analyzed
+China
+Xu et al. (2019)
+S. warneri
+12.5
+No presence
+S. lugdenesis
+12.5
+No presence
+S. intermedius
+3.1
+No presence
+S. epidermidis
+6.3%
+sec (66.6%)
+M. sciuri
+3.1
+sec (100%)
+S. warneri
+16.7
+S. haemolyticus
+21.7
+S. lugdunensis
+11.7
+S. lentus
+17.6
+S. hominis
+29.0
+S. epidermidis
+14.0
+S. haemolyticus
+3.8
+S. warneri
+3.8
+S. capitis
+3.8
+S. fleurettii
+5.8
+S. epidermidis
+5.8
+S. haemolyticu s
+5.8
+S. cohnii
+5.8
+S. haemolyticus
+1
+S. pasteuri
+1
+Table 1. (Continued.)
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+Journal of Dairy Research
+49
+Brazil
+da Silva Cândido et al.
+(2020)
+animals since they are also part of their normal microbiota
+(Podkowik et al., 2013).
+When de Freitas Guimarães et al. (2013) studied 263 isolates of
+Staphylococcus spp. from mastitic bovine milk samples they were
+able to show that 49% were NAS, and of these 66% contained the
+gene responsible for enterotoxin production, with sea, seb and sec
+(producing the equivalent classical SEs) being the ones that
+appeared most. In addition, Ünal and Çinar (2012) found that
+46% of isolated NAS tested positive for having one or more SE
+genes, with 63% out of the total presenting the seh-sej gene,
+which belongs to the non-classical SEs. Corroborating these
+results, Rodrigues et al. (2017) characterized NAS isolated from
+raw milk, Minas cheese, and Minas cheese production lines.
+They detected the genes seb, seg, seh, sek and seu in the NAS spe-
+cies identified.
+1.8
+seg (1.1%), seb (1.1%), and seh
+(1.1%)
+229
+seb (2.1%), see (2.1%) seg
+(3.2%) seh (1.1%), and sei
+(1.1%)
+S. warneri
+15.8
+sea (1.1%), see (1.1%), seg
+(1.1%), and seh (3.2%)
+S. xylosus,
+12.3
+sed (1.1%), see (1.1%), seg
+(2.1%), seh (1.1%), and sei
+(1.1%)
+S. epidermidis
+10.5
+see (1.1%) and seg (1.1%)
+S. chromogenes
+8.8
+see (2.1%) and seg (1.1%)
+S. haemolyticus
+2
+see (2.1%) and seh (1.1%)
+Biofilm formation
+Different species of bacteria can live in communities, adhere to an
+inert or living surface, and be protected by a polymeric matrix
+called a biofilm. This matrix is a self-product of its metabolism,
+consisting mainly of sugar and proteins (Shemesh and Ostrov,
+2020). Biofilm formation in staphylococcal species is associated
+with a number of factors, and several studies in the literature
+show NAS as carriers of biofilm genes. Production of PIA is
+mediated by the genes icaA, icaB, icaC and icaD, representing
+an important contribution to cell–cell adhesion (Srednik et al.,
+2017). One study observed biofilm formation in 50% of the
+NAS strains studied (Rumi et al. (2013). Naushad et al. (2019),
+in a study based on whole-genome sequencing data for 441 iso-
+lates from 25 species, identified that the icaC gene of the ica
+operon, believed to be involved in biofilm formation, was the
+second most frequent gene, and it was present in 17 isolates out
+of all species studied. Other genes of the ica operon, namely
+icaA, were found in eight species, icaB in seven species and
+icaD in eight.
+Bap is another protein involved in biofilm formation, which is
+responsible for adhesion. In their research, Piessens et al. (2012)
+showed that 11.2% (41/366) of NAS were bap gene positive.
+Zuniga et al. (2015) isolated 67 strains of NAS from subclinical
+bovine mastitis and tested for the presence of the bap gene;
+they reported that 45 (67.2%) isolates tested positive and could
+thus produce biofilms. Rohde et al. (2007) found that nearly
+90% of S. epidermidis strains produced a biofilm, and up to
+27%
+of
+biofilm-positive
+S.
+epidermidis
+isolates
+produced
+PIA-independent biofilms, which involves the expression and
+accumulation of the associated protein. This indicates that,
+besides Bap, other proteins are involved in ica-idependent biofilm
+formation. Also, NAS produces MSCRAMM proteins, which
+mediate staphylococcal adherence to the host’s extracellular
+matrix components. In addition to the operon ica that produces
+PIA adhesion, these components also form a biofilm (Christner
+et al., 2010).
+S. hyicus
+5.3
+No presence
+S. saprophyticus
+33.3
+Cheese/ Raw milk/ Pasteurized milk/Food
+handlers /Environment/ Brine process, and
+Clot
+S. agnetis, S. capitis, S. kloosii,
+S. pasteuri, M. sciuri and
+S. simulans
+Microbial surface components recognizing adhesive matrix
+molecules (MSCRAMM)
+Adhesion to host proteins is usually mediated by bacterial
+cell-wall-associated proteins called MSCRAMMs (Walsh et al.,
+2008). A gene related to biofilm formation is embp, which is a
+MSCRAMM that plays a role during primary attachment to con-
+ditioned surfaces (Christner et al., 2010). According to Turchi
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+50
+Bruna Lourenço Crippa et al.
+et al. (2020), this was their study’s most frequently detected gene,
+followed by eno and fbe, then altE. Srednik et al. (2017) showed in
+their research that NAS isolated from cows with mastitis can pro-
+duce biofilm in vitro, and they also showed that 90% of the iso-
+lates tested positive for one of the above genes.
+Zuniga et al. (2015) also studied the components on microbial
+surfaces that recognize the adhesive matrix and found the pres-
+ence of the can gene in 17% of isolates, and the eno gene at
+82.1% was the most prevalent gene among all. The ebpS gene
+was positive in 17.9%, and there were 72.6% strains positive for
+the fnbA gene and 5.7% for the fnaB gene. The fib gene was
+among the most prevalent, present in 76/106 (71.6%), and the
+bap gene was in 60/106 (56%). Darwish and Asfour (2013) iden-
+tified the presence of the eno gene in 92.6% of all 68 NAS isolates.
+Simojoki et al. (2012) also showed a prevalence of the eno gene,
+which was positive in 75% of the 84 studied strains, and the
+genes bbp (1.2%), cflA (4.8%), cflB (3.6%), ebpS (4.8%), fib
+(4.8%), fnbA (3.6%), and fnbB (2.4%) were also detected. The
+cflA gene is involved with adhesion and immune evasion whilst
+the ebpS gene is responsible for encoding elastin-balding proteins
+present in the extracellular matrix. Fibrinogen-binding proteins
+are encoded by the fib gene, and fibronectin-binding protein A
+and fibronectin-binding protein B are encoded by the fnbA and
+fnbB genes respectively (Zuniga et al., 2015).
+were the MLSb resistance genes, ermB, inuA, msrA, and mphC.
+In addition, dfrG, aacA-aphD and aphA3 were present in 25,
+24, and 43 NAS isolates (Qu et al., 2019). Ahmed et al. (2020)
+found NASM isolates exhibited a high prevalence of the resistance
+genes mecA, blaZ and tetK. Approximately half of the isolates har-
+bored the aac-aphD, erm(C), and erm(B) genes.
+Klibi et al. (2018) studied 83 isolates; sixty-eight of these
+strains were identified as NAS. In the study, 29.41% showed oxa-
+cillin and cefoxitin resistance whislt some strains were mecA posi-
+tive. Eleven of those twenty methicillin resistant non-aureus
+staphylococci (MRNAS) showed erythromycin-resistance and
+were positive for ermB, ermT, ermC, mphC or msrA. Four strains
+were tetK positive, which were resistant to tetracycline. Silva et al.
+(2014) also studied MRNAS, and they reported 26 strains with
+oxacillin and cefoxitin resistance that were positive for the
+mecA gene. In the same study, the SCCmec gene, a mobile genetic
+element that carries the central determinant for broad-spectrum
+beta-lactam resistance encoded by the mecA gene, was analyzed;
+it was present in 9 out of 26 strains. MRNAS isolates were also
+found to display additional resistance to tetracycline, streptomy-
+cin, tobramycin and gentamicin, and harbored the genes: tet
+(K), str, ant(4′)-I, and aac(6′)aph(2′′).
+Multidrug resistance
+Studies suggest that the frequent use of drugs in veterinary prac-
+tices, such as penicillin and tetracycline, especially among cattle,
+has increased the resistance of microorganisms over the years.
+The Food and Drug Administration (FDA) and the European
+Medicine Agency (EMA) show that tetracycline, penicillin, and
+sulfonamides are the classes of antibiotics most sold in the USA
+and Europe (Dorneles et al., 2019). Several studies in the literature
+point to multidrug-resistant NAS and these are enumerated in
+Table 2. In addition, NAS are known to be more resistant to anti-
+biotics when compared to S. aureus, and this resistance can be to
+different drugs and contribute to a low cure rate. The resistance
+can be due to NAS, typically on the cow’s body, being more
+exposed to antimicrobials (Khazandi et al., 2018).
+Resistance to antibiotics
+Biofilm formation is also connected to antibiotic resistance.
+According to Srednik et al. (2017), NAS isolates growing within
+biofilms are less susceptible to antimicrobials commonly used
+on farms. Antibiotics are manufactured at an estimated scale of
+about 100 000 tons annually worldwide, and their use profoundly
+impacts bacterial life on Earth. More pathogenic strains have
+become antibiotic-resistant, and some have become resistant to
+multiple antibiotics, known as multidrug resistance (Nikaido,
+2009). El-Seedy et al. (2017) tested how biofilm formation could
+affect antibiotic resistance, and a total of 95 NAS were identified
+and tested for biofilm formation, of which 95.8% were resistant to
+ampicillin, 77.9% were resistant to cefoxitin, 35.8% were resistant
+to cefuroxime and 31.6% were resistant to amoxycillin.
+Besides biofilm formation, there are also genes involved in
+antibiotic resistance. Xu et al. (2015) studied the presence of
+some of these genes in 76 NAS isolates. They reported the follow-
+ing results: the most prevalent gene was linA, which gives resist-
+ance to lincosamides, followed by tetK, which is responsible for
+resistance to tetracycline. Conferring resistance to penicillin, the
+gene blaZ was found in 30.3% Also present were the genes
+aacA – aphD which provide resistance to aminoglycoside.
+Another gene studied was msrA/B, which was positive in 17.1
+and 19.7% of isolates, respectively, conferring resistance to macro-
+lide and erythromycin. The gene mecA is one of the most studied
+genes, and it is responsible for methicillin resistance and was posi-
+tive in 17.1% of isolates; the genes ermB/C that confer resistance
+to erythromycin and clindamycin were present in 9.2 and 13.2%
+respectively whilst the genes aac (6′)/aph (2′), responsible for
+resistance to streptomycin, were present in 10.5% of the strains
+(Kumar et al., 2010).
+Another study identified 109 NAS, all of which were positive
+for the blaZ gene, and 73% of isolates had the mecA gene, both
+of which resist β-lactam groups. The genes that grant resistance
+to tetracycline tetK, tetL and tetM all showed a high presence,
+and other genes identified in a significant amount of isolates
+NASM involvement in mastitis prevention
+While studies show NASM as the cause of mastitis, some studies
+have demonstrated that NAS can reduce infection by S. aureus
+and other pathogens (Brouillette et al., 2022). In another study
+by Toledo-Silva et al., (2021a, 2021b), it was observed that
+NASM suppressed the biofilm dispersion of a strain of S. aureus.
+Some studies also point to a possible protective role of NASM, as
+described by Piepers et al. (2013), who in comparing infected hei-
+fers with uninfected heifers, observed that heifers infected with
+NASM had fewer cases of clinical mastitis throughout lactation.
+Some gram-positive bacteria can produce bacteriocins, inhibit-
+ing the growth of other bacterial strains. Bacteriocins produced by
+NASM include epidermin, hyicin 3682, nukacin ISK-1, nukacin
+3299 and nukacin KQU-131. Staphylococcus epidermidis produces
+Tu 3298, Staphylococcus hyicus 3682, Staphylococcus warneri
+ISK-1, Staphylococcus simulans 3299, and Staphylococcus hominis
+KQU-131 (Yong et al., 2019), so it can be seen that there is poten-
+tial for NASM to negatively affect the growth of pathogenic bac-
+teria.
+In
+this
+context,
+Ferronatto
+et
+al.
+(2019)
+used
+the
+cross-streaking method to test growth inhibition of mastitis-
+causing pathogens. Using this method, it is possible to determine
+if there was partial inhibition, total inhibition (no colony was
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+Journal of Dairy Research
+51
+Table 2. Number of multidrug resistant non-aureus Staphylococci; antibiotic groups they have resistance to; percentage of resistant strains for each drug or group.
+Number of
+MDR-NAS
+Antibiotic resistance
+% of
+MDR
+Reference
+73/152
+Penicillin + ampicillin + erythromycin
+51%
+Phophi et al. (2019)
+60/107
+Enrofloxacin + oxacillin + penicillin + tetracycline
+56%
+Cheng et al. (2019)
+14/37
+Oxacillin + chloramphenicol + novobiocin + tetracycline
+38%
+Khazandi et al. (2018)
+3/8
+Ampicillin + clindamycin + oxacillin erythromycin + gentamycin + penicillin + sulfonamide +
+trimethoprim/sulfamethoxazole + tetracycline
+37.5%
+Dorneles et al. (2019)
+2/8
+Ampicillin + penicillin + trimethoprim/sulfamethoxazole
+25%
+1/8
+Ampicillin + gentamycin + oxacillin + penicillin + sulfonamide + trimethoprim/sulfamethoxazole +
+tetracycline
+12.5%
+2/8
+Ampicillin + gentamycin + oxacillin + penicillin + trimethoprim/sulfamethoxazole + tetracycline
+25%
+18/170
+Same group of antibiotics (beta-lactam or MLS compounds)
+10.6%
+Sampimon et al.
+(2011)
+18/170
+Different groups
+10.6%
+observed), or no growth inhibition (same size and number of col-
+onies as on the positive control plate). It was reported that all of
+the 19 NAS studied could inhibit growth partially, and in the case
+of S. chromogenes there was total inhibition. Another study
+showed the capacity of 38 strains of NAS to inhibit Listeria inno-
+cua growth, with the strain that most displayed this ability being
+S. quorum (Braem et al., 2014).
+De Vliegher et al. (2004) also studied how S. chromogenes
+could inhibit the growth of some bacteria, such as S. aureus, S.
+dysgalactiae and S. uberis, and the result was positive. The NAS
+studied inhibited the growth of these strains but not that of E.
+coli, which is typically expected, as the inhibitory effect of bacter-
+iocins is usually more intense against phylogenetically related bac-
+terial species (Ferronatto et al., 2019). Furthermore, the same
+authors in a previous study suggested that colonization of the
+teat apex by S. chromogenes in pre-calving heifers protected the
+udder against increased SCC in the early postpartum period
+(De Vliegher et al., 2003).
+According to Isaac et al. (2017), NASM is a group of bacteria
+classiﬁed as either minor mastitis pathogens or commensal micro-
+biota. A study showed that S. epidermidis, S. simulans, S. hominis, S.
+saprophyticus, and S. arlettae isolated from milk were able to pro-
+duce antimicrobial compounds to inhibit the growth of some mas-
+titis pathogens, including S. aureus (Nascimento et al., 2005).
+Beuckelaere et al. (2021) observed a probiotic effect of S. chromo-
+genes when colonizing dry quarters with this microorganism. As
+a result, the authors observed a shift to the Th1 response in late
+pregnancy and early lactation, increasing IgG2 concentration. In
+a study with a murine mastitis model, the authors observed that
+S. aureus intramammary colonization is reduced by exoproducts
+from S. chromogenes and S. simulans (Brouillette et al., 2022).
+Some NAS species (S. chromogenes, S. simulans and S. epidermidis)
+inhibited the growth of S. aureus and downregulated the expression
+of rnaIII, important molecule of the QS system (Toledo-Silva et al.,
+2021a, 2021b). In addition, other studies point out that NASM pro-
+tects the mammary quarters against IMI caused by primary patho-
+gens (De Buck et al., 2021). oth characteristics of NASM, to cause
+or prevent mastitis, could be explained by differences among the
+species and intraspecies once the host determines the infection,
+the virulence of microorganisms and biofilm formation capacity
+(Brouillette et al., 2022). However, much still needs to be under-
+stood
+about
+these
+ratehr
+complex
+interactions
+within
+the
+microbiota.
+One health and public health
+The One Health approach conceptualizes that we cannot truly
+understand human, animal and environmental health by only
+addressing each in isolation. Because of this, we must understand
+the connections of these areas using holistic interpretations to face
+public health challenges. In other words, One Health focuses
+equally or more on the relationships between the factors in the
+system rather than on the individual-level factors themselves
+(Dalton et al., 2020).
+We can observe in Tables 1 and 2 NASM being isolated from
+food, clinical infections and environment, as well as their resist-
+ance to antibiotics. Several NASM strains from these studies
+(Kozioł-Montewka et al., 2006; Hammad et al., 2012; Xu et al.,
+2019; Schnitt et al., 2021) hve been confirmed as MRNAS.
+Also, the topics about virulence and part of Table 1 showed the
+capacity of these species to produce toxins and form biofilm.
+All these components place NASM as a concern for public health.
+Advances in molecular techniques allow us to relate strains from
+community and clinical infections, which helps us understand trans-
+mission among humans, animals and environments. The species
+most studied in Staphylococcus spp. is S. aureus and many studies
+have observed clones common in clinical infections, in animals or
+in the environment (Silva et al., 2013, 2014; Aires-de-Sousa, 2016;
+Zhou et al., 2018). But, we also observe the same route for NAS
+in studies that demonstrate the presence of identical clones in hos-
+pitals and communities (Martínez-Meléndez et al., 2016; Xu et al.,
+2019; Pinheiro-Hubinger et al., 2021). So, the prevalence of
+NASM in the dairy chain and the increasing prevalence of resistance
+genes raises further concern. The prevalence of antimicrobial-
+resistant pathogens has increased while the approval of new drugs
+has decreased, which is a public health challenge. However, the
+number of antimicrobials used in veterinary medicine is immense
+and should be discussed since they select resistant microorganisms.
+Animals are the reservoirs of these organisms and can transmit
+them through food (Gohl et al., 2016; FDA, 2018).
+According to the FDA, each year in the United States at least
+2.8 million antibiotic-resistant infections occur, and more than
+35 000 people die as a result. Therefore, agencies around the
+world are trying to minimize the harm caused by the incorrect
+use of antibiotics, for example, using them for purposes for
+which they are not intended (to treat diseases caused by viruses,
+fungi or yeasts), in addition to the frequent use of broad-spectrum
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+52
+Bruna Lourenço Crippa et al.
+antibiotics (Hildreth et al., 2009). The FDA and the European
+Food Safety Authority (EFSA) are two organizations that have
+been playing a crucial role in the dissemination of vital informa-
+tion to preserve the effectiveness of currently available antimicro-
+bial drugs and promote the development of new medical products
+that can help reduce the emergence and spread of antimicrobial
+resistant bacteria (EFSA, nd; FDA, 2018).
+Stevens et al. (2018) analyzed the consumption of antimicro-
+bials in dairy herds and its association with the diameters of
+the antimicrobial inhibition zone of NAS isolated from subclinical
+mastitis. They reported a high incidence of antimicrobial treat-
+ment for fourth generation cephalosporins, a class of antibiotics
+important for human health. Strains of MRNAS were identified
+in milk samples with mastitis in a study in Korea, and one of
+the strains persisted on one of the analyzed farms for more
+than two years (Kim et al., 2019). The role of NAS as a cause
+of disease in humans has been described. Diseases such as endo-
+carditis, tract infections, catheter-related sepsis, endophthalmitis,
+surgical site infections, peritonitis in patients with continuous
+ambulatory peritoneal dialysis and foreign body infections were
+due to infections caused by NAS (Piette and Verschraegen,
+2009). Approximately 55–75% of nosocomial isolates are resistant
+to methicillin, and NASM is responsible for about 30% of all
+nosocomial bloodstream infections (Piette and Verschraegen,
+2009).
+In the context of One Health and mastitis, there is a solid rec-
+ommendation for reducing antimicrobial use. Taking into acount
+that milk with antibiotic residues does not enter the supply chain,
+as it is withdrawn at source, this recommendation emphasizes the
+need to periodically search for antimicrobial residues in raw milk
+on farm. Combined with microbiome analysis and research on
+antimicrobial residues, we have the somatic cell count, which
+acts as an indicator of the health of the mammary gland, helping
+to reveal the situation of the dairy herd within the context of
+health (Gohl et al., 2016). When milk contains residues, this indi-
+cates that it comes from unhealthy animals, so it can cause food-
+borne pathogens and be a potential allergen for consumers. This
+concern is even more significant in developing countries, where
+there is no supervision on using antimicrobials in animals or
+the opportunity to test milk and meat for drug residues. The pres-
+ence of adulterating antimicrobials in milk can have a profound
+impact on the health of babies and children in regions that already
+face high rates of diarrheal diseases and malnutrition. Several
+studies have shown a relationship between the intestinal micro-
+biome, health status and disease. Therefore, ensuring that milk
+does not contain antimicrobial residues significantly impacts pub-
+lic health and producers’ economic livelihood (Mohan et al., 2008;
+Gordon et al., 2012; Garcia et al., 2019). Since NASM is a large
+group that contains species with different levels of pathogenicity,
+virulence, resistance profile and host adaptation, analyses of the
+genetic profile of these species are necessary to understand the
+role of each NAS species in bovine mastitis (De Buck et al.,
+2021). Thus, the One Health approach is also required when we
+are specifically talking about NAS.
+This article gathers evidence that NASM has the potential to
+cause mastitis, and that all of this can cause public health pro-
+blems since there is a lack of specific studies and strategies to
+combat these pathogens. Even with this evidence, NASM is still
+overlooked as causing disease in both humans and animals.
+With all these points raised, we must apply a One Health
+approach to address this critical public health problem, including
+implementing good antimicrobial administration practices in
+human and veterinary health settings to delay the development
+of resistance and prolong the life of useful antimicrobials (FDA,
+2018).
+In conclusion, since it is an important food at all stages of life,
+milk consumption increases each year along with population
+growth. We know that NASM mastitis can harm the health and
+welfare of animals and, consequently, human health, either by
+food poisoning or by the recurrent use of antimicrobials to treat
+the disease, which can leave residues in the milk that will be con-
+sumed in different ways. Studies related to NASM mastitis are
+extremely important to learn more about the role of these micro-
+organisms in the disease and how their virulence factors can make
+treatment difficult. Questions that need more concrete answers are
+why some NASM strains that cause mastitis appear to have a pro-
+tective role against other microorganisms and why some strains
+can harm milk production and animals.
+In addition, the increased resistance of these microorganisms
+to antimicrobials is worrying, requiring the implementation of
+residue monitoring in milk and studies of NASM antimicrobial
+resistance used to combat mastitis. Thus, a holistic vision that
+encompasses safer food and solutions to improve animal,
+human and ecosystem health seems to be the best alternative.
+Acknowledgements. This work was carried out with the support of the
+Coordenação de Aperfeiçoamento de Pessoal de Nível Superior – Brasil
+(CAPES) – Finance Code 001 and São Paulo Research Foundation –
+FAPESP, grant #2019/17308-4.
+References
+Abera M, Demie B, Aragaw K, Regassa F and Regassa A (2013) Isolation and
+identification of Staphylococcus aureus from bovine mastitic milk and their
+drug resistance patterns in Adama town Ethiopia. Journal of Veterinary
+Medicine and Animal Health 1, 19–23.
+Adkins PRF, Dufour S, Spain JN, Calcutt MJ, Reilly TJ, Stewart GC and
+Middleton JR (2018) Cross-sectional study to identify staphylococcal spe-
+cies isolated from teat and inguinal skin of different-aged dairy heifers.
+Journal of Dairy Science 101, 3213–3225.
+Adkins PRF, Placheta LM, Borchers MR, Bewley JM and Middleton JR
+(2022) Distribution of staphylococcal and mammaliicoccal species from
+compost-bedded pack or sand-bedded freestall dairy farms. Journal of
+Dairy Science 105, 6261–6270.
+Ahmed W, Neubauer H, Tomaso H, El Hofy FI, Monecke S, Abdeltawab
+AA and Hotzel H (2020) Characterization of staphylococci and strepto-
+cocci isolated from milk of bovides with mastitis in Egypt. Pathogens
+(Basel, Switzerland) 9, 1–17.
+Aires-de-Sousa, M (2016) Methicillin-resistant Staphylococcus aureus among
+animals: current overview. Clinical Microbiology and Infection 23, 373–380.
+Al-Tarazi YH, Albetar MA and Alaboudi AR (2009) Biotyping and entero-
+toxigenicity of Staphylococci isolated from fresh and frozen meat marketed
+in Jordan. Food Research International 42 374–379.
+Barros EM, Lemos M, Souto-Padrón T and Giambiagi-deMarval M (2015)
+Phenotypic and genotypic characterization of biofilm formation in
+Staphylococcus haemolyticus. Current Microbiology 70, 829–834.
+Belhout
+C,
+Elgroud
+R
+and
+Butaye
+P
+(2022)
+Methicillin-resistant
+Staphylococcus
+aureus
+(MRSA)
+and
+other
+methicillin-resistant
+Staphylococci and Mammaliicoccus (MRNaS) associated with animals
+and food products in Arab countries: a review. Veterinary Sciences 9,
+317–317.
+Bergdoll MS, Borja CR, Robbins RN and Weiss KF (1971) Identification of
+enterotoxin E. Infection and Immunity 4, 593–595.
+Beuckelaere L, De Visscher A, Souza FN, Meyer E, Haesebrouck F, Piepers S
+and De Vliegher S (2021) Colonization and local host response following
+intramammary
+Staphylococcus
+chromogenes
+challenge
+in
+dry
+cows.
+Veterinary Research 52, 137.
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+Journal of Dairy Research
+53
+Bogut A, Niedźwiadek J, Kozioł-Montewka M, Strzelec-Nowak D, Blacha J,
+Mazurkiewicz T, Marczyński W and Plewik D (2014) Characterization of
+Staphylococcus epidermidis and Staphyloccocus warneri small-colony var-
+iants associated with prosthetic-joint infections. Journal of Medical
+Microbiology 63, 176–185.
+Bora P, Datta P, Gupta V, Singhal L and Chander J (2018) Characterization
+and antimicrobial susceptibility of coagulase-negative staphylococci isolated
+from clinical samples. Journal of Laboratory Physicians 10, 414–419.
+Braem G, Stijlemans B, Van Haken W, De Vliegher S, De Vuyst L and
+Leroy F (2014) Antibacterial activities of coagulase-negative staphylococci
+from bovine teat apex skin and their inhibitory effect on mastitis-related
+pathogens. Journal of Applied Microbiology 116, 1084–1093.
+Brouillette E, Goetz C, Droppa-Almeida D, Chamberland S, Jacques M and
+Malouin F (2022) Secondary Staphylococcus aureus intramammary colon-
+ization is reduced by non-aureus staphylococci exoproducts. Microbes and
+Infection 24, 104879.
+Cheng J, Qu W, Barkema HW, Nobrega DB, Gao J, Liu G, De Buck J,
+Kastelic JP, Sun H and Han B (2019) Antimicrobial resistance profiles
+of 5 common bovine mastitis pathogens in large Chinese dairy herds.
+Journal of Dairy Science 102, 2416–2426.
+Christner M, Franke GC, Schommer NN, Wendt U, Wegert K, Pehle P,
+Kroll G, Schulze C, Buck F, MacK D, Aepfelbacher M and Rohde H
+(2010) The giant extracellular matrix-binding protein of Staphylococcus epi-
+dermidis mediates biofilm accumulation and attachment to fibronectin.
+Molecular Microbiology 75, 187–207.
+Condas LAZ, De Buck J, Nobrega DB, Carson DA, Roy JP, Keefe GP,
+DeVries TJ, Middleton JR, Dufour S and Barkema HW (2017)
+Distribution of non-aureus staphylococci species in udder quarters with
+low and high somatic cell count and clinical mastitis. Journal of Dairy
+Science 100, 5613–5627.
+Couto I, De Lencastre H, Severina E, Kloos W, Webster JA, Hubner RJ,
+Sanches IS and Tomasz A (1996) Ubiquitous presence of a mecA homo-
+logue
+in
+natural
+isolates
+of
+Staphylococcus
+sciuri.
+Microbial
+Drug
+Resistance 2, 377–391.
+Czekaj T, Ciszewski M and Szewczyk EM (2015) Staphylococcus haemolyticus
+– an emerging threat in the twilight of the antibiotics age. Microbiology
+(Reading England) 161, 2061–2068.
+da Silva Cândido T, da Silva AC, de Matos LG, da Silva do Nascimento M,
+Camargo CH, Cobo Zanella R, Mores Rall VL and Silva NCC (2020)
+Enterotoxigenic potential and molecular typing of Staphylococcus sp iso-
+lated from organic and conventional fresh minas cheese in the state of
+São Paulo Brazil. International Dairy Journal 102 https://doi.org/10.1016/
+j.idairyj.2019.104605.
+Dalton KR, Rock C, Carroll KC and Davis MF (2020) One health in hospi-
+tals: how understanding the dynamics of people animals and the hospital
+built-environment can be used to better inform interventions for
+antimicrobial-resistant gram-positive infections. Antimicrobial Resistance
+and Infection Control 9, 1–17.
+Darwish SF and Asfour HAE (2013) Investigation of biofilm forming ability
+in staphylococci causing bovine mastitis using phenotypic and genotypic
+assays. The Scientific World Journal 2013, 378492.
+De Buck J, Ha V, Naushad S, Nobrega DB, Luby C, Middleton JR, De
+Vliegher S and Barkema HW (2021) Non-aureus staphylococci and bovine
+udder health: current understanding and knowledge gaps. Frontiers in
+Veterinary Science 8, 360.
+de Freitas Guimarães F, Nóbrega DB, Richini-Pereira VB, Marson PM, de
+Figueiredo Pantoja JC and Langoni H (2013) Enterotoxin genes in
+coagulase-negative and coagulase-positive staphylococci isolated from
+bovine milk. Journal of Dairy Science 96, 2866–2872.
+De Visscher A, Supré K, Haesebrouck F, Zadoks RN, Piessens V, Van
+Coillie E, Piepers S and De Vliegher S (2014) Further evidence for
+the
+existence
+of
+environmental
+and
+host-associated
+species
+of
+coagulase-negative staphylococci in dairy cattle. Veterinary Microbiology
+172, 466–474.
+De Vliegher S, Laevens H, Devriese LA, Opsomer G, Leroy JLM, Barkema
+HW and De Kruif A (2003) Prepartum teat apex colonization with
+Staphylococcus chromogenes in dairy heifers is associated with low somatic
+cell count in early lactation. Veterinary Microbiology 92, 245–252.
+De Vliegher S, Opsomer G, Vanrolleghem A, Devriese LA, Sampimon OC,
+Sol J, Barkema HW, Haesebrouck F and De Kruif A (2004) In vitro
+growth inhibition of major mastitis pathogens by Staphylococcus chromo-
+genes
+originating
+from
+teat
+apices
+of
+dairy
+heifers.
+Veterinary
+Microbiology 101, 215–221.
+Dorneles EMS, Fonseca MDAM, Abreu JAP, Lage AP, Brito MAVP, Pereira
+CR, Brandão HM, Guimarães AS and Heinemann MB (2019) Genetic
+diversity and antimicrobial resistance in Staphylococcus aureus and
+coagulase-negative Staphylococcus isolates from bovine mastitis in Minas
+Gerais Brazil. Microbiology Open 8, 1–7.
+Efsa H (nd) Antimicrobial resistance 2 How EFSA contributes to EU-wide
+cooperation 3 EFSA is working with key EU actors to reduce antimicrobial
+resistance 2–3.
+El-Seedy FA, Radwan IH, Hassan W and Shehata A (2017) Coagulase
+Negative Staphylococci as an emerging cause of bovine mastitis: prevalence
+antimicrobial resistance and biofilm formation. Journal of Veterinary
+Medical Research 24, 1–1.
+Fairbrother RW (1940) Coagulase production as a criterion for the classification
+of the staphylococci. The Journal of Pathology and Bacteriology 50, 83–88.
+Fergestad ME, Touzain F, De Vliegher S, De Visscher A, Thiry D, Ngassam
+Tchamba C, Mainil JGL, Abee-Lund T, Blanchard Y and Wasteson Y
+(2021) Whole genome sequencing of staphylococci isolated from bovine
+milk samples. Frontiers in Microbiology 12, 3976.
+Ferronatto JA, Souza FN, Della Libera AMMP, De Vliegher S, De Visscher
+A, Piepers S, Blagitz MG and Heinemann MB (2019) Inhibition of the
+growth of major mastitis-causing pathogens by non-aureus Staphylococcus
+isolates using the cross-streaking method. Arquivo Brasileiro de Medicina
+Veterinaria e Zootecnia 71, 1745–1749.
+Food and Agriculture Organization of the United Nations (2021) Dairy
+market review. Food and Agriculture Organization of the United Nations
+April 1–13.
+Food and Drug Administration (FDA) (2018) Supporting antimicrobial
+stewardship in veterinary settings 1–21. Available at https://wwwfdagov/
+downloads/AnimalVeterinary/SafetyHealth/AntimicrobialResistance/
+UCM620420pdf%0Ahttps://wwwavmaorg/KB/Resources/Reference/Pages/One-
+Health94aspx
+Fuda C, Suvorov M, Shi Q, Hesek D, Lee M and Mobashery S (2007) Shared
+functional attributes between the mecA gene product of Staphylococcus
+sciuri
+and
+penicillin-binding
+protein
+2a
+of
+methicillin-resistant
+Staphylococcus aureus. Biochemistry 46, 8050–8057.
+Gao J, Barkema HW, Zhang L, Liu G, Deng Z, Cai L, Shan R, Zhang S, Zou
+J, Kastelic JP and Han B (2017) Incidence of clinical mastitis and distribu-
+tion of pathogens on large Chinese dairy farms. Journal of Dairy Science
+100, 4797–4806.
+Garcia SN, Osburn BI and Cullor JS (2019) A One Health perspective on
+dairy production and dairy food safety.
+One Health (Amsterdam,
+Netherlands) 7, 100086.
+Gill SR, Fouts DE, Archer GL, Mongodin EF, DeBoy RT, Ravel J, Paulsen
+IT, Kolonay JF, Brinkac L, Beanan M, Dodson RJ, Daugherty SC,
+Madupu R, Angiuoli SV, Durkin AS, Haft DH, Vamathevan J, Khouri
+H, Utterback T and Fraser CM (2005) Insights on evolution of virulence
+and resistance from the complete genome analysis of an early methicillin-
+resistant Staphylococcus aureus strain and a biofilm-producing methicillin-
+resistant Staphylococcus epidermidis strain. Journal of Bacteriology 187,
+2426–2438.
+Gohl DM, Vangay P, Garbe J, MacLean A, Hauge A, Becker A, Gould TJ,
+Clayton JB, Johnson TJ, Hunter R, Knights D and Beckman KB
+(2016) Systematic improvement of amplicon marker gene methods
+for increased accuracy in microbiome studies. Nature Biotechnology 34,
+942–949.
+Gordon JI, Dewey KG, Mills DA and Medzhitov RM (2012) The human gut
+microbiota and undernutrition. Science Translational Medicine 4, 2–7.
+Guerre P, Bailly JD, Benard G and Burgat V (1999) Risk linked to an entero-
+toxigenic strain of Staphylococcus lentus during the manufacture and ripen-
+ing of raw goats’ milk Camembert-type cheeses. Revue de Medecine
+Veterinaire 150, 703–708.
+Hammad AM, Watanabe W, Fujii T and Shimamoto T (2012) Occurrence
+and characteristics of methicillin-resistant and -susceptible Staphylococcus
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+54
+Bruna Lourenço Crippa et al.
+aureus and methicillin-resistant coagulase-negative staphylococci from
+Japanese retail ready-to-eat raw fish. International Journal of Food
+Microbiology 156, 286–289.
+Heikkilä AM, Liski E, Pyörälä S and Taponen S (2018) Pathogen-specific
+production losses in bovine mastitis. Journal of Dairy Science 101, 9493–
+9504.
+Hildreth CJ, Burke AE and Glass RM (2009) Inappropriate use of antibiotics.
+JAMA – Journal of the American Medical Association 302,816.
+Hisatsune J, Hagiya H, Shiota S and Sugai M (2017) Complete genome
+sequence of systemically disseminated sequence type 8 staphylococcal cas-
+sette chromosome mec type IVl community-acquired methicillin-resistant.
+Staphylococcus aureus Genome Announcements 5, e00852-17.
+Hugh R and Ellis MA (1968) The neotype strain for Staphylococcus epidermi-
+dis (Winslow and Winslow 1908) Evans 1916. International Journal of
+Systematic Bacteriology 18, 231–239.
+Irlinger F (2008) Safety assessment of dairy microorganisms: coagulase-
+negative staphylococci. International Journal of Food Microbiology 126,
+302–310.
+Isaac P, Bohl LP, Breser ML, Orellano MS, Conesa A, Ferrero MA and
+Porporatto C (2017) Commensal coagulase-negative Staphylococcus from
+the udder of healthy cows inhibits biofilm formation of mastitis-related
+pathogens. Veterinary Microbiology 207, 259–266.
+Jenkins SN, Okello E, Rossitto PV, Lehenbauer TW, Champagne J, Penedo
+MCT, Arruda AG, Godden S, Rapnicki P, Gorden PJ, Timms LL and Aly
+SS (2019) Molecular epidemiology of coagulase-negative Staphylococcus
+species isolated at different lactation stages from dairy cattle in the
+United States. PeerJ 2019, e6749.
+Khazandi M, Al-Farha AAB, Coombs GW, O’Dea M, Pang S, Trott DJ,
+Aviles RR, Hemmatzadeh F, Venter H, Ogunniyi AD, Hoare A,
+Abraham S and Petrovski KR (2018) Genomic characterization of
+coagulase-negative
+staphylococci
+including
+methicillin-resistant
+Staphylococcus sciuri causing bovine mastitis. Veterinary Microbiology
+219, 17–22.
+Kim SJ, Moon DC, Park SC, Kang HY, Na SH and Lim SK (2019)
+Antimicrobial resistance and genetic characterization of coagulase-negative
+staphylococci from bovine mastitis milk samples in Korea. Journal of Dairy
+Science 102, 11439–11448.
+Klibi A, Maaroufi A, Torres C and Jouini A (2018) Detection and character-
+ization of methicillin-resistant and susceptible coagulase-negative staphylo-
+cocci in milk from cows with clinical mastitis in Tunisia. International
+Journal of Antimicrobial Agents 52, 930–935.
+Kozioł-Montewka M, Szczepanik A, Baranowicz I, Jóźwiak L, Ksiazek A
+and Kaczor D (2006) The investigation of Staphylococcus aureus and
+coagulase-negative staphylococci nasal carriage among patients undergoing
+haemodialysis. Microbiological Research 161, 281–287.
+Kumar R, Yadav BR and Singh RS (2010) Genetic determinants of antibiotic
+resistance in Staphylococcus aureus isolates from milk of mastitic crossbred
+cattle. Current Microbiology 60, 379–386.
+Lakhundi S and Zhang K (2018) Methicillin-resistant Staphylococcus aureus:
+molecular
+characterization
+evolution
+and
+epidemiology.
+Clinical
+Microbiology Reviews 31, e00020-18.
+Le KY, Villaruz AE, Zheng Y, He L, Fisher EL, Nguyen TH, Ho TV, Yeh AJ,
+Joo HS, Cheung GYC and Otto M (2019) Role of phenol-soluble modulins
+in Staphylococcus epidermidis biofilm formation and infection of indwelling
+medical devices. Journal of Molecular Biology 431, 3015–3027.
+Lee SI, Kim S, Do Park JH and Yang SJ (2020) Species distribution anti-
+microbial resistance and enterotoxigenicity of non-aureus staphylococci in
+retail chicken meat. Antibiotics 9, 809.
+Letertre C, Perelle S, Dilasser F and Fach P (2003) Identification of a new
+putative enterotoxin SEU encoded by the egc cluster of Staphylococcus aur-
+eus. Journal of Applied Microbiology 95, 38–43.
+Lienen T, Schnitt A, Hammerl JA, Maurischat S and Tenhagen BA (2022)
+Mammaliicoccus spp from German dairy farms exhibit a wide range of anti-
+microbial resistance genes and non-wildtype phenotypes to several anti-
+biotic classes. Biology 11, 152.
+Loncaric I, Kübber-Heiss A, Posautz A, Stalder GL, Hoffmann D,
+Rosengarten R and Walzer C (2013) Characterization of methicillin-
+resistant Staphylococcus spp carrying the mecC gene isolated from wildlife.
+The Journal of Antimicrobial Chemotherapy 68, 2222–2225.
+Madhaiyan M, Wirth JS and Saravanan VS (2020) Phylogenomic analyses of
+the staphylococcaceae family suggest the reclassification of five species
+within the genus staphylococcus as heterotypic synonyms the promotion
+of five subspecies to novel species the taxonomic reassignment of five
+staphylococcus species to mammaliicoccus gen Nov and the formal assign-
+ment of nosocomiicoccus to the family staphylococcaceae. International
+Journal of Systematic and Evolutionary Microbiology 70, 926–5936.
+Malinowski E, Lassa H, Kłlossowska A, Smulski S, Markiewicz H and
+Kaczmarowski M (2006) Etiological agents of dairy cows’ mastitis in west-
+ern part of Poland. Polish Journal of Veterinary Sciences 9, 191–194.
+Marincola G, Liong O, Schoen C, Abouelfetouh A, Hamdy A, Wencker
+FDR, Marciniak T, Becker K, Köck R and Ziebuhr W (2021)
+Antimicrobial resistance profiles of coagulase-negative staphylococci in
+community-based healthy individuals in Germany. Frontiers in Public
+Health 9, 684456.
+Martínez-Meléndez A, Morfín-Otero R, Villarreal-Treviño L, Camacho-
+Ortíz A, González-González G, Llaca-Díaz J, Rodríguez-Noriega E and
+Garza-González E (2016) Molecular epidemiology of coagulase-negative
+bloodstream isolates: detection of Staphylococcus epidermidis ST2 ST7
+and linezolid-resistant ST23. Brazilian Journal of Infectious Diseases 20,
+419–428.
+Mohan R, Koebnick C, Schildt J, Mueller M, Radke M and Blaut M (2008)
+Effects of Bifidobacterium lactis Bb12 supplementation on body weight fecal
+pH acetate lactate calprotectin and IgA in preterm infants. Pediatric
+Research 64, 418–422.
+Munson SH, Tremaine MT, Betley MJ and Welch RA (1998) Identification
+and characterization of staphylococcal enterotoxin types G and I from
+Staphylococcus aureus. Infection and Immunity 66, 3337–3348.
+Namvar AE, Bastarahang S, Abbasi N, Ghehi GS, Farhadbakhtiarian S,
+Arezi P, Hosseini M, Baravati SZ, Jokar Z and Chermahin SG (2014)
+Clinical characteristics of Staphylococcus epidermidis: a systematic review.
+GMS Hygiene and Infection Control 9, 23.
+Nascimento JDS, Fagundes PC, Brito MAVDP, Netto Dos Santos KR and
+Bastos MDCDF (2005) Production of bacteriocins by coagulase-negative
+staphylococci involved in bovine mastitis. Veterinary Microbiology 106,
+61–71.
+Naushad S, Naqvi SA, Nobrega D, Luby C, Kastelic JP, Barkema HW and De
+Buck J (2019) Comprehensive virulence gene profiling of bovine non-aureus
+staphylococci based on whole-genome sequencing data. MSystems 4, 1–27.
+Nemeghaire S, Argudín MA, Feßler AT, Hauschild T, Schwarz S and Butaye
+P (2014) The ecological importance of the Staphylococcus sciuri species
+group as a reservoir for resistance and virulence genes. Veterinary
+Microbiology 171, 342–356.
+Nikaido H (2009) Multidrug resistance in bacteria. Annual Review of
+Biochemistry 2, 119–146.
+Omoe K, Hu DL, Ono HK, Shimizu S, Takahashi-Omoe H, Nakane A,
+Uchiyama T, Shinagawa K and Imanishi K (2013) Emetic potentials of
+newly identified staphylococcal enterotoxin-like toxins. Infection and
+Immunity 81, 3627–3631.
+Ono HK, Omoe K, Imanishi K, Iwakabe Y, Hu DL, Kato H, Saito N,
+Nakane A, Uchiyama T and Shinagawa K (2008) Identification and char-
+acterization of two novel staphylococcal enterotoxins types S and T.
+Infection and Immunity 76, 4999–5005.
+Ono HK, Sato’o Y, Narita K, Naito I, Hirose S, Hisatsune J, Asano K, Hu
+DL, Omoe K, Sugai M and Nakane A (2015) Identification and character-
+ization of a novel staphylococcal emetic toxin. Applied and Environmental
+Microbiology 81, 7034–7040.
+Ono HK, Hirose S, Narita K, Sugiyama M, Asano K, Hu DL and Nakane A
+(2019) Histamine release from intestinal mast cells induced by staphylococ-
+cal enterotoxin A (SEA) evokes vomiting reflex in common marmoset.
+PLOS Pathogens 15, e1007803.
+Otto M (2009) Staphylococcus epidermidis the “accidental” pathogen. Nature
+Reviews Microbiology 7, 555–567.
+Pereira-Ribeiro PMA, Sued-Karam BR, Faria YV, Nogueira BA, Colodette
+SS, Fracalanzza SEL, Duarte JLMB, Júnior RH and Mattos-Guaraldi AL
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+Journal of Dairy Research
+55
+(2019) Influence of antibiotics on biofilm formation by different clones of
+nosocomial Staphylococcus haemolyticus. Future Microbiology 14, 789–799.
+Persson Waller K, Aspán A, Nyman A, Persson Y and Grönlund Andersson
+U (2011) CNS species and antimicrobial resistance in clinical and subclin-
+ical bovine mastitis. Veterinary Microbiology 152, 112–116.
+Phophi L, Petzer IM and Qekwana DN (2019) Antimicrobial resistance pat-
+terns and biofilm formation of coagulase-negative Staphylococcus species
+isolated from subclinical mastitis cow milk samples submitted to the
+Onderstepoort Milk Laboratory. BMC Veterinary Research 15, 1–9.
+Piccart K, Verbeke J, De Visscher A, Piepers S, Haesebrouck F and De
+Vliegher S (2016) Local host response following an intramammary chal-
+lenge with Staphylococcus fleurettii and different strains of Staphylococcus
+chromogenes in dairy heifers. Veterinary Research 47, 1–11.
+Piepers S, Schukken YH, Passchyn P and De Vliegher S (2013) The effect of
+intramammary infection with coagulase-negative staphylococci in early lac-
+tating heifers on milk yield throughout first lactation revisited. Journal of
+Dairy Science 96, 5095–5105.
+Piessens V, De Vliegher S, Verbist B, Braem G, Van Nuffel A, De Vuyst, L,
+Heyndrickx M and Van Coillie E (2012) Characterization of coagulase-
+negative staphylococcus species from cows’ milk and environment based
+on bap icaA and mecA genes and phenotypic susceptibility to antimicro-
+bials and teat dips. Journal of Dairy Science 95, 7027–7038.
+Piette A and Verschraegen G (2009) Role of coagulase-negative staphylococci
+in human disease. Veterinary Microbiology 134, 45–54.
+Pinheiro-Hubinger L, Riboli DFM, Abraão LM, Pereira Franchi EPL and
+Ribeiro de Souza da Cunha MdeL (2021) Coagulase-negative staphylo-
+cocci clones are widely distributed in the hospital and community.
+Pathogens (Basel, Switzerland) 10, 792.
+Podkowik M, Park JY, Seo KS, Bystroń J and Bania J (2013) Enterotoxigenic
+potential of coagulase-negative staphylococci. International Journal of Food
+Microbiology 163, 34–40.
+Qu Y, Zhao H, Nobrega DB, Cobo ER, Han B, Zhao Z, Li S, Li M, Barkema
+HW and Gao J (2019) Molecular epidemiology and distribution of anti-
+microbial resistance genes of Staphylococcus species isolated from Chinese
+dairy cows with clinical mastitis. Journal of Dairy Science 102,1571–1583.
+Raspanti CG, Bonetto CC, Vissio C, Pellegrino MS, Reinoso EB, Dieser SA,
+Bogni CI, Larriestra AJ and Odierno LM (2016) Prevalence and antibiotic
+susceptibility of coagulase-negative Staphylococcus species from bovine sub-
+clinical mastitis in dairy herds in the central region of Argentina. Revista
+Argentina de Microbiología 48, 50–56.
+Rodrigues MX, Silva NCC, Trevilin JH, Cruzado MMB, Mui TS, Duarte
+FRS, Castillo CJC, Canniatti-Brazaca SG and Porto E (2017) Molecular
+characterization and antibiotic resistance of Staphylococcus spp isolated
+from cheese processing plants. Journal of Dairy Science 100, 5167–5175.
+Rohde H, Burandt EC, Siemssen N, Frommelt L, Burdelski C, Wurster S,
+Scherpe S, Davies AP, Harris LG, Horstkotte MA, Knobloch JKM,
+Ragunath C, Kaplan JB and Mack D (2007) Polysaccharide intercellular
+adhesin or protein factors in biofilm accumulation of Staphylococcus epider-
+midis and Staphylococcus aureus isolated from prosthetic hip and knee joint
+infections. Biomaterials 28, 1711–1720.
+Rumi MV, Huguet MJ, Bentancor AB and Gentilini ER (2013) The icaA
+gene in staphylococci from bovine mastitis. Journal of Infection in
+Developing Countries 7, 556–560.
+Sampimon OC, Barkema HW, Berends IMGA, Sol J and Lam TJGM (2009)
+Prevalence and herd-level risk factors for intramammary infection with
+coagulase-negative
+staphylococci
+in
+Dutch
+dairy
+herds.
+Veterinary
+Microbiology 134, 37–44.
+Sampimon OC, Lam TJGM, Mevius DJ, Schukken YH and Zadoks RN
+(2011) Antimicrobial susceptibility of coagulase-negative staphylococci iso-
+lated from bovine milk samples. Veterinary Microbiology 150, 173–179.
+Schleifer KH, Geyer U, Kilpper-Bälz R and Devriese LA (1983) Elevation of
+Staphylococcus sciuri subsp lentus. Systematic and Applied Microbiology 4,
+382–387.
+Schnitt A, Lienen T, Wichmann-Schauer H and Tenhagen BA (2021) The
+occurrence of methicillin-resistant non-aureus staphylococci in samples
+from cows young stock and the environment on German dairy farms.
+Journal of Dairy Science 104, 4604–4614.
+Shemesh M and Ostrov I (2020) Role of Bacillus species in biofilm persistence
+and emerging antibiofilm strategies in the dairy industry. Journal of the
+Science of Food and Agriculture 100, 2327–2336.
+Silva NCC, Guimarães FF, Manzi MP, Budri PE, Gómez-Sanz E, Benito D,
+Langoni H, Rall VLM and Torres C (2013) Molecular characterization and
+clonal diversity of methicillin-susceptible Staphylococcus aureus in milk of
+cows with mastitis in Brazil. Journal of Dairy Science 96, 6856–6862.
+Silva NCC, Guimarães FF, Manzi MP, Júnior AF, Gómez-Sanz E, Gómez P,
+Langoni H, Rall VLM and Torres C (2014) Methicillin-resistant
+Staphylococcus aureus of lineage ST398 as cause of mastitis in cows.,
+Letters in Applied Microbiology 59, 665–669.
+Simojoki H, Hyvönen P, Plumed Ferrer C, Taponen S and Pyörälä S (2012)
+Is the biofilm formation and slime producing ability of coagulase-negative
+staphylococci associated with the persistence and severity of intramammary
+infection? Veterinary Microbiology 158, 344–352.
+Souza FN, Piepers S, Della Libera AMMP, Heinemann MB, Cerqueira
+MMOP and De Vliegher S (2016) Interaction between bovine-associated
+coagulase-negative staphylococci species and strains and bovine mammary
+epithelial cells reflects differences in ecology and epidemiological behavior.
+Journal of Dairy Science 99, 2867–2874.
+Spoor LE, Richardson E, Richards AC, Wilson GJ, Mendonca C, Gupta RK,
+McAdam PR, Nutbeam-Tuffs S, Black NS, O’gara JP, Lee CY, Corander J
+and Ross Fitzgerald J (2015) Recombination-mediated remodelling of
+host-pathogen interactions during Staphylococcus aureus niche adaptation.
+Microbial Genomics 1, 1–1.
+Srednik ME, Tremblay YDN, Labrie J, Archambault M, Jacques M, Cirelli
+AF and Gentilini ER (2017) Biofilm formation and antimicrobial resistance
+genes of coagulase-negative staphylococci isolated from cows with mastitis
+in Argentina. FEMS Microbiology Letters 364, 10.1093/femsle/fnx001
+Stevens M, Piepers S, Supré K and De Vliegher S (2018) Antimicrobial con-
+sumption on dairy herds and its association with antimicrobial inhibition
+zone diameters of non-aureus staphylococci and Staphylococcus aureus iso-
+lated from subclinical mastitis. Journal of Dairy Science 101, 3311–3322.
+Su YC and Lee Wong AC (1995) Identification and purification of a new
+staphylococcal enterotoxin H. Applied and Environmental Microbiology
+61, 1438.
+Supré K, Haesebrouck F, Zadoks RN, Vaneechoutte M, Piepers S and De
+Vliegher S (2011) Some coagulase-negative Staphylococcus species affect
+udder health more than others. Journal of Dairy Science 94, 2329–2340.
+Suzuki Y, Ono HK, Shimojima Y, Kubota H, Kato R, Kakuda T, Hirose S,
+Hu DL, Nakane A, Takai S and Sadamasu K (2020) A novel staphylococ-
+cal enterotoxin SE02 involved in a staphylococcal food poisoning outbreak
+that occurred in Tokyo in 2004. Food Microbiology 92, 103588.
+Tande AJ, Osmon DR, Greenwood-Quaintance KE, Mabry TM, Hanssen
+AD and Patel R (2014) Clinical characteristics and outcomes of prosthetic
+joint infection caused by small colony variant staphylococci. MBio 5,
+e01910-14.
+Taponen S, Björkroth J and Pyörälä S (2008) Coagulase-negative staphylo-
+cocci isolated from bovine extramammary sites and intramammary infec-
+tions in a single dairy herd. Journal of Dairy Research 75(4) 422–429.
+https://doi.org/101017/S0022029908003312
+Thomas DY, Jarraud S, Lemercier B, Cozon G, Echasserieau K, Etienne J,
+Gougeon ML,
+Lina
+G
+and
+Vandenesch
+F
+(2006) Staphylococcal
+enterotoxin-like toxins U2 and V two new staphylococcal superantigens
+arising from recombination within the enterotoxin gene cluster. Infection
+and Immunity 74, 4724.
+Thorberg BM, Danielsson-Tham ML, Emanuelson U and Persson Waller K
+(2009) Bovine subclinical mastitis caused by different types of coagulase-
+negative staphylococci. Journal of Dairy Science 92, 4962–4970.
+Toledo-Silva B, de Souza FN, Mertens K, Piepers S, Haesebrouck F and De
+Vliegher S (2021a) Bovine-associated non-aureus staphylococci suppress
+Staphylococcus aureus biofilm dispersal in vitro yet not through agr regula-
+tion. Veterinary Research 52, 114.
+Toledo-Silva B, Nogueira De Souza F, Piepers S, Mertens K, Haesebrouck F
+and De Vliegher S (2021b) Metabolites of bovine-associated non-aureus
+staphylococci influence expression of Staphylococcus aureus agr-related
+genes in vitro. Veterinary Research 52, 62.
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press
+56
+Bruna Lourenço Crippa et al.
+Tomazi T, Gonçalves JL, Barreiro JR, Arcari MA and dos Santos MV (2015)
+Bovine subclinical intramammary infection caused by coagulase-negative
+staphylococci increases somatic cell count but has no effect on milk yield
+or composition. Journal of Dairy Science 98, 3071–3078.
+Traversari J, Van Den Borne BHP, Dolder C, Thomann A, Perreten V and
+Bodmer M (2019) Non-aureus staphylococci species in the teat canal and
+milk in four commercial Swiss dairy herds. Frontiers in Veterinary
+Science 6, 11–14.
+Turchi B, Bertelloni F, Marzoli F, Cerri D, Tola S, Azara E, Longheu CM,
+Tassi R, Schiavo M, Cilia G and Fratini F (2020) Coagulase-negative
+staphylococci from ovine milk: genotypic and phenotypic characterization
+of susceptibility to antibiotics disinfectants and biofilm production. Small
+Ruminant Research 183, 106030.
+Ünal N and Çinar OD (2012) Detection of stapylococcal enterotoxin
+methicillin-resistant and Panton-Valentine leukocidin genes in coagulase-
+negative staphylococci isolated from cows and ewes with subclinical mas-
+titis. Tropical Animal Health and Production 44, 369–375.
+Valckenier D, Piepers S, De Visscher A, Bruckmaier RM and De Vliegher S
+(2019) Effect of intramammary infection with non-aureus staphylococci in
+early lactation in dairy heifers on quarter somatic cell count and quarter
+milk yield during the first 4 months of lactation. Journal of Dairy Science
+102, 6442–6453.
+Valckenier D, Piepers S, De Visscher A and De Vliegher S (2020) The effect of
+intramammary infection in early lactation with non-aureus staphylococci in
+general and Staphylococcus chromogenes specifically on quarter milk somatic
+cell count and quarter milk yield. Journal of Dairy Science 103, 768–782.
+Valckenier D, Piepers S, Schukken YH, De Visscher A, Boyen F,
+Haesebrouck F and De Vliegher S (2021) Longitudinal study on the effects
+of intramammary infection with non-aureus staphylococci on udder health
+and milk production in dairy heifers. Journal of Dairy Science 104, 899–914.
+Vanderhaeghen W, Piepers S, Leroy F, Van Coillie E, Haesebrouck F and
+De Vliegher S (2014) Invited review: Effect, persistence, and virulence of
+coagulase-negative Staphylococcus species associated with ruminant udder
+health. Journal of Dairy Science 97, 5275–5293.
+Vanderhaeghen W, Piepers S, Leroy F, Van Coillie E, Haesebrouck F and
+De Vliegher S (2015) Identification typing ecology and epidemiology of
+coagulase negative staphylococci associated with ruminants. Veterinary
+Journal 203, 44–51.
+Vitali LA, Petrelli D, Lamikanra A, Prenna M and Akinkunmi EO (2014)
+Diversity of antibiotic resistance genes and staphylococcal cassette chromo-
+some mec elements in faecal isolates of coagulase-negative staphylococci
+from Nigeria. BMC Microbiology 14, 106.
+Walsh EJ, Miajlovic H, Gorkun OV and Foster TJ (2008) Identification of
+the Staphylococcus aureus MSCRAMM clumping factor B (ClfB) binding
+site in the αC-domain of human fibrinogen. Microbiology (Reading,
+England) 154, 550–558.
+WHO (2024) Estimating the burden of foodborne diseases. Available at: https://
+www.who.int/activities/estimating-the-burden-of-foodborne-diseases#:~:text
+=Each%20year%20worldwide%2C%20unsafe%20food%20causes%20600%20
+million,year%2C%20and%20this%20number%20is%20likely%20an%20under
+estimation. Accessed March 2024.
+Wilson GJ, Seo KS, Cartwright RA, Connelley T, Chuang-Smith ON,
+Merriman JA, Guinane CM, Park JY, Bohach GA, Schlievert PM,
+Morrison WI and Fitzgerald JR (2011) A novel core genome-encoded
+superantigen contributes to lethality of community-associated MRSA nec-
+rotizing pneumonia. PLoS Pathogens 7, e1002271.
+Wuytack A, De Visscher A, Piepers S, Boyen F, Haesebrouck F and De
+Vliegher S (2019) Non-aureus staphylococci in fecal samples of dairy
+cows: first report and phenotypic and genotypic characterization. Journal
+of Dairy Science 102, 9345–9359.
+Wuytack A, De Visscher A, Piepers S, Boyen F, Haesebrouck F and De
+Vliegher S (2020) Distribution of non-aureus staphylococci from quarter
+milk teat apices and rectal feces of dairy cows and their virulence potential.
+Journal of Dairy Science 103, 10658–10675.
+Xu J, Tan X, Zhang X, Xia X and Sun H (2015) The diversities of staphylo-
+coccal species virulence and antibiotic resistance genes in the subclinical
+mastitis milk from a single Chinese cow herd. Microbial Pathogenesis 88,
+29–38.
+Xu Z, Liu S, Chen L, Liu Y, Tan L, Shen J and Zhang W (2019)
+Antimicrobial resistance and molecular characterization of methicillin-
+resistant coagulase-negative staphylococci from public shared bicycles
+in Tianjin China. Journal of Global Antimicrobial Resistance 19,
+231–235.
+Yong YY, Dykes GA and Choo WS (2019) Biofilm formation by staphylo-
+cocci in health-related environments and recent reports on their control
+using natural compounds. Critical Reviews in Microbiology 45, 201–222.
+Zaman S, Bin Hussain MA, Nye R, Mehta V, Mamun KT and Hossain N
+(2017) A review on antibiotic resistance: alarm bells are ringing. Cureus
+9, e1403.
+Zhang S, Iandolo JJ and Stewart GC (1998) The enterotoxin D plasmid of
+Staphylococcus aureus encodes a second enterotoxin determinant (sej).
+FEMS Microbiology Letters 168, 227–233.
+Zhou W, Li X, Shi L, Wang HH and Yan H (2018) Novel SCCmec type
+XII methicillin-resistant Staphylococcus aureus isolates identified from a
+swine production and processing chain. Veterinary Microbiology 225,
+105–113.
+Zuniga E, Melville PA, Saidenberg ABS, Laes MA, Gonsales FF, Salaberry
+SRS, Gregori F, Brandão PE, dos Santos FGB, Lincopan NE and
+Benites NR (2015) Occurrence of genes coding for MSCRAMM and
+biofilm-associated protein Bap in Staphylococcus spp isolated from bovine
+subclinical mastitis and relationship with somatic cell counts. Microbial
+Pathogenesis 89, 1–6.
+https://doi.org/10.1017/S0022029924000165 Published online by Cambridge University Press

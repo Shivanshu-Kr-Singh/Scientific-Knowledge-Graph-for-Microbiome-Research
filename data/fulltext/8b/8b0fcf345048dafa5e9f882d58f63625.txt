@@ -1,0 +1,1340 @@
+Original Article 
+ 
+Clinical characteristics and risk factors for Klebsiella pneumoniae 
+bloodstream infection in 152 immunocompetent patients 
+ 
+Qun Zhang1, Pan Wang1, Menghuan Shen1, Chun Shan1 
+ 
+1 Department of Infectious Diseases, Zhongda Hospital, School of Medicine, Southeast University, Nanjing, China 
+ 
+Abstract 
+Objective: To investigate the clinical characteristics and prognostic risk factors for Klebsiella pneumoniae bloodstream infections in 
+immunocompetent patients. 
+Methods: The study included patients with K. pneumoniae bloodstream infection treated in Zhongda Hospital from June 2016 to June 2021. 
+Clinical data and antibiotic susceptibility test results were retrospectively collected and analyzed. Independent risk factors for mortality were 
+screened using the chi-square test and multivariate logistic regression. 
+Results: A total of 152 patients were included in the analysis. In our cohort, 77.6% of patients were older than 60 years, and 80.9% of them 
+had community-acquired infections. The most common complications were type 2 diabetes, hypertension, and stroke sequelae. The proportion 
+of patients with septic shock or abscesses was 34.9% and 25.7%, respectively. There were significant differences in the site of infection, septic 
+shock, and serum levels of procalcitonin, hypersensitive C-reactive protein, D-dimer, creatinine, and lactic acid between survivors and non-
+survivors (p < 0.05). Multivariate regression analysis showed that hospital-acquired infections, septic shock, length of hospital stay, and 
+creatinine levels were independent risk factors for mortality. Antibiotic susceptibility test results indicated that clinical outcomes varied 
+depending on bacterial sensitivity to ampicillin/sulbactam. 
+Discussion: Klebsiella pneumoniae is a common community-acquired and hospital-acquired bacteria and usually infects older people with 
+complications such as diabetes. Nosocomial infections, length of stay, septic shock, and renal insufficiency are potentially associated with poor 
+prognosis. Bacterial susceptibility to ampicillin/sulbactam affects prognosis. 
+ 
+Key words: Klebsiella pneumoniae; bloodstream infection; clinical features; antibiotic resistance; risk factors. 
+ 
+J Infect Dev Ctries 2024; 18(2):219-226. doi:10.3855/jidc.18204 
+ 
+(Received 12 March 2023 – Accepted 11 August 2023) 
+ 
+Copyright © 2024 Zhang et al. This is an open-access article distributed under the Creative Commons Attribution License, which permits unrestricted use, 
+distribution, and reproduction in any medium, provided the original work is properly cited. 
+ 
+Introduction
+then, CRKP infections have become a global public 
+health problem. To provide clinical evidence for the 
+rational use of antibiotics and reduce mortality and 
+bacterial 
+resistance 
+to 
+antibiotics, 
+this 
+study 
+retrospectively analyzed clinical characteristics and risk 
+factors associated with KP bloodstream infections in a 
+cohort admitted to our hospital from June 2016 to June 
+2021.
+Klebsiella pneumoniae (KP) is a common 
+pathogenic bacillus that causes infections in community 
+and hospital settings. The 2019 China Antimicrobial 
+Surveillance Network (CHINET) report revealed that 
+the rate of isolation of KP in respiratory specimens was 
+20.6%, higher than that of all other bacterial species [1]. 
+The detection rate of KP in blood samples was 16.5%, 
+second to Escherichia coli. KP is classified into 
+hypervirulent and classic according to virulence. 
+Hypervirulent KP (hvKP) is characterized by high 
+invasiveness and potential migration to the liver, lung, 
+kidney, and eyeball [2,3]. The mortality rate from KP 
+infections complicated with septic shock was 50-77% 
+in the United States [4]. According to the European 
+Antimicrobial Resistance Surveillance Network, the 
+number of deaths caused by carbapenem-resistant KP 
+(CRKP) increased six-fold from 2007 to 2015 [5], 
+representing the highest increase in the rate of mortality 
+among all drug-resistant bacterial infections. Since
+Methods 
+General information
+This study was conducted from June 2016 to June 
+2021 in Zhongda Hospital of Southeast University, 
+Jiangsu Province, China. The inclusion criteria were 
+patients older than 18 years with positive blood cultures 
+of KP and symptoms of infection (fever and abnormal 
+leukocyte count). The exclusion criteria were (1) 
+patients with incomplete medical or follow-up records, 
+(2) patients with hematological diseases within 3 
+months before enrollment, (3) patients undergoing
+Zhang et al. – Klebsiella infection in immunocompetent patients 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):219-226.
+chemotherapy due to cancer, (4) patients with acquired 
+immune deficiency syndrome, and (5) patients with 
+asymptomatic bacteremia. This study was approved by 
+the Research Ethics Committee of Zhongda Hospital of 
+Southeast 
+University 
+(Approval 
+Number 
+2018ZDSYLL092-P01) and was registered in the 
+Chinese Clinical Trial Registry (Registration Number 
+ChiCTR1800019036).
+(1 mmHg = 0.133 kPa) or more than 40 mmHg lower 
+than the systolic blood pressure before admission in 
+patients with septic shock.
+Antibiotic susceptibility tests
+Bacterial culture and identification were carried out 
+in accordance with National Clinical Examination 
+Procedures (fourth edition). Pathogenic bacteria were 
+identified using the BioMérieux Vitek 2 Compact 
+automatic bacterial identification and drug sensitivity 
+analysis system. The results were interpreted according 
+to the 30th edition of the Clinical and Laboratory 
+Standards Institute (ClSI-M100) [7].
+Diagnostic criteria for bloodstream infections [6]
+KP was isolated from blood cultures of patients 
+with any of the following symptoms or signs: (1) body 
+temperature > 38 ℃ or < 36 ℃ accompanied by chills; 
+(2) invasion of the portal system or disseminated 
+infections; (3) systemic infection but no detectable 
+infection foci; (4) systolic blood pressure < 90 mmHg
+Data collection
+Clinical and laboratory data of patients with 
+positive blood culture for KP were collected, including 
+(1) general information: gender, age, underlying 
+diseases, initial infection site, other sites of infection, 
+length of hospital stay, complications, and prognosis; 
+(2) laboratory examinations: leukocyte count, platelet 
+count, procalcitonin (PCT), hypersensitive C-reactive 
+protein (hs-CRP), prothrombin time, activated partial 
+thrombin 
+time, 
+D-dimer, 
+albumin, 
+alanine 
+aminotransferase, aspartate aminotransferase, total 
+bilirubin, and creatinine; (4) antibiotic susceptibility 
+test results. The cohort was divided into two groups—
+survivors and non-survivors—according to 28-day 
+mortality.
+Table 1. General data and clinical characteristics of 152 
+Klebsiella pneumoniae patients.
+Clinical and demographic characteristics 
+n (%)
+Sample size 
+152 (100)
+Gender
+Male 
+100 (65.8)
+Female 
+52 (34.2)
+Age (years)
+< 60 
+34 (22.4)
+≥ 60 
+118 (77.6)
+Onset place
+Community acquired 
+123 (80.9)
+Hospital acquired 
+29 (19.1)
+Initial lesion of infection
+Digestive system 
+61 (40.1)
+Urinary system 
+36 (23.7)
+Respiratory system 
+31 (20.4)
+Skin soft tissue 
+6 (3.9)
+Statistical analysis
+Musculoskeletal system 
+4 (2.6)
+Catheter-related 
+3 (2.0)
+Neurological infection 
+3 (2.0)
+All statistical analyses were performed using SPSS 
+version 22.0. Normally distributed and non-normally 
+distributed continuous variables were described as 
+means and standard deviations or medians and 
+interquartile 
+ranges, 
+respectively. 
+Non-normally 
+distributed continuous variables were compared using 
+Student’s t-test or Mann–Whitney U test. Categorical 
+variables were compared using the chi-square test and 
+expressed as numbers and percentages. The baseline 
+characteristics of survivors and non-survivors at 
+admission were compared by one-way repeated-
+measures analysis of variance. Independent risk factors 
+were identified by multiple logistic regression. A p 
+value of less than 0.05 was considered statistically 
+significant.
+Peritoneal cavity infection 
+2 (1.3)
+Unknown location 
+7 (4.6)
+Underlying disease
+Diabetes 
+65 (42.8)
+Hypertension 
+63 (41.4)
+Sequelae of stroke 
+29 (19.1)
+Coronary heart disease 
+21 (13.8)
+Malignant solid tumor 
+15 (9.9)
+Renal insufficiency 
+12 (7.9)
+Hematological diseases 
+9 (5.9)
+Autoimmunity diseases 
+7 (4.6)
+Admission Department
+Emergency ward 
+42 (27.6)
+Intensive care unit 
+33 (21.7)
+Department of general practice 
+15 (9.9)
+Geriatric department 
+13 (8.6)
+Intervention department 
+11 (7.2)
+Department of Gastroenterology 
+10 (6.6)
+Department of general surgery 
+10 (6.6)
+Department of urological surgery 
+7 (4.6)
+Department of nephrology 
+5 (3.3)
+Results 
+General information
+Other department 
+6 (3.9)
+Viscera abscess 
+39 (25.7)
+Septic shock 
+53 (34.9)
+Prognosis after 28 days
+A total of 152 patients (100 males [65.8%] and 52 
+females [34.2%]) with KP bloodstream infections were 
+included in the study. The age of the cohort ranged from
+Survival 
+121 (79.6)
+Fatal 
+31 (20.4)
+220
+Zhang et al. – Klebsiella infection in immunocompetent patients 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):219-226.
+21 to 96 years, 118 (77.6%) patients were older than 60 
+years, and 123 (80.9%) of these patients acquired 
+infections from community settings. The most common 
+complications were type 2 diabetes (65, 42.8%), 
+hypertension (63, 41.4%), and stroke sequelae (29, 
+19.1%). Infections were more common in the digestive 
+system (61, 40.1%), urinary tract (36, 23.7%), 
+respiratory tract (31, 20.4%), biliary tract (26, 17.1%), 
+and gastrointestinal tract (3, 2.0%). Affected patients 
+were admitted to emergency departments (42, 27.6%), 
+intensive care units (33, 21.7%), or general practice 
+departments (15, 9.9%). Fifty-three patients (34.9%) 
+had septic shock. Thirty-nine patients (25.7%) had 
+abscesses in different organs, including the liver (32
+cases), liver and lung (two cases), liver and brain (one 
+case), lung and brain (one case), lung and kidney (one 
+case), liver + lung + prostate (one case), and liver + lung 
++ eyes (one case). Only 18 (11.8%) patients with 
+abscesses underwent surgery or interventional therapy. 
+The number of survivors and non-survivors was 121 
+and 31, respectively, with a 28-day mortality rate of 
+20.4%. The demographic and clinical characteristics of 
+our patients are shown in Table 1.
+Prognosis of infections by the chi-square test
+Clinical outcomes varied depending on the site of 
+infection (χ² = 4.381, p = 0.036) and the development 
+of septic shock (χ² = 7.914, p = 0.005). Furthermore, the
+Table 2. Comparison of risk factors in survival and death groups.
+Survival 
+Fatal 
+χ²/z 
+p
+Age (years) 
+71.77 ± 16.16 
+73.23 ± 12.14 
+0.172 
+0.864
+Length of stay 
+17.66 ± 12.01 
+6.1 ± 9.53 
+5.999 
+0.000
+Gender 
+ 
+ 
+0.464 
+0.496
+Male 
+78 (78.0%) 
+22 (22.0%)
+Female 
+43 (82.7%) 
+9 (17.3%)
+Onset place 
+ 
+ 
+4.381 
+0.036
+Community 
+102 (83.0%) 
+21 (17.1%)
+Hospital 
+19 (67.9%) 
+10 (32.1%)
+Initial lesion of infection 
+ 
+ 
+7.002 
+0.587
+Digestive system 
+50 (82.0%) 
+11 (18.0%)
+Urinary system 
+31 (86.1%) 
+5 (13.9%)
+Respiratory system 
+23 (74.2%) 
+8 (25.8%)
+Skin soft tissue 
+4 (66.7%) 
+2 (33.3%)
+Musculoskeletal system 
+4 (100.0%) 
+0 (0.0%)
+Catheter-related 
+3 (75.0%) 
+1 (25.0%)
+Neurological infection 
+2 (66.7%) 
+1 (33.3%)
+Peritoneal cavity infection 
+2 (100.0%) 
+0 (0.0%)
+Multiple abscess 
+5 (71.4%) 
+2 (28.6%)
+unknown location 
+5 (71.4%) 
+2 (28.6%)
+Underlying disease
+Diabetes 
+56 (86.2%) 
+9 (13.8%) 
+3.000 
+0.083
+Sequelae of stroke 
+21 (72.4%) 
+8 (27.6%) 
+1.142 
+0.285
+Malignant solid tumor 
+11 (73.3%) 
+4 (26.7%) 
+0.089 
+0.766
+Hypertension 
+51 (81.0%) 
+12 (19.0%) 
+0.120 
+0.729
+Coronary heart disease 
+17 (81.0%) 
+4 (19.0%) 
+0.027 
+0.869
+Renal insufficiency 
+9 (75.0%) 
+3 (25.0%) 
+0.002 
+0.969
+Hematological diseases 
+5 (55.6%) 
+4 (44.4%) 
+2.015 
+0.156
+Autoimmunity diseases 
+5 (71.4%) 
+2 (28.6%) 
+0.005 
+0.845
+Septic shock 
+34 (66.7%) 
+17 (33.3) 
+7.914 
+0.005
+MDR KP 
+19 (82.6%) 
+4 (17.4%) 
+0.068 
+0.795
+Lab examination
+WBC 
+11.5 (7.32~15.68) 
+11.12 (5.53~14.16) 
+0.718 
+0.473
+PCT 
+10.53 (2.74~30.52) 
+26.0 (5.9~54.0) 
+2.054 
+0.040
+CRP 
+165.2 (115.9~226.5) 
+107.2 (11.84~247) 
+2.115 
+0.034
+IL-6 
+102 (58.5~153.5) 
+348 (308~368) 
+7.628 
+0.000
+PLT 
+145 (91.5~192.5) 
+125 (50~196) 
+1.125 
+0.261
+PT 
+13.7 (12.25~14.9) 
+14.9 (12.4~18.8) 
+2.124 
+0.034
+APTT 
+29.6 (27.5~32.5) 
+30.7 (27.4~35.6) 
+1.441 
+0.150
+D-Dimer 
+1171 (612~3145) 
+2286 (909~6749) 
+1.962 
+0.049
+Cr 
+88 (69~128.5) 
+117 (78~181) 
+2.387 
+0.017
+Lac 
+2.4 (1.5~3.55) 
+3.2 (1.8~6.8) 
+2.116 
+0.034
+Tbil 
+16.8 (9.95~27.35) 
+16.4 (9.2~50.5) 
+0.494 
+0.621
+ALT 
+37 (21.5~87) 
+38 (27~106) 
+0.873 
+0.382
+AST 
+43 (28.5~95.5) 
+47 (32~187) 
+1.107 
+0.268
+ALB 
+35.5 (31.5~38.2) 
+32.8 (29.3~37.1) 
+1.630 
+0.103
+Glu 
+9.1 (7.29~13.68) 
+8.18 (6.6~13.67) 
+0.844 
+0.399
+WBC: white blood cell; PCT: procalcitonin; CRP: C-reactive protein; IL-6: interleukin-6; PLT: platelet; PT: prothrombin time; APTT: activated partial 
+thromboplastin time; Cr: creatinine; Lac: lactic acid; Tbil: total bilirubin; ALT: glutamic-pyruvic transaminase; AST: glutamic oxalacetic transaminase; ALB: 
+albumin; Glu: glucose.
+221
+Zhang et al. – Klebsiella infection in immunocompetent patients 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):219-226.
+Table 3. Multiple logistic analysis of risk factors of fatal outcome.
+Risk factor 
+B 
+S.E 
+Wals 
+p 
+OR 
+95% (CI)
+Septic shock 
+1.836 
+0.585 
+9.865 
+0.002 
+6.27 
+1.99~19.73
+Hospital acquired infection 
+1.483 
+0.668 
+4.933 
+0.026 
+4.405 
+1.19~16.30
+Length of stay 
+-0.198 
+0.044 
+20.489 
+0.000 
+0.82 
+0.75~0.89
+Creatinine 
+0.004 
+0.002 
+3.970 
+0.046 
+1.004 
+1.00~1.008
+levels of PCT (χ² = 2.054, p = 0.004), hs-CRP (χ² = 
+2.115, p = 0.034), D-dimer (χ² = 1.962, p = 0.049), 
+creatinine (χ² = 2.387, p = 0.017), and lactic acid (χ² = 
+2.116, p = 0.034) differed significantly between 
+survivors and non-survivors (Table 2).
+Figure 1. Multiple logistic analysis of risk factors of fatal 
+outcome.
+Prognosis of infections by regression analysis
+The parameters with statistical significance in the 
+univariate analysis were included in the multivariate 
+logistic regression model. Independent risk factors for 
+mortality in KP bloodstream infections were septic 
+shock (OR: 6.27, 95% CI: 1.99-19.73), hospital-
+acquired infections (OR: 4.405, 95% CI: 1.19-16.30), 
+and creatinine levels (OR: 1.004, 95% CI: 1.00-1.008). 
+Length of hospital stay (OR: 0.82, 95% CI: 0.75-0.89) 
+might be a protective factor (Table 3 and Figure 1).
+Figure 2. Antibiotics resistance and sensitivity of 152 strains of 
+Klebsiella pneumoniae.
+Antibiotic susceptibility test results
+Among 152 strains, 15 (9.9%) were extended-
+spectrum β-lactamase (ESBL) producers, 23 (15.1%) 
+were 
+multidrug-resistant, 
+16 
+(10.5%) 
+were 
+carbapenem-resistant, and 10 (6.6%) were pan-
+resistant. These strains were completely resistant to 
+ampicillin. The rate of resistance to cefazolin, furantoin, 
+and ampicillin/sulbactam was 25.9%, 23.3%, and 
+22.6%, respectively. The rate of resistance to 
+cotrimoxazole, aztreonam, ceftriaxone, ceftazidime, 
+ciprofloxacin, and levofloxacin ranged from 15% to 
+20%. The rate of resistance to piperacillin/tazobactam, 
+cefotetan, cefepime, gentamicin, tobramycin, and 
+imipenem/cilastatin was approximately 10%.
+Table 4. Antibiotical resistance and sensitivity of 152 strains of Klebsiella pneumoniae.
+Antibiotics 
+S (%) 
+I (%) 
+R (%)
+Piperacillin/tazobactam 
+137 (90.1) 
+0 (0) 
+15 (9.9) 
+103
+Ampicillin/sulbactam 
+104 (68.4) 
+9 (6.2) 
+33 (22.6) 
+84
+Ampicillin 
+0 (0) 
+0 (0) 
+147 (100)
+Aztreonam 
+126 (82.9) 
+0 (0) 
+25 (16.6) 
+96
+Cefazolin 
+70 (62.5) 
+13 (11.6) 
+29 (25.9) 
+103
+Ceftazidime 
+128 (84.3) 
+1 (0.6) 
+23 (15.1) 
+75
+Ceftriaxone 
+117 (80.1) 
+2 (1.4) 
+27 (18.5) 
+106
+Cefepime 
+133 (87.5) 
+1 (0.6) 
+18 (11.8) 
+103
+Cefotetan 
+132 (89.8) 
+0 (0) 
+15 (10.2) 
+78
+Ciprofloxacin 
+116 (76.3) 
+9 (5.9) 
+27 (17.8) 
+58
+Levofloxacin 
+119 (78.3) 
+11 (7.2) 
+22 (14.5) 
+12
+Gentamicin 
+131 (89.7) 
+0 (0) 
+15 (10.3) 
+69
+Tobramycin 
+135 (88.8) 
+4 (2.6) 
+13 (8.6) 
+19
+Amikacin 
+139 (91.4） 
+0 (0) 
+13 (8.6) 
+32
+Cotrimoxazole 
+124 (81.6) 
+0 (0) 
+28 (18.4)
+Furantoin 
+43 (32.3) 
+59 (44.4) 
+31 (23.3) 
+17
+Imipenem/cilastatin 
+129 (84.9) 
+5 (3.3) 
+18 (11.8) 
+16
+222
+Zhang et al. – Klebsiella infection in immunocompetent patients 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):219-226.
+The rate of resistance to amikacin and tobramycin 
+was 8.6% (Table 4 and Figure 2). Univariate analysis 
+showed that clinical outcomes varied depending on 
+bacterial susceptibility to ampicillin/sulbactam (χ² = 
+12.151, p = 0.002) but not to other antibiotics (Table 5).
+enterobacteria causes pneumonia, liver abscesses, 
+urinary and bloodstream infections, and other infectious 
+diseases in community and hospital settings. The Blood 
+Bacterial Resistant Investigation Collaborative System 
+(BRICS) reported that the rate of detection of KP 
+increased from 9.9% in 2014 to 18.4% in 2020 [8]. A 
+systematic review showed that the rate of mortality 
+from bloodstream infections due to KP was 54.30% [9], 
+much higher than that reported in our study (23%).
+Discussion
+KP is a Gram-negative bacillus commonly found in 
+clinical infection. The infection of pathogenic
+Table 5. Comparison of antibiotics sensitivity in survival and death groups.
+Survival 
+Fatal 
+χ²/z 
+p
+S 
+113 
+26 
+2.858 
+0.091
+Amikacin
+R 
+8 
+5
+I 
+0 
+0
+S 
+110 
+27 
+0.403 
+0.525
+Piperacillin/Tazobactam
+I 
+0 
+0
+R 
+11 
+4
+S 
+92 
+16 
+12.151 
+0.002
+Ampicillin/Sulbactam
+I 
+4 
+6
+R 
+25 
+7
+S 
+103 
+24 
+1.066 
+0.302
+Aztreonam
+I 
+0 
+0
+R 
+18 
+7
+S 
+103 
+25 
+0.774 
+0.679
+Ceftazidime
+R 
+17 
+6
+I 
+1 
+0
+S 
+88 
+21 
+0.121 
+0.941
+Cefazolin
+I 
+10 
+3
+R 
+23 
+6
+S 
+94 
+22 
+0.673 
+0.714
+Ciprofloxacin
+I 
+7 
+2
+R 
+20 
+7
+S 
+98 
+23 
+0.632 
+0.729
+Ceftriaxone
+I 
+2 
+0
+R 
+21 
+6
+S 
+110 
+26 
+0.484 
+0.487
+Cefotetan
+I 
+0 
+0
+R 
+11 
+4
+S 
+43 
+8 
+0.95 
+0.622
+Macrodantin
+I 
+53 
+13
+R 
+25 
+8
+S 
+107 
+26 
+0.919 
+0.632
+Cefepime
+I 
+1 
+0
+R 
+13 
+5
+S 
+110 
+24 
+1.631 
+0.202
+Gentamicin
+I 
+0 
+0
+R 
+11 
+5
+S 
+110 
+26 
+1.94 
+0.379
+Imipenem
+I 
+1 
+0
+R 
+10 
+5
+S 
+95 
+24 
+0.111 
+0.946
+Levofloxacin
+I 
+9 
+2
+R 
+17 
+5
+S 
+99 
+25 
+0.023 
+0.881
+Cotrimoxazole
+I 
+0 
+0
+R 
+22 
+6
+S 
+108 
+27 
+1.9 
+0.387
+Tobramycin
+I 
+4 
+0
+R 
+9 
+4
+S 
+109 
+26 
+1.525 
+0.467
+Ertapenem
+I 
+1 
+0
+R 
+11 
+5
+Ampicillin/sulbactam
+S 
+0 
+0 
+NA 
+NA
+I 
+0 
+0
+R 
+121 
+30
+S: sensitive; I: intermediate; R: resistant; p: p value.
+223
+Zhang et al. – Klebsiella infection in immunocompetent patients 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):219-226.
+Moreover, mortality increased two-fold in patients 
+receiving inappropriate empirical treatment (95% CI: 
+1.1-3.4, p = 0.02) [10]. Therefore, clinicians should pay 
+attention to bloodstream infections due to KP because 
+of the high morbidity and mortality.
+appropriate treatment before outpatient and emergency 
+treatment, especially the long-term use of antibiotics, 
+resulting in the emergence of multidrug- and pandrug-
+resistant strains [18,19]. Septic shock is an independent 
+risk factor for acute kidney injury (AKI) [20]. The 
+prevalence of AKI is proportional to the severity of 
+infection; for instance, the prevalence of AKI in 
+patients with severe infection or septic shock was 
+approximately 23% and 51%, respectively [21]. 
+Moreover, the advanced AKI stages are associated with 
+worse prognosis [22]. Our results showed that the 
+incidence of septic shock was high in patients with KP 
+bloodstream infections, and AKI increased the risk of 
+death. Therefore, more attention should be paid to the 
+occurrence of AKI in patients with hospital-acquired 
+bloodstream infections due to KP.
+In our study, 77.6% of patients were older than 60 
+years, and the major sites of infection were the digestive 
+and urinary systems. Thirty-one patients (20.4%) had 
+liver abscesses, leading to infections in distant tissues 
+and organs, including the brain, eye, and lung. In 
+addition, the prevalence of underlying diseases such as 
+diabetes, stroke sequelae, and malignant tumors was 
+high in these patients, consistent with previous findings 
+[11]. Older patients are more likely to have poor 
+nutritional 
+status, 
+immune 
+dysfunctions, 
+and 
+comorbidities. Moreover, invasive surgeries involving 
+indwelling gastric tube and catheter placement require 
+the use of broad-spectrum antibiotics, increasing 
+susceptibility to KP infections [12]. The processes by 
+which KP enters the bloodstream are unclear. Some 
+studies have shown that KP colonizes the intestinal tract 
+and invades the bloodstream by gastrointestinal 
+translocation through the endothelial and intestinal 
+barrier [13,14]. In our cohort, diabetes was the most 
+common complication , accounting for 42.8% of cases, 
+and the prevalence of diabetes was significantly higher 
+in survivors than in non-survivors; nonetheless, there 
+was no significant intergroup difference in this variable 
+in the univariate analysis (p = 0.083). It was shown that 
+50.0% of patients with bloodstream infections due to 
+HvKP had diabetes, and 77.8% of patients with septic 
+shock had diabetes [15]. Clinical studies have 
+demonstrated that capsular polysaccharide (CPS) is an 
+important virulence factor of KP, and environmental 
+glucose may increase the biosynthesis of CPS [16,17]. 
+High glucose levels due to poor glycemic control 
+stimulate CPS biosynthesis and CPS gene expression in 
+hvKP, increasing resistance to phagocytosis and 
+contributing to the development of invasive syndrome. 
+Therefore, diabetes may be a risk factor for the 
+development of bloodstream infections caused by hvKP 
+isolates.
+The prevalence of drug-resistant KP, especially 
+carbapenem-resistant strains, is increasing with the 
+widespread use of antibiotics. Previous literature 
+suggested that the hypervirulence and antibiotic 
+resistance of KP would not overlap [23]. Nonetheless, 
+nosocomial carbapenem-resistant hvKP strains were 
+isolated in a tertiary hospital in Beijing, reducing the 
+efficacy of treatment [24]. CHINET showed that 
+resistance rate of KP strains to imipenem increased 
+from 14.1% in 2014 to 24.2% in 2020 [25]. However, 
+resistance to commonly used antibiotics in our samples 
+was low, and the rate of resistance to imipenem was 
+11.8%, significantly lower than that reported by 
+CHINET. This discrepancy may be related to two 
+reasons: first, 87.7% of KP strains evaluated by 
+CHINET were isolated from inpatients, and the 
+incidence of CRKP in ICU patients was 23.0%. In turn, 
+82.2% of KP infections in our cohort were community-
+acquired, resulting in lower carbapenem selective 
+pressure; second, the samples analyzed in CHINET 
+were obtained from respiratory secretions (36.2%), 
+urine (20.8%), and blood (15.0%). In contrast, all our 
+samples were obtained from blood, and the rate of 
+contamination was low.
+In China, the BRICS 2018-2019 showed that the 
+resistance rate of KP isolates to cephalosporins (first, 
+second, and third generations), quinolones, and 
+sulfamethoxazole was higher than 30%, that to 
+cefepime, cefoxitin, piperacillin, and tazobactam was 
+20-30%, and that to amikacin was 14.6%; in turn, these 
+isolates were highly sensitive to polymyxin and 
+tigecycline [26]. Our antibiotic susceptibility results 
+were similar to those of BRICS; however, antibiotic 
+resistance rates were significantly lower than those 
+reported by BRICS. These rates were lower than 20% 
+for all evaluated antibiotics, except for cefazolin,
+Patients with KP bloodstream infections were 
+divided into survivors and non-survivors according to 
+28-day mortality. The results of multivariate analysis 
+showed that hospital-acquired infection, septic shock, 
+length of hospital stay, and creatinine level were 
+independent risk factors for bloodstream infections. 
+The proportion of patients older than 60 years was 
+77.6%, most of whom had multiple underlying diseases. 
+Moreover, most patients with hospital-acquired 
+infections were in critical condition and had received
+224
+Zhang et al. – Klebsiella infection in immunocompetent patients 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):219-226.
+furantoin, and ampicillin/sulbactam, and the resistance 
+to amikacin was the lowest. This result may be because 
+most patients in our cohort had community-acquired 
+infections. Moreover, the small sample size may lead to 
+sampling errors.
+References 
+1. 
+Hu F, Guo Y, Yang Y, Zheng Y, Wu S, Jiang X, Zhu D, Wang 
+F; China Antimicrobial Surveillance Network (CHINET) 
+Study Group (2019) Resistance reported from China 
+antimicrobial surveillance network (CHINET) in 2018. Eur J 
+Clin Microbiol Infect Dis 38: 2275-2281. doi: 10.1007/s10096-
+019-03673-1.
+Our results showed that the susceptibility of KP to 
+carbapenem, 
+cefepime, 
+cefotetan, 
+piperacillin-
+tazobactam, and amikacin was 84.2%, 87.3%, 89.5%, 
+89.5%, and 91.4%. KP produces ESBLs, AmpC β-
+lactamases, 
+and 
+carbapenemases 
+through 
+drug 
+resistance genes to hydrolyze β-lactams. In this respect, 
+the 
+KPC-producing 
+enzyme 
+was 
+resistant 
+to 
+carbapenem and other β -lactams [27,28]. Although 
+serotyping was not conducted in this study, the 
+resistance rate to imipenem/cilastatin was higher than 
+that to piperacillin/tazobactam, probably because of the 
+excessive use of carbapenem in patients with 
+nosocomial infections, underscoring the need to limit 
+the excessive use of this antimicrobial agent.
+2. 
+Chrystle M, Vishak A, Sindhu K, Jane M (2021) Primary lung 
+abscess due to multidrug-resistant Klebsiella pneumoniae. 
+BMJ Case Rep 14: e244759. doi: 10.1136/bcr-2021-244759.
+3. 
+Huang HL, Lu PL, Lin CY, Chen YH, Kuo CH, Lin WR (2013) 
+Klebsiella pneumoniae bacteremia and renosplenic abscesses 
+without intestinal symptoms as the initial manifestations of 
+non-steroidal anti-inflammatory drug-induced colitis: a rare 
+case report. BMC Gastroenterol 13: 139. doi: 10.1186/1471-
+230X-13-139.
+4. 
+Solomon SL, Oliver KB (2014) Antibiotic resistance threats in 
+the United States: stepping back from the brink. Am Fam 
+Physician 89: 938-941. doi: 10.1016/j.medcli.2013.11.008.
+5. 
+Cassini A, Högberg LD, Plachouras D, Quattrocchi A, Hoxha 
+A, Simonsen GS, Colomb-Cotinat M, Kretzschmar ME, 
+Devleesschauwer B, Cecchini M, Ouakrim DA, Oliveira TC, 
+Struelens MJ, Suetens C, Monnet DL, Burden of AMR 
+Collaborative Group (2019) Attributable deaths and disability-
+adjusted life-years caused by infections with antibiotic-
+resistant bacteria in the EU and the European Economic Area 
+in 2015: a population-level modeling analysis. Lancet Infect 
+Dis 19: 56-66. doi: 10.1016/S1473-3099(18)30605-4.
+Conclusions
+KP is highly prevalent and causes severe infections, 
+reducing treatment efficacy. KP bloodstream infections 
+are particularly concerning, especially in older patients 
+with diabetes complicated by liver abscesses. Septic 
+shock and elevated serum creatinine levels were 
+independent risk factors for KP bloodstream infections 
+and mortality. Carbapenems, enzyme inhibitors, fourth-
+generation cephalosporins, and aminoglycosides should 
+be rationally used as first-line antibiotics for empirical 
+treatment based on drug resistance data. Moreover, 
+drug susceptibility testing is essential to adjust 
+treatment and reduce antibiotic exposure, antimicrobial 
+resistance, and mortality.
+6. 
+Ministry of Health of the People's Republic of China (2001) 
+Diagnostic criteria for nosocomial infections (proposed). Natl 
+Med J China 81: 314-320. doi: 10.3760/j.issn.0376-
+2491.2001.05.027.
+7. 
+Humphries R, Bobenchik AM, Hindler JA, Schuetz AN (2021) 
+Overview of changes to the clinical and laboratory standards 
+institute performance standards for antimicrobial susceptibility 
+testing, M100, 31st Edition. J Clin Microbiol 59: e0021321. 
+doi: 10.1128/JCM.00213-21.
+8. 
+Chen YB, Ji JR, Ying CQ, Liu ZY, Yang Q, Kong HS, Dai YY, 
+Wang JL, Mao HF, Ding H, Liu YY, Zhou YZ, Lu H, Yin YD, 
+Jin Y, Xu HY, Zhang LX, Wang L, Dong HX, Yang ZH, Chen 
+FH, Huang DH, Liao GL, Tian PP, Liu D, Geng Y, Man SJ, 
+Zhang BH, Huang Y, Guo L, Cao JM, Gu BQ, Li YH, Hu HX, 
+Luan L, Hu SY, Zheng L, Li AY, Xu R, Liang KP, Li Z, Liu 
+DH, Quan B, Liu Q, Shen JL, Liao YQ, Chen H, Bai QQ, Xia 
+XS, Wang SF, Liang JH, Zhang LP, Dong YQ, Qi XY, Wang 
+JZ, Hu XF, Yan XP, Qiao DY, Meng L, Xiao YH (2021) 
+BRICS report of 2020: the bacterial composition and 
+antimicrobial resistance profile of clinical isolates from 
+bloodstream infections in China. Chin J Clin Infect Dis 14: 
+413-426. doi: 10.3760/cma.j.issn.1674-2397.2021.06.002.
+Ethical Approval 
+This research was approved by the Research Ethics 
+Committee of Zhongda Hospital, Southeast University. 
+ 
+Funding 
+Supporting Project for Universities under the Ministry of 
+Education (Southeast University) (3290002004C1). 
+ 
+Authors’ contributions 
+Qun Zhang designed and conceptualized the study and wrote 
+the manuscript. Pan Wang and Menghuan Shen collected and 
+analyzed data and wrote the manuscript. Chun Shan collected 
+and analyzed data. All authors approved the final version of 
+the manuscript. 
+ 
+Availability of data and materials 
+The datasets used or analyzed in this study are available from 
+the corresponding author upon reasonable request.
+9. 
+Xu L, Sun X, Ma X (2017) Systematic review and meta-
+analysis of mortality of patients infected with carbapenem-
+resistant Klebsiella pneumoniae. Ann Clin Microbiol 
+Antimicrob 16: 18. doi: 10.1186/s12941-017-0191-3.
+10. Girometti N, Lewis RE, Giannella M, Ambretti S, Bartoletti M, 
+Tedeschi S, Tumietto F, Cristini F, Trapani F, Gaibani P, Viale 
+P (2014) Klebsiella pneumoniae bloodstream infection: 
+epidemiology and impact of inappropriate empirical therapy. 
+Medicine 
+(Baltimore). 
+93: 
+298-309. 
+doi: 
+10.1097/MD.0000000000000111.
+11. Tsai SS, Huang JC, Chen ST, Sun JH, Wang CC, Lin SF, Hsu 
+BR, Lin JD, Huang SY, Huang YY (2010) Characteristics of 
+Klebsiella pneumoniae bacteremia in community-acquired and
+225
+Zhang et al. – Klebsiella infection in immunocompetent patients 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):219-226.
+nosocomial infections in diabetic patients. Chang Gung Med J 
+33: 532-539.
+23. Hennequin C, Robin F (2016) Correlation between 
+antimicrobial 
+resistance 
+and 
+virulence 
+in 
+Klebsiella 
+pneumoniae. Eur J Clin Microbiol Infect Dis 35: 333-341. doi: 
+10.1007/s10096-015-2559-7.
+12. Jiao Y, Qin Y, Liu J, Li Q, Dong Y, Shang Y, Huang Y, Liu R 
+(2015) Risk factors for carbapenem-resistant Klebsiella 
+pneumoniae infection/colonization and predictors of mortality: 
+a retrospective study. Pathog Glob Health 109: 68-74. doi: 
+10.1179/2047773215Y.0000000004.
+24. Yao B, Xiao X, Wang F, Zhou L, Zhang X, Zhang J (2015) 
+Clinical and molecular characteristics of multi-clone 
+carbapenem-resistant 
+hypervirulent 
+(hypermucoviscous) 
+Klebsiella pneumoniae isolates in a tertiary hospital in Beijing, 
+China. 
+Int 
+J 
+Infect 
+Dis 
+37: 
+107-112. 
+doi: 
+10.1016/j.ijid.2015.06.023.
+13. Shon AS, Bajwa RP, Russo TA (2013) Hypervirulent 
+(hypermucoviscous) Klebsiella pneumoniae: a new and 
+dangerous 
+breed. 
+Virulence 
+4: 
+107-118. 
+doi: 
+10.4161/viru.22718.
+25. Hu FP, Guo Y, Zhu DM, Wang F, Jiang XF, Xu YC, Zhang 
+XJ, Zhang ZX, Ji P, Xie Y, Kang M, Wang CQ, Wang AM, Xu 
+YH, Huang Y, Sun ZY, Chen ZJ, Ni YX, Sun JY, Chu YZ, 
+Tian SF, Hu ZD, Li J, Yu YS, Lin J, Shan B, Du Yan, Guo 
+Sufang, Wei Lianhua, Zou Fengmei, Zhang H, Wang C, Hu YJ, 
+Ai XM, Zhuo C, Su DH, Guo DW, Zhao JY, Yu H, Huang XN, 
+Liu WE, Li YM, Jin Y, Shao CH, Xu XS, Yan C, Wang SM, 
+Chu YF, Zhang LX, Ma J, Zhou SP, Zhou Y, Zhu L, Meng JH, 
+Dong F, Zheng HY, Hu FF, Shen H, Zhou WQ, Jia W, Li G, 
+Wu JS, Lu YM, Li JH, Duan JJ, Kang JB, Ma XB, Zheng YP, 
+Guo RY, Zhu Y, Chen YS, Meng Q, Wang SF, Hu XF, Shen 
+JL, Wang RZ, Fang Hua, YU Bixia, ZHAO Yong, GONG 
+Ping, WEN Kaizhen, ZHANG Yirong, LIU Jiangshan, LIAO 
+LF, Gu HQ, Jiang L, He W, Xu SH, Feng J, Dou R, Yue CL 
+(2021) CHINET surveillance of bacterial resistance across 
+China: report of the results in 2020. Chinese Journal of 
+Infection 
+and 
+Chemotherapy 
+21: 
+377-387. 
+doi: 
+10.16718/j.1009-7708.2021.04.001. [Article in Chinese]
+14. Desta K, Woldeamanuel Y, Azazh A, Mohammod H, Desalegn 
+D, Shimelis D, Gulilat D, Lamisso B, Makonnen E, Worku A, 
+Mannerqvist K, Struwe J, Aspevall O, Aklillu E (2016) high 
+gastrointestinal colonization rate with extended-spectrum β-
+lactamase-producing 
+enterobacteriaceae 
+in 
+hospitalized 
+patients: 
+emergence 
+of 
+carbapenemase-producing 
+K. 
+pneumoniae in Ethiopia. PLoS One 11: e0161685. doi: 
+10.1371/journal.pone.0161685.
+15. Ma R, Wang XD, Nie DP (2018) Clinical features of 
+hypervirulent Klebsiella pneumoniae bloodstream infection. 
+Chinese Journal of Infection Control 17(1):26-30. doi: 
+10.3969j.issn.1671-9638.2018.01.006. [Article in Chinese]
+16. Xu Q, Yang X, Chan EWC, Chen S (2021) The 
+hypermucoviscosity of hypervirulent K. pneumoniae confers 
+the ability to evade neutrophil-mediated phagocytosis. 
+Virulence 
+12: 
+2050-2059. 
+doi: 
+10.1080/21505594.2021.1960101.
+17. Lee CH, Chen IL, Chuah SK, Tai WC, Chang CC, Chen FJ, 
+Chen JF (2016) Impact of glycemic control on capsular 
+polysaccharide biosynthesis and opsonophagocytosis of 
+Klebsiella pneumoniae: Implications for invasive syndrome in 
+patients with diabetes mellitus. Virulence 7: 770-778. doi: 
+10.1080/21505594.2016.1186315.
+26. Chen YB, Ji JR, Ying CQ, Wang PP, Liu ZY, Yang Q, Kong 
+HS, Ding H, Liu YY, Mao HF, Huang Y, Yang ZH, Dai YY, 
+Liao GL, Zhu L, Zhang LP, Li YH, Xu HY, Cao JM, Zhang 
+BH, Guo L, Dong HX, Hu SY, Man SJ, Wang L, Liao ZX, Xu 
+R, Liu D, Jin Y, Zhou YZ, Liao YQ, Chen FH, Gu BQ, Wang 
+JL, Liang JH, Zheng L, Li AY, Shen JL, Dong YQ, Zhang LX, 
+Hu HX, Quan B, Zhu WC, Liang KP, Liu Q, Wang SF, Yan 
+XP, Kang JB, Xia XS, Ma L, Sun L, Luan L, Wang JZ, Li Z, 
+Qiao DY, Zhang L, Li LJ, Xiao YH (2021) BRICS report of 
+2018-2019: the distribution and antimicrobial resistance profile 
+of clinical isolates from blood culture in China. Chinese 
+Journal 
+of 
+Clinical 
+Infectious 
+Diseases 
+14: 
+32-45. 
+doi:10.3760/cma.j.issn.1674-2397.2021.01.007. [Article in 
+Chinese]
+18. Junyan Q, Mei K, Yang L, Jiayuan Q, Xiaoju L (2017) The 
+clinical characteristics and risk factors of mortality in adult 
+patients with carbapenem resistant Gram-negative bacteria 
+blood infections. Chinese Journal of Antibiotics 42: 212-217. 
+doi:10.3969/j.issn.1001-8689.2017.03.009. 
+[Article 
+in 
+Chinese]
+19. Zhang L, Liu ZY, Xu YC, Li TS, Yang QW, Wang AX (2012) 
+Clinical analysis of adult primary bloodstream infection. Natl 
+Med J China 92: 894-898. doi:10.3760/cma.j.issn.0376-
+2491.2012.13.009.
+27. Paterson DL (2006) Resistance in gram-negative bacteria: 
+Enterobacteriaceae. 
+Am 
+J 
+Med 
+119: 
+S20-8. 
+doi: 
+10.1016/j.amjmed.2006.03.013.
+20. de Maio Carrilho CM, de Oliveira LM, Gaudereto J, Perozin 
+JS, Urbano MR, Camargo CH, Grion CM, Levin AS, Costa SF 
+(2016) A prospective study of treatment of carbapenem-
+resistant Enterobacteriaceae infections and risk factors 
+associated with outcome. BMC Infect Dis 16: 629. doi: 
+10.1186/s12879-016-1979-z.
+28. Denisuik AJ, Lagacé-Wiens PR, Pitout JD, Mulvey MR, 
+Simner PJ, Tailor F, Karlowsky JA, Hoban DJ, Adam HJ, 
+Zhanel GG, Canadian Antimicrobial Resistance Alliance 
+(2013) Molecular epidemiology of extended-spectrum β-
+lactamase-, 
+AmpC 
+β-lactamase- 
+and 
+carbapenemase-
+producing Escherichia coli and Klebsiella pneumoniae isolated 
+from Canadian hospitals over a 5 year period: CANWARD 
+2007-11. J Antimicrob Chemother 68: i57-65. doi: 
+10.1093/jac/dkt027.
+21. Bagshaw SM, Lapinsky S, Dial S, Arabi Y, Dodek P, Wood G, 
+Ellis P, Guzman J, Marshall J, Parrillo JE, Skrobik Y, Kumar 
+A; Cooperative Antimicrobial Therapy of Septic Shock 
+(CATSS) Database Research Group (2009) Acute kidney 
+injury in septic shock: clinical outcomes and impact of duration 
+of hypotension prior to initiation of antimicrobial therapy. 
+Intensive Care Med 35: 871-881. doi: 10.1007/s00134-008-
+1367-2.
+Corresponding author 
+Dr Qun Zhang 
+Department of Infectious Diseases, Zhongda Hospital 
+School of Medicine, Southeast University, 210009 Nanjing, China. 
+Tel: +86 025 83285117 
+E-mail: zhangqun210009@163.com 
+ 
+Conflict of interests: No conflict of interests is declared.
+22. Chen DJ, Mai Y (2018) Risk factors and prognosis of acute 
+kidney injury in patients with septic shock. International 
+Journal of Laboratory Medicine 39: 2112-2115. doi: 
+10.3969/j.issn.1673-4130.2018.17.010. [Article in Chinese]
+226

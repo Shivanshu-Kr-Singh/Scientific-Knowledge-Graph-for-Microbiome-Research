@@ -1,0 +1,1002 @@
+Acta of Bioengineering and Biomechanics
+Original paper
+Vol. 25, No. 4, 2023
+DOI: 10.37190/ABB-02339-2023-02
+Bioactive glasses enriched with zinc and strontium:
+synthesis, characterization, cytocompatibility with osteoblasts
+and antibacterial properties
+LIDIA CIOŁEK1*, MILENA CHRANIUK2, PIOTR BOLLIN2, MONIKA BIERNAT1, MIROSŁAWA PANASIUK2,
+DAWID NIDZWORSKI2, BEATA GROMADZKA2, ZBIGNIEW JAEGERMANN1, ELŻBIETA PAMUŁA3
+1 Biomaterials Research Group, Łukasiewicz Research Network
+– Institute of Ceramic and Building Materials, Kraków, Poland.
+2 Department of in vitro studies, Institute of Biotechnology and Molecular Medicine, Gdańsk, Poland.
+3 Department of Biomaterials and Composites, Faculty of Materials Science and Ceramics,
+AGH University of Science and Technology, Kraków, Poland.
+Purpose: The aim of the presented work was to characterize the new obtained bioglasses and assess their biological performance
+in vitro. Bioglasses were produced using the sol-gel method in the SiO2-P2O5-CaO system, for the purpose as composite ingredients.
+Their chemical composition was enriched with ZnO to introduce antibacterial properties and SrO with osteoinductive effect. The
+properties of bioglasses were compared and the effect of chemical composition and particle size on their biological properties was
+assessed. Methods: The bioglasses were evaluated via TG-DTA, FTIR, SEM-EDS analyses before and after incubation in SBF solution.
+LDH and WST-1 tests were used to determine the level of cytotoxicity of the tested bioglasses on hFOB1.19 osteoblasts. Results: The
+results show that the developed bioglasses release Ca2+, are bioactive in SBF solution, not cytotoxic and show antibacterial activity in
+contact with Pseudomonas aeruginosa and Staphylococcus aureus strains. Bioglasses enriched with ZnO show the highest bactericidal
+activity. All tested bioglasses enhanced hFOB 1.19 cells proliferation. Particle size has a lower effect on biological performance of the
+bioglasses than their chemical composition. Conclusions: The conducted research showed that bioglass modification with SrO and ZnO
+can be considered particularly for the development of biomaterials supporting bone regeneration and the treatment of infected bone
+defects.
+Key words: bioglass, bioactivity, cytotoxicity, antibacterial activity
+1. Introduction
+the greater the number and the smaller the size of the
+glass particles, the faster the mass loss. Integration of
+bone tissue with the implant as well as prevention and
+treatment of bacterial infections still remain a major
+challenge. To achieve the desirable properties of bio-
+materials, researchers and clinical investigators are
+still working on new solutions. In the literature, much
+attention is paid to the bioactivity of materials [10]
+and factors inducing osseointegration – thanks to which
+bone cells are stimulated to create a direct connection
+with the implant [12]. Osseointegration is a multi-stage
+process, consisting of many reactions that leads to
+The field of biomaterials is constantly evolving and
+searching for innovative solutions. Future bioactive ma-
+terials, including bioglasses, are expected to contain
+required physical features such as the appropriate
+morphology, porosity, and specific chemical structure
+enabling the release of active molecules promoting
+bone remodelling and controlled biodegradation of the
+implant [7]. The rate of degradation of the composite
+is also affected by the size of the bioactive glass grains,
+______________________________
+* Corresponding author: Lidia Ciołek, Biomaterials Research Group, Łukasiewicz Research Network – Institute of Ceramic and Build-
+ing Materials, Kraków, Poland. E-mail: lidia.ciolek@icimb.lukasiewicz.gov.pl
+Received: November 6th, 2023
+Accepted for publication: February 7th, 2024
+L. CIOŁEK et al.
+70
+a permanent connection of the implant with the bone
+tissue. In addition, it is becoming increasingly difficult
+to treat bacterial infections due to the emergence of
+antibiotic-resistant bacteria. The prevention of bacterial
+infections by incorporating the components that pos-
+sess antibacterial activity into the new biomaterials is
+often described [19]. In conducted research, much
+attention is paid to bioactive glasses [6], [22], [39] and
+natural polymers from which biocomposites are made
+[31]. Bioglass and glass-ceramic materials are widely
+used to directly fill or replace bone lesions. Often-
+times, they are also used as a component of multi-
+functional composites in biomaterial engineering [10],
+[31], [39]. The use of the sol–gel method in the pro-
+duction of bioglasses provides them many beneficial
+functional properties [10]. One of them is high bioac-
+tivity, i.e., the ability to create a hydroxyapatite inter-
+mediate layer at the material/bone tissue interface.
+Nucleation of apatite crystals occurs by chemisorption
+of calcium and phosphate ions to the silicic acid gel
+layer, easily formed on the bioglass surface. The reac-
+tions at the interface of the bioglass and bone tissue
+during the process of apatite formation in three-compo-
+nent SiO2-P2O5-CaO system follow the scheme pre-
+sented by Hench [13]. The growth of apatite crystals
+occurs mainly thanks to calcium ions released from
+the bioglass, which react with inorganic phosphate
+groups present in body fluids circulating in the bone
+microenvironment. This process leads to the forma-
+tion of a hydroxyapatite layer and its connection with
+the collagen fibers of the organic matrix. As demon-
+strated by others, the ions released in certain concen-
+trations from the biomaterial play an important role in
+the bone regeneration process. Ions released from the
+biomaterial generate a favorable microenvironment that
+facilitates cell proliferation. In the process of stimulat-
+ing new bone growth, the synergistic effect of ions
+released from the bioglass or biomaterial, i.e., silicon
+and strontium, is also important [23]. Modification of
+the composition of bioglass by partially replacing
+Ca2+in the glass network with Mg2+ or Sr2+ increases
+the surface reactivity, which in turn enhances the
+ability to form hydroxyapatite deposits during contact
+with body fluid.
+Strontium is clinically used as a pharmaceutical
+agent for osteoporosis treatment because of its ability
+to activate osteoblasts and inhibit osteoclast activity
+[14]. Strontium ions released from modified bioglass
+have an osteoinductive effect by improving the prolif-
+eration of osteoblasts, and also have antibacterial prop-
+erties [1]. The results presented by Gorustovich et al.
+[11] confirm the positive effect of strontium ion the pro-
+cess of osteogenesis. Replacing CaO by SrO is regarded
+as a novel biomaterial formation strategy for use in
+bone repair and regeneration therapy.
+Additionally to strontium, zinc is one of the im-
+portant components present in bones, which shows the
+stimulatory effect on the bone mineral deposition proc-
+ess, in both in vitro as well as in vivo conditions. Zinc
+homeostasis is essential to many proteins which regu-
+late cellular functions such as the response to oxida-
+tive stress, DNA replication, DNA damage repair and
+apoptosis [37]. Zinc ions are components or activators
+of many enzymes involved in metabolic processes [3]
+and was shown to stimulate the early differentiation of
+bone cells [36]. Taking these characteristics of zinc
+into account, many studies focus on the use of zinc as
+a component of bioactive glasses or other biomaterial
+types [2]. As shown by Vukomanovic et al. [35], zinc
+ions released from bioactive glasses containing ZnO
+stimulate the proliferation and osteogenic differentia-
+tion of cells and facilitate the development of a mature
+bone. Moreover, zinc ions also increase bone density,
+have anti-inflammatory and antibacterial properties, and
+thus facilitate bone healing. The presence of ZnO in the
+glass enhances its mechanical strength and chemical
+durability and reduces its degradability in aqueous media
+such as simulated body fluid (SBF) [17]. According to
+literature data, the amount of released zinc ions from
+the biomaterial should be optimal, i.e., safe for the
+treated patient, and able to ensure a minimum inhibi-
+tory or bactericidal concentration [19], [28]. The domi-
+nant hypothesis of the mechanism of bacterial destruc-
+tion by ZnO-containing biomaterials is the formation of
+reactive oxygen species (ROS) and the destruction of
+the cell wall after contact with ions or labile zinc com-
+plexes [32].
+Bioactivity and cytotoxicity of bioglasses can be
+tested with the use of various methods [29]. Addition-
+ally, many authors studying direct contact of cells
+with glass particles, use small amounts of bioglass
+[40] or do not include weights of samples [24]. This
+could lead to the conclusion that the total mass of
+bioglass used in the experiment was insufficient to
+properly assess the influence of bioglass on their
+biological performance. On the other hand, increased
+amount of bioglass in direct contact with cells may cause
+mechanical damages of in vitro model. This problem
+highlights the importance of developing new methods
+enabling the use of higher bioglass mass per test, elimi-
+nating direct particle contact with cells, and maintain-
+ing continuous ion release throughout the experiment
+which is not possible in research based on bioglass
+extracts.
+The purpose of this study was to synthesize and
+characterize the newly obtained bioactive glasses, as
+Bioactive glasses enriched with zinc and strontium: synthesis, characterization, cytocompatibility with osteoblasts...
+71
+well as to evaluate their bactericidal properties and in
+vitro cytocompatibility with osteoblasts. New methodol-
+ogy in cell-based assays was used due to the limitations
+of the previously described bioglass cytotoxicity testing
+protocols. The improved method was based on cellular
+growth in the presence of increased mass of biolglass
+placed in cell culture inserts which made it possible for
+ion release to be maintained throughout the experi-
+ment and assessed for its influence on osteoblasts. The
+obtained results will be valuable due to the possibility
+of the use of selected bioglasses as components for
+innovative multifunctional composites for filling bone
+tissue defects.
+vibration mill was 10 minutes for group I and 20 min-
+utes for group II. Ten bioglasses in the form of powders
+were obtained in this way, marked with the symbols:
+P5_I, P5_II, P5Sr2_I, P5Sr2_II, P5Zn2_I, P5Zn2_II,
+P5Sr5_I, P5Sr5_II, P5Zn5_I and P5Zn5_II.
+Low angle laser light scattering
+– particle size analysis
+The analysis was performed using a Malvern In-
+struments 2000 laser particle size analyzer using the
+low-angle laser light scattering (LALLS) method. The
+LALLS allowed for evaluation of the particle size in
+a wide range from 0.1 µm to 2000 µm with a margin
+error of 0.5%. The obtained characteristic values
+were dv(0.1) – meaning that the size of 10% vol.
+particles of the sample population is smaller than the
+dv value, dv(0.5) – meaning that the size of 50% vol.
+particles of the sample population is smaller than the
+dv value, dv(0.9) – meaning that the size of 90% vol.
+particles of the sample population is smaller than the
+dv value.
+2. Materials and methods
+In order to obtain bioglass, the following compo-
+nents were used: tetraethoxysilane, zinc nitrate(V)
+hexahydrate, calcium nitrate(V) tetrahydrate (Avantor
+Performance Materials Poland S.A., Gliwice, Poland),
+strontium nitrate(V) (Sigma-Aldrich, St. Louis, MO), and
+triethyl phosphate(V) (Fluka, Chemie GmbH, Buchs,
+Switzerland).
+Thermogravimetric Analysis (TG) /
+Differential thermal analysis (DTA)
+– study of physicochemical changes
+occurring during heating
+Formation of sol-gel derived bioglass
+Five chemical compositions of bioglass have been
+developed in the SiO2-P2O5-CaO system. Bioglass with
+SiO2 content of 70 wt.%, P2O5 content of 5 wt.% and
+CaO content of 25 wt.% constituted the reference mate-
+rial (sample P5). In compositions of bioglass supple-
+mented with SrO or ZnO, 2 wt.% or 5 wt.% CaO was
+replaced with SrO or ZnO (samples P5Sr2, P5Zn2,
+P5Sr5 and P5Zn5, respectively). The low-temperature
+sol–gel method was used to produce these bioglasses.
+The beaker with the reaction mixture was placed in an
+dryer and kept for 7 days at 40 °C. After each subse-
+quent 7 days, the drying temperature was increased
+to 60, 80, 120 and 180 °C, respectively. After holding
+for 7 days at 180 °C, the dried gel was transferred to
+a ceramic crucible and placed in an electric furnace.
+After the drying was completed, the dry gel was heated
+in an electric furnace. For the TG/DTA test, a sample
+of P5 bioglass was prepared by annealing at 600 °C
+for 10 h. After the test, all glasses were heated at 650
+°C for 15 h to stabilize their structure. Five bioglasses
+were obtained: P5, P5Sr2, P5Zn2, P5Sr5 and P5Zn5
+in the form of coarse-grained powders. Next, the
+powders were crushed in a mechanical mortar for 15
+min and subjected to grinding in a rotary-vibrating
+mill. Each of the glasses was prepared in two groups
+differing in grain size. The grinding time in the rotary-
+DTA/TG analysis was performed using the STA
+449 F3 Jupiter® NETZSCH device for simultaneous
+thermal analysis (TG, DTA/TG, DSC/TG). 4.9 mg of
+bioglass was placed in a 0.3 ml alumina DTA crucible.
+The analysis was carried out in the temperature range
+30–1000°C, with the temperature change rate 10 °C/min,
+in an argon atmosphere (70 ml/min). A separate cor-
+rective measurement of the empty crucible was also
+carried out.
+Fourier Transform Infrared (FTIR)
+Spectroscopy – identification
+of functional groups in glasses
+FTIR-ATR analysis was performed using the FTIR
+TENSOR Bruker spectrophotometer equipped with
+a DLaTGS detector. To prepare the samples (tablets
+with KBr), 1.5 mg of bioglass sample per 200 mg of
+dried KBr was used. The samples were tested in the
+transmission mode with the following instrumental
+settings: wavenumber range 400−4000 cm–1, number
+of scans 64, spectral resolution 4 cm–1. Each sample
+was measured twice to check structural reproducibil-
+ity. The baseline correction and atmospheric compen-
+sation procedure has been applied to the presented
+spectra with Opus 7.2 software.
+L. CIOŁEK et al.
+72
+Estimation of the amount of calcium ions
+released into deionized water
+Bioglasses testing via cell culture inserts
+Human osteoblast  hFOB cells were plated in
+12-well plates at 3 × 105 cells/well in 800 µl of cell
+medium. Next, 0.1 g of bioglasses enriched with zinc
+and strontium oxides has been weighed on cell culture
+inserts (Sarstedt, Germany) and placed into wells.
+Additional 400 µl of medium was added to each in-
+sert. Cells were incubated for 48 h at 37 °C, 95% hu-
+midity, 5% CO2. Cell proliferation and cytotoxicity
+were determined by WST-1 and LDH tests, respec-
+tively.
+From each type of bioglass, 0.3 g of powder with
+particle size I was weighed and transferred to a glass
+vessel, filled with 150 ml of deionized water with
+conductivity of 0.05 µS/cm and sealed. The dishes
+were kept in an incubator at a constant temperature of
+(37 ± 1) °C for 21 days. Samples for testing the amount
+of released calcium ions were collected after 1 h, 24 h,
+7 days and 21 days. The concentration of released Ca2+
+ions was determined using flame atomic absorption
+spectrometry (FAAS). The stock solution was prepared
+using Merck KgaA’s Titrisol (1000 mg Ca, CaCl2 in
+6.5% wt. HCl). Standard solutions were prepared by
+the method of successive dilutions. Each measurement
+was performed in triplicate.
+Cytotoxicity – lactate dehydrogenase (LDH)
+activity assay
+The test was performed using the Cytotoxicity de-
+tection kit (Roche Applied Science, Germany) accord-
+ing to the supplier’s protocol. Briefly, the dye solution
+was mixed with the catalyst solution and added to the
+samples previously transferred to 96-well plates. After
+incubation in the dark, the optical density of the sam-
+ples at 490 nm and 690 nm was measured using a plate
+reader Epoch (BioTek Instruments, USA). As a positive
+control, cells treated with 1% Triton – X100 were used.
+Untreated cells and a blank medium were included
+into each assay.
+The cytotoxicity percentage was calculated as fol-
+lows:
+Evaluation of bioactivity by means
+of SEM-EDS analysis
+The microstructure of the glasses was examined by
+scanning electron microscopy (SEM) with energy dis-
+persion spectroscopy (EDS). Micro-area analysis was
+performed before and after incubation in simulated
+body fluid (SBF) to determine the bioactivity of the pro-
+duced bioglasses. Ion concentrations in the SBF solu-
+tion in mmol/dm3 were: Na+ 142; K+ 5,0; Mg2+ 1,5;
+Ca2+ 2,5; Cl– 148,8; 
+−
+3
+HCO  4,2; 
+−
+2
+4
+HPO
+ 1,0 and
+ty
+Cytotoxici
+=
+−
+2
+4
+SO
+ 0,5. Bioglasses were prepared in the form of
+discs with a diameter of 6 mm and a height of 2 mm
+on a single-axis press with a pressure of 5 kN. Six
+discs of each material were placed in sealed glass
+vessel and 65 ml of the SBF solution were introduced.
+The sample vessels were incubated at 37 ± 1 °C for up
+to 4 weeks. The initial pH of the SBF solution was
+7.25. After 7, 14 and 28 days of incubation, samples
+were collected and changes in surface morphology
+were assessed and their qualitative chemical composi-
+tion by EDS was determined.
+−
+−
+absorbance
+Control
+absorbance
+control
+Positive
+absorbance
+Control
+absorbance
+Sample
+×
+%.
+100
+WST-1 mitochondrial activity assay
+For WST-1 assay hFOB 1.19, cells were incu-
+bated with bioglasses enriched with zinc and stron-
+tium oxides placed on cell culture inserts (Sarstedt,
+Germany). Cells with inserts containing bioglass were
+incubated for 48 h at 37 °C, 95% humidity, 5% CO2.
+The proliferation of hFOB 1.19 cells was determined
+using the WST-1 assay kit (Abcam, USA) according
+to the supplier’s protocol. Briefly, the cells were incu-
+bated with the extract and then treated with 40 µl of
+the WST-1 reagent followed by 2 h incubation in 34 °C
+and 5% CO2. Conditioned medium was collected
+from each well and transferred to a 96-well flat bot-
+tom plate (Sarstedt, Germany). The optical density at
+450 nm and 620 nm was measured using an Epoch
+plate reader (BioTek Instruments, USA). Untreated
+cells and a blank medium were included into each
+Cytotoxicity testing
+Cells
+Human foetal osteoblasts hFOB 1.19 (ATCC
+CRL-11372, USA) were cultured in a 1:1 mixture of
+Ham’s F12 medium and Dulbecco’s modified Eagle’s
+medium with 2.5 mM L-glutamine (without phenol
+red). The medium was supplemented with 10 µg/ml
+gentamicin and 0.25 µg/ml amphotericin B and foetal
+bovine serum (FBS) at a final concentration of 10%.
+Cells were cultured at 34 °C and 5% CO2.
+Bioactive glasses enriched with zinc and strontium: synthesis, characterization, cytocompatibility with osteoblasts...
+73
+assay. The proliferation percentage was calculated as
+follows:
+3. Results
+%
+100
+absorbance
+Control
+absorbance
+Sample
+ion
+Proliferat
+×
+=
+.
+Particle size analysis
+The particle size distribution of the obtained bio-
+glasses was described using the characteristic values
+determined using the LALLS method. The character-
+istic sizes dv(0.1), dv(0.5) and dv(0.9) of the particles
+of the obtained bioglasses: P5_I, P5_II, P5Sr2_I,
+P5Sr2_II, P5Zn2_I, P5Zn2_II, P5Sr5_I, P5Sr5_II,
+P5Zn5_I and P5Zn5_II are shown in Table 1.
+It can be observed that for bioglasses with particle
+size I, the values of the dv(0.5) dimension ranged
+from 45.5 µm for the P5Zn2_I sample to 69.1 µm for
+the P5Sr2_I sample. On the other hand, for bioglasses
+with particle size II, the values of dv(0.5) were lower and
+ranged from 26.8 µm for the P5_II sample to 45.0 µm
+for the P5Sr2_II sample.
+Antibacterial activity of bioglasses
+Preparation of bacterial cultures
+Two bacterial reference strains were chosen: Sta-
+phylococcus aureus PCM 2602 and Pseudomonas aeru-
+ginosa PCM 2563. Both selected pathogens are of high
+clinical importance [25]. All bacteria were grown over-
+night at 37 °C in Lysogeny Broth (LB, BTL, Poland).
+Prior to the experiments, the cultures were diluted to
+reach a cell density of 0.5 McF (McFarland standard)
+corresponding to approximately 1.5 × 108 cells/ml. LB
+medium consisted of 10 g/l casein peptone, 5 g/l yeast
+extract and 10 g/l NaCl with a final pH of 7.0.
+Determining the antibacterial activity of bioglass
+Table 1. The particle size results obtained
+using the LALLS method
+The antibacterial activity of bioglass was analysed
+in a manner similar to that presented by Hu et al. [15].
+In the experiments, 100 mg of each biomaterial was
+added into 1 ml of bacterial suspension in separate
+Eppendorf tubes. Also, samples consisting of 100 mg
+of SiO2 particles or gentamicin at a final concentration
+of 100 µg/ml in 1 ml of bacterial suspension were tested.
+Bacterial suspensions without any additive served as
+a control. After 1 min of stirring with a vortex mixer,
+Eppendorf tubes with samples were placed in aerobic
+conditions at 37 °C for 1 h. After the incubation,
+serial dilutions of the suspensions were made, fol-
+lowed by spreading the volume of 100 µl on LB-agar
+plates. The number of resultant colonies were counted
+as CFU/ml (colony forming units) after 24 h of incu-
+bation at 37 °C. The number of viable microorgan-
+isms and the percentage of bacterial count reduction
+were calculated in relation to the bacterial colonies
+number from control. All experiments were performed
+in triplicates.
+Particle size [µm]
+Symbol
+of bioglass
+dv(0.1)
+dv(0.5)
+dv(0.9)
+P5_I
+7.1
+59.9
+215.5
+P5_II
+4.2
+26.9
+77.4
+P5Zn2_I
+5.4
+45.5
+139.5
+P5Zn2_II
+3.7
+29.1
+85.6
+P5Sr2_I
+8.3
+69.1
+228.6
+P5Sr2_II
+5.7
+45.0
+131.1
+P5Zn5_I
+8.0
+68.1
+198.5
+P5Zn5_II
+5.4
+42.3
+118.7
+P5Sr5_I
+7.7
+61.8
+173.7
+P5Sr5_II
+4.9
+37.7
+106.0
+The obtained powders differed in particle size
+parameters both in group I and II, despite the fact
+that the grinding times of particular bioglasses were
+always the same. The differences in the particle size
+parameters result mainly from the grinding method
+used and the differences in the microstructure of the
+glasses.
+Statistical analysis
+GraphPad Prism (GraphPad Software, USA) was
+Thermogravimetric Analysis TG /
+Differential thermal analysis (DTA)
+utilized for data analysis and visualization. The statis-
+tical analysis was conducted using the Kruskal–Wallis
+test. Next, the Benjamini, Krieger and Yekutieli mul-
+tiple comparison test ( p < 0.05) was conducted to
+control the false discovery rate. The repetition number
+of bioglass sample in one experiment was n ≥ 4 for
+cytotoxicity and WST-1 mitochondrial activity assay.
+P < 0.05 were considered significant.
+The results of thermogravimetric and differential
+thermal analysis obtained for P5 bioglass annealed at
+600 °C for 10 h are shown in Fig. 1. The changes visible
+on the TG curve correspond to the thermal processes
+reflected in the DTA curve. During the heating of the
+sample from room temperature to 425 °C, the weight
+loss on the TG curve was 12.3 wt.%.
+L. CIOŁEK et al.
+74
+Fig. 1. TG/DTA analysis of bioglass P5_II annealed 10 h at 600 °C
+A small peak on the DTA curve in the range of
+50–180 °C for our bioglass, which was previously an-
+nealed at 600 °C, is related to the loss of moisture ad-
+sorbed in its pores. On the other hand, in the tempera-
+ture range of 425–700 °C, a broad DTA signal was
+observed. Several signals of lower intensity can be
+distinguished in the DTA curve: 497.0 °C, 573.8 °C,
+671.0 °C.
+The performed thermal analysis helped to deter-
+mine the temperature of the thermal treatment (650 °C)
+necessary to stabilize the microstructure of the pro-
+duced bioglasses.
+FTIR
+The FTIR spectra of bioglasses P5, P5Sr2, P5Sr5,
+P5Zn2, and P5Zn5 annealed 15 h at 650 °C in particle
+size II are shown in Fig. 2. FTIR analysis was per-
+formed to identify the main functional groups and
+study the effect of different chemical compositions of
+the synthesized bioglasses particles on the chemical
+structure. For all of the bioglasses, the main absorp-
+tion bands appeared at 1070 and 798 cm–1 and corre-
+spond to the stretching vibrations of [SiO4]4– tetrahe-
+dra. The wide absorption bands at 1220 and 1070 cm–1
+Fig. 2. FTIR analysis of bioglass P5_II, P5Sr2_II, P5Sr5_II, P5Zn2_II and P5Zn5_II
+Bioactive glasses enriched with zinc and strontium: synthesis, characterization, cytocompatibility with osteoblasts...
+75
+are associated to asymmetric stretching vibrations of
+Si-O-Si and bands at 798 cm–1 are assigned to sym-
+metric stretching vibration of Si-O-Si (combining of
+tetrahedra [SiO4]4–). Low-intensity dual peaks of P-O
+asymmetric bending vibrations of 
+−
+3
+4
+PO
+ groups were
+identified at 565 and 582 cm–1. The broad bands ob-
+served at 460 cm–1 are attributed to the bending vi-
+bration of Si-O-Si. The spectra also show weak
+bands at 1636 cm–1 attributed to the bending vibra-
+tion of HOH. Wide, medium-intensity bands in the
+range of 3100–3700 cm–1 from the stretching vibra-
+tions of OH bonds in silanol groups (Si-OH) and
+HO-H bonds in adsorbed water molecules were also
+observed.
+glass before incubation in SBF with EDS analysis is
+shown in (Fig. 4).
+Assessment of the concentration of Ca2+ ions
+released into deionized water
+The result of the analysis carried out using optical
+emission spectrometry with inductively coupled plasma
+(ICP-OES) confirms the release of Ca2+ ions (Fig. 3)
+and indicates the activity of the tested bioglasses.
+Fig. 4. SEM-EDS analysis of bioglass P5_II
+before incubation in SBF
+The SEM-EDS analysis shows an increase in the
+intensity of the Ca and P peaks and a significant de-
+crease in the Si peak.
+A high Si peak and lower Ca and P peaks were ob-
+served in the EDS diffraction spectrum. A similar de-
+pendence of the intensity of the peaks was also ob-
+served for the remaining bioglasses (SEM images and
+EDS spectra not shown in the manuscript). The EDS
+analysis for the remaining bioglasses under considera-
+tion confirms the presence of Si, Ca and P in the com-
+position of the P5, and additionally the presence of Zn
+or Sr in bioglass enriched with ZnO or SrO, respec-
+tively. In the images taken after 2 weeks of incubation
+in the SBF solution, clearly visible spherical forms and
+changes in chemical composition were observed on the
+surface of all the tested bioglasses (Fig. 5).
+Fig. 3. The concentration of released Ca2+ ions to deionized water
+after the degradation of glasses: P5_I, P5Zn2_I, P5Sr2_I, P5Zn5_I
+and P5Sr5_I. The total measurement uncertainty was determined
+with a confidence level of 95% and a coverage factor of k = 2
+Biological evaluation of bioglasses
+For glasses P5Zn2_I, P5Sr2_I, P5Zn5_I and P5Sr5_I,
+the concentration of determined ions after contact with
+deionized water for 504 h (21 days) was only slightly
+higher than those determined after 1.5 h. A signifi-
+cantly higher amount of released ions after 21 days was
+observed only for P5_I glass.
+Cytotoxicity testing
+LDH and WST-1 tests were used to determine the
+level of cytotoxicity of the tested bioglasses towards the
+hFOB1.19 cells. The test procedure and evaluation of the
+results were carried out in accordance with the EN ISO
+10993-5:2009 standard “Biological evaluation of medi-
+cal devices – Part 5: In vitro cytotoxicity tests.” Due to
+the fact that hFOB1.19 osteoblasts divide every 36 h, the
+tests were performed after 48 h of incubation. The cyto-
+toxicity results obtained are presented in (Fig. 6).
+Leakage of lactate dehydrogenase form osteoblasts
+incubated with the test glasses did not exceed 30% of
+control for any of tested samples. This allows to clas-
+sify the tested bioglasses as a material that does not
+Evaluation of bioactivity in SBF solution
+An assessment of bioactivity was carried out on
+the basis of SEM-EDS analyses of bioglasses before
+and after incubation in SBF solution. This method of
+assessing bioactivity is used by other researchers [21].
+The results of the analysis of bioglasses before incu-
+bation are shown based on the example of P5_II bio-
+glass heated at 650 °C. The SEM image of this bio-
+L. CIOŁEK et al.
+76
+Fig. 5. SEM-EDS analysis of glasses (a) P5_II/600, (b) P5_II/650, (c) P5Zn2_II/650, (d) P5Zn5_II/650,
+(e) P5Sr2_II/650, (f) P5Sr5_II/650 after 14 days incubation in SBF
+cause cytotoxic effect. The highest average cytotoxicity
+value was recorded for bioglass samples containing 5%
+ZnO, it was 13.0 ± 2.5% and 13.6 ± 1.8% for P5Zn5 I
+and P5Zn5 II, respectively. The obtained results indi-
+cate that the chemical composition has a greater influ-
+ence on the cytotoxicity of the tested bioglasses than
+the particle size.
+glass were statistically different in comparison to P5
+Zn2 II, P5 Zn5 I, and P5 Zn5 II. Next, statistically
+significant differences were identified between P5 II
+and P5 Sr5 I, P5 Zn5 I, and P5 Zn5 II. Statistically
+significant differences in cytotoxicity test were de-
+tected also for P5 Sr2 I and effects caused by P5 Sr5 I,
+P5 Zn5 I, and P5 Zn5 II. P5 I and P5II bioglasses
+caused statistically different effects in comparison to
+P5 Zn5 I and P5 Zn5 II. Despite discovered differ-
+ences, it is essential to remember that all cytotoxicity
+results allowed to classify bioglasses as nontoxic.
+The statistical analysis of cytotoxicity test results
+revealed activity differences between P5 Zn2 II and
+the following bioglasses: P5 Sr5 I, P5 Sr5 II, P5 Zn5 I,
+and P5 Zn5 II. Cytotoxicity results for P5 Sr2 II bio-
+Bioactive glasses enriched with zinc and strontium: synthesis, characterization, cytocompatibility with osteoblasts...
+77
+exceeded 80%. The value of reduction in relation to
+the initial number of microorganisms for P5Zn2 II and
+P5Zn5 II bioglasses was 93.9% and 95.6%, respec-
+tively. In the case of S. aureus, the highest reduction
+values were also determined for the P5Zn2 II and P5Zn5
+II samples and they were 88.1% and 92.9%, respec-
+tively. Bioglasses containing ZnO showed a higher re-
+duction value than the reference bioglass P5 and bio-
+glasses containing SrO. The determined percentage of
+bacterial count reduction for P5Sr2 I and P5Sr5 II
+bioglasses was lower than for P5 I and P5 II glasses
+by 9.5 and 0.7%, respectively. In addition, bioglasses
+with a finer particle size were characterized by higher
+reduction efficiency, on average by 13.2% against
+S. aureus and 7.0% against P. aeruginosa.
+Fig. 6. Cytotoxicity of bioglasses measured in LDH test
+after 48 h of incubation with tested bioglasses
+The results of the WST-1 assay used to evaluate the
+proliferation of hFOB1.19 cells are shown in Fig. 7.
+The results of proliferation of all tested bioglasses ex-
+ceeded the threshold of 70%. The highest proliferation
+among the bioglass with particle size I was determined
+for samples P5_I. On the other hand, among the bio-
+glass with particle size II, the highest proliferation was
+determined for P5Sr2_II and P5Zn2_II samples.
+Fig. 8. Bacterial count reduction of S. aureus and P. aeruginosa
+incubated with bioglasses and gentamycin as control
+4. Discussion
+Fig. 7. Proliferation of osteoblasts incubated 48 h
+with tested bioglasses
+It was observed that the determined weight loss was
+similar to that reported in the literature for the stabi-
+lized gel [28]. According to the literature, during wet gel
+analysis, changes in mass in the range of 50–120 °C are
+related to the loss of moisture and the endothermic
+transformation characteristic of the volatilization of
+water and ethanol residues. During heating of dry gel
+to the temperature above 120 °C, exothermic trans-
+formations occur, related to the condensation process
+as well as thermal decomposition of nitrates and re-
+moval of NO2. The weight loss related to the thermal
+changes taking place for the wet gel is 60 wt.% and
+for dry gel exceeds 30 wt.% [30]. The obtained re-
+sults of ion release may indicate that the particle size
+has a smaller impact on hydrolytic activity than the
+Antibacterial activity of bioglasses
+The antibacterial activity test of the examined bio-
+glasses was carried out in the presence of gentamicin as
+a positive control and SiO2 as a negative one. The results
+of the test indicate a decrease in the number of bacteria
+of both species for all tested bioglasses (Fig. 8).
+The observed results of bacteria cell reduction
+number by the tested bioglasses, regardless of the parti-
+cle size, are lower than for gentamicin, but much higher
+than for negative control. SiO2 reduced the initial num-
+ber of both analyzed bacteria species by an average
+of 32%. In the case of P. aeruginosa, the reduction in the
+number of microorganisms for eight tested bioglasses
+L. CIOŁEK et al.
+78
+microstructure of bioglass. According to the results
+presented by Vaid et al. [34], the release of ions also
+leads to other chemical transformations, especially
+during the incubation of bioglasses in the SBF solu-
+tion. During the contact of bioglasses with the SBF
+solution, due to the released Ca2+ ions, amorphous
+calcium phosphate is formed over a hydrated layer
+rich in silicon, crystalline calcium phosphate or apa-
+tite. On the other hand, the results of Liu et al. re-
+search [20] indicate that the increase in the content of
+calcium ions in the SBF solution is not a critical factor
+influencing the precipitation of apatite. The observed
+changes in the SEM-EDS analysis are consistent with
+the results reported by other researchers. Changes oc-
+curring on the surface of bioglasses during contact with
+SBF result from a number of phenomena including
+leaching, dissolution and precipitation, which leads to
+the formation of an apatite layer [13] or a calcite
+layer. It is believed that the appearance of apatite on
+the biomaterial surface similar to HA nanocrystals
+found in human bones promotes cell adhesion and
+proliferation. In addition, the replacement of Ca by Sr
+in the chemical composition of the glass promotes
+bone formation. According to Fredholm [8], the pres-
+ence of SrO promotes the release of ions and the for-
+mation of apatite. The beneficial effect of Sr on cell
+adhesion and proliferation [27] and on differentiation
+[16], [33] was demonstrated in the literature. The in-
+fluence of bivalent ions in the chemical composition,
+i.e., Zn2+ and Sr2+, on the biological properties of bio-
+glass was described by Cacciotti et al. [4]. The authors
+demonstrated that ionic dissolution products of bioglass
+are able to induce and stimulate the expressions of genes
+related to the osteoblastic differentiation and bone for-
+mation. The studies [9] show that Sr can promote os-
+teoblast activity and inhibit osteoclasts in vitro. Also
+Murphy et al. [26] showed that the appropriate concen-
+tration of released Sr2+ can induce a positive response
+of osteoblastic phenotype cells. Kargozar, in in vivo
+studies, found that they promote both osteogenesis
+and angiogenesis [18]. In our studies, bioglass con-
+taining strontium in the chemical composition did not
+showed increased proliferation compared to glasses
+enriched with zinc. The obtained bacterial count reduc-
+tion results also indicate a higher sensitivity of P. aeru-
+ginosa bacteria compared to S. aureus to bactericidal
+agents present in contact with the tested bioglasses and
+SiO2. The obtained results also show the influence of
+differences in the structure of the cell wall between
+Gram-negative and Gram-positive bacteria and the
+sensitivity of the species to the antibacterial agent
+[28], as well as the chemical composition and particle
+size of the analyzed material. According to Pasquet et al.
+[28], the concentration of Zn2+ plays a significant role,
+because in order to obtain a similar antibacterial effect
+against S. aureus, a ten-fold higher concentration of
+these ions had to be used due to its lower sensitivity.
+Lower susceptibility of S. aureus bacteria was also ob-
+served in previous studies conducted for composites
+containing bioglasses enriched with ZnO [5]. The ob-
+served higher antibacterial activity of bioglasses with
+a finer particle size could be associated with their higher
+specific surface area, and also favor the formation of
+mechanical damage to the bacterial cell wall [15]. Bio-
+glasses P5 I and P5 II also showed antibacterial activ-
+ity, which can be explained by the release of calcium
+ions. According to Zhang [38], an increase in the pH of
+the environment as a result of the release of ions leads
+to a reduction in the number of microorganisms.
+5. Conclusions
+Five bioglasses were produced using the sol-gel
+method in the SiO2-P2O5-CaO system. The chemical
+compositions of glasses were enriched with SrO which
+increased osteogenicity or ZnO which increased anti-
+bacterial activity. Bioglasses were obtained in the form
+of coarse-grained powders, in two particle sizes: I and II.
+The bioglasses were evaluated via TG-DTA, FTIR,
+SEM-EDS analyses before and after incubation in
+SBF solution. The concentration of Ca2+ ions released
+into deionized water confirmed  that the particle size
+has a smaller impact on degradation than the micro-
+structure of bioglass. In the SEM images taken incuba-
+tion in the SBF solution, well-visible spherical forms
+and changes in the chemical composition in the EDS
+analyzes were observed on the surface of all the tested
+bioglasses. LDH and WST-1 tests on human osteo-
+blasts hFOB1.19 confirmed that the tested bioglasses
+were non-cytotoxic. The obtained results also showed
+that the cytotoxicity of the tested bioglasses is more in-
+fluenced by the chemical composition than the particle
+size. The proliferation results of all tested bioglasses
+exceeded the threshold of 70%. The highest antibac-
+terial activity was shown by bioglasses enriched with
+zinc. The observed reduction results indicate a higher
+sensitivity of P. aeruginosa bacteria compared to
+S. aureus to bactericidal agents present in contact with
+the tested bioglasses. In addition, Ca2+ ions released
+from bioglass can increase the pH of the environment,
+and thus also reduce the number of microorganisms.
+The improved method based on cell growth in cell
+culture inserts allowed for a better assessment of the
+effects of ion release on osteoblasts. The properties of
+Bioactive glasses enriched with zinc and strontium: synthesis, characterization, cytocompatibility with osteoblasts...
+79
+the developed and produced bioglasses, including the
+results of physicochemical tests and in vitro biocom-
+patibility assessment, make it possible for them to be
+used in the further part of research on innovative mul-
+tifunctional composites for filling bone defects.
+[11] GORUSTOVICH A.A., STEIMETZ T., CABRINI R.L., PORTO
+LÓPEZ J.M., Osteoconductivity of strontium-doped bioactive
+glass particles: A histomorphometric study in rats, J. Biomed.
+Mater. Res. – Part A, 2010, 92, 232–237, DOI: 10.1002/
+jbm.a.32355.
+[12] HAJDUGA M.B., BOBIŃSKI R., DUTKA M., ULMAN-WŁODARZ I.,
+BUJOK J., PAJĄK C. et al., Analysis of the antibacterial prop-
+erties of polycaprolactone modified with graphene, bioglass
+and zinc doped bioglass, Acta Bioeng. Biomech., 2021, 23,
+https://doi.org/10.37190/ABB-01766-2020-03
+[13] HENCH L.L., WHEELER D.L., GREENSPAN D.C., Molecular Con-
+trol of Bioactivity in Sol-Gel Glasses, J. Sol-Gel Sci. Technol.,
+1998, 13, 245–250, DOI: 10.1023/a:1008643303888.
+[14] HESARAKI S., GHOLAMI M., VAZEHRAD S., SHAHRABI S., The
+effect of Sr concentration on bioactivity and biocompatibility
+of sol-gel derived glasses based on CaO-SrO-SiO2-P2O5 quater-
+nary system, Mater. Sci. Eng. C, 2010, 30, 383–390, DOI:
+10.1016/j.msec.2009.12.001.
+[15] HU S., CHANG J., LIU M., NING C., Study on antibacterial effect
+of 45S5 Bioglass®, J. Mater. Sci. Mater. Med., 2009, 20, 281–
+286, DOI: 10.1007/s10856-008-3564-5.
+[16] ISAAC J., NOHRA J., LAO J., JALLOT E., NEDELEC J.M.,
+BERDAL A., Effects of strontium-doped bioactive glass on the
+differentiation of cultured osteogenic cells, Eur. Cells Mater.,
+2011, 21, 130–143, DOI: 10.22203/eCM.v021a11.
+[17] ITO A., KAWAMURA H., OTSUKA M., IKEUCHI M., OHGUSHI H.,
+ISHIKAWA K. et al., Zinc-releasing calcium phosphate for
+stimulating bone formation, Mater. Sci. Eng. C, 2002, 22, 21–25,
+DOI: 10.1016/S0928-4931(02)00108-X.
+[18] KARGOZAR S., LOTFIBAKHSHAIESH N., AI J., MOZAFARI M.,
+BROUKI M.P., HAMZEHLOU S. et al., Strontium- and cobalt-
+substituted bioactive glasses seeded with human umbilical
+cord perivascular cells to promote bone regeneration via en-
+hanced osteogenic and angiogenic activities, Acta Biomater.,
+2017, 58,502–514, DOI: 10.1016/j.actbio.2017.06.021.
+[19] KARGOZAR S., MONTAZERIAN M., HAMZEHLOU S., KIM H.W.,
+BAINO F., Mesoporous bioactive glasses: Promising plat-
+forms for antibacterial strategies, Acta Biomater., 2018, 81,
+1–19, DOI: 10.1016/j.actbio.2018.09.052.
+[20] LIU X., DING C., CHU P.K., Mechanism of apatite formation on
+wollastonite coatings in simulated body fluids, Biomaterials,
+2004, 25, 1755–1761, DOI: 10.1016/j.biomaterials.2003.08.024.
+[21] LUKITO D., XUE J.M., WANG J., In vitro bioactivity assess-
+ment of 70 (wt.)%SiO2–30 (wt.)%CaO bioactive glasses in
+simulated body fluid, Mater. Lett., 2005, 59, 3267–3271,
+DOI: 10.1016/j.matlet.2005.05.055.
+[22] ŁĄCZKA M., CHOLEWA-KOWALSKA K., OSYCZKA A.M., Bioac-
+tivity and osteoinductivity of glasses and glassceramics and their
+material determinants, Ceram. Int., 2016, 42, 14313–14325,
+DOI: 10.1016/j.ceramint.2016.06.077.
+[23] MAO L., XIA L., CHANG J., LIU J., JIANG L., WU C. et al., The
+synergistic effects of Sr and Si bioactive ions on osteogenesis,
+osteoclastogenesis and angiogenesis for osteoporotic bone re-
+generation, Acta Biomater., 2017, 61, 217–232, DOI: 10.1016/
+j.actbio.2017.08.015.
+[24] MOGHANIAN A., FIROOZI S., TAHRIRI M., Characterization,
+in vitro bioactivity and biological studies of sol-gel synthe-
+sized SrO substituted 58S bioactive glass, Ceram. Int., 2017, 43,
+14880–14890, DOI: 10.1016/j.ceramint.2017.08.004.
+[25] MULANI M.S., KAMBLE E.E., KUMKAR S.N., TAWRE M.S.,
+PARDESI K.R., Emerging Strategies to Combat ESKAPE Patho-
+gens in the Era of Antimicrobial Resistance: A Review, Front.
+Microbiol., 2019, 10, DOI: 10.3389/fmicb.2019.00539.
+Acknowledgements
+This research was funded by NATIONAL CENTRE FOR
+RESEARCH AND DEVELOPMENT, Poland, grant number
+TECHMATSTRATEG 2/406384/7/NCBR/2019 (GlassPoPep – Multi-
+functional composite material with antimicrobial and pro-regenera-
+tive properties for the reconstruction of bone tissue).
+References
+[1] BAHEIRAEI N., EYNI H., BAKHSHI B., NAJAFLOO R., RABIEE N.,
+Effects of strontium ions with potential antibacterial activity
+on in vivo bone regeneration, Sci. Rep., 2021, 11, 1–9, DOI:
+10.1038/s41598-021-88058-1.
+[2] BALASUBRAMANIAN P., STROBEL L.A., KNESER U.,
+BOCCACCINI A.R., Zinc-containing bioactive glasses for bone
+regeneration, dental and orthopedic applications, Biomed.
+Glas., 2015, 1, 51–69, DOI: 10.1515/bglass-2015-0006.
+[3] BEYERSMANN D., Homeostasis and Cellular Functions of Zinc,
+Materwiss. Werksttech., 2002, 33, 764–769, DOI: 10.1002/
+mawe.200290008.
+[4] CACCIOTTI I., Bivalent cationic ions doped bioactive glasses:
+the influence of magnesium, zinc, strontium and copper on
+the physical and biological properties, J. Mater. Sci., 2017, 52,
+8812–8831, DOI: 10.1007/s10853-017-1010-0.
+[5] CIOŁEK L., BIERNAT M., JAEGERMANN Z., ZACZYŃSKA E.,
+CZARNY A., JASTRZĘBSKA A., The studies of cytotoxicity and
+antibacterial activity of composites with ZnO-doped bioglass,
+Int. J. Appl. Ceram. Technol., 2019, 16, 541–551, DOI: 10.1111/
+ijac.13144.
+[6] DESHMUKH K., KOVÁŘÍK T., KŘENEK T., DOCHEVA D., STICH T.,
+POLA J., Recent advances and future perspectives of sol-gel
+derived porous bioactive glasses: a review, RSC Adv., 2020,
+10, 33782–33835, DOI: 10.1039/d0ra04287k.
+[7] EL-KADY A.M., KAMEL N.A., ELNASHAR M.M., FARAG M.M.,
+Production of bioactive glass/chitosan scaffolds by freeze-
+gelation for optimized vancomycin delivery: Effectiveness
+of glass presence on controlling the drug release kinetics,
+J. Drug. Deliv. Sci. Technol., 2021, 66, 102779, DOI: 10.1016/
+j.jddst.2021.102779.
+[8] FREDHOLM Y.C., KARPUKHINA N., BRAUER D.S., JONES J.R.,
+LAW R.V., HILL R.G., Influence of strontium for calcium sub-
+stitution in bioactive glasses on degradation, ion release and
+apatite formation, J. R. Soc. Interface, 2012, 9, 880–889,
+DOI: 10.1098/rsif.2011.0387.
+[9] GENTLEMAN E., FREDHOLM Y.C., JELL G., LOTFIBAKHSHAIESH N.,
+O’DONNELL M.D., HILL R.G. et al., The effects of strontium-
+substituted bioactive glasses on osteoblasts and osteoclasts
+in vitro, Biomaterials, 2010, 31, 3949–3956, DOI: 10.1016/
+j.biomaterials.2010.01.121.
+[10] GERHARDT L.C., BOCCACCINI A.R., Bioactive glass and
+glass-ceramic scaffolds for bone tissue engineering, Materi-
+als (Basel), 2010, 3, 3867–3910, DOI: 10.3390/ma3073867.
+L. CIOŁEK et al.
+80
+[26] MURPHY S., WREN A.W., TOWLER M.R., BOYD D., The effect
+of ionic dissolution products of Ca–Sr–Na–Zn–Si bioactive
+glass on in vitro cytocompatibility, J. Mater. Sci. Mater. Med.,
+2010, 21, 2827–2834, DOI: 10.1007/s10856-010-4139-9.
+[27] O’DONNELL M.D., CANDARLIOGLU P.L., MILLER C.A.,
+GENTLEMAN E., STEVENS M.M., Materials characterisation
+and cytotoxic assessment of strontium-substituted bioactive
+glasses for bone regeneration, J. Mater. Chem., 2010, 20,
+8934, DOI: 10.1039/c0jm01139h.
+[28] PASQUET J., CHEVALIER Y., PELLETIER J., COUVAL E.,
+BOUVIER D., BOLZINGER M.A., The contribution of zinc ions
+to the antimicrobial activity of zinc oxide, Colloids Surfaces
+A Physicochem Eng. Asp., 2014, 457, 263–274, DOI: 10.1016/
+j.colsurfa.2014.05.057.
+[29] SAINO E., GRANDI S., QUARTARONE E., MALIARDI V., GALLI D.,
+BLOISE N., In vitro calcified matrix deposition by human os-
+teoblasts onto a zinc-containing bioactive glass, Eur. Cells Ma-
+ter., 2011, 21, 59–72, DOI: 10.22203/eCM.v021a05.
+[30] SARAVANAPAVAN P., HENCH L.L., Mesoporous calcium
+silicate glasses. I. Synthesis, J. Non. Cryst. Solids, 2003, 318,
+1–13, DOI: 10.1016/S0022-3093(02)01864-1.
+[31] SERGI R., BELLUCCI D., CANNILLO V., A review of bioactive
+glass/natural polymer composites: State of the art., Materials
+(Basel), 2020, 13, 1–38, DOI: 10.3390/ma13235560.
+[32] DA SILVA B.L., ABUÇAFY M.P., MANAIA E.B., JUNIOR J.A.O.,
+CHIARI-ANDRÉO B.G., PIETRO R.C.L.R. et al., Relationship
+between structure and antimicrobial activity of zinc oxide
+nanoparticles: An overview, Int. J. Nanomedicine, 2019, 14,
+9395–9410, DOI: 10.2147/IJN.S216204.
+[33] STROBEL L.A., HILD N., MOHN D., STARK W.J., HOPPE A.,
+GBURECK U., Novel strontium-doped bioactive glass nano-
+particles enhance proliferation and osteogenic differentiation
+of human bone marrow stromal cells, J. Nanoparticle Res.,
+2013, 15, DOI: 10.1007/s11051-013-1780-5.
+[34] VAID C., MURUGAVEL S., DAS C., ASOKAN S., Mesoporous
+bioactive glass and glass-ceramics: Influence of the local struc-
+ture on in vitro bioactivity, Microporous Mesoporous Mater.,
+2014, 186, 46–56, DOI: 10.1016/j.micromeso.2013.11.027.
+[35] VUKOMANOVIC M., GAZVODA L., ANICIC N., RUBERT M.,
+SUVOROV D., MÜLLER R., Multi-doped apatite: Strontium,
+magnesium, gallium and zinc ions synergistically affect osteo-
+genic stimulation in human mesenchymal cells important for
+bone tissue engineering, Biomater. Adv., 2022, 140, 213051,
+DOI: 10.1016/j.bioadv.2022.213051.
+[36] WU C., RAMASWAMY Y., CHANG J., WOODS J., CHEN Y.,
+ZREIQAT H., The effect of Zn contents on phase composition,
+chemical stability and cellular bioactivity in Zn-Ca-Si system
+ceramics, J. Biomed. Mater. Res. – Part B Appl. Biomater.,
+2008, 87, 346–53, DOI: 10.1002/jbm.b.31109.
+[37] YAN M., SONG Y., WONG C.P., HARDIN K., HO E., Zinc defi-
+ciency alters DNA damage response genes in normal human
+prostate epithelial cells, J. Nutr., 2008, 138, 667–673, DOI:
+10.1093/jn/138.4.667.
+[38] ZHANG D., HUPA M., HUPA L., In situ pH within particle beds of
+bioactive glasses, Acta Biomater., 2008, 4, 1498–1505, DOI:
+10.1016/j.actbio.2008.04.007.
+[39] ZHENG K., BOCCACCINI A.R., Sol-gel processing of bioactive
+glass nanoparticles: A review. Adv. Colloid Interface Sci., 2017,
+249, 363–373, DOI: 10.1016/j.cis.2017.03.008.
+[40] ZHENG K., LU M., RUTKOWSKI B., DAI X., YANG Y.,
+TACCARDI N., ZnO quantum dots modified bioactive glass nano-
+particles with pH-sensitive release of Zn ions, fluorescence,
+antibacterial and osteogenic properties, J. Mater. Chem. B,
+2016, 4, 7936–7949, DOI: 10.1039/C6TB02053D.

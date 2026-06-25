@@ -1,0 +1,841 @@
+Original Article 
+ 
+Molecular analysis of multidrug-resistant E. coli in pediatric UTIs: findings 
+from a Nigerian Hospital 
+ 
+Eunice Damilola Wilkie1, Chidinma Vivian Ezeani2, Deborah Oluwasola Olasehinde2, Omolanke 
+Temitope Oyedemi1, Jude Oluwapelumi Alao1,3, Anthonia Olufunke Oluduro2, Oluwapelumi Breakthrough 
+Oyetunde1,4 
+ 
+1 Adeleke University, Osun State, Nigeria 
+2 Obafemi Awolowo University, Ile-Ife, Nigeria 
+3 School of Public Health and Interdisciplinary Studies, Auckland University of Technology, Auckland, New Zealand 
+4 Biomedical Health Department, University of Derby, Derby, England, United Kingdom 
+ 
+Abstract 
+Introduction: This study aimed to isolate and characterize antibiotic-resistant Escherichia coli from urine samples of children at the Mother 
+and Child Hospital in Ondo State, Nigeria, assessing antibiogram profiling and resistance genes.  
+Methodology: Three hundred urine samples (158 females, 142 males), aged 3-5 years, were collected, transported on ice, and analyzed 
+bacteriologically. E. coli and Gram-negative bacteria were isolated using Eosin Methylene Blue agar and identified through colony morphology 
+and biochemical tests. Antibiotic susceptibility was determined via Kirby Bauer's disc diffusion, and resistance genes were detected using 
+Polymerase Chain Reaction (PCR).  
+Results: Of the 300 samples, 40 (13.3%) yielded E. coli with varying antibiotic resistance profiles. The highest resistance was against 
+Amoxicillin-clavulanate (87.5%) followed by Ceftriaxone (80%). Susceptibility was observed to Nitrofurantoin, Erythromycin, and 
+Chloramphenicol. Multiple resistance patterns against 3-4 antibiotic classes were recorded, with 12 distinct patterns observed. Eight isolates 
+harbored blaCTX-M gene, while five carried the aac3-IV gene.  
+Conclusions: The study concluded a high occurrence of E. coli infection and multiple antibiotic resistance in the region. The presence of 
+resistance genes suggests significant economic and health implications, emphasizing prudent antibiotic use under physician guidance to 
+mitigate multiple antibiotic resistance. 
+ 
+Key words: E. coli; resistance; antibiotics; gene; UTI. 
+ 
+J Infect Dev Ctries 2024; 18(2):251-257. doi:10.3855/jidc.18520 
+ 
+(Received 10 May 2023 – Accepted 07 September 2023) 
+ 
+Copyright © 2024 Wilkie et al. This is an open-access article distributed under the Creative Commons Attribution License, which permits unrestricted use, 
+distribution, and reproduction in any medium, provided the original work is properly cited. 
+ 
+Introduction
+symptoms they exhibit, which can result in improper 
+treatment.
+Urinary tract infection (UTI) is a bacterial infection 
+that affects one or more parts of the urinary system, 
+such as the urethra, bladder, ureters, and kidneys. The 
+most common cause of UTI is the multiplication of 
+bacteria at the urethra's entrance, which can then move 
+up to the bladder or even the kidneys and spread to the 
+bloodstream [1]. UTIs are a major public health concern 
+in both hospital and community settings, particularly in 
+developing countries, due to their high mortality rate 
+and economic burden [2].
+The emergence and rapid spread of antibiotic-
+resistant Enterobacteriaceae is a significant public 
+health threat. These bacteria can withstand lethal doses 
+of antibiotics with various mechanisms of action and 
+chemical structures, such as target alteration, decreased 
+uptake, enzyme degradation, and overexpression of 
+efflux proteins. Molecular genotyping and phenotyping 
+techniques can be used to screen and confirm 
+antimicrobial 
+drug 
+resistance 
+expression 
+in 
+a 
+population.
+Enterobacteriaceae, specifically those possessing 
+adhesins and hydrolytic enzymes like β-lactamases, are 
+the primary cause of UTIs. β-lactamase production is 
+the most common resistance mechanism used by these 
+bacteria, and their increasing prevalence is a significant 
+complication [2-5]. Children with UTIs can be 
+challenging to diagnose and treat due to the nonspecific
+The prevalence of undiagnosed and improperly 
+treated urinary tract infections (UTIs) in children is a 
+major concern for the public and healthcare 
+professionals due to the difficulty in diagnosing UTIs 
+with nonspecific symptoms in pediatric patients. 
+Although UTI complaints are rare in children,
+Wilkie et al. – MDR E. coli in pediatric UTIs: A Nigerian study 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):251-257.
+symptoms usually only appear after five years of age, 
+such 
+as 
+fever 
+accompanied 
+by 
+rigors/chills, 
+suprapubic/abdominal pain, and vomiting [6].
+Patients who declined to provide informed consent 
+and those with medical conditions that could potentially 
+interfere with the study objectives were excluded from 
+the research.
+CTX-M β-lactamase enzymes are categorized into 
+five groups based on amino acid similarity, with CTX-
+M-15 and CTX-M-14 being the most prevalent 
+globally. These enzymes are often associated with 
+genes conferring resistance to antibiotics like 
+aminoglycosides and fluoroquinolones. Escherichia 
+coli, a Gram-negative bacterium found in the human 
+intestinal tract, is a significant cause of UTIs, 
+bloodstream infections, septicemia, and meningitis. 
+Multi-drug-resistant strains of E. coli are becoming 
+increasingly prevalent worldwide, particularly in 
+African 
+countries 
+with 
+inadequate 
+laboratory 
+diagnostics and surveillance systems.
+Sample collection
+A clean catch of urine samples was collected from 
+300 pediatric outpatients using sterile universal bottles. 
+The samples were temporarily stored on ice packs at -4 
+ºC to preserve their integrity during transportation and 
+were promptly transported to the laboratory for 
+analysis.
+Isolation of organisms
+Using an aseptic technique, a loop full of each 
+sample was streaked onto Eosin Methylene blue agar 
+(manufactured by Lab M Ltd, UK), and the agar plates 
+were then incubated at 37 °C for 24 hours. After the 
+incubation period, distinct colonies were subcultured 
+onto sterile nutrient agar plates, which were freshly 
+prepared, and incubated again at 37 °C for 24 hours. 
+The distinctive morphological properties of each pure 
+culture on the agar plates were observed.
+Given the significant impact of multidrug-resistant 
+E. coli in pediatric UTIs, there is a critical need to 
+investigate the genetic basis underlying antibiotic 
+resistance in these bacterial strains. Understanding the 
+prevalence of CTX-M β-lactamase enzymes and their 
+association with multidrug resistance in E. coli isolates 
+from pediatric UTI cases can provide valuable insights 
+for improved diagnosis and treatment strategies.
+Hence, this study aims to address the knowledge 
+gap by characterizing the molecular profiles of 
+multidrug-resistant E. coli isolates obtained from 
+pediatric UTI cases in a specific healthcare setting. The 
+findings from this study can contribute to a better 
+understanding of antibiotic resistance patterns in 
+pediatric UTIs and inform evidence-based strategies for 
+effective antimicrobial therapy in the studied region. 
+Ultimately, the research seeks to contribute to the 
+control and management of multidrug-resistant E. coli 
+infections in pediatric patients, safeguarding their 
+health and promoting prudent antibiotic use in the 
+hospital and community settings.
+Identification of isolates
+The isolates' morphological characteristics were 
+appropriately recorded, and initial identification was 
+conducted using Bergey's Manual of Determinative 
+Bacteriology. To further identify the bacterial isolates, 
+an Analytical Profile Index (API) 20E test kit 
+(manufactured by bioMérieux, Inc.) was utilized.
+Antibiotic susceptibility test
+The Kirby-Bauer's disc diffusion method was 
+utilized to test the susceptibility of the isolates to 
+antibiotics. The antibiotic discs (manufactured by 
+Oxoid Ltd, UK) that were used in the study include 
+amoxicillin-clavulanate 
+(Augmentin) 
+(30 
+µg), 
+Ceftriaxone (30 µg), Nitrofurantoin (300 µg), 
+Gentamycin (10 µg), Cotrimoxazole (25 µg), Ofloxacin 
+(10 µg), Amoxicillin (25 µg), Ciprofloxacin (10 µg), 
+Ceftazidime (30 µg), Cefuroxime (30 µg), Cefixime (5 
+µg), Chloramphenicol (30 µg), Streptomycin (10 µg), 
+Erythromycin (5 µg), and Pefloxacin (5 µg). These 
+discs were placed aseptically onto Mueller-Hinton agar 
+plates, which were previously seeded with a 24-hour-
+old culture (0.5 McFarland's standard- 107 cfu/mL) 
+using sterile forceps. The plates were then incubated at 
+37 °C for 24 hours. The diameter of the zone of 
+inhibition was measured using a transparent calibrated 
+ruler to the nearest millimeter, and the results were 
+interpreted according to the guidelines of the Clinical
+Methodology 
+Ethical approval and informed consent
+The study obtained ethical clearance from the 
+Mother and Child Hospital's ethical and research 
+committee in Ondo, South-West, Nigeria, with the 
+reference number MCHO/06/15/003. Informed consent 
+was obtained from the parents or guardians of the 
+children included in the study, and only those who 
+provided consent were included in the research.
+Inclusion and exclusion criteria
+The 
+study 
+included 
+asymptomatic 
+children 
+outpatients at the Mother and Child Hospital in Ondo, 
+South-West, Nigeria, aged between 3 to 5 years.
+252
+Wilkie et al. – MDR E. coli in pediatric UTIs: A Nigerian study 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):251-257.
+Table 1. Primers for the detection of the resistance genes for E. coli.
+Primer 
+Sequence 5’-3’ 
+Gene 
+Product Size (bp) 
+Annealing Temp (°C) 
+Reference
+CTX-M 
+F: CCATGTGCAGTACCAGTAA
+R: TTAGTGACCAGAATAAGCGG 
+blaCTX-M 
+585 
+58 
+[8]
+aac3-IV 
+F: AGTTGACCCAGGGCTGTCGC 
+R: GTGTGCTGCTGGTCCACAGC 
+aac3-IV 
+286 
+55 
+[9]
+Laboratory Standards Institute [7]. Multiple antibiotic 
+resistance was defined as resistance to more than two 
+classes of antibiotics.
+Results 
+Occurrence of E. coli in relation to age and sex of 
+children patients
+Out of the total 300 urine samples collected from 
+the cohort of children (158 females and 142 males), 40 
+(13.3%) yielded E. coli isolates. The age and gender 
+distribution of the participants is presented in Table 2. 
+Among the 300 children, 147 (78 females and 69 males) 
+were in the age range of 3-4 years, whereas 153 (80 
+females and 73 males) were between the ages of 4-5 
+years.
+Molecular characterization of multiple antibiotic 
+resistant E. coli isolates
+Twelve E. coli isolates that were resistant to 
+multiple antibiotics were selected based on their 
+antibiotype and subjected to gene detection analysis. 
+The resistance genes blaCTX (585bp) [8] and Tet A 
+(954bp) [9] were detected using appropriate primers as 
+described in Table 1. Bacterial DNA was extracted 
+using the boiling method, whereby the samples were 
+boiled at 100 °C for 7 minutes in a water bath and then 
+chilled on ice for 2 minutes. The PCR reaction was 
+carried out using the following thermocycling 
+conditions: initial denaturation at 94 °C for 5 minutes, 
+followed by 35 cycles of denaturation at 94 °C for 30 
+seconds, annealing at 58 °C for 30 seconds for blaCTX 
+(585bp) gene and 55 °C (aac3-IV) for 1 minute, 
+extension at 72 °C for 1 minute, and a final extension at 
+the same temperature for 5 minutes. The PCR products 
+were visualized using a short wave ultraviolet trans-
+illuminator and photographed using a gel bioimaging 
+system.
+From the one-way ANOVA performed during this 
+study, the calculated F-value was 2.08, and the critical 
+F-value was 3.88. Since the calculated F-value was less 
+than the critical F-value, we failed to reject the null 
+hypothesis. This means that there is no significant 
+difference in the occurrence of E. coli between the two 
+age groups.
+Antibiotic susceptibility profile of E. coli isolates 
+cultured from urine samples of children attending 
+mother and child hospital, Ondo
+The E. coli isolates obtained from 40 of the children 
+(13.3% of the total cohort) displayed varying degrees of 
+antibiotic resistance, with the highest resistance rates 
+observed for amoxicillin-clavulanate (35 isolates, 
+87.5%), ceftriaxone (32 isolates, 80%), and gentamycin 
+(30 isolates, 75%). In contrast, none of the isolates were 
+resistant 
+to 
+erythromycin, 
+chloramphenicol, 
+or 
+nitrofurantoin. Intermediate resistance was observed in 
+16 isolates (40%) for amoxicillin and cotrimoxazole, 
+while ceftazidime (32.5%), ciprofloxacin (30%), and 
+streptomycin (25%) showed intermediate resistance in 
+a smaller proportion of isolates. Among the 15 
+antibiotics tested, pefloxacin (8 isolates, 20%) and 
+ceftazidime (4 isolates, 10%) showed the lowest levels 
+of resistance. The percentage resistance of the E. coli 
+isolates showed a significant difference (p < 0.05). 
+None of the isolates displayed intermediate resistance 
+to nitrofurantoin, gentamycin, ofloxacin, cefixime,
+Statistical analysis
+Statistical analysis was carried out using R software 
+(R 4.1.1). Descriptive statistics were employed to 
+analyze the prevalence and resistance patterns of the 
+isolated E. coli strains. One-way ANOVA was 
+performed to determine if there is any significant 
+difference in the occurrence of E. coli against the two 
+age groups (ages 3-4 and 4-5). The null hypothesis for 
+the one-way ANOVA was that there was no significant 
+difference in growth rates between the two age groups. 
+The alternative hypothesis was that there was a 
+significant difference in growth rates between the two 
+age groups, using a significance level of 0.05.
+Table 2. Occurrence of E. coli in relation to age and sex of the children (n = 300).
+Age 
+Number of
+Number of samples
+Number of
+Number of samples with
+Number of
+Number of samples
+children sampled
+with growth n (n %)
+females
+growth n (n %)
+males
+with growth n (n%)
+3-4 years 
+147 
+22(55) 
+78 
+13 (59.1) 
+69 
+9 (40.9)
+4-5 years 
+153 
+18 (45) 
+80 
+11 (61.1) 
+73 
+7 (38.9)
+Total 
+300 
+40 (13.3) 
+158 
+24 (15.2) 
+142 
+16 (11.3)
+253
+Wilkie et al. – MDR E. coli in pediatric UTIs: A Nigerian study 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):251-257.
+Table 3. Antibiotic susceptibility profile of E. coli isolates cultured from urine samples of children patients.
+Antibiotic (µg) 
+No of Isolates 
+Number of Isolate Occurrence (n%)
+Susceptibility 
+Intermediate 
+Resistant
+Amoxicillin (25 µg) 
+40 
+13 
+16 
+11
+Augmentin (30 µg) 
+40 
+2 
+3 
+35
+Cefixime (5 µg) 
+40 
+29 
+0 
+11
+Ceftazidime (30 µg) 
+40 
+23 
+13 
+4
+Ceftriaxone (30 µg) 
+40 
+2 
+6 
+32
+Cefuroxime (30 µg) 
+40 
+9 
+5 
+26
+Chloramphenicol (30 µg) 
+40 
+40 
+0 
+0
+Ciprofloxacin (10 µg) 
+40 
+19 
+12 
+9
+Cotrimoxazole (25 µg) 
+40 
+14 
+16 
+10
+Erythromycin (5 µg) 
+40 
+40 
+0 
+0
+Gentamycin (10 µg) 
+40 
+10 
+0 
+30
+Nitrofurantoin (300 µg) 
+40 
+40 
+0 
+0
+Ofloxacin (10 µg) 
+40 
+12 
+0 
+28
+Pefloxacin (5 µg) 
+40 
+30 
+2 
+8
+Streptomycin (10 µg) 
+40 
+21 
+10 
+9
+chloramphenicol, and erythromycin. The details of the 
+resistance rates and intermediate resistance are 
+provided in Table 3.
+Seventy-five percent (30) of the 40 E. coli isolates 
+recovered in this investigation exhibited multiple 
+resistance to at least three antibiotic classes. A total of 
+12 different multiple antibiotic resistance patterns were 
+identified (Table 4).
+Multiple antibiotic resistance patterns of E. coli isolates 
+from urine samples of children attending mother and 
+child hospital, Ondo
+Molecular detection of resistance (blaCTX) genes in E. 
+coli
+The criterion for multiple antibiotic resistance was 
+established as resistance to three or more different 
+classes of antibiotics. The multiple antibiotic resistance 
+profiles of the E. coli isolates are provided in Table 3. 
+The antibiotic classes tested comprised Beta lactams 
+(amoxicillin, 
+amoxicillin-clavulanate, 
+ceftriaxone, 
+ceftazidime, 
+cefuroxime, 
+and 
+cefixime), 
+Fluoroquinolones 
+(ciprofloxacin, 
+ofloxacin, 
+and 
+pefloxacin), 
+Aminoglycosides 
+(gentamycin 
+and 
+streptomycin), 
+Sulphonamides/Trimethoprim 
+(cotrimoxazole), 
+Nitrofurans 
+(nitrofurantoin), 
+Macrolides (erythromycin), and Chloramphenicol.
+Figure 1 shows the amplification products of 
+blaCTX genes separated by agarose gel electrophoresis. 
+Eight of the 12 representative isolates that was 
+resistance to beta lactam antibiotics as depicted by 
+Lanes 3, 4, 5, 7, 8, 10, 11, and 12 harbored blaCTX 
+resistance gene of molecular weight of 585 bp.
+Molecular Detection of aac6’ Resistance Gene in E. 
+coli Isolates
+Agarose gel electrophoresis of the amplification 
+product of aac3-IV (286 bp) gene in select multiple 
+antibiotic resistant E. coli is presented in Figure 2. Five
+Table 4. Multiple antibiotic resistance pattern of E. coli cultured from urine samples of children patients.
+Isolate 
+No of antibiotic classes 
+Multiped antibiotic
+resistance patterns 
+Frequency (%) 
+Overall (%)
+E. coli 
+4 
+AUG, COT, GEN, OFL 
+5 (12.5) 
+6 (15) 
+CAZ, COT, OFL, STR 
+1 (2.5)
+AMX, COT, OFL 
+1 (2.5)
+AUG, COT, GEN 
+1 (2.5)
+AUG, GEN, OFL 
+11 (27.5)
+AUG, GEN, PEF 
+3 (7.5)
+CAZ, PEF, STR 
+2 (5)
+3
+CPX, GEN, OFL 
+2 (5)
+24 (60)
+CRO, PEF, STR 
+1 (2.5)
+CRX, COT, OFL 
+1 (2.5)
+CRX, GEN, OFL 
+1 (2.5)
+CRX, OFL, STR 
+1 (2.5)
+COT: Cotrimoxazole 25 µg, CPX: Ciprofloxacin 10 µg, AMX: Amoxicillin 25 µg, OFL: Ofloxacin 5 µg, CRO: Ceftriaxone 30 µg, ERY: 5 µg, GEN: Gentamycin 
+10 µg, PFX: Pefloxacin 5 µg, AUG: Augmentin 30 µg, NIT: Nitrofurantoin 300 µg, CAZ: Ceftazidime 30 µg, CRX: Cefuroxime 30 µg, CXM: Cefixime 5 µg, 
+CHL: Chloramphenicol 30 µg, ERY: Erythromycin 5 µg, STR: Streptomycin 10 µg, PEF: Pefloxacin 5 µg.
+254
+Wilkie et al. – MDR E. coli in pediatric UTIs: A Nigerian study 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):251-257.
+of the 12 representative isolates were resistant to 
+gentamycin, as depicted by Lane 1, 2, 4, 11, and 12 
+harbored aac6 resistance gene weight of 286bp.
+resistance to commonly used antimicrobial agents in the 
+treatment of E. coli infections [11].
+A study that sought to discuss the rising concern of 
+antibiotic resistance in pediatric UTIs by Esposito et al. 
+(2022) emphasized the need for continuous monitoring 
+of uropathogens' antibiotic resistance to guide effective 
+therapy [12]. This aligns with the findings in the current 
+study, where a significant proportion of E. coli isolates 
+exhibited resistance to commonly used antibiotics, 
+including Cefixime, Ceftazidime, and Erythromycin. 
+The increased prevalence of extended-spectrum β-
+lactamase (ESBL)-producing strains in both studies 
+reflects a global trend of concern.
+Discussion
+E. coli is a well-known bacterial pathogen that is 
+responsible for various infections worldwide. However, 
+the emergence and spread of antibiotic resistance 
+among E. coli isolates pose a significant threat to public 
+health globally, leading to major health problems like 
+prolonged hospitalization and treatment failure [10]. In 
+this study, we investigated the prevalence and patterns 
+of antimicrobial resistance among E. coli isolates 
+obtained from urine samples of children under the age 
+of five in Ondo, South Western Nigeria.
+Additionally, a single-center experience study by 
+Samancı et al. (2020) also highlights the predominance 
+of E. coli as the most common causative agent of UTIs 
+in children [13]. Similar to the current study, the authors 
+reported high resistance to antibiotics like ampicillin, 
+ampicillin-sulbactam, 
+amoxicillin-clavulanate, 
+and 
+TMP-SMX. The presence of multidrug resistance and 
+low resistance to antibiotics like nitrofurantoin is 
+consistent with the findings in the current study.
+The study found a significant occurrence of 
+antibiotic resistance among the E. coli isolates, 
+indicating a wide spectrum of resistance to all routinely 
+used antibiotics in the region, such as amoxicillin-
+clavulanate, amoxicillin, ciprofloxacin, gentamicin, 
+cotrimoxazole, and ofloxacin. The number of E. coli 
+isolates with multi-drug resistance was 30 (75%), and 
+all the isolates displayed resistance to one or more 
+antibiotic classes. Moreover, the resistance levels were 
+higher than those reported by previous studies.
+Another review by Mahony et al. (2020) discusses 
+the global spread of MDROs and their implications on 
+UTIs in children [14]. While most literature on drug 
+resistance in UTIs has focused on ESBL-producing 
+organisms, the review acknowledges the significance of 
+multidrug 
+resistance 
+beyond 
+beta-lactamase 
+production. This aligns with the current study, where 
+60% of the E. coli isolates showed resistance to more 
+than one antibiotic class, indicating multidrug 
+resistance.
+This study suggested that the widespread use of 
+antimicrobial agents for infection treatment in the 
+community could be a contributing factor to this serious 
+antimicrobial resistance problem. This trend was 
+observed in a study conducted at Rajah Muthiah 
+Medical College and Hospital in Annamalainagar, 
+Tamil Nadu, India, which discovered a high rate of drug
+Figure 2. Agarose gel electrophoresis of the amplification 
+product coding aac3-IVgene in selected multiple antibiotic-
+resistant E. coli isolates.
+Figure 1. Agarose gel electrophoresis of the amplification 
+product coding blaCTX gene in selected multiple antibiotic-
+resistant E. coli isolates.
+L = 1000bp ladder, 3 = C23, 4 = C112, 5 = C91, 1 = C104, 2= C111, 7= 
+C121, 8 = C14, 9 = C127
+L = 100bp ladder, 1 = C23, 2 = C112, 9 = C91, 11 = C127, 12 = C14
+255
+Wilkie et al. – MDR E. coli in pediatric UTIs: A Nigerian study 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):251-257.
+Antimicrobial resistance in bacteria of medical 
+importance imposes serious constraints on the treatment 
+options for many infections, which concerns general 
+practitioners and pediatricians in developing countries 
+[15]. According to this study, amoxicillin-clavulanate, 
+gentamycin, ceftriaxone, and ofloxacin should not be 
+used to treat E. coli infections in the study location, due 
+to their high-level resistance. The development of beta-
+lactamases enzymes may be the cause of amoxicillin-
+clavulanate resistance [16]. Moreover, the presence of 
+extended-spectrum β-lactamase has been identified as 
+the primary source of multiple resistance in E. coli [17]. 
+The most common mechanism of cotrimoxazole 
+resistance is the acquisition of plasmid-encoded, variant 
+diaminopyrimidinefolatereductase 
+enzymes 
+[18], 
+whereas the relatively high rates of gentamycin 
+resistance in this study are most likely due to the 
+antibiotic’s indiscriminate use.
+nitrofurantoin, erythromycin, and chloramphenicol will 
+assist clinicians in effectively managing E. coli 
+infection in children in the research region. 
+ 
+ 
+References 
+1. 
+Korbel L, Howell M, Spencer JD (2017) The clinical diagnosis 
+and management of urinary tract infections in children and 
+adolescents. Paediatr Int Child Health 37: 273–279. doi: 
+10.1080/20469047.2017.1382046.
+2. 
+Ekwealor PA, Ugwu MC, Ezeobi I, Amalukwe G, Ugwu BC, 
+Okezie U, Stanley C, Esimone C (2016) Antimicrobial 
+evaluation of bacterial isolates from urine specimen of patients 
+with complaints of urinary tract infections in Awka, Nigeria. 
+Int J Microbiol 9740273. doi: 10.1155/2016/9740273.
+3. 
+Elsayed TI, Ismail HA, Elgamal SA, Gad AH (2017) The 
+occurrence of multidrug resistant E. coli which produce ESBL 
+and cause urinary tract infections. J Appl Microbiol Biochem 
+1: 2–8. doi: 10.21767/2576-1412.100008.
+4. 
+Muhammad A, Khan SN, Ali N, Rehman MU, Ali I (2020) 
+Prevalence 
+and 
+antibiotic 
+susceptibility 
+pattern 
+of 
+uropathogens in outpatients at a tertiary care hospital. New 
+Microbes 
+New 
+Infect 
+36: 
+100716. 
+doi: 
+10.1016/j.nmni.2020.100716.
+Interestingly, all E. coli isolates obtained from the 
+urine samples of children under the age of five in the 
+study showed a relatively high rate of sensitivity to 
+nitrofurantoin, chloramphenicol, and erythromycin. 
+The study found the existence of extended-spectrum β-
+lactamases and aminoglycoside 3-N-acetyltransferase, 
+which contribute to multidrug resistance in E. coli 
+isolates, which is in tandem to a study in Sudan that 
+sought to identify the blaTEM, blaSHV and blaCTX-M 
+genes among Enterobacteriaceae isolates from patients 
+in Khartoum, Sudan [19]. The global incidence of E. 
+coli infections has been recorded, and investigations 
+have revealed the presence of several extended-
+spectrum 
+β-lactamase 
+(ESBLs) 
+genes 
+among 
+Enterobacteriaceae 
+members 
+[19,20]. 
+Enterobacteriaceae (mainly E. coli) generating CTX-
+M enzymes have been discovered as a source of urinary 
+tract infections, primarily in the community [21].
+5. 
+Parajuli NP, Maharjan P, Parajuli H, Joshi G, Paudel D, Sayami 
+S, Khanal PR (2017) High rates of multidrug resistance among 
+uropathogenic Escherichia coli in children and analyses of 
+ESBL producers from Nepal. Antimicrob Resist Infect Control 
+6: 9. doi: 10.1186/s13756-016-0168-6.
+6. 
+Inouye A (2020) Urologic conditions in infants and children: 
+urinary tract infection and vesicoureteral reflux. FP Essent 488: 
+25–34.
+7. 
+Clinical 
+and 
+Laboratory 
+Standards 
+Institute 
+(2020) 
+Performance standards for antimicrobial susceptibility testing, 
+30th ed CLSI supplement M100 Clinical and Laboratory 
+Standards Institute, Wayne, PA.
+8. 
+Moodley A, Guardabassi L (2009) Transmission of IncN 
+plasmids 
+carrying 
+blaCTX-M-1 
+between 
+commensal 
+Escherichia coli in pigs and farm workers. Antimicrob Agents 
+Chemother 53: 1709-1711. doi: 10.1128/AAC.01014-08.
+9. 
+Messele YE, Abdi RD, Yalew ST, Tegegne DT, Emeru BA, 
+Werid GM (2017) Molecular determination of antimicrobial 
+resistance in Escherichia coli isolated from raw meat in Addis 
+Ababa and Bishoftu, Ethiopia. Ann Clin Microbiol Antimicrob 
+16: 55. doi: 10.1186/s12941-017-0233-x.
+The study's findings also suggested that antibiotic 
+resistance could emerge due to patients' indiscriminate 
+purchase of medications over the counter and 
+physicians' incorrect prescription of antibiotics [22]. 
+Therefore, the prescriber should strictly follow the five 
+rights of medication administration: the appropriate 
+patient, the right medicine, the right dose, the right 
+route, and the right time.
+10. Naqid IA, Balatay AA, Hussein NR, Saeed KA, Ahmed HA, 
+Yousif SH (2020) Antibiotic susceptibility pattern of e. coli 
+isolated from various clinical samples in Duhok city, Kurdistan 
+Region 
+of 
+Iraq. 
+Int 
+J 
+Infect 
+7: 
+e103740. 
+doi: 
+10.5812/iji.103740.
+11. Uma B, Prabhakar K, Rajendran S, Kavitha K, Sarayu YL 
+(2009) Antibiotic sensitivity and plasmid profiles of 
+Escherichia coli isolated from pediatric diarrhea. J Glob Infect 
+Dis 1: 107–110. doi: 10.4103/0974-777X.56255.
+Conclusions
+12. Esposito S, Biasucci G, Pasini A, Predieri B, Vergine G, Crisafi 
+A, Malaventura C, Casadio L, Sella M, Pierantoni L, Gatti C, 
+Paglialonga L, Sodini C, La Scola C, Bernardi L, Autore G, 
+Canto GD, Argentiero A, Cantatore S, Ceccoli M, De Fanti A, 
+Suppiej A, Lanari M, Principi N, Pession A, Iughetti L (2022) 
+Antibiotic resistance in paediatric febrile urinary tract 
+infections. J Glob Antimicrob Resist 29: 499-506. doi: 
+10.1016/j.jgar.2021.11.003.
+In this study, the occurrence of E. coli infection is 
+high, with a high level of multiple antibiotic resistance. 
+This study’s recovery of resistance genes (blaCTX and 
+aac3-IV) in the multiple antibiotic resistant E. coli 
+identified in this study is of great health and economic 
+implications. Furthermore, E. coli susceptibility to
+256
+Wilkie et al. – MDR E. coli in pediatric UTIs: A Nigerian study 
+ 
+ 
+ 
+ 
+J Infect Dev Ctries 2024; 18(2):251-257.
+13. Samancı S, Çelik M, Köşker M (2020) Antibiotic resistance in 
+childhood urinary tract infections: A single-center experience. 
+Turk 
+Pediatri 
+Ars 
+55: 
+386-392. 
+doi: 
+10.14744/TurkPediatriArs.2020.22309.
+molecular detection of blaTEM, blaSHV and blaCTX-M 
+genotypes among Enterobacteriaceae isolates from patients in 
+Khartoum, Sudan. Pan Afr Med J Conf Proc 37: 213. doi: 
+10.11604/pamj.2020.37.213.24988.
+14. Mahony M, McMullan B, Brown J, Kennedy SE (2020) 
+Multidrug-resistant organisms in urinary tract infections in 
+children. Pediatr Nephrol 35: 1563–73. doi: 10.1007/s00467-
+019-04316-5.
+20. Haghighatpanah M, MozaffariNejad AS, Mojtahedi A, 
+Amirmozafari N, Zeighami H (2016) Detection of extended-
+spectrum β-lactamase (ESBL) and plasmid-borne blaCTX-M 
+and blaTEM genes among clinical strains of Escherichia coli 
+isolated from patients in the north of Iran. J Glob Antimicrob 
+Resist 7: 110–113. doi: 10.1016/j.jgar.2016.08.005
+15. Ayukekbong JA, Ntemgwa M, Atabe AN (2017) The threat of 
+antimicrobial resistance in developing countries: causes and 
+control strategies. Antimicrob Resist Infect Control 6: 47. doi: 
+10.1186/s13756-017-0208-x.
+21. Bush K, Bradford PA (2020) Epidemiology of β-lactamase-
+producing pathogens. Clin Microbiol Rev 33: e00047-19. doi: 
+10.1128/CMR.00047-19
+16. Eiamphungporn W, Schaduangrat N, Malik AA, Nantasenamat 
+C (2018) Tackling the antibiotic resistance caused by Class A 
+β-lactamases through the use of β-lactamase inhibitory protein. 
+Int J Mol Sci 19: 2222. doi: 10.3390/ijms19082222.
+22. Sachdev C, Anjankar A, Agrawal J (2022) Self-medication 
+with antibiotics: an element increasing resistance. Cureus 14: 
+e30844. doi: 10.7759/cureus.30844.
+17. Igbinosa EO, Beshiru A, Igbinosa IH, Cho GS, Franz CMAP 
+(2023) Multidrug-resistant extended spectrum β-lactamase 
+(ESBL)-producing Escherichia coli from farm produce and 
+agricultural environments in Edo State, Nigeria. PLoS One 18: 
+e0282835. doi: 10.1371/journal.pone.0282835.
+Corresponding author 
+Eunice Damilola Wilkie, PhD 
+Lecturer, Microbiology Department,  
+Faculty of Science, Adeleke University 
+Osun State, Nigeria 
+Tel: +2347034680637 
+Email: wilkie.eunice@adelekeuniversity.edu.ng 
+ 
+Conflict of interests: No conflict of interests is declared.
+18. Krucinska J, Lombardo MN, Erlandsen H, Estrada A, Si D, 
+Viswanathan K, Wright DL (2022) Structure-guided functional 
+studies of plasmid-encoded dihydrofolate reductases reveal a 
+common mechanism of trimethoprim resistance in Gram-
+negative 
+pathogens. 
+Commun 
+Biol 
+5: 
+459. 
+doi: 
+10.1038/s42003-022-03384-y.
+19.  Dirar MH, Bilal NE, Ibrahim ME, Hamid ME (2020) 
+Prevalence of extended spectrum β-lactamase (ESBL) and
+257

@@ -289,19 +289,23 @@ class SectionParser:
         """
         Splits a structured abstract on its label boundaries.
 
-        Example input:
-          "Background: Gut microbiome... Methods: We collected... Results: ..."
-
-        The regex finds all "Label:" patterns and uses them as split points.
+        FIX: Keys are sorted longest-first so multi-word labels like
+        "Materials and Methods" are matched before "Methods" alone.
+        Previously the join order was dict insertion order, causing
+        short keys to shadow longer ones.
         """
-        # Pattern: one of our known labels followed by colon (and possibly newline)
-        label_pattern = r"(" + "|".join(STRUCTURED_ABSTRACT_LABELS.keys()) + r")[:\s]+"
+        # Sort labels longest-first to ensure multi-word phrases match before
+        # their sub-strings (e.g. "materials and methods" before "methods")
+        sorted_labels = sorted(
+            STRUCTURED_ABSTRACT_LABELS.keys(),
+            key=len, reverse=True
+        )
+        label_pattern = r"(" + "|".join(re.escape(k) for k in sorted_labels) + r")[:\s]+"
         flags = re.IGNORECASE
 
         sections = []
         parts = re.split(f"({label_pattern})", abstract, flags=flags)
 
-        # re.split with a capturing group returns: [before, label, text, label, text, ...]
         i = 0
         while i < len(parts):
             part = parts[i].strip()
@@ -309,12 +313,10 @@ class SectionParser:
                 i += 1
                 continue
 
-            # Check if this part is a known label
             label_match = re.match(label_pattern, part, flags=flags)
             if label_match and i + 1 < len(parts):
-                # The content follows the label
-                label_text = parts[i].strip().rstrip(":")
-                content = parts[i + 1].strip() if i + 1 < len(parts) else ""
+                label_text   = parts[i].strip().rstrip(":")
+                content      = parts[i + 1].strip() if i + 1 < len(parts) else ""
                 section_type = STRUCTURED_ABSTRACT_LABELS.get(
                     label_text.lower(), "other"
                 )
@@ -326,8 +328,7 @@ class SectionParser:
                     ))
                 i += 2
             else:
-                # Unmatched content before first label
-                if len(part) > 20:   # Skip very short fragments
+                if len(part) > 20:
                     sections.append(ParsedSection(
                         section_type="abstract",
                         content=part,
@@ -341,53 +342,68 @@ class SectionParser:
     def parse_full_text(self, full_text: Optional[str]) -> List[ParsedSection]:
         """
         Parses a full paper text into sections.
-        Used when full text is available (open-access papers from Europe PMC).
 
-        APPROACH:
-          Split text into lines. For each line, check if it looks like
-          a section header (short line matching our patterns). Everything
-          between two headers becomes one section's content.
+        Handles both single-newline (XML/HTML sources) and double-newline
+        (PDF sources — fitz produces blank lines between text blocks).
         """
         if not full_text or not full_text.strip():
             return []
 
-        lines = full_text.split("\n")
+        # Normalise line endings: collapse \r\n and \r to \n
+        text = full_text.replace("\r\n", "\n").replace("\r", "\n")
+
+        # Split into lines, but treat double-newlines (PDF blank lines) as
+        # paragraph separators rather than discarding them silently.
+        # We keep blank lines as-is so the content inside sections preserves
+        # paragraph structure.
+        lines = text.split("\n")
+
         sections = []
-        current_type = "other"
+        current_type   = "other"
         current_header = None
-        current_lines = []
+        current_lines: List[str] = []
 
         for line in lines:
             line_stripped = line.strip()
 
-            # Check if this line is a section header
+            # Skip lines that are just whitespace when checking for headers
+            # but preserve them inside section content (paragraph spacing)
+            if not line_stripped:
+                current_lines.append(line)
+                continue
+
             section_type = self._detect_header(line_stripped)
 
             if section_type:
-                # Save the previous section before starting a new one
-                if current_lines:
-                    content = "\n".join(current_lines).strip()
-                    if content:
-                        sections.append(ParsedSection(
-                            section_type=current_type,
-                            header=current_header,
-                            content=content,
-                        ))
-                current_type = section_type
+                # Save previous section
+                content = "\n".join(current_lines).strip()
+                if content and current_type != "other":
+                    sections.append(ParsedSection(
+                        section_type=current_type,
+                        header=current_header,
+                        content=content,
+                    ))
+                elif content and len(content) > 100:
+                    # Keep large "other" blocks (before first header)
+                    sections.append(ParsedSection(
+                        section_type="abstract",
+                        header=None,
+                        content=content,
+                    ))
+                current_type   = section_type
                 current_header = line_stripped
-                current_lines = []
+                current_lines  = []
             else:
                 current_lines.append(line)
 
-        # Don't forget the last section
-        if current_lines:
-            content = "\n".join(current_lines).strip()
-            if content:
-                sections.append(ParsedSection(
-                    section_type=current_type,
-                    header=current_header,
-                    content=content,
-                ))
+        # Flush last section
+        content = "\n".join(current_lines).strip()
+        if content:
+            sections.append(ParsedSection(
+                section_type=current_type,
+                header=current_header,
+                content=content,
+            ))
 
         return sections
 
@@ -396,16 +412,42 @@ class SectionParser:
         Returns the section type if the line looks like a section header,
         or None if it's regular content.
 
-        A line is a header if:
-          1. It's short (< 80 chars) — long lines are paragraph text
-          2. It matches one of our section patterns
+        A line is a header if it's short (< 100 chars) and matches one of
+        our section patterns — after stripping common prefixes:
+          - Numbered:     "1. Introduction" → "Introduction"
+          - Sub-numbered: "2.1 Methods"     → "Methods"
+          - Roman:        "IV. Discussion"  → "Discussion"
+          - ALL-CAPS:     "METHODS"         → matched as-is (IGNORECASE)
+          - SECTION N:    "SECTION 3: Results" → "Results"
+          - Colon-suffix: "Methods:"        → matched by existing patterns
         """
-        if not line or len(line) > 80:
+        if not line or len(line) > 100:
             return None
 
-        for pattern, section_type in SECTION_PATTERNS:
-            if re.match(pattern, line, re.IGNORECASE):
-                return section_type
+        # Strip common numeric/roman/section prefixes before pattern matching
+        stripped = line
+
+        # "1." / "1.1" / "1.1.1" prefix
+        stripped = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", stripped).strip()
+
+        # Roman numeral prefix: "IV." / "IV " / "iv."
+        stripped = re.sub(
+            r"^(?:x{0,3})(?:ix|iv|v?i{0,3})\.?\s+",
+            "", stripped, flags=re.IGNORECASE
+        ).strip()
+
+        # "SECTION N:" or "SECTION N." prefix
+        stripped = re.sub(
+            r"^section\s+\d+[:.]\s*", "", stripped, flags=re.IGNORECASE
+        ).strip()
+
+        # Try both original and stripped version
+        for candidate in ([stripped, line] if stripped != line else [line]):
+            if not candidate:
+                continue
+            for pattern, section_type in SECTION_PATTERNS:
+                if re.match(pattern, candidate, re.IGNORECASE):
+                    return section_type
 
         return None
 

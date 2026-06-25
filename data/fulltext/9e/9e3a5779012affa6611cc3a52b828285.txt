@@ -1,0 +1,866 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Quality in Sport. eISSN 2450-3118. 
+ 
+Journal Home Page 
+https://apcz.umk.pl/QS/index
+------------------------------------------------------------------------------------------------------------------------------------------------------- 
+ 
+ 
+ 
+ 
+ 
+BANASIK, Mateusz, ADAMCZYK, Aleksandra, WAŻNY, Maria, GANCARZ, Agnieszka, ŻAK, Agata, GUT, Michał, 
+TOPOROWSKA-KAŹMIERAK, Joanna, SOWIŃSKA, Marta, TWOREK, Miłosz and BEZARA, Damian. Gut 
+Microbiota and Probiotics in Alzheimer’s Disease: Mechanisms, Evidence, and Therapeutic Potential – A Review of 
+Literature. Quality in Sport. 2026;52:69093. eISSN 2450-3118. https://doi.org/10.12775/QS.2026.52.69093 
+ 
+ 
+ 
+ 
+ 
+The journal has been awarded 20 points in the parametric evaluation by the Ministry of Higher Education and Science of Poland. This is according to the Annex to the announcement of the Minister of Higher 
+Education and Science dated 05.01.2024, No. 32553. The journal has a Unique Identifier: 201398. Scientific disciplines assigned: Economics and Finance (Field of Social Sciences); Management and Quality Sciences 
+(Field of Social Sciences). 
+Punkty Ministerialne z 2019 - aktualny rok 20 punktów. Załącznik do komunikatu Ministra Szkolnictwa Wyższego i Nauki z dnia 05.01.2024 Lp. 32553. Posiada Unikatowy Identyfikator Czasopisma: 201398. 
+Przypisane dyscypliny naukowe: Ekonomia i finanse (Dziedzina nauk społecznych); Nauki o zarządzaniu i jakości (Dziedzina nauk społecznych). © The Authors 2026. 
+This article is published with open access under the License Open Journal Systems of Nicolaus Copernicus University in Torun, Poland. Open Access: This article is distributed under the terms of the Creative 
+Commons Attribution Noncommercial License, which permits any noncommercial use, distribution, and reproduction in any medium, provided the original author(s) and source are credited. This is an open access 
+article licensed under the terms of the Creative Commons Attribution Non-commercial Share Alike License (http://creativecommons.org/licenses/by-nc-sa/4.0/), which permits unrestricted, non-commercial use, 
+distribution, and reproduction in any medium, provided the work is properly cited. 
+The authors declare that there is no conflict of interest regarding the publication of this paper. 
+Received: 18.02.2026. Revised: 14.03.2026. Accepted: 14.03.2026. Published: 16.03.2026. 
+ 
+ 
+ 
+ 
+ 
+-----------------------------------------------------------------------------------------------------------------
+Gut Microbiota and Probiotics in Alzheimer’s Disease: Mechanisms, Evidence,
+and Therapeutic Potential – A Review of Literature
+Mateusz Banasik 
+https://orcid.org/0000-0003-0256-8807 
+mbanasik998@gmail.com 
+Collegium Medicum, University of Rzeszow, Poland 
+ 
+Aleksandra Adamczyk 
+https://orcid.org/0000-0001-7848-3506 
+adamczyk.ola@wp.pl 
+Collegium Medicum, University of Rzeszow, Poland
+1
+Maria Ważny 
+https://orcid.org/0009-0001-1583-7095 
+maria.wazny@poczta.fm 
+Collegium Medicum, University of Rzeszow, Poland 
+ 
+Agnieszka Gancarz 
+https://orcid.org/0009-0001-6814-6810 
+agnieszka.gancarz009@gmail.com 
+Collegium Medicum, University of Rzeszow, Poland 
+ 
+Agata Żak 
+https://orcid.org/0009-0004-4520-9032 
+agata.zak0806@gmail.com 
+Faculty of Medical Sciences in Katowice, Medical University of Silesia, Katowice, Poland 
+ 
+Michał Gut 
+https://orcid.org/0009-0008-2704-1802 
+maikerugut@gmail.com 
+Collegium Medicum, University of Rzeszow, Poland 
+ 
+Joanna Toporowska-Kaźmierak 
+https://orcid.org/0000-0002-2941-8609 
+joanna.toporowska96@gmail.com 
+Collegium Medicum, University of Rzeszow, Poland 
+ 
+Marta Sowińska 
+https://orcid.org/0000-0003-2607-5433 
+martasowinska1@interia.pl 
+Collegium Medicum, University of Rzeszow, Poland 
+ 
+Miłosz Tworek 
+https://orcid.org/0009-0000-5202-9364 
+milosz.tworek.med@gmail.com 
+Faculty of Medical Sciences in Katowice, Medical University of Silesia, Katowice, Poland 
+ 
+Damian Bezara 
+https://orcid.org/0009-0009-1946-8029 
+damian.bezara@gmail.com 
+Collegium Medicum, University of Rzeszow, Poland 
+ 
+Corresponding Author 
+Mateusz Banasik, E-mail: mbanasik998@gmail.com
+2
+Abstract 
+Background: Alzheimer’s disease (AD) is the leading cause of dementia worldwide.
+Despite advances in modern medicine, effective therapeutic strategies capable of preventing
+and treating patients suffering from AD are still being actively sought. Growing evidence
+suggests that the gut microbiota may play a significant role in the development and progression
+of AD through inflammatory, metabolic, and immune-mediated mechanisms.
+Aim: This review aims to summarize current evidence regarding the association between
+the gut microbiome, its metabolites, and Alzheimer’s disease, and to discuss potential
+therapeutic strategies targeting the gut microbiota in the prevention and management of AD.
+Materials and Methods: The literature search was conducted using databases such as PubMed
+and Google Scholar. The following keywords were used: Alzheimer’s disease, gut microbiota,
+gut microbiome, dysbiosis, gut-brain axis.
+Results: To date, the majority of findings suggest that modulation of gut microbiota
+composition through probiotic supplementation may represent a promising approach
+for developing therapeutic and preventive strategies in Alzheimer’s disease. Probiotics appear
+effective in stabilizing or reconstructing gut microbial homeostasis, potentially delaying
+the progression of neurodegenerative pathology. Nevertheless, a review of the literature reveals
+a deficit of clinical trials evaluating the effects of probiotic supplementation in individuals
+with AD.
+Conclusions: To date, prevailing evidence suggests that modulation of gut microbiota
+composition using probiotics constitutes a promising approach for the development
+of therapeutic and preventive strategies in Alzheimer’s disease.
+Keywords: Alzheimer’s disease, gut microbiota, gut microbiome, dysbiosis, gut-brain axis
+INTRODUCTION 
+Alzheimer’s disease (AD) is the most common cause of dementia worldwide[1]. It is a
+neurodegenerative disorder that ultimately leads to patient death. The condition most frequently
+affects individuals over 65 years of age [1]. Currently, approximately 55 million people
+worldwide suffer from Alzheimer’s disease, and the number of affected individuals doubles
+every five years [4]. It is projected that by 2050, AD will affect one in 85 individuals globally
+3
+[5]. Estimates suggest that the number of patients will rise to approximately 152 million by
+2050, with the greatest increase expected in developing countries [6]. Other projections estimate
+approximately 131 million cases by 2050 [8].
+Alzheimer’s disease was first described in 1906 by the German physician
+Alois Alzheimer. During the neuropathological examination of Auguste Deter, who had
+suffered from memory loss episodes and personality changes prior to her death, Alzheimer
+identified amyloid deposits and massive neuronal degeneration in the examined brain tissue and
+described the observed changes as a severe disease of the cerebral cortex [1][2]. In 1906,
+Alzheimer presented the case, referring to the condition as “the disease of forgetfulness” [3].
+The term Alzheimer’s disease was first used by Emil Kraepelin in his The Psychiatry Handbook
+published in 1910. In 1963, Robert Terry and Michael Kidd, using electron microscopy,
+demonstrated
+the presence of neurofibrillary tangles in brain biopsies of patients with advanced AD, which
+significantly increased scientific interest in the disease. Since then, the pathophysiological
+mechanisms of AD as well as new diagnostic and therapeutic approaches have been intensively
+investigated [7].
+Recent studies have demonstrated a significant role of intestinal microorganisms,
+collectively referred to as the gut microbiota, in the development and progression of AD. The
+central nervous system (CNS) and gut microbiota interact bidirectionally via the microbiota–
+gut–brain axis. One study demonstrated reduced gut microbiota diversity in individuals with
+AD compared to healthy controls [9].
+It is important to emphasize that no curative treatment for AD currently exists - only
+symptomatic management is available. Therefore, there is an urgent need to explore novel
+therapeutic strategies that could halt disease progression or potentially provide disease-
+modifying effects. A therapeutic approach that has attracted scientific interest involves restoring
+gut microbial balance through probiotic administration as a potential strategy for the prevention
+and treatment of AD [10]. Probiotics are pharmacological preparations containing live
+microorganisms that, when administered for an adequate duration, may confer health
+benefits[78].
+Therefore, the objective of this narrative literature review is to describe Alzheimer’s
+disease and its relationship with the microbiota–gut–brain axis, as well as to discuss the
+potential use of probiotics as a therapeutic and preventive strategy in AD.
+4
+1. Pathomechanism of Alzheimer’s Disease
+1.1 Anatomical and Neuropathological Changes
+Despite 120 years having passed since the first description of AD, the exact pathomechanism
+of the disease has not yet been fully elucidated. Advances in research methodologies have
+enabled a more detailed characterization of its neuropathological features [53]. Patients with
+AD demonstrate cerebral atrophy predominantly affecting the hippocampus and cerebral cortex.
+This atrophy results from progressive neuronal loss in these regions and may intensify with
+aging and disease progression [53][54]. Cognitive impairment is associated with hippocampal
+atrophy and pathological accumulation of tau protein.
+Microscopic examinations reveal amyloid deposits that develop according to a specific
+pattern: beginning in the prefrontal cortex, subsequently involving the entorhinal cortex and
+hippocampal CA1 region, and eventually spreading to the frontal, parietal, and temporal lobes.
+Amyloid accumulation activates the immune response, including CNS-resident phagocytic
+cells (microglia) [55].
+1.2 Amyloid Plaques and Tau Protein
+The primary structural component of amyloid plaques is β-amyloid (Aβ), a peptide composed
+of 36–43 amino acids derived from amyloid precursor protein (APP) [57]. Abnormal processing
+of APP fragments, often resulting from genetic mutations, leads to the formation of toxic
+oligomeric peptides that constitute the amyloid deposits observed microscopically [53].
+Particularly, Aβ42 generated in this pathological process exhibits pronounced cytotoxic
+properties toward neurons, promoting reactive oxygen species generation and inducing
+neuronal apoptosis [56].
+Another component involved in plaque formation is the Tau protein. Tau promotes the
+specific assembly of the tubulin protein. Tubulin undergoes polymerization to form
+microtubules, which play a crucial role in the process of cell division. In Alzheimer’s disease,
+tau protein contributes to microtubule destabilization and exerts neurotoxic effects, ultimately
+leading to neuronal apoptosis [53].
+1.3 Oxidative Stress
+The brain consumes approximately 20% more oxygen than other organs, making it particularly
+vulnerable to reactive oxygen species (ROS) and reactive nitrogen species (RNS) [58]. These
+reactive molecules induce lipid peroxidation within neuronal membranes, disrupt the redox
+5
+potential of β-amyloid, and cause mitochondrial damage, ultimately leading to apoptosis. Lipid
+peroxidation generates toxic aldehydes such as 4-hydroxynonenal (HNE), malondialdehyde,
+and F2-isoprostanes, which promote tau hyperphosphorylation and disturb calcium homeostasis
+within neuronal cell membranes [59]. Progressive neuronal apoptosis contributes to cortical
+atrophy and facilitates the development and progression of Alzheimer’s disease [60].
+1.4 Cholinergic Alterations
+Acetylcholine (ACh) is a key neurotransmitter widely distributed throughout the cerebral cortex,
+basal nuclei, and forebrain, where it supports neuroplasticity, neuronal synchronization, and
+signal transmission [61][62].The cholinergic hypothesis (1976) postulates that AD results from
+synaptic atrophy and loss leading to cholinergic deficiency due to degeneration of the Nucleus
+Basalis of Meynert (NBM), whose cholinergic neurons project extensively to the cerebral
+cortex [63].Early pathological alterations are predominantly presynaptic and involve nicotinic
+(ionotropic) and muscarinic (metabotropic) receptors [64][65]. As AD progresses, more than
+90% of neurons in the NBM and cingulate cortex are destroyed, resulting in reduced receptor
+binding and the emergence of neuropsychiatric symptoms [66].
+Although similar cholinergic changes may occur physiologically in healthy elderly
+individuals (manifesting as memory deficit), the alterations observed in AD are more severe
+and lead to significant disruption of normal brain function [67].
+1.5 Genetic Factors
+To date, genetic alterations have not been demonstrated to represent the primary or sole cause
+of AD [68]. However, the APOE ε4 allele has been identified in approximately one-fifth of
+patients with Alzheimer’s disease and accounts for about 65% of affected individuals. Carriers
+of this allele exhibit nearly a threefold increased risk of developing AD [69].
+Associations have also been described between the presence of mutations in presenilin
+genes (PSEN1 and PSEN2) and Alzheimer’s disease. Nevertheless, the prevalence of these
+mutations among AD patients remains relatively low [70].
+1.6 Mitochondrial Dysfunction
+During the progression of AD, mitochondrial dysfunction occurs as a result of impaired
+mechanisms that normally protect mitochondria against the toxic effects of reactive oxygen
+species (ROS) [71][72]. Under physiological conditions, mitochondria are safeguarded by
+various antioxidant systems, including cytochrome c oxidase activity [73]. In AD, cytochrome
+c oxidase activity is reduced. Furthermore, β-amyloid oligomers may translocate into
+6
+mitochondria [74], where they accumulate within the inner mitochondrial membrane,
+disrupting the electron transport chain and further enhancing ROS production [75][76].
+2. Microbiota–Gut–Brain Axis
+The microbiota comprises microorganisms inhabiting the host, including bacteria, fungi,
+protozoa, archaea, viruses, and bacteriophages [23]. Approximately 10¹⁴ microorganisms reside
+within the human gastrointestinal tract [24].
+Colonization of the gastrointestinal tract begins during fetal life. Following birth and
+breastfeeding, Bifidobacterium species predominate in the infant gut microbiota. With the
+introduction of solid foods, the microbiota becomes primarily composed of Bacteroidetes and
+Firmicutes. By approximately three years of age, the composition of the gut microbiota
+stabilizes [25]. In adults, approximately 90% of the gut microbiota consists of Bacteroidetes
+and Firmicutes, while the remaining proportion includes members of the phyla Actinobacteria,
+Proteobacteria, Fusobacteria, and Verrucomicrobia [26]. With aging, alterations in microbiota
+composition may occur, potentially leading to a decline in beneficial microbial functions and
+contributing to disease development in the host [27].
+The gut microbiota performs numerous essential functions, including enzyme
+production [28], immune system development [29], circadian rhythm regulation [30], vitamin
+synthesis [31], reduction of insulin resistance [32], and protection against pathogenic
+microorganisms [33][34]. Communication between the gut microbiota and the CNS occurs via
+multiple pathways. One major route is the vagus nerve (cranial nerve X), which transmits
+signals from the gastrointestinal tract to the brain. The vagus nerve receives microbial signals
+through intestinal epithelial cells and relays them to the CNS [35].
+Another communication pathway involves enteroendocrine cells distributed throughout
+the gastrointestinal tract. These cells secrete hormones regulating gastrointestinal motility and
+gastropancreatic hormone secretion. It has been suggested that the microbiota may stimulate
+enteroendocrine cells to release hormones [36][37]. The microbiota also interacts with the
+enteric nervous system (ENS), which coordinates intestinal motility. The ENS consists of the
+submucosal and myenteric plexuses. The ENS can influence the microbiota, and conversely,
+the microbiota can modulate ENS activity. Given that the ENS is connected to the CNS via
+sympathetic and parasympathetic pathways, microbial alterations may indirectly affect central
+nervous system function [38]. Additionally, the microbiota produces neurotransmitters such as
+dopamine, norepinephrine, serotonin, gamma-aminobutyric acid , acetylcholine, and histamine,
+which may influence host physiology [39].
+7
+Moreover, tryptophan metabolites produced by the gut microbiota regulate microglial
+activation and the production of transforming growth factor alpha (TGF-α) and vascular
+endothelial growth factor B (VEGF-B), thereby modulating CNS inflammation [40].
+3. Gut Microbiota in Patients with Alzheimer’s Disease
+Studies have demonstrated that patients with AD exhibit reduced gut microbiota diversity
+compared to healthy individuals. One study [9] reported several key findings. First, gut
+microbiota diversity was lower in patients with AD than in patients with mild cognitive
+impairment (MCI) and cognitively healthy controls [9]. Second, bacteria belonging to the
+genera and taxa Proteobacteria, Bifidobacterium, and Phascolarctobacterium were more
+abundant in patients with AD, whereas Firmicutes, Clostridiaceae, Lachnospiraceae, and
+Rikenellaceae were less abundant compared to healthy individuals [9]. Third, the abundance of
+Proteobacteria and Phascolarctobacterium increased progressively from healthy controls to
+patients with AD, while the abundance of Clostridiaceae gradually decreased along the same
+continuum [9].
+Another study demonstrated that neurotoxins derived from Escherichia coli, a member
+of the Proteobacteria phylum, are associated with AD neuropathology and enhance the release
+of pro-inflammatory cytokines [12]. Moreover, increased intestinal abundance of
+Proteobacteria has been correlated with progressive cognitive decline in patients with AD
+[13][14].
+Members of the Lachnospiraceae family produce butyrate involved in anti-
+inflammatory responses and maintenance of intestinal barrier integrity [15][16]. Numerous
+studies indicate that reduced abundance of Lachnospiraceae may contribute to insulin
+resistance, CNS homeostatic imbalance, and exacerbation of AD progression [17][18].
+One experimental study suggested that AD pathology may originate in the gut and
+subsequently propagate to the brain [77][78]. In this study Aβ1–42 oligomers were injected into
+the gastric wall of mice. Within one year, amyloid propagation from the intestine to the brain
+was observed [77]. These findings suggest that translocation of β-amyloid oligomers from the
+gut to the brain may contribute to AD pathogenesis [77].
+Another study demonstrated that bacteria such as Escherichia coli, Salmonella enterica,
+Bacillus subtilis, Mycobacterium tuberculosis, and Staphylococcus aureus are capable of
+producing amyloid fibers that protect them against host immune destruction and chemical
+stressors [78]. Bacterial amyloids exhibit tertiary structural similarity to β-amyloid found in the
+CNS of AD patients [79]. The presence of bacterial amyloids in the gut may activate the host
+8
+immune system, potentially enhancing systemic immune responses and promoting endogenous
+neuronal amyloidogenesis within the brain [79].
+4. Impact of Probiotic Supplementation on the Course of Alzheimer’s Disease
+Several scientific publications have reported cognitive improvement following probiotic
+supplementation in patients with AD: one study demonstrated reduced severity of cognitive
+impairment in AD patients following administration of probiotics containing Bifidobacterium
+species - this effect may be attributed to the involvement of Bifidobacterium in the production
+of acetate and gamma-aminobutyric acid, both of which exhibit neuroprotective properties
+[19][20]. Bifidobacterium species also positively influence intestinal integrity by reducing gut
+permeability [21]. Conversely, one meta-analysis reported increased levels of Bifidobacterium
+in individuals with AD [9]. According to the authors, this phenomenon may represent a
+compensatory host response aimed at restoring intestinal homeostasis[9].
+In a 12-week randomized, double-blind, placebo-controlled clinical trial, no
+improvement in cognitive function was observed following probiotic administration [46]. The
+probiotic preparation was delivered in two capsule formulations: one containing Lactobacillus
+fermentum, Lactobacillus plantarum, and Bifidobacterium lactis; the other containing
+Lactobacillus acidophilus, Bifidobacterium bifidum, and Bifidobacterium longum. Participants
+ingested one capsule of each formulation every other day. The absence of clinical improvement
+may have been attributable to the advanced disease stage of most participants [46]. In contrast,
+another randomized clinical trial of similar design demonstrated that AD patients receiving
+capsules containing Lactobacillus acidophilus, Bifidobacterium bifidum, Bifidobacterium
+longum, and selenium for 12 weeks achieved significantly improved Mini-Mental State
+Examination (MMSE) scores [47].
+Researchers have also investigated probiotic effects in cognitively healthy individuals
+and those with mild cognitive impairment. In a randomized, double-blind, multicenter trial
+involving individuals over 65 years of age, soybean oil capsules (placebo) were compared with
+capsules containing Bifidobacterium bifidum BGN4 and Bifidobacterium longum BORI
+administered twice daily for 12 weeks. The probiotic group demonstrated improved cognitive
+performance, alterations in gut microbiota composition, and increased serum levels of brain-
+derived neurotrophic factor (BDNF), a protein associated with learning and memory processes
+[48]. In another clinical trial, sixty AD patients were randomly assigned to two groups [81].
+The intervention group consumed 200 mL of milk daily supplemented with Lactobacillus
+acidophilus, Lactobacillus casei, Bifidobacterium bifidum, and Lactobacillus fermentum,
+9
+whereas the control group received conventional milk [81]. The probiotic group demonstrated
+significant improvement in MMSE scores compared to controls. Although positive effects on
+cognitive function and metabolic parameters were observed, no significant improvement in
+oxidative stress markers or inflammatory processes was detected [81].
+4.1 Animal Studies
+Animal studies have demonstrated that Bifidobacterium species significantly attenuate AD
+pathology [22][9]. In one study, a probiotic formulation containing lactic acid bacteria and
+bifidobacteria (SLAB51) was administered for four months to triple-transgenic AD mice
+(3xTg-AD) at an early disease stage. Probiotic treatment resulted in reduced cerebral Aβ levels,
+altered gut microbiota composition and metabolite profiles, and improved cognitive function
+[41]. The authors further demonstrated that SLAB51 supplementation reduced oxidative stress
+in AD mouse brains via activation of SIRT1-dependent mechanisms [42].
+In a study by Kobayashi et al. [43], Aβ25–35 or Aβ1–42 peptides were injected
+intracerebrally into ddY ( Deutschland Denken Yoken ) mice. The animals subsequently
+received oral Bifidobacterium breve A1 isolated from healthy human infant feces. A comparator
+group received donepezil hydrochloride. Probiotic administration began two days prior to
+intracerebral Aβ injection and continued daily. Six days after injection, cognitive function was
+assessed using the Y-maze test and passive avoidance test. Oral Bifidobacterium breve A1
+prevented cognitive decline in AD mice and reduced CNS inflammatory responses without
+significantly altering gut microbiota composition; however, plasma acetate levels increased
+[43].
+Yang et al. demonstrated improved short-term memory in senescence-accelerated
+mouse prone 8 (SAMP8) mice after 12 weeks of supplementation with a probiotic containing
+Bifidobacterium lactis, Lactobacillus casei, Bifidobacterium bifidum, and Lactobacillus
+acidophilus. Supplementation also modified gut microbiota composition [44].
+Nimgampalle et al. reported that Wistar rats receiving intraperitoneal D-galactose
+injections and treated orally with Lactobacillus plantarum MTCC 1325 for 60 days exhibited
+significant symptom reduction and partial reversal of AD-like pathological changes [45].
+Another study demonstrated reduced neuroinflammation in mice following
+administration of a probiotic containing Lactobacillus casei strain Shirota [80].
+10
+5. Risks Associated with Probiotic Use
+Certain studies have reported potential risks associated with probiotic supplementation.
+Boyle RJ et al. concluded that probiotics are generally safe in otherwise healthy individuals
+but should be used cautiously in certain populations due to the potential risk of sepsis.
+Furthermore, probiotic effects may vary depending on health status, disease condition, and age
+group. Therefore, clinical findings obtained for one probiotic strain in a specific population
+cannot be automatically generalized to other strains or populations [49].
+Ayichew T et al. reported that available probiotics appear safe overall; however, they
+should likely be avoided in patients at high risk of sepsis [50].
+Moreover, excessive serotonin production induced by gut microbiota may, in rare cases,
+contribute to serotonin syndrome in individuals receiving probiotic supplementation,
+particularly among patients concurrently treated with selective serotonin reuptake inhibitors
+(SSRIs) [52].
+Additionally, there is currently no consensus regarding the optimal probiotic
+formulation, dosage, or treatment duration that would maximize therapeutic efficacy
+while minimizing adverse effects [51].
+6. Discussion
+Alzheimer’s disease (AD) is a multifactorial neurodegenerative disorder whose prevalence
+continues to increase with population aging. The lack of effective disease-modifying therapies
+underscores the urgent need for innovative therapeutic strategies.
+Proper functioning of both the blood–brain barrier and the intestinal barrier, as well
+as balanced gut microbiota composition, appears to be crucial for neuroprotection. The CNS
+interacts with the gut microbiota via the vagus nerve, enteroendocrine signaling, the enteric
+nervous system (ENS), and microbial-derived metabolites.
+Evidence indicates altered gut microbial profiles in fecal samples from patients
+with AD, characterized by increased abundance of pro-inflammatory bacteria correlated
+with systemic inflammation, cognitive decline, and cerebral amyloid deposition.
+Simultaneously, selected microbial metabolites may exert neuroprotective effects and improve
+cognitive performance. The observed correlation between AD and the gut ecosystem
+has stimulated investigation into the therapeutic potential of microbiota modulation
+11
+via probiotics. Probiotics appear capable of stabilizing or restoring gut microbial homeostasis,
+potentially delaying neurodegenerative processes.
+However, the current literature reveals a predominance of animal studies and a relative
+scarcity of large-scale, well-designed human clinical trials. Therefore, further research
+is necessary before definitive conclusions can be drawn. Nevertheless, existing data suggest
+that appropriately selected probiotic formulations may reduce cerebral amyloid deposition
+through modulation of the microbiota–gut–brain axis and attenuation of neuroinflammation.
+Standardization of clinical protocols with respect to treatment duration, dosage, and
+microbial composition is of critical importance, along with systematic evaluation of potential
+adverse effects. Scientific evidence also indicates the need to limit probiotic use in high-risk
+populations, particularly patients susceptible to sepsis.
+7. Conclusion
+To date, prevailing findings suggest that modulation of gut microbiota composition using
+probiotics represents a promising approach for the development of therapeutic and preventive
+strategies in Alzheimer’s disease.
+Authors’ contribution 
+ 
+Conceptualization: Mateusz Banasik, Aleksandra Adamczyk, Agata Żak, Joanna 
+Toporowska-Kaźmierak, Miłosz Tworek 
+Methodology: Joanna Toporowska-Kaźmierak, Marta Sowińska, Agnieszka Gancarz, Maria 
+Ważny 
+Software: Damian Bezara, Mateusz Banasik, Michał Gut 
+Formal analysis: Aleksandra Adamczyk, Marta Sowińska, Joanna Toporowska-Kaźmierak, 
+Agata Żak 
+Investigation: Miłosz Tworek, Mateusz Banasik, Agnieszka Gancarz, Aleksandra Adamczyk 
+Resources: Damian Bezara, Michał Gut, Maria Ważny, Agata Żak 
+Data curation: Aleksandra Adamczyk, Miłosz Tworek, Marta Sowińska, Michał Gut, Agata 
+Żak 
+Writing - original draft: Aleksandra Adamczyk, Agata Żak, Joanna Toporowska-Kaźmierak, 
+Miłosz Tworek, Mateusz Banasik  
+Writing - review and editing: Maria Ważny, Agnieszka Gancarz, Marta Sowińska, Michał 
+Gut, Damian Bezara  
+Visualization: Marta Sowińska, Maria Ważny, Agnieszka Gancarz, Agata Żak 
+Project administration: Aleksandra Adamczyk, Joanna Toporowska-Kaźmierak, Mateusz 
+Banasik 
+ 
+All authors have read and agreed with the published version of the manuscript. 
+ 
+Funding statement 
+This research received no external funding.
+12
+Institutional Review Board Statement 
+Not applicable. 
+Informed Consent Statement 
+Not applicable. 
+Data Availability Statement 
+Not applicable. 
+Acknowledgement 
+Not applicable. 
+Conflict of Interest 
+The authors declare no conflict of interest. 
+ 
+Declaration of the use of generative AI and AI-assisted technologies in the writing process.  
+In preparing this work, the authors used Google Gemini for the purpose of improving language 
+and readability. After using this tool, the authors reviewed and edited the content as necessary 
+and accept full responsibility for the substantive content of the publication. 
+ 
+References:
+[1]. R Brookmeyer, S Gray, and C Kawas:  Projections of Alzheimer's disease in the United 
+States and the public health impact of delaying disease onset. American Journal of Public 
+Health 88, 1337_1342, https://doi.org/10.2105/AJPH.88.9.1337
+[2]. Zhang, X. X , Tian, Y , Wang, Z. T , Ma, Y. H , Tan, L , & Yu, J. T. (2021). The 
+Epidemiology of Alzheimer's Disease Modifiable Risk Factors and Prevention. The journal of 
+prevention of Alzheimer's disease, 8(3), 313–321. https://doi.org/10.14283/jpad.2021.15
+[3]. Toodayan N. (2016). Professor Alois Alzheimer (1864-1915): Lest we forget. Journal of 
+clinical neuroscience : official journal of the Neurosurgical Society of Australasia, 31, 47–55. 
+https://doi.org/10.1016/j.jocn.2015.12.032
+[4]. Dcruz, Migita & Banerjee, Debanjan. (2022). The person is not the disease – Revisiting 
+Alzheimer's dementia after 120 years. Journal of Geriatric Mental Health. 8. 136-138. Doi: 
+10.4103/jgmh.jgmh_39_21.https://www.researchgate.net/publication/358241431_The_person
+_is_not_the_disease_-_Revisiting_Alzheimer's_dementia_after_120_years
+[5]. Brookmeyer, R , Johnson, E , Ziegler-Graham, K , & Arrighi, H. M. (2007). Forecasting 
+the global burden of Alzheimer's disease. Alzheimer's & dementia : the journal of the 
+Alzheimer's Association, 3(3), 186–191. https://doi.org/10.1016/j.jalz.2007.04.381
+[6]. Janoutová, J , Kovalová, M , Machaczka, O , Ambroz, P , Zatloukalová, A , Němček, K , 
+& Janout, V. (2021). Risk Factors for Alzheimer's Disease: An Epidemiological Study. Current 
+Alzheimer research, 18(5), 372–379. https://doi.org/10.2174/1567205018666210820124135
+[7]. Liu, P. P , Xie, Y , Meng, X. Y , & Kang, J. S. (2019). History and progress of hypotheses 
+and clinical trials for Alzheimer's disease. Signal transduction and targeted therapy, 4, 29. 
+https://doi.org/10.1038/s41392-019-0063-8
+[8]. Arvanitakis, Z , Shah, R. C , & Bennett, D. A. (2019). Diagnosis and Management of 
+Dementia: Review. JAMA, 322(16), 1589–1599. https://doi.org/10.1001/jama.2019.4782
+13
+[9]. Hung, C. C , Chang, C. C , Huang, C. W , Nouchi, R , & Cheng, C. H. (2022). Gut 
+microbiota in patients with Alzheimer's disease spectrum: a systematic review and meta-
+analysis. Aging, 14(1), 477–496. https://doi.org/10.18632/aging.203826
+[10]. Pluta, R , Ułamek-Kozioł, M , Januszewski, S , & Czuczwar, S. J. (2020). Gut microbiota 
+and 
+pro/prebiotics 
+in 
+Alzheimer's 
+disease. 
+Aging, 
+12(6), 
+5539–5550.
+https://doi.org/10.18632/aging.102930
+[11]. Jäger, R , Mohr, A. E , Carpenter, K. C , Kerksick, C. M , Purpura, M , Moussa, A , 
+Townsend, J. R , Lamprecht, M , West, N. P , Black, K , Gleeson, M , Pyne, D. B , Wells, S. 
+D , Arent, S. M , Smith-Ryan, A. E , Kreider, R. B , Campbell, B. I , Bannock, L , Scheiman, 
+J , Wissent, C. J , … Antonio, J. (2019). International Society of Sports Nutrition Position Stand: 
+Probiotics. Journal of the International Society of Sports Nutrition, 16(1), 62. 
+https://doi.org/10.1186/s12970-019-0329-0
+[12]. Cattaneo, A , Cattane, N , Galluzzi, S , Provasi, S , Lopizzo, N , Festari, C , Ferrari, C , 
+Guerra, U. P , Paghera, B , Muscio, C , Bianchetti, A , Volta, G. D , Turla, M , Cotelli, M. S , 
+Gennuso, M , Prelle, A , Zanetti, O , Lussignoli, G , Mirabile, D , Bellandi, D , … INDIA-FBP 
+Group (2017). Association of brain amyloidosis with pro-inflammatory gut bacterial taxa and 
+peripheral inflammation markers in cognitively impaired elderly. Neurobiology of aging, 49, 
+60–68. https://doi.org/10.1016/j.neurobiolaging.2016.08.019
+[13]. Hossain, S , Beydoun, M. A , Kuczmarski, M. F , Tajuddin, S , Evans, M. K , & 
+Zonderman, A. B. (2019). The Interplay of Diet Quality and Alzheimer's Disease Genetic Risk 
+Score in Relation to Cognitive Performance Among Urban African Americans. Nutrients, 11(9), 
+2181. https://doi.org/10.3390/nu11092181
+[14]. Kim HI, Yun SW, Han MJ, Jang SE, Kim DH.  IL-10 Expression-Inducing Gut Bacteria 
+Alleviate High-Fat Diet-Induced Obesity and Hyperlipidemia in Mice.  J. Microbiol. 
+Biotechnol. 2020;30:599-603.  https://doi.org/10.4014/jmb.1912.12014
+[15]. Chang, P. V , Hao, L , Offermanns, S , & Medzhitov, R. (2014). The microbial metabolite 
+butyrate regulates intestinal macrophage function via histone deacetylase inhibition. 
+Proceedings of the National Academy of Sciences of the United States of America, 111(6), 
+2247–2252. https://doi.org/10.1073/pnas.1322269111
+[16]. Wong, J. M , de Souza, R , Kendall, C. W , Emam, A , & Jenkins, D. J. (2006). Colonic 
+health: fermentation and short chain fatty acids. Journal of clinical gastroenterology, 40(3), 
+235–243. https://doi.org/10.1097/00004836-200603000-00015
+[17]. Allin, K. H , Tremaroli, V , Caesar, R , Jensen, B. A. H , Damgaard, M. T. F , Bahl, M. 
+I , Licht, T. R , Hansen, T. H , Nielsen, T , Dantoft, T. M , Linneberg, A , Jørgensen, T , 
+Vestergaard, H , Kristiansen, K , Franks, P. W , IMI-DIRECT consortium, Hansen, T , Bäckhed, 
+F , & Pedersen, O. (2018). Aberrant intestinal microbiota in individuals with prediabetes. 
+Diabetologia, 61(4), 810–820. https://doi.org/10.1007/s00125-018-4550-1
+[18]. Silva, Y. P , Bernardi, A , & Frozza, R. L. (2020). The Role of Short-Chain Fatty Acids 
+From Gut Microbiota in Gut-Brain Communication. Frontiers in endocrinology, 11, 25. 
+https://doi.org/10.3389/fendo.2020.00025
+14
+[19]. Barrett, E , Ross, R. P , O'Toole, P. W , Fitzgerald, G. F , & Stanton, C. (2012). γ-
+Aminobutyric acid production by culturable bacteria from the human intestine. Journal of 
+applied microbiology, 113(2), 411–417. https://doi.org/10.1111/j.1365-2672.2012.05344.x
+[20]. Koh, A , De Vadder, F , Kovatcheva-Datchary, P , & Bäckhed, F. (2016). From Dietary 
+Fiber to Host Physiology: Short-Chain Fatty Acids as Key Bacterial Metabolites. Cell, 165(6), 
+1332–1345. https://doi.org/10.1016/j.cell.2016.05.041
+[21]. Underwood, M. A , German, J. B , Lebrilla, C. B , & Mills, D. A. (2015). Bifidobacterium 
+longum subspecies infantis: champion colonizer of the infant gut. Pediatric research, 77(1-2), 
+229–235. https://doi.org/10.1038/pr.2014.156
+[22]. Bonfili, L , Cecarini, V , Cuccioloni, M , Angeletti, M , Berardi, S , Scarpona, S , Rossi, 
+G , & Eleuteri, A. M. (2018). SLAB51 Probiotic Formulation Activates SIRT1 Pathway 
+Promoting Antioxidant and Neuroprotective Effects in an AD Mouse Model. Molecular 
+neurobiology, 55(10), 7987–8000. https://doi.org/10.1007/s12035-018-0973-4
+[23]. Mohajeri, M. H , La Fata, G , Steinert, R. E , & Weber, P. (2018). Relationship between 
+the 
+gut 
+microbiome 
+and 
+brain 
+function. 
+Nutrition 
+reviews, 
+76(7), 
+481–496.
+https://doi.org/10.1093/nutrit/nuy009
+[24]. Thursby, E , & Juge, N. (2017). Introduction to the human gut microbiota. The 
+Biochemical journal, 474(11), 1823–1836. https://doi.org/10.1042/BCJ20160510
+[25]. Tanaka, M , & Nakayama, J. (2017). Development of the gut microbiota in infancy and 
+its impact on health in later life. Allergology international : official journal of the Japanese 
+Society of Allergology, 66(4), 515–522. https://doi.org/10.1016/j.alit.2017.07.010
+[26]. Rinninella, E , Raoul, P , Cintoni, M , Franceschi, F , Miggiano, G. A. D , Gasbarrini, A , 
+& Mele, M. C. (2019). What is the Healthy Gut Microbiota Composition? A Changing 
+Ecosystem across Age, Environment, Diet, and Diseases. Microorganisms, 7(1), 14. 
+https://doi.org/10.3390/microorganisms7010014
+[27]. Xu, C , Zhu, H , & Qiu, P. (2019). Aging progression of human gut microbiota. BMC 
+microbiology, 19(1), 236. https://doi.org/10.1186/s12866-019-1616-2
+[28]. Long, S. L , Gahan, C. G. M , & Joyce, S. A. (2017). Interactions between gut bacteria 
+and bile in health and disease. Molecular aspects of medicine, 56, 54–65. 
+https://doi.org/10.1016/j.mam.2017.06.002
+[29]. Zheng, D , Liwinski, T , & Elinav, E. (2020). Interaction between microbiota and 
+immunity in health and disease. Cell research, 30(6), 492–506. https://doi.org/10.1038/s41422-
+020-0332-7
+[30]. Parkar, S. G , Kalsbeek, A , & Cheeseman, J. F. (2019). Potential Role for the Gut 
+Microbiota in Modulating Host Circadian Rhythms and Metabolic Health. Microorganisms, 
+7(2), 41. https://doi.org/10.3390/microorganisms7020041
+[31]. LeBlanc, J. G , Chain, F , Martín, R , Bermúdez-Humarán, L. G , Courau, S , & Langella, 
+P. (2017). Beneficial effects on host energy metabolism of short-chain fatty acids and vitamins 
+produced by commensal and probiotic bacteria. Microbial cell factories, 16(1), 79. 
+https://doi.org/10.1186/s12934-017-0691-z
+15
+[32]. Rowland, I , Gibson, G , Heinken, A , Scott, K , Swann, J , Thiele, I , & Tuohy, K. (2018). 
+Gut microbiota functions: metabolism of nutrients and other food components. European 
+journal of nutrition, 57(1), 1–24. https://doi.org/10.1007/s00394-017-1445-8
+[33]. Li, Z , Quan, G , Jiang, X , Yang, Y , Ding, X , Zhang, D , Wang, X , Hardwidge, P. R , 
+Ren, W , & Zhu, G. (2018). Effects of Metabolites Derived From Gut Microbiota and Hosts on 
+Pathogens. 
+Frontiers 
+in 
+cellular 
+and 
+infection 
+microbiology, 
+8, 
+314.
+https://doi.org/10.3389/fcimb.2018.00314
+[34]. Faulin, T. D. E. S , & Estadella, D. (2023). ALZHEIMER'S DISEASE AND ITS 
+RELATIONSHIP 
+WITH 
+THE 
+MICROBIOTA-GUT-BRAIN 
+AXIS. 
+Arquivos 
+de
+gastroenterologia, 60(1), 144–154. https://doi.org/10.1590/S0004-2803.202301000-17
+[35]. Bonaz, B , Bazin, T , & Pellissier, S. (2018). The Vagus Nerve at the Interface of the 
+Microbiota-Gut-Brain 
+Axis. 
+Frontiers 
+in 
+neuroscience, 
+12, 
+49.
+https://doi.org/10.3389/fnins.2018.00049
+[36]. Kuwahara, A , Matsuda, K , Kuwahara, Y , Asano, S , Inui, T , & Marunaka, Y. (2020). 
+Microbiota-gut-brain axis: enteroendocrine cells and the enteric nervous system form an 
+interface between the microbiota and the central nervous system. Biomedical research (Tokyo, 
+Japan), 41(5), 199–216. https://doi.org/10.2220/biomedres.41.199
+[37]. Woźniak, D , Cichy, W , Przysławski, J , & Drzymała-Czyż, S. (2021). The role of 
+microbiota and enteroendocrine cells in maintaining homeostasis in the human digestive tract. 
+Advances in medical sciences, 66(2), 284–292. https://doi.org/10.1016/j.advms.2021.05.003
+[38]. Cryan, J. F , O'Riordan, K. J , Cowan, C. S. M , Sandhu, K. V , Bastiaanssen, T. F. S , 
+Boehme, M , Codagnone, M. G , Cussotto, S , Fulling, C , Golubeva, A. V , Guzzetta, K. E , 
+Jaggar, M , Long-Smith, C. M , Lyte, J. M , Martin, J. A , Molinero-Perez, A , Moloney, G , 
+Morelli, E , Morillas, E , O'Connor, R , … Dinan, T. G. (2019). The Microbiota-Gut-Brain Axis. 
+Physiological reviews, 99(4), 1877–2013. https://doi.org/10.1152/physrev.00018.2018
+[39]. Strandwitz P. (2018). Neurotransmitter modulation by the gut microbiota. Brain research, 
+1693(Pt B), 128–133. https://doi.org/10.1016/j.brainres.2018.03.015
+[40]. Rothhammer, V , Borucki, D. M , Tjon, E. C , Takenaka, M. C , Chao, C. C , Ardura-
+Fabregat, A , de Lima, K. A , Gutiérrez-Vázquez, C , Hewson, P , Staszewski, O , Blain, M , 
+Healy, L , Neziraj, T , Borio, M , Wheeler, M , Dragin, L. L , Laplaud, D. A , Antel, J , Alvarez, 
+J. I , Prinz, M , … Quintana, F. J. (2018). Microglial control of astrocytes in response to 
+microbial metabolites. Nature, 557(7707), 724–728. https://doi.org/10.1038/s41586-018-0119-
+x
+[41]. Bonfili, L , Cecarini, V , Berardi, S , Scarpona, S , Suchodolski, J. S , Nasuti, C , Fiorini, 
+D , Boarelli, M. C , Rossi, G , & Eleuteri, A. M. (2017). Microbiota modulation counteracts 
+Alzheimer's disease progression influencing neuronal proteolysis and gut hormones plasma 
+levels. Scientific reports, 7(1), 2426. https://doi.org/10.1038/s41598-017-02587-2
+[42]. Bonfili, L , Cecarini, V , Cuccioloni, M , Angeletti, M , Berardi, S , Scarpona, S , Rossi, 
+G , & Eleuteri, A. M. (2018). SLAB51 Probiotic Formulation Activates SIRT1 Pathway 
+Promoting Antioxidant and Neuroprotective Effects in an AD Mouse Model. Molecular 
+neurobiology, 55(10), 7987–8000. https://doi.org/10.1007/s12035-018-0973-4
+16
+[43]. Kobayashi, Y , Sugahara, H , Shimada, K. et al. Therapeutic potential of Bifidobacterium 
+breve strain A1 for preventing cognitive impairment in Alzheimer’s disease. Sci Rep 7, 13510 
+(2017). https://doi.org/10.1038/s41598-017-13368-2
+[44]. Yang, X , Yu, D , Xue, L , Li, H , & Du, J. (2020). Probiotics modulate the microbiota-
+gut-brain axis and improve memory deficits in aged SAMP8 mice. Acta pharmaceutica Sinica. 
+B, 10(3), 475–487. https://doi.org/10.1016/j.apsb.2019.07.001
+[45]. Nimgampalle, M , & Kuna, Y. (2017). Anti-Alzheimer Properties of Probiotic, 
+Lactobacillus plantarum MTCC 1325 in Alzheimer's Disease induced Albino Rats. Journal of 
+clinical 
+and 
+diagnostic 
+research 
+: 
+JCDR, 
+11(8), 
+KC01–KC05.
+https://doi.org/10.7860/JCDR/2017/26106.10428
+[46]. Agahi, A , Hamidi, G. A , Daneshvar, R , Hamdieh, M , Soheili, M , Alinaghipour, A , 
+Esmaeili Taba, S. M , & Salami, M. (2018). Does Severity of Alzheimer's Disease Contribute 
+to Its Responsiveness to Modifying Gut Microbiota? A Double Blind Clinical Trial. Frontiers 
+in neurology, 9, 662. https://doi.org/10.3389/fneur.2018.00662
+[47]. Tamtaji, O. R , Heidari-Soureshjani, R , Mirhosseini, N , Kouchaki, E , Bahmani, F , 
+Aghadavod, E , Tajabadi-Ebrahimi, M , & Asemi, Z. (2019). Probiotic and selenium co-
+supplementation, and the effects on clinical, metabolic and genetic status in Alzheimer's disease: 
+A randomized, double-blind, controlled trial. Clinical nutrition (Edinburgh, Scotland), 38(6), 
+2569–2575. https://doi.org/10.1016/j.clnu.2018.11.034
+[48]. Kim, C. S , Cha, L , Sim, M , Jung, S , Chun, W. Y , Baik, H. W , & Shin, D. M. (2021). 
+Probiotic Supplementation Improves Cognitive Function and Mood with Changes in Gut 
+Microbiota in Community-Dwelling Older Adults: A Randomized, Double-Blind, Placebo-
+Controlled, Multicenter Trial. The journals of gerontology. Series A, Biological sciences and 
+medical sciences, 76(1), 32–40. https://doi.org/10.1093/gerona/glaa090
+[49]. Boyle, R. J , Robins-Browne, R. M , & Tang, M. L. (2006). Probiotic use in clinical 
+practice: what are the risks?. The American journal of clinical nutrition, 83(6), 1256–1447. 
+https://doi.org/10.1093/ajcn/83.6.1256
+[50]. Teshale, A. Bacterial Probiotics their Importances and Limitations: A Review. 
+https://doi.org/10.15744/2393-9060.4.202
+[51]. Arora, K , Green, M , & Prakash, S. (2020). The Microbiome and Alzheimer's Disease: 
+Potential and Limitations of Prebiotic, Synbiotic, and Probiotic Formulations. Frontiers in 
+bioengineering and biotechnology, 8, 537847. https://doi.org/10.3389/fbioe.2020.537847
+[52]. Feeney S. N. (2007). “Serotonin Syndrome,” in Pediatric Clinical Advisor, 2nd Edn, eds 
+Garfunkel L. C , Kaczorowski J. M , Christy C. (Philadelphia, PA: Mosby; ), 516–517. 
+10.1016/B978-032303506-4.10295-0
+[53]. Twarowski, B , & Herbet, M. (2023). Inflammatory Processes in Alzheimer's Disease-
+Pathomechanism, Diagnosis and Treatment: A Review. International journal of molecular 
+sciences, 24(7), 6518. https://doi.org/10.3390/ijms24076518
+[54].Tangaro, S , Amoroso, N , Boccardi, M , Bruno, S , Chincarini, A , Ferraro, G , Frisoni, 
+G. B , Maglietta, R , Redolfi, A , Rei, L , Tateo, A , Bellotti, R , & Alzheimers Disease 
+Neuroimaging Initiative (2014). Automated voxel-by-voxel tissue classification for
+17
+hippocampal segmentation: methods and validation. Physica medica : PM : an international 
+journal devoted to the applications of physics to medicine and biology : official journal of the 
+Italian 
+Association 
+of 
+Biomedical 
+Physics 
+(AIFB), 
+30(8), 
+878–887.
+https://doi.org/10.1016/j.ejmp.2014.06.044
+[55]. Thakur AK, Kamboj P, Goswami K. Pathophysiology and management of alzheimer’s 
+disease: 
+an 
+overview. 
+J 
+Anal 
+Pharm 
+Res. 
+2018;9(2):226?235. 
+DOI:
+10.15406/japlr.2018.07.00230
+[56]. Mitra, A , & Sarkar, N. (2020). Sequence and structure-based peptides as potent amyloid 
+inhibitors: 
+A 
+review. 
+Archives 
+of 
+biochemistry 
+and 
+biophysics, 
+695, 
+108614.
+https://doi.org/10.1016/j.abb.2020.108614
+[57]. Hamley I. W. (2012). The amyloid beta peptide: a chemist's perspective. Role in 
+Alzheimer's 
+and 
+fibrillization. 
+Chemical 
+reviews, 
+112(10), 
+5147–5192.
+https://doi.org/10.1021/cr3000994
+[58]. Hou, J. T , Yu, K. K , Sunwoo, K , Kim, W. Y , Koo, S , Wang, J , Ren, W. X , Wang, S , 
+Yu, X. Q , & Kim, J. S. (2020). Fluorescent Imaging of Reactive Oxygen and Nitrogen Species 
+Associated 
+with 
+Pathophysiological 
+Processes. 
+Chem, 
+6(4), 
+832-866.
+https://doi.org/10.1016/j.chempr.2019.12.005
+[59]. Ge, M , Zhang, J , Chen, S , Huang, Y , Chen, W , He, L , & Zhang, Y. (2022). Role of 
+Calcium Homeostasis in Alzheimer's Disease. Neuropsychiatric disease and treatment, 18, 
+487–498. https://doi.org/10.2147/NDT.S350939
+[60]. Bennett, R. E , Robbins, A. B , Hu, M , Cao, X , Betensky, R. A , Clark, T , Das, S , & 
+Hyman, B. T. (2018). Tau induces blood vessel abnormalities and angiogenesis-related gene 
+expression in P301L transgenic mice and human Alzheimer's disease. Proceedings of the 
+National Academy of Sciences of the United States of America, 115(6), E1289–E1298. 
+https://doi.org/10.1073/pnas.1710329115
+[61]. Mesulam M. M. (2013). Cholinergic circuitry of the human nucleus basalis and its fate in 
+Alzheimer's disease. The Journal of comparative neurology, 521(18), 4124–4144. 
+https://doi.org/10.1002/cne.23415
+[62]. Zhang, L , Li, D , Cao, F , Xiao, W , Zhao, L , Ding, G , & Wang, Z. Z. (2018). 
+Identification of Human Acetylcholinesterase Inhibitors from the Constituents of EGb761 by 
+Modeling Docking and Molecular Dynamics Simulations. Combinatorial chemistry & high 
+throughput screening, 21(1), 41–49. https://doi.org/10.2174/1386207320666171123201910
+[63]. Hampel, H , Mesulam, M. M , Cuello, A. C , Farlow, M. R , Giacobini, E , Grossberg, G. 
+T , Khachaturian, A. S , Vergallo, A , Cavedo, E , Snyder, P. J , & Khachaturian, Z. S. (2018). 
+The cholinergic system in the pathophysiology and treatment of Alzheimer's disease. Brain : a 
+journal of neurology, 141(7), 1917–1933. https://doi.org/10.1093/brain/awy132
+[64]. Dallé, E , Mabandla, M. V , & Daniels, W. M. U. (2020). Dielectric Constant and 
+Conductivity of Blood Plasma: Possible Novel Biomarkers for Alzheimer's Disease. Oxidative 
+medicine and cellular longevity, 2020, 5756382. https://doi.org/10.1155/2020/5756382
+18
+[65]. Gatta, V , Mengod, G , Reale, M , & Tata, A. M. (2020). Possible Correlation between 
+Cholinergic System Alterations and Neuro/Inflammation in Multiple Sclerosis. Biomedicines, 
+8(6), 153. https://doi.org/10.3390/biomedicines8060153
+[66]. Vitanova, K. S , Stringer, K. M , Benitez, D. P , Brenton, J , & Cummings, D. M. (2019). 
+Dementia associated with disorders of the basal ganglia. Journal of neuroscience research, 
+97(12), 1728–1741. https://doi.org/10.1002/jnr.24508
+[67]. Lebois, E.P , Thorn, C.A , Edgerton, J.R , Popiolek, M , & Xi, S. (2017). Muscarinic 
+receptor subtype distribution in the central nervous system and relevance to aging and 
+Alzheimer's disease. Neuropharmacology, 136, 362-373.
+[68]. Heppner, F , Ransohoff, R. & Becher, B. Immune attack: the role of inflammation in 
+Alzheimer disease. Nat Rev Neurosci 16, 358–372 (2015). https://doi.org/10.1038/nrn3880
+[69]. Sienski, G , Narayan, P , Bonner, J. M , Kory, N , Boland, S , Arczewska, A. A , Ralvenius, 
+W. T , Akay, L , Lockshin, E , He, L , Milo, B , Graziosi, A , Baru, V , Lewis, C. A , Kellis, 
+M , Sabatini, D. M , Tsai, L. H , & Lindquist, S. (2021). APOE4 disrupts intracellular lipid 
+homeostasis in human iPSC-derived glia. Science translational medicine, 13(583), eaaz4564. 
+https://doi.org/10.1126/scitranslmed.aaz4564
+[70]. Giau, V. V , Bagyinszky, E , Youn, Y. C , An, S. S. A , & Kim, S. (2019). APP, PSEN1, 
+and PSEN2 Mutations in Asian Patients with Early-Onset Alzheimer Disease. International 
+journal of molecular sciences, 20(19), 4757. https://doi.org/10.3390/ijms20194757
+[71]. Zhang, D , Li, Y , Heims-Waldron, D , Bezzerides, V , Guatimosim, S , Guo, Y , Gu, F , 
+Zhou, P , Lin, Z , Ma, Q , Liu, J , Wang, D. Z , & Pu, W. T. (2018). Mitochondrial 
+Cardiomyopathy Caused by Elevated Reactive Oxygen Species and Impaired Cardiomyocyte 
+Proliferation. 
+Circulation 
+research, 
+122(1), 
+74–87.
+https://doi.org/10.1161/CIRCRESAHA.117.311349
+[72]. Giorgi, C , Marchi, S , Simoes, I. C. M , Ren, Z , Morciano, G , Perrone, M , Patalas-
+Krawczyk, P , Borchard, S , Jędrak, P , Pierzynowska, K , Szymański, J , Wang, D. Q , 
+Portincasa, P , Węgrzyn, G , Zischka, H , Dobrzyn, P , Bonora, M , Duszynski, J , Rimessi, A , 
+Karkucinska-Wieckowska, A , … Wieckowski, M. R. (2018). Mitochondria and Reactive 
+Oxygen Species in Aging and Age-Related Diseases. International review of cell and molecular 
+biology, 340, 209–344. https://doi.org/10.1016/bs.ircmb.2018.05.006
+[73]. Gowda, P , Reddy, P. H , & Kumar, S. (2022). Deregulated mitochondrial microRNAs in 
+Alzheimer's disease: Focus on synapse and mitochondria. Ageing research reviews, 73, 101529. 
+https://doi.org/10.1016/j.arr.2021.101529
+[74]. Huang, Y. R , & Liu, R. T. (2020). The Toxicity and Polymorphism of β-Amyloid 
+Oligomers. 
+International 
+journal 
+of 
+molecular 
+sciences, 
+21(12), 
+4477.
+https://doi.org/10.3390/ijms21124477
+[75]. Song, L. L , Qu, Y. Q , Tang, Y. P , Chen, X , Lo, H. H , Qu, L. Q , Yun, Y. X , Wong, 
+V. K. W , Zhang, R. L , Wang, H. M , Liu, M. H , Zhang, W , Zhang, H. X , Chan, J. T. W , 
+Wang, C. R , Wu, J. H , & Law, B. Y. K. (2023). Hyperoside alleviates toxicity of β-amyloid 
+via endoplasmic reticulum-mitochondrial calcium signal transduction cascade in APP/PS1 
+double 
+transgenic 
+Alzheimer's 
+disease 
+mice. 
+Redox 
+biology, 
+61, 
+102637.
+https://doi.org/10.1016/j.redox.2023.102637
+19
+[76]. Milane, L , Dolare, S , Jahan, T , & Amiji, M. (2021). Mitochondrial nanomedicine: 
+Subcellular 
+organelle-specific 
+delivery 
+of 
+molecular 
+medicines. 
+Nanomedicine 
+:
+nanotechnology, 
+biology, 
+and 
+medicine, 
+37, 
+102422.
+https://doi.org/10.1016/j.nano.2021.102422
+[77]. Sun, Y , Sommerville, N. R , Liu, J. Y. H , Ngan, M. P , Poon, D , Ponomarev, E. D , Lu, 
+Z , Kung, J. S. C , & Rudd, J. A. (2020). Intra-gastrointestinal amyloid-β1-42 oligomers perturb 
+enteric function and induce Alzheimer's disease pathology. The Journal of physiology, 598(19), 
+4209–4223. https://doi.org/10.1113/JP279919
+[78]. Megur, A , Baltriukienė, D , Bukelskienė, V , & Burokas, A. (2020). The Microbiota-
+Gut-Brain Axis and Alzheimer's Disease: Neuroinflammation Is to Blame?. Nutrients, 13(1), 
+37. https://doi.org/10.3390/nu13010037
+[79]. Friedland R. P. (2015). Mechanisms of molecular mimicry involving the microbiota in 
+neurodegeneration. 
+Journal 
+of 
+Alzheimer's 
+disease 
+: 
+JAD, 
+45(2), 
+349–362.
+https://doi.org/10.3233/JAD-142841
+[80]. Kobayashi, T , Suzuki, T , Kaji, R , Serata, M , Nagata, T , Ando, M , Iizuka, R , Tsujibe, 
+S , Murakami, J , Kiyoshima-Shibata, J , Kato, I , Nanno, M , & Shida, K. (2012). Probiotic 
+upregulation of peripheral IL-17 responses does not exacerbate neurological symptoms in 
+experimental autoimmune encephalomyelitis mouse models. Immunopharmacology and 
+immunotoxicology, 34(3), 423–433. https://doi.org/10.3109/08923973.2010.617755
+[81]. Akbari, E , Asemi, Z , Daneshvar Kakhaki, R , Bahmani, F , Kouchaki, E , Tamtaji, O. 
+R , Hamidi, G. A , & Salami, M. (2016). Effect of Probiotic Supplementation on Cognitive 
+Function and Metabolic Status in Alzheimer's Disease: A Randomized, Double-Blind and 
+Controlled 
+Trial. 
+Frontiers 
+in 
+aging 
+neuroscience, 
+8, 
+256.
+https://doi.org/10.3389/fnagi.2016.00256
+20

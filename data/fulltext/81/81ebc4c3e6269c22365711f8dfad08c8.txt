@@ -1,0 +1,1528 @@
+DOI: 10.1111/risa.14145
+O R I G I N A L A RT I C L E
+Microbiological water quality and derived health risks from
+exposure to ornamental water fountains in the city of Hannover
+Estefania Carpio Vallejo1
+Urda Düker1
+Franziska Meyer1
+Ulrich Berding2
+Regina Nogueira1
+1Institut für Siedlungswasserwirtschaft und
+Abfalltechnik, Leibniz University, Hannover,
+Germany
+Abstract
+Ornamental fountains are attractive urban infrastructures helping cities to cope with
+global warming, as water sprays have great cooling effects due to evaporative proper-
+ties; however, exposure to microbiologically impaired water from ornamental fountains
+during recreational activities may result in adverse health outcomes for the exposed
+population. This study assesses the microbial water quality of four ornamental water
+fountains (Blätterbrunnen, Körtingbrunnen, Klaus–Bahlsen–Brunnen, and Marstall-
+brunnen) and performs a quantitative microbial risk assessment (QMRA) for children
+using Escherichia coli, Enterococci, and Salmonella to quantify the probability of
+gastrointestinal illnesses and Pseudomonas aeruginosa to quantify the risk of der-
+mal infections. Samples were collected fortnightly in two campaigns in 2020 and
+2021 and processed to determine bacterial concentrations. Data on exposure time were
+obtained during ﬁeld observations on the selected fountains; a total of 499 people were
+observed of which 30% were children. Mean bacterial concentrations ranged from
+1.6 × 101 to 6.1 × 102 most probable number (MPN)/100 mL for E. coli, 1.2 × 101–
+1.2 × 103 MPN/100 mL for Enterococci, 8.6 × 103–3.1 × 105 CFU/100 mL for
+Salmonella, and 2.5 × 103–3.2 × 104 MPN/100 mL for P. aeruginosa. The results
+of the QMRA study showed that the USEPA illness rate of 36 NEEAR-gastrointestinal
+illnesses/1000 was exceeded for Enterococci at the Körtingbrunnen, Klaus–Bahlsen–
+Brunnen, and Marstallbrunnen fountains and for Salmonella and P. aeruginosa at the
+Körtingbrunnen fountain, suggesting that exposure to microbiologically contaminated
+water from ornamental fountains may pose a health risk to children. The scenario
+analysis shows the importance of keeping low bacterial concentrations in ornamen-
+tal fountains so that the risk of illness/infection to children does not exceed the USEPA
+illness rate benchmark.
+2Plan Zwei Stadtplanung und Architektur,
+Hannover, Germany
+Correspondence
+Regina Nogueira, Institut für
+Siedlungswasserwirtschaft und Abfalltechnik,
+Leibniz University, Hannover, Germany.
+Email: nogueira@isah.uni-hannover.de
+Funding information
+Bundesministerium für Bildung und Forschung,
+Grant/Award Number: 033W105A UP5
+K E Y W O R D S
+health risks, ornamental fountains, QMRA, risk of illness/infection
+1
+INTRODUCTION
+these water features. Many of the ornamental fountains in the
+city of Hannover are fed by the public drinking water supply,
+where water is constantly recirculated through pumps after
+being sprayed into the air (Freyer & Hanning, personal com-
+munication, June 5, 2020). These water features encourage
+people, especially children, to have direct contact with the
+water by playing, walking through, and/or touching the water
+(Man, Bouwknegt, et al., 2014).
+Besides offering esthetic properties and recreational oppor-
+tunities to their surroundings, ornamental fountains play a
+key role in enhancing human well-being and creating refresh-
+ing microclimates thanks to evaporative cooling processes
+(Seputra, 2018). Different water sources, such as groundwa-
+ter, rainwater, and surface or tap water, can be used to ﬁll up
+This is an open access article under the terms of the Creative Commons Attribution-NonCommercial-NoDerivs License, which permits use and distribution in any medium, provided
+the original work is properly cited, the use is non-commercial and no modiﬁcations or adaptations are made.
+© 2023 The Authors. Risk Analysis published by Wiley Periodicals LLC on behalf of Society for Risk Analysis.
+Risk Analysis. 2023;1–16.
+wileyonlinelibrary.com/journal/risa
+1
+2
+VALLEJO ET AL.
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Microbiological pollution of ornamental fountains fed with
+2
+MATERIALS AND METHODS
+drinking water can occur through human and animal contact
+with water, runoff from paved surfaces, or growth of microor-
+ganisms in water, posing an emerging risk of infection/illness
+to the individuals exposed to the water through ingestion,
+inhalation, and dermal contact (Man, Heederik, et al., 2014).
+Fecal indicator bacteria, such as Escherichia coli and Ente-
+rococci, are commonly used as indicators to identify the
+potential presence of pathogenic microorganisms, which can
+cause gastrointestinal infection (Modrzewska et al., 2019).
+Savill et al. (2001) analyzed different water systems in New
+Zealand and found Campylobacter spp. in different concen-
+trations. Additionally, during the summer months of 2018 and
+2019, the number of human infections associated with Vibrio
+spp. in Germany increased greatly (Brehm et al., 2021). Lis-
+teria monocytogenes is also of concern as it is ubiquitous in
+the environment and can form bioﬁlms, and the presence of
+Pseudomonas aeruginosa in water can result in skin rashes
+such as folliculitis when there is dermal exposure (Roser
+et al., 2015), making all these bacteria of interest for our
+study. Legionella-related illness can occur when contami-
+nated water is aerosolized and inhaled. However, it was not
+included in our study because the inhalation exposure route
+was not considered. Therefore, maintaining safe water quality
+in ornamental fountains as well as developing a risk anal-
+ysis has become an important issue to be addressed (Man,
+Bouwknegt, et al., 2014). In Germany, the Verein Deutscher
+Ingenieure e.V. (VDI 6022) has established guidelines for the
+planning, construction, and operation of fountains and water
+walls in public buildings; nevertheless, there are no speci-
+ﬁcations on hygienic requirements for fountains and water
+features in public spaces.
+2.1
+Sampling locations
+For this study, we selected four ornamental water fountains in
+Hannover, each one with different architectures. These foun-
+tains are ﬁlled with fresh drinking water at the beginning of
+operations every year (around mid-April), which is continu-
+ously recirculated until the end of operations (mid-October);
+only when the water level drops down due to evaporation or
+high sediment content, it is reﬁlled with fresh drinking water
+(Freyer & Hanning, personal communication, June 5, 2020).
+All these fountains are located within the city center and have
+open access to the public.
+The Blätterbrunnen fountain is located a few meters from
+Kröpke within a busy shopping area in a pedestrian street.
+The water reaches the top of the built-in sculpture through
+four vents, and then, it ﬂows downward and is stored in the
+retention basin until the water level reaches the collection
+channel. When water is recirculated, coarse dirt is retained
+in a grid, and chlorine and algaecide are manually dosed
+according to need (Figure 1a) (Freyer & Hannig, 2020).
+The Klaus–Bahlsen–Brunnen fountain, located in an open
+area in front of the new City Hall, is designed with two
+pressure jets forming water columns that reach around 3 m
+height; once it hits the ground, water is collected by a gutter
+covered with a thick grid and stored shortly in a central nar-
+row channel where the manual dosage of chlorine is made
+if needed before being recirculated (Figure 1b) (Freyer &
+Hannig, 2020).
+The Körtingbrunnen fountain, located in a residential
+neighborhood of the List district, is surrounded by many
+cafes, restaurants, shops, and a playground. It is formed by
+ﬁve stainless steel head ﬁgures on top of a few brick stairs
+that continuously spout water. Water ﬂows over the stairs and
+is collected by a channel covered by a grid that retains thick
+dirt; this fountain does not have a storage facility; thus, water
+is immediately recirculated (Figure 1c) (Freyer & Hannig,
+2020).
+Quantitative microbial risk assessment (QMRA) is one of
+the tools used to quantify the health risks caused by human
+exposure to waterborne pathogens (Haas et al., 2014; Ortells
+Sales, 2015). A QMRA study requires several sources of
+data, such as microorganism concentration (e.g., most proba-
+ble number [MPN]/100 mL), exposure rates (e.g., mL/min),
+exposure duration (e.g., min/day), and dose–response model
+of the microorganism of interest. Due to the lack of studies
+focusing on these water features, there is limited exposure-
+data information regarding low water-contact recreational
+activities taking place in ornamental fountains. Moreover,
+temporal and spatial variability of water contact and bacterial
+concentrations are also important factors that make it difﬁ-
+cult to relate recreational water exposure with speciﬁc health
+outcomes (Sunger & Haas, 2015). QMRA allows testing dif-
+ferent scenarios and obtaining insights regarding measures to
+be applied to prevent outbreaks of infectious illnesses (Ortells
+Sales, 2015).
+The Marstallbrunnen fountain is found in a busy open plaza
+in the city center, surrounded by trees, restaurants, and cafes.
+Here, water is jetted reaching different heights and then hit-
+ting the ground. Afterward, water ﬂows washing down the
+paved area and is collected, ﬁltered, and disinfected in a
+retention basin before being recirculated. This is the only
+fountain with digital control of pH and automatic monitoring
+and dosage of chlorine (Figure 1d) (Freyer & Hannig, 2020).
+2.2
+Health risk assessment
+The aims of this study were (a) to determine the presence
+of potentially pathogenic bacteria in ornamental fountains fed
+with drinking water, (b) to perform a QMRA of the selected
+ornamental fountains for the chosen reference bacteria, and
+(c) to develop a scenario analysis and compare how different
+bacterial concentrations affect the risk of illness and infection
+for children.
+The QMRA approach was used to assess the risks posed
+by microbial agents and obtain the statistical probability of
+an adverse health outcome. This approach integrates a wide
+scientiﬁc knowledge about microorganisms, such as con-
+centrations and behavior in water, routes and amounts of
+exposure to humans, and probable health outcomes from
+MICROBIOLOGICAL WATER QUALITY
+3
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+F I G U R E 1
+Ornamental fountains selected in Hannover city, Germany a) Blätterbrunnen, b) Klaus-Bahlsen-Brunnen, c) Körtingbrunnen, d)
+Marstallbrunnen. Source: Own pictures.
+exposure. With this information, a single assessment is per-
+formed, allowing a proper management of the risk (CAMRA,
+2020a; WHO, 2016).
+campaigns; the ﬁrst campaign took place from June 29 until
+September 21, 2020, and the second was held from May
+10 until October 4, 2021. A total of 13 grab samples were
+taken at the Blätterbrunnen, whereas 10 grab samples were
+taken at the Körtingbrunnen, Klaus–Bahlsen–Brunnen, and
+Marstallbrunnen.
+The main structure of the QMRA adopted in the present
+study consisted of four steps. First, hazard identiﬁcation
+(Section 2.2.1), where the bacteria of interest are identiﬁed, as
+well as the illnesses caused by them, the transmission routes,
+and probable health outcomes. Second, in the exposure
+assessment step (Section 2.2.2), the bacterial numbers present
+in a single-exposure event are quantiﬁed. For the third step,
+health effect assessment (Section 2.2.3), the corresponding
+dose–response models are applied to each bacterium depend-
+ing on the sought outcome (infection, illness, or death), and in
+the last step, risk characterization (Section 2.2.4), an estimate
+of the risk is obtained (Ortells Sales, 2015; WHO, 2016).
+A summary of the steps carried out for the QMRA study,
+their outcome, and the sections where each step is further
+described are presented in Figure 2.
+For the water quality analysis, the following bacteria
+were analyzed: E. coli, Enterococci, Salmonella, Vibrio spp.,
+L. monocytogenes, Campylobacter spp., and P. aeruginosa.
+Around 1 L of water was collected from each fountain for
+lab analysis; after collection, samples were stored at 4◦C and
+analyzed within 24 h. From the 1 L sample, 300 mL were
+used to determine concentrations of viable Enterococci, E.
+coli, and P. aeruginosa using the IDEXX test kits, Enterolert,
+Colilert, and Pseudalert, respectively, according to the man-
+ufacturers’ speciﬁcations (IDEXX Canada, ASTM Method
+#D6503-99). Water samples (diluted with distilled water
+when needed) were used; in sterile bottles (Carl Roth, Karl-
+sruhe), 100 mL water sample was poured; then, the reagent
+of Enterolert/Colilert/Pseudalert was added and shaken until
+dissolved. The solution was poured in a Quanti-Tray 2000,
+sealed, and then incubated for 24 h at 41, 35, and 38◦C
+for Enterococci, E. coli, and P. aeruginosa, respectively.
+After incubation, the ﬂuorescent wells in the Quanti-Tray
+2000 were counted under UV light to estimate the MPN
+of each bacterium per 100 mL (IDEXX Laboratories,
+2019).
+Given that most of the population directly exposed to the
+water in the studied locations were children, the present study
+assesses the health risk posed by ornamental fountains to
+children.
+2.2.1
+Hazard identiﬁcation
+Sample collection and microbiological water quality
+analysis
+Sampling consisted of fortnightly grab samples taken in two
+For Salmonella and Vibrio spp., 100 μL of sample was
+pipetted on agar plates (in some cases, a 10-fold dilution was
+4
+VALLEJO ET AL.
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+F I G U R E 2
+Flowchart of the calculation of illnesses/infections per 1000 users per day. In brackets are the number of the section detailing each step.
+Source: Sunger and Haas (2015).
+performed). Water of 100 μL was used as it presented better
+results for platting compared to 1 mL. The agar plates were
+cultured and analyzed according to the protocol established
+by the company. For Salmonella, BPLS-Agar (modiﬁed) for
+isolation and identiﬁcation of Salmonella except Salmonella
+typhi was used (Oxoid, Wesel, Germany), after 48 h at
+36◦C incubation pink colonies were counted. For Vibrio spp.,
+TCBS-Agar plates were prepared according to the manu-
+factures’ protocol (Mibius, Düsseldorf, Germany), and after
+24 h at 35◦C incubation, colonies were counted. For L.
+monocytogenes, Brilliance Listeria agar plates were used
+(Oxoid, Wesel, Germany); after incubation for 48 h at 36◦C,
+the plates were analyzed, and a number of colonies were
+counted. Regarding Campylobacter spp., we used Campy-
+lobacter selective agar (CCDA; blood free) (Oxoid, Wesel,
+Germany), and the plates were analyzed after 48 h incubation
+at 42◦C in a microaerophile environment. The concentra-
+tions of bacteria analyzed using the platting method were
+calculated as CFU/100 mL.
+Statistical analysis and probable health outcomes
+The concentrations of E. coli, Enterococci, Salmonella, and P.
+aeruginosa were evaluated to identify the probability distri-
+bution that best represented the data obtained from each bac-
+terium. The probability distributions, Weibull, γ, β, and Log-
+normal were tested using maximum likelihood estimation in
+RStudio (2020) software, and the goodness-of-ﬁt parameters
+for all the distributions were determined using the Loglikeli-
+hood and Akaike criteria (AIC). The selected probability dis-
+tribution was used later as input for the dose–response model
+(Section 2.2.3).
+The QMRA was performed using as reference bacteria E.
+coli, Enterococci, and Salmonella to account for the proba-
+bility of gastrointestinal illnesses and P. aeruginosa to assess
+the probability of infection due to dermal exposure. Vibrio
+spp., L. monocytogenes, and Campylobacter spp. were not
+included in the risk assessment study because their concen-
+trations were always below the limit of detection (LOD) of
+the respective cultivation method.
+MICROBIOLOGICAL WATER QUALITY
+5
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+2.2.2
+Exposure assessment
+Ingestion rate per minute due to water droplets (QD)
+¯L∕min
+=VD (¯L) xfD
+n∕min
+.
+(2)
+(
+)
+(
+)
+Field observations at the ornamental fountains
+The Burano method was developed in 1972 by the social
+scientists Riege and Schubert (2002) who conducted observa-
+tions in the Burano district regarding the presence of citizens
+at city square’s at a given time and documented in a map
+(Riege & Schubert, 2002). For our study, an adaptation of
+the Burano method was used to monitor the behavior of the
+citizens engaging in recreational activities involving contact
+with water at the ornamental fountains. Video surveillance is
+a commonly used tool to gather data from ﬁeld observations;
+however, we could not use this method due to data protection
+rules in Germany (Berding, 2020).
+QD
+Ingestion rate per minute due to drinking mouthfuls of
+water (QM)
+(
+¯L∕min
+)
+= VM (¯L) xfM
+(
+n∕min
+)
+.
+(3)
+QM
+The total ingestion rate per minute was calculated as
+follows (Q):
+¯L∕min
+=QHM(¯L∕min) + QD(¯L∕min) + QM(¯L∕min).
+Q
+(
+)
+Between four and six visits of 60 min duration were
+(4)
+Values and probability distributions of the parameters VD,
+made at each fountain in random days during the water
+sampling campaigns. The information collected during the
+visits was annotated in a spatial map of the fountain and
+surrounding area, including the type of water contact and
+respective exposure duration. The spatial map made for the
+Körtingbrunnen fountain is presented in Figure 3, as an
+example.
+fD, h, A, and VM were taken from the health risk assess-
+ment study for splash parks in the Netherlands done by Man,
+Bouwknegt et al. (2014), given the similarities with our study
+(Table 1). The values of the parameters fHM, fM, and fH were
+obtained by pooling the data from our ﬁeld observations of all
+the fountains and ﬁtting it to a γ distribution, which is used
+to describe the waiting time between events (Table 1). The
+parameter QM was used as input only for the dose–response
+model of the Körtingbrunnen because drinking mouthfuls of
+water was observed only at this fountain.
+Regarding water contact, we deﬁned three categories: (a)
+People having direct water contact are deﬁned as those who
+had hand immersion in water, hand-to-mouth contact after
+touching water, water droplets falling in face or mouth, and
+drinking mouthfuls of water (Figure 3, red color); (b) people
+having indirect water contact are those who had contact with
+water through another person, animal, or object (Figure 3,
+yellow color); and (c) people having no water contact are
+deﬁned as those who were in the surroundings of the foun-
+tain but did not have any observed interaction with water
+(Figure 3, green color).
+For the dermal exposure route, the rate of water in contact
+with the skin of the hands (QH) was estimated using Equa-
+tion (5) considering the parameters h, film thickness of water
+on hands, AH, the surface area of the hands, and fH, frequency
+of having hands immersed in water.
+(
+¯L∕min
+)
+= h
+(
+mm∕min
+)
+(
+mm2)
+(
+n∕min
+)
+.
+QH
+xAH
+xfH
+(5)
+For further analysis, the visitors were divided into two
+groups according to their estimated age: Visitors under an
+estimated age of 16 years were deﬁned as children, whereas
+the others were treated as adults.
+The parameters and statistical distributions used as input
+for the dose–response model are presented in Table 1.
+The exposure duration (t) was determined through the ﬁeld
+observations of recreational activities that involved direct
+contact with water. These data were then ﬁtted to a β prob-
+ability distribution in RStudio (2020). This distribution was
+chosen because it describes data falling within a speciﬁc
+interval, which in this case corresponds to the duration of the
+ﬁeld observations.
+Dose quantiﬁcation
+In the following paragraphs, we describe the procedure used
+to estimate the ingestion rate (Q), the rate of water in contact
+with the skin of the hands (QH), and the time of exposure (t)
+required to determine the exposure dose.
+For the ingestion exposure route associated with gastroin-
+testinal illnesses, three main pathways were analyzed for
+people having direct water contact: ingestion due to hand-to-
+mouth contact, ingestion of water droplets during splashing,
+and ingestion of mouthfuls of water. The ingestion rates
+for each pathway and the total ingested rate of water were
+estimated using the following equations:
+2.2.3
+Dose–response models
+The dose of exposure (d) to the several bacterial hazards
+(Equation 6) was calculated by multiplying the concentra-
+tion of the bacteria in water (C), the rate of water ingested
+or in contact with the skin during exposure (Q) depending
+on the exposure route, and the time of exposure (t) of one
+recreational event (Haas et al., 2014):
+Ingestion rate per minute due to hand-to-mouth contact
+(QHM)
+¯L∕min
+= h (mm) xA
+n∕min
+.
+(1)
+MPN∕event
+= C
+MPN∕mL
+mL∕min
+min∕event
+.
+(
+)
+(
+mm2)
+(
+)
+(
+)
+(
+)
+(
+)
+(
+)
+QHM
+xfHM
+d
+xQ
+xt
+(6)
+The bacterial concentrations were determined as described
+6
+VALLEJO ET AL.
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+F I G U R E 3
+Example of ﬁeld observation at the Körtingbrunnen.
+TA B L E 1
+Exposure parameters used for ingestion and dermal exposure routes
+Parameter
+Distribution of valuesa
+Source
+A, surface area of the hand that is mouthed (mm2)
+U (100, 2000)
+USEPA (2019)
+AH, surface area of the hand (mm2)
+U (15 × 103, 72 × 103)
+USEPA (2019)
+fD, frequency of ingesting water droplets (n/min)
+G (2.1, 0.17)
+Man, Bouwknegt et al. (2014)
+fH, frequency of hand immersion
+G (2.3, 0.65)
+Field observations
+fHM, frequency of hand-to-mouth contact (n/min)
+G (1.3, 0.8)
+Field observations
+fM, frequency of taking a mouthful of water
+G (0.5, 1.4)
+Field observations
+h, ﬁlm thickness of water on hands (mm)
+U (1.97 × 10−2, 2.34 × 10−2)
+USEPA (2019)
+(n/min)
+VM, volume of a mouthful of water (μL)
+G (4.72, 5.3 × 103)
+USEPA (2019)
+VD, volume of a water droplet (μL)
+U (0.5, 524)
+Man, Bouwknegt et al. (2014)
+aU, uniform probability distribution (min, max); G, γ probability distribution (shape, scale). All the values in the table are for children.
+MICROBIOLOGICAL WATER QUALITY
+7
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+TA B L E 2
+Dose response models used for the selected bacteria
+Bacteria
+Dose response model
+Parameters
+Source
+Pill = 1 −[1 + d × ((2(1/α) −1)/N50)]−α
+α = 2.63 × 10−1
+CAMRA (2020b)
+Escherichia coli (ETEC
+N50 = 3.56 × 106
+Enterococci
+Pill = 1 −[1 + d × ((2(1/α) −1)/N50)]−α
+α = 1.6 × 10−1
+Sunger and Haas (2015)
+O111)
+N50 = 59.9 × 103
+Salmonella
+Pill = 1 −[1 + d × ((2(1/α) −1)/N50)]−α
+α = 31.26 × 10−2
+WHO (2001)
+N50 = 23.6 × 103
+Pseudomonas aeruginosa
+Pinf = 1 −exp−k × d
+k = 4.3 × 10−7
+Roser et al. (2015)
+1 × 104 MPN/100 mL. Afterward, a sensitivity analysis was
+done to quantify the contribution of each parameter in per-
+centage to the ﬁnal risk of illness/infection. This analysis was
+executed using the Microsoft Excel Add-In Oracle Crystal
+Ball (), which computes the contribution to the variance of
+each parameter by squaring the rank correlation coefﬁcients
+and normalizing them to 100%.
+in Section 2.2.1. The exposure rates were calculated using
+Equations (4) and (5), and the time of exposure was quantiﬁed
+during the ﬁeld observations. The risk of GI illness per 1000
+users per day (Pill) due to ingestion of E. coli, Enterococci,
+and Salmonella was estimated according to the β-Poisson
+dose–response model (Equation 7).
+The analytical methods used in our study to quantify E.
+coli and Enterococci are not designed speciﬁcally to identify
+pathogenic strains. Therefore, we assumed a “worst case sce-
+nario” in which all E. coli and Enterococci present in our
+samples were pathogenic for the calculation of the risk of
+illness (Pill). We considered pathogenic E. coli strain ETEC
+O111 (CAMRA, 2020b) and pathogenic Enterococci (Haas
+et al., 2014). We made this assumption because there are no
+regulations mandating water quality monitoring in ornamen-
+tal fountains, and in most cases, the water is continuously
+recirculated without any treatment during the summer. As
+a result, our risk estimate may be overestimated due to the
+conservative assumptions made in our calculations:
+2.2.5
+USEPA mean illness rate
+The USEPA carried out the National Epidemiological and
+Environmental Assessment of Recreational Water study
+(NEEAR study) published in 2003, in which a broader def-
+inition of gastrointestinal illness than the one considered in
+the guidelines of 1986 was used. NEEAR-gastrointestinal ill-
+nesses (NGI) deﬁnition includes diarrhea, stomachache, or
+nausea without the requirement of fever. This was included in
+the USEPA guidelines for recreational water quality criteria
+(RWQC) of 2012, which established an estimated illness rate
+of 32 NGI/1000 or 36 NGI/1000, depending on the targeted
+water quality.
+Pill = 1 −[1 + dx((2(1∕𝛼) −1)∕N50)]−𝛼.
+(7)
+Thus, the calculated illness and infection estimates were
+The values for the parameters α and N50 were taken from
+the literature, as presented in Table 2.
+compared with an estimated illness rate of 36 NGI/1000 users
+(USEPA, 2012). There is no estimated illness or infection
+rate for dermal infections established in the USEPA (2012);
+however, the NEEAR study also found that other waterborne
+illnesses occur at lower rates than GI illnesses. Therefore,
+protecting public health against GI illnesses will also pre-
+vent most types of illnesses related to recreational activities in
+water, which is why we used the same benchmark to compare
+the risk of skin infections (USEPA, 2012).
+Additionally, the risk of dermal infection per 1000 users
+per day (Pinf) due to exposure to P. aeruginosa was estimated
+with the exponential dose–response model (Equation 8)
+(Roser et al., 2015):
+Pinf = 1 −exp−k × d.
+(8)
+The risk estimate for GI illness per 1000 users was cal-
+2.2.4
+Risk characterization
+culated in the present study as follows; ﬁrst, the dose was
+calculated by running Monte Carlo simulations from the
+bacterial concentration distribution, ingestion rate distribu-
+tion, and exposure duration distribution identiﬁed for each
+fountain in previous steps, the obtained values were then
+replaced in the appropriate dose–response model to obtain the
+individual probability of a person getting ill/infected; ﬁnally,
+these individual risk estimates were then multiplied by
+1000 to estimate the risk of illness/infection per 1000
+users.
+To account for uncertainty in the exposure parameters and
+time of exposure (t), Monte Carlo simulations were per-
+formed in MATLAB (2020); the software generated 10.000
+combinations of the parameters of the dose–response model
+to estimate the ﬁnal risk of illness/infection. For this study, all
+the model parameters were assumed to be independent.
+different concentrations in the range from 1 × 101 to
+Moreover, a scenario analysis was carried out with
+8
+VALLEJO ET AL.
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+3
+RESULTS AND DISCUSSION
+by the retention basin that the Blätterbrunnen has, which
+can work as a barrier for dogs, mice, and other animals as
+well as protection from surface runoff. Conversely, the rest
+of the fountains are open and offer free access for vectors
+and surface runoff that might bring microbial pollution to the
+water.
+3.1
+Hazard identiﬁcation
+Several bacterial hazards may be present in urban waters,
+depending on the water system being analyzed and the source
+of the water (Ortells Sales, 2015). To determine the water
+quality of the fountains, we analyzed E. coli, Enterococci,
+Salmonella, Vibrio spp., L. monocytogenes, Campylobacter
+spp., and P. aeruginosa.
+At the Körtingbrunnen and Marstallbrunnen, dogs and sev-
+eral birds were also seen during ﬁeld observations (cats and
+rodents cannot be excluded during the night). Both fountains
+have similar construction, and even though the Marstallbrun-
+nen has an automatic chlorine disinfection system, high fecal
+contamination regarding E. coli was observed in both foun-
+tains (Table 3). Our results are consistent with those found by
+Man, Heederik et al. (2014) where 30% of the studied water
+features fed with tap water exceeded the standards for fecal
+indicators in recreational waters according to the USEPA
+(2012).
+Campylobacter spp. can not only have human or animal
+fecal origin and are commonly found in rivers, ground-
+water, and sewage but have also been found in drinking
+water (Jones, 2001). Katukiza et al. (2014) and Dale et al.
+(2010) found Salmonella in drinking water systems dur-
+ing their studies. Furthermore, Campylobacter spp. together
+with Salmonella spp. are the most important causes of
+gastrointestinal infections in Europe (ECDC, 2014).
+E. coli and Enterococci have been used as microbial indica-
+Brehm et al. (2021) found that severe heatwaves may
+tors of fecal pollution both in marine and freshwater systems
+(Jang & Liang, 2018); nonetheless, a study carried out in
+German drinking water networks showed that most of the
+Enterococci species found in drinking water systems were not
+assigned to the intestinal strains, suggesting that it could be
+introduced to the water by invertebrates (Technologiezentrum
+Wasser, 2019). As mentioned before, three of the four studied
+fountains have open access, allowing not only people to have
+contact with the water but also domestic animals, birds, and
+other vectors, which can bring fecal pollution to the water;
+thus, to conﬁrm the origin of this bacterial pollution, micro-
+bial source tracking, which allows discrimination between
+human and nonhuman fecal sources, should be performed in
+the future.
+be responsible for infections associated with Vibrio spp. in
+Germany, as the number of human infections linked to this
+bacterium increased signiﬁcantly during the summer months
+of 2018 and 2019. L. monocytogenes is mostly a foodborne
+pathogen causing infections mainly in immunocompromised
+individuals; however, aquatic environments can be a potential
+source of transmission to animals and the food chain. Raschle
+et al. (2021) reported the occurrence of L. monocytogenes in
+surface waters in Switzerland, highlighting the potential of
+rivers and inland channels as reservoirs for this bacterium; it
+is ubiquitous in the environment and can form bioﬁlms.
+However, concentrations of Vibrio spp., L. monocytogenes,
+and Campylobacter spp. were always below the LOD.
+Legionella pneumophila is a waterborne pathogen found
+In our study, concentrations of Salmonella were much
+in natural water as well as in man-made water systems and
+is the causative agent of Legionellosis, a severe pneumo-
+nia caused by inhalation of aerosols contaminated with this
+bacterium. An outbreak of Legionellosis originating from
+a decorative water fountain has been reported in a previ-
+ous study (Smith et al., 2015). However, this bacterium was
+not analyzed because the inhalation exposure route was not
+considered in our study.
+higher than those found by Goh et al. (2015) at the Marina
+reservoir, which is used as freshwater recreational site and
+potable water source. Moreover, Ahmed et al. (2010) found
+a concentration range of Salmonella spp. of 6.5 × 101 to
+3.8 × 102 per 1000 mL in roof-harvested rainwater; in our
+study, this range was exceeded in three of the four water foun-
+tains, except at the Blätterbrunnen (Table 3), this could be
+explained by the bacterial pollution brought through birds
+(observed during ﬁeld observations), as well as the bacte-
+rial load collected when water washes down the surrounding
+surface of the fountains and is continuously recirculated.
+In our study, bacterial concentrations were highly variable
+at each location during the monitoring (Table 3).
+The highest concentrations of the selected bacteria were
+observed at the Körtingbrunnen and the lowest at the Blät-
+terbrunnen, except for P. aeruginosa, where the lowest
+concentrations were found at Klaus–Bahlsen–Brunnen.
+For P. aeruginosa, critical concentration and outbreak
+data related to this bacterium in recreational sites are lack-
+ing in the literature (Rasheduzzaman et al., 2019; Roser
+et al., 2015). From the review made by Roser et al. (2015),
+1 × 106 CFU/100 mL is considered the minimum concentra-
+tion to constitute a hazard for skin infections, which is much
+higher than the concentration we found in the studied water
+fountains (Table 3). Moreover, the concentrations obtained
+in our study were consistent with the results reported in the
+study by Akturk et al. (2012), who also found P. aeruginosa
+in different sections of a drinking water pipeline, conﬁrm-
+ing that the presence of this bacterium in drinking water can
+The USEPA recommends in the RWQC 2012 that
+the
+geometric
+mean
+of
+a
+water
+body
+should
+not
+exceed
+12.6
+×
+101
+CFU/100
+mL
+for
+E.
+coli
+and
+3.5 × 101 CFU/100 mL for Enterococci in any 30-day
+interval; these concentrations correspond to an estimated
+illness rate of 36 NGI per 1000 primary contact recreators.
+Based on these criteria, the Blätterbrunnen was the only foun-
+tain for which E. coli and Enterococci concentrations were
+below these thresholds (Table 3). This could be explained
+MICROBIOLOGICAL WATER QUALITY
+9
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+TA B L E 3
+Geometric mean and 95th-percentile of bacteria concentration in water from the ornamental fountains
+Escherichia coli
+(MPN/100 mL)
+Enterococci
+(MPN/100 mL)
+Salmonella
+(CFU/100 mL)
+Pseudomonas aeruginosa
+(MPN/100 mL)
+Fountain
+Parameters
+Blätterbrunnen
+n
+13
+12
+13
+13
+GM
+2.6 × 100
+2.6 × 100
+4.0 × 102
+2.9 × 102
+95%
+7.3 × 101
+4.9 × 101
+4.2 × 104
+1.5 × 104
+Klaus–Bahlsen–Brunnen
+n
+9
+9
+11
+8
+GM
+2.2 × 102
+4.1 × 102
+1.2 × 104
+7.3 × 102
+95%
+1.8 × 103
+2.2 × 103
+1.2 × 105
+6.9 × 103
+Körtingbrunnen
+n
+9
+9
+10
+9
+GM
+1.9 × 102
+2.7 × 102
+5.6 × 104
+5.1 × 102
+95%
+1.8 × 103
+3.8 × 103
+1.3 × 106
+1.5 × 105
+Marstallbrunnen
+n
+9
+9
+10
+9
+GM
+1.4 × 102
+1.2 × 102
+7.3 × 103
+2.4 × 102
+95%
+7.8 × 102
+1.5 × 103
+9.5 × 104
+2.5 × 104
+Abbreviations: CFU, colony forming units; GM, geometric mean; MPN, most probable number.
+have its origin in bioﬁlm formed in pipelines. Furthermore,
+the lack of regular inspection and maintenance of the foun-
+tains could also explain and affect the presence of bacterial
+pathogens in the water.
+3.2
+Exposure assessment
+3.2.1
+Field observations
+Field observations were held during clear-sky days with tem-
+peratures that ranged between 20 and 32◦C, as these water
+features are visited by many people during warm days. A
+total of 499 people were observed between the four orna-
+mental fountains from which 30% were children assumed to
+be below 16-year old. Moreover, 70% of the people were
+observed among the Körtingbrunnen and Marstallbrunnen,
+both found in busy areas with many restaurants, cafes, and
+shops. Most of the children at these two fountains were seen
+having direct water contact.
+At the Blätterbrunnen, the people observed were mainly
+sitting around the fountain; most of them had no water con-
+tact. On the other hand, at the Klaus–Bahlsen–Brunnen nearly
+all the children observed had direct water contact (Figure 4a).
+F I G U R E 4
+(a) Number of people observed per place and type of
+exposure. People having direct water contact are deﬁned as those who had
+hand immersion in water, hand-to-mouth contact after water contact, water
+droplets falling in face or mouth, and drinking mouthfuls of water. Indirect
+water contact refers those who had contact with water through another
+person, animal, or object, and no water contact refers as those who were in
+the surroundings of the fountain but did not have any observed interaction
+with water; (b) boxplot for the time of exposure of people who had direct
+water contact at each fountain. Line inside the box represents the median
+value, box represents the interquartile range (25–75 percentiles), black dots
+outside box represent the outliers, and whiskers show the maximum and
+minimum values.
+People observed having direct water contact at the foun-
+tains were 151 in total, of which 70% were children and 30%
+adults. From these data, it can be inferred that children are
+the population under higher risk at the selected fountains (see
+Figure 4a); hence, the risk of illness/infection due to ingestion
+and dermal exposure was calculated only for children.
+The proportion of children observed during our study
+was 30% of a total of 499 people; moreover, we identiﬁed
+having wet feet, washing hands and face, and, seldomly, head
+immersions and drinking mouthfuls of water by children
+during a recreational event. Similarly, Man, Bouwknegt et al.
+(2014) observed a total of 604 individuals at splash parks in
+the Netherlands, of which 42.5% were children. They also
+identiﬁed the main exposure pathways as having wet hands,
+wet faces, drinking mouthfuls of water, and being present
+within 2 m of water spray. This indicates that the main
+10
+VALLEJO ET AL.
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+TA B L E 4
+Parameters describing the β probability distribution of the
+ness/infection is calculated by applying the dose–response
+relation corresponding to each bacterium.
+time of exposure at each fountain
+Parameters of the probability
+distribution
+A point estimate calculation of the risk of illness/infection
+Fountain
+is a widely used approach in QMRA; however, we applied
+a probabilistic approach because it considers the variability
+and uncertainty within each input parameter. Thus, as input
+for the dose–response model, the probability distributions of
+bacterial concentration, exposure rates, and time of exposure
+were used.
+Blätterbrunnen
+α = 0.35
+β = 0.66
+Klaus–Bahlsen–Brunnen
+α = 0.34
+β = 0.70
+Körtingbrunnen
+α = 0.30
+β = 0.69
+Marstallbrunnen
+α = 0.32
+β = 1.22
+To analyze the risk of GI illness due to ingestion of E. coli,
+Enterococci, Salmonella, as well as dermal infection due to P.
+aeruginosa, Monte Carlo simulations were run considering
+the respective dose–response model of each bacterium, and
+the results are displayed in box-and-whisker plots (Figure 5).
+exposure routes to microbial hazards observed for children
+in both studies are ingestion and skin contact with water.
+The total time of exposure (t) of people who had direct
+Considering that recreational activities do not take place
+water contact varied depending on the fountain (Figure 4b).
+However, the mean time of exposure at each fountain was not
+signiﬁcantly different (p-value >0.05).
+every day of the year, the risk of illness and infection is mea-
+sured in units per day, eliminating the dependency on the days
+and assuming that a person is exposed to one recreational
+event per day (Haas et al., 2014). For the risk assessment in
+this study, it was assumed that no bacterial decay happened
+during water transport and exposure.
+The data collected from ﬁeld observations were used to ﬁt
+a β distribution, which was afterward used as input for the
+Monte Carlo simulation, the corresponding parameters can
+be found in Table 4.
+The results show that the risk of gastrointestinal illness
+due to E. coli is below the USEPA mean illness rate for
+all the fountains investigated (Figure 5a). In contrast, the
+risk of gastrointestinal illness due to Enterococci (Figure 5b)
+is above the USEPA benchmark at the Körtingbrunnen,
+Klaus–Bahlsen–Brunnen, and Marstallbrunnen fountains. At
+the Blätterbrunnen, the simulated values above the 75th
+percentile also exceed the USEPA mean illness rate. The dif-
+ference in illness risk results between these two bacteria may
+be due to a lower infective dose for Enterococci used in the
+dose–response model. In addition, the three fountains that
+exceeded the USEPA benchmark also had longer exposure
+times compared to the Blätterbrunnen. These factors likely
+contributed to the higher risk of enterococcal illness at these
+three fountains.
+3.2.2
+Dose quantiﬁcation
+When performing a QMRA, it is important to consider
+the microorganisms’ distribution in the water. Bacteria are
+discrete variables whose concentration can vary with each
+event; therefore, bacterial statistics should be characterized to
+acknowledge the risk differences from diverse concentration
+exposures (Haas et al., 2014).
+Concentration of E. coli in three of the fountains was
+described by a γ probability distribution; however, in the
+case of the Blätterbrunnen, the concentration followed a
+log-normal probability distribution. Regarding Enterococci,
+concentrations at Blätterbrunnen, Klaus–Bahlsen–Brunnen,
+and Marstallbrunnen ﬁtted a Weibull distribution, whereas for
+the Körtingbrunnen, a γ distribution was the best ﬁt (Table 5).
+Top of Form
+Soller et al. (2014) assessed human health risks derived
+from exposure to multiple sources of fecal indicator bacteria
+and concluded that recreational waters affected by E. coli and
+Enterococci from nonhuman sources have reduced risks to
+human health compared to waters impaired by human sewage
+sources. However, it should be kept in mind that our study
+considers a “worst case scenario” and assumes that all E.
+coli and Enterococci found in the samples are pathogenic, as
+previously explained.
+Salmonella concentrations ﬁtted a γ distribution for all
+the fountains. Furthermore, the probability distribution for
+P. aeruginosa concentrations at the Blätterbrunnen and the
+Klaus–Bahlsen–Brunnen followed a γ distribution, whereas
+for the Körtingbrunnen and Marstallbrunnen a Weibull
+distribution showed the best ﬁt (Table 5).
+The risk of GI illness due to Salmonella (Figure 5c) and the
+For the present study, hand-to-mouth contact, water
+risk of infection due to P. aeruginosa (Figure 5d) are below
+the benchmark for three of the four fountains; however, both
+risks exceeded the benchmark at the Körtingbrunnen. This
+could be explained by higher exposure times and volumes at
+this fountain, due to observed ingestion of mouthfuls of water
+and higher bacterial concentrations found during lab analysis.
+droplets falling in the mouth, and drinking mouthfuls of water
+have been combined in the ingestion pathway.
+3.3
+Risk assessment
+Goh et al. (2015) also performed a QMRA for Salmonella
+Exposure to the selected bacteria is given by the dose,
+namely, the number of bacteria ingested or in contact
+with the individuals per day. Afterward, the risk of ill-
+spp. and Enterococcus in a freshwater reservoir in Singa-
+pore used for recreational purposes and concluded that the
+illness risk derived from Salmonella was under the acceptable
+MICROBIOLOGICAL WATER QUALITY
+11
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+TA B L E 5
+Best ﬁt probability distributions and parameters used for bacterial concentration
+Fountain
+Parameters
+Escherichia coli
+Enterococci
+Salmonella
+Pseudomonas aeruginosa
+Blätterbrunnen
+data points
+13
+12
+13
+13
+Prob dist.
+Log-norm
+Weibull
+γ
+γ
+Parameters
+μ = −3.65
+k = 0.55
+α = 0.23
+α = 0.28
+σ = 1.75
+λ = 0.06
+β = 0.002
+β = 0.008
+Klaus–Bahlsen–Brunnen
+Data points
+9
+9
+11
+8
+Prob dist.
+γ
+Weibull
+γ
+γ
+Parameters
+α = 0.62
+k = 0.84
+α = 0.50
+α = 0.50
+β = 0.10
+λ = 8.15
+β = 0.02
+β = 0.02
+Körtingbrunnen
+Data points
+9
+9
+10
+9
+Prob dist.
+γ
+γ
+γ
+Weibull
+Parameters
+α = 0.53
+α = 0.56
+α = 0.53
+k = 0.28
+β = 0.08
+β = 7.71
+β = 0.08
+λ = 44.58
+Marstallbrunnen
+Data points
+9
+9
+10
+9
+Prob dist.
+γ
+Weibull
+γ
+Weibull
+Parameters
+α = 0.68
+k = 0.63
+α = 0.54
+k = 0.34
+β = 0.21
+λ = 3.03
+β = 0.002
+λ = 13.12
+benchmark, which coincides with the results of three of the
+ornamental fountains in the present study; however, high con-
+centrations of these bacteria and a high ingestion rate might
+be of concern for the public health at the Körtingbrunnen.
+sional drinking mouthfuls of water and immersing the head.
+Among these pathways, hand-to-mouth contact after getting
+wet hands and water droplets falling into the mouth were
+the most frequently observed routes for children. These two
+pathways, along together with drinking mouthfuls of water
+due to high volumes, pose the greatest risk of exposure to
+children. Byrne et al. (2021) and Verbyla et al. (2019) also
+identiﬁed these pathway routes as the main exposure con-
+cern, highlighting the urgency of implementing water quality
+monitoring at water fountains.
+Bollaerts et al. (2008) modeled dose–illness relationships
+with data from Salmonella outbreaks considering normal
+and susceptible subpopulations; they concluded that the nor-
+mal population showed immunity to these bacteria. However,
+susceptible population, such as newborns, young children,
+pregnant women, elderly, and immunocompromised persons,
+showed a higher probability of getting ill at low dose lev-
+els. This should be borne in mind as the present study did
+not consider differences in host susceptibility (Bollaerts et al.,
+2008).
+3.4
+Scenario analysis for different bacterial
+concentrations
+A similar trend was observed for P. aeruginosa showing
+the highest risk of infection due to dermal exposure at the
+Körtingbrunnen, which could be explained by higher concen-
+trations of this bacterium compared to the other fountains,
+as well as longer times of exposure. Our results are com-
+parable to those of Roser et al. (2015), who reported that
+concentrations of 104 CFU/mL of P. aeruginosa could cause
+an outbreak to a very low extent, and a minimum geomet-
+ric mean of 1.8 × 107 CFU/mL is needed for all the exposed
+population to get folliculitis. Concentrations of P. aeruginosa
+found during our monitoring varied between 1 × 10−3 and
+2.4 × 103 MPN/mL, which could represent a risk of infection
+for susceptible population at the Körtingbrunnen (Figure 5d).
+Moreover, Vuki´
+c Luši´
+c et al. (2021) suggested that due to the
+The scenario analysis aimed to show how different bacterial
+concentrations inﬂuence the ﬁnal risk of illness/infection dur-
+ing a recreational event. A scenario analysis was performed
+with different concentrations ranging between 1 × 101 and
+1 × 104 MPN/100 mL, including the criteria established by
+the USEPA for E. coli of 12.6 × 101 CFU/100 mL, and
+Enterococci, 3.5 × 101 CFU/100 mL (USEPA, 2012).
+In the scenario analysis, we compared exposures at the
+Körtingbrunnen and at the Blätterbrunnen to evaluate the
+effects of different exposure times and volumes in the health
+risk, as at the Körtingbrunnen the exposure times and vol-
+umes were the highest among the fountains. For this analysis,
+we considered the risk of GI illness and dermal infection as a
+function of the time of exposure (Figure 6).
+widespread prevalence of this bacterium, it may not pose a
+signiﬁcant threat to the general public.
+Figure 6 “E. coli” suggests that concentrations of E. coli
+Our study identiﬁed several exposure pathways for chil-
+at the Körtingbrunnen could be as high as the USEPA
+recommendation value of 12.6 × 101 CFU/100 mL for expo-
+sures up to 1 h without exceeding the benchmark. However,
+dren during recreational events, including wet feet, wet
+hands, water droplets falling in the face and mouth, and occa-
+12
+VALLEJO ET AL.
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+F I G U R E 5
+Risk of illness/infection per 1000 users per day at each ornamental water fountain due to exposure to (a) Escherichia coli, (b) Enterococci,
+(c) Salmonella, and (d) Pseudomonas aeruginosa obtained from the Monte Carlo simulations. Horizontal line represents USEPA mean illness rate of 36/1000
+users. Line inside the boxes represents the median value, box represents the interquartile range (25–75 percentiles), crosses outside box represent the outliers,
+and whiskers show the maximum and minimum values.
+exposures above 10 min of duration to concentrations higher
+than 1 × 103 CFU/100 mL could entail a risk of illness
+above the 36/1000 benchmark at this fountain. For the Blät-
+terbrunnen, 1 × 104 CFU/100 mL during 60 min of exposure
+would not exceed the benchmark. This could be explained
+by a different distribution of the time of exposure and higher
+ingestion rates at the Körtingbrunnen.
+els, which are 100 CFU/100 mL and 25 CFU/100 mL for E.
+coli and Enterococci, respectively. Nevertheless, they consid-
+ered bathing exposures during a 10 min period with at least
+three head immersions in fresh recreational waters, which
+represent greater exposure volumes than those considered in
+our study as well as a different water source.
+The data presented in Figure 6 regarding Salmonella indi-
+rococci at the Körtingbrunnen can be 1 × 101 CFU/100 mL
+for exposures up to 10 min without exceeding the mean ill-
+ness benchmark; higher concentrations could involve adverse
+health outcomes to the exposed population. Conversely,
+at the Blätterbrunnen fountain, a concentration of up to
+1 × 102 CFU/100 mL for exposure periods up to 60 min
+would not exceed the benchmark. These results are consis-
+tent with the values suggested by Wiedenmann et al. (2006)
+as reasonable estimates for no-observed-adverse-effect lev-
+cate that exposures up to 10 min at the Körtingbrunnen with a
+concentration of 1 × 101 CFU/100 mL would not exceed the
+benchmark. However, to minimize the risk of illness, lower
+concentrations should be maintained for longer exposure
+periods. On the other hand, at the Blätterbrunnen, concen-
+trations of up to 1 × 102 CFU/100 mL for 60 min would not
+exceed the USEPA mean illness rate. It is worth noting that
+the discrepancy between the two sites may be due to differ-
+ences in the amount of water ingested and the distribution of
+exposure time.
+Figure 6 “Enterococci” shows that concentrations of Ente-
+MICROBIOLOGICAL WATER QUALITY
+13
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+F I G U R E 6
+Scenario analysis for Escherichia coli, Enterococci, Salmonella, and Pseudomonas aeruginosa at Körtingbrunnen and Blätterbrunnen
+fountains.
+14
+VALLEJO ET AL.
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+McBride et al. (2013) performed a QMRA from expo-
+sure to stormwater pathogens in recreational waters and
+despite having different water sources, the concentrations
+obtained for Salmonella are similar to our study. We found
+that concentrations above 1 × 103 CFU/100 mL after 15 min
+exposure could represent the high risk of infection, whereas
+they suggest that the incidence of the probability of illness
+due to exposure to this bacterium was low in their studied
+locations.
+Figure 6 for “P. aeruginosa” only shows results at the Kört-
+ingbrunnen as it had a longer exposure time. For the dermal
+exposure route, the parameters were identical for all of the
+studied fountains. This scenario analysis shows that even high
+concentrations of 1 × 104 MPN/100 mL within a period of
+30 min exposure would not exceed the USEPA benchmark.
+This statement is consistent with prior research indicating that
+this bacterium present in aquatic environments does not pose
+a signiﬁcant threat to the general public (Hardalo & Edberg,
+1997; Vuki´
+c Luši´
+c et al., 2021).
+3.5
+Sensitivity analysis
+To estimate the human health risks related to recreational
+exposure, QMRA employs several parameters as input for the
+dose–response model, which are subject to uncertainty. Thus,
+a sensitivity analysis was performed to investigate how the
+ﬁnal risk of illness/infection is inﬂuenced when the parame-
+ters vary within their uncertainty range and which parameters
+have the greatest effect on the variance of the ﬁnal risk
+outcome (Eregno et al., 2016).
+F I G U R E 7
+Sensitivity analysis expressed as contributions to variance
+of the ﬁnal risk of infection due to Enterococci at (a) Körtingbrunnen and
+(b) Klaus–Bahlsen–Brunnen.
+The assessed parameters were the ﬁlm thickness of water
+on hands (h), the surface area of the hand that is mouthed
+(A), the frequency of hand-to-mouth contact (fHM), the vol-
+ume of a water droplet (VD), the frequency of ingesting
+water droplets (fD), the volume of a mouthful of water
+(VM), the frequency of taking a mouthful of water (fM),
+the time of exposure (t), and bacterial concentration (C).
+The parameters α, β, N50, and k of each dose–response
+model are point estimates obtained from the literature, and
+they were not considered in the sensitivity analysis as they
+may vary from individual to individual (Perez-Rodriguez,
+2021).
+4
+CONCLUSION
+This study is the ﬁrst QMRA performed for ornamental foun-
+tains fed with drinking water in Hannover city. Although
+ornamental fountains are an excellent option to deal with the
+negative effects of global warming by providing refreshing
+environments within cities, the results of our study conﬁrm
+the presence of potentially pathogenic bacteria in ornamental
+water fountains used for recreational purposes and fed with
+drinking water.
+For the sensitivity analysis (Figure 7), only the dose–
+response for Enterococci at the Körtingbrunnen and Klaus–
+Bahlsen–Brunnen was considered as these were the bac-
+terium and fountains, which showed the highest risk of GI
+illness.
+Although the health outcome for most of the studied foun-
+tains did not exceed the USEPA mean illness rate, this
+dramatically changes when the microbiological water qual-
+ity deteriorated. Further microbial source tracking is needed
+to clarify the source of pollution. Preventative measures, such
+as water quality monitoring and warning signs discouraging
+people from drinking the water of ornamental fountains, can
+help reduce exposure volumes and thus adverse health effects
+to the exposed population.
+From the sensitivity analysis (Figure 7), the parameter that
+has the greatest contribution is the time of exposure (t), fol-
+lowed by the bacterial concentration (C). On the other hand,
+the parameters with the lowest contribution were the sur-
+face area of the hand that was mouthed (A) and the ﬁlm
+thickness of water on hands (h). The studies performed by
+Wolfgang (2012) and Eregno et al. (2016) also reported that
+pathogen concentration deﬁnes the ﬁnal exposure dose and,
+thus, dominates the ﬁnal risk outcome.
+The high concentrations of P. aeruginosa found in the
+fountains suggest the occurrence of water stagnation either
+in the fountain’s structures or in the water supply network;
+a more detailed assessment of the operation and maintenance
+MICROBIOLOGICAL WATER QUALITY
+15
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+of these ornamental fountains are required to conﬁrm this and
+subsequently implement appropriate technical measures.
+Journal of Public Health, 34, 527–530. https://doi.org/10.1111/j.1753-
+6405.2010.00602.x
+There are currently no water quality criteria established
+ECDC. (2014). Annual epidemiological report 2014 – Food- and water-
+for water features in public places in Germany. Our study
+emphasizes the importance of such guidelines being put in
+place to minimize health risks associated with exposure to
+ornamental fountains. The scenario analysis presented here
+can help with the development of water quality standards to
+be applied to these water features to protect public health.
+Thus, the scientiﬁc results presented in this article can be of
+beneﬁt to policy makers when launching new water quality
+standards and for implementation and operation guidelines of
+new urban recreational areas.
+borne diseases and zoonoses. Stockholm: European Centre for Disease
+Prevention and Control.
+Eregno, F. E., Tryland, I., Tjomsland, T., Myrmel, M., Robertson, L.,
+& Heistad, A. (2016). Quantitative microbial risk assessment com-
+bined with hydrodynamic modelling to estimate the public health risk
+associated with bathing after rainfall events. The Science of the Total Envi-
+ronment, 548–549, 270–279. https://doi.org/10.1016/j.scitotenv.2016.01.
+034
+Goh, S. G., Fang, H. M., Chang, S. Y., & Gin, K. Y. H. (2015). Quantita-
+tive microbial risk assessment of Salmonella and Enterococcus in Marina
+Reservoir and catchments. Water Practice and Technology, 10, 527–531.
+https://doi.org/10.2166/wpt.2015.060
+Haas, C. N., Rose, J. B., & Gerba, C. P. (2014). Quantitative microbial risk
+AC K N OW L E D G M E N T S
+The authors are grateful to Ms. Claudia Helle for her
+assistance during lab work. This research was funded by
+the Federal Ministry of Education and Research (BMBF)
+within the RES:Z call: Resource-optimized city of the future;
+research project TransMiT—Resource-optimized transfor-
+mation of combined and separate drainage systems in existing
+quarters with high population pressure, Subproject Effect of
+BGI on local climate/backyards, grant number 033W105A
+UP5.
+assessment (2nd ed.). Hoboken, NJ: John Wiley & Sons, Inc.
+Hardalo, C., & Edberg, S. C. (1997). Pseudomonas aeruginosa: Assessment
+of risk from drinking water. Critical Reviews in Microbiology, 23, 47–75.
+https://doi.org/10.3109/10408419709115130
+IDEXX Laboratories (2019). Quanti-Tray-System. https://www.idexx.de/de/
+water/water-products-services/quanti-tray-system/
+Jang, C.-S., & Liang, C.-P. (2018). Characterizing health risks associated
+with recreational swimming at Taiwanese beaches by using quantitative
+microbial risk assessment. Water Science and Technology: A Journal of
+the International Association on Water Pollution Research, 77, 534–547.
+https://doi.org/10.2166/wst.2017.571
+Jones, K. (2001). Campylobacters in water, sewage and the environment.
+Open access funding enabled and organized by Projekt
+Journal of Applied Microbiology, 90(S6), 1 June 2001, Pages 68S–79S.
+https://doi.org/10.1046/j.1365-2672.2001.01355.x
+DEAL.
+Katukiza, A. Y., Ronteltap, M., van der Steen, P., Foppen, J. W. A., & Lens,
+P. N. L. (2014). Quantiﬁcation of microbial risks to human health caused
+by waterborne viruses and bacteria in an urban slum. Journal of Applied
+Microbiology, 116, 447–463. https://doi.org/10.1111/jam.12368
+R E F E R E N C E S
+Ahmed, W., Vieritz, A., Goonetilleke, A., & Gardner, T. (2010). Health
+risk from the use of roof-harvested rainwater in Southeast Queensland,
+Australia, as potable or nonpotable water, determined using quantitative
+microbial risk assessment. Applied and Environmental Microbiology, 76,
+7382–7391. https://doi.org/10.1128/AEM.00944-10
+Man, H. d., Bouwknegt, M., van Heijnsbergen, E., Leenen, E. J. T. M., van
+Knapen, F., & de Roda Husman, A. M. (2014). Health risk assessment
+for splash parks that use rainwater as source water. Water Research, 54,
+254–261. https://doi.org/10.1016/j.watres.2014.02.010
+Akturk, S., Dincer, S., & Toroglu, S. (2012). Determination of microbial
+Man, H. D., Heederik, D. D. J., Leenen, E. J. T. M., Husman Rosa, de A.
+quality and plasmid-mediated multidrug resistant bacteria in fountain
+drinking water sources in Turkey. Journal of Environmental Biology, 33,
+1127–1136.
+M., Spithoven, J. J. G., & van Knapen, F. (2014). Human exposure to
+endotoxins and fecal indicators originating from water features. Water
+Research, 51, 198–205. https://doi.org/10.1016/j.watres.2013.10.057
+Brehm, T. T., Berneking, L., Sena Martins, M., Dupke, S., Jacob, D.,
+MATLAB. (2020). MATLAB R2020a. Natick, MA: The MathWorks Inc.
+McBride, G. B., Stott, R., Miller, W., Bambic, D., & Wuertz, S. (2013).
+Drechsel, O., Bohnert, J., Becker, K., Kramer, A., Christner, M.,
+Aepfelbacher, M., Schmiedel, S., & Rohde, H. (2021). Heatwave-
+associated Vibrio infections in Germany, 2018 and 2019. Euro Surveil-
+lance: Bulletin Europeen Sur les Maladies Transmissibles: European
+Communicable Disease Bulletin, 26, 2002041. https://doi.org/10.2807/
+1560-7917.ES.2021.26.41.2002041
+Discharge-based QMRA for estimation of public health risks from expo-
+sure to stormwater-borne pathogens in recreational waters in the United
+States. Water Research, 47, 5282–5297. https://doi.org/10.1016/j.watres.
+2013.06.001
+Modrzewska, B. D., Bartnicka, M., & Blaszkowska, J. (2019). Microbially
+Bollaerts, K., Aerts, M., Faes, C., Grijspeerdt, K., Dewulf, J., & Mintiens,
+contaminated water in urban fountains as a hidden source of infec-
+tions. Clean – Soil, Air, Water, 47, 1800322. https://doi.org/10.1002/clen.
+201800322
+K. (2008). Human salmonellosis: Estimation of dose-illness from out-
+break data. Risk Analysis: An Ofﬁcial Publication of the Society for Risk
+Analysis, 28, 427–440. https://doi.org/10.1111/j.1539-6924.2008.01038.
+x
+Ortells Sales, H. (2015). Health Impact Assessment of New Urban Water
+Concepts. Doctoral. pp. 218.
+Byrne, D. M., Hamilton, K. A., Houser, S. A., Mubasira, M., Katende, D.,
+Perez-Rodriguez, F. (Ed.) (2021). Risk assessment methods for biological
+Lohman, H. A. C., Trimmer, J. T., Banadda, N., Zerai, A., & Guest,
+J. S. (2021). Navigating data uncertainty and modeling assumptions in
+quantitative microbial risk assessment in an informal settlement in Kam-
+pala, Uganda. Environmental Science & Technology, 55, 5463–5474.
+https://doi.org/10.1021/acs.est.0c05693
+and chemical hazards in food (pp. 527). Boca Raton: CRC Press.
+Rasheduzzaman, M., Singh, R., Haas, C., Tolofari, D., Yassaghi, H.,
+Hamilton, K., Yang, Z., & Gurian, P. (2019). Reverse QMRA as a decision
+support tool: Setting acceptable concentration limits for Pseudomonas
+aeruginosa and Naegleria fowleri. Water, 11, 1850. https://doi.org/10.
+3390/w11091850
+CAMRA. (2020a). Introduction to Quantitative Microbial Risk Assessment.
+http://camra.msu.edu/aboutus.html (accessed 28 December 2020)
+Raschle, S., Stephan, R., Stevens, M. J. A., Cernela, N., Zurﬂuh, K.,
+CAMRA. (2020b). QMRA Wiki. http://www.qmrawiki.org/ (accessed 8
+Muchaamba, F., & Nüesch-Inderbinen, M. (2021). Environmental dis-
+semination of pathogenic Listeria monocytogenes in ﬂowing surface
+waters in Switzerland. Scientiﬁc Reports, 11, 9066. https://doi.org/10.
+1038/s41598-021-88514-y
+December 2020)
+Dale, K., Kirk, M., Sinclair, M., Hall, R., & Leder, K. (2010). Reported
+waterborne outbreaks of gastrointestinal disease in Australia are predomi-
+nantly associated with recreational exposure. Australian and New Zealand
+Roser, D. J., van den Akker, B., Boase, S., Haas, C. N., Ashbolt, N.
+J., & Rice, S. A. (2015). Dose-response algorithms for water-borne
+16
+VALLEJO ET AL.
+15396924, 0, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/risa.14145 by Cochrane Germany, Wiley Online Library on [18/10/2023]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Pseudomonas aeruginosa folliculitis. Epidemiology and Infection, 143,
+1524–1537. https://doi.org/10.1017/S0950268814002532
+U. Berding, (2020). personal communication, February 2, 2020.
+Verbyla, M. E., Pitol, A. K., Navab-Daneshmand, T., Marks, S. J., &
+Riege, M., & Schubert, H. (2002). Zur Analyse sozialer Räume. In: Riege,
+Julian, T. R. (2019). Safely managed hygiene: A risk-based assessment
+of handwashing water quality. Environmental Science & Technology, 53,
+2852–2861. https://doi.org/10.1021/acs.est.8b06156
+M., & Schubert, H. (eds) Sozialraumanalyse. VS Verlag für Sozial-
+wissenschaften, Wiesbaden. https://doi.org/10.1007/978-3-322-94995-
+0_1
+Vuki´
+c Luši´
+c, D., Maestro, N., Cenov, A., Luši´
+c, D., Smolˇ
+ci´
+c, K., Toli´
+c,
+RStudio Team (2020). RStudio: Integrated Development for R. RStudio,
+S., Maestro, D., Kapetanovi´
+c, D., Marinac-Pupavac, S., Tomi´
+c Linšak,
+PBC, Boston, MA URL http://www.rstudio.com/
+D., Linšak, Ž., & Glad, M. (2021). Occurrence of P. aeruginosa in
+water intended for human consumption and in swimming pool water.
+Environments, 8, 132. https://doi.org/10.3390/environments8120132
+Savill, M. G., Hudson, J. A., Ball, A., Klena, J. D., Scholes, P., Whyte, R.
+J., McCormick, R. E., & Jankovic, D. (2001). Enumeration of campy-
+lobacter in New Zealand recreational and drinking waters. Journal of
+Applied Microbiology, 91, 38–46. https://doi.org/10.1046/j.1365-2672.
+2001.01337.x
+WHO.
+(2001).
+Water
+quality:
+Guidelines,
+standards
+and
+health:
+Assessment
+of
+risk
+and
+risk
+management
+for
+water-related
+infectious
+disease.
+London:
+World
+Health
+Organization.
+https://apps.who.int/iris/bitstream/handle/10665/42442/924154533X.pdf
+?sequence=1&isAllowed=y
+Seputra, J. A. P. (2018). Thermal effectiveness of wall indoor fountain
+in warm humid climate. IOP Conference Series: Materials Science
+and Engineering, 316, 12005. https://doi.org/10.1088/1757-899X/316/1/
+012005
+WHO.
+(2016).
+Quantitative
+microbial
+risk
+assessment:
+Application
+for water safety management. London: World Health Organiza-
+tion. https://www.who.int/water_sanitation_health/publications/qmra/en/
+(accessed 24 August 2020)
+Smith, S. S., Ritger, K., Samala, U., Black, S. R., Okodua, M., Miller,
+L., Kozak-Muiznieks, N. A., Hicks, L. A., Steinheimer, C., Ewaidah,
+S., Presser, L., & Siston, A. M. (2015). Legionellosis Outbreak Associ-
+ated With a Hotel Fountain. Open Forum Infectious Diseases 2, ofv164.
+https://doi.org/10.1093/oﬁd/ofv164
+Wiedenmann, A., Krüger, P., Dietz, K., López-Pila, J. M., Szewzyk, R., &
+Botzenhart, K. (2006). A randomized controlled trial assessing infec-
+tious disease risks from bathing in fresh recreational waters in relation to
+the concentration of Escherichia coli, intestinal enterococci, Clostridium
+perfringens, and somatic coliphages. Environmental Health Perspectives,
+114, 228–236. https://doi.org/10.1289/ehp.8115
+Soller, J. A., Schoen, M. E., Varghese, A., Ichida, A. M., Boehm, A. B.,
+Eftim, S., Ashbolt, N. J., & Ravenscroft, J. E. (2014). Human health risk
+implications of multiple sources of faecal indicator bacteria in a recre-
+ational waterbody. Water Research, 66, 254–264. https://doi.org/10.1016/
+j.watres.2014.08.026
+Wolfgang, S. (2012). Risk assessment of Braunschweig wastewater reuse
+scheme. Berlin: Kompetenzzentrum Wasser gGmbH. https://publications.
+kompetenz-wasser.de/en/publication/548/ (accessed 20 December 2020)
+Sunger, N., & Haas, C. N. (2015). Quantitative microbial risk assessment for
+recreational exposure to water bodies in Philadelphia. Water Environment
+Research: A Research Publication of the Water Environment Federation,
+87, 211–222. https://doi.org/10.2175/106143015x14212658613073
+Technologiezentrum
+Wasser.
+(2019).
+Jahresbericht/DVGW-
+Technologiezentrum
+Wasser.
+https://digital.zlb.de/viewer/resolver?
+How to cite this article: Vallejo, E. C., Düker, U.,
+Meyer, F., Berding, U., & Nogueira, R. (2023).
+Microbiological water quality and derived health risks
+from exposure to ornamental water fountains in the
+city of Hannover. Risk Analysis, 1–16.
+https://doi.org/10.1111/risa.14145
+urn=urn:nBn:dE:kObv:109-1-15366126 (accessed 5 January 2021)
+USEPA. (2012). Recreational water quality criteria. Washington, DC:
+United States Environmental Protection Agency. https://www.epa.gov/
+wqc/2012-recreational-water-quality-criteria-documents
+(accessed
+15
+October 2020)
+USEPA. (2019). Exposure factors handbook: Update for chapter 3 of the
+exposure factors handbook. Washington, DC: EPA. https://cfpub.epa.gov/
+ncea/risk/recordisplay.cfm?deid=236252 (accessed 6 January 2021)

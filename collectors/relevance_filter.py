@@ -81,12 +81,26 @@ def _get_embedding_store():
 
 
 CONFIG_PATH = Path(__file__).parent.parent / "config" / "stage2_rules.yaml"
+GATE_CONFIG_PATH = Path(__file__).parent.parent / "config" / "metagenomics_gate.yaml"
 MODEL_PATH  = Path(__file__).parent.parent / "config" / "relevance_model.pkl"
 
 
 def _load_config() -> dict:
     with open(CONFIG_PATH) as f:
         return yaml.safe_load(f)
+
+
+def _load_gate_config() -> dict:
+    """Load metagenomics gate configuration from its dedicated YAML file.
+    The enabled/disabled state is controlled by METAGENOMICS_GATE_ENABLED in .env.
+    """
+    from config import METAGENOMICS_GATE_ENABLED
+    if GATE_CONFIG_PATH.exists():
+        with open(GATE_CONFIG_PATH) as f:
+            cfg = yaml.safe_load(f) or {}
+        cfg["enabled"] = METAGENOMICS_GATE_ENABLED
+        return cfg
+    return {"enabled": METAGENOMICS_GATE_ENABLED, "terms": []}
 
 
 @dataclass
@@ -108,7 +122,7 @@ class RelevanceFilter:
         self.cfg = _load_config()
         self.pos_terms  = self.cfg.get("positive_terms", {})
         self.neg_terms  = self.cfg.get("negative_terms", {})
-        self.gate_cfg   = self.cfg.get("metagenomics_gate", {"enabled": True, "terms": []})
+        self.gate_cfg   = _load_gate_config()
         self.mesh_keep  = [m.lower() for m in self.cfg.get("mesh_keep", [])]
         self.mesh_human = [m.lower() for m in self.cfg.get("mesh_human_signal", [])]
         self.mesh_animal= [m.lower() for m in self.cfg.get("mesh_animal_only", [])]
@@ -322,6 +336,7 @@ class RelevanceFilter:
 
         self._log_summary(papers, kept, removed, review)
         self._save_removed(removed)
+        self._export_rejected_csv(paper_verdicts)
         return kept, removed, review
 
     # ── Evaluation pipeline ────────────────────────────────────────────────────
@@ -1127,6 +1142,137 @@ class RelevanceFilter:
             json.dump([p.model_dump() for p in removed], f, indent=2,
                       default=str)
         logger.info(f"[filter] Rejected papers saved → {path}")
+
+    def _export_rejected_csv(self, paper_verdicts: List[Tuple]) -> None:
+        """
+        Export a CSV of all rejected papers with stage and reason.
+
+        Columns: title, doi, source, stage, score, reason
+        Output: data/audit/rejected_report_YYYYMMDD_HHMMSS.csv
+        """
+        import csv
+        from config import DATA_DIR
+
+        rejected_rows = []
+        for paper, verdict in paper_verdicts:
+            if not verdict.keep and not verdict.review:
+                rejected_rows.append({
+                    "title": (paper.title or "")[:150],
+                    "doi": getattr(paper, "doi", "") or "",
+                    "source": getattr(paper, "source", "") or "",
+                    "stage": self._humanize_stage(verdict.stage),
+                    "score": round(verdict.score, 3),
+                    "reason": self._humanize_reason(verdict.stage, verdict.reason, verdict.score),
+                })
+
+        if not rejected_rows:
+            return
+
+        audit_dir = DATA_DIR / "audit"
+        audit_dir.mkdir(parents=True, exist_ok=True)
+        ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        csv_path = audit_dir / f"rejected_report_{ts}.csv"
+
+        try:
+            with open(csv_path, "w", newline="", encoding="utf-8") as f:
+                writer = csv.DictWriter(
+                    f,
+                    fieldnames=["title", "doi", "source", "stage", "score", "reason"],
+                )
+                writer.writeheader()
+                writer.writerows(rejected_rows)
+
+            logger.info(
+                f"[filter] Rejected papers CSV exported → {csv_path} "
+                f"({len(rejected_rows)} papers)"
+            )
+        except Exception as e:
+            logger.warning(f"[filter] Failed to export rejected CSV: {e}")
+
+    @staticmethod
+    def _humanize_stage(stage: str) -> str:
+        """Convert internal stage name to human-readable label."""
+        stage_map = {
+            "stage1_mesh": "Stage 1: MeSH Metadata",
+            "stage2_rules": "Stage 2: Keyword Rules",
+            "stage3_ml": "Stage 3: ML Classifier",
+            "stage3_5_embedding": "Stage 3.5: Embedding Similarity",
+            "gate_metagenomics": "Metagenomics Gate",
+            "stage4_llm": "Stage 4: LLM Verifier",
+            "stage4_llm (cached)": "Stage 4: LLM (cached)",
+            "stage4_llm (semantic_cache)": "Stage 4: LLM (semantic cache)",
+            "stage4_llm_unavailable": "Stage 4: LLM Unavailable",
+            "stage4_llm_failed": "Stage 4: LLM Failed",
+        }
+        for key, label in stage_map.items():
+            if key in stage:
+                return label
+        return stage
+
+    @staticmethod
+    def _humanize_reason(stage: str, reason: str, score: float) -> str:
+        """
+        Convert technical reason strings to human-readable explanations.
+        Keeps LLM reasons as-is since they're already natural language.
+        """
+        # Stage 1: already readable
+        if "stage1" in stage:
+            reason_map = {
+                "animal_only_mesh": "Paper is about animal models only (no human subjects)",
+                "no_microbiome_mesh": "Paper has no microbiome-related MeSH terms",
+                "no_mesh_terms": "Paper has no MeSH terms assigned yet",
+            }
+            return reason_map.get(reason, reason)
+
+        # Stage 2: extract matched terms
+        if "stage2" in stage:
+            if "neg:" in reason:
+                # Extract negative terms that caused rejection
+                try:
+                    neg_part = reason.split("neg:[")[1].rstrip("]")
+                    neg_terms = neg_part.split(",") if neg_part else []
+                    if neg_terms and neg_terms[0]:
+                        return f"Off-topic keywords detected: {', '.join(t.strip() for t in neg_terms[:5])}"
+                except (IndexError, ValueError):
+                    pass
+            return f"Low relevance score ({score:.2f}) — insufficient positive keyword matches"
+
+        # Metagenomics gate
+        if "gate" in stage:
+            return "No sequencing, bioinformatics, or data availability terms found in title/abstract"
+
+        # Stage 3 ML: translate probability
+        if "stage3_ml" in stage or "stage3" in stage and "stage3_5" not in stage:
+            if score <= 0.15:
+                return f"ML classifier confidence very low ({score:.0%}) — paper unlikely relevant to human microbiome"
+            elif score <= 0.30:
+                return f"ML classifier confidence low ({score:.0%}) — topic appears outside scope"
+            else:
+                return f"ML classifier scored below keep threshold ({score:.0%})"
+
+        # Stage 3.5 Embedding: translate similarity scores
+        if "stage3_5" in stage:
+            if "neg_sim" in reason:
+                try:
+                    # Extract neg_sim value
+                    parts = reason.split("neg_sim=")
+                    if len(parts) > 1:
+                        neg_val = parts[1][:6]
+                        return f"Paper is highly similar to known-irrelevant papers (similarity: {neg_val}) and dissimilar to relevant ones"
+                except (IndexError, ValueError):
+                    pass
+            return "Paper embedding is more similar to known-irrelevant papers than to relevant ones"
+
+        # Stage 4 LLM: already natural language from the model
+        if "stage4" in stage or "llm" in stage:
+            # Strip the "llm:" prefix if present
+            clean = reason.replace("llm:", "").replace("semantic_cache_hit:", "").strip()
+            if clean:
+                return clean
+            return "LLM determined paper is not relevant to human microbiome research"
+
+        # Fallback
+        return reason
 
 # ── Unit tests ───
 def run_tests():

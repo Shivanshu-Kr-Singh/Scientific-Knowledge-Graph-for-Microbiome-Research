@@ -194,6 +194,14 @@ EMBEDDING_LATENCY_WARN_MS = float(os.getenv("EMBEDDING_LATENCY_WARN_MS", "200.0"
 # ── Metagenomics Gate ──────────────────────────────────────────────────────────
 METAGENOMICS_GATE_ENABLED = os.getenv("METAGENOMICS_GATE_ENABLED", "true").lower() == "true"
 
+# ── Full-Text Exhausted Cache TTL ──────────────────────────────────────────────
+# Papers where all full-text fetch strategies failed are cached as "exhausted"
+# to avoid re-trying on every run. But OA embargoes lapse (commonly 6-12 months
+# post-publication) and Unpaywall's index grows over time, so permanently
+# skipping them leaves potential full text on the table. After this many days,
+# an exhausted paper becomes eligible for one retry.
+FULLTEXT_EXHAUSTED_TTL_DAYS = int(os.getenv("FULLTEXT_EXHAUSTED_TTL_DAYS", "90"))
+
 # ── Drift Monitor ─────────────────────────────────────────────────────────────
 DRIFT_SAMPLE_RATE = float(os.getenv("DRIFT_SAMPLE_RATE", "0.01"))
 DRIFT_MIN_SAMPLE = int(os.getenv("DRIFT_MIN_SAMPLE", "10"))

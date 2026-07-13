@@ -63,9 +63,10 @@ class LLMTripleExtractor:
         self._setup()
 
     def _setup(self) -> None:
-        # Honour the USE_LLM gate before attempting any imports
-        if os.getenv("USE_LLM", "false").lower() != "true":
-            logger.debug("[LLMTripleExtractor] USE_LLM != true — triple extraction disabled")
+        # Honour the USE_LLM_LAYER3 gate (falls back to USE_LLM for compatibility)
+        layer3_flag = os.getenv("USE_LLM_LAYER3", os.getenv("USE_LLM", "false"))
+        if layer3_flag.lower() != "true":
+            logger.debug("[LLMTripleExtractor] USE_LLM_LAYER3 != true — triple extraction disabled")
             return
 
         try:

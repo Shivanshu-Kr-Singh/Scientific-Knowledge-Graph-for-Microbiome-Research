@@ -174,7 +174,7 @@ class CrossrefCollector(BaseCollector):
 
         logger.info(
             f"[{self.source_name}] Starting collection | "
-            f"{date_from} → {date_to} | max={max_results}"
+            f"query='{query}' | {date_from} → {date_to} | max={max_results}"
         )
         if start_offset > 0:
             logger.info(f"[{self.source_name}] Resuming from offset {start_offset}")

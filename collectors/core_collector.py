@@ -132,7 +132,7 @@ class CoreCollector(BaseCollector):
         """
         logger.info(
             f"[{self.source_name}] Starting collection | "
-            f"{date_from} → {date_to} | "
+            f"query='{query}' | {date_from} → {date_to} | "
             f"full-text open access papers"
         )
         if start_offset > 0:

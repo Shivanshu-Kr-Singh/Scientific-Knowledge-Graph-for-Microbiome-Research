@@ -29,11 +29,19 @@ from nlp.enriched_record import NamedEntity
 # This semaphore ensures only ONE GPU operation happens at a time:
 #   - BioBERT inference acquires it before calling self._model()
 #   - Ollama NER acquires it before calling the LLM
-# Additionally, _OLLAMA_NER_LOCK ensures only 1 thread calls Ollama at a time
-# (Ollama is single-threaded internally — concurrent calls just queue anyway
-# but cause timeouts because each waits 120s for its turn).
-_GPU_SEMAPHORE   = threading.Semaphore(1)   # 1 GPU op at a time
-_OLLAMA_NER_LOCK = threading.Lock()          # 1 Ollama NER call at a time
+#
+# CRITICAL FIX: _OLLAMA_NER_LOCK uses filelock (cross-process), NOT
+# threading.Lock. Phase 2 uses ProcessPoolExecutor (8 separate processes),
+# and threading.Lock only works within ONE process — each process got its
+# own independent copy, so all 8 called Ollama simultaneously. Ollama can
+# only run one inference at a time internally, so requests queued up and
+# the ones at the back of the queue timed out at 300s waiting their turn.
+# filelock is filesystem-based and correctly serializes across processes.
+_GPU_SEMAPHORE = threading.Semaphore(1)   # 1 GPU op at a time (within-process)
+
+from filelock import FileLock
+from config import DATA_DIR
+_OLLAMA_NER_LOCK = FileLock(str(DATA_DIR / ".ollama_ner.lock"), timeout=900)
 
 
 # ── Tier 1 Dictionaries ───────────────────────────────────────────────────────
@@ -1272,8 +1280,12 @@ class NERExtractor:
             return []
 
         try:
-            # Acquire Ollama lock first (serialize LLM NER calls)
-            # then GPU semaphore (prevent simultaneous BioBERT + Ollama on GPU)
+            # Serialize all Ollama calls across worker processes via filelock.
+            # With 6 workers and Ollama taking up to ~120s per call (timeout +
+            # retry), a worker might wait up to 5 × 120s = 600s for its turn
+            # in the worst case (all 5 other workers queued ahead). The lock
+            # timeout must exceed this worst case to guarantee every paper gets
+            # its Tier 3 extraction without "lock could not be acquired" errors.
             with _OLLAMA_NER_LOCK:
                 with _GPU_SEMAPHORE:
                     candidate_entities, _ = self._llm_extractor.extract(

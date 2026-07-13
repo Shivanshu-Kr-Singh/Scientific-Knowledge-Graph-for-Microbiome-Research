@@ -143,6 +143,12 @@ def run_layer1(max_per_source: int = 100):
     logger.info("[audit] Audit files reset")
     # ─────────────────────────────────────────────────────
 
+    logger.info("")
+    logger.info("=" * 60)
+    logger.info("INITIALIZATION")
+    logger.info("=" * 60)
+    logger.info("")
+
     orchestrator = CollectionOrchestrator()
     papers = orchestrator.collect_all(max_per_source=max_per_source)
 
@@ -175,13 +181,27 @@ def run_layer2(use_ner_model: bool = False, use_llm: bool = False):
     set USE_NER_MODEL=true for BioBERT NER (needs: pip install transformers torch)
     set USE_LLM=true for Ollama LLM extraction (needs Ollama running with a model)
     """
-    from collectors.orchestrator import CollectionOrchestrator
     from nlp.pipeline import NLPPipeline
+    from collectors.orchestrator import CollectionOrchestrator
 
+    logger.info("")
+    logger.info("╔══════════════════════════════════════════════════════════════╗")
+    logger.info("║              INITIALIZING LAYER 2                           ║")
+    logger.info("║          NLP Enrichment Pipeline                            ║")
+    logger.info("╚══════════════════════════════════════════════════════════════╝")
+    logger.info("")
     logger.info("Starting Layer 2 — NLP Processing Pipeline")
-    orchestrator = CollectionOrchestrator()
+
+    # Load latest collected data directly without initializing all 6 collectors
+    orchestrator = CollectionOrchestrator.__new__(CollectionOrchestrator)
     papers = orchestrator.load_latest()
     logger.info(f"Loaded {len(papers)} papers from Layer 1")
+
+    # Optional paper limit for testing/debugging (e.g. NLP_PAPER_LIMIT=100)
+    paper_limit = int(os.getenv("NLP_PAPER_LIMIT", "0"))
+    if paper_limit > 0:
+        papers = papers[:paper_limit]
+        logger.info(f"[debug] Limited to {paper_limit} papers (NLP_PAPER_LIMIT)")
 
     pipeline = NLPPipeline(use_ner_model=use_ner_model, use_llm=use_llm)
     enriched = pipeline.process_all(papers)
@@ -330,7 +350,7 @@ if __name__ == "__main__":
         run_layer1(max_per_source=MAX)
     elif mode == "2":
         USE_MODEL = os.getenv("USE_NER_MODEL", "true").lower() == "true"
-        USE_LLM   = os.getenv("USE_LLM", "true").lower() == "true"
+        USE_LLM   = os.getenv("USE_LLM_LAYER2", os.getenv("USE_LLM", "true")).lower() == "true"
         run_layer2(use_ner_model=USE_MODEL, use_llm=USE_LLM)
     elif mode == "3":
         # Layer 3: Enhanced Knowledge Graph Pipeline

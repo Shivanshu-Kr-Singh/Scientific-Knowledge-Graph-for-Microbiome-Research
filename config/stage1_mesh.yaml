@@ -1,14 +1,13 @@
-# config/stage1_mesh.yaml
-# ─────────────────────────────────────────────────────────────────────────────
-# Stage 1 — PubMed MeSH metadata filter configuration.
+
+# What are MeSh Tags:--
+#MeSH tags (Medical Subject Headings) are a standardized set of keywords used by the National Library of Medicine to describe the topics of papers indexed in PubMed.
+
 # Used exclusively by: collectors/metadata_filter.py
-# Scale target: 60,000+ PubMed papers
-#
+
 # WHAT THIS FILE CONTROLS:
-#   Stage 1 makes fast KEEP / REJECT / UNKNOWN decisions using PubMed's
-#   human-curated MeSH (Medical Subject Headings) tags before any keyword
+#   Stage 1 makes fast KEEP / REJECT / UNKNOWN decisions using PubMed's human-curated MeSH (Medical Subject Headings) tags before any keyword
 #   scoring or ML inference runs. This is the cheapest and most precise stage.
-#
+
 # HOW DECISIONS ARE MADE:
 #   has microbiome MeSH + human MeSH         → KEEP  (score 0.90)
 #   has microbiome MeSH + human + animal     → KEEP  (score 0.70, human wins)
@@ -27,13 +26,15 @@
 #   mesh_human_signal → M (Persons) + N (Health Care) + E (Study designs)
 #   mesh_animal_only  → B (Organisms) — all animal taxa with microbiome studies
 # ─────────────────────────────────────────────────────────────────────────────
-
+#SOURCE:- https://meshb.nlm.nih.gov/treeview
 
 # ── MeSH terms that indicate a microbiome paper ───────────────────────────────
-# Source: full MeSH tree for D006831 (Microbiota) + related headings.
+# Source: full MeSH tree for D064307 (Microbiota) + D000069196 (Gastrointestinal Microbiome) + related headings.
 # Any paper tagged with at least one of these is considered microbiome-relevant.
-# Covers: core microbiome, body sites, sequencing methods, diseases,
-#         microbial taxa, ecology, metabolites, interventions.
+# Covers: core microbiome, body sites, sequencing methods, diseases, microbial taxa, ecology, metabolites, interventions.
+
+
+
 mesh_keep:
 
   # ── Core microbiome headings (MeSH tree B4) ───────────────────────────────
@@ -91,6 +92,18 @@ mesh_keep:
   - "Genome, Microbial"
   - "Phylogenetic Analysis"
   - "Genome Assembly"
+
+  # ── Additional official MeSH subtree terms (G06.591 children + related) ──
+  - "Microbial Interactions"
+  - "Bacterial Translocation"
+  - "Biofilms"
+  - "Bacteriocins"
+  - "Vaginosis, Bacterial"
+  - "Periodontitis"
+  - "Dental Plaque"
+  - "Enterocolitis, Necrotizing"
+  - "Metabolome"
+  - "Multiomics"
 
   # ── Microbial diversity / ecology ─────────────────────────────────────────
   - "Biodiversity"

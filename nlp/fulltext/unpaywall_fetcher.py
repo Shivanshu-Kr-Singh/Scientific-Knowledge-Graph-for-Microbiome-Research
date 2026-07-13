@@ -16,6 +16,7 @@ from loguru import logger
 
 from nlp.fulltext.pdf_parser import PDFParser
 from nlp.fulltext.web_scraper import WebScraper
+from nlp.fulltext.domain_throttle import throttle as domain_throttle
 
 UNPAYWALL_BASE = "https://api.unpaywall.org/v2"
 _EMAIL = os.getenv("NCBI_EMAIL", "research@example.com")
@@ -54,8 +55,10 @@ class UnpaywallFetcher:
         doi_clean = doi.strip().lstrip("https://doi.org/").lstrip("doi:")
 
         try:
+            api_url = f"{UNPAYWALL_BASE}/{doi_clean}"
+            domain_throttle(api_url)
             resp = requests.get(
-                f"{UNPAYWALL_BASE}/{doi_clean}",
+                api_url,
                 params={"email": _EMAIL},
                 timeout=10,
             )

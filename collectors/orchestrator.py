@@ -17,6 +17,8 @@ objects — ready to feed into the NLP pipeline.
 """
 
 import json
+import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Optional
@@ -86,96 +88,51 @@ class CollectionOrchestrator:
         cursors = self._load_cursors()
         updated_cursors = dict(cursors)  # will be updated after each collector
 
-        # ── Step 1: Run each collector ─────────────────────────────────────────
-        for collector in self.collectors:
-            source = collector.source_name
-            start_offset = cursors.get(source, 0)
+        # ── Step 1: Run all collectors in parallel ──────────────────────────────
+        # Each collector hits a DIFFERENT API host (PubMed, Europe PMC, Semantic
+        # Scholar, OpenAlex, Crossref, CORE) with its own independent rate limiter
+        # (see RATE_LIMITS in config.py). Since they don't share a host or a rate
+        # budget, running them concurrently in threads is safe — same principle as
+        # the 64 I/O threads in the NLP pipeline (Layer 2): threads release the GIL
+        # during network waits, so 6 collectors can all be waiting on HTTP
+        # responses at once instead of one after another.
+        #
+        # NOTE: this parallelizes ACROSS sources, not within a source. Each
+        # individual collector still respects its own RATE_LIMITS pacing for
+        # its own paginated requests — we're not increasing pressure on any
+        # single API, just no longer waiting for source A to finish before
+        # starting source B.
+        max_source_workers = int(os.getenv("LAYER1_SOURCE_WORKERS", str(len(self.collectors))))
 
-            # Semantic Scholar uses token-based pagination — inject the saved token
-            if source == "semantic_scholar":
-                saved_token = cursors.get("semantic_scholar_token")
-                collector._resume_token = saved_token
-                if saved_token:
-                    logger.info(f"[semantic_scholar] Resuming from saved continuation token")
-            # OpenAlex uses opaque cursor strings — inject the saved cursor
-            elif source == "openalex":
-                saved_cursor = cursors.get("openalex_cursor")
-                collector._resume_cursor = saved_cursor
-                if saved_cursor and start_offset > 0:
-                    logger.info(f"[openalex] Resuming from saved cursor string")
-            elif start_offset > 0:
-                logger.info(
-                    f"[{source}] Resuming from offset {start_offset} "
-                    f"(fetched {start_offset} papers in previous runs)"
-                )
+        with ThreadPoolExecutor(max_workers=max_source_workers) as executor:
+            future_to_collector = {
+                executor.submit(
+                    self._run_collector, collector, cursors,
+                    query, date_from, date_to, max_per_source
+                ): collector
+                for collector in self.collectors
+            }
 
-            try:
-                records = collector.collect(
-                    query=query,
-                    date_from=date_from,
-                    date_to=date_to,
-                    max_results=max_per_source,
-                    start_offset=start_offset,
-                )
-
-                # Advance cursor by ACTUAL records collected, not by max_per_source.
-                # This ensures if collection stops early (network drop, API limit,
-                # source exhausted), the cursor reflects reality.
-                # Next run with MAX_PER_SOURCE=5000 will collect 5000 MORE from
-                # where this run actually stopped — not restart from 0.
-                actual_collected = len(records)
-
-                # For PubMed: use the last retstart the collector reached,
-                # since it tracks its own offset internally via WebHistory.
-                # For all others: start_offset + actual_collected is correct.
-                # For PubMed: use the last retstart the collector reached,
-                # since it tracks its own offset internally via WebHistory.
-                # For OpenAlex: save the opaque cursor string for cross-run resume.
-                # For all others: start_offset + actual_collected is correct.
-                if source == "pubmed":
-                    last_offset = getattr(collector, "_last_retstart", None)
-                    if last_offset is not None:
-                        updated_cursors[source] = last_offset
-                    else:
-                        updated_cursors[source] = start_offset + actual_collected
-
-                elif source == "openalex":
-                    # Save numeric offset for resume detection
-                    updated_cursors[source] = start_offset + actual_collected
-                    # Save opaque cursor string for actual pagination resume
-                    last_cursor = getattr(collector, "_last_cursor", None)
-                    if last_cursor:
-                        updated_cursors["openalex_cursor"] = last_cursor
-                        # Inject into next collector instance at run start
-                    else:
-                        # Cursor exhausted — reset both
-                        updated_cursors.pop("openalex_cursor", None)
-                        logger.info("[openalex] All results consumed — cursor reset")
-                else:
-                    updated_cursors[source] = start_offset + actual_collected
-
-                # For S2: save the continuation token for next run
-                if source == "semantic_scholar":
-                    last_token = getattr(collector, "_last_token", None)
-                    if last_token:
-                        updated_cursors["semantic_scholar_token"] = last_token
-                    else:
-                        # Token exhausted — S2 results fully consumed, reset
-                        updated_cursors.pop("semantic_scholar_token", None)
-                        updated_cursors[source] = 0
-                        logger.info("[semantic_scholar] All results consumed — cursor reset")
+            for future in as_completed(future_to_collector):
+                collector = future_to_collector[future]
+                source = collector.source_name
+                try:
+                    records, cursor_updates = future.result()
+                except Exception as e:
+                    # _run_collector already logs/handles its own exceptions and
+                    # returns a safe fallback, but guard here too just in case.
+                    logger.error(f"[{source}] COLLECTOR THREAD FAILED: {e}")
+                    logger.exception(e)
+                    continue
 
                 all_records.extend(records)
-                logger.info(
-                    f"[{source}] Added {actual_collected} records | "
-                    f"cursor → {updated_cursors[source]}"
-                )
-
-            except Exception as e:
-                logger.error(f"[{source}] COLLECTOR FAILED: {e}")
-                logger.exception(e)
-                # Don't advance cursor if collector failed — retry same offset next run
-                updated_cursors[source] = start_offset
+                # None is a sentinel meaning "remove this cursor key" (used when
+                # openalex/semantic_scholar pagination tokens are exhausted).
+                for key, value in cursor_updates.items():
+                    if value is None:
+                        updated_cursors.pop(key, None)
+                    else:
+                        updated_cursors[key] = value
 
         # ── Save updated cursors ───────────────────────────────────────────────
         self._save_cursors(updated_cursors)
@@ -186,6 +143,14 @@ class CollectionOrchestrator:
         merged = self._deduplicate_and_merge(all_records)
 
         logger.success(f"After deduplication: {len(merged)} unique papers")
+
+        # Visual separator before relevance filtering
+        logger.info("")
+        logger.info("")
+        logger.info("=" * 60)
+        logger.info("RUNNING RELEVANCE FILTER ON PAPERS")
+        logger.info("=" * 60)
+        logger.info("")
 
         # ── Step 3: Post-collection relevance filter ──────────────────────
         # Stage 1: MeSH metadata filter (PubMed papers)
@@ -204,19 +169,18 @@ class CollectionOrchestrator:
         )
 
         # ── Step 4: PMC full-text enrichment ──────────────────────────────────
-        # For any paper that has a PMCID, fetch its full XML from PMC and
-        # attach structured full text (Methods, Results, Discussion, etc.).
-        # This upgrades existing papers rather than finding new ones.
+        # MOVED TO LAYER 2: PMC enrichment now runs in Layer 2 after PMCID
+        # resolution (Phase 0), so papers whose PMCIDs are discovered via
+        # DOI→PMCID lookup also get full text. This saves ~2 hours in Layer 1
+        # and improves coverage.
         pmc_candidates = sum(1 for p in merged if p.pmcid and not p.full_text)
         if pmc_candidates > 0:
             logger.info(
                 f"[pmc_enricher] {pmc_candidates} papers have PMCID — "
-                f"fetching full text from PMC"
+                f"full-text enrichment deferred to Layer 2 (after PMCID resolution)"
             )
-            enricher = PMCEnricher()
-            merged = enricher.enrich(merged, max_enrichments=pmc_candidates)
         else:
-            logger.info("[pmc_enricher] No papers with PMCID — skipping enrichment")
+            logger.info("[pmc_enricher] No papers with PMCID yet — will resolve in Layer 2")
 
         # ── Step 5: Save to disk ───────────────────────────────────────────────
         output_path = self._save_merged(merged)
@@ -226,6 +190,118 @@ class CollectionOrchestrator:
         self._print_summary(merged)
 
         return merged
+
+    # ─── Per-Collector Worker (runs in its own thread) ────────────────────────
+
+    def _run_collector(
+        self,
+        collector,
+        cursors: Dict[str, int],
+        query: str,
+        date_from: str,
+        date_to: str,
+        max_per_source: int,
+    ) -> tuple:
+        """
+        Runs a single collector end-to-end and computes its cursor update.
+
+        Extracted from collect_all() so it can be submitted to a thread pool —
+        each collector instance is only ever touched by the thread running it,
+        so there's no shared mutable state between threads (each Collector
+        object is independent, and `cursors` here is read-only per thread).
+
+        Returns (records, cursor_updates) where cursor_updates is a dict of
+        just the keys this collector needs to update — merged into
+        updated_cursors by the caller after the future completes.
+        """
+        source = collector.source_name
+        start_offset = cursors.get(source, 0)
+        cursor_updates: Dict[str, int] = {}
+
+        # Semantic Scholar uses token-based pagination — inject the saved token
+        if source == "semantic_scholar":
+            saved_token = cursors.get("semantic_scholar_token")
+            collector._resume_token = saved_token
+            if saved_token:
+                logger.info(f"[semantic_scholar] Resuming from saved continuation token")
+        # OpenAlex uses opaque cursor strings — inject the saved cursor
+        elif source == "openalex":
+            saved_cursor = cursors.get("openalex_cursor")
+            collector._resume_cursor = saved_cursor
+            if saved_cursor and start_offset > 0:
+                logger.info(f"[openalex] Resuming from saved cursor string")
+        elif start_offset > 0:
+            logger.info(
+                f"[{source}] Resuming from offset {start_offset} "
+                f"(fetched {start_offset} papers in previous runs)"
+            )
+
+        try:
+            records = collector.collect(
+                query=query,
+                date_from=date_from,
+                date_to=date_to,
+                max_results=max_per_source,
+                start_offset=start_offset,
+            )
+
+            # Advance cursor by ACTUAL records collected, not by max_per_source.
+            # This ensures if collection stops early (network drop, API limit,
+            # source exhausted), the cursor reflects reality.
+            # Next run with MAX_PER_SOURCE=5000 will collect 5000 MORE from
+            # where this run actually stopped — not restart from 0.
+            actual_collected = len(records)
+
+            # For PubMed: use the last retstart the collector reached,
+            # since it tracks its own offset internally via WebHistory.
+            # For OpenAlex: save the opaque cursor string for cross-run resume.
+            # For all others: start_offset + actual_collected is correct.
+            if source == "pubmed":
+                last_offset = getattr(collector, "_last_retstart", None)
+                if last_offset is not None:
+                    cursor_updates[source] = last_offset
+                else:
+                    cursor_updates[source] = start_offset + actual_collected
+
+            elif source == "openalex":
+                # Save numeric offset for resume detection
+                cursor_updates[source] = start_offset + actual_collected
+                # Save opaque cursor string for actual pagination resume
+                last_cursor = getattr(collector, "_last_cursor", None)
+                if last_cursor:
+                    cursor_updates["openalex_cursor"] = last_cursor
+                else:
+                    # Cursor exhausted — reset both
+                    cursor_updates["openalex_cursor"] = None
+                    logger.info("[openalex] All results consumed — cursor reset")
+            else:
+                cursor_updates[source] = start_offset + actual_collected
+
+            # For S2: save the continuation token for next run
+            if source == "semantic_scholar":
+                last_token = getattr(collector, "_last_token", None)
+                if last_token:
+                    cursor_updates["semantic_scholar_token"] = last_token
+                else:
+                    # Token exhausted — S2 results fully consumed, reset
+                    cursor_updates["semantic_scholar_token"] = None
+                    cursor_updates[source] = 0
+                    logger.info("[semantic_scholar] All results consumed — cursor reset")
+
+            logger.info(
+                f"[{source}] Added {actual_collected} records | "
+                f"cursor → {cursor_updates.get(source)}"
+            )
+            logger.info("─" * 60)
+            return records, cursor_updates
+
+        except Exception as e:
+            logger.error(f"[{source}] COLLECTOR FAILED: {e}")
+            logger.exception(e)
+            # Don't advance cursor if collector failed — retry same offset next run
+            cursor_updates[source] = start_offset
+            logger.info("─" * 60)
+            return [], cursor_updates
 
     # ─── Deduplication Logic ──────────────────────────────────────────────────
 

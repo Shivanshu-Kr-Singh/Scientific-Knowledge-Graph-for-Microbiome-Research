@@ -527,11 +527,12 @@ class ResearchQueryEngine:
             - taxon_name: Name of the taxon
             - paper_count: Number of papers reporting this association
             - consensus_confidence: Average confidence across all papers
-            - consensus_direction: Most common direction (increased/decreased)
+            - consensus_direction: Most common direction (increased/decreased/no_change/associated)
             - direction_consistency: Percentage of papers agreeing on consensus direction
             - increased_count: Number of papers reporting "increased"
             - decreased_count: Number of papers reporting "decreased"
             - no_change_count: Number of papers reporting "no_change"
+            - associated_count: Number of papers reporting "associated"
             - paper_ids: List of paper identifiers
         
         Example:
@@ -618,23 +619,28 @@ class ResearchQueryEngine:
              directions,
              size([d IN directions WHERE d = 'increased']) as increased_count,
              size([d IN directions WHERE d = 'decreased']) as decreased_count,
-             size([d IN directions WHERE d = 'no_change']) as no_change_count
+             size([d IN directions WHERE d = 'no_change']) as no_change_count,
+             size([d IN directions WHERE d = 'associated']) as associated_count
         WITH t,
              papers,
              consensus_confidence,
              increased_count,
              decreased_count,
              no_change_count,
+             associated_count,
              CASE
-                WHEN increased_count >= decreased_count AND increased_count >= no_change_count THEN 'increased'
-                WHEN decreased_count >= increased_count AND decreased_count >= no_change_count THEN 'decreased'
+                WHEN increased_count >= decreased_count AND increased_count >= no_change_count AND increased_count >= associated_count THEN 'increased'
+                WHEN decreased_count >= increased_count AND decreased_count >= no_change_count AND decreased_count >= associated_count THEN 'decreased'
+                WHEN associated_count >= increased_count AND associated_count >= decreased_count AND associated_count >= no_change_count THEN 'associated'
                 ELSE 'no_change'
              END as consensus_direction,
              CASE
-                WHEN increased_count >= decreased_count AND increased_count >= no_change_count 
+                WHEN increased_count >= decreased_count AND increased_count >= no_change_count AND increased_count >= associated_count
                     THEN toFloat(increased_count) / size(directions)
-                WHEN decreased_count >= increased_count AND decreased_count >= no_change_count 
+                WHEN decreased_count >= increased_count AND decreased_count >= no_change_count AND decreased_count >= associated_count
                     THEN toFloat(decreased_count) / size(directions)
+                WHEN associated_count >= increased_count AND associated_count >= decreased_count AND associated_count >= no_change_count
+                    THEN toFloat(associated_count) / size(directions)
                 ELSE toFloat(no_change_count) / size(directions)
              END as direction_consistency
         RETURN t.name as taxon_name,
@@ -645,6 +651,7 @@ class ResearchQueryEngine:
                increased_count,
                decreased_count,
                no_change_count,
+               associated_count,
                [p IN papers | COALESCE(p.doi, p.pmid, p.title)] as paper_ids
         ORDER BY consensus_confidence DESC, paper_count DESC
         """
@@ -1327,4 +1334,137 @@ class ResearchQueryEngine:
                 description=f"Conflicting evidence for {disease} (min_papers_per_direction={min_papers_per_direction})",
                 aggregation_method="conflicting_evidence_detection"
             )
+        )
+
+    def query_open_world_claims(
+        self,
+        subject: Optional[str] = None,
+        predicate: Optional[str] = None,
+        object_type: Optional[str] = None,
+        min_paper_count: int = 2,
+        confidence_threshold: float = 0.7,
+    ) -> QueryResult:
+        """
+        Query open-world claims matching filters. Results sorted by
+        consensus_confidence DESC, paper_count DESC.
+        Uses parameterized Cypher and 24-hour cache TTL.
+
+        Requirements: 5.1, 5.4, 5.5, 5.6
+        """
+        # Build parameters (Requirement 18.1 - parameterized queries)
+        parameters = {
+            "subject": subject,
+            "predicate": predicate,
+            "object_type": object_type,
+            "min_paper_count": min_paper_count,
+            "confidence_threshold": confidence_threshold,
+        }
+
+        cypher_query = """
+        MATCH (c:OpenWorldClaim)
+        WHERE ($subject IS NULL OR c.subject_name = $subject)
+          AND ($predicate IS NULL OR c.canonical_predicate = $predicate)
+          AND ($object_type IS NULL OR c.object_type = $object_type)
+          AND c.paper_count >= $min_paper_count
+          AND c.consensus_confidence >= $confidence_threshold
+        RETURN c.claim_id, c.subject_name, c.canonical_predicate, c.object_name,
+               c.consensus_confidence, c.paper_count, c.evidence_strength,
+               c.first_reported, c.last_updated
+        ORDER BY c.consensus_confidence DESC, c.paper_count DESC
+        """
+
+        return self._execute_with_cache(
+            query_name="query_open_world_claims",
+            parameters=parameters,
+            query_func=lambda: self.execute_query(
+                cypher_query=cypher_query,
+                parameters=parameters,
+                description=(
+                    f"Open-world claims (subject={subject}, predicate={predicate}, "
+                    f"object_type={object_type}, min_paper_count={min_paper_count}, "
+                    f"confidence>={confidence_threshold})"
+                ),
+                confidence_threshold=confidence_threshold,
+            ),
+        )
+
+    def query_entity_relationships(self, entity_name: str) -> QueryResult:
+        """
+        Return all relationships (canonical + promoted open-world) for an entity,
+        grouped by predicate category.
+
+        Requirements: 5.2
+        """
+        # Sanitize input (Requirement 18.2)
+        entity_name = self.sanitize_string_parameter(entity_name)
+
+        parameters = {"entity_name": entity_name}
+
+        cypher_query = """
+        MATCH (p:Paper)-[r]->(e)
+        WHERE e.name = $entity_name OR e.canonical_name = $entity_name
+        WITH type(r) as rel_type, r, p, e
+        RETURN rel_type, r.confidence as confidence, p.id as paper_id, e.name as entity_name
+
+        UNION
+
+        MATCH (c:OpenWorldClaim)
+        WHERE c.subject_name = $entity_name
+        RETURN c.canonical_predicate as rel_type, c.consensus_confidence as confidence,
+               c.supporting_papers as paper_ids, c.object_name as related_entity
+
+        UNION
+
+        MATCH (c:OpenWorldClaim)
+        WHERE c.object_name = $entity_name
+        RETURN c.canonical_predicate as rel_type, c.consensus_confidence as confidence,
+               c.supporting_papers as paper_ids, c.subject_name as related_entity
+        """
+
+        return self._execute_with_cache(
+            query_name="query_entity_relationships",
+            parameters=parameters,
+            query_func=lambda: self.execute_query(
+                cypher_query=cypher_query,
+                parameters=parameters,
+                description=f"All relationships for entity '{entity_name}'",
+            ),
+        )
+
+    def query_cross_paper_predicates(
+        self,
+        predicate: str,
+        min_paper_count: int = 2,
+    ) -> QueryResult:
+        """
+        Return (subject, object) pairs connected by a predicate across required papers.
+        Supports wildcard/pattern matching via Cypher `=~` operator.
+
+        Requirements: 5.3
+        """
+        parameters = {
+            "predicate_pattern": predicate,
+            "min_paper_count": min_paper_count,
+        }
+
+        cypher_query = """
+        MATCH (c:OpenWorldClaim)
+        WHERE c.canonical_predicate =~ $predicate_pattern
+          AND c.paper_count >= $min_paper_count
+        RETURN c.subject_name, c.canonical_predicate, c.object_name,
+               c.paper_count, c.consensus_confidence, c.evidence_strength
+        ORDER BY c.consensus_confidence DESC, c.paper_count DESC
+        """
+
+        return self._execute_with_cache(
+            query_name="query_cross_paper_predicates",
+            parameters=parameters,
+            query_func=lambda: self.execute_query(
+                cypher_query=cypher_query,
+                parameters=parameters,
+                description=(
+                    f"Cross-paper predicates matching '{predicate}' "
+                    f"(min_paper_count={min_paper_count})"
+                ),
+            ),
         )

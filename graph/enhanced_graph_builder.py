@@ -25,6 +25,8 @@ from graph.reified_claims import ScientificClaim
 from graph.provenance import ProvenanceMetadata
 from graph.entity_normalizer import EntityNormalizer
 from graph.llm_triple_extractor import LLMTripleExtractor
+from graph.triple_promoter import TriplePromoter
+from graph.triple_promotion_models import PaperMetadata, PromotedTriple, OpenWorldClaim
 
 
 class EnhancedGraphEdge:
@@ -150,6 +152,14 @@ class EnhancedGraphBuilder:
         # because they don't share the rigid schema of the 3 canonical relation types.
         self.open_world_triples: List[Dict] = []
 
+        # TriplePromoter — set optionally via set_triple_promoter().
+        # When set, raw LLM triples are promoted to PromotedTriple objects.
+        self.triple_promoter: Optional[TriplePromoter] = None
+        # Promoted triples accumulated across all papers processed by this builder.
+        self.promoted_triples: List[PromotedTriple] = []
+        # OpenWorldClaim nodes aggregated after all papers are processed.
+        self.open_world_claims: List[OpenWorldClaim] = []
+
         # Storage for relationships and claims
         self.relationships: List[SemanticRelationship] = []
         self.edges: List[EnhancedGraphEdge] = []
@@ -161,6 +171,19 @@ class EnhancedGraphBuilder:
         # Cache of current paper's pre-grounded entities (set in process_paper)
         self._current_paper_entities: list = []
     
+    def set_triple_promoter(self, promoter: TriplePromoter) -> None:
+        """
+        Set the TriplePromoter to use for promoting LLM-extracted triples.
+
+        When set, triples extracted by LLMTripleExtractor are enriched with
+        full provenance, entity normalization, evidence strength classification,
+        and stored in self.promoted_triples alongside the raw self.open_world_triples.
+
+        Args:
+            promoter: Configured TriplePromoter instance
+        """
+        self.triple_promoter = promoter
+
     def process_paper(self, paper: EnrichedPaperRecord) -> List[EnhancedGraphEdge]:
         """
         Process a single paper and extract all relationships.
@@ -249,7 +272,21 @@ class EnhancedGraphBuilder:
                     paper_id=paper_id,
                     section_type=section_type,
                 )
+                # Always keep raw triples for backward compatibility
                 self.open_world_triples.extend(triples)
+
+                # If a TriplePromoter is configured, promote the batch and
+                # accumulate the enriched results for later claim aggregation.
+                if self.triple_promoter is not None and triples:
+                    paper_metadata = PaperMetadata(
+                        paper_id=paper_id,
+                        article_type=paper.article_type_normalized or "unknown",
+                        publication_year=paper.publication_year,
+                        sections_available=[s.section_type for s in paper.sections],
+                    )
+                    promoted = self.triple_promoter.promote_batch(triples, paper_metadata)
+                    self.promoted_triples.extend(promoted)
+
             except Exception as exc:
                 from loguru import logger
                 logger.warning(
@@ -258,6 +295,10 @@ class EnhancedGraphBuilder:
                     section_type,
                     exc,
                 )
+
+        # After all sections for this paper, check for threshold-based predicate promotion
+        if self.triple_promoter is not None:
+            self.triple_promoter.check_predicate_promotion()
 
     def _inject_paper_metadata(self, edge: "EnhancedGraphEdge", paper: EnrichedPaperRecord):
         """Inject paper-level metadata into edge properties for Neo4j loading."""
@@ -287,6 +328,13 @@ class EnhancedGraphBuilder:
         for paper in papers:
             paper_edges = self.process_paper(paper)
             all_edges.extend(paper_edges)
+
+        # After all papers are processed, aggregate promoted triples into
+        # OpenWorldClaim nodes (requires >= 2 distinct papers per triple key).
+        if self.triple_promoter is not None and self.promoted_triples:
+            self.open_world_claims = self.triple_promoter.aggregate_claims(
+                self.promoted_triples
+            )
         
         return all_edges
     
@@ -391,6 +439,8 @@ class EnhancedGraphBuilder:
             ),
             "unique_triples": len(self.relationship_index),
             "open_world_triples": len(self.open_world_triples),
+            "promoted_triples": len(self.promoted_triples),
+            "open_world_claims": len(self.open_world_claims),
         }
 
     def get_open_world_triples(self) -> List[Dict]:

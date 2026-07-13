@@ -410,9 +410,18 @@ class SemanticRelationshipExtractor:
     
     def _extract_direction(self, sentence: str) -> Optional[str]:
         """
-        Extract direction (increased/decreased/no_change) from sentence.
-        
+        Extract direction (increased/decreased/no_change/associated) from sentence.
+
+        Priority order:
+          1. increased (directional patterns)
+          2. decreased (directional patterns)
+          3. no_change (stability patterns)
+          4. associated (non-directional association signals)
+          5. None (no pattern matched, relationship is discarded)
+
         Requirement 2.1: Capture direction from association statements.
+        The "associated" direction captures non-directional co-occurrence signals
+        (e.g., "implicated in", "biomarker for") that would otherwise be discarded.
         """
         sentence_lower = sentence.lower()
         
@@ -470,6 +479,31 @@ class SemanticRelationshipExtractor:
             r'\bno significant\b',
         ]
         
+        # Patterns for non-directional association (checked last)
+        associated_patterns = [
+            r'\bimplicat(ed|es|ing)\b',
+            r'\brole\s+(in|of)\b',
+            r'\bbiomarker\b',
+            r'\bpathobiont\b',
+            r'\bdysbiosis\b',
+            r'\bdysbiotic\b',
+            r'\bprotective\b',
+            r'\blinked\s+to\b',
+            r'\bcontribut(or|es|ing|ed)\s+(to|in)\b',
+            r'\bmarker\s+(of|for)\b',
+            r'\bsignature\s+(of|for)\b',
+            r'\binvolv(ed|ement)\b',
+            r'\bcorrelat(ed|ion)\b',
+            r'\brelated\s+to\b',
+            r'\bpathogen(ic|esis)?\b',
+            r'\bcommensal\b',
+            r'\bmutualist(ic)?\b',
+            r'\bsymbio(nt|tic|sis)\b',
+            r'\bdominant\b',
+            r'\bkey\s+(species|taxon|organism|member)\b',
+            r'\bdiffered\s+significantly\b',
+        ]
+        
         # Check patterns
         for pattern in increased_patterns:
             if re.search(pattern, sentence_lower):
@@ -482,6 +516,10 @@ class SemanticRelationshipExtractor:
         for pattern in no_change_patterns:
             if re.search(pattern, sentence_lower):
                 return "no_change"
+        
+        for pattern in associated_patterns:
+            if re.search(pattern, sentence_lower):
+                return "associated"
         
         return None
     

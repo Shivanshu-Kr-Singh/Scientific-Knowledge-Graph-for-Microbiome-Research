@@ -56,7 +56,7 @@ class SemanticRelationship(BaseModel):
         description="Relation-type specific properties"
     )
     # For REPORTS_ASSOCIATION (Requirement 2.1):
-    #   - direction: "increased" | "decreased" | "no_change"
+    #   - direction: "increased" | "decreased" | "no_change" | "associated"
     #   - comparison: "disease vs healthy" | "pre vs post"
     #   - statistical_measure: "LDA score" | "fold change" | "relative abundance"
     #   - effect_size: float
@@ -129,6 +129,8 @@ class SemanticRelationship(BaseModel):
         
         Requirement 2.1: Associations must capture direction, comparison context,
         statistical measure type, effect size, and p-value.
+
+        Valid direction values: "increased", "decreased", "no_change", "associated".
         """
         required_fields = {"direction", "comparison", "statistical_measure"}
         missing = required_fields - set(self.properties.keys())
@@ -140,9 +142,9 @@ class SemanticRelationship(BaseModel):
         
         # Validate direction values
         direction = self.properties.get("direction")
-        if direction not in {"increased", "decreased", "no_change"}:
+        if direction not in {"increased", "decreased", "no_change", "associated"}:
             raise ValueError(
-                f"direction must be 'increased', 'decreased', or 'no_change', "
+                f"direction must be 'increased', 'decreased', 'no_change', or 'associated', "
                 f"got '{direction}'"
             )
         

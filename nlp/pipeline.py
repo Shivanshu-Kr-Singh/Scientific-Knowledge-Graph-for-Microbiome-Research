@@ -73,6 +73,30 @@ def _get_entity_normalizer():
 
 # ── Phase 1 worker: full text fetch (I/O — runs in ThreadPoolExecutor) ────────
 
+# Module-level shared orchestrator for Phase 1 — all threads reuse this
+# single instance so they share the same in-memory fetch cache. Without this,
+# each paper creates a new FullTextOrchestrator(), loads the 5-entry cache
+# from disk, adds 1 entry, then gets garbage collected without saving —
+# meaning no thread ever sees another thread's results, and nothing is
+# persisted. With a shared instance, cache hits compound within the run.
+_SHARED_ORCHESTRATOR = None
+_ORCHESTRATOR_LOCK = None
+
+
+def _get_shared_orchestrator():
+    """Lazily creates the shared FullTextOrchestrator singleton."""
+    global _SHARED_ORCHESTRATOR, _ORCHESTRATOR_LOCK
+    import threading
+    if _ORCHESTRATOR_LOCK is None:
+        _ORCHESTRATOR_LOCK = threading.Lock()
+    if _SHARED_ORCHESTRATOR is None:
+        with _ORCHESTRATOR_LOCK:
+            if _SHARED_ORCHESTRATOR is None:
+                from nlp.fulltext.fulltext_orchestrator import FullTextOrchestrator
+                _SHARED_ORCHESTRATOR = FullTextOrchestrator()
+    return _SHARED_ORCHESTRATOR
+
+
 def _fetch_fulltext_worker(paper_dict: dict) -> dict:
     """
     Fetches full text for one paper using all available strategies.
@@ -82,15 +106,11 @@ def _fetch_fulltext_worker(paper_dict: dict) -> dict:
     Returns the paper_dict with 'full_text', 'fetch_source', 'fetch_status'
     added so Phase 2 (CPU NLP) can use it without re-fetching.
     """
-    import os
     from models import PaperRecord
-    from nlp.fulltext.fulltext_orchestrator import FullTextOrchestrator
 
     paper = PaperRecord(**paper_dict)
-    # Use the smart orchestrator — it handles caching, routing, and
-    # all strategies. No pmcid-only shortcuts.
     try:
-        full = FullTextOrchestrator().fetch(paper) or {}
+        full = _get_shared_orchestrator().fetch(paper) or {}
     except Exception:
         full = {}
 
@@ -127,23 +147,61 @@ def _fetch_fulltext_worker(paper_dict: dict) -> dict:
 
 # ── Phase 2 worker: CPU NLP (runs in ProcessPoolExecutor) ────────────────────
 
-def _process_one_worker(paper_dict: dict, use_ner_model: bool, use_llm: bool) -> dict:
+# ── Process-local module cache for Phase 2 workers ───────────────────────────
+# Each ProcessPoolExecutor worker handles many papers in sequence. Without
+# caching, every paper re-instantiates NERExtractor (which reloads the 440MB
+# BioBERT model from disk — ~1-2s overhead per paper, multiplied by 3,000+
+# papers). This dict persists across papers within a single worker process.
+_WORKER_MODULES: dict = {}
+
+
+def _get_worker_modules(use_ner_model: bool, use_llm: bool) -> dict:
     """
-    Phase 2 worker: CPU-bound NLP (ArticleClassifier, NER, SectionParser etc).
-    Runs in ProcessPoolExecutor. Full text pre-fetched by Phase 1 thread pool
-    and stored in paper_dict['_full_text'] — no HTTP calls happen here.
+    Returns cached NLP module instances for the current worker process.
+    First call loads everything (including BioBERT if enabled); subsequent
+    calls return the same instances instantly.
     """
+    global _WORKER_MODULES
+    if _WORKER_MODULES:
+        return _WORKER_MODULES
+
     from nlp.article_classifier import ArticleClassifier
     from nlp.journal_classifier import JournalClassifier
     from nlp.ner import NERExtractor
     from nlp.section_parser import SectionParser
     from nlp.data_availability import DataAvailabilityExtractor
+
+    _WORKER_MODULES = {
+        "article_classifier": ArticleClassifier(),
+        "journal_classifier": JournalClassifier(),
+        "ner": NERExtractor(use_model=use_ner_model, use_llm=use_llm),
+        "section_parser": SectionParser(),
+        "data_availability": DataAvailabilityExtractor(),
+    }
+    return _WORKER_MODULES
+
+
+def _process_one_worker(paper_dict: dict, use_ner_model: bool, use_llm: bool) -> dict:
+    """
+    Phase 2 worker: CPU-bound NLP (ArticleClassifier, NER, SectionParser etc).
+    Runs in ProcessPoolExecutor. Full text pre-fetched by Phase 1 thread pool
+    and stored in paper_dict['_full_text'] — no HTTP calls happen here.
+
+    PERFORMANCE FIX: Heavy NLP objects (especially NERExtractor with BioBERT)
+    are cached as process-local globals via _get_worker_modules(). Each worker
+    process loads BioBERT exactly ONCE (on its first paper), then reuses it
+    for all subsequent papers that process handles — avoiding the ~1-2s
+    model-reload overhead that was previously incurred per paper.
+    """
+    from nlp.enriched_record import EnrichedPaperRecord
     from nlp.study_design import extract_design
     from nlp.evidence_extractor import extract as extract_evidence
     from nlp.quality_scorer import score as quality_score
-    from nlp.enriched_record import EnrichedPaperRecord
     from models import PaperRecord
     from datetime import datetime
+
+    # Get cached module instances (loaded once per process, reused across papers)
+    modules = _get_worker_modules(use_ner_model, use_llm)
 
     paper = PaperRecord(**paper_dict)
 
@@ -160,23 +218,23 @@ def _process_one_worker(paper_dict: dict, use_ner_model: bool, use_llm: bool) ->
     ).strip()
 
     try:
-        article_type, confidence = ArticleClassifier().classify(
+        article_type, confidence = modules["article_classifier"].classify(
             article_types_raw=paper.article_types,
             title=paper.title,
             abstract=paper.abstract,
         )
-        journal_info  = JournalClassifier().classify(journal_name=paper.journal, issn=paper.issn)
-        section_parser = SectionParser()
+        journal_info  = modules["journal_classifier"].classify(journal_name=paper.journal, issn=paper.issn)
+        section_parser = modules["section_parser"]
         sections = section_parser.parse_abstract(paper.abstract)
         if full_text:
             sections.extend(section_parser.parse_full_text(full_text))
 
-        ner = NERExtractor(use_model=use_ner_model, use_llm=use_llm)
+        ner = modules["ner"]
         entities = ner.extract(title=paper.title, abstract=paper.abstract,
                                sections=sections or None, full_text=full_text or None)
         grouped  = ner.group_entities(entities)
 
-        data_availability = DataAvailabilityExtractor().extract(
+        data_availability = modules["data_availability"].extract(
             sections=sections, abstract=paper.abstract)
 
         src = full_text if full_text and full_text.strip() else paper.abstract
@@ -309,6 +367,122 @@ class NLPPipeline:
         )
         return enriched_new
 
+    def _batch_resolve_pmcids(self, paper_dicts: List[dict]) -> None:
+        """
+        Pre-resolves DOI → PMCID for every paper lacking a PMCID, in batches
+        of up to 200 per request, before Phase 1 full-text fetching starts.
+
+        This is a throughput optimization only — it doesn't change which
+        papers get a PMCID (same NCBI ID Converter, same coverage), it just
+        avoids doing one HTTP round trip per paper. FullTextOrchestrator's
+        per-paper resolve() call later reads from the same persistent cache
+        this populates, so it becomes a free cache hit instead of a network
+        call for every paper resolved here.
+
+        Safe to call on any batch size — no-ops instantly if every paper
+        already has a pmcid or lacks a doi.
+        """
+        dois_needing_lookup = [
+            pd.get("doi")
+            for pd in paper_dicts
+            if pd.get("doi") and not pd.get("pmcid")
+        ]
+        if not dois_needing_lookup:
+            return
+
+        try:
+            from nlp.fulltext.pmcid_resolver import PMCIDResolver
+            resolver = PMCIDResolver()
+            resolver.resolve_batch(dois_needing_lookup)
+            resolver.flush_cache()
+        except Exception as e:
+            logger.warning(
+                f"[pipeline] Batch PMCID resolution failed (non-fatal, "
+                f"per-paper fallback still applies): {e}"
+            )
+
+    def _pmc_enrich(self, paper_dicts: List[dict]) -> None:
+        """
+        Fetches structured full text from PMC for all papers that have a PMCID
+        but no full_text yet. Runs after PMCID resolution so newly-resolved
+        PMCIDs are also enriched.
+
+        Skips papers whose content_hash is already marked "success" in the
+        full-text fetch cache (fetch_cache.json) — means their full text was
+        already fetched in a previous run and is stored on disk. This prevents
+        the PMC enricher from re-running the same 43 papers on every Layer 2
+        restart.
+
+        Modifies paper_dicts in-place — attaches full_text to each dict.
+        """
+        from collectors.pmc_enricher import PMCEnricher
+        from models import PaperRecord
+        from nlp.fulltext.fulltext_orchestrator import _load_cache as _load_fetch_cache
+
+        # Load the full-text fetch cache to check what's already been fetched
+        fetch_cache = _load_fetch_cache()
+
+        candidates = [
+            pd for pd in paper_dicts
+            if pd.get("pmcid")
+            and not pd.get("full_text")
+            and fetch_cache.get(pd.get("content_hash", ""), {}).get("status") != "success"
+        ]
+
+        if not candidates:
+            logger.info("[pmc_enricher] No papers with PMCID needing full text — skipping")
+            return
+
+        logger.info("")
+        logger.info("=" * 60)
+        logger.info(f"PMC FULL-TEXT ENRICHMENT — {len(candidates)} papers")
+        logger.info("=" * 60)
+        logger.info("")
+
+        # Convert to PaperRecord for the enricher (it expects PaperRecord objects)
+        paper_records = []
+        for pd in candidates:
+            try:
+                paper_records.append(PaperRecord(**{
+                    k: v for k, v in pd.items()
+                    if not k.startswith("_")
+                }))
+            except Exception:
+                paper_records.append(PaperRecord(
+                    pmcid=pd.get("pmcid"),
+                    title=pd.get("title", ""),
+                    doi=pd.get("doi"),
+                ))
+
+        enricher = PMCEnricher()
+        enriched_records = enricher.enrich(paper_records, max_enrichments=len(paper_records))
+
+        # Map enriched full_text back into paper_dicts by pmcid
+        enriched_map = {r.pmcid: r.full_text for r in enriched_records if r.full_text}
+
+        count = 0
+        for pd in paper_dicts:
+            pmcid = pd.get("pmcid")
+            if pmcid and pmcid in enriched_map and not pd.get("full_text"):
+                pd["full_text"] = enriched_map[pmcid]
+                count += 1
+                # Mark this paper as "success" in the fetch cache so future
+                # runs skip it rather than re-fetching from PMC every time.
+                content_hash = pd.get("content_hash")
+                if content_hash:
+                    fetch_cache[content_hash] = {
+                        "status": "success",
+                        "fetch_source": "pmc_enricher",
+                        "fetch_tier": 1,
+                    }
+
+        # Persist the updated fetch cache so next run sees these as done
+        if count > 0:
+            from nlp.fulltext.fulltext_orchestrator import _save_cache as _save_fetch_cache
+            _save_fetch_cache(fetch_cache)
+
+        logger.info(f"[pmc_enricher] Attached full text to {count} papers")
+
     def _process_parallel(self, papers: List[PaperRecord]) -> List[EnrichedPaperRecord]:
         """
         Two-phase parallel processing:
@@ -335,7 +509,7 @@ class NLPPipeline:
         paper_dicts  = [p.model_dump() for p in papers]
 
         # Number of threads for I/O phase — more threads than CPUs is fine for I/O
-        io_workers = int(os.getenv("NLP_IO_WORKERS", str(min(len(paper_dicts), 32))))
+        io_workers = int(os.getenv("NLP_IO_WORKERS", str(min(len(paper_dicts), 64))))
 
         logger.info(
             f"[pipeline] {len(papers)} papers | "
@@ -343,7 +517,29 @@ class NLPPipeline:
             f"chunk_size={CHUNK_SIZE}"
         )
 
+        # ── Phase 0: Batch-resolve DOI → PMCID before any fetching starts ──────
+        # Collectors like Crossref, OpenAlex, and CORE never populate `pmcid`
+        # even when the paper IS in PMC. FullTextOrchestrator resolves this
+        # per-paper as a fallback, but doing it one DOI at a time doesn't
+        # scale — at 10,000 papers that's ~1 hour serialized before Phase 1
+        # even begins. Resolving the whole batch here first (up to 200 DOIs
+        # per request) means every per-paper resolve() call below is just a
+        # cache hit, not a new network round trip.
+        self._batch_resolve_pmcids(paper_dicts)
+
+        # ── Phase 0.5: PMC full-text enrichment ────────────────────────────────
+        # Now that PMCIDs are resolved (both from collectors and DOI lookup),
+        # fetch structured full text from PMC for all papers that have a PMCID
+        # but no full_text yet. This was previously in Layer 1 but moved here
+        # so newly-resolved PMCIDs also get full text.
+        self._pmc_enrich(paper_dicts)
+
         # ── Phase 1: Fetch full text in parallel threads ───────────────────────
+        logger.info("")
+        logger.info("=" * 60)
+        logger.info("PHASE 1 — FULL-TEXT ACQUISITION")
+        logger.info("=" * 60)
+        logger.info("")
         logger.info("[pipeline] Phase 1: fetching full text (ThreadPoolExecutor)...")
         enriched_dicts_with_ft: List[dict] = []
 
@@ -371,6 +567,12 @@ class NLPPipeline:
                 f"[pipeline] Phase 1 complete: {ft_count}/{len(papers)} "
                 f"papers got full text"
             )
+            # Flush the shared orchestrator's cache to disk so future runs
+            # see these results as instant cache hits instead of re-fetching.
+            try:
+                _get_shared_orchestrator().flush_cache()
+            except Exception:
+                pass
         except Exception as e:
             logger.warning(
                 f"[pipeline] Phase 1 (thread fetch) failed: {e} — "
@@ -382,6 +584,11 @@ class NLPPipeline:
             enriched_dicts_with_ft = paper_dicts
 
         # ── Phase 2: CPU NLP in parallel processes ─────────────────────────────
+        logger.info("")
+        logger.info("=" * 60)
+        logger.info("PHASE 2 — NLP PROCESSING")
+        logger.info("=" * 60)
+        logger.info("")
         logger.info("[pipeline] Phase 2: NLP processing (ProcessPoolExecutor)...")
 
         # GPU MODE: when BioBERT is on GPU, use threads instead of processes.

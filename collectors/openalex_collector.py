@@ -117,7 +117,7 @@ class OpenAlexCollector(BaseCollector):
 
         logger.info(
             f"[{self.source_name}] Starting collection | "
-            f"{date_from} → {date_to} | max={max_results}"
+            f"query='{query}' | {date_from} → {date_to} | max={max_results}"
         )
 
         query_params = self.build_query(query, date_from, date_to)
@@ -134,7 +134,7 @@ class OpenAlexCollector(BaseCollector):
             "sort":     "publication_date:desc",
             "mailto":   self._polite_email,
             "select":   ",".join([
-                "id", "doi", "title", "abstract_inverted_index",
+                "id", "doi", "ids", "title", "abstract_inverted_index",
                 "authorships", "publication_date", "publication_year",
                 "primary_location", "open_access", "cited_by_count",
                 "referenced_works_count", "type", "concepts",
@@ -236,7 +236,7 @@ class OpenAlexCollector(BaseCollector):
             "mailto":       self._polite_email,
             # Select only fields we need — reduces response size significantly
             "select": ",".join([
-                "id", "doi", "title", "abstract_inverted_index",
+                "id", "doi", "ids", "title", "abstract_inverted_index",
                 "authorships", "publication_date", "publication_year",
                 "primary_location", "open_access", "cited_by_count",
                 "referenced_works_count", "type", "concepts",
@@ -276,6 +276,11 @@ class OpenAlexCollector(BaseCollector):
           {
             "id":        "https://openalex.org/W2741809807",
             "doi":       "https://doi.org/10.1038/...",
+            "ids":       {
+              "openalex": "https://openalex.org/W2741809807",
+              "doi":      "https://doi.org/10.1038/...",
+              "pmid":     "https://pubmed.ncbi.nlm.nih.gov/17375194"
+            },
             "title":     "...",
             "abstract_inverted_index": {"word": [pos, ...], ...},
             "authorships": [
@@ -304,6 +309,17 @@ class OpenAlexCollector(BaseCollector):
           OpenAlex stores abstracts as an inverted index (word → [positions]).
           We reconstruct the abstract by sorting words by their first position.
           This is lossless — the original abstract is fully recoverable.
+
+        NOTE ON PMID:
+          OpenAlex returns a PMID (when the work is indexed in PubMed) inside
+          the `ids` object, at zero extra query cost. Previously this field
+          was requested via `select` but never parsed, meaning every OpenAlex
+          paper always had pmid=None regardless of whether OpenAlex actually
+          had it — silently blocking FullTextOrchestrator's Tier 3 NCBI
+          abstract fallback for every paper from this collector. Verified
+          directly against the live API that "ids.pmid" is populated as a
+          full PubMed URL (e.g. "https://pubmed.ncbi.nlm.nih.gov/17375194"),
+          not a bare ID — stripped down to the numeric ID below.
         """
         try:
             title = (raw.get("title") or "").strip()
@@ -314,6 +330,11 @@ class OpenAlexCollector(BaseCollector):
             doi_raw = raw.get("doi") or ""
             # OpenAlex includes "https://doi.org/" prefix — strip it
             doi = doi_raw.replace("https://doi.org/", "").strip() or None
+
+            # ── PMID (from the "ids" object, free — no extra API call) ────────
+            ids_obj  = raw.get("ids") or {}
+            pmid_raw = ids_obj.get("pmid") or ""
+            pmid     = pmid_raw.replace("https://pubmed.ncbi.nlm.nih.gov/", "").strip() or None
 
             # ── Abstract reconstruction ───────────────────────────────────────
             abstract = self._reconstruct_abstract(
@@ -352,6 +373,7 @@ class OpenAlexCollector(BaseCollector):
 
             return PaperRecord(
                 doi=doi,
+                pmid=pmid,
                 title=title,
                 abstract=abstract,
                 authors=authors,

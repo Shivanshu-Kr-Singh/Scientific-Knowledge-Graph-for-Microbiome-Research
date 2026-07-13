@@ -331,6 +331,7 @@ class RelationshipReifier:
         Postconditions:
         - Returns list of claim pairs with opposite predicates
         - Only returns pairs with same subject and object
+        - Claims with "associated" in the predicate are never flagged as conflicting
         - Empty list if no conflicts found
         
         Requirements:
@@ -366,6 +367,10 @@ class RelationshipReifier:
                     
                     pred1 = claim1.predicate.lower()
                     pred2 = claim2.predicate.lower()
+                    
+                    # "associated" is non-committal — it never conflicts with directional claims
+                    if "associated" in pred1 or "associated" in pred2:
+                        continue
                     
                     is_opposite = False
                     

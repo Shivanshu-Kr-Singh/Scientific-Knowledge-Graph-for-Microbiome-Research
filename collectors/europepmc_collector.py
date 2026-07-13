@@ -139,7 +139,7 @@ class EuropePMCCollector(BaseCollector):
 
         logger.info(
             f"[{self.source_name}] Starting collection | "
-            f"{date_from} → {date_to} | max={max_results}"
+            f"query='{query}' | {date_from} → {date_to} | max={max_results}"
         )
 
         query_params = self.build_query(query, date_from, date_to)

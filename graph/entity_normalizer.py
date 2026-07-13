@@ -728,6 +728,13 @@ class EntityNormalizer:
         entity_text = entity_text.strip()
         entity_type_lower = entity_type.lower() if entity_type else "_default"
 
+        # ── 1b. Minimum length gate ───────────────────────────────────────────
+        # Single-character and two-character strings (e.g. "dr", "co", "a") are
+        # NER noise — they will never ground to anything meaningful and cause
+        # spurious OLS 500 errors. Return ungrounded immediately.
+        if len(entity_text) <= 2:
+            return self._ungrounded(entity_text)
+
         # ── 2. Cache lookup ───────────────────────────────────────────────────
         cached = self._cache_lookup(entity_text, entity_type_lower)
         if cached is not None:

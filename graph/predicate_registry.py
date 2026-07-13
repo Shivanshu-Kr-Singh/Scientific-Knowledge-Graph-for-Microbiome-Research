@@ -10,6 +10,7 @@ types when they accumulate sufficient evidence.
 """
 
 import json
+import os
 import sqlite3
 from pathlib import Path
 from typing import Optional, Dict, List, Tuple
@@ -166,6 +167,13 @@ class PredicateRegistry:
                     canonical_form TEXT
                 )
             """)
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS predicate_paper_occurrences (
+                    raw_predicate TEXT NOT NULL,
+                    paper_id TEXT NOT NULL,
+                    UNIQUE(raw_predicate, paper_id)
+                )
+            """)
             conn.commit()
             conn.close()
         except Exception as exc:
@@ -239,3 +247,248 @@ class PredicateRegistry:
             ]
         except Exception:
             return []
+
+    def get_promotion_threshold(self) -> int:
+        """
+        Return the configured promotion threshold.
+        Reads PREDICATE_PROMOTION_THRESHOLD env var, defaults to 5.
+        """
+        return int(os.environ.get('PREDICATE_PROMOTION_THRESHOLD', '10'))
+
+    # ── Category keyword map for semantic similarity assignment ──────────────
+    _CATEGORY_KEYWORDS: Dict[str, List[str]] = {
+        "biosynthetic": [
+            "produce", "produces", "synthesize", "synthesizes", "generate",
+            "generates", "ferment", "ferments", "metabolize", "metabolizes",
+        ],
+        "regulatory": [
+            "inhibit", "inhibits", "suppress", "suppresses", "activate",
+            "activates", "promote", "promotes", "enhance", "enhances",
+            "modulate", "modulates", "regulate", "regulates", "upregulate",
+            "upregulates", "downregulate", "downregulates",
+        ],
+        "abundance": [
+            "enrich", "enriched", "deplete", "depleted", "abundant",
+            "overrepresented", "underrepresented",
+        ],
+        "quantitative": [
+            "increase", "increases", "decrease", "decreases", "elevate",
+            "elevates", "reduce", "reduces",
+        ],
+        "clinical": [
+            "improve", "improves", "worsen", "worsens", "treat", "treats",
+            "prevent", "prevents", "cure", "cures",
+        ],
+        "causal": [
+            "cause", "causes", "induce", "induces", "trigger", "triggers",
+        ],
+        "associative": [
+            "associate", "associated", "correlate", "correlates", "link",
+            "linked", "relate", "related",
+        ],
+        "mechanistic": [
+            "mediate", "mediates", "influence", "influences", "affect",
+            "affects", "degrade", "degrades",
+        ],
+        "ecological": [
+            "colonize", "colonizes", "inhabit", "inhabits", "dominate",
+            "dominates",
+        ],
+        "predictive": [
+            "predict", "predicts", "biomarker", "indicate", "indicates",
+        ],
+        "intervention": [
+            "administer", "administered", "supplement", "supplemented",
+            "treated",
+        ],
+        "methodology": [
+            "use", "uses", "sequence", "sequenced", "analyze", "analyzed",
+            "measure", "measured",
+        ],
+    }
+
+    def _assign_category(self, raw_predicate: str) -> str:
+        """
+        Assign a predicate category via semantic similarity (keyword matching).
+
+        Compares words in the raw predicate against category keyword lists.
+        Returns the best matching category, or "generic" if no match found.
+        """
+        words = raw_predicate.lower().replace("_", " ").replace("-", " ").split()
+
+        best_category = "generic"
+        best_score = 0
+
+        for category, keywords in self._CATEGORY_KEYWORDS.items():
+            score = sum(1 for word in words if word in keywords)
+            if score > best_score:
+                best_score = score
+                best_category = category
+
+        return best_category
+
+    def promote_predicate(self, raw_predicate: str) -> str:
+        """
+        Promote a novel predicate to first-class status.
+        - Sets promoted=1 in SQLite
+        - Assigns canonical form (uppercase, underscores)
+        - Adds to PREDICATE_NORMALIZATION mapping
+        - Assigns a category via semantic similarity
+
+        Quality gates reject predicates that are clearly not scientific relationships:
+        - Longer than 60 characters (likely a sentence fragment from a small LLM)
+        - Pure stop-words with no scientific content
+        - Contain metadata markers (author, doi, title, etc.)
+
+        Returns the new canonical form, or "RELATES_TO" if rejected.
+        """
+        normalized_pred = raw_predicate.lower().strip()
+
+        # ── Quality gates ─────────────────────────────────────────────────────
+        # Reject predicates longer than 60 chars — always sentence fragments
+        if len(normalized_pred) > 60:
+            logger.debug(
+                "PredicateRegistry: rejected promotion of long predicate ({} chars): '{}'",
+                len(normalized_pred), normalized_pred[:60]
+            )
+            return "RELATES_TO"
+
+        # Reject single-word stop predicates with no scientific meaning
+        _STOP_PREDICATES = {
+            "are", "is", "was", "were", "be", "been", "being",
+            "have", "has", "had", "do", "does", "did",
+            "the", "a", "an", "in", "on", "at", "to", "of", "and", "or",
+        }
+        if normalized_pred in _STOP_PREDICATES:
+            logger.debug(
+                "PredicateRegistry: rejected stop-word predicate: '{}'", normalized_pred
+            )
+            return "RELATES_TO"
+
+        # Reject metadata predicates (paper authorship, bibliographic info)
+        _METADATA_MARKERS = {"author", "doi", "title", "journal", "published", "cited", "reference"}
+        if any(marker in normalized_pred for marker in _METADATA_MARKERS):
+            logger.debug(
+                "PredicateRegistry: rejected metadata predicate: '{}'", normalized_pred
+            )
+            return "RELATES_TO"
+
+        # Generate canonical form: uppercase, replace spaces/hyphens with underscores
+        canonical_form = normalized_pred.upper().replace(" ", "_").replace("-", "_")
+
+        # Assign category via semantic similarity to existing categories
+        category = self._assign_category(normalized_pred)
+
+        # Update SQLite: mark as promoted with canonical form
+        # If the predicate doesn't already exist in novel_predicates, insert it first
+        try:
+            now = datetime.now(timezone.utc).isoformat()
+            conn = sqlite3.connect(REGISTRY_DB_PATH)
+            cur = conn.cursor()
+            cur.execute("""
+                INSERT INTO novel_predicates
+                    (raw_predicate, frequency, first_seen, last_seen, promoted, canonical_form)
+                VALUES (?, 1, ?, ?, 1, ?)
+                ON CONFLICT(raw_predicate) DO UPDATE SET
+                    promoted = 1,
+                    canonical_form = excluded.canonical_form
+            """, (normalized_pred, now, now, canonical_form))
+            conn.commit()
+            conn.close()
+        except Exception as exc:
+            logger.warning("PredicateRegistry: could not promote predicate in DB — {}", exc)
+
+        # Add to runtime PREDICATE_NORMALIZATION dict
+        PREDICATE_NORMALIZATION[normalized_pred] = canonical_form
+
+        # Add to PREDICATE_CATEGORIES
+        PREDICATE_CATEGORIES[canonical_form] = category
+
+        logger.info(
+            "PredicateRegistry: promoted '{}' → '{}' (category: {})",
+            normalized_pred, canonical_form, category,
+        )
+
+        return canonical_form
+
+    def get_promoted_predicates(self) -> List[Dict]:
+        """Return all promoted predicates with their canonical forms and categories."""
+        try:
+            conn = sqlite3.connect(REGISTRY_DB_PATH)
+            cur = conn.cursor()
+            cur.execute("""
+                SELECT raw_predicate, canonical_form
+                FROM novel_predicates
+                WHERE promoted = 1
+            """)
+            rows = cur.fetchall()
+            conn.close()
+            return [
+                {
+                    "raw_predicate": r[0],
+                    "canonical_form": r[1],
+                    "category": PREDICATE_CATEGORIES.get(r[1], "generic"),
+                }
+                for r in rows
+            ]
+        except Exception as exc:
+            logger.warning("PredicateRegistry: could not get promoted predicates — {}", exc)
+            return []
+
+    def track_paper_occurrence(self, raw_predicate: str, paper_id: str) -> Tuple[str, bool, bool]:
+        """
+        Track that a paper uses a predicate and check for promotion.
+
+        Inserts the (raw_predicate, paper_id) pair into predicate_paper_occurrences
+        using INSERT OR IGNORE for idempotency. Then counts distinct papers for
+        this predicate and checks if the promotion threshold has been reached.
+
+        Returns:
+            (canonical_predicate, is_known, is_newly_promoted)
+        """
+        # First normalize the predicate
+        canonical, is_known = self.normalize(raw_predicate)
+
+        normalized_predicate = raw_predicate.lower().strip()
+
+        try:
+            conn = sqlite3.connect(REGISTRY_DB_PATH)
+            cur = conn.cursor()
+
+            # Insert the paper occurrence (idempotent via UNIQUE constraint)
+            cur.execute("""
+                INSERT OR IGNORE INTO predicate_paper_occurrences (raw_predicate, paper_id)
+                VALUES (?, ?)
+            """, (normalized_predicate, paper_id))
+
+            # Count distinct papers for this predicate
+            cur.execute("""
+                SELECT COUNT(*) FROM predicate_paper_occurrences
+                WHERE raw_predicate = ?
+            """, (normalized_predicate,))
+            paper_count = cur.fetchone()[0]
+
+            # Check if predicate is already promoted
+            cur.execute("""
+                SELECT promoted FROM novel_predicates
+                WHERE raw_predicate = ?
+            """, (normalized_predicate,))
+            row = cur.fetchone()
+            already_promoted = row[0] == 1 if row else False
+
+            conn.commit()
+            conn.close()
+
+            # Determine if newly promoted (threshold reached AND not already promoted)
+            threshold = self.get_promotion_threshold()
+            is_newly_promoted = (
+                paper_count >= threshold
+                and not is_known
+                and not already_promoted
+            )
+
+            return (canonical, is_known, is_newly_promoted)
+
+        except Exception as exc:
+            logger.warning("PredicateRegistry: could not track paper occurrence — {}", exc)
+            return (canonical, is_known, False)

@@ -127,6 +127,15 @@ class ExtractorRegistry:
                 description="Legacy relationships from old system without provenance",
                 registered_by="system",
             ),
+            ExtractorMetadata(
+                method_id="llm_triple_extractor",
+                method_type="llm",
+                version="1.0",
+                description="LLM-based open-world triple extraction via Ollama",
+                source_code_hash=None,
+                prompt_template_hash=None,
+                registered_by="system",
+            ),
         ]
         
         for extractor in default_extractors:

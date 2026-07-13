@@ -5,8 +5,8 @@
 # Scale target: 300,000+ PubMed / Europe PMC / Semantic Scholar papers
 #
 # WHAT THIS FILE CONTROLS:
-#   Stage 2 scores every paper (all sources) by scanning title + abstract +
-#   MeSH terms + keywords for matching phrases. Weights are summed, clamped
+#   text = (title + abstract + mesh_terms + keywords + article_types + journal).lower()
+#   Weights are summed, clamped
 #   to [−1.0, 1.5], then normalised to [0.0, 1.0].
 #
 #   Score ≥ 0.70  → confident keep  (skips ML entirely)

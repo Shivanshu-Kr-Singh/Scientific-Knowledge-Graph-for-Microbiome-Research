@@ -78,6 +78,8 @@ class WebScraper:
 
         # ── Download ──────────────────────────────────────────────────────────
         try:
+            from nlp.fulltext.domain_throttle import throttle as domain_throttle
+            domain_throttle(url)  # per-domain rate limit — blocks if too soon
             if config:
                 downloaded = trafilatura.fetch_url(url, config=config)
             else:

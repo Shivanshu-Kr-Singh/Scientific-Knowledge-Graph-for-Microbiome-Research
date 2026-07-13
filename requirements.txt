@@ -9,7 +9,19 @@ beautifulsoup4==4.12.3      # HTML parsing for full-text extraction
 scrapy==2.11.0              # Structured web crawling
 playwright==1.43.0          # JS-rendered journal pages
 pdfminer.six==20221105      # PDF text extraction
-pymupdf==1.24.0             # Faster PDF parsing (PyMuPDF)
+pymupdf==1.28.0             # Faster PDF parsing (PyMuPDF) — bumped for pymupdf4llm compat
+pymupdf4llm==1.28.0         # Layout-aware extraction: multi-column reading order,
+                            # table structure preservation, structural header detection
+                            #
+                            # OPTIONAL SYSTEM DEPENDENCY — Tesseract OCR:
+                            # pymupdf4llm can OCR scanned/image-only PDF pages as a
+                            # last-resort fallback (see nlp/fulltext/pdf_parser.py).
+                            # This requires the `tesseract` binary on PATH — it is
+                            # NOT a pip package and will not be installed by this
+                            # requirements file. Without it, OCR fallback silently
+                            # degrades to "no text found" rather than erroring.
+                            #   macOS:  brew install tesseract
+                            #   Ubuntu: apt install tesseract-ocr
 
 # ── Layer 3: NLP Processing ───────────────────────────────────────────────────
 transformers==4.40.0        # BioBERT / PubMedBERT for NER

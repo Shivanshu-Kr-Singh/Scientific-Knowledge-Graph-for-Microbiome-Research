@@ -21,6 +21,16 @@ from graph.semantic_relationships import (
     create_association_relationship,
     create_intervention_relationship,
     create_methodology_relationship,
+    create_taxon_produces_metabolite,
+    create_taxon_modulates_pathway,
+    create_taxon_regulates_gene,
+    create_taxon_influences_immune_cell,
+    create_taxon_affects_clinical_outcome,
+    create_metabolite_linked_to_disease,
+    create_metabolite_induces_immune_response,
+    create_gene_predisposes_to_disease,
+    create_diet_shapes_taxon,
+    create_environment_shapes_taxon,
 )
 from graph.provenance import ProvenanceMetadata
 
@@ -146,7 +156,8 @@ class SemanticRelationshipExtractor:
                     section=section,
                     sentence=sentence,
                     sentence_offset=sentence_idx,
-                    confidence=confidence
+                    confidence=confidence,
+                    sentences=sentences,
                 )
                 
                 # Create relationships for each taxon-disease pair.
@@ -278,10 +289,11 @@ class SemanticRelationshipExtractor:
                     section=section,
                     sentence=sentence,
                     sentence_offset=sentence_idx,
-                    confidence=confidence
+                    confidence=confidence,
+                    sentences=sentences,
                 )
-                
-                # Create relationships
+
+                # Create relationships for each taxon-intervention pair
                 for taxon in mentioned_taxa:
                     for intervention in mentioned_interventions:
                         try:
@@ -366,7 +378,7 @@ class SemanticRelationshipExtractor:
                     section=section,
                     sentence=section.content[:200],  # First 200 chars as representative
                     sentence_offset=0,
-                    confidence=confidence
+                    confidence=confidence,
                 )
                 
                 try:
@@ -390,6 +402,523 @@ class SemanticRelationshipExtractor:
         
         return relationships
     
+    # ========== New entity-pair extraction methods ==========
+    # Each method follows the same pattern as extract_associations():
+    #   1. Check that both entity lists for the pair are non-empty.
+    #   2. Find co-occurring entity pairs in results/discussion sentences.
+    #   3. Extract direction via _extract_direction_for_type().
+    #   4. Build provenance and call the appropriate factory function.
+
+    def _extract_direction_for_type(
+        self,
+        sentence: str,
+        allowed: set,
+        fallback_patterns: Dict[str, List[str]],
+    ) -> Optional[str]:
+        """
+        Extract a direction value restricted to the allowed set for a given type.
+
+        fallback_patterns maps direction label → list of regex patterns.
+        Returns None when no pattern from any allowed direction matches.
+        """
+        sentence_lower = sentence.lower()
+        for direction, patterns in fallback_patterns.items():
+            if direction not in allowed:
+                continue
+            for pat in patterns:
+                if re.search(pat, sentence_lower):
+                    return direction
+        return None
+
+    # ── Direction pattern libraries for each new type ─────────────────────────
+    _PRODUCE_PATTERNS: Dict[str, List[str]] = {
+        "produces": [
+            r'\bproduc(es?|ed|tion)\b', r'\bgenerat(es?|ed|ion)\b',
+            r'\bsynth(esizes?|esized|esis)\b', r'\bsecret(es?|ed|ion)\b',
+            r'\bexcret(es?|ed|ion)\b', r'\breleas(es?|ed|ing)\b',
+        ],
+        "inhibits": [
+            r'\binhibit(s|ed|ion|ing)\b', r'\bsuppress(es?|ed|ion)\b',
+            r'\bblocks?\b', r'\breduces? (production|synthesis|secretion)\b',
+        ],
+        "associated": [
+            r'\bassociat(ed|ion)\b', r'\bcorrelat(ed|ion)\b',
+            r'\blinked\s+to\b', r'\brelated\s+to\b',
+        ],
+    }
+    _PATHWAY_PATTERNS: Dict[str, List[str]] = {
+        "activates": [
+            r'\bactivat(es?|ed|ion|ing)\b', r'\binduces?\b',
+            r'\bupregulat(es?|ed|ion)\b', r'\bpromot(es?|ed|ing)\b',
+            r'\benhances?\b', r'\bstimulat(es?|ed|ion)\b',
+            r'\btriggers?\b',
+        ],
+        "inhibits": [
+            r'\binhibit(s|ed|ion|ing)\b', r'\bdownregulat(es?|ed|ion)\b',
+            r'\bsuppress(es?|ed|ion)\b', r'\battenuates?\b',
+            r'\bblocks?\b', r'\bimpairs?\b',
+        ],
+        "associated": [
+            r'\bassociat(ed|ion)\b', r'\bmodulat(es?|ed|ion)\b',
+            r'\binfluences?\b', r'\baffects?\b',
+        ],
+    }
+    _GENE_REG_PATTERNS: Dict[str, List[str]] = {
+        "upregulates": [
+            r'\bupregulat(es?|ed|ion)\b', r'\bincreased expression\b',
+            r'\bhigher expression\b', r'\binduc(es?|ed|tion) of\b',
+            r'\bactivat(es?|ed) (expression|transcription)\b',
+        ],
+        "downregulates": [
+            r'\bdownregulat(es?|ed|ion)\b', r'\bdecreased expression\b',
+            r'\blower expression\b', r'\brepresses?\b',
+            r'\bsilenc(es?|ed|ing)\b',
+        ],
+        "associated": [
+            r'\bassociat(ed|ion)\b', r'\bregulat(es?|ed|ion)\b',
+            r'\bexpression of\b', r'\baffects? expression\b',
+        ],
+    }
+    _IMMUNE_PATTERNS: Dict[str, List[str]] = {
+        "activates": [
+            r'\bactivat(es?|ed|ion|ing)\b', r'\bexpands?\b',
+            r'\bpolariz(es?|ed|ation)\b', r'\bpromot(es?|ed) (differentiation|activation)\b',
+            r'\bstimulat(es?|ed|ion)\b', r'\binduces?\b',
+        ],
+        "suppresses": [
+            r'\bsuppress(es?|ed|ion)\b', r'\binhibit(s|ed)\b',
+            r'\bimpairs?\b', r'\breduces? (activation|number|count)\b',
+            r'\bregulat(es?|ed) negatively\b',
+        ],
+        "recruits": [
+            r'\brecruit(s|ed|ment)\b', r'\battract(s|ed|ion)\b',
+            r'\bmigrat(es?|ed|ion) of\b', r'\baccumulat(es?|ed|ion) of\b',
+        ],
+        "associated": [
+            r'\bassociat(ed|ion)\b', r'\binfluences?\b',
+            r'\baffects?\b', r'\bcorrelat(ed|ion)\b',
+        ],
+    }
+    _CLINICAL_PATTERNS: Dict[str, List[str]] = {
+        "improves": [
+            r'\bimproves?\b', r'\bameliorate(s|d)\b', r'\balleviate(s|d)\b',
+            r'\breduces? (symptoms?|severity|score)\b',
+            r'\bbetter\b', r'\bremission\b', r'\bhealing\b', r'\bresolution\b',
+        ],
+        "worsens": [
+            r'\bworsens?\b', r'\bexacerbate(s|d)\b', r'\baggravate(s|d)\b',
+            r'\bincreases? (symptoms?|severity|score|risk)\b',
+            r'\brelapse\b', r'\bprogress(es?|ion)\b',
+        ],
+        "associated": [
+            r'\bassociat(ed|ion)\b', r'\bcorrelat(ed|ion)\b',
+            r'\bpredicts?\b', r'\bbiomarker\b', r'\blinked\s+to\b',
+        ],
+    }
+    _META_DISEASE_PATTERNS: Dict[str, List[str]] = {
+        "increased": [
+            r'\bincreased\b', r'\bhigher levels?\b', r'\belevated\b',
+            r'\baccumulat(ed|ion)\b',
+        ],
+        "decreased": [
+            r'\bdecreased\b', r'\blower levels?\b', r'\bdepleted\b',
+            r'\bdeficien(t|cy)\b',
+        ],
+        "associated": [
+            r'\bassociat(ed|ion)\b', r'\blinked\s+to\b', r'\bmarker\b',
+            r'\bcorrelat(ed|ion)\b',
+        ],
+    }
+    _META_IMMUNE_PATTERNS = _IMMUNE_PATTERNS   # reuse same vocabulary
+    _GENE_DISEASE_PATTERNS: Dict[str, List[str]] = {
+        "predisposes": [
+            r'\bpredispos(es?|ed|ition)\b', r'\brisk factor\b',
+            r'\bsusceptib(le|ility)\b', r'\bmutation\b',
+            r'\bpolymorphism\b', r'\bvariant\b',
+            r'\bincreases? risk\b',
+        ],
+        "protective": [
+            r'\bprotect(s|ed|ive|ion)\b', r'\breduces? risk\b',
+            r'\bprotective variant\b', r'\bresistance\b',
+        ],
+        "associated": [
+            r'\bassociat(ed|ion)\b', r'\blinked\s+to\b',
+            r'\bcorrelat(ed|ion)\b', r'\bgwas\b',
+        ],
+    }
+    _DIET_TAXON_PATTERNS: Dict[str, List[str]] = {
+        "enriches": [
+            r'\benrich(es?|ed|ment)\b', r'\bincreases? (abundance|count|level)\b',
+            r'\bpromot(es?|ed) growth\b', r'\bfavor(s|ed)\b',
+            r'\bexpand(s|ed)\b', r'\bprefer(s|red|ential)\b',
+        ],
+        "depletes": [
+            r'\bdeplet(es?|ed|ion)\b', r'\breduces? (abundance|count|level)\b',
+            r'\bsuppress(es?|ed) growth\b', r'\bdecreases? (abundance)\b',
+            r'\beradicat(es?|ed)\b',
+        ],
+        "associated": [
+            r'\bassociat(ed|ion)\b', r'\bshapes?\b', r'\bmodulat(es?|ed)\b',
+            r'\binfluences?\b', r'\bcorrelat(ed|ion)\b',
+        ],
+    }
+    _ENV_TAXON_PATTERNS = _DIET_TAXON_PATTERNS  # same vocabulary
+
+    # ── Helper: generic extraction for all 10 new pair types ──────────────────
+
+    def _extract_entity_pair_relationships(
+        self,
+        paper: "EnrichedPaperRecord",
+        source_entities: List[str],
+        target_entities: List[str],
+        relation_type: RelationType,
+        direction_patterns: Dict[str, List[str]],
+        factory_fn,
+        context_extractor=None,
+    ) -> List[SemanticRelationship]:
+        """
+        Generic co-occurrence extractor for entity-pair relationship types.
+
+        Args:
+            paper:              Enriched paper record.
+            source_entities:    Left-hand entity list (e.g. paper.taxa).
+            target_entities:    Right-hand entity list (e.g. paper.metabolites).
+            relation_type:      The RelationType being extracted.
+            direction_patterns: {direction_label: [regex_pattern, …]} dict.
+            factory_fn:         One of the create_* factory functions.
+            context_extractor:  Optional callable(sentence, source, target) → dict
+                                 that returns extra kwargs for the factory function.
+
+        Returns:
+            List of SemanticRelationship objects.
+        """
+        relationships: List[SemanticRelationship] = []
+
+        if not paper.sections or not source_entities or not target_entities:
+            return relationships
+
+        allowed = set(direction_patterns.keys())
+        priority_types = ["results", "abstract", "discussion", "conclusion"]
+        sections = self._extract_sections_by_type(paper, priority_types)
+        if not sections:
+            return relationships
+
+        for section in sections:
+            sentences = self._split_into_sentences(section.content)
+            for sent_idx, sentence in enumerate(sentences):
+                mentioned_src = self._find_entities_in_text(sentence, source_entities)
+                mentioned_tgt = self._find_entities_in_text(sentence, target_entities)
+                if not mentioned_src or not mentioned_tgt:
+                    continue
+
+                direction = self._extract_direction_for_type(
+                    sentence, allowed, direction_patterns
+                )
+                if not direction:
+                    continue
+
+                p_value = self._extract_p_value(sentence)
+                confidence = self._calculate_association_confidence(
+                    direction, p_value, None, None
+                )
+                if confidence < 0.5:
+                    continue
+
+                evidence_strength = self._determine_evidence_strength(
+                    p_value, paper.article_type_normalized
+                )
+                provenance = self._create_provenance(
+                    paper=paper,
+                    section=section,
+                    sentence=sentence,
+                    sentence_offset=sent_idx,
+                    confidence=confidence,
+                    sentences=sentences,
+                )
+
+                for src in mentioned_src:
+                    for tgt in mentioned_tgt:
+                        extra_kwargs = {}
+                        if context_extractor is not None:
+                            extra_kwargs = context_extractor(sentence, src, tgt)
+                        try:
+                            rel = factory_fn(
+                                source_entity=src,
+                                target_entity=tgt,
+                                direction=direction,
+                                provenance=provenance,
+                                evidence_strength=evidence_strength,
+                                extraction_confidence=confidence,
+                                p_value=p_value,
+                                **extra_kwargs,
+                            )
+                            relationships.append(rel)
+                        except ValueError:
+                            continue
+
+        return relationships
+
+    # ── 10 public extraction methods ─────────────────────────────────────────
+
+    def extract_taxon_metabolite(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract taxon → metabolite production / inhibition relationships.
+
+        Examples: "F. prausnitzii produces butyrate (p < 0.01)"
+        """
+        def _metabolite_class(sentence: str, src: str, tgt: str):
+            for cls, pats in {
+                "SCFA": [r'\bscfa\b', r'\bshort[- ]chain fatty acid\b'],
+                "bile acid": [r'\bbile acid\b'],
+                "indole": [r'\bindole\b'],
+                "LPS": [r'\blps\b', r'\blipopolysaccharide\b'],
+            }.items():
+                for p in pats:
+                    if re.search(p, sentence.lower()):
+                        return {"metabolite_class": cls}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.taxa, paper.metabolites,
+            RelationType.TAXON_PRODUCES_METABOLITE,
+            self._PRODUCE_PATTERNS, create_taxon_produces_metabolite,
+            context_extractor=_metabolite_class,
+        )
+
+    def extract_taxon_pathway(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract taxon → pathway modulation relationships.
+
+        Examples: "Akkermansia inhibits NF-κB signaling"
+        """
+        def _pathway_cat(sentence: str, src: str, tgt: str):
+            for cat, pats in {
+                "inflammatory": [r'\binflammator\b', r'\bnf.?kb\b', r'\btlr\b'],
+                "metabolic": [r'\bmetabol\b', r'\bbutyrate\b', r'\bscfa\b'],
+                "immune": [r'\bimmune\b', r'\bjak.?stat\b'],
+            }.items():
+                for p in pats:
+                    if re.search(p, sentence.lower()):
+                        return {"pathway_category": cat}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.taxa, paper.pathways,
+            RelationType.TAXON_MODULATES_PATHWAY,
+            self._PATHWAY_PATTERNS, create_taxon_modulates_pathway,
+            context_extractor=_pathway_cat,
+        )
+
+    def extract_taxon_gene(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract taxon → gene regulation relationships.
+
+        Examples: "Lactobacillus upregulates MUC2 expression"
+        """
+        def _mech(sentence: str, src: str, tgt: str):
+            for mech, pats in {
+                "epigenetic": [r'\bepigenetic\b', r'\bhistone\b', r'\bmethylation\b'],
+                "transcriptional": [r'\btranscription\b', r'\bpromoter\b'],
+                "post-translational": [r'\bpost.?translational\b', r'\bphosphorylation\b'],
+            }.items():
+                for p in pats:
+                    if re.search(p, sentence.lower()):
+                        return {"regulation_mechanism": mech}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.taxa, paper.genes,
+            RelationType.TAXON_REGULATES_GENE,
+            self._GENE_REG_PATTERNS, create_taxon_regulates_gene,
+            context_extractor=_mech,
+        )
+
+    def extract_taxon_immune_cell(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract taxon → immune cell influence relationships.
+
+        Examples: "SCFAs activate Treg cells in the intestinal mucosa"
+        """
+        def _ctx(sentence: str, src: str, tgt: str):
+            for ctx, pats in {
+                "intestinal": [r'\bintestin\b', r'\bmucosal\b', r'\bgut\b'],
+                "systemic": [r'\bsystemic\b', r'\bperipheral blood\b', r'\bblood\b'],
+            }.items():
+                for p in pats:
+                    if re.search(p, sentence.lower()):
+                        return {"immune_context": ctx}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.taxa, paper.immune_cells,
+            RelationType.TAXON_INFLUENCES_IMMUNE_CELL,
+            self._IMMUNE_PATTERNS, create_taxon_influences_immune_cell,
+            context_extractor=_ctx,
+        )
+
+    def extract_taxon_clinical_outcome(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract taxon → clinical outcome associations.
+
+        Examples: "Reduced Faecalibacterium was associated with relapse"
+        """
+        def _otype(sentence: str, src: str, tgt: str):
+            for ot, pats in {
+                "remission": [r'\bremission\b'],
+                "relapse": [r'\brelapse\b', r'\brecurrence\b'],
+                "dysbiosis": [r'\bdysbiosis\b'],
+                "permeability": [r'\bpermeab\b', r'\bleaky gut\b'],
+            }.items():
+                for p in pats:
+                    if re.search(p, sentence.lower()):
+                        return {"outcome_type": ot}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.taxa, paper.clinical_outcomes,
+            RelationType.TAXON_AFFECTS_CLINICAL_OUTCOME,
+            self._CLINICAL_PATTERNS, create_taxon_affects_clinical_outcome,
+            context_extractor=_otype,
+        )
+
+    def extract_metabolite_disease(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract metabolite → disease associations.
+
+        Examples: "Butyrate deficiency was linked to IBD severity"
+        """
+        def _role(sentence: str, src: str, tgt: str):
+            sl = sentence.lower()
+            if re.search(r'\bprotect(ive|s|ed)\b', sl):
+                return {"metabolite_role": "protective"}
+            if re.search(r'\bpathogen(ic|esis)?\b|\bdamag(es?|ing)\b', sl):
+                return {"metabolite_role": "pathogenic"}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.metabolites, paper.diseases,
+            RelationType.METABOLITE_LINKED_TO_DISEASE,
+            self._META_DISEASE_PATTERNS, create_metabolite_linked_to_disease,
+            context_extractor=_role,
+        )
+
+    def extract_metabolite_immune_cell(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract metabolite → immune cell response relationships.
+
+        Examples: "Propionate induces regulatory T cell differentiation"
+        """
+        def _ctx(sentence: str, src: str, tgt: str):
+            sl = sentence.lower()
+            if re.search(r'\bintestin\b|\bmucosal\b|\bgut\b', sl):
+                return {"immune_context": "intestinal"}
+            if re.search(r'\bsystemic\b|\bperipheral\b', sl):
+                return {"immune_context": "systemic"}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.metabolites, paper.immune_cells,
+            RelationType.METABOLITE_INDUCES_IMMUNE_RESPONSE,
+            self._META_IMMUNE_PATTERNS, create_metabolite_induces_immune_response,
+            context_extractor=_ctx,
+        )
+
+    def extract_gene_disease(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract gene → disease predisposition / protective associations.
+
+        Examples: "NOD2 mutations increase risk of Crohn's disease"
+        """
+        def _variant(sentence: str, src: str, tgt: str):
+            sl = sentence.lower()
+            for vt, pats in {
+                "SNP": [r'\bsnp\b', r'\bsingle nucleotide\b'],
+                "mutation": [r'\bmutation\b'],
+                "polymorphism": [r'\bpolymorphism\b'],
+            }.items():
+                for p in pats:
+                    if re.search(p, sl):
+                        return {"variant_type": vt}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.genes, paper.diseases,
+            RelationType.GENE_PREDISPOSES_TO_DISEASE,
+            self._GENE_DISEASE_PATTERNS, create_gene_predisposes_to_disease,
+            context_extractor=_variant,
+        )
+
+    def extract_diet_taxon(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract dietary component → taxon shaping relationships.
+
+        Examples: "Inulin supplementation enriched Bifidobacterium"
+        """
+        def _dp(sentence: str, src: str, tgt: str):
+            sl = sentence.lower()
+            for dp, pats in {
+                "Mediterranean": [r'\bmediterranean\b'],
+                "high-fiber": [r'\bhigh.?fiber\b', r'\bdietary fiber\b'],
+                "ketogenic": [r'\bketogenic\b'],
+            }.items():
+                for p in pats:
+                    if re.search(p, sl):
+                        return {"dietary_pattern": dp}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.dietary_components, paper.taxa,
+            RelationType.DIET_SHAPES_TAXON,
+            self._DIET_TAXON_PATTERNS, create_diet_shapes_taxon,
+            context_extractor=_dp,
+        )
+
+    def extract_environment_taxon(
+        self, paper: "EnrichedPaperRecord"
+    ) -> List[SemanticRelationship]:
+        """
+        Extract environmental factor → taxon shaping relationships.
+
+        Examples: "Antibiotic exposure depleted Bacteroidetes"
+        """
+        def _exp(sentence: str, src: str, tgt: str):
+            sl = sentence.lower()
+            for et, pats in {
+                "antibiotic": [r'\bantibiotic\b'],
+                "birth_mode": [r'\bcesarean\b', r'\bc.?section\b', r'\bvaginal delivery\b'],
+                "breastfeeding": [r'\bbreastfeed\b', r'\bhuman milk\b'],
+                "geographic": [r'\bgeograph\b', r'\bcountry\b', r'\bregion\b'],
+            }.items():
+                for p in pats:
+                    if re.search(p, sl):
+                        return {"exposure_type": et}
+            return {}
+
+        return self._extract_entity_pair_relationships(
+            paper, paper.environmental_factors, paper.taxa,
+            RelationType.ENVIRONMENT_SHAPES_TAXON,
+            self._ENV_TAXON_PATTERNS, create_environment_shapes_taxon,
+            context_extractor=_exp,
+        )
+
     # ========== Helper Methods ==========
     
     def _extract_sections_by_type(
@@ -704,13 +1233,29 @@ class SemanticRelationshipExtractor:
         section: ParsedSection,
         sentence: str,
         sentence_offset: int,
-        confidence: float
+        confidence: float,
+        sentences: Optional[List[str]] = None,
     ) -> ProvenanceMetadata:
         """
         Create provenance metadata for an extracted relationship.
-        
+
+        Args:
+            sentences: The full list of sentences from the section. When supplied,
+                       the ±1 sentences around sentence_offset are joined and stored
+                       as surrounding_context so the edge is self-explanatory in the
+                       graph browser without having to look up the original paper.
+
         Requirement 3.1, 3.2: Complete provenance tracking.
         """
+        surrounding_context: Optional[str] = None
+        if sentences and len(sentences) > 1:
+            start = max(0, sentence_offset - 1)
+            end   = min(len(sentences), sentence_offset + 2)   # +2 because slice is exclusive
+            window = sentences[start:end]
+            # Only store context when there are neighbour sentences — not just the sentence itself
+            if len(window) > 1:
+                surrounding_context = " ".join(window)
+
         return ProvenanceMetadata(
             paper_id=paper.get_dedup_key(),
             section_type=section.section_type,
@@ -720,6 +1265,7 @@ class SemanticRelationshipExtractor:
             extraction_timestamp=datetime.now(timezone.utc),
             extractor_version=self.extractor_version,
             confidence_score=confidence,
+            surrounding_context=surrounding_context,
         )
     
     def _extract_interventions_from_methods(
@@ -734,14 +1280,132 @@ class SemanticRelationshipExtractor:
         """
         interventions = []
         
-        # Map treatment entities to intervention types
+        # Map treatment entities to intervention types.
+        # Covers all 7 treatment categories extracted by Layer 2 NER (nlp/ner.py
+        # TREATMENT_PATTERNS), so no recognised intervention is silently dropped.
+        # Each key becomes the intervention_type stored on the graph edge.
         intervention_type_map = {
-            "probiotic": ["probiotic", "lactobacillus", "bifidobacterium"],
-            "FMT": ["fmt", "fecal microbiota transplant", "fecal transplant"],
-            "diet": ["diet", "dietary", "nutrition", "mediterranean diet"],
-            "antibiotic": ["antibiotic", "antibiotics", "amoxicillin", "metronidazole"],
-            "prebiotic": ["prebiotic", "inulin", "fructooligosaccharide"],
-            "synbiotic": ["synbiotic"],
+            # ── Microbial interventions ───────────────────────────────────────
+            "probiotic": [
+                "probiotic", "lactobacillus", "bifidobacterium", "saccharomyces",
+                "streptococcus thermophilus", "enterococcus faecium",
+                "pediococcus", "leuconostoc",
+                "live biotherapeutic", "biotherapeutic",
+                "paraprobiotic", "psychobiotic", "postbiotic",
+                "fermented milk", "yogurt", "kefir",
+            ],
+            "prebiotic": [
+                "prebiotic", "inulin", "fructooligosaccharide", "fos",
+                "galactooligosaccharide", "gos", "pectin", "psyllium",
+                "betaglucan", "beta-glucan", "resistant starch",
+                "dietary fiber", "fiber supplement",
+            ],
+            "synbiotic": [
+                "synbiotic",
+            ],
+            "postbiotic": [
+                "postbiotic", "paraprobiotics", "heat-killed",
+                "bacterial lysate", "cell-free supernatant",
+            ],
+            "FMT": [
+                "fmt", "fecal microbiota transplant", "faecal microbiota transplant",
+                "fecal transplant", "stool transplant", "microbiota transplant",
+                "fecal bacteriotherapy", "bacteriotherapy",
+                "capsule fmt", "enema fmt", "colonoscopic fmt",
+            ],
+            "fermented_food": [
+                "fermented food", "fermented beverage", "fermented dairy",
+                "sauerkraut", "kimchi", "kombucha", "miso", "tempeh",
+                "natto", "kefir", "fermented soy",
+            ],
+            # ── Antibiotic / antimicrobial interventions ──────────────────────
+            "antibiotic": [
+                "antibiotic", "antibiotics", "antimicrobial",
+                "amoxicillin", "metronidazole", "ciprofloxacin", "vancomycin",
+                "rifaximin", "neomycin", "ampicillin", "tetracycline",
+                "doxycycline", "clindamycin", "azithromycin", "clarithromycin",
+                "fluoroquinolone", "cephalosporin", "penicillin",
+                "carbapenems", "colistin", "polymyxin", "linezolid",
+                "daptomycin", "fidaxomicin",
+            ],
+            # ── Dietary pattern interventions ─────────────────────────────────
+            "diet": [
+                "diet", "dietary intervention",
+                "mediterranean diet", "high-fiber diet", "high fiber diet",
+                "plant-based diet", "plant based diet",
+                "ketogenic diet", "low-carbohydrate diet", "low carb diet",
+                "low-fat diet", "vegan diet", "vegetarian diet",
+                "gluten-free diet", "dairy-free diet",
+                "western diet", "high-fat diet",
+                "caloric restriction", "calorie restriction",
+                "intermittent fasting", "time-restricted eating",
+                "time-restricted feeding", "fasting",
+                "food supplementation", "nutritional intervention",
+                "polyphenol", "quercetin", "resveratrol", "curcumin",
+                "omega-3", "fish oil", "dha", "epa",
+                "vitamin d", "vitamin b12", "vitamin k",
+                "folate", "folic acid", "zinc", "iron",
+                "magnesium", "calcium", "selenium",
+            ],
+            # ── Metabolite / SCFA supplementation ────────────────────────────
+            "metabolite_supplementation": [
+                "butyrate", "propionate", "acetate",
+                "short-chain fatty acid", "scfa",
+                "bile acid", "secondary bile acid",
+                "tryptophan", "indole", "serotonin",
+                "gaba", "dopamine",
+            ],
+            # ── Pharmaceutical drugs ──────────────────────────────────────────
+            "drug_metabolic": [
+                "metformin", "insulin", "glp-1",
+                "semaglutide", "liraglutide", "exenatide",
+                "statin", "atorvastatin", "rosuvastatin",
+                "levothyroxine", "thyroid hormone",
+            ],
+            "drug_gastro": [
+                "proton pump inhibitor", "ppi",
+                "omeprazole", "pantoprazole", "esomeprazole",
+                "laxative", "antidiarrheal",
+                "mesalazine", "sulfasalazine", "budesonide",
+            ],
+            "drug_immune": [
+                "immunosuppressant", "corticosteroid",
+                "prednisolone", "dexamethasone",
+                "infliximab", "adalimumab", "vedolizumab",
+                "ustekinumab", "tofacitinib",
+                "nsaid", "non-steroidal anti-inflammatory",
+                "ibuprofen", "aspirin", "naproxen",
+            ],
+            "drug_oncology": [
+                "chemotherapy", "immunotherapy",
+                "checkpoint inhibitor", "pd-1", "pd-l1",
+                "pembrolizumab", "nivolumab", "ipilimumab",
+            ],
+            "drug_contraceptive": [
+                "oral contraceptive", "hormone therapy",
+                "hormonal contraception", "birth control pill",
+            ],
+            # ── Lifestyle interventions ───────────────────────────────────────
+            "exercise": [
+                "exercise", "physical activity",
+                "aerobic exercise", "resistance training",
+                "endurance training", "high-intensity interval training", "hiit",
+                "yoga", "sedentary",
+            ],
+            "lifestyle_other": [
+                "sleep", "stress", "psychological stress",
+                "mindfulness", "meditation",
+                "smoking", "tobacco", "smoking cessation",
+                "alcohol", "alcohol consumption",
+            ],
+            # ── Perinatal / early-life interventions ─────────────────────────
+            "perinatal": [
+                "breastfeeding", "breast milk", "human milk",
+                "formula feeding", "infant formula",
+                "cesarean section", "c-section", "caesarean",
+                "vaginal delivery", "mode of delivery",
+                "early-life antibiotic", "neonatal antibiotic",
+            ],
         }
         
         for section in methods_sections:

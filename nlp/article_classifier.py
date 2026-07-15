@@ -189,6 +189,26 @@ IMRAD_KEYWORDS = frozenset([
     "objective", "findings", "purpose",
 ])
 
+# If ANY of these appear in the abstract, IMRAD detection is suppressed.
+# These are signals that the paper is NOT original research, even if it has
+# a structured abstract with Background/Methods/Results/Conclusions labels.
+IMRAD_OVERRIDE_PATTERNS: List[Tuple[re.Pattern, str, float]] = [
+    # Review signals — systematic reviews and narrative reviews routinely use
+    # IMRAD-structured abstracts, especially in clinical journals
+    (re.compile(r"\bsystematic(?:ally)?\s+(?:search|review|identif)", re.I), "systematic_review", 0.80),
+    (re.compile(r"\bwe\s+searched\b.{0,80}\b(?:medline|pubmed|embase|cochrane|scopus|web\s+of\s+science)\b", re.I | re.DOTALL), "systematic_review", 0.82),
+    (re.compile(r"\bstudies?\s+(?:were\s+)?(?:included|eligible|selected|screened)\b", re.I), "systematic_review", 0.75),
+    (re.compile(r"\bnarrative\s+(?:review|synthesis|overview)\b", re.I), "narrative_review", 0.85),
+    (re.compile(r"\bwe\s+(?:review|summarize|summarise|overview|discuss)\b.{0,60}\b(?:literature|evidence|studies|data)\b", re.I | re.DOTALL), "narrative_review", 0.72),
+    (re.compile(r"\bexisting\s+(?:literature|evidence|studies|research)\b", re.I), "narrative_review", 0.65),
+
+    # Protocol signals — use future tense + outcome language
+    (re.compile(r"\bwill\s+be\s+(?:randomly\s+)?(?:assigned|allocated|enrolled|recruited)\b", re.I), "protocol", 0.85),
+    (re.compile(r"\bprimary\s+(?:end\s*point|outcome)\s+will\s+be\b", re.I), "protocol", 0.82),
+    (re.compile(r"\bstudy\s+(?:is\s+)?(?:registered|ongoing|planned|proposed)\b", re.I), "protocol", 0.78),
+    (re.compile(r"\bprotocol\s+(?:paper|article|report|for)\b", re.I), "protocol", 0.88),
+]
+
 
 class ArticleClassifier:
     """
@@ -252,12 +272,26 @@ class ArticleClassifier:
                 return best_type, best_conf
 
         # ── Tier 4: IMRAD structure ───────────────────────────────────────────
+        # Only fires if the abstract has 3+ IMRAD structural keywords AND
+        # none of the override patterns indicate it's a review or protocol.
+        # Without the override check, systematic reviews and protocols that
+        # use structured abstract labels would all land here as original_research.
         if abstract_l:
             imrad_hits = sum(1 for kw in IMRAD_KEYWORDS if kw in abstract_l)
-            if imrad_hits >= 3:
-                return "original_research", 0.60
             if imrad_hits >= 2:
-                return "original_research", 0.55
+                # Check override patterns — if any match, use that type instead
+                for pattern, override_type, override_conf in IMRAD_OVERRIDE_PATTERNS:
+                    if pattern.search(abstract_l):
+                        logger.debug(
+                            f"[classifier] Tier4 IMRAD suppressed by override: "
+                            f"{override_type} ({override_conf})"
+                        )
+                        return override_type, override_conf
+                # No override matched — safe to call it original_research
+                if imrad_hits >= 3:
+                    return "original_research", 0.60
+                if imrad_hits >= 2:
+                    return "original_research", 0.55
 
         # ── If Tier 1 gave a generic result, use it at reduced confidence ─────
         if specific_type:

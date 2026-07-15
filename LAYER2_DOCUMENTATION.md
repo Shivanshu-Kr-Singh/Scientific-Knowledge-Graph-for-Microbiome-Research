@@ -534,7 +534,7 @@ Handles abbreviations and minor naming variants. `"the isme journal"` matches `"
 
 **Step 3 — CrossRef API lookup by ISSN or name**
 
-For journals not in the local database, queries the CrossRef `/journals` endpoint. Returns OA status and subject field. CrossRef does NOT provide impact factors (those are proprietary to Clarivate) — only OA flag and publisher metadata.
+For journals not in the local database, queries the CrossRef `/journals`  t. Returns OA status and subject field. CrossRef does NOT provide impact factors (those are proprietary to Clarivate) — only OA flag and publisher metadata.
 
 **Step 4 — Heuristic fallbacks**
 

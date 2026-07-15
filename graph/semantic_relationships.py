@@ -20,15 +20,46 @@ from graph.provenance import ProvenanceMetadata
 class RelationType(str, Enum):
     """
     Enumeration of relationship types in the knowledge graph.
-    
-    Each type corresponds to a specific scientific claim pattern
-    with its own property schema.
-    
+
+    Original 3 types cover taxon↔disease, intervention, and methodology.
+    The 10 new types cover the remaining scientifically meaningful entity-pair
+    combinations derived from Layer 2's 18 entity categories:
+
+      taxon        ↔ metabolite    → TAXON_PRODUCES_METABOLITE
+      taxon        ↔ pathway       → TAXON_MODULATES_PATHWAY
+      taxon        ↔ gene          → TAXON_REGULATES_GENE
+      taxon        ↔ immune_cell   → TAXON_INFLUENCES_IMMUNE_CELL
+      taxon        ↔ clinical_outcome → TAXON_AFFECTS_CLINICAL_OUTCOME
+      metabolite   ↔ disease       → METABOLITE_LINKED_TO_DISEASE
+      metabolite   ↔ immune_cell   → METABOLITE_INDUCES_IMMUNE_RESPONSE
+      gene         ↔ disease       → GENE_PREDISPOSES_TO_DISEASE
+      dietary_component ↔ taxon   → DIET_SHAPES_TAXON
+      environmental_factor ↔ taxon → ENVIRONMENT_SHAPES_TAXON
+
     Requirements: 2.1, 2.2, 2.3
     """
+    # ── Original 3 ────────────────────────────────────────────────────────
     REPORTS_ASSOCIATION = "REPORTS_ASSOCIATION"
     REPORTS_INTERVENTION_EFFECT = "REPORTS_INTERVENTION_EFFECT"
     USES_METHODOLOGY = "USES_METHODOLOGY"
+
+    # ── New: taxon-centric relationships ──────────────────────────────────
+    TAXON_PRODUCES_METABOLITE    = "TAXON_PRODUCES_METABOLITE"
+    TAXON_MODULATES_PATHWAY      = "TAXON_MODULATES_PATHWAY"
+    TAXON_REGULATES_GENE         = "TAXON_REGULATES_GENE"
+    TAXON_INFLUENCES_IMMUNE_CELL = "TAXON_INFLUENCES_IMMUNE_CELL"
+    TAXON_AFFECTS_CLINICAL_OUTCOME = "TAXON_AFFECTS_CLINICAL_OUTCOME"
+
+    # ── New: metabolite-centric relationships ─────────────────────────────
+    METABOLITE_LINKED_TO_DISEASE     = "METABOLITE_LINKED_TO_DISEASE"
+    METABOLITE_INDUCES_IMMUNE_RESPONSE = "METABOLITE_INDUCES_IMMUNE_RESPONSE"
+
+    # ── New: gene-centric relationships ───────────────────────────────────
+    GENE_PREDISPOSES_TO_DISEASE = "GENE_PREDISPOSES_TO_DISEASE"
+
+    # ── New: exposure-centric relationships ───────────────────────────────
+    DIET_SHAPES_TAXON        = "DIET_SHAPES_TAXON"
+    ENVIRONMENT_SHAPES_TAXON = "ENVIRONMENT_SHAPES_TAXON"
 
 
 class SemanticRelationship(BaseModel):
@@ -64,7 +95,12 @@ class SemanticRelationship(BaseModel):
     #   - adjusted_p_value: Optional[float]
     #
     # For REPORTS_INTERVENTION_EFFECT (Requirement 2.2):
-    #   - intervention_type: "probiotic" | "FMT" | "diet" | "antibiotic"
+    #   - intervention_type: "probiotic" | "FMT" | "diet" | "antibiotic" | "prebiotic"
+    #                      | "synbiotic" | "postbiotic" | "fermented_food"
+    #                      | "metabolite_supplementation"
+    #                      | "drug_metabolic" | "drug_gastro" | "drug_immune"
+    #                      | "drug_oncology" | "drug_contraceptive"
+    #                      | "exercise" | "lifestyle_other" | "perinatal" | "other"
     #   - effect_direction: "increased" | "decreased"
     #   - duration: "4 weeks" | "6 months"
     #   - dosage: Optional[str]
@@ -75,6 +111,56 @@ class SemanticRelationship(BaseModel):
     #   - sequencing_platform: "Illumina" | "PacBio"
     #   - sample_size: int
     #   - data_availability: Optional[str]
+    #
+    # For TAXON_PRODUCES_METABOLITE:
+    #   - direction: "produces" | "inhibits" | "associated"
+    #   - metabolite_class: Optional[str]  e.g. "SCFA", "bile acid"
+    #   - p_value: Optional[float]
+    #
+    # For TAXON_MODULATES_PATHWAY:
+    #   - direction: "activates" | "inhibits" | "associated"
+    #   - pathway_category: Optional[str]  e.g. "inflammatory", "metabolic"
+    #   - p_value: Optional[float]
+    #
+    # For TAXON_REGULATES_GENE:
+    #   - direction: "upregulates" | "downregulates" | "associated"
+    #   - regulation_mechanism: Optional[str]  e.g. "epigenetic", "transcriptional"
+    #   - p_value: Optional[float]
+    #
+    # For TAXON_INFLUENCES_IMMUNE_CELL:
+    #   - direction: "activates" | "suppresses" | "recruits" | "associated"
+    #   - immune_context: Optional[str]  e.g. "intestinal", "systemic"
+    #   - p_value: Optional[float]
+    #
+    # For TAXON_AFFECTS_CLINICAL_OUTCOME:
+    #   - direction: "improves" | "worsens" | "associated"
+    #   - outcome_type: Optional[str]  e.g. "remission", "relapse"
+    #   - p_value: Optional[float]
+    #
+    # For METABOLITE_LINKED_TO_DISEASE:
+    #   - direction: "increased" | "decreased" | "associated"
+    #   - metabolite_role: Optional[str]  e.g. "protective", "pathogenic"
+    #   - p_value: Optional[float]
+    #
+    # For METABOLITE_INDUCES_IMMUNE_RESPONSE:
+    #   - direction: "activates" | "suppresses" | "associated"
+    #   - immune_context: Optional[str]
+    #   - p_value: Optional[float]
+    #
+    # For GENE_PREDISPOSES_TO_DISEASE:
+    #   - direction: "predisposes" | "protective" | "associated"
+    #   - variant_type: Optional[str]  e.g. "SNP", "mutation", "polymorphism"
+    #   - p_value: Optional[float]
+    #
+    # For DIET_SHAPES_TAXON:
+    #   - direction: "enriches" | "depletes" | "associated"
+    #   - dietary_pattern: Optional[str]  e.g. "Mediterranean", "high-fiber"
+    #   - p_value: Optional[float]
+    #
+    # For ENVIRONMENT_SHAPES_TAXON:
+    #   - direction: "enriches" | "depletes" | "associated"
+    #   - exposure_type: Optional[str]  e.g. "antibiotic", "birth_mode"
+    #   - p_value: Optional[float]
     
     # Provenance (Requirement 3.1, 3.2)
     provenance: ProvenanceMetadata = Field(..., description="Complete provenance tracking")
@@ -179,7 +265,17 @@ class SemanticRelationship(BaseModel):
         
         # Validate intervention_type values
         intervention_type = self.properties.get("intervention_type")
-        allowed_types = {"probiotic", "FMT", "diet", "antibiotic", "prebiotic", "synbiotic", "other"}
+        allowed_types = {
+            # Original
+            "probiotic", "FMT", "diet", "antibiotic", "prebiotic", "synbiotic",
+            # New
+            "postbiotic", "fermented_food",
+            "metabolite_supplementation",
+            "drug_metabolic", "drug_gastro", "drug_immune",
+            "drug_oncology", "drug_contraceptive",
+            "exercise", "lifestyle_other", "perinatal",
+            "other",
+        }
         if intervention_type not in allowed_types:
             raise ValueError(
                 f"intervention_type must be one of {allowed_types}, "
@@ -220,6 +316,57 @@ class SemanticRelationship(BaseModel):
             sample_size = self.properties["sample_size"]
             if not isinstance(sample_size, int) or sample_size <= 0:
                 raise ValueError(f"sample_size must be a positive integer, got {sample_size}")
+
+    # ── Validators for the 10 new relationship types ──────────────────────────
+
+    # All new types share a common "directional entity-pair" schema:
+    #   - direction: controlled vocabulary (type-specific allowed values)
+    #   - p_value: Optional[float] in [0.0, 1.0]
+    #   - one optional context field (metabolite_class, pathway_category, …)
+    # We use a single shared helper to avoid repetition.
+
+    _NEW_TYPE_DIRECTION_VALUES: Dict[str, set] = {
+        "TAXON_PRODUCES_METABOLITE":      {"produces", "inhibits", "associated"},
+        "TAXON_MODULATES_PATHWAY":        {"activates", "inhibits", "associated"},
+        "TAXON_REGULATES_GENE":           {"upregulates", "downregulates", "associated"},
+        "TAXON_INFLUENCES_IMMUNE_CELL":   {"activates", "suppresses", "recruits", "associated"},
+        "TAXON_AFFECTS_CLINICAL_OUTCOME": {"improves", "worsens", "associated"},
+        "METABOLITE_LINKED_TO_DISEASE":   {"increased", "decreased", "associated"},
+        "METABOLITE_INDUCES_IMMUNE_RESPONSE": {"activates", "suppresses", "associated"},
+        "GENE_PREDISPOSES_TO_DISEASE":    {"predisposes", "protective", "associated"},
+        "DIET_SHAPES_TAXON":              {"enriches", "depletes", "associated"},
+        "ENVIRONMENT_SHAPES_TAXON":       {"enriches", "depletes", "associated"},
+    }
+
+    def _validate_new_type_properties(self) -> None:
+        """
+        Shared validator for all 10 new relationship types.
+
+        Required property: direction (type-specific controlled vocabulary).
+        Optional property: p_value must be in [0.0, 1.0] when present.
+        """
+        rtype = self.relation_type.value
+        allowed_directions = self._NEW_TYPE_DIRECTION_VALUES.get(rtype)
+        if allowed_directions is None:
+            return  # Not a new type — skip (shouldn't reach here)
+
+        if "direction" not in self.properties:
+            raise ValueError(
+                f"{rtype} requires 'direction' property. "
+                f"Allowed values: {allowed_directions}"
+            )
+
+        direction = self.properties["direction"]
+        if direction not in allowed_directions:
+            raise ValueError(
+                f"{rtype} direction must be one of {allowed_directions}, got '{direction}'"
+            )
+
+        if "p_value" in self.properties:
+            p_value = self.properties["p_value"]
+            if p_value is not None:
+                if not isinstance(p_value, (int, float)) or not (0.0 <= p_value <= 1.0):
+                    raise ValueError(f"p_value must be in range [0.0, 1.0], got {p_value}")
     
     def model_post_init(self, __context) -> None:
         """
@@ -233,6 +380,8 @@ class SemanticRelationship(BaseModel):
             self.validate_intervention_properties()
         elif self.relation_type == RelationType.USES_METHODOLOGY:
             self.validate_methodology_properties()
+        elif self.relation_type.value in self._NEW_TYPE_DIRECTION_VALUES:
+            self._validate_new_type_properties()
 
 
 # Factory functions for creating semantic relationships
@@ -400,4 +549,233 @@ def create_methodology_relationship(
         provenance=provenance,
         evidence_strength=evidence_strength,
         extraction_confidence=extraction_confidence,
+    )
+
+
+# ── Factory helpers for the 10 new relationship types ────────────────────────
+# All follow the same pattern:
+#   source_entity  — the "left-hand" entity (taxon, metabolite, gene, diet, environment)
+#   target_entity  — the "right-hand" entity (metabolite, pathway, gene, …)
+#   direction      — controlled vocabulary value (type-specific)
+#   provenance / evidence_strength / extraction_confidence — standard fields
+#   **context      — optional type-specific context kwargs (metabolite_class, etc.)
+
+def _make_new_type_relationship(
+    source_entity: str,
+    target_entity: str,
+    relation_type: RelationType,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    **context_kwargs: Any,
+) -> SemanticRelationship:
+    """
+    Generic factory for all 10 new entity-pair relationship types.
+    Builds the shared properties dict and delegates validation to model_post_init.
+    """
+    properties: Dict[str, Any] = {"direction": direction}
+    if p_value is not None:
+        properties["p_value"] = p_value
+    properties.update(context_kwargs)
+
+    return SemanticRelationship(
+        source_entity=source_entity,
+        target_entity=target_entity,
+        relation_type=relation_type,
+        properties=properties,
+        provenance=provenance,
+        evidence_strength=evidence_strength,
+        extraction_confidence=extraction_confidence,
+    )
+
+
+def create_taxon_produces_metabolite(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    metabolite_class: Optional[str] = None,
+) -> SemanticRelationship:
+    """Taxon → Metabolite  (produces / inhibits / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.TAXON_PRODUCES_METABOLITE,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if metabolite_class is None else {"metabolite_class": metabolite_class}),
+    )
+
+
+def create_taxon_modulates_pathway(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    pathway_category: Optional[str] = None,
+) -> SemanticRelationship:
+    """Taxon → Pathway  (activates / inhibits / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.TAXON_MODULATES_PATHWAY,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if pathway_category is None else {"pathway_category": pathway_category}),
+    )
+
+
+def create_taxon_regulates_gene(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    regulation_mechanism: Optional[str] = None,
+) -> SemanticRelationship:
+    """Taxon → Gene  (upregulates / downregulates / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.TAXON_REGULATES_GENE,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if regulation_mechanism is None else {"regulation_mechanism": regulation_mechanism}),
+    )
+
+
+def create_taxon_influences_immune_cell(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    immune_context: Optional[str] = None,
+) -> SemanticRelationship:
+    """Taxon → ImmunCell  (activates / suppresses / recruits / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.TAXON_INFLUENCES_IMMUNE_CELL,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if immune_context is None else {"immune_context": immune_context}),
+    )
+
+
+def create_taxon_affects_clinical_outcome(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    outcome_type: Optional[str] = None,
+) -> SemanticRelationship:
+    """Taxon → ClinicalOutcome  (improves / worsens / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.TAXON_AFFECTS_CLINICAL_OUTCOME,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if outcome_type is None else {"outcome_type": outcome_type}),
+    )
+
+
+def create_metabolite_linked_to_disease(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    metabolite_role: Optional[str] = None,
+) -> SemanticRelationship:
+    """Metabolite → Disease  (increased / decreased / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.METABOLITE_LINKED_TO_DISEASE,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if metabolite_role is None else {"metabolite_role": metabolite_role}),
+    )
+
+
+def create_metabolite_induces_immune_response(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    immune_context: Optional[str] = None,
+) -> SemanticRelationship:
+    """Metabolite → ImmuneCell  (activates / suppresses / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.METABOLITE_INDUCES_IMMUNE_RESPONSE,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if immune_context is None else {"immune_context": immune_context}),
+    )
+
+
+def create_gene_predisposes_to_disease(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    variant_type: Optional[str] = None,
+) -> SemanticRelationship:
+    """Gene → Disease  (predisposes / protective / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.GENE_PREDISPOSES_TO_DISEASE,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if variant_type is None else {"variant_type": variant_type}),
+    )
+
+
+def create_diet_shapes_taxon(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    dietary_pattern: Optional[str] = None,
+) -> SemanticRelationship:
+    """DietaryComponent → Taxon  (enriches / depletes / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.DIET_SHAPES_TAXON,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if dietary_pattern is None else {"dietary_pattern": dietary_pattern}),
+    )
+
+
+def create_environment_shapes_taxon(
+    source_entity: str,
+    target_entity: str,
+    direction: str,
+    provenance: ProvenanceMetadata,
+    evidence_strength: str,
+    extraction_confidence: float,
+    p_value: Optional[float] = None,
+    exposure_type: Optional[str] = None,
+) -> SemanticRelationship:
+    """EnvironmentalFactor → Taxon  (enriches / depletes / associated)."""
+    return _make_new_type_relationship(
+        source_entity, target_entity,
+        RelationType.ENVIRONMENT_SHAPES_TAXON,
+        direction, provenance, evidence_strength, extraction_confidence,
+        p_value=p_value, **({} if exposure_type is None else {"exposure_type": exposure_type}),
     )

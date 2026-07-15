@@ -188,6 +188,40 @@ class EnhancedNeo4jLoader:
                     session.run(f"CREATE INDEX {node_type.lower()}_name IF NOT EXISTS FOR (n:{node_type}) ON (n.name)")
                 except Exception:
                     pass  # Index may already exist or node type not yet present
+
+            # Indexes for all new relation-type node labels (from _TARGET_LABEL_MAP
+            # and _SOURCE_LABEL_MAP) and standalone entity categories
+            new_node_labels = [
+                # Entity-pair relation targets / sources
+                "Metabolite", "Pathway", "Gene", "ImmuneCell",
+                "ClinicalOutcome", "Disease",
+                "DietaryComponent", "EnvironmentalFactor",
+                # Standalone entity categories
+                "Biomarker", "Protein", "Population",
+                "BodySite", "SequencingPlatform", "OmicsFeature", "Dataset",
+            ]
+            for label in new_node_labels:
+                idx_name = label.lower().replace(" ", "_")
+                try:
+                    session.run(
+                        f"CREATE INDEX {idx_name}_id IF NOT EXISTS "
+                        f"FOR (n:{label}) ON (n.id)"
+                    )
+                    session.run(
+                        f"CREATE INDEX {idx_name}_name IF NOT EXISTS "
+                        f"FOR (n:{label}) ON (n.name)"
+                    )
+                except Exception:
+                    pass  # Already exists or unsupported version
+
+            # Index on MENTIONED_IN for fast "which papers mention entity X" queries
+            try:
+                session.run(
+                    "CREATE INDEX mentioned_in_entity_type IF NOT EXISTS "
+                    "FOR ()-[r:MENTIONED_IN]-() ON (r.entity_type)"
+                )
+            except Exception:
+                pass
             
             logger.info("Created Neo4j indexes")
     
@@ -238,41 +272,93 @@ class EnhancedNeo4jLoader:
                     # fall back to edge.source so the node always gets a meaningful name.
                     paper_title = title_lookup.get(edge.source, edge.source)
 
-                    # Determine target label based on relation type
-                    if edge.relation == "REPORTS_ASSOCIATION":
-                        target_label = "Taxon"
-                    elif edge.relation == "REPORTS_INTERVENTION_EFFECT":
-                        target_label = "Taxon"
-                    elif edge.relation == "USES_METHODOLOGY":
-                        target_label = "Method"
-                    else:
-                        target_label = "Entity"
+                    # Determine target label based on relation type.
+                    # Maps every RelationType to its correct Neo4j node label so
+                    # queries like MATCH (m:Metabolite) work without scanning :Entity.
+                    _TARGET_LABEL_MAP = {
+                        # Original 3
+                        "REPORTS_ASSOCIATION":              "Taxon",
+                        "REPORTS_INTERVENTION_EFFECT":      "Taxon",
+                        "USES_METHODOLOGY":                 "Method",
+                        # Taxon-centric (target is the non-taxon entity)
+                        "TAXON_PRODUCES_METABOLITE":        "Metabolite",
+                        "TAXON_MODULATES_PATHWAY":          "Pathway",
+                        "TAXON_REGULATES_GENE":             "Gene",
+                        "TAXON_INFLUENCES_IMMUNE_CELL":     "ImmuneCell",
+                        "TAXON_AFFECTS_CLINICAL_OUTCOME":   "ClinicalOutcome",
+                        # Metabolite-centric
+                        "METABOLITE_LINKED_TO_DISEASE":     "Disease",
+                        "METABOLITE_INDUCES_IMMUNE_RESPONSE": "ImmuneCell",
+                        # Gene-centric
+                        "GENE_PREDISPOSES_TO_DISEASE":      "Disease",
+                        # Exposure-centric (target is Taxon)
+                        "DIET_SHAPES_TAXON":                "Taxon",
+                        "ENVIRONMENT_SHAPES_TAXON":         "Taxon",
+                    }
+                    # Source label: named entity types need their own label too
+                    _SOURCE_LABEL_MAP = {
+                        "TAXON_PRODUCES_METABOLITE":        "Taxon",
+                        "TAXON_MODULATES_PATHWAY":          "Taxon",
+                        "TAXON_REGULATES_GENE":             "Taxon",
+                        "TAXON_INFLUENCES_IMMUNE_CELL":     "Taxon",
+                        "TAXON_AFFECTS_CLINICAL_OUTCOME":   "Taxon",
+                        "METABOLITE_LINKED_TO_DISEASE":     "Metabolite",
+                        "METABOLITE_INDUCES_IMMUNE_RESPONSE": "Metabolite",
+                        "GENE_PREDISPOSES_TO_DISEASE":      "Gene",
+                        "DIET_SHAPES_TAXON":                "DietaryComponent",
+                        "ENVIRONMENT_SHAPES_TAXON":         "EnvironmentalFactor",
+                    }
+                    target_label = _TARGET_LABEL_MAP.get(edge.relation, "Entity")
+                    source_label = _SOURCE_LABEL_MAP.get(edge.relation, "Paper")
 
-                    # Create Paper source node with label and paper metadata
-                    tx.run(
-                        """
-                        MERGE (source:Paper {id: $source_id})
-                        ON CREATE SET source.created_at = datetime(),
-                                      source.name = $title,
-                                      source.title = $title,
-                                      source.year = $year,
-                                      source.article_type = $article_type,
-                                      source.data_availability = $data_availability,
-                                      source.accession_numbers = $accession_numbers
-                        ON MATCH SET  source.name = $title,
-                                      source.title = $title,
-                                      source.year = $year,
-                                      source.article_type = $article_type,
-                                      source.data_availability = $data_availability,
-                                      source.accession_numbers = $accession_numbers
-                        """,
-                        source_id=edge.source,
-                        title=paper_title,
-                        year=edge_dict.get("year"),
-                        article_type=edge_dict.get("article_type"),
-                        data_availability=edge_dict.get("data_availability"),
-                        accession_numbers=edge_dict.get("accession_numbers", [])
-                    )
+                    # Create source node.
+                    # For original 3 types the source is always a Paper.
+                    # For the 10 new entity-pair types the source is a named
+                    # entity (Taxon, Metabolite, Gene, DietaryComponent, etc.)
+                    if source_label == "Paper":
+                        tx.run(
+                            """
+                            MERGE (source:Paper {id: $source_id})
+                            ON CREATE SET source.created_at = datetime(),
+                                          source.name = $title,
+                                          source.title = $title,
+                                          source.year = $year,
+                                          source.article_type = $article_type,
+                                          source.data_availability = $data_availability,
+                                          source.accession_numbers = $accession_numbers
+                            ON MATCH SET  source.name = $title,
+                                          source.title = $title,
+                                          source.year = $year,
+                                          source.article_type = $article_type,
+                                          source.data_availability = $data_availability,
+                                          source.accession_numbers = $accession_numbers
+                            """,
+                            source_id=edge.source,
+                            title=paper_title,
+                            year=edge_dict.get("year"),
+                            article_type=edge_dict.get("article_type"),
+                            data_availability=edge_dict.get("data_availability"),
+                            accession_numbers=edge_dict.get("accession_numbers", [])
+                        )
+                    else:
+                        tx.run(
+                            f"""
+                            MERGE (source:{source_label} {{id: $source_id}})
+                            ON CREATE SET source.created_at = datetime(),
+                                          source.name = $source_name,
+                                          source.canonical_name = $source_canonical,
+                                          source.ontology = $source_ontology,
+                                          source.grounded = $source_grounded
+                            ON MATCH SET  source.canonical_name = $source_canonical,
+                                          source.ontology = $source_ontology,
+                                          source.grounded = $source_grounded
+                            """,
+                            source_id=edge.source,
+                            source_name=edge_dict.get("source_canonical", edge.source),
+                            source_canonical=edge_dict.get("source_canonical", edge.source),
+                            source_ontology=edge_dict.get("source_ontology"),
+                            source_grounded=edge_dict.get("source_grounded", False),
+                        )
 
                     # Create target node with correct label and canonical name
                     tx.run(
@@ -297,7 +383,7 @@ class EnhancedNeo4jLoader:
                     # Create relationship with all properties
                     tx.run(
                         f"""
-                        MATCH (source:Paper {{id: $source_id}})
+                        MATCH (source:{source_label} {{id: $source_id}})
                         MATCH (target:{target_label} {{id: $target_id}})
                         CREATE (source)-[r:{edge.relation}]->(target)
                         SET r = $properties
@@ -631,6 +717,157 @@ class EnhancedNeo4jLoader:
 
         logger.info(f"Successfully loaded {len(claims)} open-world claims")
 
+    def load_standalone_entities(
+        self,
+        papers: List[Any],
+        entity_normalizer=None,
+    ) -> Dict[str, int]:
+        """
+        Push every Layer 2 entity that never appears as a graph edge endpoint
+        into Neo4j as a standalone node connected to its source Paper.
+
+        These 7 categories are extracted by Layer 2 NER but are never the
+        source or target of any SemanticRelationship extractor — so without
+        this method they would be silently lost after Layer 2:
+
+            Biomarker          — Shannon diversity, Chao1, calprotectin, CRP …
+            Protein            — zonulin, mucin, tight junction protein …
+            Population         — IBD patients, healthy adults, germ-free mice …
+            BodySite           — gut, colon, oral cavity, skin …
+            SequencingPlatform — Illumina MiSeq, Oxford Nanopore, PacBio …
+            OmicsFeature       — OTU, ASV, MAG, KEGG pathway, relative abundance …
+            Dataset            — PRJNA123456, HMP, curatedMetagenomicData …
+
+        Each node is connected to its Paper via a :MENTIONED_IN edge that
+        carries the paper_id so provenance is never lost.
+
+        Args:
+            papers:            List of EnrichedPaperRecord objects (or dicts).
+            entity_normalizer: Optional EntityNormalizer — used to attach
+                               ontology IDs when available. If None, nodes are
+                               created with grounded=False.
+
+        Returns:
+            Dict mapping node label → number of nodes merged.
+        """
+        # (entity_field_on_paper, Neo4j_label, entity_type_for_normalizer)
+        STANDALONE_CATEGORIES = [
+            ("biomarkers",           "Biomarker",           "biomarker"),
+            ("proteins",             "Protein",             "protein"),
+            ("populations",          "Population",          "population"),
+            ("body_sites",           "BodySite",            "body_site"),
+            ("sequencing_platforms", "SequencingPlatform",  "sequencing_platform"),
+            ("omics_features",       "OmicsFeature",        "omics_feature"),
+            ("datasets",             "Dataset",             "dataset"),
+        ]
+
+        counts: Dict[str, int] = {label: 0 for _, label, _ in STANDALONE_CATEGORIES}
+
+        if not papers:
+            return counts
+
+        logger.info(
+            f"Loading standalone entities for {len(papers)} papers "
+            f"({', '.join(l for _, l, _ in STANDALONE_CATEGORIES)})..."
+        )
+
+        for paper in papers:
+            # Support both Pydantic models and plain dicts
+            def _get(field, default=None):
+                if hasattr(paper, field):
+                    return getattr(paper, field) or default
+                if isinstance(paper, dict):
+                    return paper.get(field) or default
+                return default
+
+            paper_id = _get("doi") or _get("pmid") or _get("content_hash", "unknown")
+            if not paper_id.startswith(("doi:", "pmid:")):
+                paper_id = f"doi:{paper_id}" if _get("doi") else f"pmid:{paper_id}"
+
+            paper_year  = _get("publication_year")
+            paper_title = _get("title", "")
+
+            for field, label, ent_type in STANDALONE_CATEGORIES:
+                entities = _get(field, [])
+                if not entities:
+                    continue
+
+                # Batch all entities for this paper+category in one transaction
+                with self.driver.session(database=self.database) as session:
+                    with session.begin_transaction() as tx:
+
+                        # Ensure the Paper node exists
+                        tx.run(
+                            """
+                            MERGE (p:Paper {id: $paper_id})
+                            ON CREATE SET p.created_at = datetime(),
+                                          p.title = $title,
+                                          p.year   = $year
+                            """,
+                            paper_id=paper_id,
+                            title=paper_title,
+                            year=paper_year,
+                        )
+
+                        for ent_text in entities:
+                            if not ent_text or not ent_text.strip():
+                                continue
+
+                            # Try normalizer if available
+                            canonical  = ent_text
+                            ontology   = None
+                            grounded   = False
+                            onto_id    = ent_text.lower().strip()
+
+                            if entity_normalizer is not None:
+                                try:
+                                    res = entity_normalizer.normalize(
+                                        ent_text, ent_type
+                                    )
+                                    if res.get("grounded"):
+                                        canonical = res.get("canonical_name") or ent_text
+                                        ontology  = res.get("ontology")
+                                        grounded  = True
+                                        onto_id   = res.get("id") or onto_id
+                                except Exception:
+                                    pass  # fall back to ungrounded
+
+                            node_id = onto_id if grounded else f"raw:{ent_text.lower().strip()}"
+
+                            tx.run(
+                                f"""
+                                MERGE (e:{label} {{id: $node_id}})
+                                ON CREATE SET e.created_at   = datetime(),
+                                              e.name         = $name,
+                                              e.canonical_name = $canonical,
+                                              e.ontology     = $ontology,
+                                              e.grounded     = $grounded
+                                ON MATCH SET  e.canonical_name = $canonical,
+                                              e.ontology     = $ontology,
+                                              e.grounded     = $grounded
+                                WITH e
+                                MATCH (p:Paper {{id: $paper_id}})
+                                MERGE (p)-[:MENTIONED_IN {{entity_type: $ent_type}}]->(e)
+                                """,
+                                node_id=node_id,
+                                name=ent_text,
+                                canonical=canonical,
+                                ontology=ontology,
+                                grounded=grounded,
+                                paper_id=paper_id,
+                                ent_type=ent_type,
+                            )
+                            counts[label] += 1
+
+                        tx.commit()
+
+        total = sum(counts.values())
+        logger.info(
+            f"Standalone entities loaded — total {total}: "
+            + ", ".join(f"{l}={c}" for l, c in counts.items())
+        )
+        return counts
+
 
 class EnhancedKGPipeline:
     """
@@ -838,6 +1075,15 @@ class EnhancedKGPipeline:
             if all_ow_claims:
                 self.neo4j_loader.load_open_world_claims(all_ow_claims)
                 logger.info(f"Loaded {len(all_ow_claims)} open-world claims into Neo4j")
+
+            # Load standalone entities — the 7 Layer 2 categories that never
+            # appear as edge endpoints (Biomarker, Protein, Population,
+            # BodySite, SequencingPlatform, OmicsFeature, Dataset)
+            standalone_counts = self.neo4j_loader.load_standalone_entities(
+                records,
+                entity_normalizer=self.entity_normalizer,
+            )
+            logger.info(f"Standalone entity counts: {standalone_counts}")
 
             logger.info("Successfully loaded results into Neo4j")
         

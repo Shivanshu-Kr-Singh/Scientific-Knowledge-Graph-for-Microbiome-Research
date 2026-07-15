@@ -270,7 +270,8 @@ TAXA_PATTERNS = [
     r"\bverrucomicrobiota\b",           # previously Verrucomicrobia
     r"\bakkermansiaceae\b",
 
-    # Phylum-level renames (GTDB-based nomenclature appearing in recent papers)
+    # ── Phylum-level renames (GTDB/NCBI 2021-2024 nomenclature) ─────────────
+    # Audit: bacteroidota(50), bacillota(37), pseudomonadota(25), actinomycetota(16)
     r"\bbackwardsbacteria\b",
     r"\bpseudomonadota\b",              # new NCBI name for Proteobacteria
     r"\bbacillota\b",                   # new NCBI name for Firmicutes
@@ -283,6 +284,57 @@ TAXA_PATTERNS = [
     r"\bmyxococcota\b",
     r"\bsynergistota\b",                # new NCBI name for Synergistetes
     r"\bthermotogota\b",
+
+    # ── Reclassified Bacteroides species (Sakamoto 2022) ─────────────────────
+    # phocaeicola appeared 22 times in audit — entirely absent from patterns
+    r"\bphocaeicola\b",
+    r"\bphocaeicola vulgatus\b",        # was Bacteroides vulgatus
+    r"\bphocaeicola dorei\b",           # was Bacteroides dorei
+    r"\bphocaeicola massiliensis\b",
+    # Segatella (reclassified from Prevotella) — audit: segatella copri(8)
+    r"\bsegatella\b",
+    r"\bsegatella copri\b",             # was Prevotella copri
+    r"\bsegatella stercorea\b",         # was Prevotella stercorea
+
+    # ── Genera confirmed in audit data ───────────────────────────────────────
+    # lachnoclostridium(15), muribaculaceae(10), gemmiger(5)
+    r"\blachnoclostridium\b",
+    r"\bgemmiger\b",                    # butyrate-producing genus
+    r"\bsellimonas\b",
+    r"\banaerobutyricum\b",             # butyrate producer
+    r"\banaerobutyricum hallii\b",      # was Eubacterium hallii
+    r"\blentilactobacillus\b",          # new Lactobacillaceae genus (2020)
+    r"\bcompanilactobacillus\b",        # new Lactobacillaceae genus (2020)
+    r"\bsecundilactobacillus\b",        # new Lactobacillaceae genus (2020)
+    r"\bagathobaculum\b",               # butyrate producer
+    r"\bmediterraneibacter\b",          # Lachnospiraceae, renamed from Ruminococcus
+
+    # ── Families confirmed in audit data ─────────────────────────────────────
+    r"\bmuribaculaceae\b",              # 10 hits in audit
+    r"\bacutalibacteraceae\b",
+    r"\btannerellaceae\b",
+    r"\boscillospirales\b",
+    r"\blachnospirales\b",
+
+    # ── Bifidobacterium species commonly missed ───────────────────────────────
+    r"\bbifidobacterium pseudocatenulatum\b",
+    r"\bbifidobacterium catenulatum\b",
+    r"\bbifidobacterium dentium\b",
+    r"\bbifidobacterium gallicum\b",
+
+    # ── Gut virome expansion ─────────────────────────────────────────────────
+    r"\bmicroviridae\b",
+    r"\bsiphoviridae\b",
+    r"\bmyoviridae\b",
+    r"\bpodoviridae\b",
+    r"\bcaudovirales\b",
+    r"\bcrass-like\b",
+
+    # ── Candidatus taxa ───────────────────────────────────────────────────────
+    r"\bcandidatus saccharimonas\b",
+    r"\bcandidatus gracilibacteria\b",
+    r"\bcandidatus patescibacteria\b",
+    r"\bcandidatus melainabacteria\b",
 ]
 
 DISEASE_PATTERNS = [

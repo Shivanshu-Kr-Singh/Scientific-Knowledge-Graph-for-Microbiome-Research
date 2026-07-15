@@ -90,7 +90,7 @@ class EnhancedGraphEdge:
         # Embed provenance metadata as edge properties
         edge_dict.update({
             "paper_id": self.provenance.paper_id,
-            "section": self.provenance.section_type,
+            "section_type": self.provenance.section_type,
             "source_sentence": self.provenance.source_sentence,
             "sentence_offset": self.provenance.sentence_offset,
             "extraction_method": self.provenance.extraction_method,
@@ -101,7 +101,11 @@ class EnhancedGraphEdge:
             "surrounding_context": self.provenance.surrounding_context,
             "figure_table_ref": self.provenance.figure_table_ref,
         })
-        
+
+        # Strip None values — Neo4j does not need null properties and they
+        # clutter the graph browser and break IS NOT NULL queries.
+        edge_dict = {k: v for k, v in edge_dict.items() if v is not None}
+
         return edge_dict
     
     def __repr__(self) -> str:
@@ -192,6 +196,7 @@ class EnhancedGraphBuilder:
         self._current_paper_entities = paper.entities
         paper_edges = []
 
+        # ── Original 3 extractor calls (Requirements 2.1–2.3) ──────────────
         # Extract associations (Requirement 2.1)
         associations = self.semantic_extractor.extract_associations(paper)
         for rel in associations:
@@ -221,6 +226,28 @@ class EnhancedGraphBuilder:
             self.relationships.append(rel)
             key = self._get_relationship_key(rel)
             self.relationship_index[key].append(rel)
+
+        # ── 10 new entity-pair extractor calls ──────────────────────────────
+        _new_extractors = [
+            self.semantic_extractor.extract_taxon_metabolite,
+            self.semantic_extractor.extract_taxon_pathway,
+            self.semantic_extractor.extract_taxon_gene,
+            self.semantic_extractor.extract_taxon_immune_cell,
+            self.semantic_extractor.extract_taxon_clinical_outcome,
+            self.semantic_extractor.extract_metabolite_disease,
+            self.semantic_extractor.extract_metabolite_immune_cell,
+            self.semantic_extractor.extract_gene_disease,
+            self.semantic_extractor.extract_diet_taxon,
+            self.semantic_extractor.extract_environment_taxon,
+        ]
+        for extractor_fn in _new_extractors:
+            for rel in extractor_fn(paper):
+                edge = self._create_edge_from_relationship(rel)
+                self._inject_paper_metadata(edge, paper)
+                paper_edges.append(edge)
+                self.relationships.append(rel)
+                key = self._get_relationship_key(rel)
+                self.relationship_index[key].append(rel)
 
         # Open-world triple extraction (additive, requires USE_LLM=true)
         self._process_open_world_relationships(paper)
@@ -413,30 +440,39 @@ class EnhancedGraphBuilder:
     def get_statistics(self) -> Dict[str, Any]:
         """
         Get statistics about the graph construction.
-        
+
         Returns:
-            Dictionary with statistics
+            Dictionary with per-type relationship counts and totals.
         """
+        # Count every RelationType that appears in self.relationships
+        from collections import Counter
+        type_counts = Counter(r.relation_type.value for r in self.relationships)
+
         return {
+            # ── Totals ────────────────────────────────────────────────────
             "total_relationships": len(self.relationships),
-            "total_edges": len(self.edges),
-            "total_claims": len(self.claims),
-            "associations": sum(
-                1 for r in self.relationships 
-                if r.relation_type == RelationType.REPORTS_ASSOCIATION
-            ),
-            "interventions": sum(
-                1 for r in self.relationships 
-                if r.relation_type == RelationType.REPORTS_INTERVENTION_EFFECT
-            ),
-            "methodologies": sum(
-                1 for r in self.relationships 
-                if r.relation_type == RelationType.USES_METHODOLOGY
-            ),
-            "unique_triples": len(self.relationship_index),
-            "open_world_triples": len(self.open_world_triples),
-            "promoted_triples": len(self.promoted_triples),
-            "open_world_claims": len(self.open_world_claims),
+            "total_edges":         len(self.edges),
+            "total_claims":        len(self.claims),
+            "unique_triples":      len(self.relationship_index),
+            # ── Original 3 types ─────────────────────────────────────────
+            "associations":  type_counts.get(RelationType.REPORTS_ASSOCIATION.value, 0),
+            "interventions": type_counts.get(RelationType.REPORTS_INTERVENTION_EFFECT.value, 0),
+            "methodologies": type_counts.get(RelationType.USES_METHODOLOGY.value, 0),
+            # ── New 10 types ──────────────────────────────────────────────
+            "taxon_metabolite":       type_counts.get(RelationType.TAXON_PRODUCES_METABOLITE.value, 0),
+            "taxon_pathway":          type_counts.get(RelationType.TAXON_MODULATES_PATHWAY.value, 0),
+            "taxon_gene":             type_counts.get(RelationType.TAXON_REGULATES_GENE.value, 0),
+            "taxon_immune_cell":      type_counts.get(RelationType.TAXON_INFLUENCES_IMMUNE_CELL.value, 0),
+            "taxon_clinical_outcome": type_counts.get(RelationType.TAXON_AFFECTS_CLINICAL_OUTCOME.value, 0),
+            "metabolite_disease":     type_counts.get(RelationType.METABOLITE_LINKED_TO_DISEASE.value, 0),
+            "metabolite_immune_cell": type_counts.get(RelationType.METABOLITE_INDUCES_IMMUNE_RESPONSE.value, 0),
+            "gene_disease":           type_counts.get(RelationType.GENE_PREDISPOSES_TO_DISEASE.value, 0),
+            "diet_taxon":             type_counts.get(RelationType.DIET_SHAPES_TAXON.value, 0),
+            "environment_taxon":      type_counts.get(RelationType.ENVIRONMENT_SHAPES_TAXON.value, 0),
+            # ── Open-world (LLM) ─────────────────────────────────────────
+            "open_world_triples":  len(self.open_world_triples),
+            "promoted_triples":    len(self.promoted_triples),
+            "open_world_claims":   len(self.open_world_claims),
         }
 
     def get_open_world_triples(self) -> List[Dict]:
@@ -471,23 +507,48 @@ class EnhancedGraphBuilder:
 
         Requirements: 3.1, 3.2 (embed provenance)
         """
-        # ── Determine entity types for routing ────────────────────────────────
-        if relationship.relation_type == RelationType.REPORTS_ASSOCIATION:
-            source_type = "paper"     # source is always the paper
-            target_type = "taxon"
-        elif relationship.relation_type == RelationType.REPORTS_INTERVENTION_EFFECT:
-            source_type = "paper"
-            target_type = "taxon"
-        elif relationship.relation_type == RelationType.USES_METHODOLOGY:
-            source_type = "paper"
-            target_type = "method"
-        else:
-            source_type = "paper"
-            target_type = "unknown"
+        # ── Determine source/target entity types for ontology routing ────────
+        # Maps each RelationType to (source_type, target_type).
+        # "paper" means the raw DOI/key — no ontology grounding needed.
+        _TYPE_ROUTING: Dict[str, Tuple[str, str]] = {
+            # Original 3
+            RelationType.REPORTS_ASSOCIATION.value:          ("taxon",               "disease"),
+            RelationType.REPORTS_INTERVENTION_EFFECT.value:  ("paper",               "taxon"),
+            RelationType.USES_METHODOLOGY.value:             ("paper",               "method"),
+            # New 10
+            RelationType.TAXON_PRODUCES_METABOLITE.value:    ("taxon",               "metabolite"),
+            RelationType.TAXON_MODULATES_PATHWAY.value:      ("taxon",               "pathway"),
+            RelationType.TAXON_REGULATES_GENE.value:         ("taxon",               "gene"),
+            RelationType.TAXON_INFLUENCES_IMMUNE_CELL.value: ("taxon",               "immune_cell"),
+            RelationType.TAXON_AFFECTS_CLINICAL_OUTCOME.value: ("taxon",             "clinical_outcome"),
+            RelationType.METABOLITE_LINKED_TO_DISEASE.value: ("metabolite",          "disease"),
+            RelationType.METABOLITE_INDUCES_IMMUNE_RESPONSE.value: ("metabolite",    "immune_cell"),
+            RelationType.GENE_PREDISPOSES_TO_DISEASE.value:  ("gene",               "disease"),
+            RelationType.DIET_SHAPES_TAXON.value:            ("dietary_component",   "taxon"),
+            RelationType.ENVIRONMENT_SHAPES_TAXON.value:     ("environmental_factor","taxon"),
+        }
+        source_type, target_type = _TYPE_ROUTING.get(
+            relationship.relation_type.value, ("paper", "unknown")
+        )
 
-        # ── Normalize target entity (source is a paper DOI — no grounding needed)
+        # ── Normalize SOURCE entity (when it's a named entity, not a paper DOI) ──
+        source_raw = relationship.source_entity
+        if source_type not in ("paper", "unknown"):
+            pre_grounded_src = self._find_grounded_entity(source_raw, source_type)
+            if pre_grounded_src and pre_grounded_src.get("grounded"):
+                grounded_src = pre_grounded_src
+            else:
+                grounded_src = self.entity_normalizer.normalize(source_raw, source_type)
+            source_id = grounded_src.get("id") or f"ungrounded:{source_raw.lower()}"
+            source_canonical = grounded_src.get("canonical_name") or source_raw
+        else:
+            source_id = source_raw
+            source_canonical = source_raw
+            grounded_src = {"grounded": False, "confidence": 0.0, "source": "none", "ontology": None}
+
+        # ── Normalize TARGET entity (source is a paper DOI — no grounding needed)
         target_raw = relationship.target_entity
-        if target_type != "paper" and target_type != "unknown":
+        if target_type not in ("paper", "unknown"):
             # Check if the entity was already grounded inline at Layer 2
             # by looking it up in the paper's entities list
             pre_grounded = self._find_grounded_entity(relationship.target_entity, target_type)
@@ -508,15 +569,24 @@ class EnhancedGraphBuilder:
 
         # ── Build properties with grounding metadata ───────────────────────────
         props = relationship.properties.copy()
+        # Target grounding (all types)
         props["target_canonical"] = target_canonical
         props["target_ontology_id"] = grounded.get("id")
         props["target_ontology"] = grounded.get("ontology")
         props["target_grounded"] = grounded.get("grounded", False)
         props["target_grounding_confidence"] = grounded.get("confidence", 0.0)
         props["target_grounding_source"] = grounded.get("source", "none")
+        # Source grounding (new entity-pair types only)
+        if source_type not in ("paper", "unknown"):
+            props["source_canonical"] = source_canonical
+            props["source_ontology_id"] = grounded_src.get("id")
+            props["source_ontology"] = grounded_src.get("ontology")
+            props["source_grounded"] = grounded_src.get("grounded", False)
+            props["source_grounding_confidence"] = grounded_src.get("confidence", 0.0)
+            props["source_grounding_source"] = grounded_src.get("source", "none")
 
         return EnhancedGraphEdge(
-            source=relationship.source_entity,
+            source=source_id,            # canonical ontology ID for named entities
             target=target_id,            # canonical ontology ID
             relation=relationship.relation_type.value,
             properties=props,
@@ -565,42 +635,51 @@ class EnhancedGraphBuilder:
     def _normalize_predicate(self, relationship: SemanticRelationship) -> str:
         """
         Normalize predicate from relationship properties.
-        
+
         For associations, include direction in predicate.
         For interventions, include intervention type and effect direction.
         For methodology, use relation type.
-        
-        Args:
-            relationship: Semantic relationship
-        
-        Returns:
-            Normalized predicate string
+        For the 10 new types, combine relation type name with direction.
         """
-        if relationship.relation_type == RelationType.REPORTS_ASSOCIATION:
+        rt = relationship.relation_type
+
+        if rt == RelationType.REPORTS_ASSOCIATION:
             direction = relationship.properties.get("direction", "unknown")
             return f"associated_with_{direction}"
-        
-        elif relationship.relation_type == RelationType.REPORTS_INTERVENTION_EFFECT:
+
+        elif rt == RelationType.REPORTS_INTERVENTION_EFFECT:
             intervention = relationship.properties.get("intervention_type", "unknown")
             direction = relationship.properties.get("effect_direction", "unknown")
             return f"{intervention}_effect_{direction}"
-        
-        elif relationship.relation_type == RelationType.USES_METHODOLOGY:
+
+        elif rt == RelationType.USES_METHODOLOGY:
             return "uses_methodology"
-        
-        return relationship.relation_type.value
+
+        else:
+            # All 10 new types: "{RELATION_TYPE_LOWER}:{direction}"
+            # e.g. "taxon_produces_metabolite:produces"
+            direction = relationship.properties.get("direction", "associated")
+            type_label = rt.value.lower()
+            return f"{type_label}:{direction}"
     
     def _get_claim_type(self, relation_type: RelationType) -> str:
-        """
-        Map RelationType to claim type.
-        """
-        if relation_type == RelationType.REPORTS_ASSOCIATION:
-            return "association"
-        elif relation_type == RelationType.REPORTS_INTERVENTION_EFFECT:
-            return "intervention_effect"
-        elif relation_type == RelationType.USES_METHODOLOGY:
-            return "methodology_comparison"
-        return "unknown"
+        """Map RelationType to claim type string used by RelationshipReifier."""
+        _MAP = {
+            RelationType.REPORTS_ASSOCIATION:               "association",
+            RelationType.REPORTS_INTERVENTION_EFFECT:       "intervention_effect",
+            RelationType.USES_METHODOLOGY:                  "methodology_comparison",
+            RelationType.TAXON_PRODUCES_METABOLITE:         "taxon_metabolite_production",
+            RelationType.TAXON_MODULATES_PATHWAY:           "taxon_pathway_modulation",
+            RelationType.TAXON_REGULATES_GENE:              "taxon_gene_regulation",
+            RelationType.TAXON_INFLUENCES_IMMUNE_CELL:      "taxon_immune_influence",
+            RelationType.TAXON_AFFECTS_CLINICAL_OUTCOME:    "taxon_clinical_outcome",
+            RelationType.METABOLITE_LINKED_TO_DISEASE:      "metabolite_disease_link",
+            RelationType.METABOLITE_INDUCES_IMMUNE_RESPONSE:"metabolite_immune_response",
+            RelationType.GENE_PREDISPOSES_TO_DISEASE:       "gene_disease_predisposition",
+            RelationType.DIET_SHAPES_TAXON:                 "diet_taxon_shaping",
+            RelationType.ENVIRONMENT_SHAPES_TAXON:          "environment_taxon_shaping",
+        }
+        return _MAP.get(relation_type, "unknown")
 
     def _find_grounded_entity(self, entity_text: str, entity_type: str) -> Optional[Dict[str, Any]]:
         """

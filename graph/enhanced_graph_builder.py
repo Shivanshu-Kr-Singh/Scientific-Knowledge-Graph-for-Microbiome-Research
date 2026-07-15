@@ -341,58 +341,54 @@ class EnhancedGraphBuilder:
     def create_reified_claims(self) -> List[ScientificClaim]:
         """
         Create reified claims from relationships with the same (subject, predicate, object).
-        
-        This method aggregates evidence from multiple papers into scientific claims
-        with consensus metrics and evidence strength classification.
-        
-        Requirement 4.1: Create reified claim nodes aggregating supporting evidence
-        
-        Returns:
-            List of ScientificClaim objects
+
+        After fix #1 in semantic_extractor.py:
+          relationship.source_entity = taxon name   (e.g. "staphylococcus aureus")
+          relationship.target_entity = disease name (e.g. "atopic dermatitis")
+          relationship.provenance.paper_id = paper DOI — the evidence source
+
+        The reified claim therefore reads:
+          subject_entity  = taxon
+          predicate       = "associated_with_increased" (etc.)
+          object_entity   = disease
+          supporting_papers = [doi:xxx, doi:yyy, ...]   ← from provenance
+
+        Requirements: 4.1
         """
         claims = []
-        
-        # For each unique (subject, predicate, object) triple
+
         for key, relationships in self.relationship_index.items():
-            # Only create claims for relationships appearing in multiple papers
-            # or with high confidence
             if len(relationships) < 1:
                 continue
-            
-            # Get unique paper IDs
+
+            # Get unique paper IDs from PROVENANCE (not from source_entity — that's
+            # the taxon now, not the paper DOI).
             paper_ids = list(set(rel.provenance.paper_id for rel in relationships))
-            
-            # Extract provenance metadata
+
             provenance_list = [rel.provenance for rel in relationships]
-            
-            # Determine claim type based on relation type
+
             first_rel = relationships[0]
             claim_type = self._get_claim_type(first_rel.relation_type)
-            
-            # Extract p-value and article type if available
-            p_value = None
-            article_type = None
-            
-            # Try to get p-value from properties
-            if "p_value" in first_rel.properties:
-                p_value = first_rel.properties["p_value"]
-            
-            # Create reified claim
+
+            p_value = first_rel.properties.get("p_value")
+
+            # Infer article_type from provenance where available
+            article_type = first_rel.properties.get("article_type")
+
             try:
                 claim = self.relationship_reifier.reify_claim(
-                    subject=first_rel.source_entity,
+                    subject=first_rel.source_entity,       # taxon name
                     predicate=self._normalize_predicate(first_rel),
-                    object_entity=first_rel.target_entity,
+                    object_entity=first_rel.target_entity, # disease name
                     supporting_evidence=provenance_list,
                     claim_type=claim_type,
                     p_value=p_value,
-                    article_type=article_type
+                    article_type=article_type,
                 )
                 claims.append(claim)
-            except ValueError as e:
-                # Skip invalid claims
+            except ValueError:
                 continue
-        
+
         self.claims = claims
         return claims
     
@@ -535,24 +531,35 @@ class EnhancedGraphBuilder:
     ) -> Tuple[str, str, str]:
         """
         Get a key for indexing relationships by (subject, predicate, object).
-        
+
+        For REPORTS_ASSOCIATION:
+          subject = taxon (source_entity)   — e.g. "faecalibacterium prausnitzii"
+          object  = disease (target_entity) — e.g. "inflammatory bowel disease"
+
+        For USES_METHODOLOGY:
+          subject = paper DOI (source_entity)
+          object  = method name (target_entity)
+
+        The canonical ontology ID is preferred for the object key when available
+        so that "h. pylori" and "Helicobacter pylori" merge into the same claim.
+
         Args:
             relationship: Semantic relationship
-        
+
         Returns:
             Tuple of (subject, predicate, object)
         """
         predicate = self._normalize_predicate(relationship)
-        # Use grounded canonical ontology ID as the object key if available
-        # This ensures "h. pylori" and "Helicobacter pylori" merge into the same claim
+        # Use grounded canonical ontology ID as the target key if available,
+        # so spelling variants of the same entity merge into one claim.
         canonical_target = (
             relationship.properties.get("target_ontology_id")
             or relationship.target_entity
         )
         return (
-            relationship.source_entity,
+            relationship.source_entity,  # taxon for associations, paper for methodology
             predicate,
-            canonical_target,
+            canonical_target,            # disease for associations, method for methodology
         )
     
     def _normalize_predicate(self, relationship: SemanticRelationship) -> str:

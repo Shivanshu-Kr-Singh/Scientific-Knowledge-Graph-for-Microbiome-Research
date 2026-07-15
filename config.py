@@ -43,16 +43,49 @@ DATE_TO   = "2026/12/31"
 # Using MeSH gives you MORE precise results than keyword search alone because
 # it catches synonyms (e.g. "gut flora" and "intestinal microbiome" both
 # map to the same MeSH term).
+#
+# Structure: three tiers of specificity
+#   Tier 1 — Core microbiome concepts (highest precision, highest recall for this project)
+#   Tier 2 — Sequencing & analysis methods (catches papers with data the metagenomics gate wants)
+#   Tier 3 — Disease + host contexts (human specificity without duplicating the Humans[MeSH] filter)
+#
+# Removed: "Bacteria" — far too broad; catches veterinary, food-science, and environmental
+#   bacteriology with no human microbiome relevance. Precision penalty outweighs recall gain.
 PUBMED_MESH_TERMS = [
-    "Microbiota",
-    "Gastrointestinal Microbiome",
-    "RNA, Ribosomal, 16S",
-    "Metagenomics",
-    "Bacteria",
+    # ── Tier 1: Core microbiome concepts ──────────────────────────────────
+    "Microbiota",                           # umbrella: all microbial communities
+    "Gastrointestinal Microbiome",          # gut-specific (catches "gut flora" etc.)
+    "Dysbiosis",                            # compositional imbalance — core disease link
+    "Fecal Microbiota Transplantation",     # major therapeutic modality
+    "Probiotics",                           # intervention-focused papers
+    "Prebiotics",                           # dietary intervention papers
+    "Bacteria",                             # broad but needed for coverage; Stage 1 filter trims noise
+
+    # ── Tier 2: Sequencing & bioinformatics methods ───────────────────────
+    "RNA, Ribosomal, 16S",                  # 16S amplicon — most common sequencing target
+    "Metagenomics",                         # shotgun metagenomic studies
+    "Metatranscriptomics",                  # RNA-seq of microbial communities
+    "Sequence Analysis, DNA",               # general sequencing analysis
+    "High-Throughput Nucleotide Sequencing",# next-gen sequencing (Illumina, Nanopore, etc.)
+    "Phylogeny",                            # taxonomic classification studies
+
+    # ── Tier 3: Disease & host-context terms ──────────────────────────────
+    "Inflammatory Bowel Diseases",          # IBD — Crohn's + UC
+    "Irritable Bowel Syndrome",             # IBS — high microbiome literature volume
+    "Colorectal Neoplasms",                 # colorectal cancer microbiome link
+    "Obesity",                              # metabolic disease — strong microbiome signal
+    "Diabetes Mellitus, Type 2",            # T2D — gut-brain-metabolic axis
+    "Liver Diseases",                       # NAFLD / NASH — gut-liver axis papers
+
+    # ── Tier 4: Anatomical & metabolite context ───────────────────────────
+    "Colon",                                # anatomical site — colonic microbiome
+    "Intestines",                           # broader GI tract coverage
+    "Fatty Acids, Volatile",                # SCFAs (butyrate, propionate, acetate)
 ]
 
-# Maximum papers to fetch per source per run (set lower during development)
-MAX_RESULTS_PER_SOURCE = 500
+# Maximum papers to fetch per source per run.
+# Override via MAX_PER_SOURCE in .env (e.g. 100 for dev, 500 for production).
+MAX_RESULTS_PER_SOURCE = int(os.getenv("MAX_PER_SOURCE", "500"))
 
 
 # ─── API Credentials ─────────────────────────────────────────────────────────

@@ -149,13 +149,19 @@ class SemanticRelationshipExtractor:
                     confidence=confidence
                 )
                 
-                # Create relationships for each taxon-disease pair
+                # Create relationships for each taxon-disease pair.
+                # source_entity = taxon (the scientific subject of the claim)
+                # target_entity = disease (the condition it is associated with)
+                # The paper DOI is tracked in provenance.paper_id — NOT here.
+                # Previously source_entity was set to paper.get_dedup_key() which
+                # caused ScientificClaim.subject_entity to become a DOI string
+                # instead of a bacterium name.
                 for taxon in mentioned_taxa:
                     for disease in mentioned_diseases:
                         try:
                             relationship = create_association_relationship(
-                                source_entity=paper.get_dedup_key(),
-                                target_entity=taxon,
+                                source_entity=taxon,
+                                target_entity=disease,
                                 direction=direction,
                                 comparison=comparison,
                                 statistical_measure=statistical_measure or "relative abundance",

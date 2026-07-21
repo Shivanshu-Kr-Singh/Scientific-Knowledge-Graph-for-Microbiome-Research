@@ -94,6 +94,41 @@ class EmbeddingModel:
         """Returns the name of the currently loaded model."""
         return self._model_name
 
+    def unload_from_gpu(self) -> None:
+        """
+        Move the model from GPU/MPS to CPU and free GPU memory.
+
+        Called before Stage 4 LLM inference to free unified memory for Ollama.
+        The model remains usable on CPU (slower but functional). Call
+        reload_to_gpu() to move it back if needed.
+        """
+        if self._model is None:
+            return
+        try:
+            import torch
+            device = next(self._model.parameters(), None)
+            if device is not None and str(device.device) != "cpu":
+                self._model.to("cpu")
+                if hasattr(torch, "mps") and hasattr(torch.mps, "empty_cache"):
+                    torch.mps.empty_cache()
+                logger.info("[embedding_model] Moved to CPU — GPU memory freed for LLM")
+            else:
+                logger.debug("[embedding_model] Already on CPU — no action needed")
+        except Exception as e:
+            logger.debug(f"[embedding_model] unload_from_gpu failed (non-fatal): {e}")
+
+    def reload_to_gpu(self) -> None:
+        """Move model back to MPS/GPU if available."""
+        if self._model is None:
+            return
+        try:
+            import torch
+            if torch.backends.mps.is_available():
+                self._model.to("mps")
+                logger.debug("[embedding_model] Moved back to MPS")
+        except Exception as e:
+            logger.debug(f"[embedding_model] reload_to_gpu failed (staying on CPU): {e}")
+
     def encode(self, texts: List[str], batch_size: int | None = None) -> np.ndarray:
         """
         Encode texts into dense vectors.

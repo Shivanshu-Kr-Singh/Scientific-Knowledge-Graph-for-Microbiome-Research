@@ -227,6 +227,12 @@ EMBEDDING_LATENCY_WARN_MS = float(os.getenv("EMBEDDING_LATENCY_WARN_MS", "200.0"
 # ── Metagenomics Gate ──────────────────────────────────────────────────────────
 METAGENOMICS_GATE_ENABLED = os.getenv("METAGENOMICS_GATE_ENABLED", "true").lower() == "true"
 
+# ── LLM Verifier (Stage 4) ────────────────────────────────────────────────────
+# Set to "false" to disable Stage 4 LLM verification entirely. Borderline
+# papers will go to the review queue without calling Ollama. Useful during
+# large collection runs (Phase 1) to save time.
+LLM_VERIFIER_ENABLED = os.getenv("LLM_VERIFIER_ENABLED", "true").lower() == "true"
+
 # ── Full-Text Exhausted Cache TTL ──────────────────────────────────────────────
 # Papers where all full-text fetch strategies failed are cached as "exhausted"
 # to avoid re-trying on every run. But OA embargoes lapse (commonly 6-12 months

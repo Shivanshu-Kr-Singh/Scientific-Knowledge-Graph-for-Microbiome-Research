@@ -85,7 +85,7 @@ class EmbeddingFilter:
                 f"Insufficient data: positive={pos_count}, negative={neg_count}, "
                 f"minimum required={self.MIN_PARTITION_SIZE} per partition"
             )
-            logger.info(
+            logger.debug(
                 f"[Stage 3.5] INSUFFICIENT_DATA for '{title[:60]}…' — {reason}"
             )
             return EmbeddingVerdict(
@@ -125,7 +125,7 @@ class EmbeddingFilter:
                 f"pos_sim={pos_sim:.4f}, neg_sim={neg_sim:.4f}"
             )
 
-        logger.info(
+        logger.debug(
             f"[Stage 3.5] {decision} for '{title[:60]}…' — "
             f"pos_sim={pos_sim:.4f}, neg_sim={neg_sim:.4f} | {reason}"
         )

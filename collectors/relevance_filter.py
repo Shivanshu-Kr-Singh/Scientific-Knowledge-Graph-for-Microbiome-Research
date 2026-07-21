@@ -277,7 +277,22 @@ class RelevanceFilter:
                 removed.append(paper)
 
         # ── Post-loop: Embedding Store Growth ─────────────────────────────────
-        # Feed confident verdicts back into the store for progressive learning
+        # Feed confident verdicts back into the store for progressive learning.
+        # Force embedding model to CPU first — Ollama may still be resident in
+        # GPU memory after Stage 4 calls, and re-encoding on MPS would OOM.
+        # Also inject self._embedding_model into the global singleton so store
+        # growth doesn't create a second instance that loads onto GPU.
+        global _embedding_model
+        if self._embedding_model is not None:
+            _embedding_model = self._embedding_model
+            self._embedding_model.unload_from_gpu()
+        else:
+            try:
+                growth_model = _get_embedding_model()
+                growth_model.unload_from_gpu()
+            except Exception:
+                pass
+
         for paper, verdict in paper_verdicts:
             try:
                 self._embedding_store_growth(paper, verdict.score)
@@ -432,6 +447,13 @@ class RelevanceFilter:
                     )
             except Exception as e:
                 logger.debug(f"[stage4] Semantic cache lookup failed: {e}")
+
+        # ── Free GPU memory for Ollama before LLM call ────────────────────────
+        # sentence-transformers holds ~400MB on MPS/GPU. Unloading to CPU frees
+        # that memory so larger Ollama models (7B) can run without OOM.
+        if self._embedding_model is not None and not getattr(self, "_gpu_freed", False):
+            self._embedding_model.unload_from_gpu()
+            self._gpu_freed = True
 
         return self._stage4_llm(paper, gate_v)
 
@@ -705,7 +727,7 @@ class RelevanceFilter:
                 f"disagreement: stage2={'keep' if stage2_keeps else 'reject'}, "
                 f"stage3_5={stage3_5_verdict.decision}"
             )
-            logger.info(
+            logger.debug(
                 f"[disagreement_router] Routing to LLM — {reason} | "
                 f"paper='{(paper.title or '')[:60]}'"
             )
@@ -714,7 +736,7 @@ class RelevanceFilter:
         # Condition 2: Blended confidence in uncertain zone [LOW, HIGH]
         if BLENDED_CONFIDENCE_LOW <= blended_confidence <= BLENDED_CONFIDENCE_HIGH:
             reason = f"borderline confidence: {blended_confidence:.4f}"
-            logger.info(
+            logger.debug(
                 f"[disagreement_router] Routing to LLM — {reason} | "
                 f"paper='{(paper.title or '')[:60]}'"
             )
@@ -1147,23 +1169,61 @@ class RelevanceFilter:
         """
         Export a CSV of all rejected papers with stage and reason.
 
-        Columns: title, doi, source, stage, score, reason
+        Columns: title, doi, pmid, doi_or_id, source, rejection_cause, stage, score, reason
         Output: data/audit/rejected_report_YYYYMMDD_HHMMSS.csv
+
+        doi_or_id — human-readable identifier column:
+          "doi:10.xxxx/..."  when DOI is present
+          "pmid:12345678"    when only PMID is available
+          "n/a"              when neither is present
+
+        rejection_cause — the key distinction this CSV exists to communicate:
+          "Stage 2: Score Too Low"    — stage2_rules fired and paper scored below threshold
+          "Metagenomics Gate"         — paper passed Stage 2 score but lacked any
+                                        sequencing / data-availability terms
+          "Stage 1: MeSH Reject"      — animal-only or no-microbiome MeSH
+          "Stage 3: ML Classifier"    — ML probability below reject threshold
+          "Stage 4: LLM Reject"       — LLM determined paper is out of scope
+          (any other stage)           — raw stage label as fallback
+
+        Gate-flagged papers (verdict.review=True, stage=gate_metagenomics) are
+        included here in addition to outright rejects so the gate's contribution
+        is fully visible in one file.
         """
         import csv
         from config import DATA_DIR
 
         rejected_rows = []
         for paper, verdict in paper_verdicts:
-            if not verdict.keep and not verdict.review:
-                rejected_rows.append({
-                    "title": (paper.title or "")[:150],
-                    "doi": getattr(paper, "doi", "") or "",
-                    "source": getattr(paper, "source", "") or "",
-                    "stage": self._humanize_stage(verdict.stage),
-                    "score": round(verdict.score, 3),
-                    "reason": self._humanize_reason(verdict.stage, verdict.reason, verdict.score),
-                })
+            # Include: outright rejects AND gate-flagged (review queue from gate only)
+            is_outright_reject = not verdict.keep and not verdict.review
+            is_gate_flagged    = verdict.review and "gate" in verdict.stage.lower()
+
+            if not (is_outright_reject or is_gate_flagged):
+                continue
+
+            doi  = getattr(paper, "doi",  None) or ""
+            pmid = getattr(paper, "pmid", None) or ""
+
+            # Build a single readable identifier — DOI first, PMID fallback
+            if doi:
+                doi_or_id = f"doi:{doi}"
+            elif pmid:
+                doi_or_id = f"pmid:{pmid}"
+            else:
+                doi_or_id = "n/a"
+
+            rejected_rows.append({
+                "title":           (paper.title or "")[:150],
+                "doi":             doi,
+                "pmid":            pmid,
+                "doi_or_id":       doi_or_id,
+                "source":          getattr(paper, "source", "") or "",
+                "rejection_cause": self._rejection_cause(verdict.stage),
+                "stage":           self._humanize_stage(verdict.stage),
+                "score":           round(verdict.score, 3),
+                "reason":          self._humanize_reason(verdict.stage, verdict.reason, verdict.score),
+            })
 
         if not rejected_rows:
             return
@@ -1177,7 +1237,10 @@ class RelevanceFilter:
             with open(csv_path, "w", newline="", encoding="utf-8") as f:
                 writer = csv.DictWriter(
                     f,
-                    fieldnames=["title", "doi", "source", "stage", "score", "reason"],
+                    fieldnames=[
+                        "title", "doi", "pmid", "doi_or_id",
+                        "source", "rejection_cause", "stage", "score", "reason",
+                    ],
                 )
                 writer.writeheader()
                 writer.writerows(rejected_rows)
@@ -1188,6 +1251,31 @@ class RelevanceFilter:
             )
         except Exception as e:
             logger.warning(f"[filter] Failed to export rejected CSV: {e}")
+
+    @staticmethod
+    def _rejection_cause(stage: str) -> str:
+        """
+        Returns the top-level rejection cause label for the CSV.
+
+        Each stage gets its own explicit label so the CSV column is
+        unambiguous — Stage 3 ML and Stage 3.5 Embeddings are listed
+        separately, not combined.
+        """
+        s = stage.lower()
+        if "gate" in s:
+            return "Metagenomics Gate"
+        if "stage2" in s:
+            return "Stage 2: Score Too Low"
+        if "stage1" in s:
+            return "Stage 1: MeSH Reject"
+        # Stage 3.5 must be checked BEFORE stage3 — "stage3_5" contains "stage3"
+        if "stage3_5" in s or "stage3.5" in s:
+            return "Stage 3.5: Embedding Similarity Reject"
+        if "stage3" in s:
+            return "Stage 3: ML Classifier Reject"
+        if "stage4" in s or "llm" in s:
+            return "Stage 4: LLM Reject"
+        return stage
 
     @staticmethod
     def _humanize_stage(stage: str) -> str:

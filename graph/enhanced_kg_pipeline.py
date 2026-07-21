@@ -893,25 +893,17 @@ class EnhancedKGPipeline:
             logger.info("Enhanced pipeline is disabled")
             return
         
-        # Initialize Neo4j loader
-        self.neo4j_loader = EnhancedNeo4jLoader(
-            uri=self.config.neo4j_uri,
-            user=self.config.neo4j_user,
-            password=self.config.neo4j_password,
-            database=self.config.neo4j_database,
-            batch_size=self.config.neo4j_batch_size
-        )
-        
-        # Create indexes
-        self.neo4j_loader.create_indexes()
+        # Initialize Neo4j loader (lazy - only connect when needed)
+        self.neo4j_loader = None
 
         # Wire TriplePromoter for evidence strength classification of LLM triples.
         # Shared across all batch workers — EntityNormalizer and PredicateRegistry
         # both use SQLite-backed caches that are safe for concurrent reads.
         import os
         promotion_threshold = int(os.getenv("PREDICATE_PROMOTION_THRESHOLD", "5"))
+        self.entity_normalizer = EntityNormalizer()
         self.triple_promoter = TriplePromoter(
-            entity_normalizer=EntityNormalizer(),
+            entity_normalizer=self.entity_normalizer,
             predicate_registry=PredicateRegistry(),
             evidence_classifier=EvidenceStrengthClassifier(),
             promotion_threshold=promotion_threshold,
@@ -1049,6 +1041,18 @@ class EnhancedKGPipeline:
         
         # Load into Neo4j
         if load_to_neo4j:
+            # Initialize Neo4j loader lazily (only when needed)
+            if self.neo4j_loader is None:
+                self.neo4j_loader = EnhancedNeo4jLoader(
+                    uri=self.config.neo4j_uri,
+                    user=self.config.neo4j_user,
+                    password=self.config.neo4j_password,
+                    database=self.config.neo4j_database,
+                    batch_size=self.config.neo4j_batch_size
+                )
+                # Create indexes
+                self.neo4j_loader.create_indexes()
+            
             logger.info("Loading results into Neo4j...")
             self.neo4j_loader.load_edges(all_edges, title_lookup)
             self.neo4j_loader.load_claims(claims)

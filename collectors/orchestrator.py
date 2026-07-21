@@ -320,6 +320,17 @@ class CollectionOrchestrator:
 
           For each field, we take the FIRST non-null value found in priority order.
           For list fields (authors, mesh_terms), we union and deduplicate.
+
+        ZENODO VERSION DEDUPLICATION:
+          Zenodo assigns a new DOI to every uploaded version of the same deposit
+          (e.g. 10.5281/zenodo.18147768 = v1, 10.5281/zenodo.18147769 = v2).
+          OpenAlex indexes every version separately, so without special handling
+          the same paper enters the pipeline multiple times under different DOIs.
+
+          Strategy: for any record whose DOI starts with "10.5281/zenodo.",
+          we override the dedup key to use the normalised title instead of the
+          DOI. All versions then land in the same group, and we keep the one
+          with the highest Zenodo record ID (= most recent version).
         """
         # Source priority — lower index = higher priority for metadata
         SOURCE_PRIORITY = ["pubmed", "europepmc", "semantic_scholar", "openalex", "crossref", "core"]
@@ -328,7 +339,7 @@ class CollectionOrchestrator:
         groups: Dict[str, List[PaperRecord]] = {}
 
         for record in records:
-            key = record.get_dedup_key()
+            key = self._get_dedup_key_with_zenodo(record)
             if key not in groups:
                 groups[key] = []
             groups[key].append(record)
@@ -343,14 +354,31 @@ class CollectionOrchestrator:
 
             duplicate_count += len(group) - 1
 
-            # Sort group by source priority
-            def sort_key(r: PaperRecord):
-                try:
-                    return SOURCE_PRIORITY.index(r.source)
-                except ValueError:
-                    return len(SOURCE_PRIORITY)
-
-            group.sort(key=sort_key)
+            # Sort group by source priority.
+            # ZENODO SPECIAL CASE: if all records in this group are Zenodo
+            # versions of the same deposit, sort by descending record ID
+            # (higher ID = more recent version) so group[0] is the latest.
+            all_zenodo = all(
+                (r.doi or "").startswith("10.5281/zenodo.") for r in group
+            )
+            if all_zenodo:
+                def _zenodo_sort(r: PaperRecord):
+                    try:
+                        return -int((r.doi or "").split("zenodo.")[1])
+                    except (IndexError, ValueError):
+                        return 0
+                group.sort(key=_zenodo_sort)
+                logger.debug(
+                    f"[dedup] Zenodo versions merged: "
+                    f"{[r.doi for r in group]} → keeping {group[0].doi}"
+                )
+            else:
+                def sort_key(r: PaperRecord):
+                    try:
+                        return SOURCE_PRIORITY.index(r.source)
+                    except ValueError:
+                        return len(SOURCE_PRIORITY)
+                group.sort(key=sort_key)
 
             # Merge: start with highest-priority record, fill in from others
             merged = group[0].model_copy()
@@ -380,6 +408,35 @@ class CollectionOrchestrator:
 
         logger.info(f"Removed {duplicate_count} duplicate records")
         return merged_records
+
+    @staticmethod
+    def _get_dedup_key_with_zenodo(record: PaperRecord) -> str:
+        """
+        Returns the deduplication key for a record, with special handling for
+        Zenodo versioned DOIs.
+
+        Normal records: delegates to PaperRecord.get_dedup_key()
+          doi:10.xxxx/... → PMID:... → title:...
+
+        Zenodo records (doi starts with "10.5281/zenodo."):
+          Uses a normalised title key instead of the DOI.
+          This groups all uploaded versions of the same Zenodo deposit
+          together so they collapse into a single record rather than
+          passing through the pipeline as separate papers.
+
+          Why title not DOI: Zenodo assigns a concept DOI (the base record)
+          AND a version DOI (each upload). OpenAlex only indexes the version
+          DOIs, not the concept DOI, so we cannot use the concept DOI as a
+          stable key. Title normalisation is the reliable fallback.
+        """
+        doi = (record.doi or "").strip()
+        if doi.startswith("10.5281/zenodo."):
+            # Normalise title: lowercase, collapse whitespace, strip punctuation
+            import re
+            title_norm = re.sub(r"[^\w\s]", "", (record.title or "").lower())
+            title_norm = re.sub(r"\s+", " ", title_norm).strip()
+            return f"zenodo_title:{title_norm[:120]}"
+        return record.get_dedup_key()
 
     def _merge_lists(self, list1: list, list2: list) -> list:
         """Returns union of two lists, preserving order, deduplicating by lowercase."""

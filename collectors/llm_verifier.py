@@ -32,6 +32,11 @@ OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_MODEL    = os.getenv("OLLAMA_VERIFIER_MODEL", os.getenv("OLLAMA_EXTRACTION_MODEL", "llama3"))
 OLLAMA_TIMEOUT  = int(os.getenv("OLLAMA_TIMEOUT_SECONDS", "60"))
 
+# Master switch for Stage 4 LLM verification in Layer 1.
+# Set LLM_VERIFIER_ENABLED=false in .env to disable — borderline papers
+# will go straight to the review queue without calling Ollama.
+from config import LLM_VERIFIER_ENABLED
+
 CACHE_PATH = Path(__file__).parent.parent / "data" / "processed" / "llm_cache.json"
 
 
@@ -155,6 +160,9 @@ class LLMVerifier:
 
     def _setup(self):
         """Check Ollama is reachable and the model is available."""
+        if not LLM_VERIFIER_ENABLED:
+            logger.info("[llm_verifier] DISABLED via LLM_VERIFIER_ENABLED=false in .env")
+            return
         try:
             resp = requests.get(f"{OLLAMA_BASE_URL}/api/tags", timeout=5)
             if resp.status_code == 200:

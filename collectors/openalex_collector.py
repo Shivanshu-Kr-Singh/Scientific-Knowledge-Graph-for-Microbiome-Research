@@ -328,8 +328,17 @@ class OpenAlexCollector(BaseCollector):
 
             # ── DOI ───────────────────────────────────────────────────────────
             doi_raw = raw.get("doi") or ""
-            # OpenAlex includes "https://doi.org/" prefix — strip it
-            doi = doi_raw.replace("https://doi.org/", "").strip() or None
+            # OpenAlex includes "https://doi.org/" prefix — strip it.
+            # In rare cases OpenAlex returns unparsed HTML anchor tags in the
+            # doi field (e.g. '10.xxxx/yyy">10.xxxx/yyy</a></p'). Strip all
+            # HTML before the first quote or angle bracket to recover the clean
+            # DOI. Example broken value:
+            #   '10.1016/j.jnucmat.2026.156769">10.1016/j.jnucmat.2026.156769</a></p'
+            import re as _re
+            doi_clean = doi_raw.replace("https://doi.org/", "")
+            # If there is any HTML markup, take only the substring before it
+            doi_clean = _re.split(r'["\'>< ]', doi_clean)[0].strip()
+            doi = doi_clean or None
 
             # ── PMID (from the "ids" object, free — no extra API call) ────────
             ids_obj  = raw.get("ids") or {}
